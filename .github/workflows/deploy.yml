@@ -72,7 +72,7 @@ jobs:
             nombre=$(basename "$archivo" .md)
             
             # Generar PDF con JSON válido para los argumentos del navegador
-            npx pagedjs-cli@latest "$carpeta/${nombre}_impresion.html" -o "pdf/$nombre.pdf" --browserArgs '["--no-sandbox", "--disable-setuid-sandbox"]'
+            npx --yes pagedjs-cli@latest "$carpeta/${nombre}_impresion.html" -o "pdf/$nombre.pdf" --browserArgs '["--no-sandbox", "--disable-setuid-sandbox"]'
             
             # Eliminar el archivo temporal HTML
             rm "$carpeta/${nombre}_impresion.html"
