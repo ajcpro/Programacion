@@ -1,0 +1,85 @@
+name: Despliegue Automático Web y PDF
+
+on:
+  push:
+    branches:
+      - main # Cambia a 'master' si tu rama principal se llama así
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 1. Descargar el código del repositorio
+        uses: actions/checkout@v4
+
+      - name: 2. Instalar Pandoc (Para compilar el HTML)
+        run: sudo apt-get update && sudo apt-get install -y pandoc
+
+      - name: 3. Configurar Node.js (Para generar el PDF)
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: 4. Instalar motor de renderizado PDF (Usa Chromium interno)
+        run: npm install -g md-to-pdf
+
+      - name: 5. Preparar Filtros y Compilar HTML
+        run: |
+          # Filtro Lua para la Web: Convierte notas en Tooltips
+          cat << 'EOF' > tooltips.lua
+          local note_count = 0
+          function Note(elem)
+            note_count = note_count + 1
+            local texto = pandoc.utils.stringify(elem.content)
+            local html = '<span class="tooltip"><span class="nota-llamada">[' .. note_count .. ']</span><span class="tooltiptext">' .. texto .. '</span></span>'
+            return pandoc.RawInline('html', html)
+          end
+          EOF
+          
+          # Filtro Lua para el PDF: Convierte notas en etiquetas para Paged.js
+          cat << 'EOF' > pdf_notas.lua
+          function Note(elem)
+            local texto = pandoc.utils.stringify(elem.content)
+            local html = '<span class="nota-pie">' .. texto .. '</span>'
+            return pandoc.RawInline('html', html)
+          end
+          EOF
+
+          # Bucle de compilación
+          for archivo in temas/*.md ejercicios/*.md problemas/*.md; do
+            [ -e "$archivo" ] || continue
+            carpeta=$(dirname "$archivo")
+            nombre=$(basename "$archivo" .md)
+            
+            # 1. Generar HTML definitivo para la Web (Tooltips)
+            pandoc "$archivo" --lua-filter=tooltips.lua -s -c ../estilos/estilo.css -c ../estilos/$nombre.css -o "$carpeta/$nombre.html"
+            
+            # 2. Generar HTML temporal para el PDF (Etiquetas nota-pie)
+            pandoc "$archivo" --lua-filter=pdf_notas.lua -s -c ../estilos/estilo.css -c ../estilos/$nombre.css -o "$carpeta/${nombre}_impresion.html"
+          done
+
+      - name: 6. Generar PDFs reales con Paged.js
+        run: |
+          mkdir -p pdf
+          
+          # Bucle para renderizar los PDFs
+          for archivo in temas/*.md ejercicios/*.md problemas/*.md; do
+            [ -e "$archivo" ] || continue
+            carpeta=$(dirname "$archivo")
+            nombre=$(basename "$archivo" .md)
+            
+            # Generar PDF usando Paged.js (ubica las notas al pie de la página física)
+            npx pagedjs-cli@latest "$carpeta/${nombre}_impresion.html" -o "pdf/$nombre.pdf"
+            
+            # Eliminar el archivo temporal HTML para mantener el repositorio limpio
+            rm "$carpeta/${nombre}_impresion.html"
+          done
+
+      - name: 7. Publicar todo en GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: .             
+          branch: gh-pages
