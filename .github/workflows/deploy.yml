@@ -71,8 +71,8 @@ jobs:
             carpeta=$(dirname "$archivo")
             nombre=$(basename "$archivo" .md)
             
-            # Generar PDF usando Paged.js (ubica las notas al pie de la página física)
-            npx pagedjs-cli@latest "$carpeta/${nombre}_impresion.html" -o "pdf/$nombre.pdf"
+            # Generar PDF esquivando la restricción del sandbox en GitHub Actions
+            npx pagedjs-cli@latest "$carpeta/${nombre}_impresion.html" -o "pdf/$nombre.pdf" --browserArgs "['--no-sandbox', '--disable-setuid-sandbox']"
             
             # Eliminar el archivo temporal HTML para mantener el repositorio limpio
             rm "$carpeta/${nombre}_impresion.html"
