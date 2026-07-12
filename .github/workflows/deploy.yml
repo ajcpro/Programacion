@@ -1,42 +1,37 @@
-name: Despliegue Automático Web y PDF
+name: Build and Deploy
 
 on:
   push:
     branches:
-      - main # Cambia a 'master' si tu rama principal se llama así
-
-permissions:
-  contents: write
+      - main
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: 1. Descargar el código del repositorio
-        uses: actions/checkout@v4
+      - name: Descargar el repositorio
+        uses: actions/checkout@v3
 
-      - name: 2. Instalar Pandoc (Para compilar el HTML)
-        run: sudo apt-get update && sudo apt-get install -y pandoc
+      - name: Instalar Pandoc
+        run: sudo apt-get install -y pandoc
 
-      - name: 3. Configurar Node.js (Para generar el PDF)
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-
-      - name: 4. Instalar Pandoc y WeasyPrint
+      - name: Instalar WeasyPrint
         run: |
           sudo apt-get update
-          sudo apt-get install -y pandoc weasyprint
+          sudo apt-get install -y python3-pip python3-cffi python3-brotli libpango-1.0-0 libpangoft2-1.0-0
+          pip3 install WeasyPrint
 
-      - name: 5. Generar HTML y PDFs limpios
+      - name: Compilar archivos Markdown a HTML y PDF
         run: |
-          # Creamos la carpeta 'public' para la Web y 'public/pdf' para los PDFs
+          # Creamos las carpetas base
           mkdir -p public/pdf
           mkdir -p public/estilos
+          mkdir -p public/imagenes
           
-          # Copiamos tus estilos CSS a la carpeta pública para que la web se vea bien
+          # Copiamos tus estilos e imágenes a la carpeta pública
           cp -r estilos/* public/estilos/ 2>/dev/null || true
-
+          cp -r imagenes/* public/imagenes/ 2>/dev/null || true
+          
           # Creamos los filtros Lua temporales
           cat << 'EOF' > tooltips.lua
           local note_count = 0
@@ -47,7 +42,7 @@ jobs:
             return pandoc.RawInline('html', html)
           end
           EOF
-
+          
           cat << 'EOF' > pdf_notas.lua
           function Note(elem)
             local texto = pandoc.utils.stringify(elem.content)
@@ -55,30 +50,34 @@ jobs:
             return pandoc.RawInline('html', html)
           end
           EOF
-
-          # Bucle de compilación
+          
+          # 1. COMPILAR EL ÍNDICE PRINCIPAL
+          if [ -e "index.md" ]; then
+            pandoc index.md -s -c estilos/estilo.css -o public/index.html
+          fi
+          
+          # 2. BUCLE DE COMPILACIÓN
           for archivo in temas/*.md ejercicios/*.md problemas/*.md; do
             [ -e "$archivo" ] || continue
             nombre=$(basename "$archivo" .md)
+            directorio=$(dirname "$archivo")
             
-            # 1. Generar el HTML final para la Web directamente en la carpeta 'public'
-            pandoc "$archivo" --lua-filter=tooltips.lua -s -c estilos/estilo.css -c estilos/$nombre.css -o "public/$nombre.html"
+            # Creamos la subcarpeta correspondiente
+            mkdir -p "public/$directorio"
             
-            # 2. Generar un HTML temporal para el PDF
+            # Generar el HTML
+            pandoc "$archivo" --lua-filter=tooltips.lua -s -c ../estilos/estilo.css -c ../estilos/$nombre.css -o "public/$directorio/$nombre.html"
+            
+            # Generar el PDF
             pandoc "$archivo" --lua-filter=pdf_notas.lua -s -c estilos/estilo.css -c estilos/$nombre.css -o "temporal_impresion.html"
-            
-            # 3. Convertir ese HTML temporal a un PDF real con WeasyPrint
             weasyprint "temporal_impresion.html" "public/pdf/$nombre.pdf"
-            
-            # Limpiamos el temporal
             rm temporal_impresion.html
           done
-
-          # Limpiamos los filtros para que no se queden en el repositorio
+          
           rm tooltips.lua pdf_notas.lua
 
-      - name: 6. Desplegar en GitHub Pages 🚀
+      - name: Desplegar en GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: public # <--- ¡ESTA ES LA CLAVE! Solo subirá el contenido de esta carpeta
-          branch: gh_pages
+          folder: public
+          branch: gh-pages
