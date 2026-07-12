@@ -5,7 +5,7 @@ css: ["../estilos/estilo.css", "../estilos/tema_01.css"]
 
 # Lenguajes y técnicas de programación
 
-<a href="tema_01.pdf" target="_blank" class="boton-descarga-top">📥 PDF</a>
+<a href="pdf/tema_01.pdf" target="_blank" class="boton-descarga-top">📥 PDF</a>
 <nav class="menu-flotante">
     <input type="checkbox" id="menu-toggle" class="menu-checkbox">
     <label for="menu-toggle" class="menu-boton">☰</label>

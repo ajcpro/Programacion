@@ -61,26 +61,24 @@ jobs:
             pandoc "$archivo" --lua-filter=pdf_notas.lua -s -c ../estilos/estilo.css -c ../estilos/$nombre.css -o "$carpeta/${nombre}_impresion.html"
           done
 
-      - name: 6. Instalar motor y Generar PDFs con Paged.js
+      - name: 6. Instalar WeasyPrint y Generar PDFs reales
         run: |
-          # 1. Bajar el escudo de AppArmor que bloquea Chrome en los servidores nuevos
-          sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0 || true
-          
           mkdir -p pdf
           
-          # 2. Instalar el motor de forma global (tardará unos minutos solo la primera vez)
-          npm install -g pagedjs-cli
+          # 1. Instalar WeasyPrint a nivel de sistema (tarda unos 15-20 segundos)
+          sudo apt-get update
+          sudo apt-get install -y weasyprint
           
-          # 3. Bucle para renderizar los PDFs
+          # 2. Bucle para renderizar los PDFs de forma nativa
           for archivo in temas/*.md ejercicios/*.md problemas/*.md; do
             [ -e "$archivo" ] || continue
             carpeta=$(dirname "$archivo")
             nombre=$(basename "$archivo" .md)
             
-            # Ejecutamos con el parámetro correcto, separado por espacio y sin el signo "="
-            pagedjs-cli "$carpeta/${nombre}_impresion.html" -o "pdf/$nombre.pdf" --browserArgs '["--no-sandbox"]'
+            # Generamos el PDF directamente con WeasyPrint
+            weasyprint "$carpeta/${nombre}_impresion.html" "pdf/$nombre.pdf"
             
-            # Eliminar el archivo temporal HTML
+            # Eliminamos el archivo temporal HTML
             rm "$carpeta/${nombre}_impresion.html"
           done
 
