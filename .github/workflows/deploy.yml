@@ -61,18 +61,21 @@ jobs:
             pandoc "$archivo" --lua-filter=pdf_notas.lua -s -c ../estilos/estilo.css -c ../estilos/$nombre.css -o "$carpeta/${nombre}_impresion.html"
           done
 
-      - name: 6. Generar PDFs reales con Paged.js
+      - name: 6. Instalar motor y Generar PDFs con Paged.js
         run: |
           mkdir -p pdf
           
-          # Bucle para renderizar los PDFs
+          # 1. Instalar el motor y el navegador de forma global UNA SOLA VEZ
+          npm install -g pagedjs-cli
+          
+          # 2. Bucle para renderizar los PDFs
           for archivo in temas/*.md ejercicios/*.md problemas/*.md; do
             [ -e "$archivo" ] || continue
             carpeta=$(dirname "$archivo")
             nombre=$(basename "$archivo" .md)
             
-            # Generar PDF con JSON válido para los argumentos del navegador
-            npx --yes pagedjs-cli@latest "$carpeta/${nombre}_impresion.html" -o "pdf/$nombre.pdf" --browserArgs '["--no-sandbox", "--disable-setuid-sandbox"]'
+            # Ejecutar pagedjs-cli directamente, SIN espacios en el array JSON
+            pagedjs-cli "$carpeta/${nombre}_impresion.html" -o "pdf/$nombre.pdf" --browserArgs '["--no-sandbox","--disable-setuid-sandbox"]'
             
             # Eliminar el archivo temporal HTML
             rm "$carpeta/${nombre}_impresion.html"
