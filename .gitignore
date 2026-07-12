@@ -1,0 +1,9 @@
+# Ignorar archivos generados localmente
+*.html
+*.pdf
+*.json
+*.js
+*.less
+
+# Ignorar la carpeta pdf si se genera en tu ordenador
+pdf/

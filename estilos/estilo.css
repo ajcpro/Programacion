@@ -1,0 +1,193 @@
+/* ==========================================================================
+   PROGRAMACIÃN DE SERVICIOS Y PROCESOS - ESTILOS BASE GENERALES
+   ========================================================================== */
+
+/* --- 1. Elementos Tipográficos e Inline --- */
+.llamadaSO { font-style: oblique; }
+.clase      { }
+.metodo     { }
+.cita       { }
+.cita .autor { }
+.modificado { color: #0264e6; }
+.palabra    { color: #e61703; font-weight: bold; }
+
+/* --- 2. Bloques de Código y Contenedores Generales --- */
+.code {
+    margin-left: 2em;
+    font-family: Courier, 'Courier New', 'Lucida Console', monospace;
+    font-size: 0.9em;
+    white-space: pre-wrap;
+    background-color: #f8f9fa;
+    padding: 0.5em;
+    border-radius: 4px;
+    overflow-x: auto;
+}
+
+aside {
+    border: 2px solid #135fcd;
+    margin-bottom: 1em;
+    padding: 0.5em;
+    background-color: #f0f6ff;
+    border-radius: 5px;
+}
+
+.aside .definicion { padding: 0.5em; }
+.definicion p      { margin: 0.2em; }
+.definicion p strong { color: #2ecc71; }
+
+/* --- 3. Tooltips Interactivos: Copiado de W3Schools --- */
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 20em;
+    background-color: #135fcd;
+    color: #fff;
+    border-radius: 6px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 1em;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+    position: absolute;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #135fcd transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* --- 4. Estructura de Imágenes y Figuras Estándar --- */
+figure     { margin: 1.5em 0; padding: 0; display: block; }
+figure img { max-width: 100%; height: auto; border-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.08); }
+figcaption { font-size: 0.85em; color: #666; margin-top: 8px; line-height: 1.4; }
+
+figure.img-grande { text-align: center; margin: 2em auto; max-width: 90%; clear: both; }
+figure.img-lateral-der { float: right; max-width: 35%; margin: 0 0 1.5em 1.5em; text-align: right; }
+figure.img-lateral-izq { float: left; max-width: 35%; margin: 0 1.5em 1.5em 0; text-align: left; }
+
+.image { }
+.image .caption { margin-top: 0.15em; font-size: 0.65em; }
+
+/* Limpiador de flujos laterales para tÃítulos */
+h1, h2, h3, main section { clear: both; }
+
+/* --- 5. Tablas de Contenido Estáticas --- */
+.toc { }
+.toc ul { list-style-type: none; padding-left: 1.5em; }
+.toc li { list-style-type: none; }
+.toc > ul { padding-left: 2em; }
+.toc a { text-decoration: none; color: #135fcd; }
+.toc a:hover { text-decoration: underline; }
+
+/* --- 6. Menú Web Flotante (Hamburguesa) --- */
+.menu-flotante   { position: fixed !important; top: 20px; right: 20px; z-index: 1000; }
+.menu-checkbox   { display: none; }
+.menu-boton      { font-size: 28px; cursor: pointer; background-color: #f1f1f1; color: #333; padding: 5px 12px; border-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); display: inline-block; user-select: none; }
+.menu-boton:hover { background-color: #e0e0e0; }
+
+.menu-contenido {
+    display: none;
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background-color: #ffffff;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    border-radius: 8px;
+    min-width: 250px;
+    border: 1px solid #ddd;
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+}
+
+.menu-contenido ul { list-style: none; padding-left: 0; }
+.menu-contenido li { list-style: none; }
+.menu-contenido a  { text-decoration: none; color: #0056b3; }
+.menu-contenido a:hover { text-decoration: underline; }
+.menu-checkbox:checked ~ .menu-contenido { display: block; }
+
+/* --- 6b. Botón de Descarga Superior (Scrollable) --- */
+.boton-descarga-top {
+    position: absolute; /* Se posiciona respecto al inicio de la página y se mueve con el scroll */
+    top: 25px;
+    right: 85px;        /* Se sitúa a la izquierda de la hamburguesa (que está a 20px + su ancho) */
+    font-size: 14px;
+    font-weight: bold;
+    color: #cc0000;
+    text-decoration: none;
+    background-color: #f1f1f1;
+    padding: 7px 12px;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    z-index: 999;       /* Un nivel por debajo de la hamburguesa para evitar solapamientos */
+    transition: background-color 0.2s;
+}
+
+.boton-descarga-top:hover {
+    background-color: #e0e0e0;
+}
+
+/* --- 7. Navegación y Utilidades --- */
+.pie .previo   { }
+.pie .inicio   { }
+.pie .siguiente { }
+.newpage       { page-break-before: always; break-before: page; } /* Estilo solicitado para pruebas */
+
+/* ==========================================================================
+   OPTIMIZACIONES EXCLUSIVAS PARA PANTALLA (WEB)
+   ========================================================================== */
+@media screen {
+    .seccion-notas-impresion { display: none; }
+    .toc                     { display: none; } /* Oculto en web, se usa la hamburguesa */
+    .tooltip .tooltiptext    { max-width: 90vw; box-sizing: border-box; }
+    .nota-llamada { color: #135fcd; font-weight: bold; cursor: help; text-decoration: none; font-size: 0.85em; vertical-align: super; }
+}
+
+/* ==========================================================================
+   OPTIMIZACIONES EXCLUSIVAS PARA IMPRESIÓN (PDF)
+   ========================================================================== */
+@media print {
+    @page { size: A4; margin: 2cm 1.5cm; }
+    body  { background-color: #fff; color: #000; font-size: 11pt; line-height: 1.4; }
+
+    /* Ocultar elementos interactivos de pantalla */
+    .menu-flotante, .tooltip .tooltiptext, .tooltip .tooltiptext::after { display: none !important; visibility: hidden !important; }
+
+    /* Ocultar elementos interactivos de pantalla (Añadimos el nuevo botón aquí) */
+    .menu-flotante, .boton-descarga-top, .tooltip .tooltiptext, .tooltip .tooltiptext::after { 
+        display: none !important; 
+        visibility: hidden !important; 
+    }
+
+    /* Forzar visibilidad de elementos impresos */
+    .seccion-notas-impresion { display: block !important; margin-top: 2cm; border-top: 1px solid #ccc; padding-top: 10px; page-break-inside: avoid; }
+    .seccion-notas-impresion h3 { font-size: 12pt; margin-bottom: 8px; }
+    .seccion-notas-impresion ol { font-size: 9.5pt; color: #333; padding-left: 20px; }
+    
+    .toc { display: block !important; page-break-before: always; page-break-after: always; }
+
+    /* Reglas de maquetación de página */
+    .nota-llamada { color: #000; text-decoration: none; font-size: 0.8em; vertical-align: super; }
+    .code, aside, .image, .definicion, figure { page-break-inside: avoid; break-inside: avoid; background-color: transparent; }
+    h1, h2, h3 { break-after: avoid; page-break-after: avoid; }
+    @media print {
+    /* ... tus otras reglas de impresión ... */
+    
+    .nota-pie {
+        float: footnote;
+    }
+}
+}

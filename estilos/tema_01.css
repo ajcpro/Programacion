@@ -1,0 +1,45 @@
+/* ==========================================================================
+   COMPONENTES EXCLUSIVOS Y ESPECÃFICOS - TEMA 01
+   ========================================================================== */
+
+/* --- 1. Contenedor Comparativo de Definiciones (RAE vs TÃ©cnica) --- */
+.definiciones-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; 
+    gap: 20px;       
+    margin: 0 auto;
+    width: 80%;
+}
+
+/* --- 2. Bloque Estilo RAE --- */
+.def-rae {
+    flex: 1 1 200px; 
+    background-color: #fdfdfd;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+.rae-dos-columnas { display: flex; flex-wrap: wrap; gap: 20px; }
+.rae-columna      { flex: 1 1 200px; }
+.rae-bloque-inferior { margin-top: 20px; padding-top: 15px; border-top: 1px dashed #ccc; }
+
+/* TipografÃ­a y colores identitarios RAE */
+.rae-word   { color: #004481; font-weight: bold; font-size: 1.25em; margin: 0 0 5px 0; }
+.red        { color: #cc0000; }
+.rae-etym   { color: #007700; font-size: 0.95em; margin-bottom: 10px; }
+.rae-list   { margin: 0 0 20px 0; padding-left: 25px; list-style: decimal; }
+.rae-list li { margin-bottom: 8px; line-height: 1.4; }
+.rae-list li::marker { color: #004481; font-weight: bold; }
+.rae-abbr   { color: #004481; font-style: italic; font-weight: normal; margin-right: 5px; }
+.rae-region { color: #004481; font-variant: small-caps; }
+
+/* --- 4. Elementos GrÃ¡ficos EspecÃ­ficos del Tema --- */
+figure.img-sergio-ceron {
+    float: right;
+    max-width: 50%;
+    margin: 0 0 0 1.5em;
+    text-align: center;
+}
