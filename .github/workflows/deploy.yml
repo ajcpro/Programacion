@@ -63,19 +63,22 @@ jobs:
 
       - name: 6. Instalar motor y Generar PDFs con Paged.js
         run: |
+          # 1. Bajar el escudo de AppArmor que bloquea Chrome en los servidores nuevos
+          sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0 || true
+          
           mkdir -p pdf
           
-          # 1. Instalar el motor de forma global (tardará unos 5 min la primera vez)
+          # 2. Instalar el motor de forma global (tardará unos minutos solo la primera vez)
           npm install -g pagedjs-cli
           
-          # 2. Bucle para renderizar los PDFs
+          # 3. Bucle para renderizar los PDFs
           for archivo in temas/*.md ejercicios/*.md problemas/*.md; do
             [ -e "$archivo" ] || continue
             carpeta=$(dirname "$archivo")
             nombre=$(basename "$archivo" .md)
             
-            # Sintaxis a prueba de fallos: un solo parámetro y unido por "="
-            pagedjs-cli "$carpeta/${nombre}_impresion.html" -o "pdf/$nombre.pdf" --browserArgs='["--no-sandbox"]'
+            # Ejecutamos con el parámetro correcto, separado por espacio y sin el signo "="
+            pagedjs-cli "$carpeta/${nombre}_impresion.html" -o "pdf/$nombre.pdf" --browserArgs '["--no-sandbox"]'
             
             # Eliminar el archivo temporal HTML
             rm "$carpeta/${nombre}_impresion.html"
