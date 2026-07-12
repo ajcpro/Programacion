@@ -23,12 +23,21 @@ jobs:
         with:
           node-version: 20
 
-      - name: 4. Instalar motor de renderizado PDF (Usa Chromium interno)
-        run: npm install -g md-to-pdf
-
-      - name: 5. Preparar Filtros y Compilar HTML
+      - name: 4. Instalar Pandoc y WeasyPrint
         run: |
-          # Filtro Lua para la Web: Convierte notas en Tooltips
+          sudo apt-get update
+          sudo apt-get install -y pandoc weasyprint
+
+      - name: 5. Generar HTML y PDFs limpios
+        run: |
+          # Creamos la carpeta 'public' para la Web y 'public/pdf' para los PDFs
+          mkdir -p public/pdf
+          mkdir -p public/estilos
+          
+          # Copiamos tus estilos CSS a la carpeta pública para que la web se vea bien
+          cp -r estilos/* public/estilos/ 2>/dev/null || true
+
+          # Creamos los filtros Lua temporales
           cat << 'EOF' > tooltips.lua
           local note_count = 0
           function Note(elem)
@@ -38,8 +47,7 @@ jobs:
             return pandoc.RawInline('html', html)
           end
           EOF
-          
-          # Filtro Lua para el PDF: Convierte notas en etiquetas para Paged.js
+
           cat << 'EOF' > pdf_notas.lua
           function Note(elem)
             local texto = pandoc.utils.stringify(elem.content)
@@ -51,39 +59,26 @@ jobs:
           # Bucle de compilación
           for archivo in temas/*.md ejercicios/*.md problemas/*.md; do
             [ -e "$archivo" ] || continue
-            carpeta=$(dirname "$archivo")
             nombre=$(basename "$archivo" .md)
             
-            # 1. Generar HTML definitivo para la Web (Tooltips)
-            pandoc "$archivo" --lua-filter=tooltips.lua -s -c ../estilos/estilo.css -c ../estilos/$nombre.css -o "$carpeta/$nombre.html"
+            # 1. Generar el HTML final para la Web directamente en la carpeta 'public'
+            pandoc "$archivo" --lua-filter=tooltips.lua -s -c estilos/estilo.css -c estilos/$nombre.css -o "public/$nombre.html"
             
-            # 2. Generar HTML temporal para el PDF (Etiquetas nota-pie)
-            pandoc "$archivo" --lua-filter=pdf_notas.lua -s -c ../estilos/estilo.css -c ../estilos/$nombre.css -o "$carpeta/${nombre}_impresion.html"
+            # 2. Generar un HTML temporal para el PDF
+            pandoc "$archivo" --lua-filter=pdf_notas.lua -s -c estilos/estilo.css -c estilos/$nombre.css -o "temporal_impresion.html"
+            
+            # 3. Convertir ese HTML temporal a un PDF real con WeasyPrint
+            weasyprint "temporal_impresion.html" "public/pdf/$nombre.pdf"
+            
+            # Limpiamos el temporal
+            rm temporal_impresion.html
           done
 
-      - name: 6. Instalar WeasyPrint y Generar PDFs reales
-        run: |
-          mkdir -p pdf
-          
-          # 1. Instalar WeasyPrint a nivel de sistema (tarda unos 15-20 segundos)
-          sudo apt-get update
-          sudo apt-get install -y weasyprint
-          
-          # 2. Bucle para renderizar los PDFs de forma nativa
-          for archivo in temas/*.md ejercicios/*.md problemas/*.md; do
-            [ -e "$archivo" ] || continue
-            carpeta=$(dirname "$archivo")
-            nombre=$(basename "$archivo" .md)
-            
-            # Generamos el PDF directamente con WeasyPrint
-            weasyprint "$carpeta/${nombre}_impresion.html" "pdf/$nombre.pdf"
-            
-            # Eliminamos el archivo temporal HTML
-            rm "$carpeta/${nombre}_impresion.html"
-          done
+          # Limpiamos los filtros para que no se queden en el repositorio
+          rm tooltips.lua pdf_notas.lua
 
-      - name: 7. Publicar todo en GitHub Pages
+      - name: 6. Desplegar en GitHub Pages 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: .             
-          branch: gh-pages
+          folder: public # <--- ¡ESTA ES LA CLAVE! Solo subirá el contenido de esta carpeta
+          branch: gh_pages
