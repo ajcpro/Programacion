@@ -65,7 +65,7 @@ jobs:
         run: |
           mkdir -p pdf
           
-          # 1. Instalar el motor y el navegador de forma global UNA SOLA VEZ
+          # 1. Instalar el motor de forma global (tardará unos 5 min la primera vez)
           npm install -g pagedjs-cli
           
           # 2. Bucle para renderizar los PDFs
@@ -74,8 +74,8 @@ jobs:
             carpeta=$(dirname "$archivo")
             nombre=$(basename "$archivo" .md)
             
-            # Ejecutar pagedjs-cli directamente, SIN espacios en el array JSON
-            pagedjs-cli "$carpeta/${nombre}_impresion.html" -o "pdf/$nombre.pdf" --browserArgs '["--no-sandbox","--disable-setuid-sandbox"]'
+            # Sintaxis a prueba de fallos: un solo parámetro y unido por "="
+            pagedjs-cli "$carpeta/${nombre}_impresion.html" -o "pdf/$nombre.pdf" --browserArgs='["--no-sandbox"]'
             
             # Eliminar el archivo temporal HTML
             rm "$carpeta/${nombre}_impresion.html"
