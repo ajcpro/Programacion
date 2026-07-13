@@ -100,37 +100,9 @@ css: ["../estilos/estilo.css", "../estilos/tema_01.css"]
 ## Introducción
 
 ¿Qué es un ordenador?
-<div class="definiciones-container">
-    <div class="def-rae">
-        <div class="rae-dos-columnas">
-            <div class="rae-columna">
-                <p class="rae-word">ordenador, ra</p>
-                <p class="rae-etym">Del lat. <em>ordinātor, -ōris.</em></p>
-                <ol class="rae-list">
-                    <li><span class="rae-abbr">adj.</span> Que ordena. <span class="rae-abbr">U. t. c. s.</span></li>
-                    <li><span class="rae-abbr">m.</span> Jefe de una ordenación de pagos u oficina de cuenta y razón.</li>
-                    <li><span class="rae-abbr">m.</span> <span class="rae-region">Esp.</span> computadora electrónica.</li>
-                </ol>
-            </div>
-            <div class="rae-columna">
-                <p class="rae-word">computador, ra</p>
-                <ol class="rae-list">
-                    <li><span class="rae-abbr">adj.</span> Que computa (‖ calcula). <span class="rae-abbr">U. t. c. s.</span></li>
-                    <li><span class="rae-abbr">m.</span> calculadora (‖ aparato para cálculos matemáticos).</li>
-                    <li><span class="rae-abbr">m.</span> computadora electrónica.</li>
-                    <li><span class="rae-abbr">f.</span> calculadora (‖ aparato para cálculos matemáticos).</li>
-                    <li><span class="rae-abbr">f.</span> computadora electrónica.</li>
-                </ol>
-            </div>
-        </div>
-        <div class="rae-bloque-inferior">
-            <p class="rae-word red">computadora electrónica</p>
-            <ol class="rae-list" style="margin-bottom: 0;">
-                <li><span class="rae-abbr">f.</span> Máquina electrónica que, mediante determinados programas, permite almacenar y tratar información, y resolver problemas de diversa índole.</li>
-            </ol>
-        </div>
-    </div>
-</div>
+
+<div class="definiciones-container"><div class="def-rae"><div class="rae-dos-columnas"><div class="rae-columna"><p class="rae-word">ordenador, ra</p><p class="rae-etym">Del lat. <em>ordinātor, -ōris.</em></p><ol class="rae-list"><li><span class="rae-abbr">adj.</span> Que ordena. <span class="rae-abbr">U. t. c. s.</span></li><li><span class="rae-abbr">m.</span> Jefe de una ordenación de pagos u oficina de cuenta y razón.</li><li><span class="rae-abbr">m.</span> <span class="rae-region">Esp.</span> computadora electrónica.</li></ol></div><div class="rae-columna"><p class="rae-word">computador, ra</p><ol class="rae-list"><li><span class="rae-abbr">adj.</span> Que computa (‖ calcula). <span class="rae-abbr">U. t. c. s.</span></li><li><span class="rae-abbr">m.</span> calculadora (‖ aparato para cálculos matemáticos).</li><li><span class="rae-abbr">m.</span> computadora electrónica.</li><li><span class="rae-abbr">f.</span> calculadora (‖ aparato para cálculos matemáticos).</li><li><span class="rae-abbr">f.</span> computadora electrónica.</li></ol></div></div><div class="rae-bloque-inferior"><p class="rae-word red">computadora electrónica</p><ol class="rae-list" style="margin-bottom: 0;"><li><span class="rae-abbr">f.</span> Máquina electrónica que, mediante determinados programas, permite almacenar y tratar información, y resolver problemas de diversa índole.</li></ol></div></div></div>
+
 Breve definición para algo que, en sólo unas décadas, ha cambiado por completo la forma de vida de las sociedades industrializadas. Los ordenadores afectan a todas las áreas de nuestra vida; de hecho, sería más fácil decir en qué aspectos de nuestra vida no los utilizamos.
 
 ## Qué es la programación
