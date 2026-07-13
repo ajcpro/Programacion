@@ -11,43 +11,43 @@ css: ["../estilos/estilo.css", "../estilos/tema_01.css"]
 <input type="checkbox" id="menu-toggle" class="menu-checkbox">
 <label for="menu-toggle" class="menu-boton">☰</label>
 <div class="menu-contenido">
-        <h3>Contenido</h3>
-        <ul>
-            <li><a href="#introduccion">Introducción</a></li>
-            <li><a href="#que-es-la-programacion">Qué es la programación</a></li>
-            <li><a href="#como-escribimos-un-programa">Cómo escribimos un programa</a>
-                <ul>
-                    <li><a href="#fase-resolucion">Fase de resolución del problema</a></li>
-                    <li><a href="#fase-implementacion">Fase de implementación</a></li>
-                    <li><a href="#fase-mantenimiento">Fase de mantenimiento</a></li>
-                </ul>
-            </li>
-            <li><a href="#como-se-transforma-el-codigo">Cómo se transforma el código en algo que el ordenador puede usar</a></li>
-            <li><a href="#en-que-difieren-la-interpretacion-y-la-compilacion">En qué difieren la interpretación y la compilación</a></li>
-            <li><a href="#paradigmas-de-programacion">Paradigmas de programación</a>
-                <ul>
-                    <li><a href="#programacion-imperativa">Programación imperativa</a></li>
-                    <li><a href="#programacion-funcional">Programación funcional</a></li>
-                    <li><a href="#programacion-logica">Programación lógica</a></li>
-                    <li><a href="#programacion-concurrente">Programación concurrente</a></li>
-                    <li><a href="#programacion-orientada-a-objetos">Programación orientada a objetos</a></li>
-                </ul>
-            </li>
-            <li><a href="#que-tipos-de-instrucciones">Qué tipos de instrucciones son posibles en un lenguaje de programación</a></li>
-            <li><a href="#lenguajes-poo">Lenguajes de programación orientados a objetos</a></li>
-            <li><a href="#que-es-un-ordenador">Qué es un ordenador</a></li>
-            <li><a href="#tecnicas-resolucion">Técnicas de resolución de problemas</a>
-                <ul>
-                    <li><a href="#realiza-preguntas">Realiza preguntas</a></li>
-                    <li><a href="#buscar-cosas-familiares">Buscar cosas familiares</a></li>
-                    <li><a href="#resolucion-por-analogia">Resolución por analogía</a></li>
-                    <li><a href="#analisis-medios-fines">Análisis medios-fines</a></li>
-                    <li><a href="#divide-y-venceras">Divide y vencerás</a></li>
-                    <li><a href="#construccion-por-bloques">Construcción por bloques</a></li>
-                    <li><a href="#bloqueo-mental">Bloqueo mental: el miedo a empezar</a></li>
-                </ul>
-            </li>
-        </ul>
+<h3>Contenido</h3>
+<ul>
+<li><a href="#introduccion">Introducción</a></li>
+<li><a href="#que-es-la-programacion">Qué es la programación</a></li>
+<li><a href="#como-escribimos-un-programa">Cómo escribimos un programa</a>
+<ul>
+<li><a href="#fase-resolucion">Fase de resolución del problema</a></li>
+<li><a href="#fase-implementacion">Fase de implementación</a></li>
+<li><a href="#fase-mantenimiento">Fase de mantenimiento</a></li>
+</ul>
+</li>
+<li><a href="#como-se-transforma-el-codigo">Cómo se transforma el código en algo que el ordenador puede usar</a></li>
+<li><a href="#en-que-difieren-la-interpretacion-y-la-compilacion">En qué difieren la interpretación y la compilación</a></li>
+<li><a href="#paradigmas-de-programacion">Paradigmas de programación</a>
+<ul>
+<li><a href="#programacion-imperativa">Programación imperativa</a></li>
+<li><a href="#programacion-funcional">Programación funcional</a></li>
+<li><a href="#programacion-logica">Programación lógica</a></li>
+<li><a href="#programacion-concurrente">Programación concurrente</a></li>
+<li><a href="#programacion-orientada-a-objetos">Programación orientada a objetos</a></li>
+</ul>
+</li>
+<li><a href="#que-tipos-de-instrucciones">Qué tipos de instrucciones son posibles en un lenguaje de programación</a></li>
+<li><a href="#lenguajes-poo">Lenguajes de programación orientados a objetos</a></li>
+<li><a href="#que-es-un-ordenador">Qué es un ordenador</a></li>
+<li><a href="#tecnicas-resolucion">Técnicas de resolución de problemas</a>
+<ul>
+<li><a href="#realiza-preguntas">Realiza preguntas</a></li>
+<li><a href="#buscar-cosas-familiares">Buscar cosas familiares</a></li>
+<li><a href="#resolucion-por-analogia">Resolución por analogía</a></li>
+<li><a href="#analisis-medios-fines">Análisis medios-fines</a></li>
+<li><a href="#divide-y-venceras">Divide y vencerás</a></li>
+<li><a href="#construccion-por-bloques">Construcción por bloques</a></li>
+<li><a href="#bloqueo-mental">Bloqueo mental: el miedo a empezar</a></li>
+</ul>
+</li>
+</ul>
 </div>
 </nav>
 
