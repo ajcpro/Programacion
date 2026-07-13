@@ -31,6 +31,9 @@ jobs:
           cp -r estilos/* public/estilos/ 2>/dev/null || true
           cp -r imagenes/* public/imagenes/ 2>/dev/null || true
 
+          # Enlace simbólico de seguridad para que Weasyprint lea 'imagenes/' desde la raíz
+          ln -s public/imagenes imagenes
+
           # Creamos la plantilla HTML limpia que evita la duplicación de títulos y estilos de Pandoc
           cat << 'EOF' > template.html
           <!DOCTYPE html>
@@ -57,6 +60,20 @@ jobs:
             note_count = note_count + 1
             table.insert(notes, elem.content)
   
+            -- Procesamos los bloques internos de la nota para mantener texto y saltos de línea <br>
+            local inline_list = {}
+            for i, block in ipairs(elem.content) do
+              if block.content then
+                for _, inline in ipairs(block.content) do
+                  table.insert(inline_list, inline)
+                end
+                -- Si hay más bloques de texto dentro de la nota, metemos un salto de línea explícito
+                if i < #elem.content then
+                  table.insert(inline_list, pandoc.RawInline('html', '<br>'))
+                end
+              end
+            end
+
             -- Extraemos el texto plano limpio de enlaces para el tooltiptext
             local texto = pandoc.utils.stringify(elem.content):gsub('"', '&quot;')
   
@@ -74,7 +91,7 @@ jobs:
             -- Generamos manualmente la sección inferior de notas al pie
             local footnote_sec = {
               pandoc.HorizontalRule(),
-              pandoc.Header(2, "Notas al pie", {id="sec-notas-pie"})
+              pandoc.Header(2, "Notas al pie", {id="sec-notas-pie", class="seccion-notas-web"})
             }
   
             table.insert(footnote_sec, pandoc.RawBlock('html', '<ol class="footnotes-list">'))
@@ -104,17 +121,8 @@ jobs:
 
           cat << 'EOF' > pdf_notas.lua
           function Note(elem)
-            -- Extraemos los elementos internos (inlines) manteniendo enlaces intactos
-            local inlines = {}
-            for _, block in ipairs(elem.content) do
-              if block.content then
-                for _, inline in ipairs(block.content) do
-                  table.insert(inlines, inline)
-                end
-                table.insert(inlines, pandoc.Space())
-              end
-            end
-            return pandoc.Span(inlines, {class="nota-pie"})
+          -- Envolvemos el contenido multilinea en un Div para el sistema de notas de WeasyPrint
+            return pandoc.Div(elem.content, {class="nota-pie"})
           end
 
           function Image(elem)
@@ -156,7 +164,8 @@ jobs:
             rm temporal_impresion.html
           done
 
-          rm tooltips.lua pdf_notas.lua template.html
+          # Limpieza de temporales del entorno virtual
+          rm tooltips.lua pdf_notas.lua template.html imagenes
 
       - name: Desplegar en GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
