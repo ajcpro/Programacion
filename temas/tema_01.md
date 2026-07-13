@@ -5,7 +5,8 @@ css: ["../estilos/estilo.css", "../estilos/tema_01.css"]
 
 # Lenguajes y técnicas de programación
 
-<a href="pdf/tema_01.pdf" target="_blank" class="boton-descarga-top">📥 PDF</a>
+<a href="../pdf/tema_01.pdf" target="_blank" class="boton-descarga-top">📥 PDF</a>
+
 <nav class="menu-flotante">
     <input type="checkbox" id="menu-toggle" class="menu-checkbox">
     <label for="menu-toggle" class="menu-boton">☰</label>
@@ -62,6 +63,7 @@ css: ["../estilos/estilo.css", "../estilos/tema_01.css"]
 * Conocer algunos paradigmas de programación
 * Diferenciar programación estructurada de modular y orientada a objetos
 * Comprender el concepto de objeto en el contexto de la resolución de problemas
+
 </section>
 
 <section class="toc">
@@ -92,6 +94,7 @@ css: ["../estilos/estilo.css", "../estilos/tema_01.css"]
     * [Divide y vencerás](#divide-y-vencerás)
     * [Construcción por bloques](#construcción-por-bloques)
     * [Bloqueo mental: el miedo a empezar](#bloqueo-mental)
+
 </section>
 
 ## Introducción
@@ -153,6 +156,7 @@ Creamos orden, tanto consciente como inconscientemente, a través de un proceso 
 **Programación:** Desarrollo de instrucciones para llevar a cabo una tarea que involucra una serie de objetos.
 
 **Ordenador:** Dispositivo programable que permite almacenar, recuperar y tratar datos.
+
 </aside>
 
 Hemos modificado un poco la definición de ordenador que nos proporciona la RAE. En ésta, la palabra clave es datos[^1]. Los ordenadores manipulan datos: cuando escribimos un programa para un ordenador, especificamos las propiedades de los datos y las operaciones que podemos realizar con los mismos. La combinación de datos y operaciones nos sirve para representar objetos. Los objetos que representamos pueden ser físicos, objetos del mundo real como productos de un supermercado, o abstractos, como constructos. Nuestras representaciones de los objetos se programan para interactuar, según sea necesario, para resolver el problema.
@@ -168,6 +172,7 @@ Del mismo modo que una lista de reproducción enumera los temas que se escuchar�
 **Programación de ordenadores:** El proceso de especificar objetos y maneras de interactuar entre ellos para resolver un problema con un ordenador.
 
 **Programa de ordenador:** Instrucciones que definen un conjunto de objetos e indica sus interacciones para resolver un problema con un ordenador.
+
 </aside>
 
 El ordenador nos permite realizar tareas de manera más eficiente, rápida y precisa de lo que podríamos hacerlas a mano, si es posible hacerlo a mano. Pero esta máquina, sin embargo, para ser una herramienta útil, debe programarse primero. Es decir, debemos especificar exactamente qué queremos que haga y cómo. Y eso lo hacemos a través de la programación.
@@ -209,6 +214,7 @@ Un programa es un algoritmo escrito para un ordenador. Cuando definimos clases y
 **Clase:** Descripción de la representación de un tipo específico de objeto, en función de datos y operaciones
 
 **Algoritmo:** Instrucciones para resolver un problema en un tiempo finito utilizando un conjunto finito de datos[^2]
+
 </aside>
 
 Cuando cruzamos una calle, por ejemplo, seguimos una serie acciones que involucran a varios objetos. El algoritmo podría ser algo parecido a esto:
@@ -230,6 +236,7 @@ Después de desarrollar una solución general, el programador prueba el algoritm
 <aside class="definicion">
 
 **Lenguaje de programación:** Conjunto de reglas, símbolos y palabras especiales que se utilizan para crear un programa de ordenador
+
 </aside>
 
 Un lenguaje de programación es una forma simplificada del lenguaje natural (generalmente el inglés) y símbolos matemáticos, con un conjunto de reglas gramaticales estricto. El lenguaje natural, incluso el inglés, es un idioma demasiado complejo para que pueda ser interpretado por el ordenador. Los lenguajes de programación, al tener un vocabulario y gramática más limitados, son mucho más simples.
@@ -241,6 +248,7 @@ Traducir un algoritmo a un lenguaje de programación se llama codificar el algor
 <aside class="definicion">
 
 **Código:** Instrucciones para un ordenador, escritas en un lenguaje de programación
+
 </aside>
 
 No existe una única forma de implementar un algoritmo. Por ejemplo, un algoritmo puede ser traducido a más de un lenguaje de programación. Cada traducción produce una implementación diferente. Incluso cuando dos personas traducen un algoritmo al mismo lenguaje de programación, a menudo, obtienen dos implementaciones diferentes. ¿Por qué? Porque cada lenguaje de programación permite al programador cierta flexibilidad a la hora de traducir el algoritmo. Dada esta flexibilidad, las personas adoptan sus propios estilos de escritura de programas, al igual que sucede con la forma de hablar o redactar un texto. Cuando se adquiere experiencia en la programación, con el tiempo, se desarrolla un estilo propio. En este texto se ofrecen consejos sobre un buen estilo de programación.
@@ -260,6 +268,7 @@ Además de lo anterior, la documentación es una parte muy importante del proces
 <aside class="definicion">
 
 **Documentación:** El texto y comentarios escritos que facilitan a otros su utilización, comprensión y modificación.
+
 </aside>
 
 ## Cómo se transforma el código en algo que el ordenador puede usar
@@ -277,6 +286,7 @@ Cuando los programadores usaban el lenguaje máquina para programar, tenían que
 **Lenguaje máquina:** Lenguaje, constituido por instrucciones en código binario, utilizado directamente por el ordenador.
 
 **Lenguaje ensamblador:** Lenguaje de programación de bajo nivel en el que un mnemónico representa a cada instrucción del lenguaje máquina de un ordenador determinado.
+
 </aside>
 
 Las instrucciones en lenguaje ensamblador utilizan mnemónicos, palabras fáciles de recordar, para la representación de las instrucciones. Por ejemplo, típicamente, ADD representa la instrucción de suma, que en el lenguaje máquina del ordenador puede ser el código 10010. Pero, aunque a los humanos nos resulta más fácil trabajar con el lenguaje ensamblador, el ordenador no puede ejecutar estas instrucciones directamente. Dado que el ordenador puede procesar sus instrucciones en forma de datos, resulta posible escribir un programa que traduzca el lenguaje ensamblador en instrucciones de código máquina. Dicho programa se denomina ensamblador.
@@ -296,6 +306,7 @@ El texto de un algoritmo escrito en un lenguaje de alto nivel se denomina códig
 **Código fuente:** Instrucciones escritas en un lenguaje de programación de alto nivel.
 
 **Código objeto:** Versión en lenguaje máquina del código fuente.
+
 </aside>
 
 Como hemos indicado, la estandarización de los lenguajes de alto nivel permite escribir código portable (o independiente de la máquina). Java utiliza un enfoque un poco diferente para una mayor portabilidad. El código fuente de Java se traduce a un código máquina estándar denominado Bytecode.
@@ -303,6 +314,7 @@ Como hemos indicado, la estandarización de los lenguajes de alto nivel permite 
 <aside class="definicion">
 
 **Bytecode:** Lenguaje máquina estándar en el que se compila el código fuente Java.
+
 </aside>
 
 No existen máquinas[^3] que utilicen Bytecode como su lenguaje máquina. En su lugar, para que el ordenador pueda ejecutar programas en formato Bytecode debe hacer uso de otro programa denominado Máquina Virtual de Java (JVM)[^4] que sirve de intérprete para el Bytecode. Del mismo modo que un intérprete humano escucha palabras en un lenguaje y a continuación pronuncia una traducción en un lenguaje que otra persona pueda entender, la JVM lee las instrucciones Bytecode y las traduce a las operaciones del lenguaje máquina del ordenador particular en que se ejecuta. La interpretación tiene lugar porque se traduce cada instrucción Bytecode, una por una. Este proceso es diferente al de la compilación, que traduce todas las instrucciones del código fuente de una vez en las instrucciones del programa, previo a la ejecución.
