@@ -100,7 +100,6 @@ css: ["../estilos/estilo.css", "../estilos/tema_01.css"]
 ## Introducción
 
 ¿Qué es un ordenador?
-
 <div class="definiciones-container">
     <div class="def-rae">
         <div class="rae-dos-columnas">
@@ -132,7 +131,6 @@ css: ["../estilos/estilo.css", "../estilos/tema_01.css"]
         </div>
     </div>
 </div>
-
 Breve definición para algo que, en sólo unas décadas, ha cambiado por completo la forma de vida de las sociedades industrializadas. Los ordenadores afectan a todas las áreas de nuestra vida; de hecho, sería más fácil decir en qué aspectos de nuestra vida no los utilizamos.
 
 ## Qué es la programación
