@@ -8,9 +8,9 @@ css: ["../estilos/estilo.css", "../estilos/tema_01.css"]
 <a href="../pdf/tema_01.pdf" target="_blank" class="boton-descarga-top">📥 PDF</a>
 
 <nav class="menu-flotante">
-    <input type="checkbox" id="menu-toggle" class="menu-checkbox">
-    <label for="menu-toggle" class="menu-boton">☰</label>
-    <div class="menu-contenido">
+<input type="checkbox" id="menu-toggle" class="menu-checkbox">
+<label for="menu-toggle" class="menu-boton">☰</label>
+<div class="menu-contenido">
         <h3>Contenido</h3>
         <ul>
             <li><a href="#introduccion">Introducción</a></li>
@@ -48,7 +48,7 @@ css: ["../estilos/estilo.css", "../estilos/tema_01.css"]
                 </ul>
             </li>
         </ul>
-    </div>
+</div>
 </nav>
 
 <section class="objetivos">

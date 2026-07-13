@@ -23,58 +23,140 @@ jobs:
 
       - name: Compilar archivos Markdown a HTML y PDF
         run: |
-          # Creamos las carpetas base
           mkdir -p public/pdf
           mkdir -p public/estilos
           mkdir -p public/imagenes
-          
+
           # Copiamos tus estilos e imágenes a la carpeta pública
           cp -r estilos/* public/estilos/ 2>/dev/null || true
           cp -r imagenes/* public/imagenes/ 2>/dev/null || true
-          
-          # Creamos los filtros Lua temporales
+
+          # Creamos la plantilla HTML limpia que evita la duplicación de títulos y estilos de Pandoc
+          cat << 'EOF' > template.html
+          <!DOCTYPE html>
+          <html lang="es">
+          <head>
+            <meta charset="utf-8">
+            <title>$title$</title>
+            $for(css)$
+            <link rel="stylesheet" href="$css$">
+            $endfor$
+          </head>
+          <body>
+            $body$
+          </body>
+          </html>
+          EOF
+
+          # Creamos los filtros Lua optimizados
           cat << 'EOF' > tooltips.lua
+          local notes = {}
           local note_count = 0
+
           function Note(elem)
             note_count = note_count + 1
-            local texto = pandoc.utils.stringify(elem.content)
-            local html = '<span class="tooltip"><span class="nota-llamada">[' .. note_count .. ']</span><span class="tooltiptext">' .. texto .. '</span></span>'
+            table.insert(notes, elem.content)
+  
+            -- Extraemos el texto plano limpio de enlaces para el tooltiptext
+            local texto = pandoc.utils.stringify(elem.content):gsub('"', '&quot;')
+  
+            -- Creamos un contenedor tooltip que envuelve a un enlace nativo funcional
+            local html = '<span class="tooltip">' ..
+               '<a href="#fn' .. note_count .. '" class="footnote-ref" id="fnref' .. note_count .. '">[' .. note_count .. ']</a>' ..
+               '<span class="tooltiptext">' .. texto .. '</span>' ..
+               '</span>'
             return pandoc.RawInline('html', html)
           end
+
+          function Doc(doc)
+            if #notes == 0 then return doc end
+  
+            -- Generamos manualmente la sección inferior de notas al pie
+            local footnote_sec = {
+              pandoc.HorizontalRule(),
+              pandoc.Header(2, "Notas al pie", {id="sec-notas-pie"})
+            }
+  
+            table.insert(footnote_sec, pandoc.RawBlock('html', '<ol class="footnotes-list">'))
+  
+            for i, content in ipairs(notes) do
+              table.insert(footnote_sec, pandoc.RawBlock('html', '<li id="fn' .. i .. '">'))
+    
+              -- Añadimos un enlace de retorno al final de la nota
+              local backlink = pandoc.RawInline('html', ' <a href="#fnref' .. i .. '" class="footnote-back">↩</a>')
+              local last_block = content[#content]
+              if last_block and last_block.t == "Para" then
+                table.insert(last_block.content, backlink)
+                footnote_sec:extend(content)
+              else
+                footnote_sec:extend(content)
+                table.insert(footnote_sec, pandoc.Para({backlink}))
+              end
+    
+              table.insert(footnote_sec, pandoc.RawBlock('html', '</li>'))
+            end
+  
+            table.insert(footnote_sec, pandoc.RawBlock('html', '</ol>'))
+            doc.blocks:extend(footnote_sec)
+            return doc
+          end
           EOF
-          
+
           cat << 'EOF' > pdf_notas.lua
           function Note(elem)
-            local texto = pandoc.utils.stringify(elem.content)
-            local html = '<span class="nota-pie">' .. texto .. '</span>'
-            return pandoc.RawInline('html', html)
+            -- Extraemos los elementos internos (inlines) manteniendo enlaces intactos
+            local inlines = {}
+            for _, block in ipairs(elem.content) do
+              if block.content then
+                for _, inline in ipairs(block.content) do
+                  table.insert(inlines, inline)
+                end
+                table.insert(inlines, pandoc.Space())
+              end
+            end
+            return pandoc.Span(inlines, {class="nota-pie"})
+          end
+
+          function Image(elem)
+            -- Si la ruta empieza por ../imagenes/, le quitamos el ../ para que WeasyPrint las encuentre desde la raíz
+            if elem.src:find("^%.%.%/[Ii]magenes%/") then
+              elem.src = elem.src:sub(4)
+            end
+            return elem
+          end
+
+          function Para(elem)
+            -- Buscamos el párrafo de navegación y lo eliminamos del PDF por completo
+            local texto = pandoc.utils.stringify(elem)
+            if texto:find("Anterior") and texto:find("Inicio") and texto:find("Siguiente") then
+              return {}
+            end
           end
           EOF
-          
+
           # 1. COMPILAR EL ÍNDICE PRINCIPAL
           if [ -e "index.md" ]; then
-            pandoc index.md -s -c estilos/estilo.css -o public/index.html
+            pandoc index.md --template=template.html -c estilos/estilo.css -o public/index.html
           fi
-          
+
           # 2. BUCLE DE COMPILACIÓN
           for archivo in temas/*.md ejercicios/*.md problemas/*.md; do
             [ -e "$archivo" ] || continue
             nombre=$(basename "$archivo" .md)
             directorio=$(dirname "$archivo")
-            
-            # Creamos la subcarpeta correspondiente
+   
             mkdir -p "public/$directorio"
-            
-            # Generar el HTML
-            pandoc "$archivo" --lua-filter=tooltips.lua -s -c ../estilos/estilo.css -c ../estilos/$nombre.css -o "public/$directorio/$nombre.html"
-            
-            # Generar el PDF
-            pandoc "$archivo" --lua-filter=pdf_notas.lua -s -c estilos/estilo.css -c estilos/$nombre.css -o "temporal_impresion.html"
+   
+            # Generar el HTML usando la nueva plantilla y filtros
+            pandoc "$archivo" --template=template.html --lua-filter=tooltips.lua -c ../estilos/estilo.css -c ../estilos/$nombre.css -o "public/$directorio/$nombre.html"
+   
+            # Generar el PDF resolviendo imágenes, notas y eliminando la navegación anterior/siguiente
+            pandoc "$archivo" --template=template.html --lua-filter=pdf_notas.lua -c estilos/estilo.css -c estilos/$nombre.css -o "temporal_impresion.html"
             weasyprint "temporal_impresion.html" "public/pdf/$nombre.pdf"
             rm temporal_impresion.html
           done
-          
-          rm tooltips.lua pdf_notas.lua
+
+          rm tooltips.lua pdf_notas.lua template.html
 
       - name: Desplegar en GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
