@@ -166,7 +166,7 @@ jobs:
 
           # Limpieza de temporales del entorno virtual
           rm tooltips.lua pdf_notas.lua template.html
-          rmdir imagenes
+          rm -rf imagenes
 
       - name: Desplegar en GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
