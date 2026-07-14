@@ -59,6 +59,7 @@ jobs:
           function Note(elem)
             note_count = note_count + 1
             table.insert(notes, elem.content)
+            table.insert(notes2, elem.content)
   
             -- Procesamos los bloques internos de la nota para mantener texto y saltos de línea <br>
             local inline_list = {}
@@ -96,7 +97,7 @@ jobs:
   
             table.insert(footnote_sec, pandoc.RawBlock('html', '<ol class="nota-pie">'))
   
-            for i, content in ipairs(notes) do
+            for i, content in ipairs(notes2) do
               table.insert(footnote_sec, pandoc.RawBlock('html', '<li id="fn' .. i .. '">'))
     
               -- Añadimos un enlace de retorno al final de la nota
@@ -125,13 +126,13 @@ jobs:
             return pandoc.Span(pandoc.utils.blocks_to_inlines(elem.content), {class="nota-pie"})
           end
 
-          -- function Image(elem)
+           function Image(elem)
             -- Si la ruta empieza por ../imagenes/, le quitamos el ../ para que WeasyPrint las encuentre desde la raíz
-          --  if elem.src:find("^%.%.%/[Ii]magenes%/") then
-          --    elem.src = elem.src:sub(4)
-          --  end
-          --  return elem
-          --end
+            if elem.src:find("^%.%.%/[Ii]magenes%/") then
+              elem.src = elem.src:sub(4)
+            end
+            return elem
+          end
 
           function Para(elem)
             -- Buscamos el párrafo de navegación y lo eliminamos del PDF por completo
