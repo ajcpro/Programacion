@@ -36,7 +36,7 @@ css: ["../estilos/estilo.css", "../estilos/tema_01.css"]
 <li><a href="#qué-tipos-de-instrucciones-son-posibles-en-un-lenguaje-de-programación">Qué tipos de instrucciones son posibles en un lenguaje de programación</a></li>
 <li><a href="#lenguajes-de-programación-orientados-a-objetos">Lenguajes de programación orientados a objetos</a></li>
 <li><a href="#qué-es-un-ordenador">Qué es un ordenador</a></li>
-<li><a href="#técnicas-de-resolucion-de-problemas">Técnicas de resolución de problemas</a>
+<li><a href="#técnicas-de-resolución-de-problemas">Técnicas de resolución de problemas</a>
 <ul>
 <li><a href="#realiza-preguntas">Realiza preguntas</a></li>
 <li><a href="#buscar-cosas-familiares">Buscar cosas familiares</a></li>
@@ -75,7 +75,7 @@ css: ["../estilos/estilo.css", "../estilos/tema_01.css"]
     * [Fase de resolución del problema](#fase-de-resolución-del-problema)
     * [Fase de implementación](#fase-de-implementación)
     * [Fase de mantenimiento](#fase-de-mantenimiento)
-* [Cómo se transforma el código en algo que el ordenador puede usar](#cómo-se-transforma-el-código-en algo-que-el-ordenador-puede-usar)
+* [Cómo se transforma el código en algo que el ordenador puede usar](#cómo-se-transforma-el-código-en-algo-que-el-ordenador-puede-usar)
 * [En qué difieren la interpretación y la compilación](#en-qué-difieren-la-interpretación-y-la-compilación)
 * [Paradigmas de programación](#paradigmas-de-programación)
     * [Programación imperativa](#programación-imperativa)
@@ -83,7 +83,7 @@ css: ["../estilos/estilo.css", "../estilos/tema_01.css"]
     * [Programación lógica](#programación-lógica)
     * [Programación concurrente](#programación-concurrente)
     * [Programación orientada a objetos](#programación-orientada-a-objetos)
-* [Qué tipos de instrucciones son posibles en un lenguaje de programación](#que-tipos-de-instrucciones-son-posibles-en-un-lenguaje-de-programación)
+* [Qué tipos de instrucciones son posibles en un lenguaje de programación](#qué-tipos-de-instrucciones-son-posibles-en-un-lenguaje-de-programación)
 * [Lenguajes de programación orientados a objetos](#lenguajes-de-programación-orientados-a-objetos)
 * [Qué es un ordenador](#qué-es-un-ordenador)
 * [Técnicas de resolución de problemas](#técnicas-de-resolución-de-problemas)

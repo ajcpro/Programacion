@@ -94,7 +94,7 @@ jobs:
               pandoc.Header(2, "Notas al pie", {id="sec-notas-pie", class="seccion-notas-impresion"})
             }
   
-            table.insert(footnote_sec, pandoc.RawBlock('html', '<ol class="footnotes-list">'))
+            table.insert(footnote_sec, pandoc.RawBlock('html', '<ol class="seccion-notas-impresion">'))
   
             for i, content in ipairs(notes) do
               table.insert(footnote_sec, pandoc.RawBlock('html', '<li id="fn' .. i .. '">'))
