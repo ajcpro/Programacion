@@ -150,7 +150,7 @@ h1, h2, h3, main section { clear: both; }
    OPTIMIZACIONES EXCLUSIVAS PARA PANTALLA (WEB)
    ========================================================================== */
 @media screen {
-    .seccion-notas-impresion { }
+    .seccion-notas-impresion { display: block; }
     .toc                     { display: none; } /* Oculto en web, se usa la hamburguesa */
     .tooltip .tooltiptext    { max-width: 90vw; box-sizing: border-box; }
     .nota-llamada { color: #135fcd; font-weight: bold; cursor: help; text-decoration: none; font-size: 0.75em; vertical-align: super; line-height: 0; }
@@ -173,16 +173,16 @@ h1, h2, h3, main section { clear: both; }
     }
 
     /* Forzar visibilidad de elementos impresos */
-    .seccion-notas-impresion { display: block !important; margin-top: 2cm; border-top: 1px solid #ccc; padding-top: 10px; page-break-inside: avoid; }
+    .seccion-notas-impresion { display: block !important; margin-top: 2cm; border-top: 1px solid #ccc; padding-top: 10px; break-inside: avoid-page; }
     .seccion-notas-impresion h3 { font-size: 12pt; margin-bottom: 8px; }
     .seccion-notas-impresion ol { font-size: 9.5pt; color: #333; padding-left: 20px; }
     
-    .toc { display: block !important; page-break-before: always; page-break-after: always; }
+    .toc { display: block !important; break-before: always; break-after: always; }
 
     /* Reglas de maquetación de página */
     .nota-llamada { color: #000; text-decoration: none; font-size: 0.8em; vertical-align: super; }
-    .code, aside, .image, .definicion, figure { page-break-inside: avoid; break-inside: avoid; background-color: transparent; }
-    h1, h2, h3 { break-after: avoid; page-break-after: avoid; }
+    .code, aside, .image, .definicion, figure { break-inside: avoid; background-color: transparent; }
+    h1, h2, h3 { break-after: avoid-page; }
 
     /* Ajuste del bloque del pie de página general */
     @page {
