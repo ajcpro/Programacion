@@ -150,7 +150,7 @@ h1, h2, h3, main section { clear: both; }
    OPTIMIZACIONES EXCLUSIVAS PARA PANTALLA (WEB)
    ========================================================================== */
 @media screen {
-    .seccion-notas-impresion { display: none; }
+    .seccion-notas-impresion { /*display: none; */}
     .toc                     { display: none; } /* Oculto en web, se usa la hamburguesa */
     .tooltip .tooltiptext    { max-width: 90vw; box-sizing: border-box; }
     .nota-llamada { color: #135fcd; font-weight: bold; cursor: help; text-decoration: none; font-size: 0.75em; vertical-align: super; line-height: 0; }
