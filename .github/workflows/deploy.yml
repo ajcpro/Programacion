@@ -59,7 +59,6 @@ jobs:
           function Note(elem)
             note_count = note_count + 1
             table.insert(notes, elem.content)
-            table.insert(notes2, elem.content)
   
             -- Procesamos los bloques internos de la nota para mantener texto y saltos de línea <br>
             local inline_list = {}
@@ -87,7 +86,10 @@ jobs:
           end
 
           function Doc(doc)
-            if #notes == 0 then return doc end
+            if #notes == 0 then
+              table.insert(footnote_sec, pandoc.RawBlock('html', '<p> No hay notas al pie</p>'))
+              return doc
+            end
   
             -- Generamos manualmente la sección inferior de notas al pie
             local footnote_sec = {
@@ -97,7 +99,7 @@ jobs:
   
             table.insert(footnote_sec, pandoc.RawBlock('html', '<ol class="nota-pie">'))
   
-            for i, content in ipairs(notes2) do
+            for i, content in ipairs(notes) do
               table.insert(footnote_sec, pandoc.RawBlock('html', '<li id="fn' .. i .. '">'))
     
               -- Añadimos un enlace de retorno al final de la nota
