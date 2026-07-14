@@ -60,14 +60,26 @@ jobs:
             note_count = note_count + 1
             table.insert(notes, elem.content)
   
-
+            -- Procesamos los bloques internos de la nota para mantener texto y saltos de línea <br>
+            local inline_list = {}
+            for i, block in ipairs(elem.content) do
+              if block.content then
+                for _, inline in ipairs(block.content) do
+                  table.insert(inline_list, inline)
+                end
+                -- Si hay más bloques de texto dentro de la nota, metemos un salto de línea explícito
+                if i < #elem.content then
+                  table.insert(inline_list, pandoc.RawInline('html', '<br>'))
+                end
+              end
+            end
 
             -- Extraemos el texto plano limpio de enlaces para el tooltiptext
             local texto = pandoc.utils.stringify(elem.content):gsub('"', '&quot;')
   
             -- Creamos un contenedor tooltip que envuelve a un enlace nativo funcional
             local html = '<span class="tooltip">' ..
-               '<a href="#fn' .. note_count .. '" class="footnote-ref" id="fnref' .. note_count .. '">[' .. note_count .. ']</a>' ..
+               '<a href="#fn' .. note_count .. '" class="nota-llamada" id="fnref' .. note_count .. '">[' .. note_count .. ']</a>' ..
                '<span class="tooltiptext">' .. texto .. '</span>' ..
                '</span>'
             return pandoc.RawInline('html', html)
@@ -79,7 +91,7 @@ jobs:
             -- Generamos manualmente la sección inferior de notas al pie
             local footnote_sec = {
               pandoc.HorizontalRule(),
-              pandoc.Header(2, "Notas al pie", {id="sec-notas-pie", class="seccion-notas-web"})
+              pandoc.Header(2, "Notas al pie", {id="sec-notas-pie", class="seccion-notas-impresion"})
             }
   
             table.insert(footnote_sec, pandoc.RawBlock('html', '<ol class="footnotes-list">'))
