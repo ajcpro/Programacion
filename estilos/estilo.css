@@ -223,10 +223,10 @@ h1, h2, h3, main section { clear: both; }
     }
 
     /* Línea divisoria de las notas al pie al 25% */
-    ::footnote-rule {
+    .footnote::footnote-rule {
         content: "";
         display: block;
-        width: 25%;                    /* <--- Ajusta aquí el porcentaje que quieras (ej. 25%) */
+        width: 20%;                    /* <--- Ajusta aquí el porcentaje que quieras (ej. 25%) */
         border-top: 1px solid #ccc;    /* Grosor, estilo y color de la línea */
         margin-top: 0;
         margin-bottom: 10px;           /* Espacio entre la línea y la primera nota */
