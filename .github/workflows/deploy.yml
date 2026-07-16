@@ -137,7 +137,7 @@ jobs:
 
           function Image(elem)
             -- Sustituimos el "../imagenes/" inicial por "imagenes/"
-            elem.src = string.gsub(elem.src, "^%.%./imagenes/", "imagenes/")
+            elem.src, nada = string.gsub(elem.src, "^%.%./imagenes/", "imagenes/")
             return elem
           end
 
