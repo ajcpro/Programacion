@@ -11,5 +11,18 @@
   <ul>
   <li><a href="temas/tema_01.html">Tema 01</a></li>
   </ul>
+
+  <!-- Script para abrir enlaces externos en una nueva pestaña -->
+  <script>
+  document.addEventListener("DOMContentLoaded", function() {
+      var links = document.querySelectorAll('a');
+      links.forEach(function(link) {
+          if (link.hostname && link.hostname !== location.hostname) {
+              link.target = '_blank';
+              link.rel = 'noopener noreferrer';
+          }
+      });
+  });
+  </script>
 </body>
 </html>

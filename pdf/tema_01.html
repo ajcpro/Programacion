@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <title>Tema 01: Lenguajes y técnicas de programación</title>
-    <link rel="stylesheet" href="../estilos/estilo.css">
-    <link rel="stylesheet" href="../estilos/tema_01.css">
+    <link rel="stylesheet" href="estilos/estilo.css">
+    <link rel="stylesheet" href="estilos/tema_01.css">
   </head>
 <body>
   <h1 id="lenguajes-y-técnicas-de-programación">Lenguajes y técnicas de
@@ -300,16 +300,20 @@
   almacenar, recuperar y tratar datos.</p>
   </aside>
   <p>Hemos modificado un poco la definición de ordenador que nos
-  proporciona la RAE. En ésta, la palabra clave es
-  datos<span class="tooltip"><a href="#fn1" class="nota-llamada" id="fnref1">[1]</a><span class="tooltiptext">A pesar de que, generalmente, los términos datos e información se usan para describir lo mismo, por datos nos referimos a hechos, etc. que han sido registrados, mientras que información se refiere a los datos que han sido procesados de manera que pueden ser entendidos e interpretados, conocimiento que puede ser comunicado.</span></span>.
-  Los ordenadores manipulan datos: cuando escribimos un programa para un
-  ordenador, especificamos las propiedades de los datos y las
-  operaciones que podemos realizar con los mismos. La combinación de
-  datos y operaciones nos sirve para representar objetos. Los objetos
-  que representamos pueden ser físicos, objetos del mundo real como
-  productos de un supermercado, o abstractos, como constructos. Nuestras
-  representaciones de los objetos se programan para interactuar, según
-  sea necesario, para resolver el problema.</p>
+  proporciona la RAE. En ésta, la palabra clave es datos<span
+  class="nota-pie">A pesar de que, generalmente, los términos datos e
+  información se usan para describir lo mismo, por datos nos referimos a
+  hechos, etc. que han sido registrados, mientras que información se
+  refiere a los datos que han sido procesados de manera que pueden ser
+  entendidos e interpretados, conocimiento que puede ser
+  comunicado.</span>. Los ordenadores manipulan datos: cuando escribimos
+  un programa para un ordenador, especificamos las propiedades de los
+  datos y las operaciones que podemos realizar con los mismos. La
+  combinación de datos y operaciones nos sirve para representar objetos.
+  Los objetos que representamos pueden ser físicos, objetos del mundo
+  real como productos de un supermercado, o abstractos, como
+  constructos. Nuestras representaciones de los objetos se programan
+  para interactuar, según sea necesario, para resolver el problema.</p>
   <p>Los datos se presentan de muchas formas diferentes: letras,
   palabras, números enteros, reales, fechas, horas, coordenadas, etc.
   Sin embargo, carecen de sentido sin operaciones que manipulen esos
@@ -402,8 +406,10 @@
   <p><strong>Clase:</strong> Descripción de la representación de un tipo
   específico de objeto, en función de datos y operaciones</p>
   <p><strong>Algoritmo:</strong> Instrucciones para resolver un problema
-  en un tiempo finito utilizando un conjunto finito de
-  datos<span class="tooltip"><a href="#fn2" class="nota-llamada" id="fnref2">[2]</a><span class="tooltiptext">Conjunto ordenado y finito de operaciones que permite hallar la solución de un problema (Definición del diccionario de la RAE).</span></span></p>
+  en un tiempo finito utilizando un conjunto finito de datos<span
+  class="nota-pie">Conjunto ordenado y finito de operaciones que permite
+  hallar la solución de un problema (Definición del diccionario de la
+  RAE).</span></p>
   </aside>
   <p>Cuando cruzamos una calle, por ejemplo, seguimos una serie acciones
   que involucran a varios objetos. El algoritmo podría ser algo parecido
@@ -606,21 +612,26 @@
   <p><strong>Bytecode:</strong> Lenguaje máquina estándar en el que se
   compila el código fuente Java.</p>
   </aside>
-  <p>No existen
-  máquinas<span class="tooltip"><a href="#fn3" class="nota-llamada" id="fnref3">[3]</a><span class="tooltiptext">Aunque sí cosas como picoJava o Jazelle, en Wikipedia (en inglés).</span></span>
-  que utilicen Bytecode como su lenguaje máquina. En su lugar, para que
-  el ordenador pueda ejecutar programas en formato Bytecode debe hacer
-  uso de otro programa denominado Máquina Virtual de Java
-  (JVM)<span class="tooltip"><a href="#fn4" class="nota-llamada" id="fnref4">[4]</a><span class="tooltiptext">Conceptos de Máquina virtual y JVM en Wikipedia.</span></span>
-  que sirve de intérprete para el Bytecode. Del mismo modo que un
-  intérprete humano escucha palabras en un lenguaje y a continuación
-  pronuncia una traducción en un lenguaje que otra persona pueda
-  entender, la JVM lee las instrucciones Bytecode y las traduce a las
-  operaciones del lenguaje máquina del ordenador particular en que se
-  ejecuta. La interpretación tiene lugar porque se traduce cada
-  instrucción Bytecode, una por una. Este proceso es diferente al de la
-  compilación, que traduce todas las instrucciones del código fuente de
-  una vez en las instrucciones del programa, previo a la ejecución.</p>
+  <p>No existen máquinas<span class="nota-pie">Aunque sí cosas como <a
+  href="https://en.wikipedia.org/wiki/PicoJava">picoJava</a> o <a
+  href="https://en.wikipedia.org/wiki/Jazelle">Jazelle</a>, en Wikipedia
+  (en inglés).</span> que utilicen Bytecode como su lenguaje máquina. En
+  su lugar, para que el ordenador pueda ejecutar programas en formato
+  Bytecode debe hacer uso de otro programa denominado Máquina Virtual de
+  Java (JVM)<span class="nota-pie">Conceptos de <a
+  href="https://es.wikipedia.org/wiki/M%C3%A1quina_virtual_Java">Máquina
+  virtual</a> y <a
+  href="https://es.wikipedia.org/wiki/M%C3%A1quina_virtual_Java">JVM</a>
+  en Wikipedia.</span> que sirve de intérprete para el Bytecode. Del
+  mismo modo que un intérprete humano escucha palabras en un lenguaje y
+  a continuación pronuncia una traducción en un lenguaje que otra
+  persona pueda entender, la JVM lee las instrucciones Bytecode y las
+  traduce a las operaciones del lenguaje máquina del ordenador
+  particular en que se ejecuta. La interpretación tiene lugar porque se
+  traduce cada instrucción Bytecode, una por una. Este proceso es
+  diferente al de la compilación, que traduce todas las instrucciones
+  del código fuente de una vez en las instrucciones del programa, previo
+  a la ejecución.</p>
   <p>El código Java compilado puede ejecutarse en cualquier máquina que
   disponga de una JVM para interpretarlo, lo que significa que un
   programa en Java no tiene que ser compilado para cada tipo de
@@ -648,10 +659,12 @@
   máquina debe realizar. En este caso, una ejecución más lenta se
   compensa con una mayor portabilidad. En realidad, la JVM puede
   utilizar diferentes estrategias de traducción, aunque la más habitual
-  es el uso de los compiladores denominados Just In Time
-  (JIT)<span class="tooltip"><a href="#fn5" class="nota-llamada" id="fnref5">[5]</a><span class="tooltiptext">Explicación de Compilación en tiempo de ejecución en Wikipedia.</span></span>,
-  que traducen el código conforme lo ejecutan pero lo guardan en un
-  buffer para acelerar la traducción en algunos casos.</p>
+  es el uso de los compiladores denominados Just In Time (JIT)<span
+  class="nota-pie">Explicación de <a
+  href="https://es.wikipedia.org/wiki/Compilaci%C3%B3n_en_tiempo_de_ejecuci%C3%B3n">Compilación
+  en tiempo de ejecución</a> en Wikipedia.</span>, que traducen el
+  código conforme lo ejecutan pero lo guardan en un buffer para acelerar
+  la traducción en algunos casos.</p>
   <h2 id="paradigmas-de-programación">Paradigmas de programación</h2>
   <p>Un paradigma representa un enfoque particular o una filosofía para
   diseñar soluciones a los problemas planteados. La diferencia entre los
@@ -825,10 +838,11 @@
   decir, escribimos una instrucción en Java que nos proporciona una
   instancia del objeto descrito por la clase especificada.</p>
   <p>Una característica de un lenguaje de programación orientado a
-  objetos es la presencia de una gran
-  biblioteca<span class="tooltip"><a href="#fn6" class="nota-llamada" id="fnref6">[6]</a><span class="tooltiptext">Es común referirse a las bibliotecas de programación como librerías (por Library) pero, en este texto, no haremos uso de ese falso amigo.</span></span>
-  de clases. Dentro de la biblioteca, las clases se agrupan generalmente
-  en colecciones llamadas paquetes.</p>
+  objetos es la presencia de una gran biblioteca<span
+  class="nota-pie">Es común referirse a las bibliotecas de programación
+  como librerías (por Library) pero, en este texto, no haremos uso de
+  ese falso amigo.</span> de clases. Dentro de la biblioteca, las clases
+  se agrupan generalmente en colecciones llamadas paquetes.</p>
   <p>Vamos a conocer sólo un pequeño subconjunto de las muchas clases
   que están disponibles en la biblioteca de Java. Es fácil asustarse por
   el tamaño de la biblioteca, pero muchos de esos miles de objetos son
@@ -1106,49 +1120,6 @@
   <li>Identificar los objetos requeridos y sus capacidades.</li>
   <li>Tener en cuenta qué acciones puede realizar el ordenador al
   desarrollar soluciones.</li>
-  </ol>
-  <p><a href="#">Anterior</a> | <a href="#">Inicio</a> | <a
-  href="tema_02.html">Siguiente</a></p>
-  <hr />
-  <h2 id="sec-notas-pie">Notas al pie</h2>
-  <ol class="seccion-notas-impresion">
-  <li class="nota-pie" id="fn1">
-  <p>A pesar de que, generalmente, los términos datos e información se
-  usan para describir lo mismo, por datos nos referimos a hechos, etc.
-  que han sido registrados, mientras que información se refiere a los
-  datos que han sido procesados de manera que pueden ser entendidos e
-  interpretados, conocimiento que puede ser
-  comunicado. <a href="#fnref1" class="footnote-back">↩</a></p>
-  </li>
-  <li class="nota-pie" id="fn2">
-  <p>Conjunto ordenado y finito de operaciones que permite hallar la
-  solución de un problema (Definición del diccionario de la
-  RAE). <a href="#fnref2" class="footnote-back">↩</a></p>
-  </li>
-  <li class="nota-pie" id="fn3">
-  <p>Aunque sí cosas como <a
-  href="https://en.wikipedia.org/wiki/PicoJava">picoJava</a> o <a
-  href="https://en.wikipedia.org/wiki/Jazelle">Jazelle</a>, en Wikipedia
-  (en inglés). <a href="#fnref3" class="footnote-back">↩</a></p>
-  </li>
-  <li class="nota-pie" id="fn4">
-  <p>Conceptos de <a
-  href="https://es.wikipedia.org/wiki/M%C3%A1quina_virtual_Java">Máquina
-  virtual</a> y <a
-  href="https://es.wikipedia.org/wiki/M%C3%A1quina_virtual_Java">JVM</a>
-  en Wikipedia. <a href="#fnref4" class="footnote-back">↩</a></p>
-  </li>
-  <li class="nota-pie" id="fn5">
-  <p>Explicación de <a
-  href="https://es.wikipedia.org/wiki/Compilaci%C3%B3n_en_tiempo_de_ejecuci%C3%B3n">Compilación
-  en tiempo de ejecución</a> en
-  Wikipedia. <a href="#fnref5" class="footnote-back">↩</a></p>
-  </li>
-  <li class="nota-pie" id="fn6">
-  <p>Es común referirse a las bibliotecas de programación como librerías
-  (por Library) pero, en este texto, no haremos uso de ese falso
-  amigo. <a href="#fnref6" class="footnote-back">↩</a></p>
-  </li>
   </ol>
 
   <!-- Script para abrir enlaces externos en una nueva pestaña -->

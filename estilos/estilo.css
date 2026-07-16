@@ -150,7 +150,7 @@ h1, h2, h3, main section { clear: both; }
    OPTIMIZACIONES EXCLUSIVAS PARA PANTALLA (WEB)
    ========================================================================== */
 @media screen {
-    .seccion-notas-impresion { display: block; width: 100%; }
+    .seccion-notas-impresion { display: block; }
     .toc                     { display: none; } /* Oculto en web, se usa la hamburguesa */
     .tooltip .tooltiptext    { max-width: 90vw; box-sizing: border-box; }
     .nota-llamada { color: #135fcd; font-weight: bold; cursor: help; text-decoration: none; font-size: 0.75em; vertical-align: super; line-height: 0; }
@@ -202,6 +202,7 @@ h1, h2, h3, main section { clear: both; }
         line-height: 1.3;
         color: #333;
         margin-bottom: 4px;
+        width: 100%;
     }
 
     /* El número de llamada en el texto principal */
