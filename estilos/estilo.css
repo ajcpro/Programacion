@@ -198,7 +198,7 @@ h1, h2, h3, main section { clear: both; }
     }
 
     /* --- Comportamiento de Notas al pie nativas en WeasyPrint --- */
-    .nota-pie {
+    .nota-pie, .footnote {
         float: footnote; /* Indica a WeasyPrint que lo mande al pie de página */
         font-size: 8.5pt !important; /* Forzamos tamaño reducido del texto de la nota */
         line-height: 1.3;
