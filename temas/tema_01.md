@@ -343,16 +343,16 @@ Además, un lenguaje de programación contiene instrucciones, denominadas declar
 * La estructura de control repetitiva, el bucle, repite operaciones mientras se cumples ciertas condiciones.
 * Los subprogramas nos ayudan a organizar el código en unidades que se corresponden con comportamientos específicos de los objetos; estas unidades, en Java, se denominan métodos.
 
-Cada una de estas formas de estructurar operaciones controla el orden en que el ordenador ejecuta las operaciones, por lo que se denominan estructuras de control.
-
-Supongamos que conducimos un vehículo. Ir por un tramo recto de carretera es como seguir una secuencia de instrucciones. Cuando llegamos a una bifurcación en el camino, debemos decidir qué camino tomar y después, tomar uno de los dos caminos de la bifurcación. El ordenador hace algo similar cuando encuentra una estructura de control de selección (a veces llamada condición) en un programa. Otras veces hay que dar varias vueltas a la manzana hasta encontrar un sitio para aparcar. El ordenador hace lo mismo cuando encuentra un bucle.
-
 <figure class="img-grande">
     <img src="../imagenes/01_03_secuencia.png" alt="Representación de un secuencia">
     <img src="../imagenes/01_04_seleccion.png" alt="Representación de una bifurcación">
     <img src="../imagenes/01_05_bucle.png" alt="Representación de una repetición">
     <img src="../imagenes/01_06_subprograma.png" alt="Representación de una llamada a subprograma">
 </figure>
+
+Cada una de estas formas de estructurar operaciones controla el orden en que el ordenador ejecuta las operaciones, por lo que se denominan estructuras de control.
+
+Supongamos que conducimos un vehículo. Ir por un tramo recto de carretera es como seguir una secuencia de instrucciones. Cuando llegamos a una bifurcación en el camino, debemos decidir qué camino tomar y después, tomar uno de los dos caminos de la bifurcación. El ordenador hace algo similar cuando encuentra una estructura de control de selección (a veces llamada condición) en un programa. Otras veces hay que dar varias vueltas a la manzana hasta encontrar un sitio para aparcar. El ordenador hace lo mismo cuando encuentra un bucle.
 
 Un subprograma es una secuencia de instrucciones escritas como una unidad separada, a la que damos un nombre. Cuando el ordenador ejecuta una instrucción que se refiere al nombre del subprograma, el código del subprograma se ejecuta. Cuando finaliza el subprograma, la ejecución se reanuda en la instrucción siguiente a la que se refería al subprograma. Supongamos, por ejemplo, que todos los días vamos al IES. Las direcciones para llegar de casa al instituto forman un método llamado "Ir al insti". Entonces, podrían tener sentido unas instrucciones del tipo: "Ir al insti, subir al aula", sin enumerar todos los pasos necesarios para llegar al instituto.
 

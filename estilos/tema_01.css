@@ -1,8 +1,8 @@
 /* ==========================================================================
-   COMPONENTES EXCLUSIVOS Y ESPECÃFICOS - TEMA 01
+   COMPONENTES EXCLUSIVOS Y ESPECÍFICOS - TEMA 01
    ========================================================================== */
 
-/* --- 1. Contenedor Comparativo de Definiciones (RAE vs TÃ©cnica) --- */
+/* --- 1. Contenedor Comparativo de Definiciones (RAE vs Técnica) --- */
 .definiciones-container {
     display: flex;
     justify-content: center;
@@ -26,7 +26,7 @@
 .rae-columna      { flex: 1 1 200px; }
 .rae-bloque-inferior { margin-top: 20px; padding-top: 15px; border-top: 1px dashed #ccc; }
 
-/* TipografÃ­a y colores identitarios RAE */
+/* Tipografí­a y colores identitarios RAE */
 .rae-word   { color: #004481; font-weight: bold; font-size: 1.25em; margin: 0 0 5px 0; }
 .red        { color: #cc0000; }
 .rae-etym   { color: #007700; font-size: 0.95em; margin-bottom: 10px; }
@@ -36,10 +36,16 @@
 .rae-abbr   { color: #004481; font-style: italic; font-weight: normal; margin-right: 5px; }
 .rae-region { color: #004481; font-variant: small-caps; }
 
-/* --- 4. Elementos GrÃ¡ficos EspecÃ­ficos del Tema --- */
+/* --- 4. Elementos Gráficos Especí­ficos del Tema --- */
 figure.img-sergio-ceron {
     float: right;
-    max-width: 50%;
+    max-width: 45%;
     margin: 0 0 0 1.5em;
     text-align: center;
+}
+
+@media print {
+    img.cuatro {
+        width: 23%;
+    }
 }
