@@ -44,6 +44,19 @@ jobs:
           </head>
           <body>
             $body$
+
+            <!-- Script para abrir enlaces externos en una nueva pestaña -->
+            <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                var links = document.querySelectorAll('a');
+                links.forEach(function(link) {
+                    if (link.hostname && link.hostname !== location.hostname) {
+                        link.target = '_blank';
+                        link.rel = 'noopener noreferrer';
+                    }
+                });
+            });
+            </script>
           </body>
           </html>
           EOF
@@ -119,15 +132,15 @@ jobs:
           cat << 'EOF' > pdf_notas.lua
           function Note(elem)
           -- Envolvemos el contenido multilinea en un Span para el sistema de notas de WeasyPrint
-            return pandoc.Span(pandoc.utils.blocks_to_inlines(elem.content), {class="seccion-notas-impresion"})
+            return pandoc.Span(pandoc.utils.blocks_to_inlines(elem.content), {class="nota-pie"})
           end
 
           function Image(elem)
             -- Extrae la ruta desde "imagenes/" en adelante, ignorando prefijos como ../ o ./
-          --  local ruta_limpia = elem.src:match("([Ii]magenes%/.*)")
-          --  if ruta_limpia then
-          --    elem.src = ruta_limpia
-          --  end
+            local ruta_limpia = elem.src:match("(imagenes%/.*)")
+            if ruta_limpia then
+              elem.src = ruta_limpia
+            end
             return elem
           end
 
@@ -158,6 +171,7 @@ jobs:
    
             # Generar el PDF resolviendo imágenes, notas y eliminando la navegación anterior/siguiente
             pandoc "$archivo" --template=template.html --lua-filter=pdf_notas.lua -c estilos/estilo.css -c estilos/$nombre.css -o "temporal_impresion.html"
+            cp "temporal_impresion.html" "public/pdf/$nombre.html"
             weasyprint "temporal_impresion.html" "public/pdf/$nombre.pdf"
             rm temporal_impresion.html
           done
