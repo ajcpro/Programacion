@@ -180,22 +180,33 @@ jobs:
             return el
           end
 
-          -- 5. Agrupamos automáticamente imágenes flotantes con su párrafo siguiente
-          --    para evitar "fantasmas de flotación" en WeasyPrint
+          -- 5. Función de detección de figuras flotantes (compatible con cualquier parser)
+          local function es_imagen_flotante(el)
+            if el.t == "RawBlock" and el.format == "html" then
+              return string.match(el.text, "img%-lateral%-izq") or string.match(el.text, "img%-lateral%-der")
+            elseif el.t == "Para" then
+              local txt = pandoc.utils.stringify(el)
+              return string.match(txt, "img%-lateral%-izq") or string.match(txt, "img%-lateral%-der")
+            elseif el.t == "Figure" then
+              return el.classes:includes("img-lateral-izq") or el.classes:includes("img-lateral-der")
+            end
+            return false
+          end
+
+          -- 6. Agrupamos automáticamente imágenes flotantes con su párrafo siguiente
           function Blocks(blocks)
             local new_blocks = pandoc.List()
             local i = 1
             while i <= #blocks do
               local el = blocks[i]
-              if el.t == "RawBlock" and el.format == "html" and 
-                 (string.match(el.text, "img%-lateral%-izq") or string.match(el.text, "img%-lateral%-der")) then
-                
+              
+              if es_imagen_flotante(el) then
                 local next_el = blocks[i+1]
                 if next_el and (next_el.t == "Para" or next_el.t == "Plain") then
-                  -- Creamos un contenedor común (Div) para la imagen y el párrafo
+                  -- Creamos un contenedor nativo (Div) para la imagen y el párrafo juntos
                   local group = pandoc.Div({el, next_el}, {class="bloque-flotante-agrupado"})
                   new_blocks:insert(group)
-                  i = i + 2 -- Avanzamos dos posiciones (bloque + párrafo procesado)
+                  i = i + 2 -- Avanzamos dos posiciones (imagen + párrafo agrupados)
                 else
                   new_blocks:insert(el)
                   i = i + 1

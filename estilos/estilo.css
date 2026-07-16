@@ -224,13 +224,14 @@ h1, h2, h3, main section { clear: both; }
 
     /* Línea divisoria de las notas al pie al 25% */
     .footnote::footnote-rule {
-        content: "";
+        /*content: "";
         display: block;
-        width: 20%;                    /* <--- Ajusta aquí el porcentaje que quieras (ej. 25%) */
-        border-top: 1px solid #ccc;    /* Grosor, estilo y color de la línea */
+        
+        border-top: 1px solid #ccc;    /* Grosor, estilo y color de la línea *
         margin-top: 0;
-        margin-bottom: 10px;           /* Espacio entre la línea y la primera nota */
+        margin-bottom: 10px;           /* Espacio entre la línea y la primera nota *
         margin-right: auto;            /* Alinea la línea a la izquierda */
+        width: 20%;                    /* <--- Ajusta aquí el porcentaje que quieras (ej. 25%) */
     }
     
     /* Conservar saltos de línea en párrafos internos de notas */
