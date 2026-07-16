@@ -192,8 +192,8 @@ h1, h2, h3, main section { clear: both; }
     /* Ajuste del bloque del pie de página general */
     @page {
         @footnote {
-            border-top: 1px none #ccc;
-            margin-top: 20px;
+            border-top: none;
+            margin-top: 15px;
             padding-top: 8px;
             font-size: 0.85em; /* Texto de la nota más pequeño */
             line-height: 1.3;
@@ -231,20 +231,80 @@ h1, h2, h3, main section { clear: both; }
         margin-right: 0.5em;
         font-size: 8.5pt;
     }
-
-    /* Línea divisoria de las notas al pie al 20% 
-    .footnote::footnote-rule {
-        content: "";
-        display: block;
-        width: 20%;
-        border-top: 1px solid #ccc;    /* Grosor, estilo y color de la línea *
-        margin-top: 0;
-        margin-bottom: 10px;           /* Espacio entre la línea y la primera nota *
-        margin-right: auto;            /* Alinea la línea a la izquierda *
-    }*/
     
     /* Conservar saltos de línea en párrafos internos de notas */
     .footnote p {
         margin: 2px 0;
+    }
+
+    /* =========================================================
+   1. PIE DE PÁGINA (TÍTULO Y NÚMERACIÓN)
+   ========================================================= */
+
+    /* Capturamos el texto del H1 para guardarlo en una variable interna */
+    h1 {
+      string-set: titulo-documento content();
+    }
+
+    /* Configuramos el pie de página por defecto para todo el documento */
+    @page {
+        @bottom-left {
+            content: string(titulo-documento);
+            font-size: 9pt;
+            color: #666;
+        }
+        @bottom-right {
+            content: counter(page);
+            font-size: 9pt;
+            color: #666;
+    }
+    }
+
+    /* Ocultamos el pie en la primera página (donde están el Título y los Objetivos) */
+    @page :first {
+        @bottom-left { content: none; }
+        @bottom-right { content: none; }
+    }
+
+    /* Aisla la tabla de contenidos en una página especial sin pie de página */
+    .toc {
+        page: pagina-indice;
+    }
+    @page pagina-indice {
+        @bottom-left { content: none; }
+        @bottom-right { content: none; }
+        }
+
+    /* =========================================================
+        2. ESTILOS DE LA TABLA DE CONTENIDOS (TOC)
+    ========================================================= */
+
+    /* Limpiamos el estilo de lista para que parezca un índice de libro */
+    .toc ul {
+        list-style-type: none;
+        padding-left: 0;
+        margin: 0;
+    }
+
+    /* Sangría para los subapartados (h3, h4...) */
+    .toc ul ul {
+        padding-left: 1.5em;
+    }
+
+    .toc li {
+        margin-bottom: 0.5em; /* Respiro entre las líneas del índice */
+    }
+
+    .toc a {
+        text-decoration: none; /* Quitamos el subrayado web clásico */
+        color: #333;           /* Color del texto del índice */
+        display: block;        /* Obligatorio para que los puntos ocupen todo el ancho libre */
+    }
+
+    /* Aquí ocurre la magia de los puntos y el número de página */
+    .toc a::after {
+        /* Genera: [espacio] [puntos hasta el final] [espacio] [número de página destino] */
+        content: " " leader('.') " " target-counter(attr(href), page);
+        color: #666; /* Un tono ligeramente más gris para los puntos y el número (opcional) */
     }
 }
