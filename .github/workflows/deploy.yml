@@ -132,7 +132,7 @@ jobs:
           cat << 'EOF' > pdf_notas.lua
           function Note(elem)
           -- Envolvemos el contenido multilinea en un Span para el sistema de notas de WeasyPrint
-            return pandoc.Span(pandoc.utils.blocks_to_inlines(elem.content), {class="nota-pie"})
+            return pandoc.Span(pandoc.utils.blocks_to_inlines(elem.content), {class="footnote"})
           end
 
           function Image(elem)
