@@ -87,8 +87,7 @@ jobs:
 
           function Doc(doc)
             if #notes == 0 then
-              table.insert(footnote_sec, pandoc.RawBlock('html', '<p> No hay notas al pie</p>'))
-              return doc
+              return pandoc.RawBlock('html', '<p> No hay notas al pie</p>')
             end
   
             -- Generamos manualmente la sección inferior de notas al pie
