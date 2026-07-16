@@ -129,27 +129,55 @@ jobs:
           end
           EOF
 
+          # Creamos el filtro Lua para preparar el HTML de impresión (PDF)
           cat << 'EOF' > pdf_notas.lua
-          function Note(elem)
-            -- Envolvemos el contenido multilinea en un Span para el sistema de notas de WeasyPrint
-            local inlines = pandoc.utils.blocks_to_inlines(elem.content)
-            
-            -- Creamos un contenedor temporal para limpiar los saltos de línea recursivamente
-            local temp_span = pandoc.Span(inlines)
-            local clean_span = pandoc.walk_inline(temp_span, {
-              SoftBreak = function() return pandoc.Space() end,
-              LineBreak = function() return pandoc.Space() end
-            })
-            
-            -- Asignamos la clase requerida para WeasyPrint
-            clean_span.classes = {"footnote"}
-            return clean_span
+          -- Función auxiliar recursiva para limpiar saltos de línea en elementos en línea (Inlines)
+          local function limpiar_saltos(inlines)
+            local resultado = pandoc.List()
+            for _, el in ipairs(inlines) do
+              if el.t == "SoftBreak" or el.t == "LineBreak" then
+                resultado:insert(pandoc.Space())
+              elseif el.content then
+                -- Si está anidado (negrita, cursiva, enlaces...), limpiamos su contenido recursivamente
+                el.content = limpiar_saltos(el.content)
+                resultado:insert(el)
+              else
+                resultado:insert(el)
+              end
+            end
+            return resultado
           end
 
-          function Image(elem)
-            -- Sustituimos el "../imagenes/" inicial por "imagenes/"
-            elem.src = string.gsub(elem.src, "%.%./imagenes/", "chorroflux/")
-            return elem
+          -- 1. Procesamos las notas al pie para WeasyPrint (Clase global sin "local")
+          function Note(elem)
+            local inlines = pandoc.utils.blocks_to_inlines(elem.content)
+            local inlines_limpios = limpiar_saltos(inlines)
+            return pandoc.Span(inlines_limpios, {class="footnote"})
+          end
+
+          -- 2. Corregimos imágenes escritas con sintaxis Markdown estándar
+          function Image(el)
+            el.src = string.gsub(el.src, "^%.%./", "")
+            return el
+          end
+
+          -- 3. Corregimos imágenes escritas como HTML puro en bloques (RawBlock)
+          function RawBlock(el)
+            if el.format == "html" then
+              -- Busca src="../ y lo cambia por src=" (soportando comillas simples y dobles)
+              el.text = string.gsub(el.text, 'src%s*=%s*"%.%./', 'src="')
+              el.text = string.gsub(el.text, "src%s*=%s*'%.%./", "src='")
+            end
+            return el
+          end
+
+          -- 4. Corregimos imágenes escritas como HTML puro en línea (RawInline)
+          function RawInline(el)
+            if el.format == "html" then
+              el.text = string.gsub(el.text, 'src%s*=%s*"%.%./', 'src="')
+              el.text = string.gsub(el.text, "src%s*=%s*'%.%./", "src='")
+            end
+            return el
           end
 
           function Para(elem)
