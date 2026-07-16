@@ -180,36 +180,66 @@ jobs:
             return el
           end
 
-          -- 5. Función de detección de figuras flotantes (compatible con cualquier parser)
-          local function es_imagen_flotante(el)
+          -- 5. Detector de inicio de figura flotante
+          local function es_inicio_figura_flotante(el)
             if el.t == "RawBlock" and el.format == "html" then
               return string.match(el.text, "img%-lateral%-izq") or string.match(el.text, "img%-lateral%-der")
-            elseif el.t == "Para" then
-              local txt = pandoc.utils.stringify(el)
-              return string.match(txt, "img%-lateral%-izq") or string.match(txt, "img%-lateral%-der")
-            elseif el.t == "Figure" then
-              return el.classes:includes("img-lateral-izq") or el.classes:includes("img-lateral-der")
             end
             return false
           end
 
-          -- 6. Agrupamos automáticamente imágenes flotantes con su párrafo siguiente
+          -- 6. Agrupador inteligente de bloques multilinea
           function Blocks(blocks)
             local new_blocks = pandoc.List()
             local i = 1
             while i <= #blocks do
               local el = blocks[i]
               
-              if es_imagen_flotante(el) then
-                local next_el = blocks[i+1]
-                if next_el and (next_el.t == "Para" or next_el.t == "Plain") then
-                  -- Creamos un contenedor nativo (Div) para la imagen y el párrafo juntos
-                  local group = pandoc.Div({el, next_el}, {class="bloque-flotante-agrupado"})
+              if es_inicio_figura_flotante(el) then
+                local collected = pandoc.List()
+                collected:insert(el)
+                local j = i + 1
+                local found_close = false
+                
+                -- Recolectamos todo lo que esté dentro de la etiqueta <figure> ... </figure>
+                while j <= #blocks do
+                  local next_el = blocks[j]
+                  collected:insert(next_el)
+                  j = j + 1
+                  if next_el.t == "RawBlock" and next_el.format == "html" and string.match(next_el.text, "</figure>") then
+                    found_close = true
+                    break
+                  end
+                end
+                
+                -- Una vez cerrada la figura, buscamos el párrafo adyacente (Para o Plain)
+                local para_block = nil
+                while j <= #blocks do
+                  local next_el = blocks[j]
+                  if next_el.t == "Para" or next_el.t == "Plain" then
+                    para_block = next_el
+                    j = j + 1
+                    break
+                  elseif next_el.t == "RawBlock" and next_el.format == "html" and string.match(next_el.text, "^%s*$") then
+                    -- Ignoramos saltos de línea o bloques vacíos de HTML intermedios
+                    j = j + 1
+                  else
+                    break
+                  end
+                end
+                
+                -- Si encontramos el párrafo acompañante, lo metemos al saco y envolvemos en el Div
+                if para_block then
+                  collected:insert(para_block)
+                  local group = pandoc.Div(collected, {class="bloque-flotante-agrupado"})
                   new_blocks:insert(group)
-                  i = i + 2 -- Avanzamos dos posiciones (imagen + párrafo agrupados)
+                  i = j -- Avanzamos el puntero principal hasta el final del bloque agrupado
                 else
-                  new_blocks:insert(el)
-                  i = i + 1
+                  -- En caso de no haber párrafo posterior, devolvemos los bloques recolectados tal cual
+                  for _, b in ipairs(collected) do
+                    new_blocks:insert(b)
+                  end
+                  i = j
                 end
               else
                 new_blocks:insert(el)
