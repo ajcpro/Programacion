@@ -107,7 +107,7 @@ jobs:
             table.insert(footnote_sec, pandoc.RawBlock('html', '<ol class="seccion-notas-impresion">'))
   
             for i, content in ipairs(notes) do
-              table.insert(footnote_sec, pandoc.RawBlock('html', '<li class="nota-pie" id="fn' .. i .. '">'))
+              table.insert(footnote_sec, pandoc.RawBlock('html', '<li class="footnote" id="fn' .. i .. '">'))
     
               -- Añadimos un enlace de retorno al final de la nota
               local backlink = pandoc.RawInline('html', ' <a href="#fnref' .. i .. '" class="footnote-back">↩</a>')
@@ -132,12 +132,12 @@ jobs:
           cat << 'EOF' > pdf_notas.lua
           function Note(elem)
           -- Envolvemos el contenido multilinea en un Span para el sistema de notas de WeasyPrint
-            return pandoc.Span(pandoc.utils.blocks_to_inlines(elem.content), {class="nota-pie"})
+            return pandoc.Span(pandoc.utils.blocks_to_inlines(elem.content), {class="footnote"})
           end
 
           function Image(elem)
             -- Sustituimos el "../imagenes/" inicial por "imagenes/"
-            elem.src, nada = string.gsub(elem.src, ".*/imagenes/", "imagenes/")
+            elem.src = string.gsub(elem.src, ".*/imagenes/", "chorroflux/")
             return elem
           end
 
