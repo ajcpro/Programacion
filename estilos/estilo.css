@@ -200,7 +200,7 @@ h1, h2, h3, main section { clear: both; }
             width: 100% !important;
             max-width: 100% !important;
             /* simulamos una línea de 4em */
-            background-image: linear-gradient(to right, black 4em, transparent 100%);
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0.619) 20%, transparent 20%);
             background-size: 100% 1px;
             background-repeat: no-repeat;
         }
