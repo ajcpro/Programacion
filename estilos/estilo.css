@@ -224,6 +224,12 @@ h1, h2, h3, main section { clear: both; }
         margin: 2px 0;
     }
 
+    .footnotes, section.footnotes, section[role="doc-endnotes"], .footnote-area {
+        width: 100% !important;
+        max-width: 100% !important;
+        column-count: 1 !important; /* Evita que las divida en 2 columnas */
+        display: block !important;
+    }
     .footnote, .footnote-item {
         width: 100%
     }
