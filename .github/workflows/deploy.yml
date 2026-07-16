@@ -86,16 +86,15 @@ jobs:
             if #notes == 0 then return end
   
             -- Generamos manualmente la sección inferior de notas al pie
-            -- Generamos manualmente la sección inferior de notas al pie
             local footnote_sec = pandoc.List({
               pandoc.HorizontalRule(),
-              pandoc.Header(2, "Notas al pie", {id="sec-notas-pie", class="seccion-notas-impresion"})
+              pandoc.Header(2, "Notas al pie", {id="sec-notas-pie"})
             })
   
-            table.insert(footnote_sec, pandoc.RawBlock('html', '<ol class="nota-pie">'))
+            table.insert(footnote_sec, pandoc.RawBlock('html', '<ol class="seccion-notas-impresion">'))
   
             for i, content in ipairs(notes) do
-              table.insert(footnote_sec, pandoc.RawBlock('html', '<li id="fn' .. i .. '">'))
+              table.insert(footnote_sec, pandoc.RawBlock('html', '<li class="nota-pie" id="fn' .. i .. '">'))
     
               -- Añadimos un enlace de retorno al final de la nota
               local backlink = pandoc.RawInline('html', ' <a href="#fnref' .. i .. '" class="footnote-back">↩</a>')
@@ -120,15 +119,15 @@ jobs:
           cat << 'EOF' > pdf_notas.lua
           function Note(elem)
           -- Envolvemos el contenido multilinea en un Span para el sistema de notas de WeasyPrint
-            return pandoc.Span(pandoc.utils.blocks_to_inlines(elem.content), {class="nota-pie"})
+            return pandoc.Span(pandoc.utils.blocks_to_inlines(elem.content), {class="seccion-notas-impresion"})
           end
 
           function Image(elem)
             -- Extrae la ruta desde "imagenes/" en adelante, ignorando prefijos como ../ o ./
-            local ruta_limpia = elem.src:match("([Ii]magenes%/.*)")
-            if ruta_limpia then
-              elem.src = ruta_limpia
-            end
+          --  local ruta_limpia = elem.src:match("([Ii]magenes%/.*)")
+          --  if ruta_limpia then
+          --    elem.src = ruta_limpia
+          --  end
             return elem
           end
 
