@@ -183,6 +183,11 @@ h1, h2, h3, main section { clear: both; }
     .nota-llamada { color: #000; text-decoration: none; font-size: 0.8em; vertical-align: super; }
     .code, aside, .image, .definicion, figure { break-inside: avoid; background-color: transparent; }
     h1, h2, h3 { break-after: avoid-page; }
+ 
+    .bloque-flotante-agrupado {
+         display: flow-root; /* Clearfix moderno que contiene los floats en su sitio */
+          clear: both;        /* Asegura que no arrastre flotados anteriores */
+    }
 
     /* Ajuste del bloque del pie de página general */
     @page {
