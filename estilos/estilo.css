@@ -201,6 +201,7 @@ h1, h2, h3, main section { clear: both; }
     .footnote {
         float: footnote; /* Indica a WeasyPrint que lo mande al pie de página */
         font-size: 8.5pt !important; /* Forzamos tamaño reducido del texto de la nota */
+        clear: both; /* <--- Añade esta línea para romper posibles flotantes "fantasma" */
         line-height: 1.3;
         color: #333;
         margin-bottom: 4px;
