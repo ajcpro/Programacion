@@ -132,15 +132,21 @@ jobs:
           cat << 'EOF' > pdf_notas.lua
           function Note(elem)
             -- Envolvemos el contenido multilinea en un Span para el sistema de notas de WeasyPrint
-            local inlines = pandoc.utils.blocks_to_inlines(elem.content)
-            
+            -- Procesamos los bloques internos de la nota para eliminar saltos de línea
+            local inline_list = {}
+            for i, block in ipairs(elem.content) do
+              if block.content then
+                for _, inline in ipairs(block.content) do
+                  table.insert(inline_list, inline)
+                end
+                -- Si hay más bloques de texto dentro de la nota, metemos un espacio explícito
+                if i < #elem.content then
+                  table.insert(inline_list, pandoc.RawInline('html', ' '))
+                end
+              end
+            end
             -- Creamos un contenedor temporal para limpiar los saltos de línea recursivamente
-            local temp_span = pandoc.Span(inlines)
-            local clean_span = pandoc.walk_inline(temp_span, {
-              SoftBreak = function() return pandoc.Space() end,
-              LineBreak = function() return pandoc.Space() end
-            })
-            
+            local clean_span = pandoc.Span(inline_list)
             -- Asignamos la clase requerida para WeasyPrint
             clean_span.classes = {"footnote"}
             return clean_span
@@ -149,7 +155,7 @@ jobs:
 
           function Image(elem)
             -- Sustituimos el "../imagenes/" inicial por "imagenes/"
-            elem.src = string.gsub(elem.src, ".*/imagenes/", "chorroflux/")
+            elem.src = string.gsub(elem.src, "%.%./imagenes/", "chorroflux/")
             return elem
           end
 
