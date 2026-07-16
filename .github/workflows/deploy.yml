@@ -206,7 +206,7 @@ jobs:
             pandoc "$archivo" --template=template.html --lua-filter=tooltips.lua -c ../estilos/estilo.css -c ../estilos/$nombre.css -o "public/$directorio/$nombre.html"
    
             # Generar el PDF resolviendo imágenes, notas y eliminando la navegación anterior/siguiente
-            pandoc "$archivo" --template=template.html --lua-filter=pdf_notas.lua -c estilos/estilo.css -c estilos/$nombre.css -o "temporal_impresion.html"
+            pandoc "$archivo" --template=template.html --lua-filter=pdf_notas.lua --wrap=none -c estilos/estilo.css -c estilos/$nombre.css -o "temporal_impresion.html"
             cp "temporal_impresion.html" "public/pdf/$nombre.html"
             weasyprint "temporal_impresion.html" "public/pdf/$nombre.pdf"
             rm temporal_impresion.html
