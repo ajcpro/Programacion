@@ -86,10 +86,11 @@ jobs:
             if #notes == 0 then return end
   
             -- Generamos manualmente la sección inferior de notas al pie
-            local footnote_sec = {
+            -- Generamos manualmente la sección inferior de notas al pie
+            local footnote_sec = pandoc.List({
               pandoc.HorizontalRule(),
               pandoc.Header(2, "Notas al pie", {id="sec-notas-pie", class="seccion-notas-impresion"})
-            }
+            })
   
             table.insert(footnote_sec, pandoc.RawBlock('html', '<ol class="nota-pie">'))
   
