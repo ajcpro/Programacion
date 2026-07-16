@@ -159,12 +159,6 @@ jobs:
               return {}
             end
           end
-
-          -- EXPORTACIÓN EXPLÍCITA: Garantiza que Pandoc ejecute ambas funciones
-          return {
-            Note = Note,
-            Image = Image
-          }
           EOF
 
           # 1. COMPILAR EL ÍNDICE PRINCIPAL
