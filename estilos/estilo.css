@@ -223,4 +223,8 @@ h1, h2, h3, main section { clear: both; }
     .nota-pie p {
         margin: 2px 0;
     }
+
+    .footnote, .footnote-item {
+        width: 100%
+    }
 }

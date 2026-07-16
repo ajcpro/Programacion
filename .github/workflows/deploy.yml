@@ -136,11 +136,8 @@ jobs:
           end
 
           function Image(elem)
-            -- Extrae la ruta desde "imagenes/" en adelante, ignorando prefijos como ../ o ./
-            local ruta_limpia = elem.src:match("(imagenes%/.*)")
-            if ruta_limpia then
-              elem.src = ruta_limpia
-            end
+            -- Sustituimos el "../imagenes/" inicial por "imagenes/"
+            elem.src = string.gsub(elem.src, "^%.%./imagenes/", "imagenes/")
             return elem
           end
 
