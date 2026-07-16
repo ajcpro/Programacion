@@ -132,12 +132,12 @@ jobs:
           cat << 'EOF' > pdf_notas.lua
           function Note(elem)
           -- Envolvemos el contenido multilinea en un Span para el sistema de notas de WeasyPrint
-            return pandoc.Span(pandoc.utils.blocks_to_inlines(elem.content), {class="footnote"})
+            return pandoc.Span(pandoc.utils.blocks_to_inlines(elem.content), {class="nota-pie"})
           end
 
           function Image(elem)
             -- Sustituimos el "../imagenes/" inicial por "imagenes/"
-            elem.src, nada = string.gsub(elem.src, "^%.%./imagenes/", "imagenes/")
+            elem.src, nada = string.gsub(elem.src, ".*/imagenes/", "imagenes/")
             return elem
           end
 
