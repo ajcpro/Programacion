@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Tema 02: Entrada, salida y metodología de diseño</title>
+    <link rel="stylesheet" href="../estilos/estilo.css">
+    <link rel="stylesheet" href="../estilos/tema_02.css">
+  </head>
+<body>
+  <h1 id="entrada-salida-y-metodología-de-diseño">Entrada, salida y
+  metodología de diseño</h1>
+  <p><a href="../pdf/tema_02.pdf" target="_blank" class="boton-descarga-top">📥
+  PDF</a></p>
+  <nav class="menu-flotante">
+  <input type="checkbox" id="menu-toggle" class="menu-checkbox">
+  <label for="menu-toggle" class="menu-boton">☰</label>
+  <div class="menu-contenido">
+  <h3>
+  Contenido
+  </h3>
+  <ul>
+  <li>
+  <a href="#el-lenguaje-java">El lenguaje Java</a>
+  </li>
+  <li>
+  <a href="#qué-necesitamos">Qué necesitamos</a>
+  </li>
+  <li>
+  <a href="#mi-primer-programa-en-java">Mi primer programa en Java</a>
+  </li>
+  <li>
+  <a href="#entorno-integrado-de-desarrollo">Entorno integrado de
+  desarrollo</a>
+  </li>
+  <li>
+  <a href="#elementos-básicos-de-un-programa">Elementos básicos de un
+  programa</a>
+  </li>
+  </ul>
+  </div>
+  </nav>
+  <section class="objetivos">
+  <h2>
+  Objetivos
+  </h2>
+  <ul>
+  <li>Generar el entorno de desarrollo
+  </li></li>
+  <li>Reconocer la estructura básica de un programa en Java
+  </li></li>
+  <li>Comprender la diferencia entre sintaxis y semántica
+  </li></li>
+  <li>Entender el uso de plantillas sintácticas
+  </li></li>
+  <li>Ver la importancia de utilizar identificadores significativos
+  </li></li>
+  <li>Reconocer los tipos primitivos
+  </li></li>
+  <li>Conocer por qué hay diferentes tipos de datos numéricos con
+  distintos rangos de valores
+  </li></li>
+  <li>Apreciar la diferencia entre una clase en sentido abstracto y como
+  construcción de Java
+  </li></li>
+  <li>Ver la diferencia entre los objetos, en general, y su uso en Java
+  </li></li>
+  <li>Reconocer la diferencia entre los tipos carácter y cadena y cómo
+  se relacionan
+  </li></li>
+  <li>Reconocer la diferencia entre constante y variable
+  </li></li>
+  <li>Saber qué es una asignación
+  </li></li>
+  <li>Comprender qué sucede cuando se invoca un método
+  </li></li>
+  <li>Conocer qué es una biblioteca
+  </li></li>
+  <li>Distinguir entre función y procedimiento
+  </li></li>
+  <li>Escribir sentencias sencillas de entrada y salida en Java
+  </li></li>
+  </ul>
+  </section>
+  <section class="toc">
+  <h2>
+  Contenido
+  </h2>
+  <ul>
+  <li><a href="%22#el-lenguaje-java%22El%20lenguaje%20Java">El lenguaje
+  Java</a></li>
+  <li><a href="#qué-necesitamos%22">Qué necesitamos</a></li>
+  <li><a href="#mi-primer-programa-en-java">Mi primer programa en
+  Java</a></li>
+  <li><a href="%22#entorno-integrado-de-desarrollo%22">Entorno integrado
+  de desarrollo</a></li>
+  <li><a href="%22#elementos-básicos-de-un-programa%22">Elementos
+  básicos de un programa</a></li>
+  </ul>
+  </section>
+  <hr />
+  <h2 id="el-lenguaje-java">El lenguaje Java</h2>
+  <p>A la hora de elegir un lenguaje de programación para aprender esta
+  disciplina encontramos muchas y variadas opciones. Hoy en día se
+  podría considerar que, como los lenguajes más populares son Python o
+  JavaScript, estos deberían ser nuestros principales candidatos. De
+  hecho, Python es reconocido como un lenguaje de programación ideal
+  para principiantes por tener una sintaxis clara y legible…</p>
+  <p>Los siguientes enlaces lo son a diferentes listas elaboradas a
+  partir de su popularidad: * <a
+  href="https://www.tiobe.com/tiobe-index/">Índice TIOBE</a> * <a
+  href="https://pypl.github.io/PYPL.html">Índice PYPL</a></p>
+  <p>Como se puede ver, Java se encuentra en el Top 10 de la mayoría de
+  clasificaciones. ¿Qué tiene Java de especial?</p>
+  <ul>
+  <li><strong>Tiene una sintaxis clara y legible:</strong> Java es claro
+  y fácil de entender…</li>
+  <li><strong>Orientado a objetos:</strong> Java es un lenguaje de
+  programación orientado a objetos (OOP) donde los conceptos de objetos
+  y clases son fundamentales.</li>
+  <li><strong>Portabilidad:</strong> Denominada <em>WORA</em> (Write
+  Once, Run Anywhere).</li>
+  </ul>
+  <hr />
+  <h2 id="qué-necesitamos">Qué necesitamos</h2>
+  <p>Para hacer un programa, en cualquier lenguaje de programación,
+  necesitamos un editor de textos y un compilador o intérprete. En el
+  caso de Java, necesitamos instalar el <strong>JDK (Java Development
+  Kit)</strong>.</p>
+  <p>Tras la instalación, abre una consola o terminal y comprueba la
+  versión ejecutando:</p>
+  <pre class="codigo-fuente">
+  java -version
+  </pre>
+  <h3 id="configuración-de-variables-de-entorno">Configuración de
+  variables de entorno</h3>
+  <p>Si el terminal no reconoce el comando, sigue estos pasos según tu
+  sistema operativo:</p>
+  <h4 id="windows">Windows</h4>
+  <ol type="1">
+  <li>Abre las <em>Propiedades del sistema</em>.</li>
+  <li>Haz clic en <em>Variables de entorno</em>.</li>
+  <li>Selecciona la variable <code>Path</code> y haz clic en
+  <em>Editar</em>.</li>
+  <li>Agrega la ruta al directorio binario del JDK al final de la
+  lista.</li>
+  </ol>
+  <h4 id="linux-y-macos">Linux y MacOS</h4>
+  <p>Edita el fichero <code>~/.bash_profile</code> o
+  <code>.profile</code> y añade:</p>
+  <pre class="codigo-fuente">
+  export PATH=/ruta/al/JDK/bin:$PATH
+  </pre>
+  Ejecuta en tu terminal:
+  <pre class="codigo-fuente">
+  source ~/.bash_profile
+  </pre>
+  <hr />
+  <h2 id="mi-primer-programa-en-java">Mi primer programa en Java</h2>
+  <p>Abre tu editor de textos y escribe el siguiente código fuente:</p>
+  <pre class="codigo-fuente">
+  public class MiPrimerPrograma {
+      public static void main ( String[] args ) {
+          System.out.println("Mi primer programa Java");
+      }
+  }
+  </pre>
+  <p>Guárdalo con el nombre exacto <code>MiPrimerPrograma.java</code>.
+  Desde la terminal, navega hasta la carpeta y compílalo:</p>
+  <pre class="codigo-fuente">
+  javac MiPrimerPrograma.java
+  </pre>
+  <p>Para ejecutar el bytecode generado
+  (<code>MiPrimerPrograma.class</code>), escribe:</p>
+  <pre class="codigo-fuente">
+  java MiPrimerPrograma
+  </pre>
+  <hr />
+  <h2 id="elementos-básicos-de-un-programa">Elementos básicos de un
+  programa</h2>
+  <h2 id="sintaxis-y-semántica">Sintaxis y semántica</h2>
+  <p>Un lenguaje de programación es un conjunto de reglas, símbolos y
+  palabras especiales.</p>
+  <aside class="definicion">
+  <p><strong>Sintaxis:</strong> Reglas formales que determinan la
+  construcción de sentencias válidas en un lenguaje.</p>
+  <p><strong>Semántica:</strong> El conjunto de reglas que dan el
+  significado de una sentencia del lenguaje.</p>
+  <p><strong>Metalenguaje:</strong> Lenguaje utilizado para describir
+  las reglas sintácticas de otro lenguaje.</p>
+  </aside>
+  <hr />
+  <h3 id="plantillas-sintácticas">Plantillas sintácticas</h3>
+  <p>Una plantilla sintáctica es un ejemplo genérico de la construcción
+  lingüística que se está definiendo. Veamos una posible plantilla
+  sintáctica para un programa en Java:</p>
+  <pre class="plantilla-sintactica">
+  Programa:
+  {ImportDeclaration}{ClassDeclaration}
+
+  ClassDeclaration:
+  {ClassModifier} <span class="terminal">class</span> Identifier <span class="terminal">{</span> {ClassBodyDeclaration} <span class="terminal">}</span>
+  </pre>
+  <p>Los datos en cursiva indican que son <em>no terminales</em>. Si un
+  símbolo no está en bastardilla y aparece en rojo, significa que es un
+  <em>símbolo terminal</em>, como la palabra clave <span
+  class="terminal">class</span> y las llaves <span class="terminal">{
+  }</span>.</p>
+  <p>Echemos un vistazo a cómo se define un identificador en el
+  metalenguaje:</p>
+  <pre class="plantilla-sintactica">
+  Identifier:
+  IdentifierChars
+
+  IdentifierChars:
+  JavaLetter {JavaLetterOrDigit}
+
+  JavaLetter:
+  any Unicode character that is a "Java letter"
+  </pre>
+  <aside class="definicion">
+  <p><strong>Paquete:</strong> Colección con nombre de clases de Java
+  que puede ser utilizada por un programa.</p>
+  <p><strong>Clase:</strong> Definición de un objeto o programa de
+  Java.</p>
+  </aside>
+  <hr />
+  <h3 id="tipos-de-datos-primitivos">Tipos de datos primitivos</h3>
+  <table class="tabla-datos">
+  <thead>
+  <tr>
+  <th>
+  Nombre del tipo
+  </th>
+  <th>
+  Tamaño usado (bits)
+  </th>
+  <th>
+  Total de números representables
+  </th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+  <td>
+  <strong>byte</strong>
+  </td>
+  <td>
+  8 (1 octeto)
+  </td>
+  <td>
+  2<sup>8</sup> = 256
+  </td>
+  </tr>
+  <tr>
+  <td>
+  <strong>short</strong>
+  </td>
+  <td>
+  16 (2 octetos)
+  </td>
+  <td>
+  2<sup>16</sup> = 65.536
+  </td>
+  </tr>
+  <tr>
+  <td>
+  <strong>int</strong>
+  </td>
+  <td>
+  32 (4 octetos)
+  </td>
+  <td>
+  2<sup>32</sup> = 4.294.967.296
+  </td>
+  </tr>
+  <tr>
+  <td>
+  <strong>long</strong>
+  </td>
+  <td>
+  64 (8 octetos)
+  </td>
+  <td>
+  2<sup>64</sup>
+  </td>
+  </tr>
+  </tbody>
+  </table>
+
+  <!-- Script para abrir enlaces externos en una nueva pestaña -->
+  <script>
+  document.addEventListener("DOMContentLoaded", function() {
+      var links = document.querySelectorAll('a');
+      links.forEach(function(link) {
+          if (link.hostname && link.hostname !== location.hostname) {
+              link.target = '_blank';
+              link.rel = 'noopener noreferrer';
+          }
+      });
+  });
+  </script>
+</body>
+</html>

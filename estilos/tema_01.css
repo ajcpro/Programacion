@@ -45,7 +45,10 @@ figure.img-sergio-ceron {
 }
 
 @media print {
-    img.cuatro {
+    img.estructura {
         width: 23%;
+    }
+    figure.img-sergio-ceron {
+        max-width: 50%;
     }
 }

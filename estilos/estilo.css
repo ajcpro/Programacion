@@ -1,5 +1,5 @@
 /* ==========================================================================
-   PROGRAMACIÃN DE SERVICIOS Y PROCESOS - ESTILOS BASE GENERALES
+   PROGRAMACIÓN - ESTILOS BASE GENERALES
    ========================================================================== */
 
 /* --- 1. Elementos Tipográficos e Inline --- */
@@ -9,7 +9,7 @@
 .cita       { }
 .cita .autor { }
 .modificado { color: #0264e6; }
-.palabra    { color: #e61703; font-weight: bold; }
+.palabra, .terminal { color: #e61703; font-weight: bold; }
 
 /* --- 2. Bloques de Código y Contenedores Generales --- */
 .code {
@@ -21,6 +21,43 @@
     padding: 0.5em;
     border-radius: 4px;
     overflow-x: auto;
+}
+
+/* =========================================================
+   3. BLOQUES DE CÓDIGO Y PLANTILLAS SINTÁCTICAS
+   ========================================================= */
+
+/* Bloques de código fuente estándar (Java, terminal, etc.) */
+pre.codigo-fuente {
+  background-color: #f8f9fa;
+  border: 1px solid #e2e8f0;
+  /*border-left: 4px solid #4a5568;*/
+  padding: 12px;
+  font-family: 'Fira Code', 'Courier New', monospace;
+  font-size: 9.5pt;
+  white-space: pre-wrap;
+  break-inside: avoid;
+  margin: 15px 0;
+}
+
+/* Plantillas Sintácticas (Metalenguaje) */
+pre.plantilla-sintactica {
+  background-color: #fffaf0; /* Un tono ligeramente crema editorial */
+  border: 1px solid #feebc8;
+  /*border-left: 4px solid #dd6b20; /* Color de alerta/sintaxis (Naranja/Marrón) */
+  padding: 12px;
+  font-family: 'Courier New', Courier, monospace;
+  font-style: italic; /* TODO el bloque nace en cursiva (No terminales) */
+  font-size: 10pt;
+  white-space: pre-wrap;
+  break-inside: avoid;
+  margin: 15px 0;
+  color: #2d3748;
+}
+
+/* Símbolos terminales dentro de la plantilla (SIN cursiva) */
+pre.plantilla-sintactica .terminal {
+  font-style: normal;  /* Rompe la cursiva del contenedor */
 }
 
 aside {
@@ -145,6 +182,8 @@ h1, h2, h3, main section { clear: both; }
 .pie .inicio   { }
 .pie .siguiente { }
 .newpage       { page-break-before: always; break-before: page; } /* Estilo para pruebas */
+
+
 
 /* ==========================================================================
    OPTIMIZACIONES EXCLUSIVAS PARA PANTALLA (WEB)
