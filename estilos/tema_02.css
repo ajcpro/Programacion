@@ -3,11 +3,12 @@
    ========================================================================== */
 
 table.tabla-datos {
-  width: 100%;
+  width: auto;
   border-collapse: collapse;
   margin: 20px 0;
   font-size: 10pt;
   break-inside: avoid;
+  margin: 0 auto;
 }
 
 table.tabla-datos th {
