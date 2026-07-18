@@ -62,7 +62,9 @@ css: ["../estilos/estilo.css", "../estilos/tema_02.css"]
 A la hora de elegir un lenguaje de programación para aprender esta disciplina encontramos muchas y variadas opciones. Hoy en día se podría considerar que, como los lenguajes más populares son Python o JavaScript, estos deberían ser nuestros principales candidatos. De hecho, Python es reconocido como un lenguaje de programación ideal para principiantes por tener una sintaxis clara y legible...
 
 Los siguientes enlaces lo son a diferentes listas elaboradas a partir de su popularidad:
+
 * [Índice TIOBE](https://www.tiobe.com/tiobe-index/)
+
 * [Índice PYPL](https://pypl.github.io/PYPL.html)
 
 Como se puede ver, Java se encuentra en el Top 10 de la mayoría de clasificaciones. ¿Qué tiene Java de especial?
