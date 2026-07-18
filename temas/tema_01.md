@@ -344,10 +344,10 @@ Además, un lenguaje de programación contiene instrucciones, denominadas declar
 * Los subprogramas nos ayudan a organizar el código en unidades que se corresponden con comportamientos específicos de los objetos; estas unidades, en Java, se denominan métodos.
 
 <figure class="img-grande">
-    <img class="cuatro" src="../imagenes/01_03_secuencia.png" alt="Representación de un secuencia">
-    <img class="cuatro" src="../imagenes/01_04_seleccion.png" alt="Representación de una bifurcación">
-    <img class="cuatro" src="../imagenes/01_05_bucle.png" alt="Representación de una repetición">
-    <img class="cuatro" src="../imagenes/01_06_subprograma.png" alt="Representación de una llamada a subprograma">
+    <img class="estructura" src="../imagenes/01_03_secuencia.png" alt="Representación de un secuencia">
+    <img class="estructura" src="../imagenes/01_04_seleccion.png" alt="Representación de una bifurcación">
+    <img class="estructura" src="../imagenes/01_05_bucle.png" alt="Representación de una repetición">
+    <img class="estructura" src="../imagenes/01_06_subprograma.png" alt="Representación de una llamada a subprograma">
 </figure>
 
 Cada una de estas formas de estructurar operaciones controla el orden en que el ordenador ejecuta las operaciones, por lo que se denominan estructuras de control.
