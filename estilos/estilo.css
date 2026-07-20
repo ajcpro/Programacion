@@ -12,7 +12,7 @@
 .palabra, .terminal { color: #e61703; font-weight: bold; }
 
 /* --- 2. Bloques de Código y Contenedores Generales --- */
-.code {
+pre.codigo-fuente, .code {
     margin-left: 2em;
     font-family: Courier, 'Courier New', 'Lucida Console', monospace;
     font-size: 0.9em;
@@ -21,23 +21,6 @@
     padding: 0.5em;
     border-radius: 4px;
     overflow-x: auto;
-}
-
-/* =========================================================
-   3. BLOQUES DE CÓDIGO Y PLANTILLAS SINTÁCTICAS
-   ========================================================= */
-
-/* Bloques de código fuente estándar (Java, terminal, etc.) */
-pre.codigo-fuente {
-  background-color: #f8f9fa;
-  border: 1px solid #e2e8f0;
-  /*border-left: 4px solid #4a5568;*/
-  padding: 12px;
-  font-family: 'Fira Code', 'Courier New', monospace;
-  font-size: 9.5pt;
-  white-space: pre-wrap;
-  break-inside: avoid;
-  margin: 15px 0;
 }
 
 /* Plantillas Sintácticas (Metalenguaje) */
