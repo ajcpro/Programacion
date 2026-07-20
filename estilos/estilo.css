@@ -9,10 +9,24 @@
 .cita       { }
 .cita .autor { }
 .modificado { color: #0264e6; }
-.palabra, .terminal { color: #e61703; font-weight: bold; }
+.palabra {
+    color: #e61703;
+    font-weight: bold;
+    font-family: Courier, 'Courier New', 'Lucida Console', monospace;
+}
+.terminal { color: #e61703; font-weight: bold; }
 
 /* --- 2. Bloques de Código y Contenedores Generales --- */
 pre.codigo-fuente, .code {
+    margin-left: 2em;
+    font-family: Courier, 'Courier New', 'Lucida Console', monospace;
+    font-size: 0.9em;
+    white-space: pre-wrap;
+    padding: 0.5em;
+    overflow-x: auto;
+}
+
+pre.codigo-java {
     margin-left: 2em;
     font-family: Courier, 'Courier New', 'Lucida Console', monospace;
     font-size: 0.9em;
