@@ -282,31 +282,44 @@
   <p>Deberías ver la versión del JDK instalado. En caso de no ser así,
   sigue los siguientes pasos:</p>
   <ul>
-  <li>Windows
-  <ol type="1">
-  <li>Abre las <strong>Propiedades del sistema</strong></li>
-  <li>Haz clic en <strong>Variables de entorno</strong></li>
-  <li>Selecciona la variable <strong>Path</strong> y haz clic en
-  <strong>Editar</strong></li>
-  <li>Agrega la ruta al directorio binario del JDK[^5] al final de la
-  lista y haz clic en <em>Aceptar</em></li>
-  </ol></li>
-  <li>Linux y MacOS
-  <ul>
-  <li>Edita el fichero <strong>~/.bash_profile</strong> o el
-  <strong>.profile</strong> del shell que utilices.</li>
-  <li>Agrega al archivo la línea:</li>
-  </ul></li>
-  </ul>
+  <li>
+  Windows
+  <ol>
+  <li>
+  Abre las <strong>Propiedades del sistema</strong>
+  </li>
+  <li>
+  Haz clic en <strong>Variables de entorno</strong>
+  </li>
+  <li>
+  Selecciona la variable <strong>Path</strong> y haz clic en
+  <strong>Editar</strong>
+  <li>
+  Agrega la ruta al directorio binario del JDK[^5] al final de la lista
+  y haz clic en <strong>Aceptar</strong>
+  </li>
+  </ol>
+  <li>
+  Linux y MacOS
+  <ol>
+  <li>
+  Edita el fichero <strong>~/.bash_profile</strong> o el
+  <strong>.profile</strong> del shell que utilices.
+  </li>
+  <li>
+  Agrega al archivo la línea:
   <pre class="codigo-fuente">
   export PATH=/ruta/al/JDK/bin:$PATH
   </pre>
-  <ul>
-  <li>Guarda el fichero, ciérralo y ejecuta el comando:</li>
-  </ul>
+  </li>
+  <li>
+  Guarda el fichero, ciérralo y ejecuta el comando:
   <pre class="codigo-fuente">
   source ~/.bash_profile
   </pre>
+  </li>
+  </ol>
+  </ul>
   <h3 id="mi-primer-programa-en-java">Mi primer programa en Java</h3>
   <p>Abre el editor de textos que prefieras y escribe lo siguiente:</p>
   <pre class="codigo-java">
@@ -725,7 +738,6 @@
   producción recursiva, es decir, que puede ser una sucesión de
   identificadores, sin especificar cuántos, unidos por el símbolo del
   punto.</p>
-  <hr />
   <h2 id="elementos-básicos-del-lenguaje">Elementos básicos del
   lenguaje</h2>
   <p>Un programa de ordenador trabaja con datos. En Java, cada unidad de
@@ -928,15 +940,13 @@
   <pre class="codigo-fuente">
   '\''
   </pre>
-  <p>Es importante notar
-  qu000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000e
-  usamos la barra inversa[^22] () como carácter de escape y no la
-  barra[^23] (/). Java usa el caracter barra como símbolo de la
-  división, por lo que es importante reconocer que ambas son diferentes.
-  Pensando en ello un momento, este esquema introduce un nuevo problema:
-  ¿cómo escribimos la barra inversa? La respuesta es que Java
-  proporciona una segunda secuencia de escape, \, que permite
-  escribirla. Por lo tanto, escribimos el valor de <span
+  <p>Es importante notar que usamos la barra inversa[^22] () como
+  carácter de escape y no la barra[^23] (/). Java usa el caracter barra
+  como símbolo de la división, por lo que es importante reconocer que
+  ambas son diferentes. Pensando en ello un momento, este esquema
+  introduce un nuevo problema: ¿cómo escribimos la barra inversa? La
+  respuesta es que Java proporciona una segunda secuencia de escape, \,
+  que permite escribirla. Por lo tanto, escribimos el valor de <span
   class="palabra">char</span> de la barra inversa en Java de la
   siguiente manera:</p>
   <pre class="codigo-fuente">
@@ -1045,7 +1055,8 @@
   </pre>
   <p>Cuyo valor es:</p>
   <pre class="codigo-fuente">
-  <p>Ella dijo: “No olvides que ‘' es distinto de’/’.” &lt;/`re&gt;</p>
+  Ella dijo: "No olvides que '\' es distinto de '/'."
+  </pre>
   <p>Fijémonos en que dentro de una cadena no tenemos que usar la
   secuencia de escape ' para representar un apóstrofo. Análogamente,
   podemos escribir las comillas dobles como un valor de tipo <span
