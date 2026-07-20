@@ -136,24 +136,23 @@ java -version
 
 Deberías ver la versión del JDK instalado. En caso de no ser así, sigue los siguientes pasos:
 
-* Windows
-  1. Abre las **Propiedades del sistema**
-  2. Haz clic en **Variables de entorno**
-  3. Selecciona la variable **Path** y haz clic en **Editar**
-  4. Agrega la ruta al directorio binario del JDK[^5] al final de la lista y haz clic en *Aceptar*
-* Linux y MacOS
-  * Edita el fichero **~/.bash_profile** o el **.profile** del shell que utilices.
-  * Agrega al archivo la línea:
-
+<ul><li>Windows<ol>
+<li>Abre las <strong>Propiedades del sistema</strong></li>
+<li>Haz clic en <strong>Variables de entorno</strong></li>
+<li>Selecciona la variable <strong>Path</strong> y haz clic en <strong>Editar</strong>
+<li>Agrega la ruta al directorio binario del JDK[^5] al final de la lista y haz clic en <strong>Aceptar</strong></li></ol>
+<li>Linux y MacOS<ol>
+<li>Edita el fichero <strong>~/.bash_profile</strong> o el <strong>.profile</strong> del shell que utilices.</li>
+<li>Agrega al archivo la línea:
 <pre class="codigo-fuente">
 export PATH=/ruta/al/JDK/bin:$PATH
 </pre>
-
-  * Guarda el fichero, ciérralo y ejecuta el comando:
-
+</li>
+<li>Guarda el fichero, ciérralo y ejecuta el comando:
 <pre class="codigo-fuente">
 source ~/.bash_profile
 </pre>
+</li></ol></ul>
 
 ### Mi primer programa en Java
 
@@ -442,8 +441,6 @@ Este método, **println** de **System.out**, muestra por pantalla lo que hay ent
 
 Hay que tener en cuenta que *ExpressionName* es una producción recursiva, es decir, que puede ser una sucesión de identificadores, sin especificar cuántos, unidos por el símbolo del punto.
 
----
-
 ## Elementos básicos del lenguaje
 
 Un programa de ordenador trabaja con datos. En Java, cada unidad de datos debe ser de un tipo de dato específico. El tipo de datos determina cómo se representan los datos en el ordenador y qué tipo de procesamiento puede realizar en ellos. Recordemos que todos los objetos son del mismo tipo, pero difieren en su clase. Java incluye tipos distintos del tipo de los objetos, cada uno de los cuales tiene su propio nombre.
@@ -556,7 +553,7 @@ Observemos que cada carácter está encerrado entre apóstrofos[^20] (comillas s
 '\''
 </pre>
 
-Es importante notar qu000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000e usamos la barra inversa[^22] (\) como carácter de escape y no la barra[^23] (/). Java usa el caracter barra como símbolo de la división, por lo que es importante reconocer que ambas son diferentes. Pensando en ello un momento, este esquema introduce un nuevo problema: ¿cómo escribimos la barra inversa? La respuesta es que Java proporciona una segunda secuencia de escape, \\, que permite escribirla. Por lo tanto, escribimos el valor de <span class="palabra">char</span> de la barra inversa en Java de la siguiente manera:
+Es importante notar que usamos la barra inversa[^22] (\) como carácter de escape y no la barra[^23] (/). Java usa el caracter barra como símbolo de la división, por lo que es importante reconocer que ambas son diferentes. Pensando en ello un momento, este esquema introduce un nuevo problema: ¿cómo escribimos la barra inversa? La respuesta es que Java proporciona una segunda secuencia de escape, \\, que permite escribirla. Por lo tanto, escribimos el valor de <span class="palabra">char</span> de la barra inversa en Java de la siguiente manera:
 
 <pre class="codigo-fuente">
 '\\'
@@ -633,7 +630,7 @@ Cuyo valor es:
 
 <pre class="codigo-fuente">
 Ella dijo: "No olvides que '\' es distinto de '/'."
-</`re>
+</pre>
 
 Fijémonos en que dentro de una cadena no tenemos que usar la secuencia de escape \' para representar un apóstrofo. Análogamente, podemos escribir las comillas dobles como un valor de tipo <span class="palabra">char</span> ('"'), sin usar una secuencia de escape. Por el contrario, tenemos que usar \\ para escribir una barra inversa como un valor de caracter o dentro de una cadena.
 

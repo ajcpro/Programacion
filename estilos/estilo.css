@@ -21,9 +21,11 @@ pre.codigo-fuente, .code {
     margin-left: 2em;
     font-family: Courier, 'Courier New', 'Lucida Console', monospace;
     font-size: 0.9em;
-    white-space: pre-wrap;
-    padding: 0.5em;
-    overflow-x: auto;
+    margin-bottom: 0px;
+}
+
+pre.codigo-fuente + p {
+    margin-top: 0px;
 }
 
 pre.codigo-java {
