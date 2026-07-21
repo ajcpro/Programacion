@@ -255,27 +255,30 @@
   <p>Por supuesto, deberíamos tener conocimientos sobre programación y
   el lenguaje que vamos a utilizar. En nuestro caso, se trata de ir
   aprendiéndolo a lo largo del curso.</p>
-  <p>Por último, necesitaremos un compilador o un intérprete[^1] del
-  lenguaje que estemos utilizando para programar. En el caso de Java,
-  como ya indicamos, necesitamos un compilador <em>Java</em> que genera
-  <em>Bytecode</em> y la <em>JVM</em> para ejecutarlo. Ello lo
+  <p>Por último, necesitaremos un compilador o un
+  intérprete<span class="tooltip"><a href="#fn1" class="nota-llamada" id="fnref1">[1]</a><span class="tooltiptext">De los que hablamos en el primer capítulo.</span></span>
+  del lenguaje que estemos utilizando para programar. En el caso de
+  Java, como ya indicamos, necesitamos un compilador <em>Java</em> que
+  genera <em>Bytecode</em> y la <em>JVM</em> para ejecutarlo. Ello lo
   conseguiremos instalando en nuestro ordenador el <strong>JDK</strong>
   (Java Development Kit). El <em>JDK</em> es un conjunto de herramientas
   que incluye el compilador de Java (<em>javac</em>), la JVM
   (<em>java</em>) y otras utilidades necesarias para desarrollar
   aplicaciones en Java.</p>
   <p>Nos dirigiremos al sitio web de Oracle (<a
-  href="https://www.oracle.com/java">https://www.oracle.com/java</a>[^2])
-  y accederemos a la página de descargas[^3]. Elegiremos la versión
-  apropiada para nuestro sistema operativo y la descargaremos. Una vez
-  completada la descarga, ejecutaremos el instalador y seguiremos las
-  instrucciones proporcionadas por el proceso de instalación: nos pedirá
-  seleccionar una ubicación; podemos aceptar la predeterminada o elegir
-  una diferente.</p>
+  href="https://www.oracle.com/java">https://www.oracle.com/java</a><span class="tooltip"><a href="#fn2" class="nota-llamada" id="fnref2">[2]</a><span class="tooltiptext">También podemos acceder a la página en español: https://www.oracle.com/es/java.</span></span>)
+  y accederemos a la página de
+  descargas<span class="tooltip"><a href="#fn3" class="nota-llamada" id="fnref3">[3]</a><span class="tooltiptext">Lo identificaremos con algún enlace o botón en el que pondrá Descargar Java o similar.</span></span>.
+  Elegiremos la versión apropiada para nuestro sistema operativo y la
+  descargaremos. Una vez completada la descarga, ejecutaremos el
+  instalador y seguiremos las instrucciones proporcionadas por el
+  proceso de instalación: nos pedirá seleccionar una ubicación; podemos
+  aceptar la predeterminada o elegir una diferente.</p>
   <p>Tras la instalación, es posible que tengamos que configurar las
   variables de entorno para que tu sistema reconozca la ubicación del
   JDK, aunque no suele ser necesario. Para comprobarlo, abre un
-  terminal[^4] y ejecuta el siguiente comando:</p>
+  terminal<span class="tooltip"><a href="#fn4" class="nota-llamada" id="fnref4">[4]</a><span class="tooltiptext">En Windows, puede ser el cmd. Pulsa a la vez las teclas Windows y R: se abrirá un cuadro de diálogo con el título Ejecutar; escribe cmd en el rectángulo para introducir texto y pulsa sobre el botón Aceptar.</span></span>
+  y ejecuta el siguiente comando:</p>
   <pre class="codigo-fuente">
   java -version
   </pre>
@@ -295,8 +298,9 @@
   Selecciona la variable <strong>Path</strong> y haz clic en
   <strong>Editar</strong>
   <li>
-  Agrega la ruta al directorio binario del JDK[^5] al final de la lista
-  y haz clic en <strong>Aceptar</strong>
+  Agrega la ruta al directorio binario del
+  JDK<span class="tooltip"><a href="#fn5" class="nota-llamada" id="fnref5">[5]</a><span class="tooltiptext">Como **C:Files*.</span></span>
+  al final de la lista y haz clic en <strong>Aceptar</strong>
   </li>
   </ol>
   <li>
@@ -341,9 +345,10 @@
   <p>Esto utilizará el compilador de Java (<strong>javac</strong>) para
   generar un archivo <strong><em>bytecode</em></strong> llamado
   <strong>MiPrimerPrograma.class</strong> a partir del archivo fuente
-  <em>Java</em>. Si la compilación tiene éxito[^7] no se mostrará ningún
-  mensaje de error y podremos ejecutar nuestro programa, para lo que
-  escribiremos:</p>
+  <em>Java</em>. Si la compilación tiene
+  éxito<span class="tooltip"><a href="#fn6" class="nota-llamada" id="fnref6">[6]</a><span class="tooltiptext">No debería haber problemas si lo has escrito igual.</span></span>
+  no se mostrará ningún mensaje de error y podremos ejecutar nuestro
+  programa, para lo que escribiremos:</p>
   <pre class="codigo-fuente">
   java MiPrimerPrograma
   </pre>
@@ -472,7 +477,8 @@
   <p>Los datos en cursiva indican que son no terminales: referencias a
   otra producción. La definición del mismo viene seguida de dos puntos.
   Si la encontramos rodeada de unas llaves, indica que puede aparecer
-  varias veces (incluida ninguna). Si no está en bastardilla[^8],
+  varias veces (incluida ninguna). Si no está en
+  bastardilla<span class="tooltip"><a href="#fn7" class="nota-llamada" id="fnref7">[7]</a><span class="tooltiptext">Aparecerán en color rojo para distinguirlas mejor.</span></span>,
   significa que es un símbolo terminal, como en el ejemplo lo son la
   palabra <strong><em>class</em></strong> y las llaves, que deben
   aparecer en el código tal cual.</p>
@@ -508,15 +514,19 @@
   JavaLetterOrDigit:
   any Unicode character that is a "Java letter-or-digit"
   </pre>
-  <p>Las líneas precedentes[^9] indican que un identificador es una
-  secuencia de caracteres de identificador que, a su vez, es una letra
-  de Java seguida, opcionalmente, de una letra o dígito de Java, que
-  puede aparecer varias veces. Una letra de Java es una letra y, por
-  motivos históricos, aunque se recomienda no usarlo[^10], un símbolo de
-  subrayado[^11] (_) o el símbolo del dólar ($). Una letra o dígito de
-  Java incluye, además, a los números del cero (0) al nueve (9). Las
-  letras pueden ser mayúsculas y minúsculas, distinguiendo entre
-  ambas.</p>
+  <p>Las líneas
+  precedentes<span class="tooltip"><a href="#fn8" class="nota-llamada" id="fnref8">[8]</a><span class="tooltiptext">Las plantillas sintácticas que representemos, aunque obtenidas de la especificación, pueden no coincidir de forma exacta; como hemos indicado, las modificaremos para ajustarse mejor a lo que estemos explicando.</span></span>
+  indican que un identificador es una secuencia de caracteres de
+  identificador que, a su vez, es una letra de Java seguida,
+  opcionalmente, de una letra o dígito de Java, que puede aparecer
+  varias veces. Una letra de Java es una letra y, por motivos
+  históricos, aunque se recomienda no
+  usarlo<span class="tooltip"><a href="#fn9" class="nota-llamada" id="fnref9">[9]</a><span class="tooltiptext">El símbolo del dólar debe utilizarse únicamente en código generado de forma automática o, poco comúnmente, para acceder a nombres que ya existían en sistemas antiguos. El símbolo de subrayado se puede utilizar en identificadores de dos o más letras, pero no puede usarse como identificador de una letra por ser una palabra reservada. De la especificación.</span></span>,
+  un símbolo de
+  subrayado<span class="tooltip"><a href="#fn10" class="nota-llamada" id="fnref10">[10]</a><span class="tooltiptext">Puede que os resulte extraño el denominarlo símbolo (o carácter) de subrayado en lugar de guion bajo o barra baja. Pero ese es su nombre.</span></span>
+  (_) o el símbolo del dólar ($). Una letra o dígito de Java incluye,
+  además, a los números del cero (0) al nueve (9). Las letras pueden ser
+  mayúsculas y minúsculas, distinguiendo entre ambas.</p>
   <aside class="definicion">
   <p><strong>Paquete:</strong> Colección con nombre de clases de Java
   que puede ser utilizada por un programa.</p>
@@ -656,7 +666,8 @@
   TypeIdentifier Identifier
   </pre>
   <p>Esta plantilla se corresponde con esa primera línea que, por el
-  momento, usaremos de forma literal en todos nuestros programas[^12],
+  momento, usaremos de forma literal en todos nuestros
+  programas<span class="tooltip"><a href="#fn11" class="nota-llamada" id="fnref11">[11]</a><span class="tooltiptext">En Java 21 se introduce experimentalmente una mejora que lo simplifica pero, por ahora lo seguiremos usando así. Referencias: https://openjdk.org/projects/amber/design-notes/on-ramp y https://openjdk.org/jeps/445.</span></span>,
   es una declaración de método:</p>
   <pre class="codigo-java">
       public static void main ( String[] args ) {
@@ -670,8 +681,10 @@
   class="palabra">main</span>: para que una clase sea un programa, uno
   de los métodos debe llamarse main. Esa línea lo que está haciendo es
   declarar un método main ya que la ejecución de una aplicación Java
-  comienza en ese método principal[^13]. Y, según la plantilla, entre
-  paréntesis, una lista de parámetros formales.</p>
+  comienza en ese método
+  principal<span class="tooltip"><a href="#fn12" class="nota-llamada" id="fnref12">[12]</a><span class="tooltiptext">Si la JVM no encuentra un método main se lanza una excepción y finaliza.</span></span>.
+  Y, según la plantilla, entre paréntesis, una lista de parámetros
+  formales.</p>
   <p>Hasta ahora, todas las producciones tenían una única línea. La
   plantilla correspondiente a MethodBody, va a tener dos:</p>
   <pre class="plantilla-sintactica">
@@ -732,8 +745,9 @@
   <strong>System.out</strong>, muestra por pantalla lo que hay entre los
   paréntesis, que es su lista de argumentos, aunque aquí solo hay uno:
   la frase <strong>Mi primer programa Java</strong>. Explicaremos más
-  adelante que debe ir entre comillas inglesas[^14] porque es un literal
-  de cadena.</p>
+  adelante que debe ir entre comillas
+  inglesas<span class="tooltip"><a href="#fn13" class="nota-llamada" id="fnref13">[13]</a><span class="tooltiptext">Normalmente conocidas como comillas dobles.</span></span>
+  porque es un literal de cadena.</p>
   <p>Hay que tener en cuenta que <em>ExpressionName</em> es una
   producción recursiva, es decir, que puede ser una sucesión de
   identificadores, sin especificar cuántos, unidos por el símbolo del
@@ -749,10 +763,11 @@
   su propio nombre.</p>
   <h3 id="tipos-de-datos-primitivos">Tipos de datos primitivos</h3>
   <p>Java nos los proporciona porque algunos tipos de datos se usan con
-  mucha frecuencia. Estos se denominan tipos primitivos[^15]. Estamos
-  familiarizados con la mayoría de ellos de la vida cotidiana: números
-  enteros, números reales y caracteres. En Java, se identifican con los
-  tipos enteros <span class="palabra">int</span> y <span
+  mucha frecuencia. Estos se denominan tipos
+  primitivos<span class="tooltip"><a href="#fn14" class="nota-llamada" id="fnref14">[14]</a><span class="tooltiptext">También se denominan estándar o implícitos.</span></span>.
+  Estamos familiarizados con la mayoría de ellos de la vida cotidiana:
+  números enteros, números reales y caracteres. En Java, se identifican
+  con los tipos enteros <span class="palabra">int</span> y <span
   class="palabra">long</span>, los tipos reales <span
   class="palabra">float</span> y <span class="palabra">double</span>,
   los caracteres <span class="palabra">char</span> y un tipo más: el
@@ -764,7 +779,8 @@
   </aside>
   <h4 id="los-números-enteros">Los números enteros</h4>
   <p>Son todos los números positivos y negativos (sin parte fraccional).
-  Constan de un signo y dígitos[^16]:</p>
+  Constan de un signo y
+  dígitos<span class="tooltip"><a href="#fn15" class="nota-llamada" id="fnref15">[15]</a><span class="tooltiptext">Si se omite el signo se asume que el número es positivo.</span></span>:</p>
   <pre class="codigo-fuente">
   +57 -45 3 987 -34 0 32768
   </pre>
@@ -838,13 +854,16 @@
   </tbody>
   </table>
   <p>Al representar números positivos y negativos, además del cero, los
-  valores que pueden tener son la mitad del total[^17]. En la
-  actualidad, es habitual definir todos los números enteros como de tipo
-  <span class="palabra">int</span>, aunque el valor que vayan a tomar
-  pueda ser representado con un <span class="palabra">byte</span> o un
-  <span class="palabra">short</span>[^18]. Y solo si tenemos seguridad
-  de que el valor que pueda tomar es muy grande (más de dos mil
-  millones), usaremos <span class="palabra">long</span>.</p>
+  valores que pueden tener son la mitad del
+  total<span class="tooltip"><a href="#fn16" class="nota-llamada" id="fnref16">[16]</a><span class="tooltiptext">La mitad en los números negativos y la mitad menos uno en los positivos, además del cero.</span></span>.
+  En la actualidad, es habitual definir todos los números enteros como
+  de tipo <span class="palabra">int</span>, aunque el valor que vayan a
+  tomar pueda ser representado con un <span class="palabra">byte</span>
+  o un <span
+  class="palabra">short</span><span class="tooltip"><a href="#fn17" class="nota-llamada" id="fnref17">[17]</a><span class="tooltiptext">Los utilizaremos, por ejemplo, en caso de necesitar una gran cantidad de datos y pueda afectar a los requerimientos de memoria.</span></span>.
+  Y solo si tenemos seguridad de que el valor que pueda tomar es muy
+  grande (más de dos mil millones), usaremos <span
+  class="palabra">long</span>.</p>
   <h4 id="números-reales">Números reales</h4>
   <p>Son números decimales, es decir, tienen una parte entera y una
   fraccionaria, con un punto decimal entre ellos. Podemos usar también
@@ -915,19 +934,22 @@
   de Java, que se llama Unicode, incluye caracteres para muchos idiomas
   escritos. Lo normal es que nosotros usemos un subconjunto de Unicode
   que corresponde a la codificación ASCII. ASCII consta del alfabeto
-  inglés[^19], más números y símbolos.</p>
+  inglés<span class="tooltip"><a href="#fn18" class="nota-llamada" id="fnref18">[18]</a><span class="tooltiptext">Podemos utilizar la eñe y las letras con tilde, pero, en general, no se recomienda esta opción.</span></span>,
+  más números y símbolos.</p>
   <p>Aquí hay algunos valores de ejemplo de tipo <span
   class="palabra">char</span>:</p>
   <pre class="codigo-fuente">
   'A' 'a' '8' '2' '+' '-' '$' '?' '*' ' '
   </pre>
-  <p>Observemos que cada carácter está encerrado entre apóstrofos[^20]
+  <p>Observemos que cada carácter está encerrado entre
+  apóstrofos<span class="tooltip"><a href="#fn19" class="nota-llamada" id="fnref19">[19]</a><span class="tooltiptext">Es frecuente confundir este término con apóstrofe, que tiene un significado diferente.</span></span>
   (comillas simples). El compilador de Java necesita las comillas para
-  poder diferenciar entre los datos de tipo caracter[^21] y otros
-  elementos de Java. Por ejemplo, los apóstrofos alrededor de los
-  caracteres ‘A’ y ‘+’ los distinguen del identificador <em>A</em> y del
-  símbolo de la suma. Notemos también que el espacio en blanco, ’ ’, es
-  un caracter válido.</p>
+  poder diferenciar entre los datos de tipo
+  caracter<span class="tooltip"><a href="#fn20" class="nota-llamada" id="fnref20">[20]</a><span class="tooltiptext">El término caracter, sin tilde y acentuado en su última sílaba, es de uso común en la jerga informática española para diferenciar el tipo de datos de los símbolos a los que representa. Es por ello que, salvo que la corrección automática lo haya modificado, aparecerá así en el texto al hacer referencia al tipo de datos.</span></span>
+  y otros elementos de Java. Por ejemplo, los apóstrofos alrededor de
+  los caracteres ‘A’ y ‘+’ los distinguen del identificador <em>A</em> y
+  del símbolo de la suma. Notemos también que el espacio en blanco, ’ ’,
+  es un caracter válido.</p>
   <p>¿Cómo escribimos el apóstrofo como un caracter? Si escribimos ’’’
   el compilador de Java se quejará de que hemos cometido un error de
   sintaxis: el segundo apóstrofo indica el final de un carácter (el
@@ -940,15 +962,17 @@
   <pre class="codigo-fuente">
   '\''
   </pre>
-  <p>Es importante notar que usamos la barra inversa[^22] () como
-  carácter de escape y no la barra[^23] (/). Java usa el caracter barra
-  como símbolo de la división, por lo que es importante reconocer que
-  ambas son diferentes. Pensando en ello un momento, este esquema
-  introduce un nuevo problema: ¿cómo escribimos la barra inversa? La
-  respuesta es que Java proporciona una segunda secuencia de escape, \,
-  que permite escribirla. Por lo tanto, escribimos el valor de <span
-  class="palabra">char</span> de la barra inversa en Java de la
-  siguiente manera:</p>
+  <p>Es importante notar que usamos la barra
+  inversa<span class="tooltip"><a href="#fn21" class="nota-llamada" id="fnref21">[21]</a><span class="tooltiptext">Aunque este es el que define la RAE, en la literatura, podemos encontrarla denominada como barra invertida, contrabarra…</span></span>
+  () como carácter de escape y no la
+  barra<span class="tooltip"><a href="#fn22" class="nota-llamada" id="fnref22">[22]</a><span class="tooltiptext">Análogamente, también tiene otras denominaciones.</span></span>
+  (/). Java usa el caracter barra como símbolo de la división, por lo
+  que es importante reconocer que ambas son diferentes. Pensando en ello
+  un momento, este esquema introduce un nuevo problema: ¿cómo escribimos
+  la barra inversa? La respuesta es que Java proporciona una segunda
+  secuencia de escape, \, que permite escribirla. Por lo tanto,
+  escribimos el valor de <span class="palabra">char</span> de la barra
+  inversa en Java de la siguiente manera:</p>
   <pre class="codigo-fuente">
   '\\'
   </pre>
@@ -1390,14 +1414,16 @@
   </pre>
   <p>Las siguientes declaraciones son legales:</p>
   <pre class="codigo-java">
-  final String PALABRA1 = "Ciclo de Grado Superior de ";
-        String palabra3 = "Desarrollo de Aplicaciones ";
+  final String PALABRA1 = "Ciclo de Grado Superior de";
+        String palabra3 = "Desarrollo de Aplicaciones";
   final String PALABRA5 = "Multiplataforma";
   </pre>
-  <p>Almacenan <em>“Ciclo de Grado Superior de”</em> como el valor de la
-  constante <em>PALABRA1</em>; la cadena <em>“Desarrollo de
-  Aplicaciones”</em> se almacena en la variable <em>palabra3</em>; y
-  <em>“Multiplataforma”</em> en la constante <em>PALABRA5</em>.</p>
+  <p>Almacenan <span class="literal">“Ciclo de Grado Superior de”</span>
+  como el valor de la constante <em>PALABRA1</em>; la cadena <span
+  class="literal">“Desarrollo de Aplicaciones”</span> se almacena en la
+  variable <em>palabra3</em>; y <span
+  class="literal">“Multiplataforma”</span> en la constante
+  <em>PALABRA5</em>.</p>
   <h4 id="capitalización-de-identificadores">Capitalización de
   identificadores</h4>
   <p>Los programadores utilizan una serie de reglas para escribir los
@@ -1413,7 +1439,8 @@
   Microsystems</a>. Los nombres se construyen utilizando palabras
   significativas, sin abreviaturas; igualmente, se evitan los acrónimos,
   utilizando palabras completas sin separar entre ellas, siguiendo un
-  estilo <em>CamelCase</em>[^25].</p>
+  estilo
+  <em>CamelCase</em><span class="tooltip"><a href="#fn23" class="nota-llamada" id="fnref23">[23]</a><span class="tooltiptext">CamelCase es un término en inglés que hace referencia a que las primeras letras de una palabra se escriben en mayúsculas, asemejándose a las jorobas de un camello.</span></span>.</p>
   <p>Las clases son sustantivos en <em>UpperCamelCase</em> (la primera
   letra en mayúsculas), como en <em>Ejemplo</em> o <em>MiClase</em>. Los
   métodos son verbos en <em>LowerCamelCase</em> (la primera letra en
@@ -1435,10 +1462,11 @@
   <pre class="codigo-java">
   apellido = "Cepero";
   </pre>
-  <p>asigna el valor de cadena <em>“Cepero”</em> a la variable
-  <em>apellido</em> (es decir, almacena la secuencia de caracteres
-  <em>“Cepero”</em> en la posición de memoria asociada con la variable
-  denominada <em>apellido</em>).</p>
+  <p>asigna el valor de cadena <span class="literal">“Cepero”</span> a
+  la variable <span class="variable">apellido</span> (es decir, almacena
+  la secuencia de caracteres <span class="literal">“Cepero”</span> en la
+  posición de memoria asociada con la variable denominada <span
+  class="variable">apellido</span>).</p>
   <p>Esta es la plantilla sintáctica para una sentencia de
   asignación:</p>
   <pre class="plantilla-sintactica">
@@ -1457,9 +1485,9 @@
   anterior de la variable se reemplaza por el de la expresión. Podemos
   observar que la sintaxis es la misma que para asignar un valor inicial
   a un campo en una declaración de campo. Además, podemos ampliar la
-  plantilla (ya vista con anterioridad) <em>StatementExpression</em>,
-  que definía una sentencia únicamente como la invocación de un
-  método:</p>
+  plantilla (ya vista con anterioridad) <span
+  class="produccion">StatementExpression</span>, que definía una
+  sentencia únicamente como la invocación de un método:</p>
   <pre class="plantilla-sintactica">
   StatementExpression:
   Assigment
@@ -1513,11 +1541,11 @@
   </pre>
   <h4 id="expresiones-de-cadena">Expresiones de cadena</h4>
   <p>No podemos realizar operaciones matemáticas con cadenas pero Java
-  nos proporciona la clase <code>String</code> con una operación
-  especial denominada concatenación, que utiliza el operador suma
-  (<code>+</code>). La concatenación de dos cadenas proporciona una
-  nueva cadena que contiene los caracteres de las dos. Por ejemplo,
-  dadas las declaraciones:</p>
+  nos proporciona la clase <span class="clase">String</span> con una
+  operación especial denominada concatenación, que utiliza el operador
+  suma (<span class="operador">+</span>). La concatenación de dos
+  cadenas proporciona una nueva cadena que contiene los caracteres de
+  las dos. Por ejemplo, dadas las declaraciones:</p>
   <pre class="codigo-fuente">
   String ciclo;
   String p1 = "Desarrollo de Aplicaciones";
@@ -1527,24 +1555,29 @@
   <pre class="codigo-fuente">
   ciclo = p1 + " " + p2;
   </pre>
-  <p>cuyo resultado es la asignación a <code>ciclo</code> de la cadena
-  <code>"Desarrollo de Aplicaciones Multiplataforma"</code>. El orden de
-  las cadenas en la expresión determina cómo aparecen en la cadena
-  resultado. Si, por ejemplo, hubiéramos escrito:</p>
+  <p>cuyo resultado es la asignación a <span
+  class="variable">ciclo</span> de la cadena <span
+  class="literal">“Desarrollo de Aplicaciones
+  Multiplataforma”</span><span class="tooltip"><a href="#fn24" class="nota-llamada" id="fnref24">[24]</a><span class="tooltiptext">Notad que hemos añadido un espacio en blanco, una cadena que solo contiene un espacio en blanco, siendo el resultado la concatenación de las tres, en el orden en que aparecen en la expresión.</span></span>.
+  El orden de las cadenas en la expresión determina cómo aparecen en la
+  cadena resultado. Si, por ejemplo, hubiéramos escrito:</p>
   <pre class="codigo-fuente">
   ciclo = p2 + p1;
   </pre>
-  <p>el resultado hubiera sido la asignación a <code>ciclo</code> de la
-  cadena <code>"MultiplataformaDesarrollo de Aplicaciones"</code>. La
-  concatenación puede utilizar tanto literales, como constantes con
+  <p>el resultado hubiera sido la asignación a <span
+  class="variable">ciclo</span> de la cadena <span
+  class="literal">“MultiplataformaDesarrollo de
+  Aplicaciones”</span><span class="tooltip"><a href="#fn25" class="nota-llamada" id="fnref25">[25]</a><span class="tooltiptext">En este caso no hemos añadido el espacio y no aparece en el resultado.</span></span>.
+  La concatenación puede utilizar tanto literales, como constantes con
   nombre y variables. Por ejemplo:</p>
   <pre class="codigo-fuente">
   ciclo = "Estudiamos: " + palabra3 + " "
           + PALABRA5 + " en el Pablo Serrano";
   </pre>
-  <p>tiene como resultado la asignación a <code>ciclo</code> de la
-  cadena
-  <code>"Estudiamos: Desarrollo de Aplicaciones Multiplataforma en el Pablo Serrano"</code>.</p>
+  <p>tiene como resultado la asignación a <span
+  class="variable">ciclo</span> de la cadena <span
+  class="literal">“Estudiamos: Desarrollo de Aplicaciones
+  Multiplataforma en el Pablo Serrano”</span>.</p>
   <p>En el caso anterior hemos combinado identificadores y literales.
   Por supuesto, resulta posible usar solo el literal; y, si como sucede
   en esa asignación, no cabe en una línea, podemos separarla en varias y
@@ -1554,30 +1587,32 @@
           " en el Pablo Serrano";
   </pre>
   <p>En muchas ocasiones nos encontraremos con que queremos añadir
-  algunos caracteres a una cadena existente. Imaginemos que
-  <code>ciclo</code> contiene <code>"Estudiamos "</code> y queremos
-  añadirle el nombre del Centro. Podemos utilizar una sentencia
-  como:</p>
+  algunos caracteres a una cadena existente. Imaginemos que <span
+  class="variable">ciclo</span> contiene <span
+  class="literal">“Estudiamos”</span> y queremos añadirle el nombre del
+  Centro. Podemos utilizar una sentencia como:</p>
   <pre class="codigo-fuente">
   ciclo = ciclo + " en el Pablo Serrano";
   </pre>
-  <p>La sentencia recupera el valor de <code>ciclo</code> de la memoria,
-  añade el literal para crear una cadena nueva
-  (<code>"Estudiamos en el Pablo Serrano"</code>) y asigna esa nueva
-  cadena a <code>ciclo</code>. La nueva cadena reemplaza a la
+  <p>La sentencia recupera el valor de <span
+  class="variable">ciclo</span> de la memoria, añade el literal para
+  crear una cadena nueva (<span class="literal">“Estudiamos en el Pablo
+  Serrano”</span>) y asigna esa nueva cadena a <span
+  class="variable">ciclo</span>. La nueva cadena reemplaza a la
   anterior.</p>
-  <p>La concatenación solo es válida para valores de la clase
-  <code>String</code>. Si intentamos concatenar el valor de uno de los
-  tipos primitivos de Java con una cadena, Java convertirá el valor en
-  la cadena equivalente y realizará la concatenación. Por ejemplo:</p>
+  <p>La concatenación solo es válida para valores de la clase <span
+  class="clase">String</span>. Si intentamos concatenar el valor de uno
+  de los tipos primitivos de Java con una cadena, Java convertirá el
+  valor en la cadena equivalente y realizará la concatenación. Por
+  ejemplo:</p>
   <pre class="codigo-fuente">
   String resultado;
   resultado = "El cuadrado de 6 es " + 36;
   </pre>
-  <p>asigna a <code>resultado</code> la cadena
-  <code>"El cuadrado de 6 es 36"</code>. Java convierte el literal
-  entero 36 en la cadena <code>"36"</code> antes de realizar la
-  concatenación.</p>
+  <p>asigna a <span class="variable">resultado</span> la cadena <span
+  class="literal">“El cuadrado de 6 es 36”</span>. Java convierte el
+  literal entero <span class="literal">36</span> en la cadena <span
+  class="literal">“36”</span> antes de realizar la concatenación.</p>
   <h4 id="expresiones-de-inicialización">Expresiones de
   inicialización</h4>
   <p>Ahora que hemos visto qué es una expresión, podemos generalizar la
@@ -1609,15 +1644,18 @@
   responde sonriente que sí, que lo sabe.</p>
   <h3 id="llamadas-a-métodos">Llamadas a métodos</h3>
   <p>Los métodos (operadores asociados con objetos en sentido abstracto)
-  se implementan como subprogramas que están llamados a realizar algún
-  conjunto de acciones predefinido. Ya vimos que una llamada a un método
-  es una forma de sentencia ejecutable de Java. Escribimos la
-  declaración de llamada simplemente especificando el nombre del método,
-  seguido de una lista de parámetros entre paréntesis. La llamada
-  provoca que el control del ordenador pase a las instrucciones del
-  método, siendo los valores que se le dan como argumento una forma de
-  comunicación con el subprograma. Cuando el método ha completado su
-  tarea, el control vuelve a la sentencia que sigue a la llamada.</p>
+  se implementan como
+  subprogramas<span class="tooltip"><a href="#fn26" class="nota-llamada" id="fnref26">[26]</a><span class="tooltiptext">Recordemos las estructuras básicas: secuencia, selección, bucle y subprograma.</span></span>
+  que están llamados a realizar algún conjunto de acciones predefinido.
+  Ya vimos que una llamada a un método es una forma de sentencia
+  ejecutable de Java. Escribimos la declaración de llamada simplemente
+  especificando el nombre del método, seguido de una <strong>lista de
+  parámetros</strong> entre paréntesis. La llamada provoca que el
+  control del ordenador pase a las instrucciones del método, siendo los
+  valores que se le dan como argumento una forma de comunicación con el
+  subprograma<span class="tooltip"><a href="#fn27" class="nota-llamada" id="fnref27">[27]</a><span class="tooltiptext">Veremos que los datos pueden ser dados a un subprograma pero también pueden ser recibidos resultados desde el subprograma.</span></span>.
+  Cuando el método ha completado su tarea, el control vuelve a la
+  sentencia que sigue a la llamada.</p>
   <aside class="definicion">
   <p><strong>Lista de parámetros:</strong> Mecanismo para la
   comunicación de datos a un subprograma.</p>
@@ -1625,7 +1663,7 @@
   <p>Debemos tener en cuenta que los argumentos son opcionales, pero los
   paréntesis no. A menudo escribimos declaraciones de llamada de la
   siguiente forma:</p>
-  <pre class="codigo-fuente">
+  <pre class="codigo-java">
   nombreMetodo();
   </pre>
   <p>Un sinónimo del término llamar es invocar. Decir que se invoca un
@@ -1634,14 +1672,17 @@
   <p>Java proporciona un objeto que representa un dispositivo de salida,
   para mostrarnos cosas; de forma predeterminada, la pantalla. Podemos
   enviar mensajes a este objeto pidiéndole que imprima algo en la
-  pantalla. El nombre del objeto es <code>System.out</code> y uno de los
-  mensajes que podemos enviar (método que podemos aplicar) es
-  <code>print</code>. Por ejemplo:</p>
-  <pre class="codigo-fuente">
+  pantalla. El nombre del objeto es <span
+  class="instancia">System.out</span><span class="tooltip"><a href="#fn28" class="nota-llamada" id="fnref28">[28]</a><span class="tooltiptext">El objeto representa la salida estándar, que suele corresponderse con la pantalla y que está preparado para ser utilizado cuando el programa lo necesite.</span></span>
+  y uno de los mensajes que podemos enviar (método que podemos aplicar)
+  es <span class="metodo">print</span>. Por ejemplo:</p>
+  <pre class="codigo-java">
   System.out.print("María" + " " + "Pilar");
   </pre>
   <p>muestra</p>
-  <p><code>María Pilar</code></p>
+  <pre class="codigo-fuente">
+  María Pilar
+  </pre>
   <p>en consola, una ventana de la pantalla. Hay varias cosas a tener en
   cuenta acerca de esta sentencia: invocamos el método (enviamos el
   mensaje al objeto) colocando el nombre del método a continuación del
@@ -1658,12 +1699,12 @@
   mismo. Los sucesivos mensajes enviados a través del método de
   impresión muestran las cadenas una al lado de la otra, en la misma
   línea. Si deseamos pasar a la línea siguiente después de imprimir la
-  cadena, cosa bastante habitual, podemos utilizar el método
-  <code>println</code>. Es similar al método <code>print</code> pero
-  tiene la característica añadida de causar que la siguiente salida se
-  imprima en la siguiente línea. Por ejemplo, el fragmento de
-  código:</p>
-  <pre class="codigo-fuente">
+  cadena, cosa bastante habitual, podemos utilizar el método <span
+  class="metodo">println</span>. Es similar al método <span
+  class="metodo">print</span> pero tiene la característica añadida de
+  causar que la siguiente salida se imprima en la siguiente línea. Por
+  ejemplo, el fragmento de código:</p>
+  <pre class="codigo-java">
   System.out.println("María");
   System.out.println(" ");
   System.out.print("Pilar");
@@ -1674,30 +1715,33 @@
    
   Pilar
   </pre>
-  <p>El método <code>println</code> no pasa a la siguiente línea hasta
-  que se imprime la cadena. La segunda línea contiene un espacio en
-  blanco, no es la cadena vacía. También podemos imprimir variables en
-  lugar de literales. Por ejemplo:</p>
-  <pre class="codigo-fuente">
+  <p>El método <span class="metodo">println</span> no pasa a la
+  siguiente línea hasta que se imprime la cadena. La segunda línea
+  contiene un espacio en blanco, no es la cadena vacía. También podemos
+  imprimir variables en lugar de literales. Por ejemplo:</p>
+  <pre class="codigo-java">
   String suNombre = "María Pilar";
   System.out.println(suNombre);
   </pre>
   <p>imprime en la pantalla exactamente lo mismo que la sentencia:</p>
-  <pre class="codigo-fuente">
+  <pre class="codigo-java">
   System.out.print("María Pilar");
   </pre>
   <p>Hay una diferencia, sin embargo. Si se usa la última sentencia, la
   siguiente cadena comenzaría en la misma línea, a continuación del
-  carácter r. Si se utilizan la declaración y la sentencia -la que usa
-  el método <code>println</code>- anteriores, la cadena del siguiente
-  mensaje a <code>System.out</code> comenzaría en la siguiente
+  carácter <em>r</em>. Si se utilizan la declaración y la sentencia -la
+  que usa el método <span class="metodo">println</span>- anteriores, la
+  cadena del siguiente mensaje a <span
+  class="instancia">System.out</span> comenzaría en la siguiente
   línea.</p>
   <h3 id="bibliotecas">Bibliotecas</h3>
-  <p>Una biblioteca (library) es un código desarrollado con funciones
-  listas para usar, que realizan tareas específicas. En lugar de tener
-  que escribir cada línea de código desde cero, podemos utilizar una
-  biblioteca para aprovechar el trabajo previo de otros programadores y
-  acelerar nuestro propio desarrollo.</p>
+  <p>Una biblioteca
+  (library<span class="tooltip"><a href="#fn29" class="nota-llamada" id="fnref29">[29]</a><span class="tooltiptext">Es común que, en lugar de este término, que es el correcto, lo encontréis como librería: falso amigo del inglés.</span></span>)
+  es un código desarrollado con funciones listas para usar, que realizan
+  tareas específicas. En lugar de tener que escribir cada línea de
+  código desde cero, podemos utilizar una biblioteca para aprovechar el
+  trabajo previo de otros programadores y acelerar nuestro propio
+  desarrollo.</p>
   <p>Podemos pensar en una biblioteca como en una colección de
   herramientas utilizable en nuestros programas. Cada herramienta
   (método o clase) realiza una tarea específica. Por ejemplo, si
@@ -1714,9 +1758,10 @@
   <p>Java, como otros lenguajes de programación modernos, especialmente
   los orientados a objetos, incorpora una amplia biblioteca de clases.
   Dentro de la biblioteca, las clases se agrupan en lo que se denominan
-  paquetes (package). Para utilizar sus componentes debemos usar
-  declaraciones de importación: sentencias que indican al compilador de
-  Java qué paquetes de la biblioteca utiliza nuestro programa.</p>
+  paquetes (<em>packages</em>). Para utilizar sus componentes debemos
+  usar declaraciones de importación: sentencias que indican al
+  compilador de Java qué paquetes de la biblioteca utiliza nuestro
+  programa.</p>
   <aside class="definicion">
   <p><strong>Paquete:</strong> Colección de clases que puede ser
   importada por un programa.</p>
@@ -1739,15 +1784,15 @@
   PackageOrTypeName <span class="terminal">. *</span>
   </pre>
   <p>En la práctica, una declaración de importación comienza con la
-  palabra <code>import</code>, seguida del nombre de un paquete o clase.
-  Un paquete puede ir seguido de subpaquetes separados por un punto
-  (<code>.</code>), terminado con el nombre de una clase o el carácter
-  asterisco (<code>*</code>). La declaración finaliza con un punto y
-  coma (<code>;</code>). Si solo necesitamos utilizar una clase de un
-  paquete en particular, podemos hacerlo indicando su nombre
-  (Identifier) en la declaración; pero, si queremos usar múltiples
-  clases del paquete, el asterisco le dice al compilador que importe
-  todas las clases del paquete.</p>
+  palabra <span class="palabra">import</span>, seguida del nombre de un
+  paquete o clase. Un paquete puede ir seguido de subpaquetes separados
+  por un punto (.), terminado con el nombre de una clase o el carácter
+  asterisco (<em>). La declaración finaliza con un punto y coma (;). Si
+  solo necesitamos utilizar una clase de un paquete en particular,
+  podemos hacerlo indicando su nombre (</em>Identifier*) en la
+  declaración; pero, si queremos usar múltiples clases del paquete, el
+  asterisco le dice al compilador que importe todas las clases del
+  paquete.</p>
   <p>¿Para qué podríamos querer utilizar la primera forma si el
   asterisco es más sencillo de escribir y tiene el mismo efecto? En el
   primer caso se importa solo la clase que se necesita, mientras que con
@@ -1774,97 +1819,102 @@
   el programa puede venir desde un dispositivo de entrada o desde un
   archivo en un dispositivo de almacenamiento auxiliar. Por ahora, todas
   las entradas se harán desde un terminal a través de la entrada
-  estándar, representada por el objeto <code>System.in</code>.</p>
-  <p>Desafortunadamente, Java no hace que introducir datos desde
-  <code>System.in</code> sea tan simple como lo es mostrarlos a través
-  de <code>System.out</code>. <code>System.in</code> es un objeto muy
-  primitivo, diseñado para servir de base a otros objetos más
-  sofisticados. Con <code>System.in</code>, podemos ingresar un solo
+  estándar, representada por el objeto <span
+  class="instancia">System.in</span>.</p>
+  <p>Desafortunadamente, Java no hace que introducir datos desde <span
+  class="instancia">System.in</span> sea tan simple como lo es
+  mostrarlos a través de <span class="instancia">System.out</span>.
+  <span class="instancia">System.in</span> es un objeto muy primitivo,
+  diseñado para servir de base a otros objetos más sofisticados. Con
+  <span class="instancia">System.in</span>, podemos ingresar un solo
   byte o una serie de bytes pero, para que nos sea útil, estos datos
   deben convertirse en una cadena u otro tipo de dato.</p>
   <p>Buscamos a través de la documentación de la biblioteca de Java y
-  encontramos una clase llamada <code>Scanner</code>, útil para separar
-  los elementos de la línea de entrada en elementos individuales, en
-  función de su tipo de datos. Para separar los datos, por defecto,
-  utiliza lo que se conoce como blancos, que son los caracteres espacio
-  en blanco y tabulador.</p>
-  <p>Para poder utilizar esta clase <code>Scanner</code>, en primer
-  lugar, debemos importarla para que nuestro código sepa cómo hacerlo.
-  Para ello, utilizaremos la sentencia de importación
+  encontramos una clase llamada <span class="clase">Scanner</span>, útil
+  para separar los elementos de la línea de entrada en elementos
+  individuales, en función de su tipo de datos. Para separar los datos,
+  por defecto, utiliza lo que se conoce como blancos, que son los
+  caracteres espacio en blanco y tabulador.</p>
+  <p>Para poder utilizar esta clase <span class="clase">Scanner</span>,
+  en primer lugar, debemos importarla para que nuestro código sepa cómo
+  hacerlo. Para ello, utilizaremos la sentencia de importación
   correspondiente:</p>
-  <pre class="codigo-fuente">
+  <pre class="codigo-java">
   import java.util.Scanner;
   </pre>
   <p>Recordemos que dicha sentencia deberá aparecer antes de la
-  declaración de clase. Necesitamos ahora un objeto de la clase
-  <code>Scanner</code>, es decir, necesitamos instanciar un objeto de la
-  clase <code>Scanner</code>. Hemos indicado que usamos el operador
-  <code>new</code> para instanciar objetos. Para ello, escribimos la
-  palabra reservada <code>new</code>, seguida del nombre de la clase y
-  una lista de argumentos. Por ejemplo:</p>
-  <pre class="codigo-fuente">
+  declaración de clase. Necesitamos ahora un objeto de la clase <span
+  class="clase">Scanner</span>, es decir, necesitamos instanciar un
+  objeto de la clase <span class="clase">Scanner</span>. Hemos indicado
+  que usamos el operador <span class="palabra">new</span> para
+  instanciar objetos. Para ello, escribimos la palabra reservada <span
+  class="palabra">new</span>, seguida del nombre de la clase y una lista
+  de argumentos. Por ejemplo:</p>
+  <pre class="codigo-java">
   Scanner teclado; // Un escáner de texto asociado al teclado
   teclado = new Scanner(System.in);
   </pre>
-  <p>El código que sigue a <code>new</code> se parece mucho a una
-  llamada a un método. De hecho, es una llamada a un tipo especial de
-  método llamado constructor. Cada clase tiene, al menos, un método
-  constructor. El propósito de un constructor es preparar un nuevo
-  objeto para su uso. El operador <code>new</code> crea un objeto de la
-  clase pero lo crea vacío, sin datos, y luego invoca al método
-  constructor, que puede completar los campos del objeto o realizar
-  cualquier acción necesaria para que el objeto sea utilizable. Por
-  ejemplo, el código anterior, crea primero un objeto de la clase
-  <code>Scanner</code> y hace que utilice <code>System.in</code> como
-  origen de datos. El nuevo objeto se asigna a la variable
-  <code>teclado</code>. Los constructores se invocan solo a través del
-  operador <code>new</code>; no podemos escribirlos como llamadas a
+  <p>El código que sigue a <span class="palabra">new</span> se parece
+  mucho a una llamada a un método. De hecho, es una llamada a un tipo
+  especial de método llamado constructor. Cada clase tiene, al menos, un
+  método constructor. El propósito de un constructor es preparar un
+  nuevo objeto para su uso. El operador <span class="palabra">new</span>
+  crea un objeto de la clase pero lo crea vacío, sin datos, y luego
+  invoca al método constructor, que puede completar los campos del
+  objeto o realizar cualquier acción necesaria para que el objeto sea
+  utilizable. Por ejemplo, el código anterior, crea primero un objeto de
+  la clase <span class="clase">Scanner</span> y hace que utilice <span
+  class="instancia">System.in</span> como origen de datos. El nuevo
+  objeto se asigna a la variable <span class="instancia">teclado</span>.
+  Los constructores se invocan solo a través del operador <span
+  class="palabra">new</span>; no podemos escribirlos como llamadas a
   métodos normales.</p>
   <p>Los constructores tienen una característica especial que requiere
   una explicación más detallada. La llamada al método constructor no
   está precedida por un nombre de objeto o de clase como en el caso de
-  <code>System.out.print</code>, por ejemplo. No tenemos que preceder el
-  nombre del constructor con el de la clase porque su propio nombre le
-  dice a Java a qué clase pertenece: como el constructor crea un objeto
-  antes de que se asigne a un campo o variable, no podemos asociarlo con
-  un objeto en particular.</p>
+  <span class="metodo">System.out.print</span>, por ejemplo. No tenemos
+  que preceder el nombre del constructor con el de la clase porque su
+  propio nombre le dice a Java a qué clase pertenece: como el
+  constructor crea un objeto antes de que se asigne a un campo o
+  variable, no podemos asociarlo con un objeto en particular.</p>
   <p>El nombre del constructor no sigue nuestra regla habitual de que
   los nombres de los métodos empiecen por minúscula. Por convención,
   todos los nombres de clases (en la biblioteca de Java) comienzan con
   una letra mayúscula y el nombre del constructor debe escribirse
   exactamente igual que el nombre de la clase.</p>
   <h4 id="método-next">Método next</h4>
-  <p>La clase <code>Scanner</code> nos proporciona otro útil método,
-  llamado <code>next</code>. Su nombre es descriptivo de su función:
-  devuelve lo «siguiente» que haya en la entrada (como una cadena). Aquí
-  hay un ejemplo de uso:</p>
-  <pre class="codigo-fuente">
+  <p>La clase <span class="clase">Scanner</span> nos proporciona otro
+  útil método, llamado <span class="metodo">next</span>. Su nombre es
+  descriptivo de su función: devuelve lo «siguiente» que haya en la
+  entrada (como una cadena). Aquí hay un ejemplo de uso:</p>
+  <pre class="codigo-java">
   String unaLinea; // Un String
   unaLinea = entrada.next();
   </pre>
-  <p>La llamada a <code>next</code> es bastante diferente de la llamada
-  a <code>print</code>. En la sentencia de lectura utilizamos una
-  asignación, mientras en la de escritura no. Java admite dos tipos de
-  métodos: métodos con retorno de valor (funciones) y métodos nulos
-  (procedimientos). Una función se invoca dentro de una expresión y,
-  cuando retorna, devuelve el valor que ha calculado tomando su lugar en
-  la expresión y pudiendo después ser utilizado para la asignación u
-  otro cálculo posterior. Un procedimiento no devuelve ningún valor: lo
-  invocamos como una sentencia separada y, cuando ha terminado su
-  ejecución, continúa con la sentencia siguiente.</p>
+  <p>La llamada a <span class="metodo">next</span> es bastante diferente
+  de la llamada a <span class="metodo">print</span>. En la sentencia de
+  lectura utilizamos una asignación, mientras en la de escritura no.
+  Java admite dos tipos de métodos: métodos con retorno de valor
+  (<strong>funciones</strong>) y métodos nulos
+  (<strong>procedimientos</strong>). Una función se invoca dentro de una
+  expresión y, cuando retorna, devuelve el valor que ha calculado
+  tomando su lugar en la expresión y pudiendo después ser utilizado para
+  la asignación u otro cálculo posterior. Un procedimiento no devuelve
+  ningún valor: lo invocamos como una sentencia separada y, cuando ha
+  terminado su ejecución, continúa con la sentencia siguiente.</p>
   <aside class="definicion">
   <p><strong>Función:</strong> Método invocado desde una expresión y que
   devuelve un valor que puede ser utilizado en la misma.</p>
   <p><strong>Procedimiento:</strong> Método invocado en una sentencia y
   a cuyo regreso la ejecución continúa con la sentencia siguiente.</p>
   </aside>
-  <p>Si la línea tiene más de un elemento, como varias palabras,
-  <code>next</code> nos devolverá cada palabra, una tras otra. Si lo que
-  queremos una cadena con todas ellas, podemos utilizar el método
-  <code>nextLine</code>, que nos devuelve lo que haya en la entrada
-  hasta el final de la línea. Además, nos proporciona otros métodos,
-  útiles para la lectura de datos de otros tipos, no solo de cadenas,
-  como <code>nextInt</code>, por ejemplo.</p>
+  <p>Si la línea tiene más de un elemento, como varias palabras, <span
+  class="metodo">next</span> nos devolverá cada palabra, una tras otra.
+  Si lo que queremos una cadena con todas ellas, podemos utilizar el
+  método <span class="metodo">nextLine</span>, que nos devuelve lo que
+  haya en la entrada hasta el final de la línea. Además, nos proporciona
+  otros métodos, útiles para la lectura de datos de otros tipos, no solo
+  de cadenas, como <span class="metodo">nextInt</span>, por ejemplo.</p>
   <h3 id="entrada-y-salida-interactivas">Entrada y salida
   interactivas</h3>
   <p>Un programa interactivo es aquél en el que el usuario se comunica
@@ -1874,29 +1924,182 @@
   instrucciones claras al usuario sobre los datos a introducir.</p>
   <p>Antes de leer los valores en un programa interactivo, el programa
   debe imprimir un mensaje para explicar al usuario qué ha de
-  introducir. Esos mensajes se denominan indicativo de petición de
-  entrada. Sin ellos, el usuario no sabrá qué debe proporcionar al
+  introducir. Esos mensajes se denominan <em>indicativo de petición de
+  entrada</em>. Sin ellos, el usuario no sabrá qué debe proporcionar al
   programa. Un programa que no solicite valores de entrada será muy
   difícil de utilizar, si es que resulta posible el hacerlo. Según las
   circunstancias, el programa también deberá imprimir los valores que se
   han escrito para que el usuario pueda verificar que lo introducido es
-  correcto. La impresión de los valores de entrada se denomina impresión
-  del eco.</p>
+  correcto. La impresión de los valores de entrada se denomina
+  <em>impresión del eco</em>.</p>
   <p>El siguiente segmento de código muestra el uso adecuado de los
   indicativos de petición cuando solicita un nombre:</p>
-  <pre class="codigo-fuente">
+  <pre class="codigo-java">
   System.out.print("Introducir el nombre: ");
   nombre = teclado.nextLine();   // Obtener nombre
   System.out.print("Introducir apellido: ");
   apellido = teclado.nextLine(); // Obtener apellido
   </pre>
   <p>El siguiente segmento de código muestra la impresión del eco:</p>
-  <pre class="codigo-fuente">
+  <pre class="codigo-java">
   System.out.println("Usted introdujo el nombre: "
                     + nombre + " " + apellido);
   </pre>
   <p>Aunque la impresión del eco puede parecer redundante en una
   pantalla, es crucial para la verificación de los datos de entrada.</p>
+  <p><a href="tema_01.html">Anterior</a> | <a href="#">Inicio</a> | <a
+  href="tema_03.html">Siguiente</a></p>
+  <hr />
+  <h2 id="sec-notas-pie">Notas al pie</h2>
+  <ol class="seccion-notas-impresion">
+  <li class="footnote" id="fn1">
+  <p>De los que hablamos en el primer
+  capítulo. <a href="#fnref1" class="footnote-back">↩</a></p>
+  </li>
+  <li class="footnote" id="fn2">
+  <p>También podemos acceder a la página en español: <a
+  href="https://www.oracle.com/es/java">https://www.oracle.com/es/java</a>. <a href="#fnref2" class="footnote-back">↩</a></p>
+  </li>
+  <li class="footnote" id="fn3">
+  <p>Lo identificaremos con algún enlace o botón en el que pondrá
+  <strong>Descargar Java</strong> o
+  similar. <a href="#fnref3" class="footnote-back">↩</a></p>
+  </li>
+  <li class="footnote" id="fn4">
+  <p>En Windows, puede ser el <strong><em>cmd</em></strong>. Pulsa a la
+  vez las teclas Windows y R: se abrirá un cuadro de diálogo con el
+  título <strong>Ejecutar</strong>; escribe <strong>cmd</strong> en el
+  rectángulo para introducir texto y pulsa sobre el botón
+  <strong>Aceptar</strong>. <a href="#fnref4" class="footnote-back">↩</a></p>
+  </li>
+  <li class="footnote" id="fn5">
+  <p>Como **C:Files*. <a href="#fnref5" class="footnote-back">↩</a></p>
+  </li>
+  <li class="footnote" id="fn6">
+  <p>No debería haber problemas si lo has escrito
+  igual. <a href="#fnref6" class="footnote-back">↩</a></p>
+  </li>
+  <li class="footnote" id="fn7">
+  <p>Aparecerán en color rojo para distinguirlas
+  mejor. <a href="#fnref7" class="footnote-back">↩</a></p>
+  </li>
+  <li class="footnote" id="fn8">
+  <p>Las plantillas sintácticas que representemos, aunque obtenidas de
+  la especificación, pueden no coincidir de forma exacta; como hemos
+  indicado, las modificaremos para ajustarse mejor a lo que estemos
+  explicando. <a href="#fnref8" class="footnote-back">↩</a></p>
+  </li>
+  <li class="footnote" id="fn9">
+  <p>El símbolo del dólar debe utilizarse únicamente en código generado
+  de forma automática o, poco comúnmente, para acceder a nombres que ya
+  existían en sistemas antiguos. El símbolo de subrayado se puede
+  utilizar en identificadores de dos o más letras, pero no puede usarse
+  como identificador de una letra por ser una palabra reservada. De la
+  especificación. <a href="#fnref9" class="footnote-back">↩</a></p>
+  </li>
+  <li class="footnote" id="fn10">
+  <p>Puede que os resulte extraño el denominarlo símbolo (o carácter) de
+  subrayado en lugar de guion bajo o barra baja. Pero ese es su
+  nombre. <a href="#fnref10" class="footnote-back">↩</a></p>
+  </li>
+  <li class="footnote" id="fn11">
+  <p>En Java 21 se introduce experimentalmente una mejora que lo
+  simplifica pero, por ahora lo seguiremos usando así. Referencias: <a
+  href="https://openjdk.org/projects/amber/design-notes/on-ramp">https://openjdk.org/projects/amber/design-notes/on-ramp</a>
+  y <a
+  href="https://openjdk.org/jeps/445">https://openjdk.org/jeps/445</a>. <a href="#fnref11" class="footnote-back">↩</a></p>
+  </li>
+  <li class="footnote" id="fn12">
+  <p>Si la JVM no encuentra un método <span class="palabra">main</span>
+  se lanza una excepción y
+  finaliza. <a href="#fnref12" class="footnote-back">↩</a></p>
+  </li>
+  <li class="footnote" id="fn13">
+  <p>Normalmente conocidas como comillas
+  dobles. <a href="#fnref13" class="footnote-back">↩</a></p>
+  </li>
+  <li class="footnote" id="fn14">
+  <p>También se denominan estándar o
+  implícitos. <a href="#fnref14" class="footnote-back">↩</a></p>
+  </li>
+  <li class="footnote" id="fn15">
+  <p>Si se omite el signo se asume que el número es
+  positivo. <a href="#fnref15" class="footnote-back">↩</a></p>
+  </li>
+  <li class="footnote" id="fn16">
+  <p>La mitad en los números negativos y la mitad menos uno en los
+  positivos, además del
+  cero. <a href="#fnref16" class="footnote-back">↩</a></p>
+  </li>
+  <li class="footnote" id="fn17">
+  <p>Los utilizaremos, por ejemplo, en caso de necesitar una gran
+  cantidad de datos y pueda afectar a los requerimientos de
+  memoria. <a href="#fnref17" class="footnote-back">↩</a></p>
+  </li>
+  <li class="footnote" id="fn18">
+  <p>Podemos utilizar la eñe y las letras con tilde, pero, en general,
+  no se recomienda esta
+  opción. <a href="#fnref18" class="footnote-back">↩</a></p>
+  </li>
+  <li class="footnote" id="fn19">
+  <p>Es frecuente confundir este término con apóstrofe, que tiene un
+  significado
+  diferente. <a href="#fnref19" class="footnote-back">↩</a></p>
+  </li>
+  <li class="footnote" id="fn20">
+  <p>El término caracter, sin tilde y acentuado en su última sílaba, es
+  de uso común en la jerga informática española para diferenciar el tipo
+  de datos de los símbolos a los que representa. Es por ello que, salvo
+  que la corrección automática lo haya modificado, aparecerá así en el
+  texto al hacer referencia al tipo de
+  datos. <a href="#fnref20" class="footnote-back">↩</a></p>
+  </li>
+  <li class="footnote" id="fn21">
+  <p>Aunque este es el que define la RAE, en la literatura, podemos
+  encontrarla denominada como barra invertida,
+  contrabarra… <a href="#fnref21" class="footnote-back">↩</a></p>
+  </li>
+  <li class="footnote" id="fn22">
+  <p>Análogamente, también tiene otras
+  denominaciones. <a href="#fnref22" class="footnote-back">↩</a></p>
+  </li>
+  <li class="footnote" id="fn23">
+  <p><em>CamelCase</em> es un término en inglés que hace referencia a
+  que las primeras letras de una palabra se escriben en mayúsculas,
+  asemejándose a las jorobas de un
+  camello. <a href="#fnref23" class="footnote-back">↩</a></p>
+  </li>
+  <li class="footnote" id="fn24">
+  <p>Notad que hemos añadido un espacio en blanco, una cadena que solo
+  contiene un espacio en blanco, siendo el resultado la concatenación de
+  las tres, en el orden en que aparecen en la
+  expresión. <a href="#fnref24" class="footnote-back">↩</a></p>
+  </li>
+  <li class="footnote" id="fn25">
+  <p>En este caso no hemos añadido el espacio y no aparece en el
+  resultado. <a href="#fnref25" class="footnote-back">↩</a></p>
+  </li>
+  <li class="footnote" id="fn26">
+  <p>Recordemos las estructuras básicas: secuencia, selección, bucle y
+  subprograma. <a href="#fnref26" class="footnote-back">↩</a></p>
+  </li>
+  <li class="footnote" id="fn27">
+  <p>Veremos que los datos pueden ser dados a un subprograma pero
+  también pueden ser recibidos resultados desde el
+  subprograma. <a href="#fnref27" class="footnote-back">↩</a></p>
+  </li>
+  <li class="footnote" id="fn28">
+  <p>El objeto representa la salida estándar, que suele corresponderse
+  con la pantalla y que está preparado para ser utilizado cuando el
+  programa lo
+  necesite. <a href="#fnref28" class="footnote-back">↩</a></p>
+  </li>
+  <li class="footnote" id="fn29">
+  <p>Es común que, en lugar de este término, que es el correcto, lo
+  encontréis como librería: falso amigo del
+  inglés. <a href="#fnref29" class="footnote-back">↩</a></p>
+  </li>
+  </ol>
 
   <!-- Script para abrir enlaces externos en una nueva pestaña -->
   <script>
