@@ -14,6 +14,13 @@
     font-weight: bold;
     font-family: Courier, 'Courier New', 'Lucida Console', monospace;
 }
+.literal, .operador, .variable,
+.clase, .instancia, .metodo, .produccion {
+    font-family: Courier, 'Courier New', 'Lucida Console', monospace;
+}
+.produccion {
+  font-style: italic;
+}
 .terminal { color: #e61703; font-weight: bold; }
 
 /* --- 2. Bloques de Código y Contenedores Generales --- */

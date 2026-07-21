@@ -876,12 +876,12 @@ FieldDeclaration
 Las siguientes declaraciones son legales:
 
 <pre class="codigo-java">
-final String PALABRA1 = "Ciclo de Grado Superior de ";
-      String palabra3 = "Desarrollo de Aplicaciones ";
+final String PALABRA1 = "Ciclo de Grado Superior de";
+      String palabra3 = "Desarrollo de Aplicaciones";
 final String PALABRA5 = "Multiplataforma";
 </pre>
 
-Almacenan *"Ciclo de Grado Superior de "* como el valor de la constante *PALABRA1*; la cadena *"Desarrollo de Aplicaciones "* se almacena en la variable *palabra3*; y *"Multiplataforma"* en la constante *PALABRA5*.
+Almacenan <span class="literal">"Ciclo de Grado Superior de"</span> como el valor de la constante *PALABRA1*; la cadena <span class="literal">"Desarrollo de Aplicaciones"</span> se almacena en la variable *palabra3*; y <span class="literal">"Multiplataforma"</span> en la constante *PALABRA5*.
 
 #### Capitalización de identificadores
 
@@ -903,7 +903,7 @@ Podemos establecer o cambiar el valor de una variable a través de una *sentenci
 apellido = "Cepero";
 </pre>
 
-asigna el valor de cadena *"Cepero"* a la variable *apellido* (es decir, almacena la secuencia de caracteres *"Cepero"* en la posición de memoria asociada con la variable denominada *apellido*).
+asigna el valor de cadena <span class="literal">"Cepero"</span> a la variable <span class="variable">apellido</span> (es decir, almacena la secuencia de caracteres <span class="literal">"Cepero"</span> en la posición de memoria asociada con la variable denominada <span class="variable">apellido</span>).
 
 Esta es la plantilla sintáctica para una sentencia de asignación:
 
@@ -918,7 +918,7 @@ AssignmentOperator:
 <span class="terminal">=</span>
 </pre>
 
-La semántica (significado) del operador de asignación (=) es "es igual a" u "obtén"; la variable obtiene el valor de la **expresión** (*Expression*). Cualquier valor anterior de la variable se reemplaza por el de la expresión. Podemos observar que la sintaxis es la misma que para asignar un valor inicial a un campo en una declaración de campo. Además, podemos ampliar la plantilla (ya vista con anterioridad) *StatementExpression*, que definía una sentencia únicamente como la invocación de un método:
+La semántica (significado) del operador de asignación (=) es "es igual a" u "obtén"; la variable obtiene el valor de la **expresión** (*Expression*). Cualquier valor anterior de la variable se reemplaza por el de la expresión. Podemos observar que la sintaxis es la misma que para asignar un valor inicial a un campo en una declaración de campo. Además, podemos ampliar la plantilla (ya vista con anterioridad) <span class="produccion">StatementExpression</span>, que definía una sentencia únicamente como la invocación de un método:
 
 <pre class="plantilla-sintactica">
 StatementExpression:
@@ -971,7 +971,7 @@ apellido = ;         // Falta expresión a la derecha de =
 
 #### Expresiones de cadena
 
-No podemos realizar operaciones matemáticas con cadenas pero Java nos proporciona la clase `String` con una operación especial denominada concatenación, que utiliza el operador suma (`+`). La concatenación de dos cadenas proporciona una nueva cadena que contiene los caracteres de las dos. Por ejemplo, dadas las declaraciones:
+No podemos realizar operaciones matemáticas con cadenas pero Java nos proporciona la clase <span class="clase">String</span> con una operación especial denominada concatenación, que utiliza el operador suma (<span class="operador">+</span>). La concatenación de dos cadenas proporciona una nueva cadena que contiene los caracteres de las dos. Por ejemplo, dadas las declaraciones:
 
 <pre class="codigo-fuente">
 String ciclo;
@@ -985,20 +985,20 @@ Podemos escribir:
 ciclo = p1 + " " + p2;
 </pre>
 
-cuyo resultado es la asignación a `ciclo` de la cadena `"Desarrollo de Aplicaciones Multiplataforma"`. El orden de las cadenas en la expresión determina cómo aparecen en la cadena resultado. Si, por ejemplo, hubiéramos escrito:
+cuyo resultado es la asignación a <span class="variable">ciclo</span> de la cadena <span class="literal">"Desarrollo de Aplicaciones Multiplataforma"</span>[^26]. El orden de las cadenas en la expresión determina cómo aparecen en la cadena resultado. Si, por ejemplo, hubiéramos escrito:
 
 <pre class="codigo-fuente">
 ciclo = p2 + p1;
 </pre>
 
-el resultado hubiera sido la asignación a `ciclo` de la cadena `"MultiplataformaDesarrollo de Aplicaciones"`. La concatenación puede utilizar tanto literales, como constantes con nombre y variables. Por ejemplo:
+el resultado hubiera sido la asignación a <span class="variable">ciclo</span> de la cadena <span class="literal">"MultiplataformaDesarrollo de Aplicaciones"</span>[^27]. La concatenación puede utilizar tanto literales, como constantes con nombre y variables. Por ejemplo:
 
 <pre class="codigo-fuente">
 ciclo = "Estudiamos: " + palabra3 + " "
         + PALABRA5 + " en el Pablo Serrano";
 </pre>
 
-tiene como resultado la asignación a `ciclo` de la cadena `"Estudiamos: Desarrollo de Aplicaciones Multiplataforma en el Pablo Serrano"`.
+tiene como resultado la asignación a <span class="variable">ciclo</span> de la cadena <span class="literal">"Estudiamos: Desarrollo de Aplicaciones Multiplataforma en el Pablo Serrano"</span>.
 
 En el caso anterior hemos combinado identificadores y literales. Por supuesto, resulta posible usar solo el literal; y, si como sucede en esa asignación, no cabe en una línea, podemos separarla en varias y concatenarlas, como en:
 
@@ -1007,22 +1007,22 @@ ciclo = "Estudiamos: Desarrollo de Aplicaciones Multiplataforma" +
         " en el Pablo Serrano";
 </pre>
 
-En muchas ocasiones nos encontraremos con que queremos añadir algunos caracteres a una cadena existente. Imaginemos que `ciclo` contiene `"Estudiamos "` y queremos añadirle el nombre del Centro. Podemos utilizar una sentencia como:
+En muchas ocasiones nos encontraremos con que queremos añadir algunos caracteres a una cadena existente. Imaginemos que <span class="variable">ciclo</span> contiene <span class="literal">"Estudiamos "</span> y queremos añadirle el nombre del Centro. Podemos utilizar una sentencia como:
 
 <pre class="codigo-fuente">
 ciclo = ciclo + " en el Pablo Serrano";
 </pre>
 
-La sentencia recupera el valor de `ciclo` de la memoria, añade el literal para crear una cadena nueva (`"Estudiamos en el Pablo Serrano"`) y asigna esa nueva cadena a `ciclo`. La nueva cadena reemplaza a la anterior.
+La sentencia recupera el valor de <span class="variable">ciclo</span> de la memoria, añade el literal para crear una cadena nueva (<span class="literal">"Estudiamos en el Pablo Serrano"</span>) y asigna esa nueva cadena a <span class="variable">ciclo</span>. La nueva cadena reemplaza a la anterior.
 
-La concatenación solo es válida para valores de la clase `String`. Si intentamos concatenar el valor de uno de los tipos primitivos de Java con una cadena, Java convertirá el valor en la cadena equivalente y realizará la concatenación. Por ejemplo:
+La concatenación solo es válida para valores de la clase <span class="clase">String</span>. Si intentamos concatenar el valor de uno de los tipos primitivos de Java con una cadena, Java convertirá el valor en la cadena equivalente y realizará la concatenación. Por ejemplo:
 
 <pre class="codigo-fuente">
 String resultado;
 resultado = "El cuadrado de 6 es " + 36;
 </pre>
 
-asigna a `resultado` la cadena `"El cuadrado de 6 es 36"`. Java convierte el literal entero 36 en la cadena `"36"` antes de realizar la concatenación.
+asigna a <span class="variable">resultado</span> la cadena <span class="literal">"El cuadrado de 6 es 36"</span>. Java convierte el literal entero <span class="literal">36</span> en la cadena <span class="literal">"36"</span> antes de realizar la concatenación.
 
 #### Expresiones de inicialización
 
@@ -1055,7 +1055,7 @@ Conocemos ya suficiente sintaxis de Java para decirle al ordenador que asigne va
 
 ### Llamadas a métodos
 
-Los métodos (operadores asociados con objetos en sentido abstracto) se implementan como subprogramas que están llamados a realizar algún conjunto de acciones predefinido. Ya vimos que una llamada a un método es una forma de sentencia ejecutable de Java. Escribimos la declaración de llamada simplemente especificando el nombre del método, seguido de una lista de parámetros entre paréntesis. La llamada provoca que el control del ordenador pase a las instrucciones del método, siendo los valores que se le dan como argumento una forma de comunicación con el subprograma. Cuando el método ha completado su tarea, el control vuelve a la sentencia que sigue a la llamada.
+Los métodos (operadores asociados con objetos en sentido abstracto) se implementan como subprogramas[^29] que están llamados a realizar algún conjunto de acciones predefinido. Ya vimos que una llamada a un método es una forma de sentencia ejecutable de Java. Escribimos la declaración de llamada simplemente especificando el nombre del método, seguido de una **lista de parámetros** entre paréntesis. La llamada provoca que el control del ordenador pase a las instrucciones del método, siendo los valores que se le dan como argumento una forma de comunicación con el subprograma[^30]. Cuando el método ha completado su tarea, el control vuelve a la sentencia que sigue a la llamada.
 
 <aside class="definicion">
 
@@ -1065,7 +1065,7 @@ Los métodos (operadores asociados con objetos en sentido abstracto) se implemen
 
 Debemos tener en cuenta que los argumentos son opcionales, pero los paréntesis no. A menudo escribimos declaraciones de llamada de la siguiente forma:
 
-<pre class="codigo-fuente">
+<pre class="codigo-java">
 nombreMetodo();
 </pre>
 
@@ -1073,15 +1073,17 @@ Un sinónimo del término llamar es invocar. Decir que se invoca un método es o
 
 #### Método print
 
-Java proporciona un objeto que representa un dispositivo de salida, para mostrarnos cosas; de forma predeterminada, la pantalla. Podemos enviar mensajes a este objeto pidiéndole que imprima algo en la pantalla. El nombre del objeto es `System.out` y uno de los mensajes que podemos enviar (método que podemos aplicar) es `print`. Por ejemplo:
+Java proporciona un objeto que representa un dispositivo de salida, para mostrarnos cosas; de forma predeterminada, la pantalla. Podemos enviar mensajes a este objeto pidiéndole que imprima algo en la pantalla. El nombre del objeto es <span class="instancia">System.out</span>[^31] y uno de los mensajes que podemos enviar (método que podemos aplicar) es <span class="metodo">print</span>. Por ejemplo:
 
-<pre class="codigo-fuente">
+<pre class="codigo-java">
 System.out.print("María" + " " + "Pilar");
 </pre>
 
 muestra
 
-`María Pilar`
+<pre class="codigo-fuente">
+María Pilar
+</pre>
 
 en consola, una ventana de la pantalla. Hay varias cosas a tener en cuenta acerca de esta sentencia: invocamos el método (enviamos el mensaje al objeto) colocando el nombre del método a continuación del nombre del objeto, con un punto en el medio. El "algo" que se imprimirá es una expresión de cadena que sirve como parámetro del método. La cadena aparece entre paréntesis. ¿Qué imprime el siguiente fragmento de código?
 
@@ -1091,9 +1093,9 @@ System.out.print(" ");
 System.out.print("Pilar");
 </pre>
 
-La respuesta correcta es que ambos fragmentos de código imprimen lo mismo. Los sucesivos mensajes enviados a través del método de impresión muestran las cadenas una al lado de la otra, en la misma línea. Si deseamos pasar a la línea siguiente después de imprimir la cadena, cosa bastante habitual, podemos utilizar el método `println`. Es similar al método `print` pero tiene la característica añadida de causar que la siguiente salida se imprima en la siguiente línea. Por ejemplo, el fragmento de código:
+La respuesta correcta es que ambos fragmentos de código imprimen lo mismo. Los sucesivos mensajes enviados a través del método de impresión muestran las cadenas una al lado de la otra, en la misma línea. Si deseamos pasar a la línea siguiente después de imprimir la cadena, cosa bastante habitual, podemos utilizar el método <span class="metodo">println</span>. Es similar al método <span class="metodo">print</span> pero tiene la característica añadida de causar que la siguiente salida se imprima en la siguiente línea. Por ejemplo, el fragmento de código:
 
-<pre class="codigo-fuente">
+<pre class="codigo-java">
 System.out.println("María");
 System.out.println(" ");
 System.out.print("Pilar");
@@ -1107,30 +1109,30 @@ María
 Pilar
 </pre>
 
-El método `println` no pasa a la siguiente línea hasta que se imprime la cadena. La segunda línea contiene un espacio en blanco, no es la cadena vacía. También podemos imprimir variables en lugar de literales. Por ejemplo:
+El método <span class="metodo">println</span> no pasa a la siguiente línea hasta que se imprime la cadena. La segunda línea contiene un espacio en blanco, no es la cadena vacía. También podemos imprimir variables en lugar de literales. Por ejemplo:
 
-<pre class="codigo-fuente">
+<pre class="codigo-java">
 String suNombre = "María Pilar";
 System.out.println(suNombre);
 </pre>
 
 imprime en la pantalla exactamente lo mismo que la sentencia:
 
-<pre class="codigo-fuente">
+<pre class="codigo-java">
 System.out.print("María Pilar");
 </pre>
 
-Hay una diferencia, sin embargo. Si se usa la última sentencia, la siguiente cadena comenzaría en la misma línea, a continuación del carácter r. Si se utilizan la declaración y la sentencia -la que usa el método `println`- anteriores, la cadena del siguiente mensaje a `System.out` comenzaría en la siguiente línea.
+Hay una diferencia, sin embargo. Si se usa la última sentencia, la siguiente cadena comenzaría en la misma línea, a continuación del carácter *r*. Si se utilizan la declaración y la sentencia -la que usa el método <span class="metodo">println</span>- anteriores, la cadena del siguiente mensaje a <span class="instancia">System.out</span> comenzaría en la siguiente línea.
 
 ### Bibliotecas
 
-Una biblioteca (library) es un código desarrollado con funciones listas para usar, que realizan tareas específicas. En lugar de tener que escribir cada línea de código desde cero, podemos utilizar una biblioteca para aprovechar el trabajo previo de otros programadores y acelerar nuestro propio desarrollo.
+Una biblioteca (library[^32]) es un código desarrollado con funciones listas para usar, que realizan tareas específicas. En lugar de tener que escribir cada línea de código desde cero, podemos utilizar una biblioteca para aprovechar el trabajo previo de otros programadores y acelerar nuestro propio desarrollo.
 
 Podemos pensar en una biblioteca como en una colección de herramientas utilizable en nuestros programas. Cada herramienta (método o clase) realiza una tarea específica. Por ejemplo, si necesitas trabajar con fechas y horas, en lugar de escribir todo el código para manejarlas, puedes utilizar una biblioteca que ya ha sido creada por otro programador. Esto ahorra tiempo y esfuerzo, además de garantizar el uso de código probado y confiable.
 
 Las bibliotecas suelen ser desarrolladas por la comunidad para resolver problemas comunes de programación. Pueden cubrir una variedad de áreas, como manipulación de datos, interacción con bases de datos, diseño de interfaces gráficas y más. Al utilizar bibliotecas, puedes concentrarte en resolver los aspectos únicos de tu proyecto en lugar de reescribir código estándar una y otra vez.
 
-Java, como otros lenguajes de programación modernos, especialmente los orientados a objetos, incorpora una amplia biblioteca de clases. Dentro de la biblioteca, las clases se agrupan en lo que se denominan paquetes (package). Para utilizar sus componentes debemos usar declaraciones de importación: sentencias que indican al compilador de Java qué paquetes de la biblioteca utiliza nuestro programa.
+Java, como otros lenguajes de programación modernos, especialmente los orientados a objetos, incorpora una amplia biblioteca de clases. Dentro de la biblioteca, las clases se agrupan en lo que se denominan paquetes (*packages*). Para utilizar sus componentes debemos usar declaraciones de importación: sentencias que indican al compilador de Java qué paquetes de la biblioteca utiliza nuestro programa.
 
 <aside class="definicion">
 
@@ -1153,7 +1155,7 @@ PackageOrTypeName <span class="terminal">.</span> Identifier
 PackageOrTypeName <span class="terminal">. *</span>
 </pre>
 
-En la práctica, una declaración de importación comienza con la palabra `import`, seguida del nombre de un paquete o clase. Un paquete puede ir seguido de subpaquetes separados por un punto (`.`), terminado con el nombre de una clase o el carácter asterisco (`*`). La declaración finaliza con un punto y coma (`;`). Si solo necesitamos utilizar una clase de un paquete en particular, podemos hacerlo indicando su nombre (Identifier) en la declaración; pero, si queremos usar múltiples clases del paquete, el asterisco le dice al compilador que importe todas las clases del paquete.
+En la práctica, una declaración de importación comienza con la palabra <span class="palabra">import</span>, seguida del nombre de un paquete o clase. Un paquete puede ir seguido de subpaquetes separados por un punto (.), terminado con el nombre de una clase o el carácter asterisco (*). La declaración finaliza con un punto y coma (;). Si solo necesitamos utilizar una clase de un paquete en particular, podemos hacerlo indicando su nombre (*Identifier*) en la declaración; pero, si queremos usar múltiples clases del paquete, el asterisco le dice al compilador que importe todas las clases del paquete.
 
 ¿Para qué podríamos querer utilizar la primera forma si el asterisco es más sencillo de escribir y tiene el mismo efecto? En el primer caso se importa solo la clase que se necesita, mientras que con el asterisco podemos estar importando clases que no deseamos importar y que, como entenderemos con la práctica, pueden colisionar con nuestras propias clases.
 
@@ -1163,41 +1165,41 @@ Los programas necesitan datos sobre los que operar. En nuestros ejemplos, hemos 
 
 Una de las mayores ventajas de usar un ordenador es poder escribir un programa que puede utilizarse con muchos conjuntos diferentes de datos. Esto significa, por supuesto, que los datos no pueden escribirse en el código. El programa y los datos deben estar separados hasta el momento en que se ejecuta el programa. En ese momento, las llamadas a métodos en el código harán que el ordenador coloque valores de los datos en las variables del programa. Después de almacenar estos valores en las variables, el código puede seguir y realizar los cálculos correspondientes.
 
-El proceso de colocar valores desde un conjunto de datos externo en las variables del programa se llama entrada. El conjunto de datos para el programa puede venir desde un dispositivo de entrada o desde un archivo en un dispositivo de almacenamiento auxiliar. Por ahora, todas las entradas se harán desde un terminal a través de la entrada estándar, representada por el objeto `System.in`.
+El proceso de colocar valores desde un conjunto de datos externo en las variables del programa se llama entrada. El conjunto de datos para el programa puede venir desde un dispositivo de entrada o desde un archivo en un dispositivo de almacenamiento auxiliar. Por ahora, todas las entradas se harán desde un terminal a través de la entrada estándar, representada por el objeto <span class="instancia">System.in</span>.
 
-Desafortunadamente, Java no hace que introducir datos desde `System.in` sea tan simple como lo es mostrarlos a través de `System.out`. `System.in` es un objeto muy primitivo, diseñado para servir de base a otros objetos más sofisticados. Con `System.in`, podemos ingresar un solo byte o una serie de bytes pero, para que nos sea útil, estos datos deben convertirse en una cadena u otro tipo de dato.
+Desafortunadamente, Java no hace que introducir datos desde <span class="instancia">System.in</span> sea tan simple como lo es mostrarlos a través de <span class="instancia">System.out</span>. <span class="instancia">System.in</span> es un objeto muy primitivo, diseñado para servir de base a otros objetos más sofisticados. Con <span class="instancia">System.in</span>, podemos ingresar un solo byte o una serie de bytes pero, para que nos sea útil, estos datos deben convertirse en una cadena u otro tipo de dato.
 
-Buscamos a través de la documentación de la biblioteca de Java y encontramos una clase llamada `Scanner`, útil para separar los elementos de la línea de entrada en elementos individuales, en función de su tipo de datos. Para separar los datos, por defecto, utiliza lo que se conoce como blancos, que son los caracteres espacio en blanco y tabulador.
+Buscamos a través de la documentación de la biblioteca de Java y encontramos una clase llamada <span class="clase">Scanner</span>, útil para separar los elementos de la línea de entrada en elementos individuales, en función de su tipo de datos. Para separar los datos, por defecto, utiliza lo que se conoce como blancos, que son los caracteres espacio en blanco y tabulador.
 
-Para poder utilizar esta clase `Scanner`, en primer lugar, debemos importarla para que nuestro código sepa cómo hacerlo. Para ello, utilizaremos la sentencia de importación correspondiente:
+Para poder utilizar esta clase <span class="clase">Scanner</span>, en primer lugar, debemos importarla para que nuestro código sepa cómo hacerlo. Para ello, utilizaremos la sentencia de importación correspondiente:
 
-<pre class="codigo-fuente">
+<pre class="codigo-java">
 import java.util.Scanner;
 </pre>
 
-Recordemos que dicha sentencia deberá aparecer antes de la declaración de clase. Necesitamos ahora un objeto de la clase `Scanner`, es decir, necesitamos instanciar un objeto de la clase `Scanner`. Hemos indicado que usamos el operador `new` para instanciar objetos. Para ello, escribimos la palabra reservada `new`, seguida del nombre de la clase y una lista de argumentos. Por ejemplo:
+Recordemos que dicha sentencia deberá aparecer antes de la declaración de clase. Necesitamos ahora un objeto de la clase <span class="clase">Scanner</span>, es decir, necesitamos instanciar un objeto de la clase <span class="clase">Scanner</span>. Hemos indicado que usamos el operador <span class="palabra">new</span> para instanciar objetos. Para ello, escribimos la palabra reservada <span class="palabra">new</span>, seguida del nombre de la clase y una lista de argumentos. Por ejemplo:
 
-<pre class="codigo-fuente">
+<pre class="codigo-java">
 Scanner teclado; // Un escáner de texto asociado al teclado
 teclado = new Scanner(System.in);
 </pre>
 
-El código que sigue a `new` se parece mucho a una llamada a un método. De hecho, es una llamada a un tipo especial de método llamado constructor. Cada clase tiene, al menos, un método constructor. El propósito de un constructor es preparar un nuevo objeto para su uso. El operador `new` crea un objeto de la clase pero lo crea vacío, sin datos, y luego invoca al método constructor, que puede completar los campos del objeto o realizar cualquier acción necesaria para que el objeto sea utilizable. Por ejemplo, el código anterior, crea primero un objeto de la clase `Scanner` y hace que utilice `System.in` como origen de datos. El nuevo objeto se asigna a la variable `teclado`. Los constructores se invocan solo a través del operador `new`; no podemos escribirlos como llamadas a métodos normales.
+El código que sigue a <span class="palabra">new</span> se parece mucho a una llamada a un método. De hecho, es una llamada a un tipo especial de método llamado constructor. Cada clase tiene, al menos, un método constructor. El propósito de un constructor es preparar un nuevo objeto para su uso. El operador <span class="palabra">new</span> crea un objeto de la clase pero lo crea vacío, sin datos, y luego invoca al método constructor, que puede completar los campos del objeto o realizar cualquier acción necesaria para que el objeto sea utilizable. Por ejemplo, el código anterior, crea primero un objeto de la clase <span class="clase">Scanner</span> y hace que utilice <span class="instancia">System.in</span> como origen de datos. El nuevo objeto se asigna a la variable <span class="instancia">teclado</span>. Los constructores se invocan solo a través del operador <span class="palabra">new</span>; no podemos escribirlos como llamadas a métodos normales.
 
-Los constructores tienen una característica especial que requiere una explicación más detallada. La llamada al método constructor no está precedida por un nombre de objeto o de clase como en el caso de `System.out.print`, por ejemplo. No tenemos que preceder el nombre del constructor con el de la clase porque su propio nombre le dice a Java a qué clase pertenece: como el constructor crea un objeto antes de que se asigne a un campo o variable, no podemos asociarlo con un objeto en particular.
+Los constructores tienen una característica especial que requiere una explicación más detallada. La llamada al método constructor no está precedida por un nombre de objeto o de clase como en el caso de <span class="metodo">System.out.print</span>, por ejemplo. No tenemos que preceder el nombre del constructor con el de la clase porque su propio nombre le dice a Java a qué clase pertenece: como el constructor crea un objeto antes de que se asigne a un campo o variable, no podemos asociarlo con un objeto en particular.
 
 El nombre del constructor no sigue nuestra regla habitual de que los nombres de los métodos empiecen por minúscula. Por convención, todos los nombres de clases (en la biblioteca de Java) comienzan con una letra mayúscula y el nombre del constructor debe escribirse exactamente igual que el nombre de la clase.
 
 #### Método next
 
-La clase `Scanner` nos proporciona otro útil método, llamado `next`. Su nombre es descriptivo de su función: devuelve lo «siguiente» que haya en la entrada (como una cadena). Aquí hay un ejemplo de uso:
+La clase <span class="clase">Scanner</span> nos proporciona otro útil método, llamado <span class="metodo">next</span>. Su nombre es descriptivo de su función: devuelve lo «siguiente» que haya en la entrada (como una cadena). Aquí hay un ejemplo de uso:
 
-<pre class="codigo-fuente">
+<pre class="codigo-java">
 String unaLinea; // Un String
 unaLinea = entrada.next();
 </pre>
 
-La llamada a `next` es bastante diferente de la llamada a `print`. En la sentencia de lectura utilizamos una asignación, mientras en la de escritura no. Java admite dos tipos de métodos: métodos con retorno de valor (funciones) y métodos nulos (procedimientos). Una función se invoca dentro de una expresión y, cuando retorna, devuelve el valor que ha calculado tomando su lugar en la expresión y pudiendo después ser utilizado para la asignación u otro cálculo posterior. Un procedimiento no devuelve ningún valor: lo invocamos como una sentencia separada y, cuando ha terminado su ejecución, continúa con la sentencia siguiente.
+La llamada a <span class="metodo">next</span> es bastante diferente de la llamada a <span class="metodo">print</span>. En la sentencia de lectura utilizamos una asignación, mientras en la de escritura no. Java admite dos tipos de métodos: métodos con retorno de valor (**funciones**) y métodos nulos (**procedimientos**). Una función se invoca dentro de una expresión y, cuando retorna, devuelve el valor que ha calculado tomando su lugar en la expresión y pudiendo después ser utilizado para la asignación u otro cálculo posterior. Un procedimiento no devuelve ningún valor: lo invocamos como una sentencia separada y, cuando ha terminado su ejecución, continúa con la sentencia siguiente.
 
 <aside class="definicion">
 
@@ -1207,17 +1209,17 @@ La llamada a `next` es bastante diferente de la llamada a `print`. En la sentenc
 
 </aside>
 
-Si la línea tiene más de un elemento, como varias palabras, `next` nos devolverá cada palabra, una tras otra. Si lo que queremos una cadena con todas ellas, podemos utilizar el método `nextLine`, que nos devuelve lo que haya en la entrada hasta el final de la línea. Además, nos proporciona otros métodos, útiles para la lectura de datos de otros tipos, no solo de cadenas, como `nextInt`, por ejemplo.
+Si la línea tiene más de un elemento, como varias palabras, <span class="metodo">next</span> nos devolverá cada palabra, una tras otra. Si lo que queremos una cadena con todas ellas, podemos utilizar el método <span class="metodo">nextLine</span>, que nos devuelve lo que haya en la entrada hasta el final de la línea. Además, nos proporciona otros métodos, útiles para la lectura de datos de otros tipos, no solo de cadenas, como <span class="metodo">nextInt</span>, por ejemplo.
 
 ### Entrada y salida interactivas
 
 Un programa interactivo es aquél en el que el usuario se comunica directamente con el ordenador. Muchos de los programas que escribiremos serán interactivos. Hay algunas reglas para escribir programas interactivos. Esto implica, principalmente, suministrar instrucciones claras al usuario sobre los datos a introducir.
 
-Antes de leer los valores en un programa interactivo, el programa debe imprimir un mensaje para explicar al usuario qué ha de introducir. Esos mensajes se denominan indicativo de petición de entrada. Sin ellos, el usuario no sabrá qué debe proporcionar al programa. Un programa que no solicite valores de entrada será muy difícil de utilizar, si es que resulta posible el hacerlo. Según las circunstancias, el programa también deberá imprimir los valores que se han escrito para que el usuario pueda verificar que lo introducido es correcto. La impresión de los valores de entrada se denomina impresión del eco.
+Antes de leer los valores en un programa interactivo, el programa debe imprimir un mensaje para explicar al usuario qué ha de introducir. Esos mensajes se denominan *indicativo de petición de entrada*. Sin ellos, el usuario no sabrá qué debe proporcionar al programa. Un programa que no solicite valores de entrada será muy difícil de utilizar, si es que resulta posible el hacerlo. Según las circunstancias, el programa también deberá imprimir los valores que se han escrito para que el usuario pueda verificar que lo introducido es correcto. La impresión de los valores de entrada se denomina *impresión del eco*.
 
 El siguiente segmento de código muestra el uso adecuado de los indicativos de petición cuando solicita un nombre:
 
-<pre class="codigo-fuente">
+<pre class="codigo-java">
 System.out.print("Introducir el nombre: ");
 nombre = teclado.nextLine();   // Obtener nombre
 System.out.print("Introducir apellido: ");
@@ -1226,9 +1228,45 @@ apellido = teclado.nextLine(); // Obtener apellido
 
 El siguiente segmento de código muestra la impresión del eco:
 
-<pre class="codigo-fuente">
+<pre class="codigo-java">
 System.out.println("Usted introdujo el nombre: "
                   + nombre + " " + apellido);
 </pre>
 
 Aunque la impresión del eco puede parecer redundante en una pantalla, es crucial para la verificación de los datos de entrada.
+
+[Anterior](tema_01.html) | [Inicio](#) | [Siguiente](tema_03.html)
+
+[^1]: De los que hablamos en el primer capítulo.
+[^2]: También podemos acceder a la página en español: [https://www.oracle.com/es/java](https://www.oracle.com/es/java).
+[^3]: Lo identificaremos con algún enlace o botón en el que pondrá **Descargar Java** o similar.
+[^4]: En Windows, puede ser el ***cmd***. Pulsa a la vez las teclas Windows y R: se abrirá un cuadro de diálogo con el título **Ejecutar**; escribe **cmd** en el rectángulo para introducir texto y pulsa sobre el botón **Aceptar**.
+[^5]: Como **C:\Program Files\Java\jdk-20\bin**.
+[^6]: Cambia /ruta/al/JDK por la ubicación real del directorio del JDK.
+[^7]: No debería haber problemas si lo has escrito igual.
+[^8]: Aparecerán en color rojo para distinguirlas mejor.
+[^9]: Las plantillas sintácticas que representemos, aunque obtenidas de la especificación, pueden no coincidir de forma exacta; como hemos indicado, las modificaremos para ajustarse mejor a lo que estemos explicando.
+[^10]: El símbolo del dólar debe utilizarse únicamente en código generado de forma automática o, poco comúnmente, para acceder a nombres que ya existían en sistemas antiguos. El símbolo de subrayado se puede utilizar en identificadores de dos o más letras, pero no puede usarse como identificador de una letra por ser una palabra reservada. De la especificación.
+[^11]: Puede que os resulte extraño el denominarlo símbolo (o carácter) de subrayado en lugar de guion bajo o barra baja. Pero ese es su nombre.
+[^12]: En Java 21 se introduce experimentalmente una mejora que lo simplifica pero, por ahora lo seguiremos usando así. Referencias: [https://openjdk.org/projects/amber/design-notes/on-ramp](https://openjdk.org/projects/amber/design-notes/on-ramp) y [https://openjdk.org/jeps/445](https://openjdk.org/jeps/445).
+[^13]: Si la JVM no encuentra un método <span class="palabra">main</span> se lanza una excepción y finaliza.
+[^14]: Normalmente conocidas como comillas dobles.
+[^15]: También se denominan estándar o implícitos.
+[^16]: Si se omite el signo se asume que el número es positivo.
+[^17]: La mitad en los números negativos y la mitad menos uno en los positivos, además del cero.
+[^18]: Los utilizaremos, por ejemplo, en caso de necesitar una gran cantidad de datos y pueda afectar a los requerimientos de memoria.
+[^19]: Podemos utilizar la eñe y las letras con tilde, pero, en general, no se recomienda esta opción.
+[^20]: Es frecuente confundir este término con apóstrofe, que tiene un significado diferente.
+[^21]: El término caracter, sin tilde y acentuado en su última sílaba, es de uso común en la jerga informática española para diferenciar el tipo de datos de los símbolos a los que representa. Es por ello que, salvo que la corrección automática lo haya modificado, aparecerá así en el texto al hacer referencia al tipo de datos.
+[^22]: Aunque este es el que define la RAE, en la literatura, podemos encontrarla denominada como barra invertida, contrabarra…
+[^23]: Análogamente, también tiene otras denominaciones.
+[^24]: Barbarismo de uso común en informática; el término adecuado es: **convención de nombres**.
+[^25]: *CamelCase* es un término en inglés que hace referencia a que las primeras letras de una palabra se escriben en mayúsculas, asemejándose a las jorobas de un camello.
+[^26]: Notad que hemos añadido un espacio en blanco, una cadena que solo contiene un espacio en blanco, siendo el resultado la concatenación de las tres, en el orden en que aparecen en la expresión.
+[^27]: En este caso no hemos añadido el espacio y no aparece en el resultado.
+[^28]: Si deseáis asignar a una cadena un valor de un tipo de datos que no sea *String*, cosa no permitida por el lenguaje, podréis hacerlo concatenándolo a la cadena vacía.
+[^29]: Recordemos las estructuras básicas: secuencia, selección, bucle y subprograma.
+[^30]: Veremos que los datos pueden ser dados a un subprograma pero también pueden ser recibidos resultados desde el subprograma.
+[^31]: El objeto representa la salida estándar, que suele corresponderse con la pantalla y que está preparado para ser utilizado cuando el programa lo necesite.
+[^32]: Es común que, en lugar de este término, que es el correcto, lo encontréis como librería: falso amigo del inglés.
+[^33]: De manera análoga a *System.out*, la entrada estándar suele corresponderse con el teclado y está preparada para ser utilizada cuando el programa lo necesite.
