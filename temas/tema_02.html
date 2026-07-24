@@ -299,7 +299,7 @@
   <strong>Editar</strong>
   <li>
   Agrega la ruta al directorio binario del
-  JDK<span class="tooltip"><a href="#fn5" class="nota-llamada" id="fnref5">[5]</a><span class="tooltiptext">Como **C:Files*.</span></span>
+  JDK<span class="tooltip"><a href="#fn5" class="nota-llamada" id="fnref5">[5]</a><span class="tooltiptext">Como C:\Program Files\Java\jdk-20\bin.</span></span>
   al final de la lista y haz clic en <strong>Aceptar</strong>
   </li>
   </ol>
@@ -580,11 +580,11 @@
   Java</li>
   <li><em>vacío_?</em>: Los símbolos especiales como el del cierre de la
   interrogación (?) no están permitidos</li>
-  <li><em>int</em>: La palabra <code>int</code> está predefinida en el
-  lenguaje Java</li>
+  <li><em>int</em>: La palabra <span class="palabra">int</span> está
+  predefinida en el lenguaje Java</li>
   </ul>
-  <p>El último identificador, <em>int</em>, es un ejemplo de
-  <strong>palabra reservada</strong>. Las <a
+  <p>El último identificador, <span class="palabra">int</span>, es un
+  ejemplo de <strong>palabra reservada</strong>. Las <a
   href="https://docs.oracle.com/javase/specs/jls/se18/html/jls-3.html#jls-Keyword">palabras
   reservadas</a> tienen usos específicos en Java y no pueden ser usadas
   como identificadores definidos por el programador.</p>
@@ -629,19 +629,21 @@
   </pre>
   <p>El programa empieza por lo que hemos dicho que son palabras
   reservadas <span class="palabra">public</span> y <span
-  class="palabra">class</span>. En este caso, la producción
-  <em>ImportDeclaration</em> no aparece en este programa; hemos dicho
-  que una producción entre llaves puede no aparecer. En este programa,
-  <em>ClassModifier</em> está representado por <span
+  class="palabra">class</span>. En este caso, la producción <span
+  class="produccion">ImportDeclaration</span> no aparece en este
+  programa; hemos dicho que una producción entre llaves puede no
+  aparecer. En este programa, <span
+  class="produccion">ClassModifier</span> está representado por <span
   class="palabra">public</span>. Veremos cuáles son los modificadores de
   clase que podemos utilizar pero, por el momento, siempre va a ser
   <span class="palabra">public</span>. Tras la palabra reservada <span
-  class="palabra">class</span> encontramos
-  <strong>MiPrimerPrograma</strong>, que se corresponde con
-  <em>Identifier</em>, el identificador de la clase y también de este
-  programa. La plantilla sintáctica indica que, a continuación, debe
-  haber unas llaves de apertura y cierre. Además, anidado entre ellas,
-  puede existir un <em>ClassBodyDeclaration</em>.</p>
+  class="palabra">class</span> encontramos <span
+  class="clase">MiPrimerPrograma</span>, que se corresponde con <span
+  class="produccion">Identifier</span>, el identificador de la clase y
+  también de este programa. La plantilla sintáctica indica que, a
+  continuación, debe haber unas llaves de apertura y cierre. Además,
+  anidado entre ellas, puede existir un <span
+  class="produccion">ClassBodyDeclaration</span>.</p>
   <pre class="plantilla-sintactica">
   ClassBodyDeclaration:
   MethodDeclaration
@@ -674,19 +676,20 @@
   </pre>
   <p>Como en el caso de la declaración de clase, vemos la palabra
   reservada <span class="palabra">public</span>, aunque viene aquí
-  seguida de otro <em>MethodModifier</em>, <span
-  class="palabra">static</span>, también palabra reservada. El
-  <em>MethodHeader</em> incorpora otra palabra reservada, <span
-  class="palabra">void</span>, y el identificador <span
-  class="palabra">main</span>: para que una clase sea un programa, uno
-  de los métodos debe llamarse main. Esa línea lo que está haciendo es
-  declarar un método main ya que la ejecución de una aplicación Java
-  comienza en ese método
+  seguida de otro <span class="produccion">MethodModifier</span>, <span
+  class="palabra">static</span>, también palabra reservada. El <span
+  class="produccion">MethodHeader</span> incorpora otra palabra
+  reservada, <span class="palabra">void</span>, y el identificador <span
+  class="metodo">main</span>: para que una clase sea un programa, uno de
+  los métodos debe llamarse <strong>main</strong>. Esa línea lo que está
+  haciendo es declarar un método <span class="metodo">main</span> ya que
+  la ejecución de una aplicación Java comienza en ese método
   principal<span class="tooltip"><a href="#fn12" class="nota-llamada" id="fnref12">[12]</a><span class="tooltiptext">Si la JVM no encuentra un método main se lanza una excepción y finaliza.</span></span>.
   Y, según la plantilla, entre paréntesis, una lista de parámetros
   formales.</p>
   <p>Hasta ahora, todas las producciones tenían una única línea. La
-  plantilla correspondiente a MethodBody, va a tener dos:</p>
+  plantilla correspondiente a <span
+  class="produccion">MethodBody</span>, va a tener dos:</p>
   <pre class="plantilla-sintactica">
   MethodBody:
   Block
@@ -741,17 +744,17 @@
   <pre class="codigo-java">
           System.out.println("Mi primer programa Java");
   </pre>
-  <p>Este método, <strong>println</strong> de
-  <strong>System.out</strong>, muestra por pantalla lo que hay entre los
-  paréntesis, que es su lista de argumentos, aunque aquí solo hay uno:
-  la frase <strong>Mi primer programa Java</strong>. Explicaremos más
-  adelante que debe ir entre comillas
+  <p>Este método, <span class="metodo">println</span> de <span
+  class="instancia">System.out</span>, muestra por pantalla lo que hay
+  entre los paréntesis, que es su lista de argumentos, aunque aquí solo
+  hay uno: la frase <strong>Mi primer programa Java</strong>.
+  Explicaremos más adelante que debe ir entre comillas
   inglesas<span class="tooltip"><a href="#fn13" class="nota-llamada" id="fnref13">[13]</a><span class="tooltiptext">Normalmente conocidas como comillas dobles.</span></span>
   porque es un literal de cadena.</p>
-  <p>Hay que tener en cuenta que <em>ExpressionName</em> es una
-  producción recursiva, es decir, que puede ser una sucesión de
-  identificadores, sin especificar cuántos, unidos por el símbolo del
-  punto.</p>
+  <p>Hay que tener en cuenta que <span
+  class="produccion">ExpressionName</span> es una producción recursiva,
+  es decir, que puede ser una sucesión de identificadores, sin
+  especificar cuántos, unidos por el símbolo del punto.</p>
   <h2 id="elementos-básicos-del-lenguaje">Elementos básicos del
   lenguaje</h2>
   <p>Un programa de ordenador trabaja con datos. En Java, cada unidad de
@@ -913,13 +916,13 @@
   </tbody>
   </table>
   <p>En el caso de los números reales, cuando no tengamos limitaciones
-  serias de la m000000000000000000emoria disponible para ejecutar
-  nuestra aplicación, se recomienda usar siempre el tipo de mayor
-  precisión, ya que así, al operar, los errores cometidos por las
-  sucesivas aproximaciones serán menores.</p>
+  serias de la memoria disponible para ejecutar nuestra aplicación, se
+  recomienda usar siempre el tipo de mayor precisión, ya que así, al
+  operar, los errores cometidos por las sucesivas aproximaciones serán
+  menores.</p>
   <h4 id="el-tipo-booleano">El tipo booleano</h4>
-  <p>Booleano es un tipo con solo dos valores:
-  <strong><em>true</em></strong> y <strong><em>false</em></strong>. Este
+  <p>Booleano es un tipo con solo dos valores: <span
+  class="literal">true</span> y <span class="literal">false</span>. Este
   tipo se asocia con los datos creados dentro del subprograma y usados
   para representar la respuesta a preguntas. La importancia de este tipo
   de datos se entenderá mejor cuando estudiemos las condiciones y cómo
@@ -947,16 +950,20 @@
   poder diferenciar entre los datos de tipo
   caracter<span class="tooltip"><a href="#fn20" class="nota-llamada" id="fnref20">[20]</a><span class="tooltiptext">El término caracter, sin tilde y acentuado en su última sílaba, es de uso común en la jerga informática española para diferenciar el tipo de datos de los símbolos a los que representa. Es por ello que, salvo que la corrección automática lo haya modificado, aparecerá así en el texto al hacer referencia al tipo de datos.</span></span>
   y otros elementos de Java. Por ejemplo, los apóstrofos alrededor de
-  los caracteres ‘A’ y ‘+’ los distinguen del identificador <em>A</em> y
-  del símbolo de la suma. Notemos también que el espacio en blanco, ’ ’,
-  es un caracter válido.</p>
-  <p>¿Cómo escribimos el apóstrofo como un caracter? Si escribimos ’’’
-  el compilador de Java se quejará de que hemos cometido un error de
-  sintaxis: el segundo apóstrofo indica el final de un carácter (el
-  vacío) y el tercero inicia un nuevo valor de caracter. Para solucionar
-  este problema, Java proporciona lo que se denomina una secuencia de
-  escape que nos permite escribirlo como un caracter. Es decir, Java
-  trata la secuencia de dos caracteres ' como un solo caracter que
+  los caracteres <code>'</code><span
+  class="literal">A</span><code>'</code> y <code>'</code><span
+  class="literal">+</span><code>'</code> los distinguen del
+  identificador <em>A</em> y del símbolo de la suma. Notemos también que
+  el espacio en blanco, <code>'</code><span
+  class="literal"> </span><code>'</code>, es un caracter válido.</p>
+  <p>¿Cómo escribimos el apóstrofo como un caracter? Si escribimos
+  <code>'''</code> el compilador de Java se quejará de que hemos
+  cometido un error de sintaxis: el segundo apóstrofo indica el final de
+  un carácter (el vacío) y el tercero inicia un nuevo valor de caracter.
+  Para solucionar este problema, Java proporciona lo que se denomina una
+  secuencia de escape que nos permite escribirlo como un caracter. Es
+  decir, Java trata la secuencia de dos caracteres <span
+  class="literal">\</span><code>'</code> como un solo caracter que
   representa el apóstrofo. Cuando queramos representar el apóstrofo como
   un caracter de Java, deberemos escribirlo así:</p>
   <pre class="codigo-fuente">
@@ -964,13 +971,13 @@
   </pre>
   <p>Es importante notar que usamos la barra
   inversa<span class="tooltip"><a href="#fn21" class="nota-llamada" id="fnref21">[21]</a><span class="tooltiptext">Aunque este es el que define la RAE, en la literatura, podemos encontrarla denominada como barra invertida, contrabarra…</span></span>
-  () como carácter de escape y no la
+  (\) como carácter de escape y no la
   barra<span class="tooltip"><a href="#fn22" class="nota-llamada" id="fnref22">[22]</a><span class="tooltiptext">Análogamente, también tiene otras denominaciones.</span></span>
   (/). Java usa el caracter barra como símbolo de la división, por lo
   que es importante reconocer que ambas son diferentes. Pensando en ello
   un momento, este esquema introduce un nuevo problema: ¿cómo escribimos
   la barra inversa? La respuesta es que Java proporciona una segunda
-  secuencia de escape, \, que permite escribirla. Por lo tanto,
+  secuencia de escape, \\, que permite escribirla. Por lo tanto,
   escribimos el valor de <span class="palabra">char</span> de la barra
   inversa en Java de la siguiente manera:</p>
   <pre class="codigo-fuente">
@@ -983,13 +990,21 @@
   datos de tipo <span class="palabra">char</span>. El conjunto de
   caracteres Unicode está ordenado en lo que se conoce como secuencia de
   cotejo: un orden predefinido para todos los caracteres. En Unicode,
-  ‘A’ se compara como menor que ‘B’, ‘B’ como menor que ‘C’, y así
-  sucesivamente. Además, ‘1’ se compara como menor que ‘2’, ‘2’ como
-  menor que ‘3’ y, así, sucesivamente.</p>
+  <code>'</code><span class="literal">A</span><code>'</code> se compara
+  como menor que <code>'</code><span
+  class="literal">B</span><code>'</code>, <code>'</code><span
+  class="literal">B</span><code>'</code> como menor que
+  <code>'</code><span class="literal">C</span><code>'</code>, y así
+  sucesivamente. Además, <code>'</code><span
+  class="literal">1</span><code>'</code> se compara como menor que
+  <code>'</code><span class="literal">2</span><code>'</code>,
+  <code>'</code><span class="literal">2</span><code>'</code> como menor
+  que <code>'</code><span class="literal">3</span><code>'</code> y, así,
+  sucesivamente.</p>
   <p>El tipo <span class="palabra">char</span> es uno de los tipos
-  primitivos de Java. La clase <em>String</em>, que nos permite trabajar
-  con colecciones de caracteres, como palabras y oraciones, es uno de
-  los tipos de objetos en Java.</p>
+  primitivos de Java. La clase <span class="clase">String</span>, que
+  nos permite trabajar con colecciones de caracteres, como palabras y
+  oraciones, es uno de los tipos de objetos en Java.</p>
   <h3 id="objetos-y-clases">Objetos y clases</h3>
   <p>Identificamos en el capítulo anterior dos fases de programación: la
   fase de resolución de problemas y la fase de implementación. A menudo,
@@ -1011,7 +1026,7 @@
   se comporta; y en una clase de Java como la estructura que nos permite
   simular el objeto en código. Si una clase es una descripción de un
   objeto, ¿cómo obtenemos un objeto? Usamos un operador, llamado <span
-  class="palabra">char</span>, que toma el nombre de la clase y devuelve
+  class="palabra">new</span>, que toma el nombre de la clase y devuelve
   un objeto de esa clase. El objeto que se devuelve es una instancia de
   la clase. La acción de crear un objeto a partir de una clase se
   denomina <strong>instanciación</strong>.</p>
@@ -1033,14 +1048,15 @@
   <p>La posible plantilla para una aplicación Java que mostramos con
   anterioridad podemos usarla como plantilla de declaración de clase
   porque una aplicación Java es solo una clase que tiene un método
-  llamado <em>main</em>. Por ahora solo nos interesan los aspectos para
-  definir una clase que se aplican a todas las clases de Java.</p>
+  llamado <span class="metodo">main</span>. Por ahora solo nos interesan
+  los aspectos para definir una clase que se aplican a todas las clases
+  de Java.</p>
   <h4 id="la-clase-string">La clase String</h4>
   <p>Mientras que un valor de tipo <span class="palabra">char</span>
   está limitado a un solo carácter, una cadena (en el sentido general)
   es una secuencia de caracteres, como una palabra, un nombre o una
   oración, encerrada entre comillas inglesas. En Java, una cadena es un
-  objeto, una instancia de la clase <strong><em>String</em></strong>.
+  objeto, una instancia de la clase <span class="clase">String</span>.
   Por ejemplo:</p>
   <pre class="codigo-fuente">
   "Introducción a Java" "Tema 2" "Programción" "."
@@ -1055,14 +1071,17 @@
   emitirá un mensaje de error en la primera línea. El mensaje mostrará
   algo como <em>QUOTE EXPECTED</em>, o similar.</p>
   <p>Las comillas no se consideran parte de la cadena: están ahí para
-  distinguirlas. Por ejemplo, <em>“amor”</em> (entre comillas) es la
+  distinguirlas. Por ejemplo, <code>"</code><span
+  class="literal">amor</span><code>"</code> (entre comillas) es la
   cadena de caracteres formada por las letras <em>a</em>, <em>m</em>,
-  <em>o</em> y <em>r</em>, en ese orden; por otra parte, <em>amor</em>
-  (sin las comillas) es un identificador. Los símbolos <em>“123”</em>
-  representan una cadena formada por los caracteres <em>1</em>,
-  <em>2</em> y <em>3</em>, en ese orden. Si escribimos <em>123</em>, sin
-  las comillas, es una cantidad entera (el número ciento veintitrés) que
-  se puede utilizar en los cálculos.</p>
+  <em>o</em> y <em>r</em>, en ese orden; por otra parte, <span
+  class="literal">amor</span> (sin las comillas) es un identificador.
+  Los símbolos <code>"</code><span
+  class="literal">123</span><code>"</code> representan una cadena
+  formada por los caracteres <em>1</em>, <em>2</em> y <em>3</em>, en ese
+  orden. Si escribimos <span class="literal">123</span>, sin las
+  comillas, es una cantidad entera (el número ciento veintitrés) que se
+  puede utilizar en los cálculos.</p>
   <p>Una cadena que no contiene caracteres se denomina la cadena vacía.
   Escribimos la cadena vacía usando dos comillas inglesas sin nada (ni
   siquiera espacios) entre ellas:</p>
@@ -1072,8 +1091,8 @@
   <p>La cadena vacía no es equivalente a una cadena de espacios; más
   bien, es una cadena especial que no contiene caracteres.</p>
   <p>Para escribir el símbolo de comillas dentro de una cadena, usamos
-  una secuencia de escape: ". Ejemplo de cadena que contiene comillas y
-  barra inversa:</p>
+  una secuencia de escape: <span class="literal">\</span><code>"</code>.
+  Ejemplo de cadena que contiene comillas y barra inversa:</p>
   <pre class="codigo-fuente">
   "Ella dijo: \"No olvides que '\\' es distinto de '/'.\""
   </pre>
@@ -1082,11 +1101,13 @@
   Ella dijo: "No olvides que '\' es distinto de '/'."
   </pre>
   <p>Fijémonos en que dentro de una cadena no tenemos que usar la
-  secuencia de escape ' para representar un apóstrofo. Análogamente,
-  podemos escribir las comillas dobles como un valor de tipo <span
-  class="palabra">char</span> (‘“’), sin usar una secuencia de escape.
-  Por el contrario, tenemos que usar \ para escribir una barra inversa
-  como un valor de caracter o dentro de una cadena.</p>
+  secuencia de escape <span class="literal">\</span><code>'</code> para
+  representar un apóstrofo. Análogamente, podemos escribir las comillas
+  dobles como un valor de tipo <span class="palabra">char</span>
+  (<code>'"'</code>), sin usar una secuencia de escape. Por el
+  contrario, tenemos que usar <span class="literal">\</span> para
+  escribir una barra inversa como un valor de caracter o dentro de una
+  cadena.</p>
   <p>Java proporciona operaciones para unir y comparar cadenas, copiar
   porciones de las mismas, convertir mayúsculas en minúsculas y
   viceversa o convertir números a cadenas y al revés. Veremos estas
@@ -1098,9 +1119,9 @@
   medio de un identificador, una palabra reservada o una constante
   literal.</p>
   <p>Los comentarios de Java pueden escribirse de dos formas. El primero
-  es cualquier secuencia de caracteres encerrada entre el par /* */. El
-  compilador ignora cualquier cosa que esté dentro del mismo. Aquí hay
-  un ejemplo:</p>
+  es cualquier secuencia de caracteres encerrada entre el par
+  <span class="literal">/* */</span>. El compilador ignora cualquier
+  cosa que esté dentro del mismo. Aquí hay un ejemplo:</p>
   <pre class="codigo-java">
   String numeroId; /* Número de identificación de la aeronave */
   </pre>
@@ -1109,7 +1130,8 @@
   asterisco, el comentario tiene un significado especial que indica que
   debe ser utilizado por un programa de generación automática de
   documentación llamado <em>javadoc</em>. Veremos también lo útil que
-  resulta que los comentarios empiecen con /**.</p>
+  resulta que los comentarios empiecen con
+  <span class="literal">/**</span>.</p>
   <p>La segunda forma, y más utilizada, comienza con dos barras
   inclinadas (//) y se extiende hasta el final de la línea:</p>
   <pre class="codigo-java">
@@ -1139,8 +1161,8 @@
   fáciles de ver y quede claro lo que documentan. Si los comentarios son
   demasiado largos o abarrotan las declaraciones, pueden llegar a hacer
   el código más difícil de leer, al contrario de lo que se pretende.</p>
-  <p><strong>Los comentarios no se necesitan parexplicar las sentencias
-  individuales, deben explicar los algoritmos.</strong></p>
+  <p><strong>Los comentarios no se necesitan para explicar las
+  sentencias individuales, deben explicar los algoritmos.</strong></p>
   <h3 id="declaraciones">Declaraciones</h3>
   <p>¿Cómo le decimos al ordenador qué representa un identificador?
   Usamos una <strong>declaración</strong>: una declaración asocia un
@@ -1201,25 +1223,27 @@
   tipo de datos o clase. Esto le dice al compilador que asocie un nombre
   con una posición de memoria y le informa que sus contenidos serán de
   un tipo específico o clase (por ejemplo, <span
-  class="palabra">char</span> o <em>String</em>). La siguiente
-  declaración indica que <em>miCaracter</em> será una variable de tipo
-  <span class="palabra">char</span>:</p>
+  class="palabra">char</span> o <span class="clase">String</span>). La
+  siguiente declaración indica que <span
+  class="variable">miCaracter</span> será una variable de tipo <span
+  class="palabra">char</span>:</p>
   <pre class="codigo-java">
   char miCaracter;
   </pre>
   <p>Debemos tener en cuenta que la declaración no especifica qué valor
   se almacena en la variable, solo que puede contener un valor de tipo
-  <span class="palabra">char</span>. <em>miCaracter</em> ha sido
-  reservado como un lugar en la memoria pero no contiene datos.</p>
+  <span class="palabra">char</span>. <span
+  class="variable">miCaracter</span> ha sido reservado como un lugar en
+  la memoria pero no contiene datos.</p>
   <p>Java es un lenguaje <strong>fuertemente tipado</strong>, que
   significa que solo los valores de los datos del tipo o clase
   especificado en su declaración pueden almacenarse en dicha variable.
-  Debido a la declaración anterior, la variable <em>miCaracter</em> solo
-  puede contener un valor de tipo caracter. El compilador de Java hará
-  una comprobación para ver que no se escriban instrucciones que
-  intenten almacenar un valor del tipo incorrecto. Si se hace, dará un
-  mensaje de error usualmente diciendo algo como <em>CANNOT ASSIGN
-  STRING TO CHAR</em>.</p>
+  Debido a la declaración anterior, la variable <span
+  class="variable">miCaracter</span> solo puede contener un valor de
+  tipo caracter. El compilador de Java hará una comprobación para ver
+  que no se escriban instrucciones que intenten almacenar un valor del
+  tipo incorrecto. Si se hace, dará un mensaje de error usualmente
+  diciendo algo como <em>CANNOT ASSIGN STRING TO CHAR</em>.</p>
   <aside class="definicion">
   <p><strong>Variable:</strong> Una posición en memoria, referenciada
   por un nombre de variable (identificador), donde se puede almacenar un
@@ -1239,11 +1263,11 @@
   <p>Por el momento, el modificador de tipo, como en las declaraciones
   de clase, es <span class="palabra">public</span> (o nada) y el
   identificador de tipo es el nombre de un tipo o clase (como <span
-  class="palabra">int</span> o <em>String</em>). Iremos viendo más
-  modificadores a medida que los necesitemos, teniendo en cuenta que son
-  opcionales: podemos escribir una declaración sin usar ninguno de
-  ellos. Tenemos que tener en cuenta también que una sentencia de
-  declaración siempre termina con un punto y coma.</p>
+  class="palabra">int</span> o <span class="clase">String</span>).
+  Iremos viendo más modificadores a medida que los necesitemos, teniendo
+  en cuenta que son opcionales: podemos escribir una declaración sin
+  usar ninguno de ellos. Tenemos que tener en cuenta también que una
+  sentencia de declaración siempre termina con un punto y coma.</p>
   <p>En la plantilla sintáctica podemos ver que resulta posible declarar
   varias variables en una misma sentencia:</p>
   <pre class="codigo-java">
@@ -1320,11 +1344,11 @@
   usando dicho nombre en el código. Tales constantes se denominan
   <strong>constante con nombre</strong>. Por ejemplo, podemos escribir
   una instrucción que imprima el nombre del ciclo usando la cadena
-  literal <em>“Desarrollo de Aplicaciones Multiplataforma”</em>, o
-  podemos declarar una constante con nombre llamada
-  <em>TITULO_CICLO</em> que es igual a esa cadena y luego usar el nombre
-  constante en la instrucción. Es decir, podemos usar cualquiera de las
-  dos:</p>
+  literal <code>"</code><span class="literal">Desarrollo de Aplicaciones
+  Multiplataforma</span><code>"</code>, o podemos declarar una constante
+  con nombre llamada <span class="variable">TITULO_CICLO</span> que es
+  igual a esa cadena y luego usar el nombre constante en la instrucción.
+  Es decir, podemos usar cualquiera de las dos:</p>
   <pre class="codigo-fuente">
   "Desarrollo de Aplicaciones Multiplataforma"
   </pre>
@@ -1418,12 +1442,14 @@
         String palabra3 = "Desarrollo de Aplicaciones";
   final String PALABRA5 = "Multiplataforma";
   </pre>
-  <p>Almacenan <span class="literal">“Ciclo de Grado Superior de”</span>
-  como el valor de la constante <em>PALABRA1</em>; la cadena <span
-  class="literal">“Desarrollo de Aplicaciones”</span> se almacena en la
-  variable <em>palabra3</em>; y <span
-  class="literal">“Multiplataforma”</span> en la constante
-  <em>PALABRA5</em>.</p>
+  <p>Almacenan <code>"</code><span class="literal">Ciclo de Grado
+  Superior de</span><code>"</code> como el valor de la constante <span
+  class="variable">PALABRA1</span>; la cadena <code>"</code><span
+  class="literal">Desarrollo de Aplicaciones</span><code>"</code> se
+  almacena en la variable <span class="variable">palabra3</span>; y
+  <code>"</code><span
+  class="literal">Multiplataforma</span><code>"</code> en la constante
+  <span class="variable">PALABRA5</span>.</p>
   <h4 id="capitalización-de-identificadores">Capitalización de
   identificadores</h4>
   <p>Los programadores utilizan una serie de reglas para escribir los
@@ -1442,16 +1468,17 @@
   estilo
   <em>CamelCase</em><span class="tooltip"><a href="#fn23" class="nota-llamada" id="fnref23">[23]</a><span class="tooltiptext">CamelCase es un término en inglés que hace referencia a que las primeras letras de una palabra se escriben en mayúsculas, asemejándose a las jorobas de un camello.</span></span>.</p>
   <p>Las clases son sustantivos en <em>UpperCamelCase</em> (la primera
-  letra en mayúsculas), como en <em>Ejemplo</em> o <em>MiClase</em>. Los
-  métodos son verbos en <em>LowerCamelCase</em> (la primera letra en
-  minúsculas), como en <em>pintar</em> o <em>pagarIntereses</em>. Las
-  variables deben también ir en <em>LowerCamelCase</em> y no comenzar
-  por el carácter de subrayado o el símbolo del dólar. Como ya hemos
-  indicado, (estas palabras) deben ser significativas, como un
-  mnemónico. Deben evitarse las variables de un único carácter excepto
-  para temporales, como veremos más adelante. Las constantes con nombre
-  deben utilizar mayúsculas, separando sus palabras componentes con
-  símbolos de subrayado.</p>
+  letra en mayúsculas), como en <span class="clase">Ejemplo</span> o
+  <span class="cklase">MiClase</span>. Los métodos son verbos en
+  <em>LowerCamelCase</em> (la primera letra en minúsculas), como en
+  <span class="metodo">pintar</span> o <span
+  class="clase">pagarIntereses</span>. Las variables deben también ir en
+  <em>LowerCamelCase</em> y no comenzar por el carácter de subrayado o
+  el símbolo del dólar. Como ya hemos indicado, (estas palabras) deben
+  ser significativas, como un mnemónico. Deben evitarse las variables de
+  un único carácter excepto para temporales, como veremos más adelante.
+  Las constantes con nombre deben utilizar mayúsculas, separando sus
+  palabras componentes con símbolos de subrayado.</p>
   <h3 id="expresiones-y-asignación">Expresiones y asignación</h3>
   <p>Hasta ahora, hemos visto formas de declarar campos en una clase.
   Como parte de la declaración, podemos dar un valor inicial al
@@ -1462,10 +1489,12 @@
   <pre class="codigo-java">
   apellido = "Cepero";
   </pre>
-  <p>asigna el valor de cadena <span class="literal">“Cepero”</span> a
-  la variable <span class="variable">apellido</span> (es decir, almacena
-  la secuencia de caracteres <span class="literal">“Cepero”</span> en la
-  posición de memoria asociada con la variable denominada <span
+  <p>asigna el valor de cadena <code>"</code><span
+  class="literal">Cepero</span><code>"</code> a la variable <span
+  class="variable">apellido</span> (es decir, almacena la secuencia de
+  caracteres <code>"</code><span
+  class="literal">Cepero</span><code>"</code> en la posición de memoria
+  asociada con la variable denominada <span
   class="variable">apellido</span>).</p>
   <p>Esta es la plantilla sintáctica para una sentencia de
   asignación:</p>
@@ -1481,11 +1510,12 @@
   </pre>
   <p>La semántica (significado) del operador de asignación (=) es “es
   igual a” u “obtén”; la variable obtiene el valor de la
-  <strong>expresión</strong> (<em>Expression</em>). Cualquier valor
-  anterior de la variable se reemplaza por el de la expresión. Podemos
-  observar que la sintaxis es la misma que para asignar un valor inicial
-  a un campo en una declaración de campo. Además, podemos ampliar la
-  plantilla (ya vista con anterioridad) <span
+  <strong>expresión</strong> (<span
+  class="produccion">Expression</span>). Cualquier valor anterior de la
+  variable se reemplaza por el de la expresión. Podemos observar que la
+  sintaxis es la misma que para asignar un valor inicial a un campo en
+  una declaración de campo. Además, podemos ampliar la plantilla (ya
+  vista con anterioridad) <span
   class="produccion">StatementExpression</span>, que definía una
   sentencia únicamente como la invocación de un método:</p>
   <pre class="plantilla-sintactica">
@@ -1512,9 +1542,9 @@
   </aside>
   <p>Al estar acostumbrados a leer de izquierda a derecha, que el
   operador de asignación mueva un valor de derecha a izquierda puede
-  parecer extraño al principio. Sólo debemos recordar leer el <em>=</em>
-  como “se establece igual a” u “obtiene”; de ese modo parece más
-  natural.</p>
+  parecer extraño al principio. Sólo debemos recordar leer el <span
+  class="operador">=</span> como “se establece igual a” u “obtiene”; de
+  ese modo parece más natural.</p>
   <p>El valor que se asigna a la variable debe ser del mismo tipo que la
   variable. Dadas las declaraciones:</p>
   <pre class="codigo-java">
@@ -1556,18 +1586,18 @@
   ciclo = p1 + " " + p2;
   </pre>
   <p>cuyo resultado es la asignación a <span
-  class="variable">ciclo</span> de la cadena <span
-  class="literal">“Desarrollo de Aplicaciones
-  Multiplataforma”</span><span class="tooltip"><a href="#fn24" class="nota-llamada" id="fnref24">[24]</a><span class="tooltiptext">Notad que hemos añadido un espacio en blanco, una cadena que solo contiene un espacio en blanco, siendo el resultado la concatenación de las tres, en el orden en que aparecen en la expresión.</span></span>.
+  class="variable">ciclo</span> de la cadena <code>"</code><span
+  class="literal">Desarrollo de Aplicaciones
+  Multiplataforma</span><code>"</code><span class="tooltip"><a href="#fn24" class="nota-llamada" id="fnref24">[24]</a><span class="tooltiptext">Notad que hemos añadido un espacio en blanco, una cadena que solo contiene un espacio en blanco, siendo el resultado la concatenación de las tres, en el orden en que aparecen en la expresión.</span></span>.
   El orden de las cadenas en la expresión determina cómo aparecen en la
   cadena resultado. Si, por ejemplo, hubiéramos escrito:</p>
   <pre class="codigo-fuente">
   ciclo = p2 + p1;
   </pre>
   <p>el resultado hubiera sido la asignación a <span
-  class="variable">ciclo</span> de la cadena <span
-  class="literal">“MultiplataformaDesarrollo de
-  Aplicaciones”</span><span class="tooltip"><a href="#fn25" class="nota-llamada" id="fnref25">[25]</a><span class="tooltiptext">En este caso no hemos añadido el espacio y no aparece en el resultado.</span></span>.
+  class="variable">ciclo</span> de la cadena <code>"</code><span
+  class="literal">MultiplataformaDesarrollo de
+  Aplicaciones</span><code>"</code><span class="tooltip"><a href="#fn25" class="nota-llamada" id="fnref25">[25]</a><span class="tooltiptext">En este caso no hemos añadido el espacio y no aparece en el resultado.</span></span>.
   La concatenación puede utilizar tanto literales, como constantes con
   nombre y variables. Por ejemplo:</p>
   <pre class="codigo-fuente">
@@ -1575,9 +1605,9 @@
           + PALABRA5 + " en el Pablo Serrano";
   </pre>
   <p>tiene como resultado la asignación a <span
-  class="variable">ciclo</span> de la cadena <span
-  class="literal">“Estudiamos: Desarrollo de Aplicaciones
-  Multiplataforma en el Pablo Serrano”</span>.</p>
+  class="variable">ciclo</span> de la cadena <code>"</code><span
+  class="literal">Estudiamos: Desarrollo de Aplicaciones Multiplataforma
+  en el Pablo Serrano”</span><code>"</code>.</p>
   <p>En el caso anterior hemos combinado identificadores y literales.
   Por supuesto, resulta posible usar solo el literal; y, si como sucede
   en esa asignación, no cabe en una línea, podemos separarla en varias y
@@ -1588,17 +1618,17 @@
   </pre>
   <p>En muchas ocasiones nos encontraremos con que queremos añadir
   algunos caracteres a una cadena existente. Imaginemos que <span
-  class="variable">ciclo</span> contiene <span
-  class="literal">“Estudiamos”</span> y queremos añadirle el nombre del
-  Centro. Podemos utilizar una sentencia como:</p>
+  class="variable">ciclo</span> contiene <code>"</code><span
+  class="literal">Estudiamos </span><code>"</code> y queremos añadirle
+  el nombre del Centro. Podemos utilizar una sentencia como:</p>
   <pre class="codigo-fuente">
   ciclo = ciclo + " en el Pablo Serrano";
   </pre>
   <p>La sentencia recupera el valor de <span
   class="variable">ciclo</span> de la memoria, añade el literal para
-  crear una cadena nueva (<span class="literal">“Estudiamos en el Pablo
-  Serrano”</span>) y asigna esa nueva cadena a <span
-  class="variable">ciclo</span>. La nueva cadena reemplaza a la
+  crear una cadena nueva (<code>"</code><span class="literal">Estudiamos
+  en el Pablo Serrano</span><code>"</code>) y asigna esa nueva cadena a
+  <span class="variable">ciclo</span>. La nueva cadena reemplaza a la
   anterior.</p>
   <p>La concatenación solo es válida para valores de la clase <span
   class="clase">String</span>. Si intentamos concatenar el valor de uno
@@ -1609,10 +1639,12 @@
   String resultado;
   resultado = "El cuadrado de 6 es " + 36;
   </pre>
-  <p>asigna a <span class="variable">resultado</span> la cadena <span
-  class="literal">“El cuadrado de 6 es 36”</span>. Java convierte el
-  literal entero <span class="literal">36</span> en la cadena <span
-  class="literal">“36”</span> antes de realizar la concatenación.</p>
+  <p>asigna a <span class="variable">resultado</span> la cadena
+  <code>"</code><span class="literal">El cuadrado de 6 es
+  36</span><code>"</code>. Java convierte el literal entero <span
+  class="literal">36</span> en la cadena <code>"</code><span
+  class="literal">36</span><code>"</code> antes de realizar la
+  concatenación.</p>
   <h4 id="expresiones-de-inicialización">Expresiones de
   inicialización</h4>
   <p>Ahora que hemos visto qué es una expresión, podemos generalizar la
@@ -1787,12 +1819,12 @@
   palabra <span class="palabra">import</span>, seguida del nombre de un
   paquete o clase. Un paquete puede ir seguido de subpaquetes separados
   por un punto (.), terminado con el nombre de una clase o el carácter
-  asterisco (<em>). La declaración finaliza con un punto y coma (;). Si
+  asterisco (*). La declaración finaliza con un punto y coma (;). Si
   solo necesitamos utilizar una clase de un paquete en particular,
-  podemos hacerlo indicando su nombre (</em>Identifier*) en la
-  declaración; pero, si queremos usar múltiples clases del paquete, el
-  asterisco le dice al compilador que importe todas las clases del
-  paquete.</p>
+  podemos hacerlo indicando su nombre (<span
+  class="produccion">Identifier</span>) en la declaración; pero, si
+  queremos usar múltiples clases del paquete, el asterisco le dice al
+  compilador que importe todas las clases del paquete.</p>
   <p>¿Para qué podríamos querer utilizar la primera forma si el
   asterisco es más sencillo de escribir y tiene el mismo efecto? En el
   primer caso se importa solo la clase que se necesita, mientras que con
@@ -1947,8 +1979,18 @@
   </pre>
   <p>Aunque la impresión del eco puede parecer redundante en una
   pantalla, es crucial para la verificación de los datos de entrada.</p>
-  <p><a href="tema_01.html">Anterior</a> | <a href="#">Inicio</a> | <a
-  href="tema_03.html">Siguiente</a></p>
+  <footer class="pie">
+  <div class="navegacion-principal">
+  <pre><code>&lt;a href=&quot;tema_01.html&quot; class=&quot;previo&quot;&gt;Anterior&lt;/a&gt; | 
+&lt;a href=&quot;index.html&quot; class=&quot;#&quot;&gt;Inicio&lt;/a&gt; | 
+&lt;a href=&quot;tema_03.html&quot; class=&quot;siguiente&quot;&gt;Siguiente&lt;/a&gt;</code></pre>
+  </div>
+  <div class="navegacion-secundaria">
+  <pre><code>&lt;!-- Renderizar solo si existen en el tema --&gt;
+&lt;a href=&quot;ejercicios.html&quot;&gt;Ejercicios&lt;/a&gt; | 
+&lt;!--a href=&quot;problemas.html&quot;&gt;Problemas&lt;/a--&gt;</code></pre>
+  </div>
+  </footer>
   <hr />
   <h2 id="sec-notas-pie">Notas al pie</h2>
   <ol class="seccion-notas-impresion">
@@ -1973,7 +2015,8 @@
   <strong>Aceptar</strong>. <a href="#fnref4" class="footnote-back">↩</a></p>
   </li>
   <li class="footnote" id="fn5">
-  <p>Como **C:Files*. <a href="#fnref5" class="footnote-back">↩</a></p>
+  <p>Como <strong>C:\Program
+  Files\Java\jdk-20\bin</strong>. <a href="#fnref5" class="footnote-back">↩</a></p>
   </li>
   <li class="footnote" id="fn6">
   <p>No debería haber problemas si lo has escrito
@@ -2010,8 +2053,8 @@
   href="https://openjdk.org/jeps/445">https://openjdk.org/jeps/445</a>. <a href="#fnref11" class="footnote-back">↩</a></p>
   </li>
   <li class="footnote" id="fn12">
-  <p>Si la JVM no encuentra un método <span class="palabra">main</span>
-  se lanza una excepción y
+  <p>Si la JVM no encuentra un método <strong>main</strong> se lanza una
+  excepción y
   finaliza. <a href="#fnref12" class="footnote-back">↩</a></p>
   </li>
   <li class="footnote" id="fn13">
