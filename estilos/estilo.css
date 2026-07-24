@@ -184,12 +184,33 @@ h1, h2, h3, main section { clear: both; }
 }
 
 /* --- 7. Navegación y Utilidades --- */
+/* --- 7. Navegación y Utilidades --- */
+.pie {
+    display: flex;
+    justify-content: space-between; /* Empuja los bloques a los extremos */
+    flex-wrap: wrap; /* Permite que el bloque derecho baje si no hay espacio */
+    align-items: center;
+    margin-top: 2em;
+    padding-top: 1em;
+    border-top: 1px solid #cbd5e0; /* Opcional: una línea sutil de separación */
+}
+
+.pie .navegacion-principal, 
+.pie .navegacion-secundaria {
+    margin: 0.5em 0; /* Da un pequeño respiro vertical si caen en dos líneas */
+}
+
 .pie .previo   { }
 .pie .inicio   { }
 .pie .siguiente { }
 .newpage       { page-break-before: always; break-before: page; } /* Estilo para pruebas */
 
-
+.enlace-inactivo {
+    color: #a0aec0; /* Un tono gris claro, ajusta según tu paleta */
+    text-decoration: none;
+    cursor: default; /* El cursor de flecha normal, no la manita de enlace */
+    pointer-events: none; /* Asegura que no se pueda hacer clic de ninguna forma *
+}
 
 /* ==========================================================================
    OPTIMIZACIONES EXCLUSIVAS PARA PANTALLA (WEB)
@@ -211,8 +232,10 @@ h1, h2, h3, main section { clear: both; }
     /* Ocultar elementos interactivos de pantalla */
     .menu-flotante, .tooltip .tooltiptext, .tooltip .tooltiptext::after { display: none !important; visibility: hidden !important; }
 
-    /* Ocultar elementos interactivos de pantalla (Añadimos el nuevo botón aquí) */
-    .menu-flotante, .boton-descarga-top, .tooltip .tooltiptext, .tooltip .tooltiptext::after { 
+    /* Ocultar elementos interactivos de pantalla */
+    .menu-flotante, .boton-descarga-top, .pie,
+    .tooltip .tooltiptext, .tooltip .tooltiptext::after,
+     { 
         display: none !important; 
         visibility: hidden !important; 
     }

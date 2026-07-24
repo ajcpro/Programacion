@@ -497,7 +497,19 @@ En general siempre va a ser apropiado:
 4. Identificar los objetos requeridos y sus capacidades.
 5. Tener en cuenta qué acciones puede realizar el ordenador al desarrollar soluciones.
 
-[Anterior](#) | [Inicio](#) | [Siguiente](tema_02.html)
+<footer class="pie">
+  <div class="navegacion-principal">
+    <span class="enlace-inactivo">Anterior</span> | 
+    <a href="../index.html" class="inicio">Inicio</a> | 
+    <a href="tema_02.html" class="siguiente">Siguiente</a>
+  </div>
+  
+  <div class="navegacion-secundaria">
+    <!-- Renderizar solo si existen en el tema -->
+    <a href="ejercicios.html">Ejercicios</a> | 
+    <!--a href="problemas.html">Problemas</a-->
+  </div>
+</footer>
 
 [^1]: A pesar de que, generalmente, los términos datos e información se usan para describir lo mismo, por datos nos referimos a hechos, etc. que han sido registrados, mientras que información se refiere a los datos que han sido procesados de manera que pueden ser entendidos e interpretados, conocimiento que puede ser comunicado.
 [^2]: Conjunto ordenado y finito de operaciones que permite hallar la solución de un problema (Definición del diccionario de la RAE).
