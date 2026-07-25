@@ -50,7 +50,6 @@ pre.codigo-java {
 pre.plantilla-sintactica {
   background-color: #fffaf0; /* Un tono ligeramente crema editorial */
   border: 1px solid #feebc8;
-  /*border-left: 4px solid #dd6b20; /* Color de alerta/sintaxis (Naranja/Marrón) */
   padding: 12px;
   font-family: 'Courier New', Courier, monospace;
   font-style: italic; /* TODO el bloque nace en cursiva (No terminales) */
@@ -184,7 +183,6 @@ h1, h2, h3, main section { clear: both; }
 }
 
 /* --- 7. Navegación y Utilidades --- */
-/* --- 7. Navegación y Utilidades --- */
 .pie {
     display: flex;
     justify-content: space-between; /* Empuja los bloques a los extremos */
@@ -209,7 +207,7 @@ h1, h2, h3, main section { clear: both; }
     color: #a0aec0; /* Un tono gris claro, ajusta según tu paleta */
     text-decoration: none;
     cursor: default; /* El cursor de flecha normal, no la manita de enlace */
-    pointer-events: none; /* Asegura que no se pueda hacer clic de ninguna forma *
+    pointer-events: none; /* Asegura que no se pueda hacer clic de ninguna forma */
 }
 
 /* ==========================================================================
@@ -234,8 +232,7 @@ h1, h2, h3, main section { clear: both; }
 
     /* Ocultar elementos interactivos de pantalla */
     .menu-flotante, .boton-descarga-top, .pie,
-    .tooltip .tooltiptext, .tooltip .tooltiptext::after,
-     { 
+    .tooltip .tooltiptext, .tooltip .tooltiptext::after { 
         display: none !important; 
         visibility: hidden !important; 
     }
