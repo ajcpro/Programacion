@@ -1,5 +1,5 @@
 /* ==========================================================================
-   COMPONENTES EXCLUSIVOS Y ESPECÍFICOS - TEMA 02
+   COMPONENTES EXCLUSIVOS Y ESPECÃFICOS - TEMA 02
    ========================================================================== */
 
 table.tabla-datos {
@@ -22,4 +22,25 @@ table.tabla-datos th {
 table.tabla-datos td {
   padding: 10px;
   border-bottom: 1px solid #e2e8f0;
+}
+
+figure.img-ide {
+  float: right;
+  max-width: 60%;
+  margin: 0 0 0 1.5em;
+  text-align: left;
+}
+
+figure.img-codigo {
+  float: left;
+  max-width: 55%;
+  margin: 0 1.5em 0 0;
+  text-align: left;
+}
+
+figure.img-cajas {
+  float: right;
+  max-width: 20%;
+  margin: 0 0 0 1.5em;
+  text-align: left;
 }

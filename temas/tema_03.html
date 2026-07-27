@@ -24,6 +24,100 @@
   <li>Realizar trazas de ejecución.</li>
   </ul>
   </section>
+  <h1 id="estructuras-de-programación-1">Estructuras de
+  programación</h1>
+  <p><a href="../pdf/tema_03.pdf" target="_blank" class="boton-descarga-top">📥
+  PDF</a></p>
+  <section class="objetivos">
+  <h2>
+  Objetivos
+  </h2>
+  <ul>
+  <li>Comprender la anatomía básica de un programa y sus elementos
+  constituyentes.
+  <ul>
+  <li>Entender la diferencia conceptual entre sintaxis y semántica.</li>
+  <li>Introducir el concepto de token, palabras reservadas y
+  expresiones.</li>
+  <li>Comprender la necesidad de alterar el flujo de ejecución
+  secuencial mediante estructuras de control y modularidad.</li>
+  </ul></li>
+  </ul>
+  </section>
+  <h2 id="introducción">Introducción</h2>
+  <p>Anteriormente hemos visto que, para poder ejecutar un programa, es
+  estrictamente necesario traducirlo a código máquina. En ese proceso
+  inicial, aprendimos que Java es un lenguaje que se fundamenta en la
+  portabilidad y la seguridad, utilizando el <em>bytecode</em> y la
+  Máquina Virtual de Java (JVM) como intermediarios indispensables para
+  que nuestras instrucciones lleguen, finalmente, a ser procesadas por
+  el hardware.</p>
+  <p>Sin embargo, programar no consiste simplemente en memorizar y
+  agrupar un conjunto de comandos aislados. Un lenguaje de programación
+  es, en esencia, un <strong>sistema formal</strong> compuesto por un
+  conjunto de reglas, símbolos y palabras especiales que se combinan
+  para construir un algoritmo capaz de resolver un problema real. Por
+  ello, para avanzar de forma sólida en nuestro aprendizaje, debemos
+  empezar a analizar el texto d e nuestros programas buscando e
+  identificando los elementos mínimos que poseen un significado especial
+  para el compilador.</p>
+  <p>Uno de estos elementos fundamentales son las
+  <strong>instrucciones</strong> o <strong>sentencias</strong>. De la
+  misma forma que en la comunicación verbal natural utilizamos frases u
+  oraciones estructuradas mediante sintagmas, las instrucciones de un
+  lenguaje de programación contienen piezas estructurales menores que
+  denominamos <strong>expresiones</strong>. Siguiendo con esta analogía
+  lingüística, al igual que el predicado de una oración necesita casi
+  siempre de un verbo para dotar a la frase de acción y sentido, las
+  expresiones en programación se construyen habitualmente articulando
+  variables, literales y <strong>operadores</strong>.</p>
+  <p>En este tema, daremos un paso más allá de la simple declaración de
+  datos y la ejecución estrictamente lineal. Abordaremos de forma
+  estructurada los siguientes conceptos:</p>
+  <ul>
+  <li><strong>Análisis léxico:</strong> Cómo el compilador lee nuestro
+  código aislando <strong>palabras reservadas</strong> y símbolos
+  (tokens).</li>
+  <li><strong>Construcción de expresiones:</strong> Cómo se articulan y
+  evalúan operaciones complejas de cálculo y lógica.</li>
+  <li><strong>Modularidad:</strong> Cómo podemos organizar bloques
+  lógicos reutilizables mediante el uso de <strong>funciones</strong> o
+  métodos.</li>
+  <li><strong>Control de flujo:</strong> Cómo romper la secuencialidad,
+  sentando las bases para que nuestros programas puedan tomar decisiones
+  lógicas (selección) y repetir procesos de manera eficiente
+  (iteración).</li>
+  </ul>
+  <p>Dominar estos conceptos fundacionales es el requisito indispensable
+  para pasar de escribir simples líneas de código a diseñar soluciones
+  lógicas y estructuradas.</p>
+  <aside class="definicion">
+  <p><strong>Estructura de programación:</strong> Conjunto de reglas
+  semánticas y sintácticas que permiten organizar y articular las
+  instrucciones de un programa para controlar su flujo de ejecución,
+  evaluar expresiones complejas o definir bloques de código
+  reutilizables.</p>
+  </aside>
+  <hr />
+  <p><em>Nota de diseño de imagen:</em> &gt; <strong>Figura
+  sugerida:</strong> Un diagrama de bloques que muestre el esqueleto de
+  un programa. En la parte superior, un bloque principal (“Código
+  Fuente”). De él cuelgan ramificaciones hacia “Palabras Reservadas”,
+  “Expresiones” (con subramas hacia “Operadores” y “Variables”), y
+  “Control de Flujo” (con flechas que ilustren bifurcaciones lógicas y
+  bucles). El objetivo es visualizar la anatomía estructural que se
+  desarrollará en las siguientes secciones.</p>
+  <hr />
+  <footer class="pie">
+  <div class="navegacion-principal">
+  <pre><code>&lt;a href=&quot;tema_02.html&quot; class=&quot;previo&quot;&gt;Anterior&lt;/a&gt; | 
+&lt;a href=&quot;index.html&quot; class=&quot;#&quot;&gt;Inicio&lt;/a&gt; | 
+&lt;a href=&quot;tema_04.html&quot; class=&quot;siguiente&quot;&gt;Siguiente&lt;/a&gt;</code></pre>
+  </div>
+  <div class="navegacion-secundaria">
+  <pre><code>&lt;a href=&quot;ejercicios_03.html&quot;&gt;Ejercicios&lt;/a&gt;</code></pre>
+  </div>
+  </footer>
 
   <!-- Script para abrir enlaces externos en una nueva pestaña -->
   <script>
