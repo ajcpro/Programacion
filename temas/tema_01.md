@@ -223,7 +223,7 @@ Traducir un algoritmo a un lenguaje de programación se llama codificar el algor
 
 No existe una única forma de implementar un algoritmo. Por ejemplo, un algoritmo puede ser traducido a más de un lenguaje de programación. Cada traducción produce una implementación diferente. Incluso cuando dos personas traducen un algoritmo al mismo lenguaje de programación, a menudo, obtienen dos implementaciones diferentes. ¿Por qué? Porque cada lenguaje de programación permite al programador cierta flexibilidad a la hora de traducir el algoritmo. Dada esta flexibilidad, las personas adoptan sus propios estilos de escritura de programas, al igual que sucede con la forma de hablar o redactar un texto. Cuando se adquiere experiencia en la programación, con el tiempo, se desarrolla un estilo propio. En este texto se ofrecen consejos sobre un buen estilo de programación.
 
-<figure class="img-lateral-der">
+<figure class="img-lateral-dch">
     <img src="../imagenes/01_02_atajo.png" alt="Escritura de programa sin atajo">
 </figure>
 

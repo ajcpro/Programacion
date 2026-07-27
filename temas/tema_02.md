@@ -113,6 +113,11 @@ Como se puede ver, Java se encuentra en el *Top 10* de la mayoría de clasificac
 1. **Tiene una sintaxis clara y legible.** Java es claro y fácil de entender, lo que lo hace accesible a los programadores noveles. Facilita el proceso de aprendizaje y comprensión de los conceptos de la programación mediante una estructura de código bien organizada y un claro enfoque a la legibilidad.
 2. **Orientado a objetos.** Java es un lenguaje de programación orientado a objetos (OOP) en el que los conceptos de objetos, clases, herencia, encapsulación y polimorfismo son fundamentales. La programación orientada a objetos es un paradigma ampliamente utilizado en el desarrollo de software y aprenderlo usando Java permite sentar las bases para usar otros lenguajes y conceptos relacionados.
 3. **Portabilidad.** Los programas escritos en Java se pueden ejecutar en diferentes plataformas (Windows, macOS, Linux, etc.) siempre que se tenga instalado un entorno de ejecución de Java (JRE). Esta característica, denominada **WORA** (Write Once, Run Anywhere), hace que Java sea una excelente opción para desarrollar aplicaciones que funcionen en múltiples máquinas o con distintos sistemas operativos.
+
+<figure class="img-grande">
+    <img src="../imagenes/02_01_wora.png" alt="compila una vez, ejecuta muchas">
+</figure>
+
 4. **Muchos recursos de aprendizaje.** Existe una gran comunidad de desarrolladores y una abundancia de recursos de aprendizaje: tutoriales, libros, foros, cursos en línea, etc. Esto facilita el acceso a multitud de materiales en caso de tener dudas o problemas.
 5. **Versatilidad y uso extendido.** Java se utiliza ampliamente en gran variedad de dominios que incluyen el desarrollo de aplicaciones de escritorio, desarrollo web, aplicaciones móviles (Android), desarrollo de servidores y muchas más. Java proporciona una gran oportunidad para explorar diferentes áreas de la programación.
 
@@ -190,11 +195,16 @@ Mi primer programa Java
 
 Aunque no es objetivo de este módulo, existen unos programas denominados IDE, que integran editor de texto, compilador y depurador; y, aunque están pensados para maximizar la productividad, son, probablemente, una magnífica herramienta para un programador novel. Los IDE más populares para Java son:
 
+<figure class="img-ide">
+    <img src="../imagenes/02_02_ide.png" alt="Entorno integrado de desarrollo">
+</figure>
+
 * **Eclipse:** es un IDE de código abierto muy utilizado en el desarrollo de Java. Ofrece una amplia gama de características, como resaltado de sintaxis, autocompletado, depuración y soporte para la gestión de proyectos.
 * **IntelliJ IDEA:** IDE desarrollado por JetBrains y conocido por su enfoque en la productividad del desarrollador. Ofrece una gran cantidad de características avanzadas, refactorización automática, integración con herramientas de construcción y control de versiones y soporte para múltiples lenguajes.
 * **NetBeans:** otro popular IDE de código abierto para el desarrollo de Java. Proporciona herramientas integradas para el desarrollo de aplicaciones web, de escritorio y móviles.
+* **Visual Studio Code** con extensiones para Java, que ofrecen una experiencia ligera y altamente personalizable, ha ganado muchísima popularidad.
 
-Todos ellos son muy capaces y ampliamente utilizados en la comunidad de desarrollo de Java. La elección del mismo depende en gran medida de las preferencias personales y necesidades específicas. Además, también es posible añadir extensiones para la programación a distintos editores de texto o, muy popular también, **Visual Studio Code** con extensiones para Java, que ofrecen una experiencia ligera y altamente personalizable.
+Todos ellos son muy capaces y ampliamente utilizados en la comunidad de desarrollo de Java. La elección del mismo depende en gran medida de las preferencias personales y necesidades específicas. Además, también es posible añadir extensiones para la programación a distintos editores de texto, como los comentados anteriormente.
 
 ### Compilación y ejecución
 
@@ -338,13 +348,9 @@ son cuatro nombres distintos y no son intercambiables de ninguna manera. Podemos
 
 Ahora estamos ya en disposición de explicar, aproximadamente, cómo funciona el código de **MiPrimerPrograma**.
 
-<pre class="codigo-fuente">
-public class MiPrimerPrograma {
-    public static void main ( String[] args ) {
-        System.out.println("Mi primer programa Java");
-    }
-}
-</pre>
+<figure class="img-codigo">
+    <img src="../imagenes/02_03_codigo.png" alt="Código de mi primer programa Java">
+</figure>
 
 El programa empieza por lo que hemos dicho que son palabras reservadas <span class="palabra">public</span> y <span class="palabra">class</span>. En este caso, la producción <span class="produccion">ImportDeclaration</span> no aparece en este programa; hemos dicho que una producción entre llaves puede no aparecer. En este programa, <span class="produccion">ClassModifier</span> está representado por <span class="palabra">public</span>. Veremos cuáles son los modificadores de clase que podemos utilizar pero, por el momento, siempre va a ser <span class="palabra">public</span>. Tras la palabra reservada <span class="palabra">class</span> encontramos <span class="clase">MiPrimerPrograma</span>, que se corresponde con <span class="produccion">Identifier</span>, el identificador de la clase y también de este programa. La plantilla sintáctica indica que, a continuación, debe haber unas llaves de apertura y cierre. Además, anidado entre ellas, puede existir un <span class="produccion">ClassBodyDeclaration</span>.
 
@@ -467,6 +473,10 @@ Teóricamente no hay límite sobre el tamaño de los números pero el hardware d
 
 Por ejemplo, en Java, existen cuatro tipos de números enteros:
 
+<figure class="img-cajas">
+    <img src="../imagenes/02_04_tipos_caja.png" alt="Analogía de los tipos de datos con cajas de la más pequeña (byte) a la más grande (double)">
+</figure>
+
 <table class="tabla-datos">
   <thead>
     <tr>
@@ -570,6 +580,10 @@ El tipo <span class="palabra">char</span> es uno de los tipos primitivos de Java
 Identificamos en el capítulo anterior dos fases de programación: la fase de resolución de problemas y la fase de implementación. A menudo, utilizamos el mismo vocabulario de diferentes maneras en las dos fases.
 
 En la fase de resolución de problemas, por ejemplo, un **objeto** es una entidad o algo que tiene sentido en el contexto del problema en cuestión. Un grupo de objetos, con propiedades y comportamientos similares, se describen como una clase de objeto o **clase**, para abreviar. La resolución de problemas orientados a objetos implica aislar los objetos que componen el problema. Los objetos interactúan unos con otros mediante el envío de mensajes.
+
+<figure class="img-grande">
+    <img src="../imagenes/02_06_molde.png" alt="Analogía del molde: planos y negativo de un coche frente a cuatro vehículos">
+</figure>
 
 En la fase de implementación, una **clase** es una construcción que permite al programador describir un objeto. Una clase contiene campos (valores de datos) y métodos (subprogramas) que definen el comportamiento del objeto. Podemos pensar en una clase, en sentido general, como en un patrón para un objeto, qué parece y cómo se comporta; y en una clase de Java como la estructura que nos permite simular el objeto en código. Si una clase es una descripción de un objeto, ¿cómo obtenemos un objeto? Usamos un operador, llamado <span class="palabra">new</span>, que toma el nombre de la clase y devuelve un objeto de esa clase. El objeto que se devuelve es una instancia de la clase. La acción de crear un objeto a partir de una clase se denomina **instanciación**.
 
@@ -701,6 +715,10 @@ Un campo puede ser una constante o una variable. En otras palabras, un identific
 Los datos se almacenan en la memoria. Mientras se ejecuta una aplicación, diferentes valores pueden almacenarse en la misma posición de memoria en diferentes momentos. Estrictamente hablando, la posición de memoria se denomina **variable** y su contenido es el valor de la variable. El nombre simbólico que asociamos con la posición de memoria es el nombre de la variable o identificador de variable. En la práctica, llamamos variable al nombre de la variable y lo que se dice que cambia es su valor.
 
 Declarar una variable implica especificar tanto su nombre como su tipo de datos o clase. Esto le dice al compilador que asocie un nombre con una posición de memoria y le informa que sus contenidos serán de un tipo específico o clase (por ejemplo, <span class="palabra">char</span> o <span class="clase">String</span>). La siguiente declaración indica que <span class="variable">miCaracter</span> será una variable de tipo <span class="palabra">char</span>:
+
+<figure class="img-cajas">
+    <img src="../imagenes/02_05_caja_char.png" alt="Carácter dentro de una caja: analogía de variable conteniendo valor">
+</figure>
 
 <pre class="codigo-java">
 char miCaracter;
@@ -951,6 +969,10 @@ char miCaracter; // Un lugar para almacenar una letra
 </pre>
 
 las siguientes sentencias de asignación son válidas:
+
+<figure class="img-cajas">
+    <img src="../imagenes/02_05_caja_char_b.png" alt="Carácter dentro de una caja: analogía de variable conteniendo valor">
+</figure>
 
 <pre class="codigo-java">
 nombre = "Antonio";  // Literal de cadena asignado a String
@@ -1210,6 +1232,10 @@ La llamada a <span class="metodo">next</span> es bastante diferente de la llamad
 </aside>
 
 Si la línea tiene más de un elemento, como varias palabras, <span class="metodo">next</span> nos devolverá cada palabra, una tras otra. Si lo que queremos una cadena con todas ellas, podemos utilizar el método <span class="metodo">nextLine</span>, que nos devuelve lo que haya en la entrada hasta el final de la línea. Además, nos proporciona otros métodos, útiles para la lectura de datos de otros tipos, no solo de cadenas, como <span class="metodo">nextInt</span>, por ejemplo.
+
+<figure class="img-grande">
+    <img src="../imagenes/02_07_scanner.png" alt="Carácter dentro de una caja: analogía de variable conteniendo valor">
+</figure>
 
 ### Entrada y salida interactivas
 
