@@ -45,6 +45,7 @@ css: ["../estilos/estilo.css", "../estilos/tema_01.css"]
 <li><a href="#divide-y-vencerás">Divide y vencerás</a></li>
 <li><a href="#construcción-por-bloques">Construcción por bloques</a></li>
 <li><a href="#bloqueo-mental-el-miedo-a-empezar">Bloqueo mental: el miedo a empezar</a></li>
+<li><a href="#prueba-y-depuración">Prueba y depuración</a></li>
 </ul>
 </li>
 </ul>
@@ -94,6 +95,7 @@ css: ["../estilos/estilo.css", "../estilos/tema_01.css"]
     * [Divide y vencerás](#divide-y-vencerás)
     * [Construcción por bloques](#construcción-por-bloques)
     * [Bloqueo mental: el miedo a empezar](#bloqueo-mental-el-miedo-a-empezar)
+    * [Prueba y depuración](#prueba-y-depuración)
 
 </section>
 
@@ -498,17 +500,17 @@ En general siempre va a ser apropiado:
 5. Tener en cuenta qué acciones puede realizar el ordenador al desarrollar soluciones.
 
 <footer class="pie">
-  <div class="navegacion-principal">
-    <span class="enlace-inactivo">Anterior</span> | 
-    <a href="../index.html" class="inicio">Inicio</a> | 
-    <a href="tema_02.html" class="siguiente">Siguiente</a>
-  </div>
+<div class="navegacion-principal">
+<span class="enlace-inactivo">Anterior</span> | 
+<a href="../index.html" class="inicio">Inicio</a> | 
+<a href="tema_02.html" class="siguiente">Siguiente</a>
+</div>
   
-  <div class="navegacion-secundaria">
-    <!-- Renderizar solo si existen en el tema -->
-    <a href="ejercicios.html">Ejercicios</a> | 
-    <!--a href="problemas.html">Problemas</a-->
-  </div>
+<div class="navegacion-secundaria">
+<!-- Renderizar solo si existen en el tema -->
+<a href="ejercicios.html">Ejercicios</a> | 
+<!--a href="problemas.html">Problemas</a-->
+</div>
 </footer>
 
 [^1]: A pesar de que, generalmente, los términos datos e información se usan para describir lo mismo, por datos nos referimos a hechos, etc. que han sido registrados, mientras que información se refiere a los datos que han sido procesados de manera que pueden ser entendidos e interpretados, conocimiento que puede ser comunicado.

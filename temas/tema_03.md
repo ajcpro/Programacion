@@ -67,13 +67,13 @@ Dominar estos conceptos fundacionales es el requisito indispensable para pasar d
 ---
 
 <footer class="pie">
-  <div class="navegacion-principal">
-    <a href="tema_02.html" class="previo">Anterior</a> | 
-    <a href="index.html" class="#">Inicio</a> | 
-    <a href="tema_04.html" class="siguiente">Siguiente</a>
-  </div>
+<div class="navegacion-principal">
+<a href="tema_02.html" class="previo">Anterior</a> | 
+<a href="index.html" class="#">Inicio</a> | 
+<a href="tema_04.html" class="siguiente">Siguiente</a>
+</div>
   
-  <div class="navegacion-secundaria">
-    <a href="ejercicios_03.html">Ejercicios</a>
-  </div>
+<div class="navegacion-secundaria">
+<a href="ejercicios_03.html">Ejercicios</a>
+</div>
 </footer>

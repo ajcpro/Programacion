@@ -1262,17 +1262,17 @@ System.out.println("Usted introdujo el nombre: "
 Aunque la impresión del eco puede parecer redundante en una pantalla, es crucial para la verificación de los datos de entrada.
 
 <footer class="pie">
-  <div class="navegacion-principal">
-    <a href="tema_01.html" class="previo">Anterior</a> | 
-    <a href="index.html" class="#">Inicio</a> | 
-    <a href="tema_03.html" class="siguiente">Siguiente</a>
-  </div>
+<div class="navegacion-principal">
+<a href="tema_01.html" class="previo">Anterior</a> | 
+<a href="index.html" class="#">Inicio</a> | 
+<a href="tema_03.html" class="siguiente">Siguiente</a>
+</div>
   
-  <div class="navegacion-secundaria">
-    <!-- Renderizar solo si existen en el tema -->
-    <a href="ejercicios.html">Ejercicios</a> | 
-    <!--a href="problemas.html">Problemas</a-->
-  </div>
+<div class="navegacion-secundaria">
+<!-- Renderizar solo si existen en el tema -->
+<a href="ejercicios.html">Ejercicios</a> | 
+<!--a href="problemas.html">Problemas</a-->
+</div>
 </footer>
 
 [^1]: De los que hablamos en el primer capítulo.
