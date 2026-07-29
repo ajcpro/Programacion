@@ -71,6 +71,7 @@ aside {
     padding: 0.5em;
     background-color: #f0f6ff;
     border-radius: 5px;
+    display: flow-root;
 }
 
 .aside .definicion { padding: 0.5em; }

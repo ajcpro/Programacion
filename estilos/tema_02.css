@@ -9,6 +9,7 @@ table.tabla-datos {
   font-size: 10pt;
   break-inside: avoid;
   margin: 0 auto;
+  display: flow-root;
 }
 
 table.tabla-datos th {
