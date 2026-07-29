@@ -81,11 +81,13 @@ pre.codigo-java {
 .produccion-encabezado {
     /*font-weight: bold;*/
     color: #212529;
+    margin-bottom: 0;
 }
 
 .produccion-alternativas {
     padding-left: 20px; /* Tabulación para las alternativas */
     color: #495057;
+    margin-top: 0;
 }
 
 aside {
