@@ -47,7 +47,7 @@ pre.codigo-java {
 }
 
 /* Plantillas Sintácticas (Metalenguaje) */
-pre.plantilla-sintactica {
+.plantilla-sintactica {
   background-color: #fffaf0; /* Un tono ligeramente crema editorial */
   border: 1px solid #feebc8;
   padding: 12px;
@@ -61,8 +61,31 @@ pre.plantilla-sintactica {
 }
 
 /* Símbolos terminales dentro de la plantilla (SIN cursiva) */
-pre.plantilla-sintactica .terminal {
+.plantilla-sintactica .terminal {
   font-style: normal;  /* Rompe la cursiva del contenedor */
+}
+
+/* Cada regla o producción individual */
+.produccion {
+    break-inside: avoid; /* Evita que se rompa la producción entre dos páginas */
+    page-break-inside: avoid; /* Soporte para navegadores más antiguos */
+    margin-bottom: 16px; /* Espaciado entre producciones */
+}
+
+/* Elimina el margen inferior de la última producción para que no sobre espacio */
+.produccion:last-child {
+    margin-bottom: 0;
+}
+
+/* Estilos opcionales para diferenciar el encabezado de las alternativas si lo necesitas */
+.produccion-encabezado {
+    /*font-weight: bold;*/
+    color: #212529;
+}
+
+.produccion-alternativas {
+    padding-left: 20px; /* Tabulación para las alternativas */
+    color: #495057;
 }
 
 aside {

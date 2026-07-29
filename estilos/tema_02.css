@@ -9,7 +9,6 @@ table.tabla-datos {
   font-size: 10pt;
   break-inside: avoid;
   margin: 0 auto;
-  display: flow-root;
 }
 
 table.tabla-datos th {
@@ -40,6 +39,13 @@ figure.img-codigo {
 }
 
 figure.img-cajas {
+  float: right;
+  max-width: 20%;
+  margin: 0 0 0 1.5em;
+  text-align: left;
+}
+
+figure.img-caja-char {
   float: right;
   max-width: 15%;
   margin: 0 0 0 1.5em;
