@@ -50,14 +50,13 @@ pre.codigo-java {
 .plantilla-sintactica {
   background-color: #fffaf0; /* Un tono ligeramente crema editorial */
   border: 1px solid #feebc8;
-  padding: 12px;
+  padding: 1.2em;
+  padding-bottom: 0.6em;
   font-family: 'Courier New', Courier, monospace;
   font-style: italic; /* TODO el bloque nace en cursiva (No terminales) */
   font-size: 10pt;
-  white-space: pre-wrap;
-  /* break-inside: avoid;*/
-  margin: 15px 0;
   color: #2d3748;
+  display:block;
 }
 
 /* Símbolos terminales dentro de la plantilla (SIN cursiva) */
@@ -69,25 +68,30 @@ pre.codigo-java {
 .produccion {
     break-inside: avoid; /* Evita que se rompa la producción entre dos páginas */
     page-break-inside: avoid; /* Soporte para navegadores más antiguos */
-    margin-bottom: 16px; /* Espaciado entre producciones */
+    padding-bottom: 1em; /* Espaciado entre producciones */
 }
 
 /* Elimina el margen inferior de la última producción para que no sobre espacio */
 .produccion:last-child {
-    margin-bottom: 0;
+    padding-bottom: 0px;
 }
 
 /* Estilos opcionales para diferenciar el encabezado de las alternativas si lo necesitas */
+
+.produccion-encabezado, .produccion-alternativas {
+    margin: 0;
+    padding: 0;
+    line-height: 0; /* Ajusta el interlineado normal de un párrafo */
+}
+
 .produccion-encabezado {
     /*font-weight: bold;*/
     color: #212529;
-    margin-bottom: 0;
 }
 
 .produccion-alternativas {
     padding-left: 20px; /* Tabulación para las alternativas */
     color: #495057;
-    margin-top: 0;
 }
 
 aside {
