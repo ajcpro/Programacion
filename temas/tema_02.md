@@ -372,7 +372,7 @@ Ahora estamos ya en disposición de explicar, aproximadamente, cómo funciona el
     <img src="../imagenes/02_03_codigo.png" alt="Código de mi primer programa Java">
 </figure>
 
-El programa empieza por lo que hemos dicho que son palabras reservadas <span class="palabra">public</span> y <span class="palabra">class</span>. En este caso, la producción <span class="produccion">ImportDeclaration</span> no aparece en este programa; hemos dicho que una producción entre llaves puede no aparecer. En este programa, <span class="produccion">ClassModifier</span> está representado por <span class="palabra">public</span>. Veremos cuáles son los modificadores de clase que podemos utilizar pero, por el momento, siempre va a ser <span class="palabra">public</span>. Tras la palabra reservada <span class="palabra">class</span> encontramos <span class="clase">MiPrimerPrograma</span>, que se corresponde con <span class="produccion">Identifier</span>, el identificador de la clase y también de este programa. La plantilla sintáctica indica que, a continuación, debe haber unas llaves de apertura y cierre. Además, anidado entre ellas, puede existir un <span class="produccion">ClassBodyDeclaration</span>.
+El programa empieza por lo que hemos dicho que son palabras reservadas <span class="palabra">public</span> y <span class="palabra">class</span>. En este caso, la producción <span class="produccion-palabra">ImportDeclaration</span> no aparece en este programa; hemos dicho que una producción entre llaves puede no aparecer. En este programa, <span class="produccion-palabra">ClassModifier</span> está representado por <span class="palabra">public</span>. Veremos cuáles son los modificadores de clase que podemos utilizar pero, por el momento, siempre va a ser <span class="palabra">public</span>. Tras la palabra reservada <span class="palabra">class</span> encontramos <span class="clase">MiPrimerPrograma</span>, que se corresponde con <span class="produccion-palabra">Identifier</span>, el identificador de la clase y también de este programa. La plantilla sintáctica indica que, a continuación, debe haber unas llaves de apertura y cierre. Además, anidado entre ellas, puede existir un <span class="produccion-palabra">ClassBodyDeclaration</span>.
 
 <div class="plantilla-sintactica">
 <div class="produccion">
@@ -424,9 +424,9 @@ Esta plantilla se corresponde con esa primera línea que, por el momento, usarem
     public static void main ( String[] args ) {
 </pre>
 
-Como en el caso de la declaración de clase, vemos la palabra reservada <span class="palabra">public</span>, aunque viene aquí seguida de otro <span class="produccion">MethodModifier</span>, <span class="palabra">static</span>, también palabra reservada. El <span class="produccion">MethodHeader</span> incorpora otra palabra reservada, <span class="palabra">void</span>, y el identificador <span class="metodo">main</span>: para que una clase sea un programa, uno de los métodos debe llamarse **main**. Esa línea lo que está haciendo es declarar un método <span class="metodo">main</span> ya que la ejecución de una aplicación Java comienza en ese método principal[^13]. Y, según la plantilla, entre paréntesis, una lista de parámetros formales.
+Como en el caso de la declaración de clase, vemos la palabra reservada <span class="palabra">public</span>, aunque viene aquí seguida de otro <span class="produccion-palabra">MethodModifier</span>, <span class="palabra">static</span>, también palabra reservada. El <span class="produccion-palabra">MethodHeader</span> incorpora otra palabra reservada, <span class="palabra">void</span>, y el identificador <span class="metodo">main</span>: para que una clase sea un programa, uno de los métodos debe llamarse **main**. Esa línea lo que está haciendo es declarar un método <span class="metodo">main</span> ya que la ejecución de una aplicación Java comienza en ese método principal[^13]. Y, según la plantilla, entre paréntesis, una lista de parámetros formales.
 
-Hasta ahora, todas las producciones tenían una única línea. La plantilla correspondiente a <span class="produccion">MethodBody</span>, va a tener dos:
+Hasta ahora, todas las producciones tenían una única línea. La plantilla correspondiente a <span class="produccion-palabra">MethodBody</span>, va a tener dos:
 
 <div class="plantilla-sintactica">
 <div class="produccion">
@@ -526,7 +526,7 @@ Extensa secuencia de producciones sintácticas para expresar que el cuerpo del m
 
 Este método, <span class="metodo">println</span> de <span class="instancia">System.out</span>, muestra por pantalla lo que hay entre los paréntesis, que es su lista de argumentos, aunque aquí solo hay uno: la frase **Mi primer programa Java**. Explicaremos más adelante que debe ir entre comillas inglesas[^14] porque es un literal de cadena.
 
-Hay que tener en cuenta que <span class="produccion">ExpressionName</span> es una producción recursiva, es decir, que puede ser una sucesión de identificadores, sin especificar cuántos, unidos por el símbolo del punto.
+Hay que tener en cuenta que <span class="produccion-palabra">ExpressionName</span> es una producción recursiva, es decir, que puede ser una sucesión de identificadores, sin especificar cuántos, unidos por el símbolo del punto.
 
 ## Elementos básicos del lenguaje
 
@@ -1065,7 +1065,7 @@ Identifier
 </div>
 </div>
 
-La semántica (significado) del operador de asignación (=) es "es igual a" u "obtén"; la variable obtiene el valor de la **expresión** (<span class="produccion">Expression</span>). Cualquier valor anterior de la variable se reemplaza por el de la expresión. Podemos observar que la sintaxis es la misma que para asignar un valor inicial a un campo en una declaración de campo. Además, podemos ampliar la plantilla (ya vista con anterioridad) <span class="produccion">StatementExpression</span>, que definía una sentencia únicamente como la invocación de un método:
+La semántica (significado) del operador de asignación (=) es "es igual a" u "obtén"; la variable obtiene el valor de la **expresión** (<span class="produccion-palabra">Expression</span>). Cualquier valor anterior de la variable se reemplaza por el de la expresión. Podemos observar que la sintaxis es la misma que para asignar un valor inicial a un campo en una declaración de campo. Además, podemos ampliar la plantilla (ya vista con anterioridad) <span class="produccion-palabra">StatementExpression</span>, que definía una sentencia únicamente como la invocación de un método:
 
 <div class="plantilla-sintactica">
 <div class="produccion">
@@ -1331,7 +1331,7 @@ PackageOrTypeName <span class="terminal">. *</span>
 </div>
 </div>
 
-En la práctica, una declaración de importación comienza con la palabra <span class="palabra">import</span>, seguida del nombre de un paquete o clase. Un paquete puede ir seguido de subpaquetes separados por un punto (.), terminado con el nombre de una clase o el carácter asterisco (*). La declaración finaliza con un punto y coma (;). Si solo necesitamos utilizar una clase de un paquete en particular, podemos hacerlo indicando su nombre (<span class="produccion">Identifier</span>) en la declaración; pero, si queremos usar múltiples clases del paquete, el asterisco le dice al compilador que importe todas las clases del paquete.
+En la práctica, una declaración de importación comienza con la palabra <span class="palabra">import</span>, seguida del nombre de un paquete o clase. Un paquete puede ir seguido de subpaquetes separados por un punto (.), terminado con el nombre de una clase o el carácter asterisco (*). La declaración finaliza con un punto y coma (;). Si solo necesitamos utilizar una clase de un paquete en particular, podemos hacerlo indicando su nombre (<span class="produccion-palabra">Identifier</span>) en la declaración; pero, si queremos usar múltiples clases del paquete, el asterisco le dice al compilador que importe todas las clases del paquete.
 
 ¿Para qué podríamos querer utilizar la primera forma si el asterisco es más sencillo de escribir y tiene el mismo efecto? En el primer caso se importa solo la clase que se necesita, mientras que con el asterisco podemos estar importando clases que no deseamos importar y que, como entenderemos con la práctica, pueden colisionar con nuestras propias clases.
 
