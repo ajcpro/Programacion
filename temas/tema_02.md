@@ -473,10 +473,6 @@ Teóricamente no hay límite sobre el tamaño de los números pero el hardware d
 
 Por ejemplo, en Java, existen cuatro tipos de números enteros:
 
-<figure class="img-cajas">
-    <img src="../imagenes/02_04_tipos_caja.png" alt="Analogía de los tipos de datos con cajas de la más pequeña (byte) a la más grande (double)">
-</figure>
-
 <table class="tabla-datos">
   <thead>
     <tr>
@@ -508,6 +504,10 @@ Por ejemplo, en Java, existen cuatro tipos de números enteros:
     </tr>
   </tbody>
 </table>
+
+<figure class="img-cajas">
+    <img src="../imagenes/02_04_tipos_caja.png" alt="Analogía de los tipos de datos con cajas de la más pequeña (byte) a la más grande (double)">
+</figure>
 
 Al representar números positivos y negativos, además del cero, los valores que pueden tener son la mitad del total[^17]. En la actualidad, es habitual definir todos los números enteros como de tipo <span class="palabra">int</span>, aunque el valor que vayan a tomar pueda ser representado con un <span class="palabra">byte</span> o un <span class="palabra">short</span>[^18]. Y solo si tenemos seguridad de que el valor que pueda tomar es muy grande (más de dos mil millones), usaremos <span class="palabra">long</span>.
 
@@ -579,11 +579,11 @@ El tipo <span class="palabra">char</span> es uno de los tipos primitivos de Java
 
 Identificamos en el capítulo anterior dos fases de programación: la fase de resolución de problemas y la fase de implementación. A menudo, utilizamos el mismo vocabulario de diferentes maneras en las dos fases.
 
-En la fase de resolución de problemas, por ejemplo, un **objeto** es una entidad o algo que tiene sentido en el contexto del problema en cuestión. Un grupo de objetos, con propiedades y comportamientos similares, se describen como una clase de objeto o **clase**, para abreviar. La resolución de problemas orientados a objetos implica aislar los objetos que componen el problema. Los objetos interactúan unos con otros mediante el envío de mensajes.
-
 <figure class="img-lateral-izq">
     <img src="../imagenes/02_06_molde.png" alt="Analogía del molde: planos y negativo de un coche frente a dos vehículos">
 </figure>
+
+En la fase de resolución de problemas, por ejemplo, un **objeto** es una entidad o algo que tiene sentido en el contexto del problema en cuestión. Un grupo de objetos, con propiedades y comportamientos similares, se describen como una clase de objeto o **clase**, para abreviar. La resolución de problemas orientados a objetos implica aislar los objetos que componen el problema. Los objetos interactúan unos con otros mediante el envío de mensajes.
 
 En la fase de implementación, una **clase** es una construcción que permite al programador describir un objeto. Una clase contiene campos (valores de datos) y métodos (subprogramas) que definen el comportamiento del objeto. Podemos pensar en una clase, en sentido general, como en un patrón para un objeto, qué parece y cómo se comporta; y en una clase de Java como la estructura que nos permite simular el objeto en código. Si una clase es una descripción de un objeto, ¿cómo obtenemos un objeto? Usamos un operador, llamado <span class="palabra">new</span>, que toma el nombre de la clase y devuelve un objeto de esa clase. El objeto que se devuelve es una instancia de la clase. La acción de crear un objeto a partir de una clase se denomina **instanciación**.
 

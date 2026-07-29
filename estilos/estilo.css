@@ -55,7 +55,7 @@ pre.plantilla-sintactica {
   font-style: italic; /* TODO el bloque nace en cursiva (No terminales) */
   font-size: 10pt;
   white-space: pre-wrap;
-  break-inside: avoid;
+  /* break-inside: avoid;*/
   margin: 15px 0;
   color: #2d3748;
 }
