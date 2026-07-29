@@ -228,9 +228,6 @@ h1, h2, h3, main section { clear: both; }
     body  { background-color: #fff; color: #000; font-size: 11pt; line-height: 1.4; }
 
     /* Ocultar elementos interactivos de pantalla */
-    .menu-flotante, .tooltip .tooltiptext, .tooltip .tooltiptext::after { display: none !important; visibility: hidden !important; }
-
-    /* Ocultar elementos interactivos de pantalla */
     .menu-flotante, .boton-descarga-top, .pie,
     .tooltip .tooltiptext, .tooltip .tooltiptext::after { 
         display: none !important; 
