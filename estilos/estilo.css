@@ -14,11 +14,11 @@
     font-weight: bold;
     font-family: Courier, 'Courier New', 'Lucida Console', monospace;
 }
-.literal, .operador, .variable,
-.clase, .instancia, .metodo, .produccion {
+.literal, .operador, .variable, .clase, .instancia, .metodo,
+.produccion-palabra {
     font-family: Courier, 'Courier New', 'Lucida Console', monospace;
 }
-.produccion {
+.produccion-palabra {
   font-style: italic;
 }
 .terminal { color: #e61703; font-weight: bold; }
@@ -56,7 +56,6 @@ pre.codigo-java {
   font-style: italic; /* TODO el bloque nace en cursiva (No terminales) */
   font-size: 10pt;
   color: #2d3748;
-  display:block;
 }
 
 /* Símbolos terminales dentro de la plantilla (SIN cursiva) */
@@ -68,7 +67,6 @@ pre.codigo-java {
 .produccion {
     break-inside: avoid; /* Evita que se rompa la producción entre dos páginas */
     page-break-inside: avoid; /* Soporte para navegadores más antiguos */
-    padding-bottom: 1em; /* Espaciado entre producciones */
 }
 
 /* Elimina el margen inferior de la última producción para que no sobre espacio */
@@ -81,7 +79,6 @@ pre.codigo-java {
 .produccion-encabezado, .produccion-alternativas {
     margin: 0;
     padding: 0;
-    line-height: 0; /* Ajusta el interlineado normal de un párrafo */
 }
 
 .produccion-encabezado {
@@ -90,8 +87,9 @@ pre.codigo-java {
 }
 
 .produccion-alternativas {
-    padding-left: 20px; /* Tabulación para las alternativas */
+    padding-left: 2ch; /* Tabulación para las alternativas */
     color: #495057;
+    margin-top: -0.80lh;
 }
 
 aside {

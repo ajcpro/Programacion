@@ -669,20 +669,20 @@
   <p>El programa empieza por lo que hemos dicho que son palabras
   reservadas <span class="palabra">public</span> y <span
   class="palabra">class</span>. En este caso, la producción <span
-  class="produccion">ImportDeclaration</span> no aparece en este
+  class="produccion-palabra">ImportDeclaration</span> no aparece en este
   programa; hemos dicho que una producción entre llaves puede no
   aparecer. En este programa, <span
-  class="produccion">ClassModifier</span> está representado por <span
-  class="palabra">public</span>. Veremos cuáles son los modificadores de
-  clase que podemos utilizar pero, por el momento, siempre va a ser
-  <span class="palabra">public</span>. Tras la palabra reservada <span
-  class="palabra">class</span> encontramos <span
+  class="produccion-palabra">ClassModifier</span> está representado por
+  <span class="palabra">public</span>. Veremos cuáles son los
+  modificadores de clase que podemos utilizar pero, por el momento,
+  siempre va a ser <span class="palabra">public</span>. Tras la palabra
+  reservada <span class="palabra">class</span> encontramos <span
   class="clase">MiPrimerPrograma</span>, que se corresponde con <span
-  class="produccion">Identifier</span>, el identificador de la clase y
-  también de este programa. La plantilla sintáctica indica que, a
-  continuación, debe haber unas llaves de apertura y cierre. Además,
+  class="produccion-palabra">Identifier</span>, el identificador de la
+  clase y también de este programa. La plantilla sintáctica indica que,
+  a continuación, debe haber unas llaves de apertura y cierre. Además,
   anidado entre ellas, puede existir un <span
-  class="produccion">ClassBodyDeclaration</span>.</p>
+  class="produccion-palabra">ClassBodyDeclaration</span>.</p>
   <div class="plantilla-sintactica">
   <div class="produccion">
   <div class="produccion-encabezado">
@@ -749,9 +749,10 @@
   </pre>
   <p>Como en el caso de la declaración de clase, vemos la palabra
   reservada <span class="palabra">public</span>, aunque viene aquí
-  seguida de otro <span class="produccion">MethodModifier</span>, <span
+  seguida de otro <span
+  class="produccion-palabra">MethodModifier</span>, <span
   class="palabra">static</span>, también palabra reservada. El <span
-  class="produccion">MethodHeader</span> incorpora otra palabra
+  class="produccion-palabra">MethodHeader</span> incorpora otra palabra
   reservada, <span class="palabra">void</span>, y el identificador <span
   class="metodo">main</span>: para que una clase sea un programa, uno de
   los métodos debe llamarse <strong>main</strong>. Esa línea lo que está
@@ -762,7 +763,7 @@
   formales.</p>
   <p>Hasta ahora, todas las producciones tenían una única línea. La
   plantilla correspondiente a <span
-  class="produccion">MethodBody</span>, va a tener dos:</p>
+  class="produccion-palabra">MethodBody</span>, va a tener dos:</p>
   <div class="plantilla-sintactica">
   <div class="produccion">
   <div class="produccion-encabezado">
@@ -891,9 +892,9 @@
   inglesas<span class="tooltip"><a href="#fn13" class="nota-llamada" id="fnref13">[13]</a><span class="tooltiptext">Normalmente conocidas como comillas dobles.</span></span>
   porque es un literal de cadena.</p>
   <p>Hay que tener en cuenta que <span
-  class="produccion">ExpressionName</span> es una producción recursiva,
-  es decir, que puede ser una sucesión de identificadores, sin
-  especificar cuántos, unidos por el símbolo del punto.</p>
+  class="produccion-palabra">ExpressionName</span> es una producción
+  recursiva, es decir, que puede ser una sucesión de identificadores,
+  sin especificar cuántos, unidos por el símbolo del punto.</p>
   <h2 id="elementos-básicos-del-lenguaje">Elementos básicos del
   lenguaje</h2>
   <p>Un programa de ordenador trabaja con datos. En Java, cada unidad de
@@ -1737,12 +1738,12 @@
   <p>La semántica (significado) del operador de asignación (=) es “es
   igual a” u “obtén”; la variable obtiene el valor de la
   <strong>expresión</strong> (<span
-  class="produccion">Expression</span>). Cualquier valor anterior de la
-  variable se reemplaza por el de la expresión. Podemos observar que la
-  sintaxis es la misma que para asignar un valor inicial a un campo en
-  una declaración de campo. Además, podemos ampliar la plantilla (ya
-  vista con anterioridad) <span
-  class="produccion">StatementExpression</span>, que definía una
+  class="produccion-palabra">Expression</span>). Cualquier valor
+  anterior de la variable se reemplaza por el de la expresión. Podemos
+  observar que la sintaxis es la misma que para asignar un valor inicial
+  a un campo en una declaración de campo. Además, podemos ampliar la
+  plantilla (ya vista con anterioridad) <span
+  class="produccion-palabra">StatementExpression</span>, que definía una
   sentencia únicamente como la invocación de un método:</p>
   <div class="plantilla-sintactica">
   <div class="produccion">
@@ -2091,8 +2092,8 @@
   asterisco (*). La declaración finaliza con un punto y coma (;). Si
   solo necesitamos utilizar una clase de un paquete en particular,
   podemos hacerlo indicando su nombre (<span
-  class="produccion">Identifier</span>) en la declaración; pero, si
-  queremos usar múltiples clases del paquete, el asterisco le dice al
+  class="produccion-palabra">Identifier</span>) en la declaración; pero,
+  si queremos usar múltiples clases del paquete, el asterisco le dice al
   compilador que importe todas las clases del paquete.</p>
   <p>¿Para qué podríamos querer utilizar la primera forma si el
   asterisco es más sencillo de escribir y tiene el mismo efecto? En el
