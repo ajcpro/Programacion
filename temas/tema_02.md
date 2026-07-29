@@ -581,7 +581,7 @@ Identificamos en el capítulo anterior dos fases de programación: la fase de re
 
 En la fase de resolución de problemas, por ejemplo, un **objeto** es una entidad o algo que tiene sentido en el contexto del problema en cuestión. Un grupo de objetos, con propiedades y comportamientos similares, se describen como una clase de objeto o **clase**, para abreviar. La resolución de problemas orientados a objetos implica aislar los objetos que componen el problema. Los objetos interactúan unos con otros mediante el envío de mensajes.
 
-<figure class="img-lateral-izd">
+<figure class="img-lateral-izq">
     <img src="../imagenes/02_06_molde.png" alt="Analogía del molde: planos y negativo de un coche frente a dos vehículos">
 </figure>
 
@@ -968,11 +968,11 @@ char inicial;    // Inicial del nombre de una persona
 char miCaracter; // Un lugar para almacenar una letra
 </pre>
 
+las siguientes sentencias de asignación son válidas:
+
 <figure class="img-cajas">
     <img src="../imagenes/02_05_caja_char_b.png" alt="Carácter dentro de una caja: analogía de variable conteniendo valor">
 </figure>
-
-las siguientes sentencias de asignación son válidas:
 
 <pre class="codigo-java">
 nombre = "Antonio";  // Literal de cadena asignado a String
