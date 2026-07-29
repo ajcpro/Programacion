@@ -581,8 +581,8 @@ Identificamos en el capítulo anterior dos fases de programación: la fase de re
 
 En la fase de resolución de problemas, por ejemplo, un **objeto** es una entidad o algo que tiene sentido en el contexto del problema en cuestión. Un grupo de objetos, con propiedades y comportamientos similares, se describen como una clase de objeto o **clase**, para abreviar. La resolución de problemas orientados a objetos implica aislar los objetos que componen el problema. Los objetos interactúan unos con otros mediante el envío de mensajes.
 
-<figure class="img-grande">
-    <img src="../imagenes/02_06_molde.png" alt="Analogía del molde: planos y negativo de un coche frente a cuatro vehículos">
+<figure class="img-lateral-izd">
+    <img src="../imagenes/02_06_molde.png" alt="Analogía del molde: planos y negativo de un coche frente a dos vehículos">
 </figure>
 
 En la fase de implementación, una **clase** es una construcción que permite al programador describir un objeto. Una clase contiene campos (valores de datos) y métodos (subprogramas) que definen el comportamiento del objeto. Podemos pensar en una clase, en sentido general, como en un patrón para un objeto, qué parece y cómo se comporta; y en una clase de Java como la estructura que nos permite simular el objeto en código. Si una clase es una descripción de un objeto, ¿cómo obtenemos un objeto? Usamos un operador, llamado <span class="palabra">new</span>, que toma el nombre de la clase y devuelve un objeto de esa clase. El objeto que se devuelve es una instancia de la clase. La acción de crear un objeto a partir de una clase se denomina **instanciación**.
