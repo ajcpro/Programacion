@@ -968,11 +968,11 @@ char inicial;    // Inicial del nombre de una persona
 char miCaracter; // Un lugar para almacenar una letra
 </pre>
 
-las siguientes sentencias de asignación son válidas:
-
 <figure class="img-cajas">
     <img src="../imagenes/02_05_caja_char_b.png" alt="Carácter dentro de una caja: analogía de variable conteniendo valor">
 </figure>
+
+las siguientes sentencias de asignación son válidas:
 
 <pre class="codigo-java">
 nombre = "Antonio";  // Literal de cadena asignado a String
