@@ -476,13 +476,26 @@
   para una mejor compresión.</p>
   <p>Veamos una posible plantilla sintáctica para un programa en
   Java:</p>
-  <pre class="plantilla-sintactica">
+  <div class="plantilla-sintactica">
+  <div class="produccion">
+  <div class="produccion-encabezado">
   Programa:
-  {ImportDeclaration}{ClassDeclaration}
-
+  </div>
+  <div class="produccion-alternativas">
+  <p>{ImportDeclaration}{ClassDeclaration}</p>
+  </div>
+  </div>
+  <div class="produccion">
+  <div class="produccion-encabezado">
   ClassDeclaration:
-  {ClassModifier} <span class="terminal">class</span> Identifier <span class="terminal">{</span> {ClassBodyDeclaration} <span class="terminal">}</span>
-  </pre>
+  </div>
+  <div class="produccion-alternativas">
+  <p>{ClassModifier} <span class="terminal">class</span> Identifier
+  <span class="terminal">{</span> {ClassBodyDeclaration} <span
+  class="terminal">}</span></p>
+  </div>
+  </div>
+  </div>
   <p>Los datos en cursiva indican que son no terminales: referencias a
   otra producción. La definición del mismo viene seguida de dos puntos.
   Si la encontramos rodeada de unas llaves, indica que puede aparecer
@@ -510,19 +523,40 @@
   opcionalmente especificar algunas propiedades generales de la clase
   (los modificadores de clase). Definiremos los modificadores de clase
   más adelante pero veamos cómo es un identificador:</p>
-  <pre class="plantilla-sintactica">
+  <div class="plantilla-sintactica">
+  <div class="produccion">
+  <div class="produccion-encabezado">
   Identifier:
-  IdentifierChars
-
+  </div>
+  <div class="produccion-alternativas">
+  <p>IdentifierChars</p>
+  </div>
+  </div>
+  <div class="produccion">
+  <div class="produccion-encabezado">
   IdentifierChars:
-  JavaLetter {JavaLetterOrDigit}
-
+  </div>
+  <div class="produccion-alternativas">
+  <p>JavaLetter {JavaLetterOrDigit}</p>
+  </div>
+  </div>
+  <div class="produccion">
+  <div class="produccion-encabezado">
   JavaLetter:
-  any Unicode character that is a "Java letter"
-
+  </div>
+  <div class="produccion-alternativas">
+  <p>any Unicode character that is a “Java letter”</p>
+  </div>
+  </div>
+  <div class="produccion">
+  <div class="produccion-encabezado">
   JavaLetterOrDigit:
-  any Unicode character that is a "Java letter-or-digit"
-  </pre>
+  </div>
+  <div class="produccion-alternativas">
+  <p>any Unicode character that is a “Java letter-or-digit”</p>
+  </div>
+  </div>
+  </div>
   <p>Las líneas
   precedentes<span class="tooltip"><a href="#fn8" class="nota-llamada" id="fnref8">[8]</a><span class="tooltiptext">Las plantillas sintácticas que representemos, aunque obtenidas de la especificación, pueden no coincidir de forma exacta; como hemos indicado, las modificaremos para ajustarse mejor a lo que estemos explicando.</span></span>
   indican que un identificador es una secuencia de caracteres de
@@ -649,29 +683,63 @@
   continuación, debe haber unas llaves de apertura y cierre. Además,
   anidado entre ellas, puede existir un <span
   class="produccion">ClassBodyDeclaration</span>.</p>
-  <pre class="plantilla-sintactica">
+  <div class="plantilla-sintactica">
+  <div class="produccion">
+  <div class="produccion-encabezado">
   ClassBodyDeclaration:
-  MethodDeclaration
-
+  </div>
+  <div class="produccion-alternativas">
+  <p>MethodDeclaration</p>
+  </div>
+  </div>
+  <div class="produccion">
+  <div class="produccion-encabezado">
   MethodDeclaration:
-  {MethodModifier} MethodHeader MethodBody
-
+  </div>
+  <div class="produccion-alternativas">
+  <p>{MethodModifier} MethodHeader MethodBody</p>
+  </div>
+  </div>
+  <div class="produccion">
+  <div class="produccion-encabezado">
   MethodHeader:
-  TypeIdentifier Identifier <span class="terminal">(</span> [FormalParameterList] <span class="terminal">)</span>
-  </pre>
+  </div>
+  <div class="produccion-alternativas">
+  <p>TypeIdentifier Identifier <span class="terminal">(</span>
+  [FormalParameterList] <span class="terminal">)</span></p>
+  </div>
+  </div>
+  </div>
   <p>Hemos introducido un símbolo nuevo en la plantilla de sintaxis: el
   corchete. Una referencia entre corchetes indica que es opcional: puede
   aparecer una vez o ninguna.</p>
-  <pre class="plantilla-sintactica">
+  <div class="plantilla-sintactica">
+  <div class="produccion">
+  <div class="produccion-encabezado">
   TypeIdentifier:
-  Identifier
-
+  </div>
+  <div class="produccion-alternativas">
+  <p>Identifier</p>
+  </div>
+  </div>
+  <div class="produccion">
+  <div class="produccion-encabezado">
   FormalParameterList:
-  FormalParameter {<span class="terminal">,</span> FormalParameter}
-
+  </div>
+  <div class="produccion-alternativas">
+  <p>FormalParameter {<span class="terminal">,</span>
+  FormalParameter}</p>
+  </div>
+  </div>
+  <div class="produccion">
+  <div class="produccion-encabezado">
   FormalParameter:
-  TypeIdentifier Identifier
-  </pre>
+  </div>
+  <div class="produccion-alternativas">
+  <p>TypeIdentifier Identifier</p>
+  </div>
+  </div>
+  </div>
   <p>Esta plantilla se corresponde con esa primera línea que, por el
   momento, usaremos de forma literal en todos nuestros
   programas<span class="tooltip"><a href="#fn11" class="nota-llamada" id="fnref11">[11]</a><span class="tooltiptext">En Java 21 se introduce experimentalmente una mejora que lo simplifica pero, por ahora lo seguiremos usando así. Referencias: https://openjdk.org/projects/amber/design-notes/on-ramp y https://openjdk.org/jeps/445.</span></span>,
@@ -695,54 +763,120 @@
   <p>Hasta ahora, todas las producciones tenían una única línea. La
   plantilla correspondiente a <span
   class="produccion">MethodBody</span>, va a tener dos:</p>
-  <pre class="plantilla-sintactica">
+  <div class="plantilla-sintactica">
+  <div class="produccion">
+  <div class="produccion-encabezado">
   MethodBody:
-  Block
-  <span class="terminal">;</span>
-  </pre>
+  </div>
+  <div class="produccion-alternativas">
+  <p>Block<br> <span class="terminal">;</span></p>
+  </div>
+  </div>
+  </div>
   <p>Esta configuración indica que la producción puede ser una
   cualquiera de las líneas que aparecen: un bloque o el carácter punto y
   coma, en este caso.</p>
-  <pre class="plantilla-sintactica">
+  <div class="plantilla-sintactica">
+  <div class="produccion">
+  <div class="produccion-encabezado">
   Block:
-  <span class="terminal">{</span> [BlockStatements] <span class="terminal">}</span>
-
+  </div>
+  <div class="produccion-alternativas">
+  <p><span class="terminal">{</span> [BlockStatements] <span
+  class="terminal">}</span></p>
+  </div>
+  </div>
+  <div class="produccion">
+  <div class="produccion-encabezado">
   BlockStatements:
-  BlockStatement {BlockStatement}
-
+  </div>
+  <div class="produccion-alternativas">
+  <p>BlockStatement {BlockStatement}</p>
+  </div>
+  </div>
+  <div class="produccion">
+  <div class="produccion-encabezado">
   BlockStatement:
-  Statement
-
+  </div>
+  <div class="produccion-alternativas">
+  <p>Statement</p>
+  </div>
+  </div>
+  <div class="produccion">
+  <div class="produccion-encabezado">
   Statement:
-  StatementWithoutTrailingSubstatement
-
+  </div>
+  <div class="produccion-alternativas">
+  <p>StatementWithoutTrailingSubstatement</p>
+  </div>
+  </div>
+  <div class="produccion">
+  <div class="produccion-encabezado">
   StatementWithoutTrailingSubstatement:
-  Block
-  EmptyStatement
-  ExpressionStatement
-
+  </div>
+  <div class="produccion-alternativas">
+  <p>Block<br> EmptyStatement<br> ExpressionStatement</p>
+  </div>
+  </div>
+  <div class="produccion">
+  <div class="produccion-encabezado">
   EmptyStatement:
-  <span class="terminal">;</span>
-
+  </div>
+  <div class="produccion-alternativas">
+  <p><span class="terminal">;</span></p>
+  </div>
+  </div>
+  <div class="produccion">
+  <div class="produccion-encabezado">
   ExpressionStatement:
-  StatementExpression <span class="terminal">;</span>
-
+  </div>
+  <div class="produccion-alternativas">
+  <p>StatementExpression <span class="terminal">;</span></p>
+  </div>
+  </div>
+  <div class="produccion">
+  <div class="produccion-encabezado">
   StatementExpression:
-  MethodInvocation
-
+  </div>
+  <div class="produccion-alternativas">
+  <p>MethodInvocation</p>
+  </div>
+  </div>
+  <div class="produccion">
+  <div class="produccion-encabezado">
   MethodInvocation:
-  MethodName <span class="terminal">(</span> [ArgumentList] <span class="terminal">)</span>
-
+  </div>
+  <div class="produccion-alternativas">
+  <p>MethodName <span class="terminal">(</span> [ArgumentList] <span
+  class="terminal">)</span></p>
+  </div>
+  </div>
+  <div class="produccion">
+  <div class="produccion-encabezado">
   MethodName:
-  ExpressionName
-
+  </div>
+  <div class="produccion-alternativas">
+  <p>ExpressionName</p>
+  </div>
+  </div>
+  <div class="produccion">
+  <div class="produccion-encabezado">
   ArgumentList:
-  Expression {<span class="terminal">,</span> Expression}
-
+  </div>
+  <div class="produccion-alternativas">
+  <p>Expression {<span class="terminal">,</span> Expression}</p>
+  </div>
+  </div>
+  <div class="produccion">
+  <div class="produccion-encabezado">
   ExpressionName:
-  Identifier
-  ExpressionName <span class="terminal">.</span> Identifier
-  </pre>
+  </div>
+  <div class="produccion-alternativas">
+  <p>Identifier<br> ExpressionName <span class="terminal">.</span>
+  Identifier</p>
+  </div>
+  </div>
+  </div>
   <p>Extensa secuencia de producciones sintácticas para expresar que el
   cuerpo del método debe ir encerrado entre llaves y va a contener
   sentencias que, en este caso, es una que invoca un método:</p>
@@ -1238,7 +1372,7 @@
   siguiente declaración indica que <span
   class="variable">miCaracter</span> será una variable de tipo <span
   class="palabra">char</span>:</p>
-  <figure class="img-cajas">
+  <figure class="img-caja-char">
   <img src="../imagenes/02_05_caja_char.png" alt="Carácter dentro de una caja: analogía de variable conteniendo valor">
   </figure>
   <pre class="codigo-java">
@@ -1267,13 +1401,25 @@
   tipo especificado (para ellas).</p>
   </aside>
   <p>Plantilla sintáctica de declaración de variable:</p>
-  <pre class="plantilla-sintactica">
+  <div class="plantilla-sintactica">
+  <div class="produccion">
+  <div class="produccion-encabezado">
   VariableDeclaration:
-  {TypeModifier} TypeIdentifier IdentifierList <span class="terminal">;</span>
-
+  </div>
+  <div class="produccion-alternativas">
+  <p>{TypeModifier} TypeIdentifier IdentifierList <span
+  class="terminal">;</span></p>
+  </div>
+  </div>
+  <div class="produccion">
+  <div class="produccion-encabezado">
   IdentifierList:
-  Identifier {<span class="terminal">,</span> Identifier}
-  </pre>
+  </div>
+  <div class="produccion-alternativas">
+  <p>Identifier {<span class="terminal">,</span> Identifier}</p>
+  </div>
+  </div>
+  </div>
   <p>Por el momento, el modificador de tipo, como en las declaraciones
   de clase, es <span class="palabra">public</span> (o nada) y el
   identificador de tipo es el nombre de un tipo o clase (como <span
@@ -1313,21 +1459,40 @@
   por tanto, innecesario.</p>
   <p>Ampliamos dos de las producciones que veíamos antes acerca del
   contenido de clases y bloques:</p>
-  <pre class="plantilla-sintactica">
+  <div class="plantilla-sintactica">
+  <div class="produccion">
+  <div class="produccion-encabezado">
   ClassBodyDeclaration:
-  ClassMemberDeclaration
-
+  </div>
+  <div class="produccion-alternativas">
+  <p>ClassMemberDeclaration</p>
+  </div>
+  </div>
+  <div class="produccion">
+  <div class="produccion-encabezado">
   ClassMemberDeclaration:
-  Declaration
-  MethodDeclaration
-
+  </div>
+  <div class="produccion-alternativas">
+  <p>Declaration<br> MethodDeclaration</p>
+  </div>
+  </div>
+  <div class="produccion">
+  <div class="produccion-encabezado">
   BlockStatement:
-  Declaration
-  Statement
-
+  </div>
+  <div class="produccion-alternativas">
+  <p>Declaration<br> Statement</p>
+  </div>
+  </div>
+  <div class="produccion">
+  <div class="produccion-encabezado">
   Declaration:
-  VariableDeclaration
-  </pre>
+  </div>
+  <div class="produccion-alternativas">
+  <p>VariableDeclaration</p>
+  </div>
+  </div>
+  </div>
   <p>Como vemos, una clase contiene un conjunto de declaraciones de
   clase, algunas de las cuales pueden ser variables. Por ejemplo, la
   siguiente clase tiene dos declaraciones de variable:</p>
@@ -1384,21 +1549,34 @@
   </aside>
   <p>La plantilla sintáctica para una declaración de constante es
   similar a la plantilla para una declaración de variable:</p>
-  <pre class="plantilla-sintactica">
+  <div class="plantilla-sintactica">
+  <div class="produccion">
+  <div class="produccion-encabezado">
   ConstantDeclaration:
-  {TypeModifier} <span class="terminal">final</span> TypeIdentifier Identifier <span class="terminal">=</span> Literal <span class="terminal">;</span>
-  </pre>
+  </div>
+  <div class="produccion-alternativas">
+  <p>{TypeModifier} <span class="terminal">final</span> TypeIdentifier
+  Identifier <span class="terminal">=</span> Literal <span
+  class="terminal">;</span></p>
+  </div>
+  </div>
+  </div>
   <p>La única diferencia es que debemos incluir el modificador <span
   class="palabra">final</span>, una palabra reservada, seguido del
   identificador, el símbolo de igualdad (<span class="palabra">=</span>)
   y el valor que se almacenará en la constante. El modificador <span
   class="palabra">final</span> le dice al compilador de Java que este
   valor es el único valor que debe tener este identificador.</p>
-  <pre class="plantilla-sintactica">
+  <div class="plantilla-sintactica">
+  <div class="produccion">
+  <div class="produccion-encabezado">
   Declaration:
-  ConstantDeclaration
-  VariableDeclaration
-  </pre>
+  </div>
+  <div class="produccion-alternativas">
+  <p>ConstantDeclaration<br> VariableDeclaration</p>
+  </div>
+  </div>
+  </div>
   <p>Los siguientes son ejemplos de declaraciones de constantes:</p>
   <pre class="codigo-java">
   final String ASTERISCOS = "********";
@@ -1439,17 +1617,35 @@
   inicial y añadir la palabra clave <span class="palabra">final</span> a
   la lista de modificadores, entonces tenemos una plantilla genérica
   para una declaración de campo en Java:</p>
-  <pre class="plantilla-sintactica">
+  <div class="plantilla-sintactica">
+  <div class="produccion">
+  <div class="produccion-encabezado">
   FieldDeclaration:
-  {TypeModifier} TypeIdentifier IdentifierList <span class="terminal">;</span>
-
+  </div>
+  <div class="produccion-alternativas">
+  <p>{TypeModifier} TypeIdentifier IdentifierList <span
+  class="terminal">;</span></p>
+  </div>
+  </div>
+  <div class="produccion">
+  <div class="produccion-encabezado">
   IdentifierList:
-  Identifier [<span class="terminal">=</span> Literal] {<span class="terminal">,</span> Identifier [<span class="terminal">=</span> Literal]}
-
+  </div>
+  <div class="produccion-alternativas">
+  <p>Identifier [<span class="terminal">=</span> Literal] {<span
+  class="terminal">,</span> Identifier [<span class="terminal">=</span>
+  Literal]}</p>
+  </div>
+  </div>
+  <div class="produccion">
+  <div class="produccion-encabezado">
   Declaration:
-  ConstantDeclaration
-  FieldDeclaration
-  </pre>
+  </div>
+  <div class="produccion-alternativas">
+  <p>ConstantDeclaration<br> FieldDeclaration</p>
+  </div>
+  </div>
+  </div>
   <p>Las siguientes declaraciones son legales:</p>
   <pre class="codigo-java">
   final String PALABRA1 = "Ciclo de Grado Superior de";
@@ -1512,16 +1708,32 @@
   class="variable">apellido</span>).</p>
   <p>Esta es la plantilla sintáctica para una sentencia de
   asignación:</p>
-  <pre class="plantilla-sintactica">
+  <div class="plantilla-sintactica">
+  <div class="produccion">
+  <div class="produccion-encabezado">
   Assignment:
-  LeftHandSide AssignmentOperator Expression
-
+  </div>
+  <div class="produccion-alternativas">
+  <p>LeftHandSide AssignmentOperator Expression</p>
+  </div>
+  </div>
+  <div class="produccion">
+  <div class="produccion-encabezado">
   LeftHandSide:
-  Identifier
-
+  </div>
+  <div class="produccion-alternativas">
+  <p>Identifier</p>
+  </div>
+  </div>
+  <div class="produccion">
+  <div class="produccion-encabezado">
   AssignmentOperator:
-  <span class="terminal">=</span>
-  </pre>
+  </div>
+  <div class="produccion-alternativas">
+  <p><span class="terminal">=</span></p>
+  </div>
+  </div>
+  </div>
   <p>La semántica (significado) del operador de asignación (=) es “es
   igual a” u “obtén”; la variable obtiene el valor de la
   <strong>expresión</strong> (<span
@@ -1532,11 +1744,16 @@
   vista con anterioridad) <span
   class="produccion">StatementExpression</span>, que definía una
   sentencia únicamente como la invocación de un método:</p>
-  <pre class="plantilla-sintactica">
+  <div class="plantilla-sintactica">
+  <div class="produccion">
+  <div class="produccion-encabezado">
   StatementExpression:
-  Assigment
-  MethodInvocation
-  </pre>
+  </div>
+  <div class="produccion-alternativas">
+  <p>Assigment<br> MethodInvocation</p>
+  </div>
+  </div>
+  </div>
   <p>Solo un identificador de variable puede aparecer en el lado
   izquierdo de una sentencia de asignación. La asignación no es como una
   ecuación matemática tal como x + y = z + 4; la expresión, lo que está
@@ -1569,7 +1786,7 @@
   char miCaracter; // Un lugar para almacenar una letra
   </pre>
   <p>las siguientes sentencias de asignación son válidas:</p>
-  <figure class="img-cajas">
+  <figure class="img-caja-char">
   <img src="../imagenes/02_05_caja_char_b.png" alt="Carácter dentro de una caja: analogía de variable conteniendo valor">
   </figure>
   <pre class="codigo-java">
@@ -1668,23 +1885,42 @@
   lista de identificadores de la sintaxis de declaración de campo,
   sustituyendo el literal por una expresión, como aparece en la
   asignación:</p>
-  <pre class="plantilla-sintactica">
+  <div class="plantilla-sintactica">
+  <div class="produccion">
+  <div class="produccion-encabezado">
   IdentifierList:
-  Identifier [<span class="terminal">=</span> Expression] {<span class="terminal">,</span> Identifier [<span class="terminal">=</span> Expression]}
-  </pre>
+  </div>
+  <div class="produccion-alternativas">
+  <p>Identifier [<span class="terminal">=</span> Expression] {<span
+  class="terminal">,</span> Identifier [<span class="terminal">=</span>
+  Expression]}</p>
+  </div>
+  </div>
+  </div>
   <p>Esta definición convierte en válida la declaración:</p>
   <pre class="codigo-fuente">
   String resultado = "El cuadrado de 6 es " + 36;
   </pre>
   <p>No obstante, y aunque hora pueda parecer un poco confuso, la
   plantilla sintáctica de una expresión es:</p>
-  <pre class="plantilla-sintactica">
+  <div class="plantilla-sintactica">
+  <div class="produccion">
+  <div class="produccion-encabezado">
   Expression:
-  AssignmentExpression
-
+  </div>
+  <div class="produccion-alternativas">
+  <p>AssignmentExpression</p>
+  </div>
+  </div>
+  <div class="produccion">
+  <div class="produccion-encabezado">
   AssignmentExpression:
-  Assignment
-  </pre>
+  </div>
+  <div class="produccion-alternativas">
+  <p>Assignment</p>
+  </div>
+  </div>
+  </div>
   <h2 id="entrada-y-salida">Entrada y salida</h2>
   <p>Conocemos ya suficiente sintaxis de Java para decirle al ordenador
   que asigne valores a variables y que concatene cadenas, pero no nos
@@ -1820,18 +2056,34 @@
   declaración de importación. Las declaraciones de importación pueden
   formar parte del principio de cualquier declaración de clase. Aquí
   está el diagrama de sintaxis para tal declaración:</p>
-  <pre class="plantilla-sintactica">
+  <div class="plantilla-sintactica">
+  <div class="produccion">
+  <div class="produccion-encabezado">
   ImportDeclaration:
-  SingleTypeImportDeclaration
-
+  </div>
+  <div class="produccion-alternativas">
+  <p>SingleTypeImportDeclaration</p>
+  </div>
+  </div>
+  <div class="produccion">
+  <div class="produccion-encabezado">
   SingleTypeImportDeclaration:
-  <span class="terminal">import</span> PackageOrTypeName <span class="terminal">;</span> 
-
+  </div>
+  <div class="produccion-alternativas">
+  <p><span class="terminal">import</span> PackageOrTypeName <span
+  class="terminal">;</span></p>
+  </div>
+  </div>
+  <div class="produccion">
+  <div class="produccion-encabezado">
   PackageOrTypeName:
-  Identifier
-  PackageOrTypeName <span class="terminal">.</span> Identifier
-  PackageOrTypeName <span class="terminal">. *</span>
-  </pre>
+  </div>
+  <div class="produccion-alternativas">
+  <p>Identifier<br> PackageOrTypeName <span class="terminal">.</span>
+  Identifier<br> PackageOrTypeName <span class="terminal">. *</span></p>
+  </div>
+  </div>
+  </div>
   <p>En la práctica, una declaración de importación comienza con la
   palabra <span class="palabra">import</span>, seguida del nombre de un
   paquete o clase. Un paquete puede ir seguido de subpaquetes separados
