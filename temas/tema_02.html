@@ -2429,19 +2429,30 @@
       });
   });
   document.querySelectorAll('.tooltip').forEach(el => {
-    el.addEventListener('mouseenter', () => {
-      const tooltip = el.querySelector('.tooltiptext');
-      if (!tooltip) return;
+    const tooltip = el.querySelector('.tooltiptext');
+    if (!tooltip) return;
 
-      // Resetea primero para medir bien
-      tooltip.classList.remove('overflow-right');
+    el.addEventListener('mouseenter', adjustTooltip);
+    el.addEventListener('focusin', adjustTooltip);
 
-      // Si el borde derecho del tooltip supera el ancho de la pantalla, lo corrige
-      const rect = tooltip.getBoundingClientRect();
+    function adjustTooltip() {
+      // 1. Resetea clases previas para medir la posición limpia por defecto (Arriba / Izquierda)
+      tooltip.classList.remove('tooltip-bottom', 'overflow-right');
+
+      // 2. Mide la posición en pantalla
+      let rect = tooltip.getBoundingClientRect();
+
+      // Si choca con el techo de la pantalla (menos de 10px del borde superior), lo pasa ABAJO
+      if (rect.top < 10) {
+        tooltip.classList.add('tooltip-bottom');
+        rect = tooltip.getBoundingClientRect(); // Vuelve a medir tras el cambio
+      }
+
+      // Si choca con el borde derecho de la pantalla, ajusta la alineación a la derecha
       if (rect.right > window.innerWidth - 15) {
         tooltip.classList.add('overflow-right');
       }
-    });
+    }
   });
   </script>
 </body>
