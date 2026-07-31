@@ -130,6 +130,21 @@
           }
       });
   });
+  document.querySelectorAll('.tooltip').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      const tooltip = el.querySelector('.tooltiptext');
+      if (!tooltip) return;
+
+      // Resetea primero para medir bien
+      tooltip.classList.remove('overflow-right');
+
+      // Si el borde derecho del tooltip supera el ancho de la pantalla, lo corrige
+      const rect = tooltip.getBoundingClientRect();
+      if (rect.right > window.innerWidth - 15) {
+        tooltip.classList.add('overflow-right');
+      }
+    });
+  });
   </script>
 </body>
 </html>
