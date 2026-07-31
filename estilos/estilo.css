@@ -105,38 +105,65 @@ aside {
 .definicion p      { margin: 0.2em; }
 .definicion p strong { color: #2ecc71; }
 
-/* --- 3. Tooltips Interactivos: Copiado de W3Schools --- */
+/* --- 3. Tooltips Interactivos: Basado en W3Schools --- */
 .tooltip {
-    position: relative;
-    display: inline-block;
+  position: relative;
+  display: inline-block;
 }
 
-.tooltip .tooltiptext {
-    visibility: hidden;
-    width: 20em;
-    background-color: #135fcd;
-    color: #fff;
-    border-radius: 6px;
-    padding: 5px;
-    position: absolute;
-    z-index: 1;
-    bottom: 125%;
-    left: 1em;
-    opacity: 0;
-    transition: opacity 0.3s;
+.tooltip .tooltiptext {visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.25s ease-in-out, visibility 0.25s ease-in-out;
+  
+  position: absolute;
+  z-index: 1;
+
+  /* 1. ANCHO AL 35% DE LA PANTALLA */
+  width: 35vw;
+  min-width: 220px; /* Evita que en móviles quede demasiado estrecho */
+  max-width: 450px; /* Evita que en monitores gigantes ocupe medio cuadro */
+  box-sizing: border-box;
+  word-wrap: break-word;
+
+  /* 2. POSICIÓN DEBAJO DEL TEXTO (Soluciona el corte en la 1ª línea) */
+  top: calc(100% + 8px);
+  left: 0;
+
+  /* Estilos visuales */
+  background-color: #135fcd;
+  color: #ffffff;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-style: normal; /* Asegura que la nota no herede la cursiva si está en un código */
+  line-height: 1.4;
 }
 
 .tooltip .tooltiptext::after {
-    position: absolute;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: #135fcd transparent transparent transparent;
+  content: "";
+  position: absolute;
+  top: 100%; /* Coloca la flecha en la parte inferior del bocadillo */
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #135fcd transparent transparent transparent;
 }
 
 .tooltip:hover .tooltiptext {
     visibility: visible;
     opacity: 1;
+}
+
+/* Cuando el tooltip choca con el borde derecho de la pantalla */
+.tooltip .tooltiptext.overflow-right {
+  left: auto !important;
+  right: 0 !important;
+}
+
+/* Mueve la flecha a la derecha para que siga apuntando a la palabra */
+.tooltip .tooltiptext.overflow-right::after {
+  left: auto !important;
+  right: 15px !important; 
 }
 
 /* --- 4. Estructura de Imágenes y Figuras Estándar --- */

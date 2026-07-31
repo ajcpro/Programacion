@@ -1424,7 +1424,7 @@ Aunque la impresión del eco puede parecer redundante en una pantalla, es crucia
   
 <div class="navegacion-secundaria">
 <!-- Renderizar solo si existen en el tema -->
-<a href="ejercicios.html">Ejercicios</a> | 
+<a href="ejercicios.html">Ejercicios</a>
 <!--a href="problemas.html">Problemas</a-->
 </div>
 </footer>
