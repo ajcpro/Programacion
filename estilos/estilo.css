@@ -141,11 +141,14 @@ aside {
   pointer-events: none; /* Evita parpadeos al pasar el ratón por encima del tooltip */
 }
 
+/* FLECHA BASE (Tooltip ARRIBA -> Apunta ABAJO a la palabra) */
 .tooltip .tooltiptext::after {
   content: "";
   position: absolute;
-  top: 100%; /* Coloca la flecha en la parte inferior del bocadillo */
+  top: 100%;
+  bottom: auto;
   left: 15px;
+  right: auto;
   border-width: 5px;
   border-style: solid;
   border-color: #135fcd transparent transparent transparent;

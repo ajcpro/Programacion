@@ -151,9 +151,11 @@
       if ((wordRect.top - ttHeight - 8) < 10) {
         // Lo coloca ABAJO de la palabra
         topPos = wordRect.bottom + 8;
+        tooltip.classList.add('tooltip-bottom');
       } else {
         // Lo coloca ARRIBA de la palabra
         topPos = wordRect.top - ttHeight - 8;
+        tooltip.classList.remobv('tooltip-bottom');
       }
 
       // --- CÁLCULO HORIZONTAL ---
