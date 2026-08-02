@@ -2440,8 +2440,8 @@
 
       // Coordenadas absolutas de la palabra en la pantalla
       var wordRect = targetTooltip.getBoundingClientRect();
-      var ttHeight = tooltip.offsetHeight || 80; 
-      var ttWidth = tooltip.offsetWidth || 300;
+      var ttHeight = tooltip.offsetHeight; 
+      var ttWidth = tooltip.offsetWidth;
 
       // --- CÁLCULO VERTICAL ---
       var topPos;
@@ -2449,11 +2449,9 @@
       if ((wordRect.top - ttHeight - 8) < 10) {
         // Lo coloca ABAJO de la palabra
         topPos = wordRect.bottom + 8;
-        tooltip.classList.add('tooltip-bottom');
       } else {
         // Lo coloca ARRIBA de la palabra
         topPos = wordRect.top - ttHeight - 8;
-        tooltip.classList.remobv('tooltip-bottom');
       }
 
       // --- CÁLCULO HORIZONTAL ---
@@ -2467,6 +2465,8 @@
       if (leftPos < 10) leftPos = 10;
 
       // Inyección directa de coordenadas fijas en píxeles
+      tooltip.style.bottom = 'auto';
+      tooltip.style.right = 'auto';
       tooltip.style.top = topPos + 'px';
       tooltip.style.left = leftPos + 'px';
     });
