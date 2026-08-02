@@ -117,7 +117,7 @@ aside {
   opacity: 0;
   transition: opacity 0.25s ease, visibility 0.25s ease;
   position: fixed;
-  z-index: 1;
+  z-index: 200;
 
   /* 1. ANCHO AL 35% DE LA PANTALLA */
   width: 35vw;
@@ -166,7 +166,7 @@ h1, h2, h3, main section { clear: both; }
 .toc a:hover { text-decoration: underline; }
 
 /* --- 6. Menú Web Flotante (Hamburguesa) --- */
-.menu-flotante   { position: fixed !important; top: 20px; right: 20px; z-index: 1000; }
+.menu-flotante   { position: fixed !important; top: 20px; right: 20px; z-index: 100; }
 .menu-checkbox   { display: none; }
 .menu-boton      { font-size: 28px; cursor: pointer; background-color: #f1f1f1; color: #333; padding: 5px 12px; border-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); display: inline-block; user-select: none; }
 .menu-boton:hover { background-color: #e0e0e0; }
@@ -205,7 +205,7 @@ h1, h2, h3, main section { clear: both; }
     padding: 7px 12px;
     border-radius: 4px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    z-index: 999;       /* Un nivel por debajo de la hamburguesa para evitar solapamientos */
+    z-index: 99;       /* Un nivel por debajo de la hamburguesa para evitar solapamientos */
     transition: background-color 0.2s;
 }
 
