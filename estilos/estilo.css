@@ -161,7 +161,7 @@ aside {
   bottom: auto;
   top: calc(100% + 8px);
 }
-/* Flecha cuando está abajo -> Apunta ARRIBA hacia el texto */
+/* Flecha cuando está abajo -> Apunta ARRIBA hacia el texto *
 .tooltip .tooltiptext.tooltip-bottom::after {
   top: auto;
   bottom: 100%; /* En el borde superior del tooltip *
