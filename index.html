@@ -33,50 +33,39 @@
       var tooltip = targetTooltip.querySelector('.tooltiptext');
       if (!tooltip) return;
 
-      // Resetea las clases para evaluar la posición base (arriba/izquierda)
-      tooltip.classList.remove('tooltip-bottom', 'overflow-right');
+      // Coordenadas absolutas de la palabra en la pantalla
+      var wordRect = targetTooltip.getBoundingClientRect();
+      var ttHeight = tooltip.offsetHeight || 80; 
+      var ttWidth = tooltip.offsetWidth || 300;
 
-      // Mide las coordenadas en pantalla
-      var rect = tooltip.getBoundingClientRect();
-
-      // Si choca contra el borde superior (menos de 10px), lo mueve ABAJO
-      if (rect.top < 10) {
-        tooltip.classList.add('tooltip-bottom');
-        rect = tooltip.getBoundingClientRect(); // Re-medir tras el cambio
+      // --- CÁLCULO VERTICAL ---
+      var topPos;
+      // Si al ponerlo ARRIBA se sale de la pantalla (menos de 10px del borde superior)
+      if ((wordRect.top - ttHeight - 8) < 10) {
+        // Lo coloca ABAJO de la palabra
+        topPos = wordRect.bottom + 8;
+      } else {
+        // Lo coloca ARRIBA de la palabra
+        topPos = wordRect.top - ttHeight - 8;
       }
 
-      // Si se sale por el margen derecho, lo alinea a la DERECHA
-      if (rect.right > (window.innerWidth - 15)) {
-        tooltip.classList.add('overflow-right');
+      // --- CÁLCULO HORIZONTAL ---
+      var leftPos = wordRect.left;
+      // Si al dibujarlo hacia la derecha se sale de la pantalla
+      if ((leftPos + ttWidth) > (window.innerWidth - 15)) {
+        // Lo alinea hacia la izquierda desde el borde derecho de la pantalla
+        leftPos = window.innerWidth - ttWidth - 15;
       }
+      // Seguridad para pantallas pequeñas (nunca pegado a la izquierda)
+      if (leftPos < 10) leftPos = 10;
+
+      // Inyección directa de coordenadas fijas en píxeles
+      tooltip.style.top = topPos + 'px';
+      tooltip.style.left = leftPos + 'px';
     });
+
   });
-  document.querySelectorAll('.tooltip').forEach(el => {
-    const tooltip = el.querySelector('.tooltiptext');
-    if (!tooltip) return;
-
-    el.addEventListener('mouseenter', adjustTooltip);
-    el.addEventListener('focusin', adjustTooltip);
-
-    function adjustTooltip() {
-      // 1. Resetea clases previas para medir la posición limpia por defecto (Arriba / Izquierda)
-      tooltip.classList.remove('tooltip-bottom', 'overflow-right');
-
-      // 2. Mide la posición en pantalla
-      let rect = tooltip.getBoundingClientRect();
-
-      // Si choca con el techo de la pantalla (menos de 10px del borde superior), lo pasa ABAJO
-      if (rect.top < 10) {
-        tooltip.classList.add('tooltip-bottom');
-        rect = tooltip.getBoundingClientRect(); // Vuelve a medir tras el cambio
-      }
-
-      // Si choca con el borde derecho de la pantalla, ajusta la alineación a la derecha
-      if (rect.right > window.innerWidth - 15) {
-        tooltip.classList.add('overflow-right');
-      }
-    }
-  });
+  
   </script>
 </body>
 </html>
