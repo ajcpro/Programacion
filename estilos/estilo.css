@@ -137,48 +137,10 @@ aside {
   pointer-events: none; /* Evita parpadeos al pasar el ratón por encima del tooltip */
 }
 
-/* FLECHA BASE (Tooltip ARRIBA -> Apunta ABAJO a la palabra) *
-.tooltip .tooltiptext::after {
-  content: "";
-  position: absolute;
-  top: 100%;
-  bottom: auto;
-  left: 15px;
-  right: auto;
-  border-width: 5px;
-  border-style: solid;
-  border-color: #135fcd transparent transparent transparent;
-}*/
-
 .tooltip:hover .tooltiptext {
     visibility: visible;
     opacity: 1;
 }
-
-/* --- ADAPTACIONES DINÁMICAS (Controladas por JS) --- *
-/* CASO A: Se sale por arriba -> Pasa a estar DEBAJO *
-.tooltip .tooltiptext.tooltip-bottom {
-  bottom: auto;
-  top: calc(100% + 8px);
-}
-/* Flecha cuando está abajo -> Apunta ARRIBA hacia el texto *
-.tooltip .tooltiptext.tooltip-bottom::after {
-  top: auto;
-  bottom: 100%; /* En el borde superior del tooltip *
-  border-color: transparent transparent #135fcd transparent; /* Triángulo apuntando arriba *
-}
-
-/* Cuando el tooltip choca con el borde derecho de la pantalla *
-.tooltip .tooltiptext.overflow-right {
-  left: auto !important;
-  right: 0 !important;
-}
-
-/* Mueve la flecha a la derecha para que siga apuntando a la palabra *
-.tooltip .tooltiptext.overflow-right::after {
-  left: auto !important;
-  right: 15px !important; 
-}*/
 
 /* --- 4. Estructura de Imágenes y Figuras Estándar --- */
 figure     { margin: 1.5em 0; padding: 0; display: block; }
