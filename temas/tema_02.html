@@ -2417,62 +2417,6 @@
   </li>
   </ol>
 
-  <!-- Script para abrir enlaces externos en una nueva pestaña -->
-  <script>
-  document.addEventListener("DOMContentLoaded", function() {
-
-    // 1. Abrir enlaces externos en una nueva pestaña
-    var links = document.querySelectorAll('a');
-    links.forEach(function(link) {
-      if (link.hostname && link.hostname !== location.hostname) {
-        link.target = '_blank';
-        link.rel = 'noopener noreferrer';
-      }
-    });
-
-    // 2. Control dinámico de posicionamiento para los tooltips
-    document.addEventListener('mouseover', function(e) {
-      var targetTooltip = e.target.closest('.tooltip');
-      if (!targetTooltip) return;
-
-      var tooltip = targetTooltip.querySelector('.tooltiptext');
-      if (!tooltip) return;
-
-      // Coordenadas absolutas de la palabra en la pantalla
-      var wordRect = targetTooltip.getBoundingClientRect();
-      var ttHeight = tooltip.offsetHeight; 
-      var ttWidth = tooltip.offsetWidth;
-
-      // --- CÁLCULO VERTICAL ---
-      var topPos;
-      // Si al ponerlo ARRIBA se sale de la pantalla (menos de 10px del borde superior)
-      if ((wordRect.top - ttHeight - 8) < 10) {
-        // Lo coloca ABAJO de la palabra
-        topPos = wordRect.bottom + 8;
-      } else {
-        // Lo coloca ARRIBA de la palabra
-        topPos = wordRect.top - ttHeight - 8;
-      }
-
-      // --- CÁLCULO HORIZONTAL ---
-      var leftPos = wordRect.left;
-      // Si al dibujarlo hacia la derecha se sale de la pantalla
-      if ((leftPos + ttWidth) > (window.innerWidth - 15)) {
-        // Lo alinea hacia la izquierda desde el borde derecho de la pantalla
-        leftPos = window.innerWidth - ttWidth - 15;
-      }
-      // Seguridad para pantallas pequeñas (nunca pegado a la izquierda)
-      if (leftPos < 10) leftPos = 10;
-
-      // Inyección directa de coordenadas fijas en píxeles
-      tooltip.style.bottom = 'auto';
-      tooltip.style.right = 'auto';
-      tooltip.style.top = topPos + 'px';
-      tooltip.style.left = leftPos + 'px';
-    });
-
-  });
-  
-  </script>
-</body>
+    <script src="../scripts/script.js"></script>
+  </body>
 </html>

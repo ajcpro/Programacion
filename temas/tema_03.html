@@ -8,6 +8,142 @@
   </head>
 <body>
   <h1 id="estructuras-de-programación">Estructuras de programación</h1>
+  <p><a href="../pdf/tema_03.pdf" target="_blank" class="boton-descarga-top">📥
+  PDF</a></p>
+  <nav class="menu-flotante">
+  <input type="checkbox" id="menu-toggle" class="menu-checkbox">
+  <label for="menu-toggle" class="menu-boton">☰</label>
+  <div class="menu-contenido">
+  <h3>
+  Contenido
+  </h3>
+  <ul>
+  <li>
+  <a href="#introducción">Introducción</a>
+  </li>
+  <li>
+  <a href="#análisis-léxico-y-componentes-del-lenguaje">Análisis léxico
+  y componentes del lenguaje</a>
+  <ul>
+  <li>
+  <a href="#concepto-de-token-y-separador">Concepto de Token y
+  separador</a>
+  </li>
+  <li>
+  <a href="#palabras-reservadas">Palabras reservadas</a>
+  </li>
+  </ul>
+  </li>
+  <li>
+  <a href="#expresiones-y-operadores">Expresiones y Operadores</a>
+  <ul>
+  <li>
+  <a href="#operadores">Operadores</a>
+  </li>
+  <li>
+  <a href="#evaluación-en-cortocircuito">Evaluación en cortocircuito</a>
+  </li>
+  <li>
+  <a href="#precedencia-y-asociatividad">Precedencia y asociatividad</a>
+  </li>
+  </ul>
+  </li>
+  <li>
+  <a href="#conversión-de-tipos">Conversión de tipos</a>
+  <ul>
+  <li>
+  <a href="#reglas-de-promoción">Reglas de promoción</a>
+  </li>
+  <li>
+  <a href="#conversión-explícita">Conversión explícita</a>
+  </li>
+  <li>
+  <a href="#clases-envolventes">Clases envolventes</a>
+  </li>
+  </ul>
+  </li>
+  <li>
+  <a href="#uso-de-la-biblioteca-estándar">Uso de la biblioteca
+  estándar</a>
+  <ul>
+  <li>
+  <a href="#la-clase-math">La clase Math</a>
+  </li>
+  </ul>
+  </li>
+  <li>
+  <a href="#instrucciones">Instrucciones</a>
+  <ul>
+  <li>
+  <a href="#sentencias">Sentencias</a>
+  </li>
+  <li>
+  <a href="#bloques-y-ámbito">Bloques y ámbito</a>
+  </li>
+  </ul>
+  </li>
+  <li>
+  <a href="#el-flujo-de-ejecución">El flujo de ejecución</a>
+  <ul>
+  <li>
+  <a href="#concepto-de-flujo-de-control">Concepto de flujo de
+  control</a>
+  </li>
+  <li>
+  <a href="#estructuras-secuenciales">Estructuras secuenciales</a>
+  </li>
+  </ul>
+  </li>
+  <li>
+  <a href="#selección">Selección</a>
+  <ul>
+  <li>
+  <a href="#selección-simple">Selección simple</a>
+  </li>
+  <li>
+  <a href="#selección-compuesta">Selección compuesta</a>
+  </li>
+  <li>
+  <a href="#selección-múltiple">Selección múltiple</a>
+  </li>
+  <li>
+  <a href="#lógica-de-anidamiento">Lógica de anidamiento</a>
+  </li>
+  </ul>
+  </li>
+  <li>
+  <a href="#repetición">Repetición</a>
+  <ul>
+  <li>
+  <a href="#sentencia-while">Sentencia while</a>
+  </li>
+  <li>
+  <a href="#bucles-controlados-por-condición">Bucles controlados por
+  condición</a>
+  </li>
+  <li>
+  <a href="#bucles-controlados-por-contador">Bucles controlados por
+  contador</a>
+  </li>
+  <li>
+  <a href="#diseño-de-bucles">Diseño de bucles</a>
+  </li>
+  </ul>
+  </li>
+  <li>
+  <a href="#depuración-y-verificación">Depuración y verificación</a>
+  <ul>
+  <li>
+  <a href="#trazas-de-ejecución">Trazas de ejecución</a>
+  </li>
+  <li>
+  <a href="#errores-comunes">Errores comunes</a>
+  </li>
+  </ul>
+  </li>
+  </ul>
+  </div>
+  </nav>
   <section class="objetivos">
   <h2>
   Objetivos
@@ -24,157 +160,167 @@
   <li>Realizar trazas de ejecución.</li>
   </ul>
   </section>
-  <h1 id="estructuras-de-programación-1">Estructuras de
-  programación</h1>
-  <p><a href="../pdf/tema_03.pdf" target="_blank" class="boton-descarga-top">📥
-  PDF</a></p>
-  <section class="objetivos">
+  <section class="toc">
   <h2>
-  Objetivos
+  Contenido
   </h2>
   <ul>
-  <li>Comprender la anatomía básica de un programa y sus elementos
-  constituyentes.
+  <li><a href="#introducción">Introducción</a></li>
+  <li><a href="#análisis-léxico-y-componentes-del-lenguaje">Análisis
+  léxico y componentes del lenguaje</a>
   <ul>
-  <li>Entender la diferencia conceptual entre sintaxis y semántica.</li>
-  <li>Introducir el concepto de token, palabras reservadas y
-  expresiones.</li>
-  <li>Comprender la necesidad de alterar el flujo de ejecución
-  secuencial mediante estructuras de control y modularidad.</li>
+  <li><a href="#concepto-de-token-y-separador">Concepto de Token y
+  separador</a></li>
+  <li><a href="#palabras-reservadas">Palabras reservadas</a></li>
+  </ul></li>
+  <li><a href="#expresiones-y-operadores">Expresiones y Operadores</a>
+  <ul>
+  <li><a href="#operadores">Operadores</a></li>
+  <li><a href="#evaluación-en-cortocircuito">Evaluación en
+  cortocircuito</a></li>
+  <li><a href="#precedencia-y-asociatividad">Precedencia y
+  asociatividad</a></li>
+  </ul></li>
+  <li><a href="#conversión-de-tipos">Conversión de tipos</a>
+  <ul>
+  <li><a href="#reglas-de-promoción">Reglas de promoción</a></li>
+  <li><a href="#conversión-explícita">Conversión explícita</a></li>
+  <li><a href="#clases-envolventes">Clases envolventes</a></li>
+  </ul></li>
+  <li><a href="#uso-de-la-biblioteca-estándar">Uso de la biblioteca
+  estándar</a>
+  <ul>
+  <li><a href="#la-clase-math">La clase Math</a></li>
+  </ul></li>
+  <li><a href="#instrucciones">Instrucciones</a>
+  <ul>
+  <li><a href="#sentencias">Sentencias</a></li>
+  <li><a href="#bloques-y-ámbito">Bloques y ámbito</a></li>
+  </ul></li>
+  <li><a href="#el-flujo-de-ejecución">El flujo de ejecución</a>
+  <ul>
+  <li><a href="#concepto-de-flujo-de-control">Concepto de flujo de
+  control</a></li>
+  <li><a href="#estructuras-secuenciales">Estructuras
+  secuenciales</a></li>
+  </ul></li>
+  <li><a href="#selección">Selección</a>
+  <ul>
+  <li><a href="#selección-simple">Selección simple</a></li>
+  <li><a href="#selección-compuesta">Selección compuesta</a></li>
+  <li><a href="#selección-múltiple">Selección múltiple</a></li>
+  <li><a href="#lógica-de-anidamiento">Lógica de anidamiento</a></li>
+  </ul></li>
+  <li><a href="#repetición">Repetición</a>
+  <ul>
+  <li><a href="#sentencia-while">Sentencia while</a></li>
+  <li><a href="#bucles-controlados-por-condición">Bucles controlados por
+  condición</a></li>
+  <li><a href="#bucles-controlados-por-contador">Bucles controlados por
+  contador</a></li>
+  <li><a href="#diseño-de-bucles">Diseño de bucles</a></li>
+  </ul></li>
+  <li><a href="#depuración-y-verificación">Depuración y verificación</a>
+  <ul>
+  <li><a href="#trazas-de-ejecución">Trazas de ejecución</a></li>
+  <li><a href="#errores-comunes">Errores comunes</a></li>
   </ul></li>
   </ul>
   </section>
   <h2 id="introducción">Introducción</h2>
-  <p>Anteriormente hemos visto que, para poder ejecutar un programa, es
-  estrictamente necesario traducirlo a código máquina. En ese proceso
-  inicial, aprendimos que Java es un lenguaje que se fundamenta en la
-  portabilidad y la seguridad, utilizando el <em>bytecode</em> y la
-  Máquina Virtual de Java (JVM) como intermediarios indispensables para
-  que nuestras instrucciones lleguen, finalmente, a ser procesadas por
-  el hardware.</p>
-  <p>Sin embargo, programar no consiste simplemente en memorizar y
-  agrupar un conjunto de comandos aislados. Un lenguaje de programación
-  es, en esencia, un <strong>sistema formal</strong> compuesto por un
-  conjunto de reglas, símbolos y palabras especiales que se combinan
-  para construir un algoritmo capaz de resolver un problema real. Por
-  ello, para avanzar de forma sólida en nuestro aprendizaje, debemos
-  empezar a analizar el texto d e nuestros programas buscando e
-  identificando los elementos mínimos que poseen un significado especial
-  para el compilador.</p>
-  <p>Uno de estos elementos fundamentales son las
-  <strong>instrucciones</strong> o <strong>sentencias</strong>. De la
-  misma forma que en la comunicación verbal natural utilizamos frases u
-  oraciones estructuradas mediante sintagmas, las instrucciones de un
-  lenguaje de programación contienen piezas estructurales menores que
-  denominamos <strong>expresiones</strong>. Siguiendo con esta analogía
-  lingüística, al igual que el predicado de una oración necesita casi
-  siempre de un verbo para dotar a la frase de acción y sentido, las
-  expresiones en programación se construyen habitualmente articulando
-  variables, literales y <strong>operadores</strong>.</p>
-  <p>En este tema, daremos un paso más allá de la simple declaración de
-  datos y la ejecución estrictamente lineal. Abordaremos de forma
-  estructurada los siguientes conceptos:</p>
-  <ul>
-  <li><strong>Análisis léxico:</strong> Cómo el compilador lee nuestro
-  código aislando <strong>palabras reservadas</strong> y símbolos
-  (tokens).</li>
-  <li><strong>Construcción de expresiones:</strong> Cómo se articulan y
-  evalúan operaciones complejas de cálculo y lógica.</li>
-  <li><strong>Modularidad:</strong> Cómo podemos organizar bloques
-  lógicos reutilizables mediante el uso de <strong>funciones</strong> o
-  métodos.</li>
-  <li><strong>Control de flujo:</strong> Cómo romper la secuencialidad,
-  sentando las bases para que nuestros programas puedan tomar decisiones
-  lógicas (selección) y repetir procesos de manera eficiente
-  (iteración).</li>
-  </ul>
-  <p>Dominar estos conceptos fundacionales es el requisito indispensable
-  para pasar de escribir simples líneas de código a diseñar soluciones
-  lógicas y estructuradas.</p>
-  <aside class="definicion">
-  <p><strong>Estructura de programación:</strong> Conjunto de reglas
-  semánticas y sintácticas que permiten organizar y articular las
-  instrucciones de un programa para controlar su flujo de ejecución,
-  evaluar expresiones complejas o definir bloques de código
-  reutilizables.</p>
-  </aside>
-  <hr />
-  <p><em>Nota de diseño de imagen:</em> &gt; <strong>Figura
-  sugerida:</strong> Un diagrama de bloques que muestre el esqueleto de
-  un programa. En la parte superior, un bloque principal (“Código
-  Fuente”). De él cuelgan ramificaciones hacia “Palabras Reservadas”,
-  “Expresiones” (con subramas hacia “Operadores” y “Variables”), y
-  “Control de Flujo” (con flechas que ilustren bifurcaciones lógicas y
-  bucles). El objetivo es visualizar la anatomía estructural que se
-  desarrollará en las siguientes secciones.</p>
-  <hr />
+  <p>Hasta este punto de nuestro aprendizaje, hemos comprendido que un
+  programa de ordenador es, en esencia, un algoritmo escrito para ser
+  ejecutado por una máquina. En el tema anterior, exploramos los
+  cimientos: aprendimos a declarar variables, a reconocer tipos de datos
+  primitivos y a utilizar la biblioteca estándar de Java para realizar
+  operaciones de entrada/salida básicas. Sin embargo, si analizamos los
+  programas que hemos construido, observaremos que todos comparten una
+  característica común: son puramente lineales. El ordenador se limita a
+  ejecutar una instrucción tras otra, en el estricto orden físico en que
+  fueron escritas.</p>
+  <p>No obstante, la programación en el «mundo real» y la resolución de
+  problemas técnicos complejos en entornos productivos requieren una
+  sofisticación mucho mayor. El pensamiento computacional no es una
+  simple sucesión de pasos, sino un tejido o «urdimbre» donde cada hebra
+  lógica debe entrelazarse con precisión. Para lograr esto, un lenguaje
+  de programación debe ser entendido como un conjunto de reglas,
+  símbolos y palabras que nos permiten modelar la realidad.</p>
+  <p>El proceso por el cual el ordenador interpreta nuestras intenciones
+  comienza con el análisis léxico. Cuando el compilador recibe nuestro
+  código fuente, su primera tarea es identificar tokens, elementos con
+  significado propio que el compilador separa gracias a delimitadores.
+  Como sucede en el lenguaje natural, no podemos formar una oración
+  coherente amontonando palabras, en los lenguajes de programación
+  combinamos estos componentes léxicos para formar expresiones. Algo
+  como n + 1, por sí solo, es solo un valor latente; para que sea algo
+  capaz de realizar una tarea, debe integrarse en una estructura que le
+  dé sentido, como una asignación, por ejemplo.</p>
+  <p>La verdadera potencia del software reside en la capacidad de romper
+  la linealidadd el código para establecer un flujo de control. Este
+  define el orden en que las sentencias se ejecutan realmente durante la
+  actividad de la aplicación. Para ilustrarlo, podemos usar la analogía
+  de la conducción: ir por un tramo recto de carretera equivale a una
+  estructura secuencial; sin embargo, al llegar a una bifurcación,
+  debemos tomar una decisión basada en una condición o quizás
+  necesitemos dar varias vueltas hasta encontrar un lugar donde
+  aparcar.</p>
+  <p>Profundizaremos aquí en cómo construir expresiones y conoceremos la
+  selección y la iteración, herramientas que nos permitirán empezar a
+  desarrollar algoritmos inteligentes, capaces de tomar decisiones
+  autónomas y procesar información de forma eficiente, sentando así las
+  bases necesarias antes de adentrarnos en los fundamentos de la
+  programación orientada a objetos.</p>
+  <h2 id="análisis-léxico-y-componentes-del-lenguaje">Análisis léxico y
+  componentes del lenguaje</h2>
+  <h3 id="concepto-de-token-y-separador">Concepto de Token y
+  separador</h3>
+  <h3 id="palabras-reservadas">Palabras reservadas</h3>
+  <h2 id="expresiones-y-operadores">Expresiones y Operadores</h2>
+  <h3 id="operadores">Operadores</h3>
+  <h3 id="evaluación-en-cortocircuito">Evaluación en cortocircuito</h3>
+  <h3 id="precedencia-y-asociatividad">Precedencia y asociatividad</h3>
+  <h2 id="conversión-de-tipos">Conversión de tipos</h2>
+  <h3 id="reglas-de-promoción">Reglas de promoción</h3>
+  <h3 id="conversión-explícita">Conversión explícita</h3>
+  <h3 id="clases-envolventes">Clases envolventes</h3>
+  <h2 id="uso-de-la-biblioteca-estándar">Uso de la biblioteca
+  estándar</h2>
+  <h3 id="la-clase-math">La clase Math</h3>
+  <h2 id="instrucciones">Instrucciones</h2>
+  <h3 id="sentencias">Sentencias</h3>
+  <h3 id="bloques-y-ámbito">Bloques y ámbito</h3>
+  <h2 id="el-flujo-de-ejecución">El flujo de ejecución</h2>
+  <h3 id="concepto-de-flujo-de-control">Concepto de flujo de
+  control</h3>
+  <h3 id="estructuras-secuenciales">Estructuras secuenciales</h3>
+  <h2 id="selección">Selección</h2>
+  <h3 id="selección-simple">Selección simple</h3>
+  <h3 id="selección-compuesta">Selección compuesta</h3>
+  <h3 id="selección-múltiple">Selección múltiple</h3>
+  <h3 id="lógica-de-anidamiento">Lógica de anidamiento</h3>
+  <h2 id="repetición">Repetición</h2>
+  <h3 id="sentencia-while">Sentencia while</h3>
+  <h3 id="bucles-controlados-por-condición">Bucles controlados por
+  condición</h3>
+  <h3 id="bucles-controlados-por-contador">Bucles controlados por
+  contador</h3>
+  <h3 id="diseño-de-bucles">Diseño de bucles</h3>
+  <h2 id="depuración-y-verificación">Depuración y verificación</h2>
+  <h3 id="trazas-de-ejecución">Trazas de ejecución</h3>
+  <h3 id="errores-comunes">Errores comunes</h3>
   <footer class="pie">
   <div class="navegacion-principal">
-  <p><a href="tema_02.html" class="previo">Anterior</a> |
-  <a href="index.html" class="#">Inicio</a> |
+  <p><a href="tema_02.html" class="anterior">Anterior</a> |
+  <a href="../index.html" class="inicio">Inicio</a> |
   <a href="tema_04.html" class="siguiente">Siguiente</a></p>
   </div>
   <div class="navegacion-secundaria">
-  <p><a href="ejercicios_03.html">Ejercicios</a></p>
+  <!-- Renderizar solo si existen en el tema -->
+  <p><a href="ejercicios.html">Ejercicios</a>
+  <!--a href="problemas.html">Problemas</a--></p>
   </div>
   </footer>
 
-  <!-- Script para abrir enlaces externos en una nueva pestaña -->
-  <script>
-  document.addEventListener("DOMContentLoaded", function() {
-
-    // 1. Abrir enlaces externos en una nueva pestaña
-    var links = document.querySelectorAll('a');
-    links.forEach(function(link) {
-      if (link.hostname && link.hostname !== location.hostname) {
-        link.target = '_blank';
-        link.rel = 'noopener noreferrer';
-      }
-    });
-
-    // 2. Control dinámico de posicionamiento para los tooltips
-    document.addEventListener('mouseover', function(e) {
-      var targetTooltip = e.target.closest('.tooltip');
-      if (!targetTooltip) return;
-
-      var tooltip = targetTooltip.querySelector('.tooltiptext');
-      if (!tooltip) return;
-
-      // Coordenadas absolutas de la palabra en la pantalla
-      var wordRect = targetTooltip.getBoundingClientRect();
-      var ttHeight = tooltip.offsetHeight; 
-      var ttWidth = tooltip.offsetWidth;
-
-      // --- CÁLCULO VERTICAL ---
-      var topPos;
-      // Si al ponerlo ARRIBA se sale de la pantalla (menos de 10px del borde superior)
-      if ((wordRect.top - ttHeight - 8) < 10) {
-        // Lo coloca ABAJO de la palabra
-        topPos = wordRect.bottom + 8;
-      } else {
-        // Lo coloca ARRIBA de la palabra
-        topPos = wordRect.top - ttHeight - 8;
-      }
-
-      // --- CÁLCULO HORIZONTAL ---
-      var leftPos = wordRect.left;
-      // Si al dibujarlo hacia la derecha se sale de la pantalla
-      if ((leftPos + ttWidth) > (window.innerWidth - 15)) {
-        // Lo alinea hacia la izquierda desde el borde derecho de la pantalla
-        leftPos = window.innerWidth - ttWidth - 15;
-      }
-      // Seguridad para pantallas pequeñas (nunca pegado a la izquierda)
-      if (leftPos < 10) leftPos = 10;
-
-      // Inyección directa de coordenadas fijas en píxeles
-      tooltip.style.bottom = 'auto';
-      tooltip.style.right = 'auto';
-      tooltip.style.top = topPos + 'px';
-      tooltip.style.left = leftPos + 'px';
-    });
-
-  });
-  
-  </script>
-</body>
+    <script src="../scripts/script.js"></script>
+  </body>
 </html>

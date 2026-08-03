@@ -433,7 +433,7 @@
   <li>Si se no ha conseguido cruzar, buscar otro punto semafórico o
   solicitar ayuda.</li>
   </ol>
-  <p>Sin la frase “pero no más de tres veces” del punto 8, podríamos
+  <p>Sin la frase «pero no más de tres veces» del punto 8, podríamos
   estar intentando cruzar sin éxito eternamente. ¿Por qué? Porque algo
   falla en la regulación semafórica o nosotros no podemos recorrer la
   distancia necesaria en el tiempo asignado. Este tipo de situación se
@@ -441,7 +441,7 @@
   no cumpliría nuestra definición de algoritmo: debe terminar en un
   tiempo finito cualesquiera que sean las condiciones.</p>
   <p>Después de desarrollar una solución general, el programador prueba
-  el algoritmo “trazando” cada paso mentalmente; o manualmente, con
+  el algoritmo «trazando» cada paso mentalmente; o manualmente, con
   lápiz y papel. Si el algoritmo no funciona, el programador repite el
   proceso de resolución de problemas, analizándolo de nuevo, y
   desarrolla otro algoritmo. A menudo, el segundo algoritmo es
@@ -1001,7 +1001,7 @@
   <p>Nunca debemos reinventar la rueda: si ya existe una solución,
   usémosla. Las personas reconocemos fácilmente situaciones similares.
   No necesitamos aprender cómo ir a comprar pan, después a comprar leche
-  o huevos; sabemos que “ir a comprar” es siempre lo mismo y sólo cambia
+  o huevos; sabemos que «ir a comprar» es siempre lo mismo y sólo cambia
   qué compramos. Por ello, si hemos resuelto antes el mismo problema o
   uno parecido, solamente repetimos la solución.</p>
   <p>En informática, muchos problemas se producen una y otra vez en
@@ -1084,7 +1084,7 @@
   </figcaption>
   </figure>
   <p>Aunque nosotros no lo asociemos con la informática, seguro que
-  resulta familiar la expresión “síndrome del folio en blanco”. También
+  resulta familiar la expresión «síndrome del folio en blanco». También
   los programadores se encuentran con esa dificultad la primera vez que
   afrontan un nuevo problema. Cuando se examina un problema difícil
   parece que nos superará.</p>
@@ -1174,62 +1174,6 @@
   </li>
   </ol>
 
-  <!-- Script para abrir enlaces externos en una nueva pestaña -->
-  <script>
-  document.addEventListener("DOMContentLoaded", function() {
-
-    // 1. Abrir enlaces externos en una nueva pestaña
-    var links = document.querySelectorAll('a');
-    links.forEach(function(link) {
-      if (link.hostname && link.hostname !== location.hostname) {
-        link.target = '_blank';
-        link.rel = 'noopener noreferrer';
-      }
-    });
-
-    // 2. Control dinámico de posicionamiento para los tooltips
-    document.addEventListener('mouseover', function(e) {
-      var targetTooltip = e.target.closest('.tooltip');
-      if (!targetTooltip) return;
-
-      var tooltip = targetTooltip.querySelector('.tooltiptext');
-      if (!tooltip) return;
-
-      // Coordenadas absolutas de la palabra en la pantalla
-      var wordRect = targetTooltip.getBoundingClientRect();
-      var ttHeight = tooltip.offsetHeight; 
-      var ttWidth = tooltip.offsetWidth;
-
-      // --- CÁLCULO VERTICAL ---
-      var topPos;
-      // Si al ponerlo ARRIBA se sale de la pantalla (menos de 10px del borde superior)
-      if ((wordRect.top - ttHeight - 8) < 10) {
-        // Lo coloca ABAJO de la palabra
-        topPos = wordRect.bottom + 8;
-      } else {
-        // Lo coloca ARRIBA de la palabra
-        topPos = wordRect.top - ttHeight - 8;
-      }
-
-      // --- CÁLCULO HORIZONTAL ---
-      var leftPos = wordRect.left;
-      // Si al dibujarlo hacia la derecha se sale de la pantalla
-      if ((leftPos + ttWidth) > (window.innerWidth - 15)) {
-        // Lo alinea hacia la izquierda desde el borde derecho de la pantalla
-        leftPos = window.innerWidth - ttWidth - 15;
-      }
-      // Seguridad para pantallas pequeñas (nunca pegado a la izquierda)
-      if (leftPos < 10) leftPos = 10;
-
-      // Inyección directa de coordenadas fijas en píxeles
-      tooltip.style.bottom = 'auto';
-      tooltip.style.right = 'auto';
-      tooltip.style.top = topPos + 'px';
-      tooltip.style.left = leftPos + 'px';
-    });
-
-  });
-  
-  </script>
-</body>
+    <script src="../scripts/script.js"></script>
+  </body>
 </html>
