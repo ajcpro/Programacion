@@ -201,9 +201,9 @@ Cuando cruzamos una calle, por ejemplo, seguimos una serie acciones que involucr
 8. Si la luz del semáforo cambia a intermitente y no se ha recorrido aún la mitad de la distancia, retroceder y repetir los pasos 4 a 6, pero no más de tres veces.
 9. Si se no ha conseguido cruzar, buscar otro punto semafórico o solicitar ayuda.
 
-Sin la frase “pero no más de tres veces” del punto 8, podríamos estar intentando cruzar sin éxito eternamente. ¿Por qué? Porque algo falla en la regulación semafórica o nosotros no podemos recorrer la distancia necesaria en el tiempo asignado. Este tipo de situación se denomina bucle infinito. Si eliminamos esa frase, este procedimiento no cumpliría nuestra definición de algoritmo: debe terminar en un tiempo finito cualesquiera que sean las condiciones.
+Sin la frase «pero no más de tres veces» del punto 8, podríamos estar intentando cruzar sin éxito eternamente. ¿Por qué? Porque algo falla en la regulación semafórica o nosotros no podemos recorrer la distancia necesaria en el tiempo asignado. Este tipo de situación se denomina bucle infinito. Si eliminamos esa frase, este procedimiento no cumpliría nuestra definición de algoritmo: debe terminar en un tiempo finito cualesquiera que sean las condiciones.
 
-Después de desarrollar una solución general, el programador prueba el algoritmo “trazando” cada paso mentalmente; o manualmente, con lápiz y papel. Si el algoritmo no funciona, el programador repite el proceso de resolución de problemas, analizándolo de nuevo, y desarrolla otro algoritmo. A menudo, el segundo algoritmo es simplemente una variación del primero. Cuando el programador está satisfecho con el algoritmo, lo traduce a un **lenguaje de programación**. Nosotros vamos a utilizar el lenguaje de programación Java.
+Después de desarrollar una solución general, el programador prueba el algoritmo «trazando» cada paso mentalmente; o manualmente, con lápiz y papel. Si el algoritmo no funciona, el programador repite el proceso de resolución de problemas, analizándolo de nuevo, y desarrolla otro algoritmo. A menudo, el segundo algoritmo es simplemente una variación del primero. Cuando el programador está satisfecho con el algoritmo, lo traduce a un **lenguaje de programación**. Nosotros vamos a utilizar el lenguaje de programación Java.
 
 <aside class="definicion">
 
@@ -441,7 +441,7 @@ En el contexto de la programación, algunas de las preguntas más comunes que po
 
 ### Buscar cosas familiares
 
-Nunca debemos reinventar la rueda: si ya existe una solución, usémosla. Las personas reconocemos fácilmente situaciones similares. No necesitamos aprender cómo ir a comprar pan, después a comprar leche o huevos; sabemos que “ir a comprar” es siempre lo mismo y sólo cambia qué compramos. Por ello, si hemos resuelto antes el mismo problema o uno parecido, solamente repetimos la solución.
+Nunca debemos reinventar la rueda: si ya existe una solución, usémosla. Las personas reconocemos fácilmente situaciones similares. No necesitamos aprender cómo ir a comprar pan, después a comprar leche o huevos; sabemos que «ir a comprar» es siempre lo mismo y sólo cambia qué compramos. Por ello, si hemos resuelto antes el mismo problema o uno parecido, solamente repetimos la solución.
 
 En informática, muchos problemas se producen una y otra vez en diferentes formas. Un buen programador enseguida reconoce algo que ya ha resuelto con anterioridad y aplica la solución. Por ejemplo, encontrar las temperaturas máxima y mínima diaria es exactamente el mismo problema que encontrar las notas más alta y más baja de un examen. Lo que se quiere es obtener los valores mayor y menor en un conjunto de números.
 
@@ -481,7 +481,7 @@ Otra manera de atacar a un gran problema es ver si existen soluciones para probl
     </figcaption>
 </figure>
 
-Aunque nosotros no lo asociemos con la informática, seguro que resulta familiar la expresión “síndrome del folio en blanco”. También los programadores se encuentran con esa dificultad la primera vez que afrontan un nuevo problema. Cuando se examina un problema difícil parece que nos superará.
+Aunque nosotros no lo asociemos con la informática, seguro que resulta familiar la expresión «síndrome del folio en blanco». También los programadores se encuentran con esa dificultad la primera vez que afrontan un nuevo problema. Cuando se examina un problema difícil parece que nos superará.
 
 Pero siempre existe una manera de comenzar a resolver cualquier problema: escribir en un papel, con nuestras propias palabras, cuál es el problema de forma que se comprenda bien. Una vez que has descrito el problema puedes fijar tu atención en cada una de sus partes en lugar de tratar de resolverlo entero de una vez. En este proceso comenzaremos a organizar las subpartes lo que nos proporciona una visión más clara del problema global. Esto nos facilita encontrar partes que resultan familiares o que son análogas a otros problemas que ya hemos resuelto. Además, observaremos partes que no están claras y tendremos que hacer más preguntas a quienes plantearan el problema.
 

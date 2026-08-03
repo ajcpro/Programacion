@@ -26,10 +26,12 @@ jobs:
           mkdir -p public/pdf
           mkdir -p public/estilos
           mkdir -p public/imagenes
+          mkdir -p public/scripts
 
           # Copiamos tus estilos e imágenes a la carpeta pública
           cp -r estilos/* public/estilos/ 2>/dev/null || true
           cp -r imagenes/* public/imagenes/ 2>/dev/null || true
+          cp -r scripts/* public/scripts/ 2>/dev/null || true
 
           # Creamos la plantilla HTML limpia que evita la duplicación de títulos y estilos de Pandoc
           cat << 'EOF' > template.html
@@ -45,63 +47,9 @@ jobs:
           <body>
             $body$
 
-            <!-- Script para abrir enlaces externos en una nueva pestaña -->
-            <script>
-            document.addEventListener("DOMContentLoaded", function() {
-
-              // 1. Abrir enlaces externos en una nueva pestaña
-              var links = document.querySelectorAll('a');
-              links.forEach(function(link) {
-                if (link.hostname && link.hostname !== location.hostname) {
-                  link.target = '_blank';
-                  link.rel = 'noopener noreferrer';
-                }
-              });
-
-              // 2. Control dinámico de posicionamiento para los tooltips
-              document.addEventListener('mouseover', function(e) {
-                var targetTooltip = e.target.closest('.tooltip');
-                if (!targetTooltip) return;
-
-                var tooltip = targetTooltip.querySelector('.tooltiptext');
-                if (!tooltip) return;
-
-                // Coordenadas absolutas de la palabra en la pantalla
-                var wordRect = targetTooltip.getBoundingClientRect();
-                var ttHeight = tooltip.offsetHeight; 
-                var ttWidth = tooltip.offsetWidth;
-
-                // --- CÁLCULO VERTICAL ---
-                var topPos;
-                // Si al ponerlo ARRIBA se sale de la pantalla (menos de 10px del borde superior)
-                if ((wordRect.top - ttHeight - 8) < 10) {
-                  // Lo coloca ABAJO de la palabra
-                  topPos = wordRect.bottom + 8;
-                } else {
-                  // Lo coloca ARRIBA de la palabra
-                  topPos = wordRect.top - ttHeight - 8;
-                }
-
-                // --- CÁLCULO HORIZONTAL ---
-                var leftPos = wordRect.left;
-                // Si al dibujarlo hacia la derecha se sale de la pantalla
-                if ((leftPos + ttWidth) > (window.innerWidth - 15)) {
-                  // Lo alinea hacia la izquierda desde el borde derecho de la pantalla
-                  leftPos = window.innerWidth - ttWidth - 15;
-                }
-                // Seguridad para pantallas pequeñas (nunca pegado a la izquierda)
-                if (leftPos < 10) leftPos = 10;
-
-                // Inyección directa de coordenadas fijas en píxeles
-                tooltip.style.bottom = 'auto';
-                tooltip.style.right = 'auto';
-                tooltip.style.top = topPos + 'px';
-                tooltip.style.left = leftPos + 'px';
-              });
-
-            });
-            
-            </script>
+            $if(js-path)$
+            <script src="$js-path$"></script>
+            $endif$
           </body>
           </html>
           EOF
@@ -305,7 +253,7 @@ jobs:
 
           # 1. COMPILAR EL ÍNDICE PRINCIPAL
           if [ -e "index.md" ]; then
-            pandoc index.md --template=template.html -c estilos/estilo.css -o public/index.html
+            pandoc index.md --template=template.html -V js-path="scripts/script.js" -c estilos/estilo.css -o public/index.html
           fi
 
           # 2. BUCLE DE COMPILACIÓN
@@ -316,8 +264,8 @@ jobs:
    
             mkdir -p "public/$directorio"
    
-            # Generar el HTML usando la nueva plantilla y filtros
-            pandoc "$archivo" --template=template.html --lua-filter=tooltips.lua -c ../estilos/estilo.css -c ../estilos/$nombre.css -o "public/$directorio/$nombre.html"
+            # Generar el HTML usando la nueva plantilla, script y filtros
+            pandoc "$archivo" --template=template.html -V js-path="../scripts/script.js" --lua-filter=tooltips.lua -c ../estilos/estilo.css -c ../estilos/$nombre.css -o "public/$directorio/$nombre.html"
    
             # Generar el PDF resolviendo imágenes, notas y eliminando la navegación anterior/siguiente
             pandoc "$archivo" --template=template.html --lua-filter=pdf_notas.lua --wrap=none -c estilos/estilo.css -c estilos/$nombre.css -o "temporal_impresion.html"

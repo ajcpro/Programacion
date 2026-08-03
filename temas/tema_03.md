@@ -5,6 +5,78 @@ css: ["../estilos/estilo.css", "../estilos/tema_03.css"]
 
 # Estructuras de programación
 
+<a href="../pdf/tema_03.pdf" target="_blank" class="boton-descarga-top">📥 PDF</a>
+
+<nav class="menu-flotante">
+<input type="checkbox" id="menu-toggle" class="menu-checkbox">
+<label for="menu-toggle" class="menu-boton">☰</label>
+<div class="menu-contenido">
+<h3>Contenido</h3>
+<ul>
+<li><a href="#introducción">Introducción</a></li>
+<li><a href="#análisis-léxico-y-componentes-del-lenguaje">Análisis léxico y componentes del lenguaje</a>
+<ul>
+<li><a href="#concepto-de-token-y-separador">Concepto de Token y separador</a></li>
+<li><a href="#palabras-reservadas">Palabras reservadas</a></li>
+</ul>
+</li>
+<li><a href="#expresiones-y-operadores">Expresiones y Operadores</a>
+<ul>
+<li><a href="#operadores">Operadores</a></li>
+<li><a href="#evaluación-en-cortocircuito">Evaluación en cortocircuito</a></li>
+<li><a href="#precedencia-y-asociatividad">Precedencia y asociatividad</a></li>
+</ul>
+</li>
+<li><a href="#conversión-de-tipos">Conversión de tipos</a>
+<ul>
+<li><a href="#reglas-de-promoción">Reglas de promoción</a></li>
+<li><a href="#conversión-explícita">Conversión explícita</a></li>
+<li><a href="#clases-envolventes">Clases envolventes</a></li>
+</ul>
+</li>
+<li><a href="#uso-de-la-biblioteca-estándar">Uso de la biblioteca estándar</a>
+<ul>
+<li><a href="#la-clase-math">La clase Math</a></li>
+</ul>
+</li>
+<li><a href="#instrucciones">Instrucciones</a>
+<ul>
+<li><a href="#sentencias">Sentencias</a></li>
+<li><a href="#bloques-y-ámbito">Bloques y ámbito</a></li>
+</ul>
+</li>
+<li><a href="#el-flujo-de-ejecución">El flujo de ejecución</a>
+<ul>
+<li><a href="#concepto-de-flujo-de-control">Concepto de flujo de control</a></li>
+<li><a href="#estructuras-secuenciales">Estructuras secuenciales</a></li>
+</ul>
+</li>
+<li><a href="#selección">Selección</a>
+<ul>
+<li><a href="#selección-simple">Selección simple</a></li>
+<li><a href="#selección-compuesta">Selección compuesta</a></li>
+<li><a href="#selección-múltiple">Selección múltiple</a></li>
+<li><a href="#lógica-de-anidamiento">Lógica de anidamiento</a></li>
+</ul>
+</li>
+<li><a href="#repetición">Repetición</a>
+<ul>
+<li><a href="#sentencia-while">Sentencia while</a></li>
+<li><a href="#bucles-controlados-por-condición">Bucles controlados por condición</a></li>
+<li><a href="#bucles-controlados-por-contador">Bucles controlados por contador</a></li>
+<li><a href="#diseño-de-bucles">Diseño de bucles</a></li>
+</ul>
+</li>
+<li><a href="#depuración-y-verificación">Depuración y verificación</a>
+<ul>
+<li><a href="#trazas-de-ejecución">Trazas de ejecución</a></li>
+<li><a href="#errores-comunes">Errores comunes</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</nav>
+
 <section class="objetivos">
 <h2>Objetivos</h2>
 
@@ -19,61 +91,131 @@ css: ["../estilos/estilo.css", "../estilos/tema_03.css"]
 
 </section>
 
----
-title: "Tema 03: Estructuras de programación"
-css: ["../estilos/estilo.css", "../estilos/tema_03.css"]
----
+<section class="toc">
+<h2>Contenido</h2>
 
-# Estructuras de programación
+* [Introducción](#introducción)
+* [Análisis léxico y componentes del lenguaje](#análisis-léxico-y-componentes-del-lenguaje)
+    * [Concepto de Token y separador](#concepto-de-token-y-separador)
+    * [Palabras reservadas](#palabras-reservadas)
+* [Expresiones y Operadores](#expresiones-y-operadores)
+    * [Operadores](#operadores)
+    * [Evaluación en cortocircuito](#evaluación-en-cortocircuito)
+    * [Precedencia y asociatividad](#precedencia-y-asociatividad)
+* [Conversión de tipos](#conversión-de-tipos)
+    * [Reglas de promoción](#reglas-de-promoción)
+    * [Conversión explícita](#conversión-explícita)
+    * [Clases envolventes](#clases-envolventes)
+* [Uso de la biblioteca estándar](#uso-de-la-biblioteca-estándar)
+    * [La clase Math](#la-clase-math)
+* [Instrucciones](#instrucciones)
+    * [Sentencias](#sentencias)
+    * [Bloques y ámbito](#bloques-y-ámbito)
+* [El flujo de ejecución](#el-flujo-de-ejecución)
+    * [Concepto de flujo de control](#concepto-de-flujo-de-control)
+    * [Estructuras secuenciales](#estructuras-secuenciales)
+* [Selección](#selección)
+    * [Selección simple](#selección-simple)
+    * [Selección compuesta](#selección-compuesta)
+    * [Selección múltiple](#selección-múltiple)
+    * [Lógica de anidamiento](#lógica-de-anidamiento)
+* [Repetición](#repetición)
+    * [Sentencia while](#sentencia-while)
+    * [Bucles controlados por condición](#bucles-controlados-por-condición)
+    * [Bucles controlados por contador](#bucles-controlados-por-contador)
+    * [Diseño de bucles](#diseño-de-bucles)
+* [Depuración y verificación](#depuración-y-verificación)
+    * [Trazas de ejecución](#trazas-de-ejecución)
+    * [Errores comunes](#errores-comunes)
 
-<a href="../pdf/tema_03.pdf" target="_blank" class="boton-descarga-top">📥 PDF</a>
-
-<section class="objetivos">
-  <h2>Objetivos</h2>
-  * Comprender la anatomía básica de un programa y sus elementos constituyentes.
-  * Entender la diferencia conceptual entre sintaxis y semántica.
-  * Introducir el concepto de token, palabras reservadas y expresiones.
-  * Comprender la necesidad de alterar el flujo de ejecución secuencial mediante estructuras de control y modularidad.
 </section>
 
 ## Introducción
 
-Anteriormente hemos visto que, para poder ejecutar un programa, es estrictamente necesario traducirlo a código máquina. En ese proceso inicial, aprendimos que Java es un lenguaje que se fundamenta en la portabilidad y la seguridad, utilizando el *bytecode* y la Máquina Virtual de Java (JVM) como intermediarios indispensables para que nuestras instrucciones lleguen, finalmente, a ser procesadas por el hardware. 
+Hasta este punto de nuestro aprendizaje, hemos comprendido que un programa de ordenador es, en esencia, un algoritmo escrito para ser ejecutado por una máquina. En el tema anterior, exploramos los cimientos: aprendimos a declarar variables, a reconocer tipos de datos primitivos y a utilizar la biblioteca estándar de Java para realizar operaciones de entrada/salida básicas. Sin embargo, si analizamos los programas que hemos construido, observaremos que todos comparten una característica común: son puramente lineales. El ordenador se limita a ejecutar una instrucción tras otra, en el estricto orden físico en que fueron escritas.
 
-Sin embargo, programar no consiste simplemente en memorizar y agrupar un conjunto de comandos aislados. Un lenguaje de programación es, en esencia, un **sistema formal** compuesto por un conjunto de reglas, símbolos y palabras especiales que se combinan para construir un algoritmo capaz de resolver un problema real. Por ello, para avanzar de forma sólida en nuestro aprendizaje, debemos empezar a analizar el texto d  e nuestros programas buscando e identificando los elementos mínimos que poseen un significado especial para el compilador.
+No obstante, la programación en el «mundo real» y la resolución de problemas técnicos complejos en entornos productivos requieren una sofisticación mucho mayor. El pensamiento computacional no es una simple sucesión de pasos, sino un tejido o «urdimbre» donde cada hebra lógica debe entrelazarse con precisión. Para lograr esto, un lenguaje de programación debe ser entendido como un conjunto de reglas, símbolos y palabras que nos permiten modelar la realidad.
 
-Uno de estos elementos fundamentales son las **instrucciones** o **sentencias**. De la misma forma que en la comunicación verbal natural utilizamos frases u oraciones estructuradas mediante sintagmas, las instrucciones de un lenguaje de programación contienen piezas estructurales menores que denominamos **expresiones**. Siguiendo con esta analogía lingüística, al igual que el predicado de una oración necesita casi siempre de un verbo para dotar a la frase de acción y sentido, las expresiones en programación se construyen habitualmente articulando variables, literales y **operadores**.
+El proceso por el cual el ordenador interpreta nuestras intenciones comienza con el análisis léxico. Cuando el compilador recibe nuestro código fuente, su primera tarea es identificar tokens, elementos con significado propio que el compilador separa gracias a delimitadores. Como sucede en el lenguaje natural, no podemos formar una oración coherente amontonando palabras, en los lenguajes de programación combinamos estos componentes léxicos para formar expresiones. Algo como n + 1, por sí solo, es solo un valor latente; para que sea algo capaz de realizar una tarea, debe integrarse en una estructura que le dé sentido, como una asignación, por ejemplo.
 
-En este tema, daremos un paso más allá de la simple declaración de datos y la ejecución estrictamente lineal. Abordaremos de forma estructurada los siguientes conceptos:
+La verdadera potencia del software reside en la capacidad de romper la linealidadd el código para establecer un flujo de control. Este define el orden en que las sentencias se ejecutan realmente durante la actividad de la aplicación. Para ilustrarlo, podemos usar la analogía de la conducción: ir por un tramo recto de carretera equivale a una estructura secuencial; sin embargo, al llegar a una bifurcación, debemos tomar una decisión basada en una condición o quizás necesitemos dar varias vueltas hasta encontrar un lugar donde aparcar.
 
-* **Análisis léxico:** Cómo el compilador lee nuestro código aislando **palabras reservadas** y símbolos (tokens).
-* **Construcción de expresiones:** Cómo se articulan y evalúan operaciones complejas de cálculo y lógica.
-* **Modularidad:** Cómo podemos organizar bloques lógicos reutilizables mediante el uso de **funciones** o métodos.
-* **Control de flujo:** Cómo romper la secuencialidad, sentando las bases para que nuestros programas puedan tomar decisiones lógicas (selección) y repetir procesos de manera eficiente (iteración).
+Profundizaremos aquí en cómo construir expresiones y conoceremos la selección y la iteración, herramientas que nos permitirán empezar a desarrollar algoritmos inteligentes, capaces de tomar decisiones autónomas y procesar información de forma eficiente, sentando así las bases necesarias antes de adentrarnos en los fundamentos de la programación orientada a objetos.
 
-Dominar estos conceptos fundacionales es el requisito indispensable para pasar de escribir simples líneas de código a diseñar soluciones lógicas y estructuradas.
+## Análisis léxico y componentes del lenguaje
 
-<aside class="definicion">
+### Concepto de Token y separador
 
-  **Estructura de programación:** Conjunto de reglas semánticas y sintácticas que permiten organizar y articular las instrucciones de un programa para controlar su flujo de ejecución, evaluar expresiones complejas o definir bloques de código reutilizables.
+### Palabras reservadas
 
-</aside>
+## Expresiones y Operadores
 
----
+### Operadores
 
-*Nota de diseño de imagen:*
-> **Figura sugerida:** Un diagrama de bloques que muestre el esqueleto de un programa. En la parte superior, un bloque principal ("Código Fuente"). De él cuelgan ramificaciones hacia "Palabras Reservadas", "Expresiones" (con subramas hacia "Operadores" y "Variables"), y "Control de Flujo" (con flechas que ilustren bifurcaciones lógicas y bucles). El objetivo es visualizar la anatomía estructural que se desarrollará en las siguientes secciones.
+### Evaluación en cortocircuito
 
----
+### Precedencia y asociatividad
+
+## Conversión de tipos
+
+### Reglas de promoción
+
+### Conversión explícita
+
+### Clases envolventes
+
+## Uso de la biblioteca estándar
+
+### La clase Math
+
+## Instrucciones
+
+### Sentencias
+
+### Bloques y ámbito
+
+## El flujo de ejecución
+
+### Concepto de flujo de control
+
+### Estructuras secuenciales
+
+## Selección
+
+### Selección simple
+
+### Selección compuesta
+
+### Selección múltiple
+
+### Lógica de anidamiento
+
+## Repetición
+
+### Sentencia while
+
+### Bucles controlados por condición
+
+### Bucles controlados por contador
+
+### Diseño de bucles
+
+## Depuración y verificación
+
+### Trazas de ejecución
+
+### Errores comunes
 
 <footer class="pie">
 <div class="navegacion-principal">
-<a href="tema_02.html" class="previo">Anterior</a> | 
-<a href="index.html" class="#">Inicio</a> | 
+<a href="tema_02.html" class="anterior">Anterior</a> | 
+<a href="../index.html" class="inicio">Inicio</a> | 
 <a href="tema_04.html" class="siguiente">Siguiente</a>
 </div>
   
 <div class="navegacion-secundaria">
-<a href="ejercicios_03.html">Ejercicios</a>
+<!-- Renderizar solo si existen en el tema -->
+<a href="ejercicios.html">Ejercicios</a>
+<!--a href="problemas.html">Problemas</a-->
 </div>
 </footer>
