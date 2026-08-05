@@ -1,0 +1,55 @@
+/* ==========================================================================
+   COMPONENTES EXCLUSIVOS Y ESPECÍFICOS - TEMA 03
+   ========================================================================== */
+
+/* --- Contenedor estilo Especificación del Lenguaje Java (JLS) --- */
+.contenedor-especificacion {
+  margin: 1.5em 0;
+  border: 1px solid #cbd5e0;
+  border-radius: 6px;
+  background-color: #f8fafc;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  break-inside: avoid;
+}
+
+.encabezado-especificacion {
+  background-color: #edf2f7;
+  padding: 10px 14px;
+  font-weight: bold;
+  font-size: 0.95em;
+  color: #2d3748;
+  border-bottom: 1px solid #cbd5e0;
+}
+
+.encabezado-especificacion a {
+  color: #135fcd;
+  text-decoration: none;
+}
+
+.encabezado-especificacion a:hover {
+  text-decoration: underline;
+}
+
+/* --- Tabla de palabras reservadas JLS --- */
+table.tabla-jls-keywords {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: Courier, 'Courier New', 'Lucida Console', monospace;
+  font-size: 0.9em;
+  background-color: #ffffff;
+}
+
+table.tabla-jls-keywords td {
+  padding: 8px 12px;
+  border: 1px solid #e2e8f0;
+  text-align: left;
+  color: #2d3748;
+  width: 16.66%; /* Distribución uniforme en 6 columnas */
+}
+
+/* --- Destacado específico para palabras no usadas / reservadas especiales --- */
+.kw-rojo {
+  color: #e61703;
+  font-weight: bold;
+}
