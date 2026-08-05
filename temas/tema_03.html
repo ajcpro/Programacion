@@ -272,9 +272,399 @@
   programación orientada a objetos.</p>
   <h2 id="análisis-léxico-y-componentes-del-lenguaje">Análisis léxico y
   componentes del lenguaje</h2>
+  <p>Como hemos señalado, la construcción de un programa comienza con la
+  escritura de <strong>código fuente</strong>, una tarea que realizamos
+  utilizando un editor y siguiendo las reglas gramaticales del lenguaje.
+  Sin embargo, para que este texto cobre vida y se convierta en una
+  serie de acciones ejecutables, debe pasar por un proceso de
+  transformación riguroso. El primer paso de este viaje técnico es el
+  <strong>análisis léxico</strong>, una fase en la que el compilador
+  actúa como un lector meticuloso que descompone la secuencia
+  ininterrumpida de caracteres que le entregamos en piezas individuales
+  dotadas de significado.</p>
+  <p>En el lenguaje natural, cuando leemos una frase, nuestro cerebro
+  identifica automáticamente dónde termina una palabra y comienza la
+  siguiente, reconociendo sustantivos, verbos y adjetivos. En el ámbito
+  de la programación, el ordenador realiza una operación análoga. No
+  percibe el código como un conjunto de instrucciones complejas de un
+  solo vistazo, sino como un flujo de símbolos pertenecientes al
+  alfabeto <em>Unicode</em>, en el caso de Java. La labor del analizador
+  léxico consiste en agrupar estos símbolos en unidades atómicas, que
+  son los componentes básicos que conforman la estructura del
+  lenguaje.</p>
+  <p>Esta etapa es fundamental porque establece los cimientos sobre los
+  que se construirá la lógica del programa, permitiendo ensamblar estos
+  bloques en estructuras sintácticamente correctas. Si el analizador
+  léxico encuentra un símbolo inesperado o una combinación de caracteres
+  que no encaja en las categorías permitidas, el proceso se detendrá
+  antes incluso de intentar comprender la intención del algoritmo. Por
+  lo tanto, antes de profundizar en cómo tomar decisiones o repetir
+  procesos, es esencial comprender la naturaleza de estos elementos
+  mínimos y los mecanismos que permiten al compilador distinguirlos unos
+  de otros.</p>
+  <aside class="definicion">
+  <p><strong>Analizador léxico:</strong> Fase del compilador que
+  descompone el flujo continuo de caracteres del código fuente en
+  unidades atómicas con significado (<em>tokens</em>).</p>
+  </aside>
   <h3 id="concepto-de-token-y-separador">Concepto de Token y
   separador</h3>
+  <p>Dentro del proceso de análisis léxico, el compilador debe ser capaz
+  de reconocer los componentes básicos que integran el código fuente
+  para poder interpretarlos adecuadamente. Estos componentes mínimos,
+  que no pueden ser descompuestos en partes más pequeñas sin perder su
+  sentido, reciben el nombre de <strong><em>tokens</em></strong> o
+  elementos atómicos. En la gramática de un lenguaje de programación
+  como Java, los <em>tokens</em> son el equivalente a las palabras en
+  una oración del lenguaje natural; cada uno de ellos cumple una función
+  específica, ya sea representar un valor constante, nombrar una
+  variable o indicar una operación matemática.</p>
+  <p>Para que el analizador léxico pueda distinguir estos elementos
+  dentro de la secuencia ininterrumpida de caracteres que escribimos, el
+  lenguaje emplea unos símbolos especiales denominados
+  <strong>separadores</strong>. Un separador es cualquier carácter o
+  marca que indica de manera inequívoca dónde termina un <em>token</em>
+  con significado propio y dónde comienza el siguiente. En este sentido,
+  la programación vuelve a imitar a la lengua: así como usamos espacios
+  para separar palabras en un texto escrito para que no se conviertan en
+  una masa de letras incomprensible, Java utiliza los separadores para
+  evitar que los <em>tokens</em> se fusionen.</p>
+  <aside class="definicion">
+  <p><strong>Token:</strong> Unidad mínima o componente atómico que
+  posee significado propio dentro de la gramática del lenguaje de
+  programación.</p>
+  <p><strong>Separador:</strong> Carácter o marca que delimita
+  inequívocamente el fin de un <em>token</em> y el inicio del
+  siguiente.</p>
+  </aside>
+  <p>Los elementos que actúan como separadores en Java son los
+  siguientes:</p>
+  <ul>
+  <li><strong>Espacio en blanco:</strong> es el separador más común y
+  sencillo, utilizado de la misma forma que en la escritura
+  convencional.</li>
+  <li><strong>Tabulador:</strong> actúa de forma equivalente al espacio
+  en blanco desde el punto de vista del compilador.</li>
+  <li><strong>Retorno de carro o salto de línea:</strong> indica el fin
+  de una línea física, pero léxicamente tiene el mismo valor que un
+  espacio. El compilador es capaz de tratar un programa completo escrito
+  en una sola línea o con cada palabra en una línea distinta con el
+  mismo resultado técnico, ya que sustituye cualquier secuencia de estos
+  separadores por un único espacio en
+  blanco<span class="tooltip"><a href="#fn1" class="nota-llamada" id="fnref1">[1]</a><span class="tooltiptext">Como vimos en el capítulo anterior, esto no es así cuando se trata de una cadena, por ejemplo.</span></span>.</li>
+  </ul>
+  <p>Una vez que el analizador léxico ha hecho uso de estos separadores
+  para aislar los <em>tokens</em>, estos se clasifican en diferentes
+  categorías según su naturaleza, como los literales, los
+  identificadores, los operadores y las palabras reservadas. Solo si el
+  ensamblaje de estos bloques atómicos sigue las reglas de la sintaxis,
+  el compilador podrá avanzar hacia la fase de traducción y ejecución
+  del programa.</p>
   <h3 id="palabras-reservadas">Palabras reservadas</h3>
+  <p>Como ya comentamos en el capítulo anterior, son aquellos
+  <em>tokens</em> que tienen asignada una función específica dentro del
+  lenguaje: los programadores tienen prohibido utilizarlas para
+  cualquier otro propósito; por ello, no es posible nombrar una
+  variable, un campo o una clase utilizando uno de estos términos. Al
+  igual que en el lenguaje natural existen palabras con funciones
+  gramaticales fijas, como las preposiciones, las palabras reservadas
+  constituyen el vocabulario fundamental que el compilador reconoce para
+  estructurar la lógica del programa.</p>
+  <p>Gran parte del proceso de aprendizaje de un lenguaje de
+  programación consiste en familiarizarse con el significado y la
+  utilidad de estos términos. En el caso de Java, el conjunto de estas
+  palabras ha ido evolucionando con las diferentes versiones del
+  lenguaje para adaptarse a nuevas necesidades técnicas. En la
+  actualidad, el núcleo está compuesto por cincuenta y una palabras, a
+  las que se suman dieciséis términos adicionales cuyo significado
+  especial solo se activa dependiendo del contexto específico en el que
+  se utilicen.</p>
+  <p>Es importante destacar que Java es un lenguaje extremadamente
+  estricto con la forma en que se escriben estos elementos, siendo
+  sensible a la diferencia entre mayúsculas y minúsculas. Todas las
+  palabras reservadas se componen exclusivamente de letras minúsculas.
+  Por esta razón, un término como <span class="palabra">int</span> es
+  reconocido como una palabra reservada para definir tipos enteros,
+  mientras que <span class="variable">Int</span> o <span
+  class="variable">INT</span> serían tratados como identificadores
+  diferentes definidos por el usuario, aunque su uso se desaconseja para
+  evitar ambigüedades en la lectura del código.</p>
+  <p>Dentro de este grupo, existen casos particulares como las palabras
+  <span class="palabra">goto</span> y <span
+  class="palabra">const</span>. Aunque figuran en la lista oficial y el
+  programador no puede emplearlas como nombres de variables, actualmente
+  no tienen ninguna función operativa dentro del lenguaje Java. Su
+  reserva responde principalmente a razones históricas y al deseo de los
+  diseñadores del lenguaje de evitar que programadores provenientes de
+  otros entornos, como C o C++, intenten aplicar estructuras de
+  programación que son incompatibles con la seguridad y la filosofía de
+  Java.</p>
+  <p>A continuación, se presenta la relación de palabras reservadas en
+  Java, estructurada conforme a la <a
+  href="https://docs.oracle.com/javase/specs/jls/">Especificación del
+  Lenguaje Java
+  (JLS)</a><span class="tooltip"><a href="#fn2" class="nota-llamada" id="fnref2">[2]</a><span class="tooltiptext">La documentación y especificación oficial actualizada de Java puede consultarse en la plataforma Oracle Java Specification.</span></span>:</p>
+  <div class="contenedor-especificacion">
+  <div class="encabezado-especificacion">
+  <pre><code>Palabras reservadas (*Keywords*) en la &lt;a href=&quot;https://docs.oracle.com/javase/specs/jls/&quot; target=&quot;_blank&quot;&gt;Especificación del Lenguaje Java (JLS)&lt;/a&gt;</code></pre>
+  </div>
+  <table class="tabla-jls-keywords">
+  <tbody>
+  <tr>
+  <td>
+  abstract
+  </td>
+  <td>
+  assert
+  </td>
+  <td>
+  boolean
+  </td>
+  <td>
+  break
+  </td>
+  <td>
+  byte
+  </td>
+  <td>
+  case
+  </td>
+  </tr>
+  <tr>
+  <td>
+  catch
+  </td>
+  <td>
+  char
+  </td>
+  <td>
+  class
+  </td>
+  <td>
+  <span class="kw-rojo">const</span>
+  </td>
+  <td>
+  continue
+  </td>
+  <td>
+  default
+  </td>
+  </tr>
+  <tr>
+  <td>
+  do
+  </td>
+  <td>
+  double
+  </td>
+  <td>
+  else
+  </td>
+  <td>
+  enum
+  </td>
+  <td>
+  extends
+  </td>
+  <td>
+  final
+  </td>
+  </tr>
+  <tr>
+  <td>
+  finally
+  </td>
+  <td>
+  float
+  </td>
+  <td>
+  for
+  </td>
+  <td>
+  <span class="kw-rojo">goto</span>
+  </td>
+  <td>
+  if
+  </td>
+  <td>
+  implements
+  </td>
+  </tr>
+  <tr>
+  <td>
+  import
+  </td>
+  <td>
+  instanceof
+  </td>
+  <td>
+  int
+  </td>
+  <td>
+  interface
+  </td>
+  <td>
+  long
+  </td>
+  <td>
+  native
+  </td>
+  </tr>
+  <tr>
+  <td>
+  new
+  </td>
+  <td>
+  package
+  </td>
+  <td>
+  private
+  </td>
+  <td>
+  protected
+  </td>
+  <td>
+  public
+  </td>
+  <td>
+  return
+  </td>
+  </tr>
+  <tr>
+  <td>
+  short
+  </td>
+  <td>
+  static
+  </td>
+  <td>
+  <span
+  class="kw-rojo">strictfp</span><span class="tooltip"><a href="#fn3" class="nota-llamada" id="fnref3">[3]</a><span class="tooltiptext">La palabra strictfp fue introducida para restringir los cálculos de punto flotante a la norma IEEE 754; su uso es obsoleto.</span></span>
+  </td>
+  <td>
+  super
+  </td>
+  <td>
+  switch
+  </td>
+  <td>
+  synchronized
+  </td>
+  </tr>
+  <tr>
+  <td>
+  this
+  </td>
+  <td>
+  throw
+  </td>
+  <td>
+  throws
+  </td>
+  <td>
+  transient
+  </td>
+  <td>
+  try
+  </td>
+  <td>
+  void
+  </td>
+  </tr>
+  <tr>
+  <td>
+  volatile
+  </td>
+  <td>
+  while
+  </td>
+  <td>
+  <span class="kw-rojo">_</span>
+  </td>
+  <td>
+  </td>
+  <td>
+  </td>
+  <td>
+  </td>
+  </tr>
+  </tbody>
+  </table>
+  </div>
+  <p>Asimismo, existen los siguientes términos que funcionan como
+  palabras reservadas dependiendo del contexto en el que se
+  utilicen:</p>
+  <div class="contenedor-especificacion">
+  <div class="encabezado-especificacion">
+  <pre><code>Palabras reservadas dependientes del contexto (*Contextual Keywords*)</code></pre>
+  </div>
+  <table class="tabla-jls-keywords">
+  <tbody>
+  <tr>
+  <td>
+  exports
+  </td>
+  <td>
+  module
+  </td>
+  <td>
+  non-sealed
+  </td>
+  <td>
+  open
+  </td>
+  </tr>
+  <tr>
+  <td>
+  opens
+  </td>
+  <td>
+  permits
+  </td>
+  <td>
+  provides
+  </td>
+  <td>
+  record
+  </td>
+  </tr>
+  <tr>
+  <td>
+  requires
+  </td>
+  <td>
+  sealed
+  </td>
+  <td>
+  to
+  </td>
+  <td>
+  transitive
+  </td>
+  </tr>
+  <tr>
+  <td>
+  uses
+  </td>
+  <td>
+  var
+  </td>
+  <td>
+  with
+  </td>
+  <td>
+  yield
+  </td>
+  </tr>
+  </tbody>
+  </table>
+  </div>
+  <p>Finalmente, conviene recordar que el carácter de subrayado
+  (<code>_</code>) por sí solo también se considera un elemento
+  reservado para usos
+  futuros<span class="tooltip"><a href="#fn4" class="nota-llamada" id="fnref4">[4]</a><span class="tooltiptext">A partir de Java 9 (JEP 213), el carácter solitario _ dejó de ser un identificador válido y pasó a ser un término reservado.</span></span>,
+  lo que prohíbe su empleo como un identificador de una sola letra en
+  las declaraciones del programa.</p>
   <h2 id="expresiones-y-operadores">Expresiones y Operadores</h2>
   <h3 id="operadores">Operadores</h3>
   <h3 id="evaluación-en-cortocircuito">Evaluación en cortocircuito</h3>
@@ -320,6 +710,31 @@
   <!--a href="problemas.html">Problemas</a--></p>
   </div>
   </footer>
+  <hr />
+  <h2 id="sec-notas-pie">Notas al pie</h2>
+  <ol class="seccion-notas-impresion">
+  <li class="footnote" id="fn1">
+  <p>Como vimos en el capítulo anterior, esto no es así cuando se trata
+  de una cadena, por
+  ejemplo. <a href="#fnref1" class="footnote-back">↩</a></p>
+  </li>
+  <li class="footnote" id="fn2">
+  <p>La documentación y especificación oficial actualizada de Java puede
+  consultarse en la plataforma <a
+  href="https://docs.oracle.com/javase/specs/jls/">Oracle Java
+  Specification</a>. <a href="#fnref2" class="footnote-back">↩</a></p>
+  </li>
+  <li class="footnote" id="fn3">
+  <p>La palabra <code>strictfp</code> fue introducida para restringir
+  los cálculos de punto flotante a la norma IEEE 754; su uso es
+  obsoleto. <a href="#fnref3" class="footnote-back">↩</a></p>
+  </li>
+  <li class="footnote" id="fn4">
+  <p>A partir de Java 9 (JEP 213), el carácter solitario <code>_</code>
+  dejó de ser un identificador válido y pasó a ser un término
+  reservado. <a href="#fnref4" class="footnote-back">↩</a></p>
+  </li>
+  </ol>
 
     <script src="../scripts/script.js"></script>
   </body>
