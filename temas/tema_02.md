@@ -1065,7 +1065,7 @@ Identifier
 </div>
 </div>
 
-La semántica (significado) del operador de asignación (=) es "es igual a" u "obtén"; la variable obtiene el valor de la **expresión** (<span class="produccion-palabra">Expression</span>). Cualquier valor anterior de la variable se reemplaza por el de la expresión. Podemos observar que la sintaxis es la misma que para asignar un valor inicial a un campo en una declaración de campo. Además, podemos ampliar la plantilla (ya vista con anterioridad) <span class="produccion-palabra">StatementExpression</span>, que definía una sentencia únicamente como la invocación de un método:
+La semántica (significado) del operador de asignación (=) es «es igual a» u «obtén»; la variable obtiene el valor de la **expresión** (<span class="produccion-palabra">Expression</span>). Cualquier valor anterior de la variable se reemplaza por el de la expresión. Podemos observar que la sintaxis es la misma que para asignar un valor inicial a un campo en una declaración de campo. Además, podemos ampliar la plantilla (ya vista con anterioridad) <span class="produccion-palabra">StatementExpression</span>, que definía una sentencia únicamente como la invocación de un método:
 
 <div class="plantilla-sintactica">
 <div class="produccion">
