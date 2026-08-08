@@ -177,6 +177,78 @@ Los elementos que actúan como separadores en Java son los siguientes:
 * **Retorno de carro o salto de línea:** indica el fin de una línea física, pero léxicamente tiene el mismo valor que un espacio. El compilador es capaz de tratar un programa completo escrito en una sola línea o con cada palabra en una línea distinta con el mismo resultado técnico, ya que sustituye cualquier secuencia de estos separadores por un único espacio en blanco[^1].
 
 Una vez que el analizador léxico ha hecho uso de estos separadores para aislar los *tokens*, estos se clasifican en diferentes categorías según su naturaleza, como los literales, los identificadores, los operadores y las palabras reservadas. Solo si el ensamblaje de estos bloques atómicos sigue las reglas de la sintaxis, el compilador podrá avanzar hacia la fase de traducción y ejecución del programa.
+### Literales
+
+Un **literal** —o valor literal— es la representación explícita y constante de un valor concreto directamente escrito en el código fuente de un programa. A través de los literales, el programador especifica valores fijos para los tipos de datos primitivos, el tipo de datos `String` y la referencia especial `null`.
+
+Desde el punto de vista del análisis léxico, los literales son identificados por el compilador como *tokens* atómicos. Esto significa que constituyen unidades de información indivisibles con significado propio dentro de la gramática del lenguaje. A diferencia de lo que ocurre con un identificador o una variable, cuyo contenido o estado puede fluctuar dinámicamente durante el ciclo de vida de la ejecución, el valor representado por un literal queda prefijado de manera inmutable desde la fase de compilación.
+
+**Literal:** *Token* que representa la expresión gráfica e inalterable de un valor constante de un tipo de datos primitivo, de un objeto `String` o de la referencia nula `null` dentro del código fuente.
+
+Dentro de la especificación sintáctica de Java, los literales se clasifican rigurosamente según la categoría de datos a la que corresponden, obedeciendo a un conjunto estricto de convenciones léxicas para su escritura:
+
+#### Literales enteros
+
+De forma predeterminada, cuando el analizador léxico procesa un literal numérico compuesto únicamente por dígitos (sin coma ni punto fraccionario), el compilador deduce que se trata de un valor de tipo `int` codificado en 32 bits. Para aportar versatilidad en entornos de programación de bajo nivel, diseño de sistemas o manipulación de máscaras de bits, Java permite representar literales enteros mediante cuatro sistemas de numeración:
+
+* **Decimal (base 10):** es la representación convencional mediante una secuencia de dígitos del `0` al `9`. Por regla léxica, un literal decimal no debe comenzar con el dígito `0` (salvo el propio número cero), para evitar ambigüedades con la notación octal.
+* **Octal (base 8):** se especifica anteponiendo un cero (`0`) como prefijo al número, seguido exclusivamente por dígitos comprendidos entre el `0` y el `7` (por ejemplo, `012`, que equivale al valor decimal `10`).
+* **Hexadecimal (base 16):** se denota mediante el prefijo `0x` o `0X`, aceptando dígitos del `0` al `9` y letras de la `a` a la `f` (tanto en minúsculas como en mayúsculas). Un ejemplo es `0x1A`, correspondiente al decimal `26`.
+* **Binario (base 2):** permite la notación explícita mediante el prefijo `0b` o `0B`, empleando únicamente los dígitos `0` y `1` (por ejemplo, `0b1010`, equivalente al valor decimal `10`)[^4].
+
+Si se requiere que el literal sea interpretado por el compilador como un entero de precisión extendida de 64 bits (`long`), es obligatorio añadir el sufijo **`L`** o **`l`** al final de la secuencia de dígitos. Se recomienda enfáticamente el uso de la letra **`L`** mayúscula para evitar confusiones visuales con el número uno (`1`).
+
+<pre class="codigo-java">
+int contador = 100;         // Decimal
+int mascaraHex = 0xFF;      // Hexadecimal (255 decimal)
+int patronBits = 0b1100;    // Binario (12 decimal)
+long poblacion = 8000000000L; // Literal tratado como 'long'
+</pre>
+
+Internamente, la máquina virtual Java (JVM) almacena todos los valores enteros utilizando la representación binaria en **complemento a dos con signo**[^5]. Este formato fija los límites inferior y superior de los rangos numéricos que cada tipo de entero puede albergar en memoria (por ejemplo, entre $-2^{31}$ y $2^{31}-1$ para el tipo `int`).
+
+#### Literales de punto flotante
+
+Los literales de punto flotante se emplean para expresar números reales o fraccionarios. Por defecto, la gramática de Java interpreta cualquier literal con punto decimal o notación exponencial como un valor de tipo `double` (64 bits), garantizando un grado elevado de precisión matemática.
+
+Existen dos formas estándar de escribir literales de punto flotante:
+
+* **Notación decimal:** utiliza el carácter punto (`.`) para separar explícitamente la parte entera de la fraccionaria (por ejemplo, `3.14159` o `.5`).
+* **Notación científica o exponencial:** añade la letra `e` o `E` seguida de un exponente entero (positivo o negativo) que representa una potencia de diez (por ejemplo, `1.5e3` para representar $1.5 \times 10^3$, es decir, `1500.0`, o `2.5E-4` para $2.5 \times 10^{-4}$).
+
+Cuando sea preciso declarar un literal de precisión simple de 32 bits (`float`) —para optimizar la memoria o cumplir con los requerimientos de un método—, se debe añadir obligatoriamente el sufijo **`f`** o **`F`** al final del número.
+
+<pre class="codigo-java">
+double pi = 3.1415926535;   // Tipo 'double' por defecto
+double masa = 5.972e24;     // Notación científica (double)
+float gravedad = 9.81f;     // Sufijo 'f' para forzar el tipo 'float'
+</pre>
+
+La codificación interna de estos datos sigue escrupulosamente la norma **IEEE 754** (formato binario de punto flotante para ordenadores), estructurando el valor en tres campos binarios diferenciados: bit de signo, mantisa y exponente. Esto hace posible representar valores extremadamente amplios o infinitesimales, asumiendo las limitaciones de redondeo y precisión propias de la aritmética de punto flotante.
+
+#### Literales booleanos, de carácter, de cadena y nulo
+
+Para la representación explícita de valores no numéricos o de estructuras complejas, el lenguaje provee la siguiente gama de literales:
+
+* **Literales booleanos:** representan los valores de la lógica booleana y están constituidos únicamente por las dos palabras reservadas true (verdadero) y false (falso). A diferencia de otros lenguajes como C, en Java no existe una equivalencia numérica directa entre el valor `0` o `1` y los valores booleanos.
+* **Literales de carácter:** representan un único símbolo del juego de caracteres Unicode. Se delimitan mediante comillas simples (`'a'`, `'8'`, `'Z'`). Incluyen además el soporte para **secuencias de escape** (combinaciones que comienzan con la barra invertida `\`) para representar caracteres de control o no imprimibles (`'\n'` para salto de línea, `'\t'` para tabulación, `'\''` para comilla simple, `'\\'` para barra invertida) o directamente notación hexadecimal Unicode (`'\u0041'` para la letra `'A'`).
+* **Literales de cadena (`String`):** consisten en una secuencia de cero o más caracteres delimitados por comillas dobles (`"Hola mundo"`). Aunque `String` no es un tipo de datos primitivo sino una clase, Java proporciona este soporte sintáctico especial, convirtiendo automáticamente cualquier literal de este tipo en una instancia inmutable de la clase `java.lang.String`.
+* **Literal nulo (`null`):** formado por la palabra reservada null, representa la ausencia explícita de referencia a un objeto dentro de una variable de tipo objeto o referencia.
+
+<pre class="codigo-java">
+boolean activo = true;
+char inicial = 'J';
+char salto = '\n';
+char unicodeA = '\u0041';
+String saludo = "Bienvenido a Java";
+Object objetoVacio = null;
+</pre>
+
+**Uso del carácter subrayado (`_`) en literales numéricos:**
+A partir de Java 7, se permite intercalar el carácter subrayado (`_`) entre los dígitos de cualquier literal numérico para mejorar la legibilidad del código fuente (por ejemplo, `1_000_000` o `0b1101_0010`). Estos caracteres son ignorados por el analizador léxico durante la fase de compilación y no afectan al valor asignado.
+
+[^4]: La capacidad de escribir literales en notación binaria directa mediante el prefijo `0b` o `0B` fue introducida formalmente en la versión Java SE 7 mediante la propuesta JEP 100.
+[^5]: El sistema de representación en complemento a dos asigna el bit más significativo (MSB) como bit de signo, permitiendo operar aritméticamente con números enteros positivos y negativos de manera unificada a nivel de procesador.
 
 ### Palabras reservadas
 
