@@ -359,7 +359,168 @@
   identificadores, los operadores y las palabras reservadas. Solo si el
   ensamblaje de estos bloques atómicos sigue las reglas de la sintaxis,
   el compilador podrá avanzar hacia la fase de traducción y ejecución
-  del programa.</p>
+  del programa. ### Literales</p>
+  <p>Un <strong>literal</strong> —o valor literal— es la representación
+  explícita y constante de un valor concreto directamente escrito en el
+  código fuente de un programa. A través de los literales, el
+  programador especifica valores fijos para los tipos de datos
+  primitivos, el tipo de datos <code>String</code> y la referencia
+  especial <code>null</code>.</p>
+  <p>Desde el punto de vista del análisis léxico, los literales son
+  identificados por el compilador como <em>tokens</em> atómicos. Esto
+  significa que constituyen unidades de información indivisibles con
+  significado propio dentro de la gramática del lenguaje. A diferencia
+  de lo que ocurre con un identificador o una variable, cuyo contenido o
+  estado puede fluctuar dinámicamente durante el ciclo de vida de la
+  ejecución, el valor representado por un literal queda prefijado de
+  manera inmutable desde la fase de compilación.</p>
+  <p><strong>Literal:</strong> <em>Token</em> que representa la
+  expresión gráfica e inalterable de un valor constante de un tipo de
+  datos primitivo, de un objeto <code>String</code> o de la referencia
+  nula <code>null</code> dentro del código fuente.</p>
+  <p>Dentro de la especificación sintáctica de Java, los literales se
+  clasifican rigurosamente según la categoría de datos a la que
+  corresponden, obedeciendo a un conjunto estricto de convenciones
+  léxicas para su escritura:</p>
+  <h4 id="literales-enteros">Literales enteros</h4>
+  <p>De forma predeterminada, cuando el analizador léxico procesa un
+  literal numérico compuesto únicamente por dígitos (sin coma ni punto
+  fraccionario), el compilador deduce que se trata de un valor de tipo
+  <code>int</code> codificado en 32 bits. Para aportar versatilidad en
+  entornos de programación de bajo nivel, diseño de sistemas o
+  manipulación de máscaras de bits, Java permite representar literales
+  enteros mediante cuatro sistemas de numeración:</p>
+  <ul>
+  <li><strong>Decimal (base 10):</strong> es la representación
+  convencional mediante una secuencia de dígitos del <code>0</code> al
+  <code>9</code>. Por regla léxica, un literal decimal no debe comenzar
+  con el dígito <code>0</code> (salvo el propio número cero), para
+  evitar ambigüedades con la notación octal.</li>
+  <li><strong>Octal (base 8):</strong> se especifica anteponiendo un
+  cero (<code>0</code>) como prefijo al número, seguido exclusivamente
+  por dígitos comprendidos entre el <code>0</code> y el <code>7</code>
+  (por ejemplo, <code>012</code>, que equivale al valor decimal
+  <code>10</code>).</li>
+  <li><strong>Hexadecimal (base 16):</strong> se denota mediante el
+  prefijo <code>0x</code> o <code>0X</code>, aceptando dígitos del
+  <code>0</code> al <code>9</code> y letras de la <code>a</code> a la
+  <code>f</code> (tanto en minúsculas como en mayúsculas). Un ejemplo es
+  <code>0x1A</code>, correspondiente al decimal <code>26</code>.</li>
+  <li><strong>Binario (base 2):</strong> permite la notación explícita
+  mediante el prefijo <code>0b</code> o <code>0B</code>, empleando
+  únicamente los dígitos <code>0</code> y <code>1</code> (por ejemplo,
+  <code>0b1010</code>, equivalente al valor decimal
+  <code>10</code>)<span class="tooltip"><a href="#fn2" class="nota-llamada" id="fnref2">[2]</a><span class="tooltiptext">A partir de Java 9 (JEP 213), el carácter solitario _ dejó de ser un identificador válido y pasó a ser un término reservado.</span></span>.</li>
+  </ul>
+  <p>Si se requiere que el literal sea interpretado por el compilador
+  como un entero de precisión extendida de 64 bits (<code>long</code>),
+  es obligatorio añadir el sufijo <strong><code>L</code></strong> o
+  <strong><code>l</code></strong> al final de la secuencia de dígitos.
+  Se recomienda enfáticamente el uso de la letra
+  <strong><code>L</code></strong> mayúscula para evitar confusiones
+  visuales con el número uno (<code>1</code>).</p>
+  <pre class="codigo-java">
+  int contador = 100;         // Decimal
+  int mascaraHex = 0xFF;      // Hexadecimal (255 decimal)
+  int patronBits = 0b1100;    // Binario (12 decimal)
+  long poblacion = 8000000000L; // Literal tratado como 'long'
+  </pre>
+  <p>Internamente, la máquina virtual Java (JVM) almacena todos los
+  valores enteros utilizando la representación binaria en
+  <strong>complemento a dos con
+  signo</strong><span class="tooltip"><a href="#fn3" class="nota-llamada" id="fnref3">[3]</a><span class="tooltiptext">El sistema de representación en complemento a dos asigna el bit más significativo (MSB) como bit de signo, permitiendo operar aritméticamente con números enteros positivos y negativos de manera unificada a nivel de procesador.</span></span>.
+  Este formato fija los límites inferior y superior de los rangos
+  numéricos que cada tipo de entero puede albergar en memoria (por
+  ejemplo, entre <span class="math inline"> − 2<sup>31</sup></span> y
+  <span class="math inline">2<sup>31</sup> − 1</span> para el tipo
+  <code>int</code>).</p>
+  <h4 id="literales-de-punto-flotante">Literales de punto flotante</h4>
+  <p>Los literales de punto flotante se emplean para expresar números
+  reales o fraccionarios. Por defecto, la gramática de Java interpreta
+  cualquier literal con punto decimal o notación exponencial como un
+  valor de tipo <code>double</code> (64 bits), garantizando un grado
+  elevado de precisión matemática.</p>
+  <p>Existen dos formas estándar de escribir literales de punto
+  flotante:</p>
+  <ul>
+  <li><strong>Notación decimal:</strong> utiliza el carácter punto
+  (<code>.</code>) para separar explícitamente la parte entera de la
+  fraccionaria (por ejemplo, <code>3.14159</code> o
+  <code>.5</code>).</li>
+  <li><strong>Notación científica o exponencial:</strong> añade la letra
+  <code>e</code> o <code>E</code> seguida de un exponente entero
+  (positivo o negativo) que representa una potencia de diez (por
+  ejemplo, <code>1.5e3</code> para representar <span
+  class="math inline">1.5 × 10<sup>3</sup></span>, es decir,
+  <code>1500.0</code>, o <code>2.5E-4</code> para <span
+  class="math inline">2.5 × 10<sup>−4</sup></span>).</li>
+  </ul>
+  <p>Cuando sea preciso declarar un literal de precisión simple de 32
+  bits (<code>float</code>) —para optimizar la memoria o cumplir con los
+  requerimientos de un método—, se debe añadir obligatoriamente el
+  sufijo <strong><code>f</code></strong> o
+  <strong><code>F</code></strong> al final del número.</p>
+  <pre class="codigo-java">
+  double pi = 3.1415926535;   // Tipo 'double' por defecto
+  double masa = 5.972e24;     // Notación científica (double)
+  float gravedad = 9.81f;     // Sufijo 'f' para forzar el tipo 'float'
+  </pre>
+  <p>La codificación interna de estos datos sigue escrupulosamente la
+  norma <strong>IEEE 754</strong> (formato binario de punto flotante
+  para ordenadores), estructurando el valor en tres campos binarios
+  diferenciados: bit de signo, mantisa y exponente. Esto hace posible
+  representar valores extremadamente amplios o infinitesimales,
+  asumiendo las limitaciones de redondeo y precisión propias de la
+  aritmética de punto flotante.</p>
+  <h4 id="literales-booleanos-de-carácter-de-cadena-y-nulo">Literales
+  booleanos, de carácter, de cadena y nulo</h4>
+  <p>Para la representación explícita de valores no numéricos o de
+  estructuras complejas, el lenguaje provee la siguiente gama de
+  literales:</p>
+  <ul>
+  <li><strong>Literales booleanos:</strong> representan los valores de
+  la lógica booleana y están constituidos únicamente por las dos
+  palabras reservadas true (verdadero) y false (falso). A diferencia de
+  otros lenguajes como C, en Java no existe una equivalencia numérica
+  directa entre el valor <code>0</code> o <code>1</code> y los valores
+  booleanos.</li>
+  <li><strong>Literales de carácter:</strong> representan un único
+  símbolo del juego de caracteres Unicode. Se delimitan mediante
+  comillas simples (<code>'a'</code>, <code>'8'</code>,
+  <code>'Z'</code>). Incluyen además el soporte para <strong>secuencias
+  de escape</strong> (combinaciones que comienzan con la barra invertida
+  <code>\</code>) para representar caracteres de control o no
+  imprimibles (<code>'\n'</code> para salto de línea, <code>'\t'</code>
+  para tabulación, <code>'\''</code> para comilla simple,
+  <code>'\\'</code> para barra invertida) o directamente notación
+  hexadecimal Unicode (<code>'\u0041'</code> para la letra
+  <code>'A'</code>).</li>
+  <li><strong>Literales de cadena (<code>String</code>):</strong>
+  consisten en una secuencia de cero o más caracteres delimitados por
+  comillas dobles (<code>"Hola mundo"</code>). Aunque
+  <code>String</code> no es un tipo de datos primitivo sino una clase,
+  Java proporciona este soporte sintáctico especial, convirtiendo
+  automáticamente cualquier literal de este tipo en una instancia
+  inmutable de la clase <code>java.lang.String</code>.</li>
+  <li><strong>Literal nulo (<code>null</code>):</strong> formado por la
+  palabra reservada null, representa la ausencia explícita de referencia
+  a un objeto dentro de una variable de tipo objeto o referencia.</li>
+  </ul>
+  <pre class="codigo-java">
+  boolean activo = true;
+  char inicial = 'J';
+  char salto = '\n';
+  char unicodeA = '\u0041';
+  String saludo = "Bienvenido a Java";
+  Object objetoVacio = null;
+  </pre>
+  <p><strong>Uso del carácter subrayado (<code>_</code>) en literales
+  numéricos:</strong> A partir de Java 7, se permite intercalar el
+  carácter subrayado (<code>_</code>) entre los dígitos de cualquier
+  literal numérico para mejorar la legibilidad del código fuente (por
+  ejemplo, <code>1_000_000</code> o <code>0b1101_0010</code>). Estos
+  caracteres son ignorados por el analizador léxico durante la fase de
+  compilación y no afectan al valor asignado.</p>
   <h3 id="palabras-reservadas">Palabras reservadas</h3>
   <p>Como ya comentamos en el capítulo anterior, son aquellos
   <em>tokens</em> que tienen asignada una función específica dentro del
@@ -403,7 +564,7 @@
   Java, estructurada conforme a la <a
   href="https://docs.oracle.com/javase/specs/jls/">Especificación del
   Lenguaje Java
-  (JLS)</a><span class="tooltip"><a href="#fn2" class="nota-llamada" id="fnref2">[2]</a><span class="tooltiptext">La documentación y especificación oficial actualizada de Java puede consultarse en la plataforma Oracle Java Specification.</span></span>:</p>
+  (JLS)</a><span class="tooltip"><a href="#fn4" class="nota-llamada" id="fnref4">[4]</a><span class="tooltiptext">La documentación y especificación oficial actualizada de Java puede consultarse en la plataforma Oracle Java Specification.</span></span>:</p>
   <div class="contenedor-especificacion">
   <div class="encabezado-especificacion">
   <pre><code>Palabras reservadas (*Keywords*) en la &lt;a href=&quot;https://docs.oracle.com/javase/specs/jls/&quot; target=&quot;_blank&quot;&gt;Especificación del Lenguaje Java (JLS)&lt;/a&gt;</code></pre>
@@ -539,7 +700,7 @@
   </td>
   <td>
   <span
-  class="kw-rojo">strictfp</span><span class="tooltip"><a href="#fn3" class="nota-llamada" id="fnref3">[3]</a><span class="tooltiptext">La palabra strictfp fue introducida para restringir los cálculos de punto flotante a la norma IEEE 754; su uso es obsoleto.</span></span>
+  class="kw-rojo">strictfp</span><span class="tooltip"><a href="#fn5" class="nota-llamada" id="fnref5">[5]</a><span class="tooltiptext">La palabra strictfp fue introducida para restringir los cálculos de punto flotante a la norma IEEE 754; su uso es obsoleto.</span></span>
   </td>
   <td>
   super
@@ -662,7 +823,7 @@
   <p>Finalmente, conviene recordar que el carácter de subrayado
   (<code>_</code>) por sí solo también se considera un elemento
   reservado para usos
-  futuros<span class="tooltip"><a href="#fn4" class="nota-llamada" id="fnref4">[4]</a><span class="tooltiptext">A partir de Java 9 (JEP 213), el carácter solitario _ dejó de ser un identificador válido y pasó a ser un término reservado.</span></span>,
+  futuros<span class="tooltip"><a href="#fn6" class="nota-llamada" id="fnref6">[6]</a><span class="tooltiptext">A partir de Java 9 (JEP 213), el carácter solitario _ dejó de ser un identificador válido y pasó a ser un término reservado.</span></span>,
   lo que prohíbe su empleo como un identificador de una sola letra en
   las declaraciones del programa.</p>
   <h2 id="expresiones-y-operadores">Expresiones y Operadores</h2>
@@ -719,20 +880,32 @@
   ejemplo. <a href="#fnref1" class="footnote-back">↩</a></p>
   </li>
   <li class="footnote" id="fn2">
+  <p>A partir de Java 9 (JEP 213), el carácter solitario <code>_</code>
+  dejó de ser un identificador válido y pasó a ser un término
+  reservado. <a href="#fnref2" class="footnote-back">↩</a></p>
+  </li>
+  <li class="footnote" id="fn3">
+  <p>El sistema de representación en complemento a dos asigna el bit más
+  significativo (MSB) como bit de signo, permitiendo operar
+  aritméticamente con números enteros positivos y negativos de manera
+  unificada a nivel de
+  procesador. <a href="#fnref3" class="footnote-back">↩</a></p>
+  </li>
+  <li class="footnote" id="fn4">
   <p>La documentación y especificación oficial actualizada de Java puede
   consultarse en la plataforma <a
   href="https://docs.oracle.com/javase/specs/jls/">Oracle Java
-  Specification</a>. <a href="#fnref2" class="footnote-back">↩</a></p>
+  Specification</a>. <a href="#fnref4" class="footnote-back">↩</a></p>
   </li>
-  <li class="footnote" id="fn3">
+  <li class="footnote" id="fn5">
   <p>La palabra <code>strictfp</code> fue introducida para restringir
   los cálculos de punto flotante a la norma IEEE 754; su uso es
-  obsoleto. <a href="#fnref3" class="footnote-back">↩</a></p>
+  obsoleto. <a href="#fnref5" class="footnote-back">↩</a></p>
   </li>
-  <li class="footnote" id="fn4">
+  <li class="footnote" id="fn6">
   <p>A partir de Java 9 (JEP 213), el carácter solitario <code>_</code>
   dejó de ser un identificador válido y pasó a ser un término
-  reservado. <a href="#fnref4" class="footnote-back">↩</a></p>
+  reservado. <a href="#fnref6" class="footnote-back">↩</a></p>
   </li>
   </ol>
 
