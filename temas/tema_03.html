@@ -247,23 +247,21 @@
   símbolos y palabras que nos permiten modelar la realidad.</p>
   <p>El proceso por el cual el ordenador interpreta nuestras intenciones
   comienza con el análisis léxico. Cuando el compilador recibe nuestro
-  código fuente, su primera tarea es identificar tokens, elementos con
-  significado propio que el compilador separa gracias a delimitadores.
-  Como sucede en el lenguaje natural, no podemos formar una oración
-  coherente amontonando palabras, en los lenguajes de programación
-  combinamos estos componentes léxicos para formar expresiones. Algo
-  como n + 1, por sí solo, es solo un valor latente; para que sea algo
-  capaz de realizar una tarea, debe integrarse en una estructura que le
-  dé sentido, como una asignación, por ejemplo.</p>
+  código fuente, su primera tarea es identificar elementos con
+  significado propio. Como sucede en el lenguaje natural, no podemos
+  formar una oración coherente amontonando palabras: en los lenguajes de
+  programación combinamos estos componentes léxicos para formar
+  expresiones. Algo como n + 1, por sí solo, es solo un valor latente;
+  para que sea algo capaz de realizar una tarea, debe integrarse en una
+  estructura que le dé sentido.</p>
   <p>La verdadera potencia del software reside en la capacidad de romper
   la linealidadd el código para establecer un flujo de control. Este
   define el orden en que las sentencias se ejecutan realmente durante la
   actividad de la aplicación. Para ilustrarlo, podemos usar la analogía
-  de la conducción: ir por un tramo recto de carretera equivale a una
-  estructura secuencial; sin embargo, al llegar a una bifurcación,
-  debemos tomar una decisión basada en una condición o quizás
-  necesitemos dar varias vueltas hasta encontrar un lugar donde
-  aparcar.</p>
+  de los músicos: ir tocando las notas según indica el director equivale
+  a una estructura secuencial; sin embargo, podremos tomar una decisión
+  basada en una condición o, quizás, que una serie de acordes se
+  repitan.</p>
   <p>Profundizaremos aquí en cómo construir expresiones y conoceremos la
   selección y la iteración, herramientas que nos permitirán empezar a
   desarrollar algoritmos inteligentes, capaces de tomar decisiones
@@ -288,10 +286,10 @@
   de la programación, el ordenador realiza una operación análoga. No
   percibe el código como un conjunto de instrucciones complejas de un
   solo vistazo, sino como un flujo de símbolos pertenecientes al
-  alfabeto <em>Unicode</em>, en el caso de Java. La labor del analizador
-  léxico consiste en agrupar estos símbolos en unidades atómicas, que
-  son los componentes básicos que conforman la estructura del
-  lenguaje.</p>
+  alfabeto; en el caso de Java, <em>Unicode</em>. La labor del
+  analizador léxico consiste en agrupar estos símbolos en unidades
+  atómicas, que son los componentes básicos que conforman la estructura
+  del lenguaje.</p>
   <p>Esta etapa es fundamental porque establece los cimientos sobre los
   que se construirá la lógica del programa, permitiendo ensamblar estos
   bloques en estructuras sintácticamente correctas. Si el analizador
@@ -351,7 +349,7 @@
   en una sola línea o con cada palabra en una línea distinta con el
   mismo resultado técnico, ya que sustituye cualquier secuencia de estos
   separadores por un único espacio en
-  blanco<span class="tooltip"><a href="#fn1" class="nota-llamada" id="fnref1">[1]</a><span class="tooltiptext">Como vimos en el capítulo anterior, esto no es así cuando se trata de una cadena, por ejemplo.</span></span>.</li>
+  blanco<span class="tooltip"><a href="#fn1" class="nota-llamada" id="fnref1">[1]</a><span class="tooltiptext">Como vimos en el capítulo anterior, esto no es exactamente así cuando se trata de una cadena, por ejemplo.</span></span>.</li>
   </ul>
   <p>Una vez que el analizador léxico ha hecho uso de estos separadores
   para aislar los <em>tokens</em>, estos se clasifican en diferentes
@@ -359,13 +357,15 @@
   identificadores, los operadores y las palabras reservadas. Solo si el
   ensamblaje de estos bloques atómicos sigue las reglas de la sintaxis,
   el compilador podrá avanzar hacia la fase de traducción y ejecución
-  del programa. ### Literales</p>
-  <p>Un <strong>literal</strong> —o valor literal— es la representación
-  explícita y constante de un valor concreto directamente escrito en el
-  código fuente de un programa. A través de los literales, el
-  programador especifica valores fijos para los tipos de datos
-  primitivos, el tipo de datos <code>String</code> y la referencia
-  especial <code>null</code>.</p>
+  del programa.</p>
+  <h3 id="literales">Literales</h3>
+  <p>Un <strong>literal</strong> —o valor literal—, como ya vimos en el
+  capítulo anterior, es la representación explícita y constante de un
+  valor concreto directamente escrito en el código fuente de un
+  programa. A través de los literales, el programador especifica valores
+  fijos para los tipos de datos primitivos, el tipo de datos <span
+  class="clase">String</span> y la referencia especial <span
+  class="palabra">null</span>.</p>
   <p>Desde el punto de vista del análisis léxico, los literales son
   identificados por el compilador como <em>tokens</em> atómicos. Esto
   significa que constituyen unidades de información indivisibles con
@@ -374,138 +374,597 @@
   estado puede fluctuar dinámicamente durante el ciclo de vida de la
   ejecución, el valor representado por un literal queda prefijado de
   manera inmutable desde la fase de compilación.</p>
+  <aside class="definicion">
   <p><strong>Literal:</strong> <em>Token</em> que representa la
-  expresión gráfica e inalterable de un valor constante de un tipo de
-  datos primitivo, de un objeto <code>String</code> o de la referencia
-  nula <code>null</code> dentro del código fuente.</p>
+  expresión inalterable de un valor constante de un tipo de datos
+  primitivo, de un objeto <span class="clase">String</span> o de la
+  referencia nula <span class="palabra">null</span> dentro del código
+  fuente.</p>
+  </aside>
   <p>Dentro de la especificación sintáctica de Java, los literales se
   clasifican rigurosamente según la categoría de datos a la que
   corresponden, obedeciendo a un conjunto estricto de convenciones
-  léxicas para su escritura:</p>
+  léxicas para su escritura. Plantilla sintáctica de declaración de
+  literal:</p>
+  <div class="plantilla-sintactica">
+  <div class="produccion">
+  <div class="produccion-encabezado">
+  Literal:
+  </div>
+  <div class="produccion-alternativas">
+  <p>IntegerLiteral<br> FloatingPointLiteral<br> BooleanLiteral<br>
+  CharacterLiteral<br> StringLiteral<br> NullLiteral</p>
+  </div>
+  </div>
+  </div>
+  </div>
   <h4 id="literales-enteros">Literales enteros</h4>
   <p>De forma predeterminada, cuando el analizador léxico procesa un
   literal numérico compuesto únicamente por dígitos (sin coma ni punto
   fraccionario), el compilador deduce que se trata de un valor de tipo
-  <code>int</code> codificado en 32 bits. Para aportar versatilidad en
-  entornos de programación de bajo nivel, diseño de sistemas o
-  manipulación de máscaras de bits, Java permite representar literales
-  enteros mediante cuatro sistemas de numeración:</p>
+  <span class="palabra">int</span> codificado en 32 bits. La
+  representación convencional se realiza en decimal, mediante una
+  secuencia de dígitos del <span class="literal">0</span> al <span
+  class="literal">9</span>. Un literal decimal no debe comenzar con el
+  dígito <span class="literal">0</span> (salvo el propio número
+  cero).</p>
+  <div class="plantilla-sintactica">
+  <div class="produccion">
+  <div class="produccion-encabezado">
+  IntegerLiteral:
+  </div>
+  <div class="produccion-alternativas">
+  <p>DecimalNumeral</p>
+  </div>
+  </div>
+  <div class="produccion">
+  <div class="produccion-encabezado">
+  DecimalNumeral:
+  </div>
+  <div class="produccion-alternativas">
+  <p><span class="terminal">0</span><br> NonZeroDigit [Digits]</p>
+  </div>
+  </div>
+  <div class="produccion">
+  <div class="produccion-encabezado">
+  NonZeroDigit:
+  </div>
+  <div class="produccion-alternativas">
+  <p>(one of)<br> <span class="terminal">1 2 3 4 5 6 7 8 9</span></p>
+  </div>
+  </div>
+  <div class="produccion">
+  <div class="produccion-encabezado">
+  Digits:
+  </div>
+  <div class="produccion-alternativas">
+  <p>Digit<br> Digit Digits</p>
+  </div>
+  </div>
+  <div class="produccion">
+  <div class="produccion-encabezado">
+  Digit:
+  </div>
+  <div class="produccion-alternativas">
+  <p><span class="terminal">0</span><br> NonZeroDigit</p>
+  </div>
+  </div>
+  </div>
+  <p>Esta sucesión de reglas merece una pequeña explicación. Un literal
+  de tipo entero, <span
+  class="produccion-palabra">IntegerLiteral</span>, es bien el número
+  cero o un dígito distinto de cero, <span
+  class="produccion-palabra">NonZeroDigit</span>, seguido,
+  opcionalmente, de dígitos, <span
+  class="produccion-palabra">Digits</span>. Estos dígito, a su vez,
+  pueden ser un dígito <span class="produccion-palabra">Digit</span> o
+  un dígito seguido de dígitos. Por último, un dígito es el número cero
+  o un número distinto de cero. La especificación lo que nos dice es que
+  un número entero puede tener un número indeterminado de dígitos pero
+  que no puede comenzar por cero, salvo que sea el cero.</p>
+  <p>A partir de Java 7, se permite intercalar el carácter de subrayado
+  (<span class="palabra">_</span>) entre los dígitos de cualquier
+  literal numérico para mejorar la legibilidad del código fuente (por
+  ejemplo, 1_000_000). Estos caracteres son ignorados por el analizador
+  léxico durante la fase de compilación y no afectan al valor
+  asignado.</p>
+  <div class="plantilla-sintactica">
+  <div class="produccion">
+  <div class="produccion-encabezado">
+  Digits:
+  </div>
+  <div class="produccion-alternativas">
+  <p>Digit<br> Digit [DigitsAndUnderscores] Digit</p>
+  </div>
+  </div>
+  <div class="produccion">
+  <div class="produccion-encabezado">
+  DigitsAndUnderscores:
+  </div>
+  <div class="produccion-alternativas">
+  <p>DigitOrUnderscore {DigitOrUnderscore}</p>
+  </div>
+  </div>
+  <div class="produccion">
+  <div class="produccion-encabezado">
+  DigitOrUnderscore:
+  </div>
+  <div class="produccion-alternativas">
+  <p>Digit<br> <span class="terminal">_</span></p>
+  </div>
+  </div>
+  </div>
+  <p>Además del formato convencional, en decimal, Java permite
+  representar literales enteros mediante otros tres sistemas de
+  numeración:</p>
   <ul>
-  <li><strong>Decimal (base 10):</strong> es la representación
-  convencional mediante una secuencia de dígitos del <code>0</code> al
-  <code>9</code>. Por regla léxica, un literal decimal no debe comenzar
-  con el dígito <code>0</code> (salvo el propio número cero), para
-  evitar ambigüedades con la notación octal.</li>
-  <li><strong>Octal (base 8):</strong> se especifica anteponiendo un
-  cero (<code>0</code>) como prefijo al número, seguido exclusivamente
-  por dígitos comprendidos entre el <code>0</code> y el <code>7</code>
-  (por ejemplo, <code>012</code>, que equivale al valor decimal
-  <code>10</code>).</li>
   <li><strong>Hexadecimal (base 16):</strong> se denota mediante el
-  prefijo <code>0x</code> o <code>0X</code>, aceptando dígitos del
-  <code>0</code> al <code>9</code> y letras de la <code>a</code> a la
-  <code>f</code> (tanto en minúsculas como en mayúsculas). Un ejemplo es
-  <code>0x1A</code>, correspondiente al decimal <code>26</code>.</li>
+  prefijo <span class="literal">0x</span> o <span
+  class="literal">0X</span>, aceptando dígitos del <span
+  class="literal">0</span> al <span class="literal">9</span> y letras de
+  la <span class="literal">a</span> a la <span class="literal">f</span>
+  (tanto en mayúsculas como en minúsculas). Un ejemplo es el número
+  <span class="literal">26</span>: <span
+  class="literal">0X1A</span>.</li>
+  <li><strong>Octal (base 8):</strong> se especifica anteponiendo un
+  cero (<span class="literal">0</span>) como prefijo al número, seguido
+  exclusivamente por dígitos comprendidos entre el <span
+  class="literal">0</span> y el <span class="literal">7</span> (por
+  ejemplo, <span class="literal">012</span>, que es el número <span
+  class="literal">10</span>).</li>
   <li><strong>Binario (base 2):</strong> permite la notación explícita
-  mediante el prefijo <code>0b</code> o <code>0B</code>, empleando
-  únicamente los dígitos <code>0</code> y <code>1</code> (por ejemplo,
-  <code>0b1010</code>, equivalente al valor decimal
-  <code>10</code>)<span class="tooltip"><a href="#fn2" class="nota-llamada" id="fnref2">[2]</a><span class="tooltiptext">A partir de Java 9 (JEP 213), el carácter solitario _ dejó de ser un identificador válido y pasó a ser un término reservado.</span></span>.</li>
+  mediante el prefijo <span class="literal">0b</span> o <span
+  class="literal">0B</span>, empleando únicamente los dígitos <span
+  class="literal">0</span> y <span class="literal">1</span> (por
+  ejemplo, el número <span class="literal">10</span> se representa como
+  <span
+  class="literal">0b1010<span class="tooltip"><a href="#fn2" class="nota-llamada" id="fnref2">[2]</a><span class="tooltiptext">La capacidad de escribir literales en notación binaria directa mediante el prefijo 0b o 0B fue introducida formalmente en la versión Java SE 7 mediante la propuesta JEP 100.</span></span>.</li>
   </ul>
+  <div class="plantilla-sintactica">
+  <div class="produccion">
+  <div class="produccion-encabezado">
+  IntegerLiteral:
+  </div>
+  <div class="produccion-alternativas">
+  <p>DecimalNumeral<br> HexNumeral<br> OctalNumeral<br>
+  BinaryNumeral<br></p>
+  </div>
+  </div>
+  <div class="produccion">
+  <div class="produccion-encabezado">
+  HexNumeral:
+  </div>
+  <div class="produccion-alternativas">
+  <p><span class="terminal">0 x</span> HexDigits<br> <span
+  class="terminal">0 X</span> HexDigits</p>
+  </div>
+  </div>
+  <div class="produccion">
+  <div class="produccion-encabezado">
+  HexDigits:
+  </div>
+  <div class="produccion-alternativas">
+  <p>HexDigit<br> HexDigit [HexDigitsAndUnderscores] HexDigit</p>
+  </div>
+  </div>
+  <div class="produccion">
+  <div class="produccion-encabezado">
+  HexDigit:
+  </div>
+  <div class="produccion-alternativas">
+  <p>(one of)<br> <span class="terminal">0 1 2 3 4 5 6 7 8 9 a b c d e f
+  A B C D E F</span></p>
+  </div>
+  </div>
+  <div class="produccion">
+  <div class="produccion-encabezado">
+  HexDigitsAndUnderscores:
+  </div>
+  <div class="produccion-alternativas">
+  <p>HexDigitOrUnderscore {HexDigitOrUnderscore}</p>
+  </div>
+  </div>
+  <div class="produccion">
+  <div class="produccion-encabezado">
+  HexDigitOrUnderscore:
+  </div>
+  <div class="produccion-alternativas">
+  <p>HexDigit<br> <span class="terminal">_</span></p>
+  </div>
+  </div>
+  <div class="produccion">
+  <div class="produccion-encabezado">
+  OctalNumeral:
+  </div>
+  <div class="produccion-alternativas">
+  <p><span class="terminal">0</span> OctalDigits<br> <span
+  class="terminal">0</span> OctalDigits</p>
+  </div>
+  </div>
+  <div class="produccion">
+  <div class="produccion-encabezado">
+  OctalDigits:
+  </div>
+  <div class="produccion-alternativas">
+  <p>OctalDigit<br> OctalDigit [OctalDigitsAndUnderscores]
+  OctalDigit</p>
+  </div>
+  </div>
+  <div class="produccion">
+  <div class="produccion-encabezado">
+  OctaDigit:
+  </div>
+  <div class="produccion-alternativas">
+  <p>(one of)<br> <span class="terminal">0 1 2 3 4 5 6 7</span></p>
+  </div>
+  </div>
+  <div class="produccion">
+  <div class="produccion-encabezado">
+  OctalDigitsAndUnderscores:
+  </div>
+  <div class="produccion-alternativas">
+  <p>OctalDigitOrUnderscore {OctalDigitOrUnderscore}</p>
+  </div>
+  </div>
+  <div class="produccion">
+  <div class="produccion-encabezado">
+  OctalDigitOrUnderscore:
+  </div>
+  <div class="produccion-alternativas">
+  <p>OctalDigit<br> <span class="terminal">_</span></p>
+  </div>
+  </div>
+  <div class="produccion">
+  <div class="produccion-encabezado">
+  BinaryNumeral:
+  </div>
+  <div class="produccion-alternativas">
+  <p><span class="terminal">0 b</span> BinaryDigits<br> <span
+  class="terminal">0 B</span> BinaryDigits</p>
+  </div>
+  </div>
+  <div class="produccion">
+  <div class="produccion-encabezado">
+  BinaryDigits:
+  </div>
+  <div class="produccion-alternativas">
+  <p>BinaryDigit<br> BinaryDigit [BinaryDigitsAndUnderscores]
+  BinaryDigit</p>
+  </div>
+  </div>
+  <div class="produccion">
+  <div class="produccion-encabezado">
+  BinaryDigit:
+  </div>
+  <div class="produccion-alternativas">
+  <p>(one of)<br> <span class="terminal">0 1</span></p>
+  </div>
+  </div>
+  <div class="produccion">
+  <div class="produccion-encabezado">
+  BinaryDigitsAndUnderscores:
+  </div>
+  <div class="produccion-alternativas">
+  <p>BinaryDigitOrUnderscore {BinaryDigitOrUnderscore}</p>
+  </div>
+  </div>
+  <div class="produccion">
+  <div class="produccion-encabezado">
+  BinaryDigitOrUnderscore:
+  </div>
+  <div class="produccion-alternativas">
+  <p>BinaryDigit<br> <span class="terminal">_</span></p>
+  </div>
+  </div>
+  </div>
   <p>Si se requiere que el literal sea interpretado por el compilador
-  como un entero de precisión extendida de 64 bits (<code>long</code>),
-  es obligatorio añadir el sufijo <strong><code>L</code></strong> o
-  <strong><code>l</code></strong> al final de la secuencia de dígitos.
-  Se recomienda enfáticamente el uso de la letra
-  <strong><code>L</code></strong> mayúscula para evitar confusiones
-  visuales con el número uno (<code>1</code>).</p>
-  <pre class="codigo-java">
-  int contador = 100;         // Decimal
-  int mascaraHex = 0xFF;      // Hexadecimal (255 decimal)
-  int patronBits = 0b1100;    // Binario (12 decimal)
-  long poblacion = 8000000000L; // Literal tratado como 'long'
-  </pre>
+  como un entero de precisión extendida de 64 bits (<span
+  class="palabra">long</span>), es obligatorio añadir el sufijo
+  <strong><span class="literal">L</span></strong> o <strong><span
+  class="literal">l</span></strong> al final de la secuencia de
+  dígitos<span class="tooltip"><a href="#fn3" class="nota-llamada" id="fnref3">[3]</a><span class="tooltiptext">Se recomienda enfáticamente el uso de la letra L mayúscula para evitar confusiones visuales con el número uno (1).</span></span>.</p>
+  <div class="plantilla-sintactica">
+  <div class="produccion">
+  <div class="produccion-encabezado">
+  IntegerLiteral:
+  </div>
+  <div class="produccion-alternativas">
+  <p>DecimalNumeral [IntegerTypeSuffix]<br> HexNumeral
+  [IntegerTypeSuffix]<br> OctalNumeral [IntegerTypeSuffix]<br>
+  BinaryNumeral [IntegerTypeSuffix]<br></p>
+  </div>
+  </div>
+  <div class="produccion">
+  <div class="produccion-encabezado">
+  IntegerTypeSuffix:
+  </div>
+  <div class="produccion-alternativas">
+  <p>(one of)<br> <span class="terminal">l L</span><br></p>
+  </div>
+  </div>
+  </div>
   <p>Internamente, la máquina virtual Java (JVM) almacena todos los
   valores enteros utilizando la representación binaria en
   <strong>complemento a dos con
-  signo</strong><span class="tooltip"><a href="#fn3" class="nota-llamada" id="fnref3">[3]</a><span class="tooltiptext">El sistema de representación en complemento a dos asigna el bit más significativo (MSB) como bit de signo, permitiendo operar aritméticamente con números enteros positivos y negativos de manera unificada a nivel de procesador.</span></span>.
+  signo</strong><span class="tooltip"><a href="#fn4" class="nota-llamada" id="fnref4">[4]</a><span class="tooltiptext">En la representación en complemento a dos, el bit más significativo, el primero, es 1 cuando el número es negativo. Los números negativos se calculan cambiando los unos por ceros y los ceros por unos, sumando uno al resultante.</span></span>.
   Este formato fija los límites inferior y superior de los rangos
   numéricos que cada tipo de entero puede albergar en memoria (por
   ejemplo, entre <span class="math inline"> − 2<sup>31</sup></span> y
-  <span class="math inline">2<sup>31</sup> − 1</span> para el tipo
-  <code>int</code>).</p>
+  <span class="math inline">2<sup>31</sup> − 1</span> para el tipo <span
+  class="palabra">int</span>).</p>
+  <pre class="codigo-java">
+  int contador = 100;           // Decimal
+  int mascaraHex = 0xFF;        // Hexadecimal (255)
+  int patronBits = 0b1100;      // Binario (12)
+  long poblacion = 8000000000L; // Literal de 64b
+  </pre>
   <h4 id="literales-de-punto-flotante">Literales de punto flotante</h4>
   <p>Los literales de punto flotante se emplean para expresar números
-  reales o fraccionarios. Por defecto, la gramática de Java interpreta
-  cualquier literal con punto decimal o notación exponencial como un
-  valor de tipo <code>double</code> (64 bits), garantizando un grado
-  elevado de precisión matemática.</p>
+  reales. Por defecto, la gramática de Java interpreta cualquier literal
+  con punto decimal o notación exponencial como un valor de tipo <span
+  class="palabra">double</span> (64 bits), garantizando un grado elevado
+  de precisión matemática.</p>
   <p>Existen dos formas estándar de escribir literales de punto
   flotante:</p>
   <ul>
   <li><strong>Notación decimal:</strong> utiliza el carácter punto
-  (<code>.</code>) para separar explícitamente la parte entera de la
-  fraccionaria (por ejemplo, <code>3.14159</code> o
-  <code>.5</code>).</li>
+  (<span class="literal">.</span>) para separar explícitamente la parte
+  entera de la fraccionaria (por ejemplo, <span
+  class="literal">3.14159</span> o <span class="literal">5</span>).</li>
   <li><strong>Notación científica o exponencial:</strong> añade la letra
-  <code>e</code> o <code>E</code> seguida de un exponente entero
-  (positivo o negativo) que representa una potencia de diez (por
-  ejemplo, <code>1.5e3</code> para representar <span
-  class="math inline">1.5 × 10<sup>3</sup></span>, es decir,
-  <code>1500.0</code>, o <code>2.5E-4</code> para <span
-  class="math inline">2.5 × 10<sup>−4</sup></span>).</li>
+  <span class="literal">e</span> o <span class="literal">E</span>
+  seguida de un número entero (positivo o negativo) que representa un
+  exponente o potencia de diez (por ejemplo, <span
+  class="literal">1.5e3</span> para representar <span
+  class="math inline">1.5 × 10<sup>3</sup></span>, es decir, <span
+  class="literal">1500.0</span>, o <span class="literal">2.5E-4</span>
+  para <span class="math inline">2.5 × 10<sup>−4</sup></span>).</li>
   </ul>
-  <p>Cuando sea preciso declarar un literal de precisión simple de 32
-  bits (<code>float</code>) —para optimizar la memoria o cumplir con los
-  requerimientos de un método—, se debe añadir obligatoriamente el
-  sufijo <strong><code>f</code></strong> o
-  <strong><code>F</code></strong> al final del número.</p>
+  <div class="plantilla-sintactica">
+  <div class="produccion">
+  <div class="produccion-encabezado">
+  FloatingPointLiteral:
+  </div>
+  <div class="produccion-alternativas">
+  <p>DecimalFloatingPointLiteral [FloatTypeSuffix]</p>
+  </div>
+  </div>
+  <div class="produccion">
+  <div class="produccion-encabezado">
+  DecimalFloatingPointLiteral:
+  </div>
+  <div class="produccion-alternativas">
+  <p>Digits <span class="terminal">.</span> [Digits] [ExponentPart]<br>
+  <span class="terminal">.</span> Digits [ExponentPart]<br> Digits
+  ExponentPart<br> Digits [ExponentPart]<br></p>
+  </div>
+  </div>
+  <div class="produccion">
+  <div class="produccion-encabezado">
+  ExponentPart:
+  </div>
+  <div class="produccion-alternativas">
+  <p>ExponentIndicator SignedInteger</p>
+  </div>
+  </div>
+  <div class="produccion">
+  <div class="produccion-encabezado">
+  ExponentIndicator:
+  </div>
+  <div class="produccion-alternativas">
+  <p>(one of)<br> <span class="terminal">e E</span></p>
+  </div>
+  </div>
+  <div class="produccion">
+  <div class="produccion-encabezado">
+  SignedInteger:
+  </div>
+  <div class="produccion-alternativas">
+  <p>[Sign] Digits</p>
+  </div>
+  </div>
+  <div class="produccion">
+  <div class="produccion-encabezado">
+  Sign:
+  </div>
+  <div class="produccion-alternativas">
+  <p>(one of)<br> <span class="terminal">+ -</span></p>
+  </div>
+  </div>
+  <div class="produccion">
+  <div class="produccion-encabezado">
+  FloatTypeSuffix:
+  </div>
+  <div class="produccion-alternativas">
+  <p>(one of)<br> <span class="terminal">f F e E</span></p>
+  </div>
+  </div>
+  </div>
+  <p>A partir de las reglas anteriores podemos ver que un número en
+  punto flotante puede empezar por punto cuando la parte entera sea
+  cero. Cuando sea preciso declarar un literal de precisión simple de 32
+  bits (<span class="palabra">float</span>) —para cumplir con los
+  requerimientos de un método, por ejemplo—, se debe añadir el sufijo
+  <strong><span class="literal">f</span></strong> o <strong><span
+  class="literal">F</span></strong> al final del número.</p>
   <pre class="codigo-java">
-  double pi = 3.1415926535;   // Tipo 'double' por defecto
+  double pi = 3.1415926535;   // Tipo <span class="palabra">double</span> por defecto
   double masa = 5.972e24;     // Notación científica (double)
-  float gravedad = 9.81f;     // Sufijo 'f' para forzar el tipo 'float'
+  float gravedad = 9.81f;     // Sufijo <span class="literal">f</span> para forzar el tipo <span class="palabra">float</span>
   </pre>
-  <p>La codificación interna de estos datos sigue escrupulosamente la
-  norma <strong>IEEE 754</strong> (formato binario de punto flotante
-  para ordenadores), estructurando el valor en tres campos binarios
-  diferenciados: bit de signo, mantisa y exponente. Esto hace posible
-  representar valores extremadamente amplios o infinitesimales,
-  asumiendo las limitaciones de redondeo y precisión propias de la
-  aritmética de punto flotante.</p>
-  <h4 id="literales-booleanos-de-carácter-de-cadena-y-nulo">Literales
-  booleanos, de carácter, de cadena y nulo</h4>
+  <p>Supongamos que nuestra máquina, en la que cada ubicación de memoria
+  tiene el mismo tamaño, permite representar los números mediante seis
+  dígitos y un signo. Cuando definimos una variable o constante, la
+  ubicación asignada consta de seis dígitos y un signo; si el valor es
+  entero, la interpretación del número almacenado en esa ubicación es
+  sencilla: puedo almacenar valores desde el -999999 hasta el +999999;
+  el cero tiene dos representaciones. Nuestra precisión es seis dígitos
+  y los números en ese rango pueden ser representados de forma
+  exacta.</p>
+  <p>Supongamos que los dos dígitos de más a la izquierda nos permiten
+  representar un exponente. La representación +561234, por ejemplo, es
+  en realidad el número <span
+  class="math inline">1234 × 10<sup>56</sup></span>. De hecho, el rango
+  de números que ahora podemos representar es mucho mayor: desde <span
+  class="math inline"> − 9999 × 10<sup>99</sup></span> hasta <span
+  class="math inline"> + 9999 × 10<sup>99</sup></span>. Sin embargo, la
+  precisión ahora es de solo cuatro dígitos; es decir, solo los números
+  de cuatro dígitos pueden representarse con exactitud en nuestro
+  sistema. ¿Qué sucede con los números con más dígitos? Los cuatro
+  dígitos de la izquierda se representan correctamente, y los dígitos de
+  la derecha, o dígitos menos significativos, se pierden (se asume que
+  son 0). Por ejemplo, 1000000 puede representarse con exactitud, pero
+  4932416 no, porque nuestro esquema de codificación nos limita a cuatro
+  dígitos significativos.</p>
+  <p>Para extender nuestro esquema de codificación y representar números
+  de punto flotante, debemos poder representar exponentes negativos.Dado
+  que nuestro esquema no incluye un signo para el exponente, vamos a
+  modificarlo ligeramente: el signo existente se convierte en el signo
+  del exponente y añadimos un signo a la izquierda para representar el
+  signo del número.</p>
+  <p>Ahora podemos representar con precisión, con cuatro dígitos, todos
+  los números entre <span
+  class="math inline"> − 9999 × 10<sup>99</sup></span> y <span
+  class="math inline"> + 9999 × 10<sup>99</sup></span>. Añadir
+  exponentes negativos a nuestro esquema nos permite representar
+  fracciones tan pequeñas como <span
+  class="math inline">1 × 10<sup>−</sup>99</span>. Nuestra precisión
+  sigue siendo de cuatro dígitos. Los números 0.1032, 5.406 y 1000000 se
+  pueden representar con exactitud. El número 476.0321, sin embargo,
+  tiene siete cifras significativas, pero se representa como 476.0; ese
+  0.0321 no se puede representar en nuestro
+  sistema<span class="tooltip"><a href="#fn5" class="nota-llamada" id="fnref5">[5]</a><span class="tooltiptext">La JVM realiza redondeo en lugar de truncamiento al descartar los dígitos sobrantes. Si asumimos que tiene cuatro cifras significativas, el redondeo almacenaría 476.0321 como 476.0, pero almacenaría 476.0823 como 476.1.</span></span>.</p>
+  <p>La codificación interna sigue la norma <strong>IEEE 754</strong>
+  (formato binario de punto flotante para ordenadores), estructurando el
+  valor en tres campos binarios diferenciados: bit de signo, mantisa y
+  exponente. En el caso de los vaores de tipo <span
+  class="palabra">float</span>, el bit de signo es +1 o -1, la mantisa
+  es un número entero positivo menor que <span
+  class="math inline">2<sup>24</sup></span> y el exponente en un número
+  entre -126 y 127, incluidos. En el caso de los valores de tipo <span
+  class="palabra">double</span>, la mantisa en un número entero positivo
+  menor que <span class="math inline">2<sup>53</sup></span> y el
+  exponente en un número entre -1022 y 1023, incluidos.</p>
+  <p>El nombre <em>punto flotante</em> hace referencia a que el
+  <em>punto decimal</em> puede moverse. En nuestro modelo, cada número
+  se almacena en cuatro dígitos; si el dígito que no es cero se almacena
+  en la posición de más a la izquierda, el exponente se ajusta de la
+  manera correspondiente: por ejemplo, 1000000 podríamos almacenarlo
+  como +060001 pero lo almacenamos como +031000. Este formato
+  proporciona la máxima precisión posible, denominándose formato
+  normalizado. En el modelo que usa la JVM, además, solo puede haber un
+  único dígito distinto de cero a la izquierda del punto decimal, lo que
+  nos permite aumentar el número de dígitos de la mantisa en uno, por lo
+  que la preción no es de 24 o 53 bits: pasa a ser 25 y 54. Esto es
+  debido a que sabemos con certeza que el primer dígito siempre es 1 -al
+  representarlo en base 2- y la máquina no lo almacena.</p>
+  <p>Es evidente que podemos representar valores extremadamente amplios
+  o infinitesimales, asumiendo las limitaciones de redondeo y precisión
+  propias de la aritmética de punto flotante. Sin embargo, con la
+  explicación anterior, podríamos pensar que el cero no puede
+  representarse. La realidad es que existen patrones para designar
+  números específicos.</p>
+  <p>Y aunque pueda parecer otra cosa, hay que tener en cuenta que el
+  número máximo de valores diferentes que la notación en punto flotante
+  puede representar es <span class="math inline">2<sup>32</sup></span> o
+  <span class="math inline">2<sup>64</sup></span> números: lo que hemos
+  hecho es expandir esos números en un rango mayor. Además, los números
+  que podemos representar no están espaciados de la misma manera entre
+  ellos, como los números en punto fijo. Los posibles valores están más
+  próximos cerca del origen y más separados cuanto más alejados.</p>
+  <h4 id="otros-literales">Otros literales</h4>
   <p>Para la representación explícita de valores no numéricos o de
   estructuras complejas, el lenguaje provee la siguiente gama de
   literales:</p>
   <ul>
-  <li><strong>Literales booleanos:</strong> representan los valores de
-  la lógica booleana y están constituidos únicamente por las dos
-  palabras reservadas true (verdadero) y false (falso). A diferencia de
-  otros lenguajes como C, en Java no existe una equivalencia numérica
-  directa entre el valor <code>0</code> o <code>1</code> y los valores
-  booleanos.</li>
-  <li><strong>Literales de carácter:</strong> representan un único
-  símbolo del juego de caracteres Unicode. Se delimitan mediante
-  comillas simples (<code>'a'</code>, <code>'8'</code>,
-  <code>'Z'</code>). Incluyen además el soporte para <strong>secuencias
-  de escape</strong> (combinaciones que comienzan con la barra invertida
-  <code>\</code>) para representar caracteres de control o no
-  imprimibles (<code>'\n'</code> para salto de línea, <code>'\t'</code>
-  para tabulación, <code>'\''</code> para comilla simple,
-  <code>'\\'</code> para barra invertida) o directamente notación
-  hexadecimal Unicode (<code>'\u0041'</code> para la letra
-  <code>'A'</code>).</li>
-  <li><strong>Literales de cadena (<code>String</code>):</strong>
-  consisten en una secuencia de cero o más caracteres delimitados por
-  comillas dobles (<code>"Hola mundo"</code>). Aunque
-  <code>String</code> no es un tipo de datos primitivo sino una clase,
-  Java proporciona este soporte sintáctico especial, convirtiendo
-  automáticamente cualquier literal de este tipo en una instancia
-  inmutable de la clase <code>java.lang.String</code>.</li>
-  <li><strong>Literal nulo (<code>null</code>):</strong> formado por la
-  palabra reservada null, representa la ausencia explícita de referencia
-  a un objeto dentro de una variable de tipo objeto o referencia.</li>
+  <li><strong>Literales booleanos</strong></li>
+  <li><strong>Literales de carácter</strong></li>
+  <li><strong>Literales de cadena</strong></li>
+  <li><strong>Literal nulo:</strong> formado por la palabra reservada
+  <span class="palabra">null</span>, representa la ausencia explícita de
+  referencia a un objeto dentro de una variable de tipo objeto o
+  referencia.</li>
   </ul>
+  <div class="plantilla-sintactica">
+  <div class="produccion">
+  <div class="produccion-encabezado">
+  BooleanLiteral:
+  </div>
+  <div class="produccion-alternativas">
+  <p>(one of)<br> <span class="terminal">true false</span></p>
+  </div>
+  </div>
+  <div class="produccion">
+  <div class="produccion-encabezado">
+  CharacterLiteral:
+  </div>
+  <div class="produccion-alternativas">
+  <p><span class="terminal">’</span> SingleCharacter <span
+  class="terminal">’</span><br> <span class="terminal">’</span>
+  EscapeSequence <span class="terminal">’</span></p>
+  </div>
+  </div>
+  <div class="produccion">
+  <div class="produccion-encabezado">
+  SingleCharacter:
+  </div>
+  <div class="produccion-alternativas">
+  <p>JavaLetterOrDigit but not <span class="terminal">’</span> or
+  <span class="terminal">&lt;/span&gt;</p>
+  </div>
+  </div>
+  <div class="produccion">
+  <div class="produccion-encabezado">
+  EscapeSecuence:
+  </div>
+  <div class="produccion-alternativas">
+  <p><span class="terminal"> t</span> (horizontal tab HT, Unicode
+  009)<br> <span class="terminal"> n</span> (linefeed LF, Unicode
+  00a)<br> <span class="terminal"> r</span> (carriage return CR, Unicode
+  00d)<br> <span class="terminal">&lt;/span&gt; LineTerminator (line
+  continuation, no Unicode representation)<br>
+  <span class="terminal"> “</span> (double quote”, Unicode 022)<br>
+  <span class="terminal"> ‘</span> (single quote’, Unicode 027)<br>
+  <span class="terminal"> &lt;/span&gt; (backslash , Unicode 05c)</p>
+  </div>
+  </div>
+  <div class="produccion">
+  <div class="produccion-encabezado">
+  LineTerminator:
+  </div>
+  <div class="produccion-alternativas">
+  <p>the ASCII LF character, also known as “newline”<br> the ASCII CR
+  character, also known as “return”<br> the ASCII CR character followed
+  by the ASCII LF character</p>
+  </div>
+  </div>
+  <div class="produccion">
+  <div class="produccion-encabezado">
+  StringLiteral:
+  </div>
+  <div class="produccion-alternativas">
+  <p><span class="terminal">“</span> {StringCharacter} <span
+  class="terminal">“</span></p>
+  </div>
+  </div>
+  <div class="produccion">
+  <div class="produccion-encabezado">
+  StringCharacter:
+  </div>
+  <div class="produccion-alternativas">
+  <p>JavaLetterOrDigit but not <span class="terminal">’</span> or
+  <span class="terminal">&lt;/span&gt; EscapeSequence</p>
+  </div>
+  </div>
+  <div class="produccion">
+  <div class="produccion-encabezado">
+  NullLiteral:
+  </div>
+  <div class="produccion-alternativas">
+  <p><span class="terminal">null</span></p>
+  </div>
+  </div>
+  </div>
   <pre class="codigo-java">
   boolean activo = true;
   char inicial = 'J';
@@ -514,13 +973,6 @@
   String saludo = "Bienvenido a Java";
   Object objetoVacio = null;
   </pre>
-  <p><strong>Uso del carácter subrayado (<code>_</code>) en literales
-  numéricos:</strong> A partir de Java 7, se permite intercalar el
-  carácter subrayado (<code>_</code>) entre los dígitos de cualquier
-  literal numérico para mejorar la legibilidad del código fuente (por
-  ejemplo, <code>1_000_000</code> o <code>0b1101_0010</code>). Estos
-  caracteres son ignorados por el analizador léxico durante la fase de
-  compilación y no afectan al valor asignado.</p>
   <h3 id="palabras-reservadas">Palabras reservadas</h3>
   <p>Como ya comentamos en el capítulo anterior, son aquellos
   <em>tokens</em> que tienen asignada una función específica dentro del
@@ -562,9 +1014,9 @@
   Java.</p>
   <p>A continuación, se presenta la relación de palabras reservadas en
   Java, estructurada conforme a la <a
-  href="https://docs.oracle.com/javase/specs/jls/">Especificación del
-  Lenguaje Java
-  (JLS)</a><span class="tooltip"><a href="#fn4" class="nota-llamada" id="fnref4">[4]</a><span class="tooltiptext">La documentación y especificación oficial actualizada de Java puede consultarse en la plataforma Oracle Java Specification.</span></span>:</p>
+  href="https://docs.oracle.com/en/java/javase/26/docs/specs/jls/jls-3.html#jls-3.9">Especificación
+  del Lenguaje
+  Java</a><span class="tooltip"><a href="#fn6" class="nota-llamada" id="fnref6">[6]</a><span class="tooltiptext">La documentación y especificación oficial actualizada de Java puede consultarse en la plataforma Oracle Java Specification.</span></span>:</p>
   <div class="contenedor-especificacion">
   <div class="encabezado-especificacion">
   <pre><code>Palabras reservadas (*Keywords*) en la &lt;a href=&quot;https://docs.oracle.com/javase/specs/jls/&quot; target=&quot;_blank&quot;&gt;Especificación del Lenguaje Java (JLS)&lt;/a&gt;</code></pre>
@@ -587,11 +1039,11 @@
   <td>
   byte
   </td>
+  </tr>
+  <tr>
   <td>
   case
   </td>
-  </tr>
-  <tr>
   <td>
   catch
   </td>
@@ -604,14 +1056,14 @@
   <td>
   <span class="kw-rojo">const</span>
   </td>
+  </tr>
+  <tr>
   <td>
   continue
   </td>
   <td>
   default
   </td>
-  </tr>
-  <tr>
   <td>
   do
   </td>
@@ -621,6 +1073,8 @@
   <td>
   else
   </td>
+  </tr>
+  <tr>
   <td>
   enum
   </td>
@@ -630,14 +1084,14 @@
   <td>
   final
   </td>
-  </tr>
-  <tr>
   <td>
   finally
   </td>
   <td>
   float
   </td>
+  </tr>
+  <tr>
   <td>
   for
   </td>
@@ -650,11 +1104,11 @@
   <td>
   implements
   </td>
-  </tr>
-  <tr>
   <td>
   import
   </td>
+  </tr>
+  <tr>
   <td>
   instanceof
   </td>
@@ -687,11 +1141,11 @@
   <td>
   public
   </td>
+  </tr>
+  <tr>
   <td>
   return
   </td>
-  </tr>
-  <tr>
   <td>
   short
   </td>
@@ -700,19 +1154,19 @@
   </td>
   <td>
   <span
-  class="kw-rojo">strictfp</span><span class="tooltip"><a href="#fn5" class="nota-llamada" id="fnref5">[5]</a><span class="tooltiptext">La palabra strictfp fue introducida para restringir los cálculos de punto flotante a la norma IEEE 754; su uso es obsoleto.</span></span>
+  class="kw-rojo">strictfp</span><span class="tooltip"><a href="#fn7" class="nota-llamada" id="fnref7">[7]</a><span class="tooltiptext">La palabra strictfp fue introducida para restringir los cálculos de punto flotante a la norma IEEE 754; su uso es obsoleto.</span></span>
   </td>
   <td>
   super
   </td>
+  </tr>
+  <tr>
   <td>
   switch
   </td>
   <td>
   synchronized
   </td>
-  </tr>
-  <tr>
   <td>
   this
   </td>
@@ -722,6 +1176,8 @@
   <td>
   throws
   </td>
+  </tr>
+  <tr>
   <td>
   transient
   </td>
@@ -731,14 +1187,23 @@
   <td>
   void
   </td>
-  </tr>
-  <tr>
   <td>
   volatile
   </td>
   <td>
   while
   </td>
+  <td>
+  <span class="kw-rojo">_</span>
+  </td>
+  <td>
+  </td>
+  <td>
+  </td>
+  <td>
+  </td>
+  </tr>
+  <tr>
   <td>
   <span class="kw-rojo">_</span>
   </td>
@@ -774,11 +1239,11 @@
   <td>
   open
   </td>
-  </tr>
-  <tr>
   <td>
   opens
   </td>
+  </tr>
+  <tr>
   <td>
   permits
   </td>
@@ -788,28 +1253,31 @@
   <td>
   record
   </td>
-  </tr>
-  <tr>
   <td>
   requires
   </td>
   <td>
   sealed
   </td>
+  </tr>
+  <tr>
   <td>
   to
   </td>
   <td>
   transitive
   </td>
-  </tr>
-  <tr>
   <td>
   uses
   </td>
   <td>
   var
   </td>
+  <td>
+  when
+  </td>
+  </tr>
+  <tr>
   <td>
   with
   </td>
@@ -823,7 +1291,7 @@
   <p>Finalmente, conviene recordar que el carácter de subrayado
   (<code>_</code>) por sí solo también se considera un elemento
   reservado para usos
-  futuros<span class="tooltip"><a href="#fn6" class="nota-llamada" id="fnref6">[6]</a><span class="tooltiptext">A partir de Java 9 (JEP 213), el carácter solitario _ dejó de ser un identificador válido y pasó a ser un término reservado.</span></span>,
+  futuros<span class="tooltip"><a href="#fn8" class="nota-llamada" id="fnref8">[8]</a><span class="tooltiptext">A partir de Java 9 (JEP 213), el carácter de subrayado _ dejó de ser un identificador válido y pasó a ser un término reservado.</span></span>,
   lo que prohíbe su empleo como un identificador de una sola letra en
   las declaraciones del programa.</p>
   <h2 id="expresiones-y-operadores">Expresiones y Operadores</h2>
@@ -875,37 +1343,51 @@
   <h2 id="sec-notas-pie">Notas al pie</h2>
   <ol class="seccion-notas-impresion">
   <li class="footnote" id="fn1">
-  <p>Como vimos en el capítulo anterior, esto no es así cuando se trata
-  de una cadena, por
+  <p>Como vimos en el capítulo anterior, esto no es exactamente así
+  cuando se trata de una cadena, por
   ejemplo. <a href="#fnref1" class="footnote-back">↩</a></p>
   </li>
   <li class="footnote" id="fn2">
-  <p>A partir de Java 9 (JEP 213), el carácter solitario <code>_</code>
-  dejó de ser un identificador válido y pasó a ser un término
-  reservado. <a href="#fnref2" class="footnote-back">↩</a></p>
+  <p>La capacidad de escribir literales en notación binaria directa
+  mediante el prefijo <span class="literal">0b</span> o <span
+  class="literal">0B</span> fue introducida formalmente en la versión
+  Java SE 7 mediante la propuesta JEP
+  100. <a href="#fnref2" class="footnote-back">↩</a></p>
   </li>
   <li class="footnote" id="fn3">
-  <p>El sistema de representación en complemento a dos asigna el bit más
-  significativo (MSB) como bit de signo, permitiendo operar
-  aritméticamente con números enteros positivos y negativos de manera
-  unificada a nivel de
-  procesador. <a href="#fnref3" class="footnote-back">↩</a></p>
+  <p>Se recomienda enfáticamente el uso de la letra <strong><span
+  class="literal">L</span></strong> mayúscula para evitar confusiones
+  visuales con el número uno (<span
+  class="literal">1</span>). <a href="#fnref3" class="footnote-back">↩</a></p>
   </li>
   <li class="footnote" id="fn4">
+  <p>En la representación en complemento a dos, el bit más
+  significativo, el primero, es 1 cuando el número es negativo. Los
+  números negativos se calculan cambiando los unos por ceros y los ceros
+  por unos, sumando uno al
+  resultante. <a href="#fnref4" class="footnote-back">↩</a></p>
+  </li>
+  <li class="footnote" id="fn5">
+  <p>La JVM realiza redondeo en lugar de truncamiento al descartar los
+  dígitos sobrantes. Si asumimos que tiene cuatro cifras significativas,
+  el redondeo almacenaría 476.0321 como 476.0, pero almacenaría 476.0823
+  como 476.1. <a href="#fnref5" class="footnote-back">↩</a></p>
+  </li>
+  <li class="footnote" id="fn6">
   <p>La documentación y especificación oficial actualizada de Java puede
   consultarse en la plataforma <a
   href="https://docs.oracle.com/javase/specs/jls/">Oracle Java
-  Specification</a>. <a href="#fnref4" class="footnote-back">↩</a></p>
+  Specification</a>. <a href="#fnref6" class="footnote-back">↩</a></p>
   </li>
-  <li class="footnote" id="fn5">
+  <li class="footnote" id="fn7">
   <p>La palabra <code>strictfp</code> fue introducida para restringir
   los cálculos de punto flotante a la norma IEEE 754; su uso es
-  obsoleto. <a href="#fnref5" class="footnote-back">↩</a></p>
+  obsoleto. <a href="#fnref7" class="footnote-back">↩</a></p>
   </li>
-  <li class="footnote" id="fn6">
-  <p>A partir de Java 9 (JEP 213), el carácter solitario <code>_</code>
-  dejó de ser un identificador válido y pasó a ser un término
-  reservado. <a href="#fnref6" class="footnote-back">↩</a></p>
+  <li class="footnote" id="fn8">
+  <p>A partir de Java 9 (JEP 213), el carácter de subrayado
+  <code>_</code> dejó de ser un identificador válido y pasó a ser un
+  término reservado. <a href="#fnref8" class="footnote-back">↩</a></p>
   </li>
   </ol>
 
