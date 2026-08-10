@@ -816,10 +816,17 @@
   son 0). Por ejemplo, 1000000 puede representarse con exactitud, pero
   4932416 no, porque nuestro esquema de codificación nos limita a cuatro
   dígitos significativos.</p>
+  <aside class="definicion">
+  <p><strong>Precisión:</strong> El máximo número de dígitos
+  significativos.</p>
+  <p><strong>Dígitos significativos:</strong> Desde el primer dígito
+  distinto de cero a la izquierda hasta el último dígito distinto de
+  cero a la derecha (más cualquier dígito cero que sea exacto).</p>
+  </aside>
   <p>Para extender nuestro esquema de codificación y representar números
-  de punto flotante, debemos poder representar exponentes negativos.Dado
-  que nuestro esquema no incluye un signo para el exponente, vamos a
-  modificarlo ligeramente: el signo existente se convierte en el signo
+  de punto flotante, debemos poder representar exponentes negativos.
+  Dado que nuestro esquema no incluye un signo para el exponente, vamos
+  a modificarlo ligeramente: el signo existente se convierte en el signo
   del exponente y añadimos un signo a la izquierda para representar el
   signo del número.</p>
   <p>Ahora podemos representar con precisión, con cuatro dígitos, todos
@@ -877,13 +884,25 @@
   estructuras complejas, el lenguaje provee la siguiente gama de
   literales:</p>
   <ul>
-  <li><strong>Literales booleanos</strong></li>
-  <li><strong>Literales de carácter</strong></li>
-  <li><strong>Literales de cadena</strong></li>
+  <li><strong>Literales booleanos:</strong> representan los valores de
+  la lógica booleana y están constituidos únicamente por las dos
+  palabras reservadas true (verdadero) y false (falso). A diferencia de
+  otros lenguajes, en Java no existe una equivalencia numérica directa
+  entre el valor <span class="literal">0</span> o <span
+  class="literal">1</span> y los valores booleanos.</li>
+  <li><strong>Literales de carácter:</strong> representan un único
+  símbolo del juego de caracteres Unicode. Se delimitan mediante
+  comillas simples e incluyen soporte para secuencias de escape.</li>
+  <li><strong>Literales de cadena:</strong> consisten en una secuencia
+  de cero o más caracteres delimitados por comillas dobles. Aunque <span
+  class="clase">String</span> no es un tipo de datos primitivo, Java
+  proporciona este soporte sintáctico especial, convirtiendo
+  automáticamente cualquier literal de este tipo en una instancia
+  inmutable de la clase.</li>
   <li><strong>Literal nulo:</strong> formado por la palabra reservada
   <span class="palabra">null</span>, representa la ausencia explícita de
   referencia a un objeto dentro de una variable de tipo objeto o
-  referencia.</li>
+  referencia, como <span class="clase">String</span>.</li>
   </ul>
   <div class="plantilla-sintactica">
   <div class="produccion">
@@ -899,9 +918,9 @@
   CharacterLiteral:
   </div>
   <div class="produccion-alternativas">
-  <p><span class="terminal">’</span> SingleCharacter <span
-  class="terminal">’</span><br> <span class="terminal">’</span>
-  EscapeSequence <span class="terminal">’</span></p>
+  <p><span class="terminal">'</span> SingleCharacter <span
+  class="terminal">'</span><br> <span class="terminal">'</span>
+  EscapeSequence <span class="terminal">'</span></p>
   </div>
   </div>
   <div class="produccion">
@@ -909,8 +928,8 @@
   SingleCharacter:
   </div>
   <div class="produccion-alternativas">
-  <p>JavaLetterOrDigit but not <span class="terminal">’</span> or
-  <span class="terminal">&lt;/span&gt;</p>
+  <p>JavaLetterOrDigit but not <span class="terminal">'</span> or <span
+  class="terminal">\</span></p>
   </div>
   </div>
   <div class="produccion">
@@ -918,14 +937,14 @@
   EscapeSecuence:
   </div>
   <div class="produccion-alternativas">
-  <p><span class="terminal"> t</span> (horizontal tab HT, Unicode
-  009)<br> <span class="terminal"> n</span> (linefeed LF, Unicode
-  00a)<br> <span class="terminal"> r</span> (carriage return CR, Unicode
-  00d)<br> <span class="terminal">&lt;/span&gt; LineTerminator (line
-  continuation, no Unicode representation)<br>
-  <span class="terminal"> “</span> (double quote”, Unicode 022)<br>
-  <span class="terminal"> ‘</span> (single quote’, Unicode 027)<br>
-  <span class="terminal"> &lt;/span&gt; (backslash , Unicode 05c)</p>
+  <p><span class="terminal">\ t</span> (horizontal tab HT, Unicode
+  \u0009)<br> <span class="terminal">\ n</span> (linefeed LF, Unicode
+  \u000a)<br> <span class="terminal">\ r</span> (carriage return CR,
+  Unicode \u000d)<br> <span class="terminal">\</span> LineTerminator
+  (line continuation, no Unicode representation)<br> <span
+  class="terminal">\ “</span> (double quote ", Unicode \u0022)<br> <span
+  class="terminal">\ ’</span> (single quote ', Unicode \u0027)<br> <span
+  class="terminal">\ \</span> (backslash \, Unicode \u005c)</p>
   </div>
   </div>
   <div class="produccion">
@@ -933,8 +952,8 @@
   LineTerminator:
   </div>
   <div class="produccion-alternativas">
-  <p>the ASCII LF character, also known as “newline”<br> the ASCII CR
-  character, also known as “return”<br> the ASCII CR character followed
+  <p>the ASCII LF character, also known as "newlineº”<br> the ASCII CR
+  character, also known as "return"<br> the ASCII CR character followed
   by the ASCII LF character</p>
   </div>
   </div>
@@ -943,8 +962,8 @@
   StringLiteral:
   </div>
   <div class="produccion-alternativas">
-  <p><span class="terminal">“</span> {StringCharacter} <span
-  class="terminal">“</span></p>
+  <p><span class="terminal">"</span> {StringCharacter} <span
+  class="terminal">"</span></p>
   </div>
   </div>
   <div class="produccion">
@@ -952,8 +971,8 @@
   StringCharacter:
   </div>
   <div class="produccion-alternativas">
-  <p>JavaLetterOrDigit but not <span class="terminal">’</span> or
-  <span class="terminal">&lt;/span&gt; EscapeSequence</p>
+  <p>JavaLetterOrDigit but not <span class="terminal">'</span> or <span
+  class="terminal">\</span> EscapeSequence</p>
   </div>
   </div>
   <div class="produccion">
@@ -987,11 +1006,10 @@
   programación consiste en familiarizarse con el significado y la
   utilidad de estos términos. En el caso de Java, el conjunto de estas
   palabras ha ido evolucionando con las diferentes versiones del
-  lenguaje para adaptarse a nuevas necesidades técnicas. En la
-  actualidad, el núcleo está compuesto por cincuenta y una palabras, a
-  las que se suman dieciséis términos adicionales cuyo significado
-  especial solo se activa dependiendo del contexto específico en el que
-  se utilicen.</p>
+  lenguaje para adaptarse a nuevas necesidades. En la actualidad, el
+  núcleo está compuesto por cincuenta y una palabras, a las que se suman
+  dieciséis términos adicionales cuyo significado especial solo se
+  activa dependiendo del contexto específico en el que se utilicen.</p>
   <p>Es importante destacar que Java es un lenguaje extremadamente
   estricto con la forma en que se escriben estos elementos, siendo
   sensible a la diferencia entre mayúsculas y minúsculas. Todas las
@@ -1003,7 +1021,7 @@
   diferentes definidos por el usuario, aunque su uso se desaconseja para
   evitar ambigüedades en la lectura del código.</p>
   <p>Dentro de este grupo, existen casos particulares como las palabras
-  <span class="palabra">goto</span> y <span
+  <span class="palabra">goto</span> o <span
   class="palabra">const</span>. Aunque figuran en la lista oficial y el
   programador no puede emplearlas como nombres de variables, actualmente
   no tienen ninguna función operativa dentro del lenguaje Java. Su
@@ -1019,7 +1037,7 @@
   Java</a><span class="tooltip"><a href="#fn6" class="nota-llamada" id="fnref6">[6]</a><span class="tooltiptext">La documentación y especificación oficial actualizada de Java puede consultarse en la plataforma Oracle Java Specification.</span></span>:</p>
   <div class="contenedor-especificacion">
   <div class="encabezado-especificacion">
-  <pre><code>Palabras reservadas (*Keywords*) en la &lt;a href=&quot;https://docs.oracle.com/javase/specs/jls/&quot; target=&quot;_blank&quot;&gt;Especificación del Lenguaje Java (JLS)&lt;/a&gt;</code></pre>
+  <pre><code>Palabras reservadas (*Keywords*)</code></pre>
   </div>
   <table class="tabla-jls-keywords">
   <tbody>
@@ -1193,19 +1211,12 @@
   <td>
   while
   </td>
-  <td>
-  <span class="kw-rojo">_</span>
-  </td>
-  <td>
-  </td>
-  <td>
-  </td>
-  <td>
-  </td>
   </tr>
   <tr>
   <td>
   <span class="kw-rojo">_</span>
+  </td>
+  <td>
   </td>
   <td>
   </td>
@@ -1289,8 +1300,8 @@
   </table>
   </div>
   <p>Finalmente, conviene recordar que el carácter de subrayado
-  (<code>_</code>) por sí solo también se considera un elemento
-  reservado para usos
+  (<span class="palabra">_</span>) por sí solo también se considera un
+  elemento reservado para usos
   futuros<span class="tooltip"><a href="#fn8" class="nota-llamada" id="fnref8">[8]</a><span class="tooltiptext">A partir de Java 9 (JEP 213), el carácter de subrayado _ dejó de ser un identificador válido y pasó a ser un término reservado.</span></span>,
   lo que prohíbe su empleo como un identificador de una sola letra en
   las declaraciones del programa.</p>

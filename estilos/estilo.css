@@ -55,7 +55,7 @@ pre.codigo-java {
   font-family: 'Courier New', Courier, monospace;
   font-style: italic; /* TODO el bloque nace en cursiva (No terminales) */
   font-size: 10pt;
-  color: #2d3748;
+  color: #202835;
 }
 
 /* Símbolos terminales dentro de la plantilla (SIN cursiva) */
@@ -87,8 +87,8 @@ pre.codigo-java {
 }
 
 .produccion-alternativas {
-    padding-left: 2ch; /* Tabulación para las alternativas */
-    color: #495057;
+    padding-left: 2ch; /* Tabulación para las alternativas *
+    color: #495057; */
     margin-top: -0.80lh;
 }
 
