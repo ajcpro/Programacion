@@ -248,7 +248,7 @@ Las reglas sintácticas son los planos que usamos para «construir» instruccion
 
 Una plantilla sintáctica es un ejemplo genérico de la construcción lingüística que se está definiendo. Las convenciones gráficas indican qué partes son opcionales y cuáles se pueden repetir, cuándo una palabra o símbolo debe utilizarse tal cual está en la plantilla o si un contenido puede ser reemplazado por otra plantilla.
 
-Nosotros seguiremos las convenciones recogidas en el [capítulo 2 de la especificación](https://docs.oracle.com/javase/specs/jls/se18/html/jls-2.html) del lenguaje Java, aunque las adaptemos para una mejor compresión. 
+Nosotros seguiremos las convenciones recogidas en el [capítulo 2 de la especificación](https://docs.oracle.com/javase/specs/jls/se18/html/jls-2.html) del lenguaje Java, aunque adaptaremos la estructura léxica para una mejor compresión. 
 
 Veamos una posible plantilla sintáctica para un programa en Java:
 

@@ -42,14 +42,12 @@ table.tabla-jls-keywords {
 
 table.tabla-jls-keywords td {
   padding: 8px 12px;
-  border: 1px solid #e2e8f0;
   text-align: left;
-  color: #2d3748;
-  width: 16.66%; /* Distribución uniforme en 6 columnas */
+  color: #202835;
+  width: 20%; /* Distribución uniforme en 5 columnas */
 }
 
 /* --- Destacado específico para palabras no usadas / reservadas especiales --- */
 .kw-rojo {
   color: #e61703;
-  font-weight: bold;
 }

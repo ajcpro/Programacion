@@ -526,7 +526,16 @@ Supongamos que nuestra máquina, en la que cada ubicación de memoria tiene el m
 
 Supongamos que los dos dígitos de más a la izquierda nos permiten representar un exponente. La representación +561234, por ejemplo, es en realidad el número $1234 \times 10^56$. De hecho, el rango de números que ahora podemos representar es mucho mayor: desde $-9999 \times 10^99$ hasta $+9999 \times 10^99$. Sin embargo, la precisión ahora es de solo cuatro dígitos; es decir, solo los números de cuatro dígitos pueden representarse con exactitud en nuestro sistema. ¿Qué sucede con los números con más dígitos? Los cuatro dígitos de la izquierda se representan correctamente, y los dígitos de la derecha, o dígitos menos significativos, se pierden (se asume que son 0). Por ejemplo, 1000000 puede representarse con exactitud, pero 4932416 no, porque nuestro esquema de codificación nos limita a cuatro dígitos significativos.
 
-Para extender nuestro esquema de codificación y representar números de punto flotante, debemos poder representar exponentes negativos.Dado que nuestro esquema no incluye un signo para el exponente, vamos a modificarlo ligeramente: el signo existente se convierte en el signo del exponente y añadimos un signo a la izquierda para representar el signo del número.
+<aside class="definicion">
+
+**Precisión:** El máximo número de dígitos significativos.
+
+**Dígitos significativos:** Desde el primer dígito distinto de cero a la
+izquierda hasta el último dígito distinto de cero a la derecha (más cualquier dígito cero que sea exacto).
+
+</aside>
+
+Para extender nuestro esquema de codificación y representar números de punto flotante, debemos poder representar exponentes negativos. Dado que nuestro esquema no incluye un signo para el exponente, vamos a modificarlo ligeramente: el signo existente se convierte en el signo del exponente y añadimos un signo a la izquierda para representar el signo del número.
 
 Ahora podemos representar con precisión, con cuatro dígitos, todos los números entre $-9999 \times 10^99$ y $+9999 \times 10^99$. Añadir exponentes negativos a nuestro esquema nos permite representar fracciones tan pequeñas como $1 \times 10^-99$. Nuestra precisión sigue siendo de cuatro dígitos. Los números 0.1032, 5.406 y 1000000 se pueden representar con exactitud. El número 476.0321, sin embargo, tiene siete cifras significativas, pero se representa como 476.0; ese 0.0321 no se puede representar en nuestro sistema[^5].
 
@@ -542,10 +551,10 @@ Y aunque pueda parecer otra cosa, hay que tener en cuenta que el número máximo
 
 Para la representación explícita de valores no numéricos o de estructuras complejas, el lenguaje provee la siguiente gama de literales:
 
-* **Literales booleanos**
-* **Literales de carácter**
-* **Literales de cadena**
-* **Literal nulo:** formado por la palabra reservada <span class="palabra">null</span>, representa la ausencia explícita de referencia a un objeto dentro de una variable de tipo objeto o referencia.
+* **Literales booleanos:** representan los valores de la lógica booleana y están constituidos únicamente por las dos palabras reservadas true (verdadero) y false (falso). A diferencia de otros lenguajes, en Java no existe una equivalencia numérica directa entre el valor <span class="literal">0</span> o <span class="literal">1</span> y los valores booleanos.
+* **Literales de carácter:** representan un único símbolo del juego de caracteres Unicode. Se delimitan mediante comillas simples e incluyen soporte para secuencias de escape.
+* **Literales de cadena:** consisten en una secuencia de cero o más caracteres delimitados por comillas dobles. Aunque <span class="clase">String</span> no es un tipo de datos primitivo, Java proporciona este soporte sintáctico especial, convirtiendo automáticamente cualquier literal de este tipo en una instancia inmutable de la clase.
+* **Literal nulo:** formado por la palabra reservada <span class="palabra">null</span>, representa la ausencia explícita de referencia a un objeto dentro de una variable de tipo objeto o referencia, como <span class="clase">String</span>.
 
 <div class="plantilla-sintactica">
 <div class="produccion">
@@ -558,47 +567,47 @@ Para la representación explícita de valores no numéricos o de estructuras com
 <div class="produccion">
 <div class="produccion-encabezado">CharacterLiteral:</div>
 <div class="produccion-alternativas">
-<span class="terminal">'</span> SingleCharacter <span class="terminal">'</span><br>
-<span class="terminal">'</span> EscapeSequence <span class="terminal">'</span>
+<span class="terminal">\'</span> SingleCharacter <span class="terminal">\'</span><br>
+<span class="terminal">\'</span> EscapeSequence <span class="terminal">\'</span>
 </div>
 </div>
 
 <div class="produccion">
 <div class="produccion-encabezado">SingleCharacter:</div>
 <div class="produccion-alternativas">
-JavaLetterOrDigit but not <span class="terminal">'</span> or <span class="terminal">\</span> 
+JavaLetterOrDigit but not <span class="terminal">\'</span> or <span class="terminal">\\</span> 
 </div>
 </div>
 <div class="produccion">
 <div class="produccion-encabezado">EscapeSecuence:</div>
 <div class="produccion-alternativas">
-<span class="terminal">\ t</span> (horizontal tab HT, Unicode \u0009)<br>
-<span class="terminal">\ n</span> (linefeed LF, Unicode \u000a)<br>
-<span class="terminal">\ r</span> (carriage return CR, Unicode \u000d)<br>
-<span class="terminal">\</span> LineTerminator (line continuation, no Unicode representation)<br>
-<span class="terminal">\ "</span> (double quote ", Unicode \u0022)<br>
-<span class="terminal">\ '</span> (single quote ', Unicode \u0027)<br>
-<span class="terminal">\ \</span> (backslash \, Unicode \u005c)
+<span class="terminal">\\ t</span> (horizontal tab HT, Unicode \\u0009)<br>
+<span class="terminal">\\ n</span> (linefeed LF, Unicode \\u000a)<br>
+<span class="terminal">\\ r</span> (carriage return CR, Unicode \\u000d)<br>
+<span class="terminal">\\</span> LineTerminator (line continuation, no Unicode representation)<br>
+<span class="terminal">\\ "</span> (double quote \", Unicode \\u0022)<br>
+<span class="terminal">\\ '</span> (single quote \', Unicode \\u0027)<br>
+<span class="terminal">\\ \\</span> (backslash \\, Unicode \\u005c)
 </div>
 </div>
 <div class="produccion">
 <div class="produccion-encabezado">LineTerminator:</div>
 <div class="produccion-alternativas">
-the ASCII LF character, also known as "newline"<br>
-the ASCII CR character, also known as "return"<br>
+the ASCII LF character, also known as \"newlineº"<br>
+the ASCII CR character, also known as \"return\"<br>
 the ASCII CR character followed by the ASCII LF character
 </div>
 </div>
 <div class="produccion">
 <div class="produccion-encabezado">StringLiteral:</div>
 <div class="produccion-alternativas">
-<span class="terminal">"</span> {StringCharacter} <span class="terminal">"</span>
+<span class="terminal">\"</span> {StringCharacter} <span class="terminal">\"</span>
 </div>
 </div>
 <div class="produccion">
 <div class="produccion-encabezado">StringCharacter:</div>
 <div class="produccion-alternativas">
-JavaLetterOrDigit but not <span class="terminal">'</span> or <span class="terminal">\</span>
+JavaLetterOrDigit but not <span class="terminal">\'</span> or <span class="terminal">\\</span>
 EscapeSequence
 </div>
 </div>
@@ -624,17 +633,17 @@ Object objetoVacio = null;
 
 Como ya comentamos en el capítulo anterior, son aquellos *tokens* que tienen asignada una función específica dentro del lenguaje: los programadores tienen prohibido utilizarlas para cualquier otro propósito; por ello, no es posible nombrar una variable, un campo o una clase utilizando uno de estos términos. Al igual que en el lenguaje natural existen palabras con funciones gramaticales fijas, como las preposiciones, las palabras reservadas constituyen el vocabulario fundamental que el compilador reconoce para estructurar la lógica del programa.
 
-Gran parte del proceso de aprendizaje de un lenguaje de programación consiste en familiarizarse con el significado y la utilidad de estos términos. En el caso de Java, el conjunto de estas palabras ha ido evolucionando con las diferentes versiones del lenguaje para adaptarse a nuevas necesidades técnicas. En la actualidad, el núcleo está compuesto por cincuenta y una palabras, a las que se suman dieciséis términos adicionales cuyo significado especial solo se activa dependiendo del contexto específico en el que se utilicen.
+Gran parte del proceso de aprendizaje de un lenguaje de programación consiste en familiarizarse con el significado y la utilidad de estos términos. En el caso de Java, el conjunto de estas palabras ha ido evolucionando con las diferentes versiones del lenguaje para adaptarse a nuevas necesidades. En la actualidad, el núcleo está compuesto por cincuenta y una palabras, a las que se suman dieciséis términos adicionales cuyo significado especial solo se activa dependiendo del contexto específico en el que se utilicen.
 
 Es importante destacar que Java es un lenguaje extremadamente estricto con la forma en que se escriben estos elementos, siendo sensible a la diferencia entre mayúsculas y minúsculas. Todas las palabras reservadas se componen exclusivamente de letras minúsculas. Por esta razón, un término como <span class="palabra">int</span> es reconocido como una palabra reservada para definir tipos enteros, mientras que <span class="variable">Int</span> o <span class="variable">INT</span> serían tratados como identificadores diferentes definidos por el usuario, aunque su uso se desaconseja para evitar ambigüedades en la lectura del código.
 
-Dentro de este grupo, existen casos particulares como las palabras <span class="palabra">goto</span> y <span class="palabra">const</span>. Aunque figuran en la lista oficial y el programador no puede emplearlas como nombres de variables, actualmente no tienen ninguna función operativa dentro del lenguaje Java. Su reserva responde principalmente a razones históricas y al deseo de los diseñadores del lenguaje de evitar que programadores provenientes de otros entornos, como C o C++, intenten aplicar estructuras de programación que son incompatibles con la seguridad y la filosofía de Java.
+Dentro de este grupo, existen casos particulares como las palabras <span class="palabra">goto</span> o <span class="palabra">const</span>. Aunque figuran en la lista oficial y el programador no puede emplearlas como nombres de variables, actualmente no tienen ninguna función operativa dentro del lenguaje Java. Su reserva responde principalmente a razones históricas y al deseo de los diseñadores del lenguaje de evitar que programadores provenientes de otros entornos, como C o C++, intenten aplicar estructuras de programación que son incompatibles con la seguridad y la filosofía de Java.
 
 A continuación, se presenta la relación de palabras reservadas en Java, estructurada conforme a la [Especificación del Lenguaje Java](https://docs.oracle.com/en/java/javase/26/docs/specs/jls/jls-3.html#jls-3.9)[^6]:
 
 <div class="contenedor-especificacion">
   <div class="encabezado-especificacion">
-    Palabras reservadas (*Keywords*) en la <a href="https://docs.oracle.com/javase/specs/jls/" target="_blank">Especificación del Lenguaje Java (JLS)</a>
+    Palabras reservadas (*Keywords*)
   </div>
   <table class="tabla-jls-keywords">
     <tbody>
@@ -666,10 +675,10 @@ A continuación, se presenta la relación de palabras reservadas en Java, estruc
         <td>switch</td><td>synchronized</td><td>this</td><td>throw</td><td>throws</td>
       </tr>
       <tr>
-        <td>transient</td><td>try</td><td>void</td><td>volatile</td><td>while</td><td><span class="kw-rojo">_</span></td><td></td><td></td><td></td>
+        <td>transient</td><td>try</td><td>void</td><td>volatile</td><td>while</td>
       </tr>
       <tr>
-        <td><span class="kw-rojo">_</span></td><td></td><td></td><td></td>
+        <td><span class="kw-rojo">_</span></td><td></td><td></td><td></td><td></td>
       </tr>
     </tbody>
   </table>
@@ -699,7 +708,7 @@ Asimismo, existen los siguientes términos que funcionan como palabras reservada
   </table>
 </div>
 
-Finalmente, conviene recordar que el carácter de subrayado (`_`) por sí solo también se considera un elemento reservado para usos futuros[^8], lo que prohíbe su empleo como un identificador de una sola letra en las declaraciones del programa.
+Finalmente, conviene recordar que el carácter de subrayado (<span class="palabra">_</span>) por sí solo también se considera un elemento reservado para usos futuros[^8], lo que prohíbe su empleo como un identificador de una sola letra en las declaraciones del programa.
 
 ## Expresiones y Operadores
 
