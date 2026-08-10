@@ -4,7 +4,6 @@
 
 /* --- Contenedor estilo Especificación del Lenguaje Java (JLS) --- */
 .contenedor-especificacion {
-  margin: 1.5em 0;
   border: 1px solid #cbd5e0;
   border-radius: 6px;
   background-color: #f8fafc;
@@ -15,7 +14,7 @@
 
 .encabezado-especificacion {
   background-color: #edf2f7;
-  padding: 10px 14px;
+  padding: 0px 14px;
   font-weight: bold;
   font-size: 0.95em;
   color: #2d3748;
@@ -41,7 +40,7 @@ table.tabla-jls-keywords {
 }
 
 table.tabla-jls-keywords td {
-  padding: 8px 12px;
+  padding: 4px 6px;
   text-align: left;
   color: #202835;
   width: 20%; /* Distribución uniforme en 5 columnas */

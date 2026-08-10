@@ -1388,7 +1388,7 @@ La llamada a <span class="metodo">next</span> es bastante diferente de la llamad
 Si la línea tiene más de un elemento, como varias palabras, <span class="metodo">next</span> nos devolverá cada palabra, una tras otra. Si lo que queremos una cadena con todas ellas, podemos utilizar el método <span class="metodo">nextLine</span>, que nos devuelve lo que haya en la entrada hasta el final de la línea. Además, nos proporciona otros métodos, útiles para la lectura de datos de otros tipos, no solo de cadenas, como <span class="metodo">nextInt</span>, por ejemplo.
 
 <figure class="img-grande">
-    <img src="../imagenes/02_07_scanner.png" alt="Carácter dentro de una caja: analogía de variable conteniendo valor">
+    <img src="../imagenes/02_07_scanner.png" alt="Representación de la separación de elementos de un texto por la clase Scanner">
 </figure>
 
 ### Entrada y salida interactivas

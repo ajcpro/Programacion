@@ -547,6 +547,10 @@ Es evidente que podemos representar valores extremadamente amplios o infinitesim
 
 Y aunque pueda parecer otra cosa, hay que tener en cuenta que el número máximo de valores diferentes que la notación en punto flotante puede representar es $2^32$ o $2^64$ números: lo que hemos hecho es expandir esos números en un rango mayor. Además, los números que podemos representar no están espaciados de la misma manera entre ellos, como los números en punto fijo. Los posibles valores están más próximos cerca del origen y más separados cuanto más alejados.
 
+<figure class="img-grande">
+    <img src="../imagenes/03_01_punto_flotante.png" alt="Representación gráfica de la distribución de número en punto flotantes sobre la recta de los reales">
+</figure>
+
 #### Otros literales
 
 Para la representación explícita de valores no numéricos o de estructuras complejas, el lenguaje provee la siguiente gama de literales:
@@ -593,7 +597,7 @@ JavaLetterOrDigit but not <span class="terminal">\'</span> or <span class="termi
 <div class="produccion">
 <div class="produccion-encabezado">LineTerminator:</div>
 <div class="produccion-alternativas">
-the ASCII LF character, also known as \"newlineº"<br>
+the ASCII LF character, also known as \"newline\"<br>
 the ASCII CR character, also known as \"return\"<br>
 the ASCII CR character followed by the ASCII LF character
 </div>
