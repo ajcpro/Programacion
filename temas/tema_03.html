@@ -365,7 +365,7 @@
   programa. A través de los literales, el programador especifica valores
   fijos para los tipos de datos primitivos, el tipo de datos <span
   class="clase">String</span> y la referencia especial <span
-  class="palabra">null</span>.</p>
+  class="literal">null</span>.</p>
   <p>Desde el punto de vista del análisis léxico, los literales son
   identificados por el compilador como <em>tokens</em> atómicos. Esto
   significa que constituyen unidades de información indivisibles con
@@ -378,7 +378,7 @@
   <p><strong>Literal:</strong> <em>Token</em> que representa la
   expresión inalterable de un valor constante de un tipo de datos
   primitivo, de un objeto <span class="clase">String</span> o de la
-  referencia nula <span class="palabra">null</span> dentro del código
+  referencia nula <span class="literal">null</span> dentro del código
   fuente.</p>
   </aside>
   <p>Dentro de la especificación sintáctica de Java, los literales se
@@ -518,7 +518,7 @@
   class="literal">0</span> y <span class="literal">1</span> (por
   ejemplo, el número <span class="literal">10</span> se representa como
   <span
-  class="literal">0b1010<span class="tooltip"><a href="#fn2" class="nota-llamada" id="fnref2">[2]</a><span class="tooltiptext">La capacidad de escribir literales en notación binaria directa mediante el prefijo 0b o 0B fue introducida formalmente en la versión Java SE 7 mediante la propuesta JEP 100.</span></span>.</li>
+  class="literal">0b1010<span class="tooltip"><a href="#fn2" class="nota-llamada" id="fnref2">[2]</a><span class="tooltiptext">La capacidad de escribir literales en notación binaria directa mediante el prefijo 0b o 0B fue introducida formalmente en la versión Java SE 7 mediante la propuesta JEP 100.</span></span>).</li>
   </ul>
   <div class="plantilla-sintactica">
   <div class="produccion">
@@ -902,8 +902,8 @@
   proporciona este soporte sintáctico especial, convirtiendo
   automáticamente cualquier literal de este tipo en una instancia
   inmutable de la clase.</li>
-  <li><strong>Literal nulo:</strong> formado por la palabra reservada
-  <span class="palabra">null</span>, representa la ausencia explícita de
+  <li><strong>Literal nulo:</strong> la palabra <span
+  class="literal">null</span>, representa la ausencia explícita de
   referencia a un objeto dentro de una variable de tipo objeto o
   referencia, como <span class="clase">String</span>.</li>
   </ul>
@@ -1217,15 +1217,7 @@
   </tr>
   <tr>
   <td>
-  <span class="kw-rojo">_</span>
-  </td>
-  <td>
-  </td>
-  <td>
-  </td>
-  <td>
-  </td>
-  <td>
+  <span class="kw-rojo" colspan="5">_</span> (caracter de subrayado)
   </td>
   </tr>
   </tbody>
@@ -1308,9 +1300,344 @@
   futuros<span class="tooltip"><a href="#fn8" class="nota-llamada" id="fnref8">[8]</a><span class="tooltiptext">A partir de Java 9 (JEP 213), el carácter de subrayado _ dejó de ser un identificador válido y pasó a ser un término reservado.</span></span>,
   lo que prohíbe su empleo como un identificador de una sola letra en
   las declaraciones del programa.</p>
-  <h2 id="expresiones-y-operadores">Expresiones y Operadores</h2>
+  <p>Ahora que conocemos los literales y las palabras reservadas, vamos
+  a modificar ligeramente una de las producciones sintácticas que
+  veíamos en el tema anterior:</p>
+  <div class="plantilla-sintactica">
+  <div class="produccion">
+  <div class="produccion-encabezado">
+  Identificador:
+  </div>
+  <div class="produccion-alternativas">
+  <p>IdentifierChars but not a Keyword or BooleanLiteral or
+  NullLiteral</p>
+  </div>
+  </div>
+  </div>
+  <p>Es decir, un <em>identificador</em> es una secuencia ilimitada de
+  letras y dígitos, comenzando por una letra, que no es una palabra
+  reservada, un literal booleano o un literal nulo.</p>
+  <h2 id="expresiones-y-operadores">Expresiones y operadores</h2>
+  <p>Una vez que el compilador ha concluido la fase de análisis léxico e
+  identificado los <em>tokens</em> que componen nuestro código, el
+  siguiente nivel de abstracción consiste en ensamblar estas piezas
+  atómicas para formar unidades de significado superior. En la gramática
+  de Java, estas construcciones se denominan
+  <strong>expresiones</strong>.</p>
+  <p>Una expresión, como ya vimos en el tema 2, no es otra cosa que un
+  conjunto organizado de identificadores, literales y operadores que, al
+  combinarse siguiendo las reglas sintácticas del lenguaje, pueden ser
+  evaluados para obtener un valor concreto.</p>
+  <p>El concepto de evaluación es central en esta etapa: evaluar una
+  expresión implica que el ordenador realiza las operaciones
+  especificadas para producir un nuevo valor. Es importante destacar que
+  toda expresión en Java tiene asociado un tipo de dato inamovible, el
+  cual corresponde al tipo del resultado final obtenido tras su
+  evaluación. Así, el resultado de una expresión que sume dos números
+  enteros será un valor de tipo entero, mientras que el de una que
+  compare dos valores será de tipo booleano.</p>
+  <p>Podemos entender las expresiones como los bloques de construcción
+  lógicos de un programa. No obstante, existe una distinción técnica
+  crucial entre una expresión y una instrucción o sentencia. Mientras
+  que la expresión representa un valor potencial o un cálculo, la
+  <strong>sentencia</strong> representa una acción completa que el
+  ordenador debe llevar a cabo. Por ejemplo, la expresión matemática
+  <span class="math inline"><em>n</em> + 1</span> por sí sola no
+  constituye una orden operativa para la máquina; necesita ser integrada
+  en una estructura que le dé un propósito funcional, como una sentencia
+  de asignación que guarde dicho resultado en una variable. De esta
+  forma, las expresiones actúan como la «materia prima» con la que
+  alimentamos las instrucciones de nuestro código para dirigir el flujo
+  de control y resolver problemas complejos.</p>
   <h3 id="operadores">Operadores</h3>
+  <p>Los <strong>operadores</strong> son los elementos funcionales que
+  permiten llevar a cabo operaciones sobre un conjunto de datos u
+  operandos, representados habitualmente por literales o
+  identificadores. Los operadores permitidos en una operación dependen
+  de los tipos de datos de los operandos y producen, tras su evaluación,
+  un resultado que posee un tipo de dato determinado.</p>
+  <h4 id="operadores-aritméticos">Operadores aritméticos</h4>
+  <p>Son operadores que afectan a los números enteros y en punto
+  flotante; devuelven un valor del mismo tipo que los operandos: si son
+  enteros, por ejemplo, el resultado es entero. Los <strong>operadores
+  unarios</strong> permiten mantener o cambiar el signo de una expresión
+  numérica mediante el uso del más (+) y el menos (-). Junto a éstos,
+  los <strong>operadores binarios tradicionales</strong>, que incluyen
+  la suma (+), la resta (-), la multiplicación (*) y la división (/).
+  Además, los lenguajes de programación suelen añadir la operación
+  módulo o resto de la división (%).</p>
+  <aside class="definicion">
+  <p><strong>Operador unario:</strong> Un operador que solo tiene un
+  operando.</p>
+  <p><strong>Operador binario:</strong> Un operador que tiene dos
+  operandos.</p>
+  </aside>
+  <p>En programación no es habitual usar el más unario y, cuando se
+  trata de un literal, se asume que, si no hay signo, siempre es
+  positivo.</p>
+  <p>Las operaciones de la suma, resta, producto y división, funcionan
+  de la misma manera que te enseñaron cuando aprendiste a utilizarlas.
+  La división en punto flotante, por ejemplo, genera un resultado en
+  punto flotante:</p>
+  <pre class="codigo">
+  7.2 / 2.0 produce 3.6
+  </pre>
+  <p>No obstante, es menos probable estar familiarizado con la división
+  entera y el módulo, por lo que podemos estudiarlos un poco más en
+  profundidad. Cuando dividimos dos enteros entre sí, obtemos de la
+  división un cociente y un resto. Por ejemplo, la división de 6 entre 2
+  produce 3 como cociente y 0 como resto; pero la de 7 entre 3, produce
+  también 3 como cociente pero 1 como resto. Y ese resto, 0 ó 1, es el
+  resultado que obtenemos con la operación módulo:</p>
+  <pre class="codigo">
+  6 / 2 produce 3     6 % 2 produce 0
+  7 / 2 produce 3     7 % 2 produce 1
+  </pre>
+  <p>Aunque existen lenguajes para los que el operador módulo solo es
+  aplicable a la división entera, puede aplicarse en Java, y otros
+  lenguajes modernos, con números en punto flotante. La forma de
+  obtenerlo<span class="tooltip"><a href="#fn9" class="nota-llamada" id="fnref9">[9]</a><span class="tooltiptext">El método estándar IEEE 754 puede obtenerse usando el método Math.IEEEremainder.</span></span>
+  en
+  Java<span class="tooltip"><a href="#fn10" class="nota-llamada" id="fnref10">[10]</a><span class="tooltiptext">Disponible en la especificación.</span></span>
+  consiste en obtener la división en punto flotante; multiplicar dicho
+  valor sin decimales (sin redondeo) por el divisor; restar del
+  dividendo el resultado de la multiplicación. Ejemplo:</p>
+  <pre class="codigo">
+  Calculamos 7.8 % 3.0 en Java:
+  **Dividimos:** 7.8 / 3.0 produce 2.6
+  **Multiplicamos:** 3.0 * 2.0 produce 6.0
+  **Restamos:** 7.8 - 6.0 produce **1.8**
+  </pre>
+  <div class="plantilla-sintactica">
+  <div class="produccion">
+  <div class="produccion-encabezado">
+  Expression:
+  </div>
+  <div class="produccion-alternativas">
+  <p>Literal<br> ArithmeticExpression<br> AssignmentExpression</p>
+  </div>
+  </div>
+  <div class="produccion">
+  <div class="produccion-encabezado">
+  ArithmeticExpression:
+  </div>
+  <div class="produccion-alternativas">
+  <p>AdditiveExpression</p>
+  </div>
+  </div>
+  <div class="produccion">
+  <div class="produccion-encabezado">
+  AdditiveExpression:
+  </div>
+  <div class="produccion-alternativas">
+  <p>MultiplicativeExpression<br> AdditiveExpression <span
+  class="terminal">+</span> MultiplicativeExpression<br>
+  AdditiveExpression <span class="terminal">-</span>
+  MultiplicativeExpression</p>
+  </div>
+  </div>
+  <div class="produccion">
+  <div class="produccion-encabezado">
+  MultiplicativeExpression:
+  </div>
+  <div class="produccion-alternativas">
+  <p>UnaryExpression<br> MultiplicativeExpression
+  <span class="terminal">*</span> UnaryExpression<br>
+  MultiplicativeExpression <span class="terminal">\</span>
+  UnaryExpression<br> MultiplicativeExpression <span
+  class="terminal">%</span> UnaryExpression<br></p>
+  </div>
+  </div>
+  <div class="produccion">
+  <div class="produccion-encabezado">
+  UnaryExpression:
+  </div>
+  <div class="produccion-alternativas">
+  <p><span class="terminal">+</span> Expression<br> <span
+  class="terminal">-</span> Expression</p>
+  </div>
+  </div>
+  </div>
+  <h4 id="operadores-relacionales">Operadores relacionales</h4>
+  <p>Los operadores relacionales son binarios, por lo que tienen dos
+  operandos. Se utilizan para comparar datos de tipo primitivo ya sean
+  numéricos, caracteres o booleanos, estableciendo relaciones de orden o
+  igualdad entre ellos. El resultado de evaluar una expresión con estos
+  operadores es siempre un valor de tipo
+  booleano<span class="tooltip"><a href="#fn11" class="nota-llamada" id="fnref11">[11]</a><span class="tooltiptext">Los booleanos corresponden a un tipo de datos lógico que solo pueden contener uno de dos valores: verdadero (true) y falso (false).</span></span>:
+  true o false.</p>
+  <p>Java proporciona operadores para verificar:</p>
+  <ul>
+  <li>La igualdad (==)</li>
+  <li>La desigualdad o diferencia (!=)</li>
+  <li>Relaciones de magnitud: mayor que (&gt;), menor que (&lt;), mayor
+  o igual que (&gt;=) y menor o igual que (&lt;=).</li>
+  </ul>
+  <div class="plantilla-sintactica">
+  <div class="produccion">
+  <div class="produccion-encabezado">
+  Expression:
+  </div>
+  <div class="produccion-alternativas">
+  <p>Literal<br> ArithmeticExpression<br> EqualityExpression<br>
+  AssignmentExpression</p>
+  </div>
+  </div>
+  <div class="produccion">
+  <div class="produccion-encabezado">
+  EqualityExpression:
+  </div>
+  <div class="produccion-alternativas">
+  <p>RelationalExpression<br> EqualityExpression <span
+  class="terminal">==</span> RelationalExpression<br> EqualityExpression
+  <span class="terminal">!=</span> RelationalExpression</p>
+  </div>
+  </div>
+  <div class="produccion">
+  <div class="produccion-encabezado">
+  RelationalExpression:
+  </div>
+  <div class="produccion-alternativas">
+  <p>AdditiveExpression<br> RelationalExpression <span
+  class="terminal">&lt;</span> AdditiveExpression<br>
+  RelationalExpression <span class="terminal">&gt;</span>
+  AdditiveExpression<br> RelationalExpression <span
+  class="terminal">&lt;=</span> AdditiveExpression<br>
+  RelationalExpression <span class="terminal">&gt;=</span>
+  AdditiveExpression</p>
+  </div>
+  </div>
+  </div>
+  <p><strong>Cuidado con la asignación:</strong> Un error de lógica muy
+  frecuente en etapas iniciales de aprendizaje consiste en confundir el
+  operador de asignación (=) con el de igualdad (==), siendo el primero
+  una instrucción de almacenamiento de un valor en memoria y el segundo
+  una comparación.</p>
+  <h4 id="operadores-lógicos">Operadores lógicos</h4>
+  <p>Los operadores lógicos son binarios, por lo que tienen dos
+  operandos, salvo la negación. Permiten combinar valores booleanos o
+  resultados de expresiones relacionales para construir afirmaciones
+  lógicas. Los operadores fundamentales son:</p>
+  <ul>
+  <li>La negación lógica (NOT) o NO-lógico (!).</li>
+  <li>La conjunción (AND) o Y-lógico (&amp;&amp;).</li>
+  <li>La disyunción (OR) u O-lógico (||).</li>
+  </ul>
+  <p>Hay que entender desde el principio que <span
+  class="literal">true</span> y <span class="literal">false</span>, como
+  hemos visto al declarar <span
+  class="produccion-palabra">BooleanLiteral</span>, no son nombres de
+  variable ni palabras reservadas: son dos constantes especiales pero,
+  en la práctica, se comportan como dos palabras reservadas.</p>
+  <figure class="img-lateral-dch">
+  <img src="../imagenes/03_02_tablas_verdad.png" alt="Cuadros de operaciones booleanas con operandos y resultado">
+  </figure>
+  <p>El operador NO-lógico precede a cualquier expresión lógica
+  (booleana) y nos proporciona el valor opuesto al de la expresión. Por
+  ejemplo, si <span class="variable">miCaracter</span> <span
+  class="operador">=</span> <code>'</code><span
+  class="literal">B</span><code>'</code> es verdadero, <span
+  class="operador">!(</span><span class="variable">miCaracter</span>
+  <span class="operador">=</span> <code>'</code><span
+  class="literal">B</span><code>'</code><span class="operador">)</span>
+  es falso. Proporciona un método simple de cambiar el valor de un
+  aserto. Por ejemplo, si <span class="operador">!(</span><span
+  class="variable">años</span> <span class="operador">&gt;</span> <span
+  class="literal">50</span><span class="operador">)</span>, es
+  equivalente escribir: <span class="variable">años</span> <span
+  class="operador">≤</span> <span class="literal">50</span>.</p>
+  <p>La operación Y-lógico requiere que ambos operandos sean verdaderos
+  para que el resultado de la expresión sea verdadero; si uno cualquiera
+  de ellos es falso, el valor de la expresión es falso.</p>
+  <p>La operación O-lógico proporciona un resultado verdadero si
+  cualquiera de sus operandos, que pueden serlo los dos, es verdadero.
+  Solo cuando ambos operandos son falsos el resultado de la operación es
+  también falso.</p>
+  <div class="plantilla-sintactica">
+  <div class="produccion">
+  <div class="produccion-encabezado">
+  Expression:
+  </div>
+  <div class="produccion-alternativas">
+  <p>Literal<br> ArithmeticExpression<br> EqualityExpression<br>
+  ConditionalExpression<br> AssignmentExpression</p>
+  </div>
+  </div>
+  <div class="produccion">
+  <div class="produccion-encabezado">
+  ConditionalExpression:
+  </div>
+  <div class="produccion-alternativas">
+  <p>ConditionalOrExpression</p>
+  </div>
+  </div>
+  <div class="produccion">
+  <div class="produccion-encabezado">
+  ConditionalOrExpression:
+  </div>
+  <div class="produccion-alternativas">
+  <p>ConditionalAndExpression<br> ConditionalOrExpression <span
+  class="terminal">||</span> ConditionalAndExpression</p>
+  </div>
+  </div>
+  <div class="produccion">
+  <div class="produccion-encabezado">
+  ConditionalAndExpression:
+  </div>
+  <div class="produccion-alternativas">
+  <p>Expression<br> ConditionalAndExpression <span
+  class="terminal">&amp;&amp;</span> Expression</p>
+  </div>
+  </div>
+  </div>
+  <p>Java implementa para estos dos últimos una semántica de
+  <strong>evaluación en cortocircuito</strong>, lo que significa que el
+  ordenador detiene el proceso de evaluación tan pronto como el
+  resultado final de la expresión booleana es inequívoco y que
+  explicaremos en breve.</p>
+  <h4 id="operador-de-asignación">Operador de asignación</h4>
+  <p>Aunque en muchos lenguajes la asignación se considera una sentencia
+  o instrucción, en Java, el símbolo igual (=) es un operador, el
+  operador de asignación, cuya misión es proporcionar valor a una
+  variable, el de una expresión a su derecha, como ya vimos en el tema
+  anterior.</p>
   <h3 id="evaluación-en-cortocircuito">Evaluación en cortocircuito</h3>
+  <p>Al procesar expresiones lógicas, la mayoría de los lenguajes de
+  programación no garantizan el orden en que se evaluarán dichas
+  expresiones: esto quiere decir que si una operación lógica incluye
+  operaciones relacionales, por ejemplo, no sabemos el orden en que se
+  evaluarán dichas operaciones. Además, en general, la operación lógica
+  no se evaluará hasta que todos los operandos de la misma obtengan un
+  valor booleano.</p>
+  <p>Java aplica una técnica de optimización denominada
+  <strong>evaluación en cortocircuito</strong> o evaluación condicional.
+  Bajo esta semántica, el ordenador no evalúa todos los componentes de
+  una expresión lógica, sino que procesa los operandos de izquierda a
+  derecha y detiene el procedimiento de evaluación tan pronto como el
+  valor booleano final de la expresión completa es inequívoco.</p>
+  <p>Para comprender cómo el ordenador puede conocer el resultado sin
+  examinar la expresión entera, debemos analizar el comportamiento de
+  los operadores fundamentales:</p>
+  <ul>
+  <li><strong>Conjunción lógica (&amp;&amp;):</strong> Una operación
+  Y-lógico solo devuelve true si <em>ambos</em> operandos son
+  verdaderos. Por tanto, si al evaluar el primer operando el resultado
+  es false, es imposible que la expresión completa sea verdadera,
+  independientemente del valor que tenga el segundo operando. En este
+  caso, Java «hace un cortocircuito», detiene la evaluación y produce un
+  resultado final de false.</li>
+  <li><strong>Disyunción lógica (||):</strong> Una operación O-lógico
+  devuelve true si <em>al menos uno</em> de sus operandos es verdadero.
+  Siguiendo la lógica anterior, si el primer operando evaluado resulta
+  ser true, el resultado final de la expresión será necesariamente true
+  sin importar el valor del segundo. En consecuencia, el ordenador no
+  pierde tiempo procesando la segunda subexpresión.</li>
+  </ul>
+  <p>Esta característica no es solo una cuestión de eficiencia técnica
+  para ahorrar tiempo de ejecución; tiene implicaciones críticas en la
+  robustez y seguridad del código. La evaluación en cortocircuito
+  permite al programador escribir expresiones donde el primer operando
+  actúa como una salvaguarda del segundo.</p>
   <h3 id="precedencia-y-asociatividad">Precedencia y asociatividad</h3>
   <h2 id="conversión-de-tipos">Conversión de tipos</h2>
   <h3 id="reglas-de-promoción">Reglas de promoción</h3>
@@ -1402,6 +1729,20 @@
   <p>A partir de Java 9 (JEP 213), el carácter de subrayado
   <code>_</code> dejó de ser un identificador válido y pasó a ser un
   término reservado. <a href="#fnref8" class="footnote-back">↩</a></p>
+  </li>
+  <li class="footnote" id="fn9">
+  <p>El método estándar IEEE 754 puede obtenerse usando el método <span
+  class="metodo">Math.IEEEremainder</span>. <a href="#fnref9" class="footnote-back">↩</a></p>
+  </li>
+  <li class="footnote" id="fn10">
+  <p>Disponible en la <a
+  href="https://docs.oracle.com/javase/specs/jls/se21/html/jls-15.html#jls-15.17.3">especificación</a>. <a href="#fnref10" class="footnote-back">↩</a></p>
+  </li>
+  <li class="footnote" id="fn11">
+  <p>Los booleanos corresponden a un tipo de datos lógico que solo
+  pueden contener uno de dos valores: verdadero (<span
+  class="literal">true</span>) y falso (<span
+  class="literal">false</span>). <a href="#fnref11" class="footnote-back">↩</a></p>
   </li>
   </ol>
 
