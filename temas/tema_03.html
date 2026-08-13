@@ -835,7 +835,7 @@
   class="math inline"> + 9999 × 10<sup>99</sup></span>. Añadir
   exponentes negativos a nuestro esquema nos permite representar
   fracciones tan pequeñas como <span
-  class="math inline">1 × 10<sup>−</sup>99</span>. Nuestra precisión
+  class="math inline">1 × 10<sup>−99</sup></span>. Nuestra precisión
   sigue siendo de cuatro dígitos. Los números 0.1032, 5.406 y 1000000 se
   pueden representar con exactitud. El número 476.0321, sin embargo,
   tiene siete cifras significativas, pero se representa como 476.0; ese
@@ -1215,9 +1215,9 @@
   while
   </td>
   </tr>
-  <tr>
+  <tr colspan="5">
   <td>
-  <span class="kw-rojo" colspan="5">_</span> (caracter de subrayado)
+  <span class="kw-rojo">_</span> (caracter de subrayado)
   </td>
   </tr>
   </tbody>
@@ -1404,9 +1404,9 @@
   dividendo el resultado de la multiplicación. Ejemplo:</p>
   <pre class="codigo">
   Calculamos 7.8 % 3.0 en Java:
-  **Dividimos:** 7.8 / 3.0 produce 2.6
-  **Multiplicamos:** 3.0 * 2.0 produce 6.0
-  **Restamos:** 7.8 - 6.0 produce **1.8**
+  <b>Dividimos:</b> 7.8 / 3.0 produce 2.6
+  <b>Multiplicamos:</b> 3.0 * 2.0 produce 6.0
+  <b>Restamos:</b> 7.8 - 6.0 produce <b>1.8</b>
   </pre>
   <div class="plantilla-sintactica">
   <div class="produccion">
@@ -1545,7 +1545,7 @@
   class="variable">años</span> <span class="operador">&gt;</span> <span
   class="literal">50</span><span class="operador">)</span>, es
   equivalente escribir: <span class="variable">años</span> <span
-  class="operador">≤</span> <span class="literal">50</span>.</p>
+  class="operador">&lt;=</span> <span class="literal">50</span>.</p>
   <p>La operación Y-lógico requiere que ambos operandos sean verdaderos
   para que el resultado de la expresión sea verdadero; si uno cualquiera
   de ellos es falso, el valor de la expresión es falso.</p>
@@ -1639,6 +1639,73 @@
   permite al programador escribir expresiones donde el primer operando
   actúa como una salvaguarda del segundo.</p>
   <h3 id="precedencia-y-asociatividad">Precedencia y asociatividad</h3>
+  <p>El orden en que el ordenador lleva a cabo las operaciones dentro de
+  una sentencia no es un proceso arbitrario, sino que está estrictamente
+  regulado por las leyes de la gramática. Al construir expresiones
+  complejas donde conviven distintos tipos de componentes, es
+  fundamental determinar con exactitud qué operación debe ejecutarse en
+  primer lugar para que el resultado sea predecible y correcto. Para
+  resolver este problema, el lenguaje emplea un conjunto de directrices
+  denominadas <strong>reglas de precedencia y
+  asociatividad</strong>.</p>
+  <h4 id="reglas-de-precedencia">Reglas de precedencia</h4>
+  <p>La precedencia determina la jerarquía de los operadores en una
+  expresión. De forma análoga a cómo en el álgebra convencional sabemos
+  que una multiplicación debe realizarse antes que una suma, Java asigna
+  un nivel de prioridad a cada operador. Los operadores con mayor
+  precedencia se evalúan antes que aquellos situados en niveles
+  inferiores.</p>
+  <p>En la cima de esta jerarquía se sitúan siempre los paréntesis <span
+  class="literal">()</span>, que funcionan como una herramienta soberana
+  para que el programador pueda forzar el orden de evaluación deseado,
+  sobrescribiendo cualquier regla predefinida.</p>
+  <figure class="img-lateral-izd">
+  <img src="../imagenes/03_03_operadores.png" alt="Operadores de Java, según precedencia, con su tipo y asociatividad">
+  </figure>
+  <p>En el extremo opuesto, el operador de asignación posee la
+  precedencia más baja de todo el lenguaje, lo que garantiza que
+  cualquier cálculo situado a la derecha del símbolo igual sea
+  completado totalmente antes de que el valor resultante se almacene en
+  la variable.</p>
+  <h4 id="asociatividad">Asociatividad</h4>
+  <p>Cuando una expresión contiene varios operadores que poseen el
+  <em>mismo</em> nivel de precedencia, Java aplica las reglas de
+  asociatividad para decidir el orden de ejecución. La asociatividad
+  indica la dirección en la que el ordenador «agrupa» los operandos con
+  sus respectivos operadores.</p>
+  <p>En la gran mayoría de los casos, los operadores binarios de Java
+  presentan una asociatividad de <strong>izquierda a derecha</strong>.
+  Esto significa que, ante una igualdad de rango, las operaciones se
+  resuelven en el mismo orden físico en que aparecen escritas en el
+  código. Por ejemplo, en una expresión que combine multiplicaciones y
+  divisiones, el ordenador ejecutará primero la que se encuentre más a
+  la izquierda.</p>
+  <p>Sin embargo, existen excepciones técnicas notables: los operadores
+  unarios (como el cambio de signo o la negación lógica) y, muy
+  especialmente, el operador de asignación, son <strong>asociativos por
+  la derecha</strong>. Esta asociatividad a la derecha es lo que permite
+  realizar asignaciones múltiples, donde el valor se propaga desde el
+  literal situado al final de la línea hacia todas las variables
+  situadas a su izquierda.</p>
+  <h4 id="orden-de-evaluación-de-operandos">Orden de evaluación de
+  operandos</h4>
+  <p>Es vital no confundir la precedencia de los operadores con el orden
+  de evaluación de los operandos. Java establece un requisito adicional
+  de seguridad y robustez: <strong>los operandos de un operador binario
+  siempre se evalúan de izquierda a derecha</strong>. Esto implica que,
+  incluso si el operador situado a la derecha tiene mayor precedencia,
+  el ordenador primero obtendrá los valores de la parte izquierda de la
+  expresión. Esta característica es crítica para evitar efectos
+  laterales inesperados al realizar trazas de ejecución en algoritmos
+  complejos.</p>
+  <p>Aunque las reglas de precedencia permiten escribir expresiones muy
+  compactas, se recomienda el uso de paréntesis para clarificar la
+  intención del
+  código<span class="tooltip"><a href="#fn12" class="nota-llamada" id="fnref12">[12]</a><span class="tooltiptext">Es evidente que esta afirmación carece de sentido si estás haciendo un examen en el que debes demostrar conocer cuál es el orden de precedencia y asociatividad de los operadores.</span></span>.
+  El empleo de paréntesis no solo ayuda a evitar errores de lógica
+  difíciles de detectar, sino que facilita la lectura, asegurando que el
+  flujo de control y el procesamiento de los datos sigan exactamente el
+  diseño algorítmico previsto.</p>
   <h2 id="conversión-de-tipos">Conversión de tipos</h2>
   <h3 id="reglas-de-promoción">Reglas de promoción</h3>
   <h3 id="conversión-explícita">Conversión explícita</h3>
@@ -1743,6 +1810,12 @@
   pueden contener uno de dos valores: verdadero (<span
   class="literal">true</span>) y falso (<span
   class="literal">false</span>). <a href="#fnref11" class="footnote-back">↩</a></p>
+  </li>
+  <li class="footnote" id="fn12">
+  <p>Es evidente que esta afirmación carece de sentido si estás haciendo
+  un examen en el que debes demostrar conocer cuál es el orden de
+  precedencia y asociatividad de los
+  operadores. <a href="#fnref12" class="footnote-back">↩</a></p>
   </li>
   </ol>
 
