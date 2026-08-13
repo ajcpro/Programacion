@@ -536,7 +536,7 @@ Supongamos que los dos dígitos de más a la izquierda nos permiten representar 
 
 Para extender nuestro esquema de codificación y representar números de punto flotante, debemos poder representar exponentes negativos. Dado que nuestro esquema no incluye un signo para el exponente, vamos a modificarlo ligeramente: el signo existente se convierte en el signo del exponente y añadimos un signo a la izquierda para representar el signo del número.
 
-Ahora podemos representar con precisión, con cuatro dígitos, todos los números entre $-9999 \times 10^99$ y $+9999 \times 10^99$. Añadir exponentes negativos a nuestro esquema nos permite representar fracciones tan pequeñas como $1 \times 10^-99$. Nuestra precisión sigue siendo de cuatro dígitos. Los números 0.1032, 5.406 y 1000000 se pueden representar con exactitud. El número 476.0321, sin embargo, tiene siete cifras significativas, pero se representa como 476.0; ese 0.0321 no se puede representar en nuestro sistema[^5].
+Ahora podemos representar con precisión, con cuatro dígitos, todos los números entre $-9999 \times 10^99$ y $+9999 \times 10^99$. Añadir exponentes negativos a nuestro esquema nos permite representar fracciones tan pequeñas como $1 \times 10^{-99}$. Nuestra precisión sigue siendo de cuatro dígitos. Los números 0.1032, 5.406 y 1000000 se pueden representar con exactitud. El número 476.0321, sin embargo, tiene siete cifras significativas, pero se representa como 476.0; ese 0.0321 no se puede representar en nuestro sistema[^5].
 
 La codificación interna sigue la norma **IEEE 754** (formato binario de punto flotante para ordenadores), estructurando el valor en tres campos binarios diferenciados: bit de signo, mantisa y exponente. En el caso de los vaores de tipo <span class="palabra">float</span>, el bit de signo es +1 o -1, la mantisa es un número entero positivo menor que $2^24$ y el exponente en un número entre -126 y 127, incluidos. En el caso de los valores de tipo <span class="palabra">double</span>, la mantisa en un número entero positivo menor que $2^53$ y el exponente en un número entre -1022 y 1023, incluidos.
 
@@ -680,8 +680,8 @@ A continuación, se presenta la relación de palabras reservadas en Java, estruc
       <tr>
         <td>transient</td><td>try</td><td>void</td><td>volatile</td><td>while</td>
       </tr>
-      <tr>
-        <td><span class="kw-rojo" colspan="5">_</span> (caracter de subrayado)</td>
+      <tr colspan="5">
+        <td><span class="kw-rojo">_</span> (caracter de subrayado)</td>
       </tr>
     </tbody>
   </table>
@@ -771,9 +771,9 @@ Aunque existen lenguajes para los que el operador módulo solo es aplicable a la
 
 <pre class="codigo">
 Calculamos 7.8 % 3.0 en Java:
-**Dividimos:** 7.8 / 3.0 produce 2.6
-**Multiplicamos:** 3.0 * 2.0 produce 6.0
-**Restamos:** 7.8 - 6.0 produce **1.8**
+<b>Dividimos:</b> 7.8 / 3.0 produce 2.6
+<b>Multiplicamos:</b> 3.0 * 2.0 produce 6.0
+<b>Restamos:</b> 7.8 - 6.0 produce <b>1.8</b>
 </pre>
 
 <div class="plantilla-sintactica">
@@ -874,7 +874,7 @@ Hay que entender desde el principio que <span class="literal">true</span> y <spa
     <img src="../imagenes/03_02_tablas_verdad.png" alt="Cuadros de operaciones booleanas con operandos y resultado">
 </figure>
 
-El operador NO-lógico precede a cualquier expresión lógica (booleana) y nos proporciona el valor opuesto al de la expresión. Por ejemplo, si <span class="variable">miCaracter</span> <span class="operador">=</span> `'`<span class="literal">B</span>`'` es verdadero, <span class="operador">!(</span><span class="variable">miCaracter</span> <span class="operador">=</span> `'`<span class="literal">B</span>`'`<span class="operador">)</span> es falso. Proporciona un método simple de cambiar el valor de un aserto. Por ejemplo, si <span class="operador">!(</span><span class="variable">años</span> <span class="operador">&gt;</span> <span class="literal">50</span><span class="operador">)</span>, es equivalente escribir: <span class="variable">años</span> <span class="operador">&le;</span> <span class="literal">50</span>.
+El operador NO-lógico precede a cualquier expresión lógica (booleana) y nos proporciona el valor opuesto al de la expresión. Por ejemplo, si <span class="variable">miCaracter</span> <span class="operador">=</span> `'`<span class="literal">B</span>`'` es verdadero, <span class="operador">!(</span><span class="variable">miCaracter</span> <span class="operador">=</span> `'`<span class="literal">B</span>`'`<span class="operador">)</span> es falso. Proporciona un método simple de cambiar el valor de un aserto. Por ejemplo, si <span class="operador">!(</span><span class="variable">años</span> <span class="operador">&gt;</span> <span class="literal">50</span><span class="operador">)</span>, es equivalente escribir: <span class="variable">años</span> <span class="operador">&lt;=</span> <span class="literal">50</span>.
 
 La operación Y-lógico requiere que ambos operandos sean verdaderos para que el resultado de la expresión sea verdadero; si uno cualquiera de ellos es falso, el valor de la expresión es falso.
 
@@ -933,6 +933,34 @@ Para comprender cómo el ordenador puede conocer el resultado sin examinar la ex
 Esta característica no es solo una cuestión de eficiencia técnica para ahorrar tiempo de ejecución; tiene implicaciones críticas en la robustez y seguridad del código. La evaluación en cortocircuito permite al programador escribir expresiones donde el primer operando actúa como una salvaguarda del segundo.
 
 ### Precedencia y asociatividad
+
+El orden en que el ordenador lleva a cabo las operaciones dentro de una sentencia no es un proceso arbitrario, sino que está estrictamente regulado por las leyes de la gramática. Al construir expresiones complejas donde conviven distintos tipos de componentes, es fundamental determinar con exactitud qué operación debe ejecutarse en primer lugar para que el resultado sea predecible y correcto. Para resolver este problema, el lenguaje emplea un conjunto de directrices denominadas **reglas de precedencia y asociatividad**.
+
+#### Reglas de precedencia
+
+La precedencia determina la jerarquía de los operadores en una expresión. De forma análoga a cómo en el álgebra convencional sabemos que una multiplicación debe realizarse antes que una suma, Java asigna un nivel de prioridad a cada operador. Los operadores con mayor precedencia se evalúan antes que aquellos situados en niveles inferiores.
+
+En la cima de esta jerarquía se sitúan siempre los paréntesis <span class="literal">()</span>, que funcionan como una herramienta soberana para que el programador pueda forzar el orden de evaluación deseado, sobrescribiendo cualquier regla predefinida.
+
+<figure class="img-lateral-izd">
+    <img src="../imagenes/03_03_operadores.png" alt="Operadores de Java, según precedencia, con su tipo y asociatividad">
+</figure>
+
+En el extremo opuesto, el operador de asignación posee la precedencia más baja de todo el lenguaje, lo que garantiza que cualquier cálculo situado a la derecha del símbolo igual sea completado totalmente antes de que el valor resultante se almacene en la variable.
+
+#### Asociatividad
+
+Cuando una expresión contiene varios operadores que poseen el *mismo* nivel de precedencia, Java aplica las reglas de asociatividad para decidir el orden de ejecución. La asociatividad indica la dirección en la que el ordenador «agrupa» los operandos con sus respectivos operadores.
+
+En la gran mayoría de los casos, los operadores binarios de Java presentan una asociatividad de **izquierda a derecha**. Esto significa que, ante una igualdad de rango, las operaciones se resuelven en el mismo orden físico en que aparecen escritas en el código. Por ejemplo, en una expresión que combine multiplicaciones y divisiones, el ordenador ejecutará primero la que se encuentre más a la izquierda.
+
+Sin embargo, existen excepciones técnicas notables: los operadores unarios (como el cambio de signo o la negación lógica) y, muy especialmente, el operador de asignación, son **asociativos por la derecha**. Esta asociatividad a la derecha es lo que permite realizar asignaciones múltiples, donde el valor se propaga desde el literal situado al final de la línea hacia todas las variables situadas a su izquierda.
+
+#### Orden de evaluación de operandos
+
+Es vital no confundir la precedencia de los operadores con el orden de evaluación de los operandos. Java establece un requisito adicional de seguridad y robustez: **los operandos de un operador binario siempre se evalúan de izquierda a derecha**. Esto implica que, incluso si el operador situado a la derecha tiene mayor precedencia, el ordenador primero obtendrá los valores de la parte izquierda de la expresión. Esta característica es crítica para evitar efectos laterales inesperados al realizar trazas de ejecución en algoritmos complejos.
+
+Aunque las reglas de precedencia permiten escribir expresiones muy compactas, se recomienda el uso de paréntesis para clarificar la intención del código[^12]. El empleo de paréntesis no solo ayuda a evitar errores de lógica difíciles de detectar, sino que facilita la lectura, asegurando que el flujo de control y el procesamiento de los datos sigan exactamente el diseño algorítmico previsto.
 
 ## Conversión de tipos
 
@@ -1011,3 +1039,4 @@ Esta característica no es solo una cuestión de eficiencia técnica para ahorra
 [^9]:  El método estándar IEEE 754 puede obtenerse usando el método <span class="metodo">Math.IEEEremainder</span>.
 [^10]: Disponible en la [especificación](https://docs.oracle.com/javase/specs/jls/se21/html/jls-15.html#jls-15.17.3).
 [^11]: Los booleanos corresponden a un tipo de datos lógico que solo pueden contener uno de dos valores: verdadero (<span class="literal">true</span>) y falso (<span class="literal">false</span>).
+[^12]: Es evidente que esta afirmación carece de sentido si estás haciendo un examen en el que debes demostrar conocer cuál es el orden de precedencia y asociatividad de los operadores.
