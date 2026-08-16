@@ -948,7 +948,7 @@ La precedencia determina la jerarquía de los operadores en una expresión. De f
 
 En la cima de esta jerarquía se sitúan siempre los paréntesis <span class="literal">()</span>, que funcionan como una herramienta soberana para que el programador pueda forzar el orden de evaluación deseado, sobrescribiendo cualquier regla predefinida.
 
-<figure class="img-lateral-izd">
+<figure class="img-lateral-izq">
     <img src="../imagenes/03_03_operadores.png" alt="Operadores de Java, según precedencia, con su tipo y asociatividad">
 </figure>
 
@@ -970,11 +970,68 @@ Aunque las reglas de precedencia permiten escribir expresiones muy compactas, se
 
 ## Conversión de tipos
 
+En el transcurso de este texto, hemos subrayado que Java es un lenguaje fuertemente tipado, lo que implica una vigilancia estricta sobre la naturaleza de los tipos de datos que manejamos. Sin embargo, en la práctica de la programación, es habitual encontrarnos con situaciones en las que necesitamos combinar operandos de distinta naturaleza dentro de una misma expresión o asignación. Por ejemplo, podríamos querer sumar un valor entero con uno real o asignar el resultado de un cálculo preciso a una variable con una capacidad de representación diferente.
+
+Dado que el ordenador almacena internamente los números enteros y los de punto flotante de maneras totalmente distintas —utilizando patrones de bits que no guardan parecido entre sí—, el sistema no puede operar con ellos de forma directa sin realizar un ajuste previo.
+
+Este proceso de transformación se denomina técnicamente **conversión de tipos**. La conversión es el mecanismo que garantiza la compatibilidad entre los elementos de una operación, permitiendo que el compilador traduzca nuestras intenciones lógicas a instrucciones que la máquina virtual pueda procesar sin ambigüedades. Dependiendo de cómo se inicie este proceso, las conversiones pueden ser **implícitas**, cuando el compilador las realiza de forma automática al detectar una mezcla de tipos en una expresión, o **explícitas**, cuando nosotros, como programadores, debemos intervenir deliberadamente mediante una operación específica conocida como *casting*.
+
+<aside class="definicion">
+
+**Conversión de tipos (*Type Conversion*):** Proceso mediante el cual un valor de un tipo de dato determinado se transforma en otro equivalente de un tipo diferente.
+
+</aside>
+
+Un aspecto crítico que debemos considerar al tratar con estas transformaciones es la seguridad de la información. No todas las conversiones son iguales desde el punto de vista del rigor de los datos; mientras que algunas son seguras porque el tipo de destino es capaz de representar perfectamente el valor original, otras pueden implicar una pérdida de precisión o el truncamiento de valores decimales. Por ello, el uso de conversiones explícitas no es solo un requisito gramatical en ciertos contextos, sino también una práctica de calidad que deja claro que la mezcla de tipos es intencionada y no fruto de un descuido. Dominar la mecánica de estas conversiones es esencial para asegurar que los datos se procesen con exactitud.
+
 ### Reglas de promoción
+
+Las reglas de promoción constituyen la base de las **conversiones implícitas** o automáticas. Este fenómeno ocurre sin la intervención directa del programador cuando el compilador detecta que en una operación aritmética o lógica conviven operandos de distinta precisión o capacidad de representación. En estos escenarios, para poder ejecutar la instrucción, el sistema «promociona» el valor de menor rango al tipo de datos más amplio presente en la expresión, garantizando que no se produzca una pérdida de información durante el cálculo.
+
+Técnicamente, estas transformaciones se denominan **conversiones de ampliación** (*widening conversions*), ya que el tipo de destino posee una capacidad igual o superior al de origen, lo que las convierte en operaciones intrínsecamente seguras. En el caso de Java se sigue una jerarquía estricta para realizar estos ajustes automáticos, basada en el rango numérico y en la distinción entre tipos enteros y reales:
+
+* **Prioridad de la precisión real:** Si al menos uno de los operandos en una expresión es de tipo <span class="palabra">double</span>, el otro operando se convierte automáticamente a <span class="palabra">double</span> antes de realizar la operación. En caso de que no haya un <span class="palabra">double</span> pero sí un componente de tipo <span class="palabra">float</span>, el resto de los elementos se promocionan a <span class="palabra">float</span>.
+* **Jerarquía de tipos enteros:** Si no existen tipos reales involucrados, pero uno de los operandos es de tipo <span class="palabra">long</span>, el sistema promociona los demás operandos de la expresión a <span class="palabra">long</span>[^13].
+* **Promoción obligatoria a entero:** Un aspecto singular de Java es el tratamiento de los tipos de menor capacidad. En cualquier cálculo donde intervengan variables de tipo <span class="palabra">byte</span> o <span class="palabra">short</span>, el compilador las promociona automáticamente a <span class="palabra">int</span> antes de efectuar la operación, incluso si ambos operandos son del mismo tipo.
+* **Tratamiento de caracteres:** De igual forma, el tipo <span class="palabra">char</span> recibe un trato especial; dado que Java almacena los caracteres como valores numéricos sin signo (basados en el estándar Unicode), estos pueden participar en expresiones aritméticas, en cuyo caso se promocionan automáticamente a su equivalente de tipo <span class="palabra">int</span>.
+
+Este mecanismo asegura que los resultados intermedios de una expresión se almacenen en variables temporales con el tipo de mayor capacidad que intervenga en la operación, permitiendo que el software maneje la complejidad de los datos de forma fluida. No obstante, aunque la promoción automática facilita el desarrollo al evitar farragosas conversiones manuales, el programador debe conocer estas reglas para prever el tipo de dato resultante y asegurar que el procesamiento de la información sea coherente con el diseño previsto.
 
 ### Conversión explícita
 
+A diferencia de las reglas de promoción, que actúan de forma automática, existen situaciones en las que el sistema no puede —o no debe— realizar el ajuste de tipos por su cuenta. Esto sucede principalmente cuando intentamos realizar una *narrowing conversion*, en la que queremos asignar un valor de un tipo con mayor capacidad de representación a una variable de un tipo menor o cuando la transformación implica un riesgo intrínseco de pérdida de información. En estos casos, Java requiere una orden directa del programador mediante una operación denominada **conversión explícita** o, más habitualmente, ***casting***.
+
+<aside class="definicion">
+
+**Casting:** Operación explícita indicada por el programador para forzar la conversión de un tipo de dato a otro.
+
+**Widening conversions:** Conversión de ampliación de un tipo de datos a otro de mayor capacidad o precisión.
+
+**Narrowing conversion:** Conversión de reducción de un tipo de datos a otro de menor capacidad o precisión , asumiendo el riesgo de pérdida de información.
+
+</aside>
+
+Para indicar al compilador nuestra intención de realizar un *cast*, debemos utilizar una sintaxis específica, colocando el tipo de destino entre paréntesis justo antes de la expresión que deseamos transformar.
+
+Al realizar un *cast*, el programador asume la responsabilidad total de la operación, informando al compilador de que es consciente del riesgo y de que la mezcla de tipos es intencionada. El uso de la conversión explícita conlleva consecuencias críticas en la integridad de los datos que debemos conocer para evitar errores lógicos:
+
+* **Truncamiento de decimales:** Cuando se convierte un número real (como un <span class="palabra">double</span> o <span class="palabra">float</span>) a un tipo entero (<span class="palabra">int</span>, <span class="palabra">long</span>, etc.), Java no realiza un redondeo matemático al valor más cercano; en su lugar, trunca: elimina la parte fraccionaria. Por ejemplo, realizar un *cast* a entero del valor 3.99 producirá como resultado el número entero 3.
+* **Pérdida de bits significativos:** Si intentamos forzar un número entero grande en un tipo que utiliza menos bits (como pasar de <span class="palabra">int</span> a <span class="palabra">bite</span>), el ordenador descartará los bits más significativos para que el valor encaje en el espacio de destino[^14]. Resulta imprescindible validar el rango del número a convertir.
+* **Restricciones de tipo:** No todas las conversiones son posibles. Por ejemplo, en Java es estrictamente imposible convertir tipos numéricos a booleanos, ni siquiera mediante conversión explícita.
+
 ### Clases envolventes
+
+Para completar nuestra comprensión sobre la transformación de datos, es imprescindible abordar el papel de las **clases envolventes**, conocidas como *wrappers*.
+
+Java mantiene una distinción fundamental entre los tipos de datos primitivos y los referenciados. Sin embargo, existen numerosos escenarios en los que necesitamos tratar un valor simple como si fuera un objeto, ya sea para utilizar ciertas funcionalidades de la biblioteca estándar o para facilitar procesos de conversión complejos que los tipos básicos no pueden realizar por sí mismos.
+
+Las clases envolventes son, en esencia, clases diseñadas para actuar como un complemento de los tipos primitivos, empaquetando un valor elemental dentro de una estructura de objeto. Java proporciona una de estas clases para cada uno de los tipos fundamentales: <span class="clase">Byte</span>, <span class="clase">Short</span>, <span class="clase">Integer</span>, <span class="clase">Long</span>, <span class="clase">Float</span>, <span class="clase">Double</span>, <span class="clase">Character</span> y <span class="clase">Boolean</span>. Observamos que, siguiendo las reglas de nomenclatura del lenguaje, sus nombres comienzan siempre con una letra mayúscula. El nombre de la clase envolvente coincide con el del tipo primitivo, excepción hecha de <span class="palabra">int</span> y <span class="palabra">char</span>, que se corresponden, respectivamente, con <span class="clase">Integer</span> y <span class="clase">Character</span>.
+
+Java convierte automáticamente de un tipo primitivo a un objeto de la clase envolvente equivalente, **boxing**, y viceversa, **unboxing**. Debemos tener en cuenta que solo es posible la conversión entre tipos equivalentes, es decir, que no podemos, por ejemplo, convertir un <span class="palabra">int</span> en <span class="clase">Byte</span>. Y aunque podamos hacer el *cast* entre tipos primitivos, ello tampoco es posible entre objetos de las clases envolventes.
+
+Estas clases, además, nos proporcionan constantes y métodos asociados a los tipos primitivos que representan como: <span class="clase">Integer</span><span class="operador">.</span><span class="costante">MIN_VALUE</span> e <span class="clase">Integer</span><span class="operador">.</span><span class="costante">MAX_VALUE</span>, los valores enteros menor y mayor representables en Java.
+
+En el ámbito de la conversión de tipos, su utilidad reside en la capacidad para transformar información textual en valores operativos para el ordenador. Dado que muchas operaciones de entrada de datos devuelven los resultados en forma de un objeto <span class="clase">String</span>, el programador debe recurrir a métodos específicos. Métodos como <span class="clase">Integer</span><span class="operador">.</span><span class="metodo">parseInt</span> o <span class="clase">Double</span><span class="operador">.</span><span class="metodo">parseDouble</span> permiten analizar el contenido de una cadena y obtener su valor numérico. Es vital validar estas operaciones , pues si el texto analizado no representa un número válido (por ejemplo, intentar convertir "Hola" a un entero), el sistema interrumpirá el flujo de control una excepción de tipo <span class="clase">NumberFormatException</span>.
 
 ## Uso de la biblioteca estándar
 
@@ -1046,3 +1103,5 @@ Aunque las reglas de precedencia permiten escribir expresiones muy compactas, se
 [^10]: Disponible en la [especificación](https://docs.oracle.com/javase/specs/jls/se21/html/jls-15.html#jls-15.17.3).
 [^11]: Los booleanos corresponden a un tipo de datos lógico que solo pueden contener uno de dos valores: verdadero (<span class="literal">true</span>) y falso (<span class="literal">false</span>).
 [^12]: Es evidente que esta afirmación carece de sentido si estás haciendo un examen en el que debes demostrar conocer cuál es el orden de precedencia y asociatividad de los operadores.
+[^13]: Resulta interesante notar que un long (entero de 64 bits) se promociona automáticamente a float (real de 32 bits) si coinciden en una expresión. Aunque el float ocupa menos memoria, su notación científica le otorga una capacidad de representación de magnitudes exponencialmente mayor, considerándose por tanto un tipo más "amplio", aunque se pierda precisión en los dígitos menos significativos.
+[^14]: Internamente, al pasar a un tipo entero más pequeño, elimina los bits de la izquierda. En la representación binaria en complemento a dos, esto puede alterar el bit de signo: por ejemplo, la conversión de 1234 a byte produce el número -46.

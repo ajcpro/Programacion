@@ -14,7 +14,7 @@
     font-weight: bold;
     font-family: Courier, 'Courier New', 'Lucida Console', monospace;
 }
-.literal, .operador, .variable, .clase, .instancia, .metodo,
+.literal, .operador, .constante, .variable, .clase, .instancia, .metodo,
 .produccion-palabra {
     font-family: Courier, 'Courier New', 'Lucida Console', monospace;
 }
