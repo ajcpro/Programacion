@@ -948,11 +948,11 @@ El orden en que el ordenador lleva a cabo las operaciones dentro de una sentenci
 
 La precedencia determina la jerarquía de los operadores en una expresión. De forma análoga a cómo en el álgebra convencional sabemos que una multiplicación debe realizarse antes que una suma, Java asigna un nivel de prioridad a cada operador. Los operadores con mayor precedencia se evalúan antes que aquellos situados en niveles inferiores.
 
-En la cima de esta jerarquía se sitúan siempre los paréntesis <span class="literal">()</span>, que funcionan como una herramienta soberana para que el programador pueda forzar el orden de evaluación deseado, sobrescribiendo cualquier regla predefinida.
-
 <figure class="img-lateral-izq">
-    <img src="../imagenes/03_03_operadores.png" alt="Operadores de Java, según precedencia, con su tipo y asociatividad">
+    <img src="../imagenes/03_03_operadores.png" alt="Operadores de Java, ordenados según su precedencia, de mayor a menor">
 </figure>
+
+En la cima de esta jerarquía se sitúan siempre los paréntesis <span class="literal">()</span>, que no son operadores en sí mismos pero funcionan como una herramienta soberana para que el programador pueda forzar el orden de evaluación deseado, sobrescribiendo cualquier regla predefinida.
 
 En el extremo opuesto, el operador de asignación posee la precedencia más baja de todo el lenguaje, lo que garantiza que cualquier cálculo situado a la derecha del símbolo igual sea completado totalmente antes de que el valor resultante se almacene en la variable.
 
@@ -1015,9 +1015,9 @@ A diferencia de las reglas de promoción, que actúan de forma automática, exis
 
 Para indicar al compilador nuestra intención de realizar un *cast*, debemos utilizar una sintaxis específica, colocando el tipo de destino entre paréntesis justo antes de la expresión que deseamos transformar.
 
-<div class="codigo-java">
+<pre class="codigo-java">
 int convertido = (int)3.1416;
-</div>
+</pre>
 
 A efectos prácticos, aunque no lo es, podéis considerarlo un operador cuya precedencia se situaría entre los operadores unarios y los aritméticos multiplicativos. 
 
@@ -1052,12 +1052,14 @@ Una de las ventajas de utilizar un lenguaje de programación orientado a objetos
 Como vimos en el tema anterior, una biblioteca no es algo diferente al propio lenguaje que nos proporciona nuevas instrucciones mágicas: es una colección de clases y métodos predefinidos que realizan tareas específicas de uso común. Lo que hace es poner a nuestra disposición código escrito previamente y verificado, que podemos utilizar desde nuestros programas. De esta manera, podemos construir soluciones cada vez más complejas combinando las capacidades del lenguaje con las que proporcionan sus bibliotecas, lo que no solo acelera el desarrollo de software, sino que también garantiza la robustez, eficiencia y confiabilidad del código resultante.
 
 <aside class="definicion">
+
 **Biblioteca estándar**: Conjunto de clases, interfaces y métodos preescritos que acompañan a un lenguaje de programación, ofreciendo a los desarrolladores herramientas listas para usar en la resolución de problemas comunes.
+
 </aside>
 
 La biblioteca estándar de Java es especialmente extensa. Como ya comentamos en el tema 1, para evitar que el programador se sienta abrumado por el volumen gigantesco de recursos que componen esta biblioteca, la plataforma organiza sus clases en agrupaciones lógicas denominadas **paquetes** (*packages*), que veremos a lo largo del curso.
 
-Existe, sin embargo, un paquete elemental llamado <span class="paquete">java.lang</span>; este agrupa las clases de uso más frecuente e indispensable para el núcleo de la programación (como, por ejemplo las clases String y System). En este momento nos interesa una de las clases más sencillas de utilizar y, al mismo tiempo, una de las que más frecuentemente encontraremos durante nuestros primeros programas: la clase <span class="clase">Math</span>.
+Existe, sin embargo, un paquete elemental llamado <span class="paquete">java.lang</span>; este agrupa las clases de uso más frecuente e indispensable para el núcleo de la programación (como, por ejemplo las clases <span class="clase">String</span> y <span class="clase">System</span>). En este momento nos interesa una de las clases más sencillas de utilizar y, al mismo tiempo, una de las que más frecuentemente encontraremos durante nuestros primeros programas: la clase <span class="clase">Math</span>.
 
 ### La clase Math
 
@@ -1065,17 +1067,17 @@ La clase <span class="clase">Math</span> es una de las herramientas de utilidad 
 
 Su utilización nos permitirá resolver problemas matemáticos sin tener que desarrollar previamente el algoritmo correspondiente. Por ejemplo, si necesitamos obtener la raíz cuadrada de un número, no tenemos que escribir un algoritmo que la calcule. Podemos utilizar directamente el método proporcionado por la clase <span class="clase">Math</span>:
 
-<div class="codigo-java">
+<pre class="codigo-java">
 double numero = 25.0;
 double raiz = Math.sqrt(numero);
 System.out.println(raiz);
-</div>
+</pre>
 
 El resultado que obtendremos será:
 
-<div class="codigo-java">
+<pre class="codigo-java">
 5.0
-</div>
+</pre>
 
 La expresión <span class="clase">Math</span><span class="operador">.</span><span class="metodo">sqrt</span><span class="operador">(</span><span class="variable">numero</span><span class="operador">)</span> es una llamada a un método, como lo son <span class="metodo">print</span> o <span class="metodo">println</span>. La diferencia que encontramos ahora es que, en lugar de hacerlo desde un objeto, invocamos el método desde la misma clase <span class="clase">Math</span> y lo identificamos escribiendo primero el nombre de la clase, seguido de un punto y del nombre del método.
 
@@ -1143,13 +1145,41 @@ En general, para obtener un número en un rango [A, B] realizaremos un escalado:
 int numeroAleatorio = (int) (Math.random() * (B - A + 1)) + A;
 </pre>
 
-Explicamos con un poco más de detalle lo que hemos hecho. Sabemos que <span class="metodo">random</span> generará un número entre 0.0 y 1.0, excluido. Queremos obtener tantos números como hay entre A y B; si, por ejmplo, el rango fuera entre 10 y 20, querríamos obtener once números: 10, 11, 12, 13, 14, 15, 16, 17, 18, 19 y 20; es decir, <span class="nosalto">B - A + 1</span>, porque queremos que B esté incluido. Por el ejemplo anterior, hemos visto que al multiplicar el resultado de random por un número, y convertirlo a entero, nos proporciona una cantidad de números igual al multiplicando: si seguimos con el ejemplo, al multiplicarlo por 11 nos proporciona los números del 0 al 10. Ahora solo tenemos que «desplazar» el cero hasta A, sumándolo al resultado de la operación anterior.
+Explicamos con un poco más de detalle lo que hemos hecho. Sabemos que <span class="metodo">random</span> generará un número entre 0.0 y 1.0, excluido. Queremos obtener tantos números como hay entre A y B; si, por ejemplo, el rango fuera entre 10 y 20, querríamos obtener once números: 10, 11, 12, 13, 14, 15, 16, 17, 18, 19 y 20; es decir, <span class="nosalto">B - A + 1</span>, porque queremos que B esté incluido. Por el ejemplo anterior, hemos visto que al multiplicar el resultado de random por un número, y convertirlo a entero, nos proporciona una cantidad de números igual al multiplicando: si seguimos con el ejemplo, al multiplicarlo por 11 nos proporciona los números del 0 al 10. Ahora solo tenemos que «desplazar» el cero hasta A, sumándolo al resultado de la operación anterior.
 
 #### Importación de Math
 
 Como vemos, cada vez que invocamos un método de la biblioteca debemos escribir el nombe de la misma. En el desarrollo de programas que hagan mucho uso de sus métodos, repetir constantemente el prefijo <span class="clase">Math</span> puede hacer que escribir el código sea tedioso pero, aún peor, que sea incómodo de leer. Como ya vimos, <span class="palabra">import</span> nos permite usar los objetos de una biblioteca pero, en el caso de <span class="clase">Math</span>, queremos importar sus métodos, cosa que hacemos añadiendo la palabra <span class="palabra">static</span>.
 
+<div class="plantilla-sintactica">
+<div class="produccion">
+<div class="produccion-encabezado">ImportDeclaration:</div>
+<div class="produccion-alternativas">
+SingleTypeImportDeclaration<br>
+SingleStaticImportDeclaration
+</div>
+</div>
+<div class="produccion">
+<div class="produccion-encabezado">SingleStaticTypeImportDeclaration:</div>
+<div class="produccion-alternativas">
+<span class="terminal">import static</span> 
+PackageOrTypeName <span class="terminal">.</span> Identifier<br>
+<span class="terminal">import static</span> 
+PackageOrTypeName <span class="terminal">. *</span>
+</div>
+</div>
+</div>
+
 Así, podemos traer de forma directa al ámbito de nuestro archivo fuente una función individual de la clase <span class="clase">Math</span> o importar todas sus constantes y métodos de manera colectiva utilizando el comodín (<span class="literal">*</span>):
+
+<pre class=codigo-java>
+// Importación de funciones individuales
+import static java.lang.Math.sqrt;
+import static java.lang.Math.pow;
+
+// Importación estática de todos los miembros de la clase Math
+import static java.lang.Math.*;
+</pre>
 
 Una vez declarada la importación al inicio de nuestro fichero, ya no es necesario calificar los métodos con el nombre de la clase: podemos escribir ecuaciones complejas con una sintaxis limpia y natural (como <span class="nosalto">sqrt(pow(ladoA, 2) + pow(ladoB, 2))</span>), que es más claro, mejorando la legibilidad.
 
