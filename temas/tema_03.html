@@ -1680,13 +1680,14 @@
   un nivel de prioridad a cada operador. Los operadores con mayor
   precedencia se evalúan antes que aquellos situados en niveles
   inferiores.</p>
-  <p>En la cima de esta jerarquía se sitúan siempre los paréntesis <span
-  class="literal">()</span>, que funcionan como una herramienta soberana
-  para que el programador pueda forzar el orden de evaluación deseado,
-  sobrescribiendo cualquier regla predefinida.</p>
   <figure class="img-lateral-izq">
-  <img src="../imagenes/03_03_operadores.png" alt="Operadores de Java, según precedencia, con su tipo y asociatividad">
+  <img src="../imagenes/03_03_operadores.png" alt="Operadores de Java, ordenados según su precedencia, de mayor a menor">
   </figure>
+  <p>En la cima de esta jerarquía se sitúan siempre los paréntesis <span
+  class="literal">()</span>, que no son operadores en sí mismos pero
+  funcionan como una herramienta soberana para que el programador pueda
+  forzar el orden de evaluación deseado, sobrescribiendo cualquier regla
+  predefinida.</p>
   <p>En el extremo opuesto, el operador de asignación posee la
   precedencia más baja de todo el lenguaje, lo que garantiza que
   cualquier cálculo situado a la derecha del símbolo igual sea
@@ -1852,9 +1853,9 @@
   <em>cast</em>, debemos utilizar una sintaxis específica, colocando el
   tipo de destino entre paréntesis justo antes de la expresión que
   deseamos transformar.</p>
-  <div class="codigo-java">
-  <p>int convertido = (int)3.1416;</p>
-  </div>
+  <pre class="codigo-java">
+  int convertido = (int)3.1416;
+  </pre>
   <p>A efectos prácticos, aunque no lo es, podéis considerarlo un
   operador cuya precedencia se situaría entre los operadores unarios y
   los aritméticos multiplicativos.</p>
@@ -1975,10 +1976,10 @@
   software, sino que también garantiza la robustez, eficiencia y
   confiabilidad del código resultante.</p>
   <aside class="definicion">
-  <strong>Biblioteca estándar</strong>: Conjunto de clases, interfaces y
-  métodos preescritos que acompañan a un lenguaje de programación,
-  ofreciendo a los desarrolladores herramientas listas para usar en la
-  resolución de problemas comunes.
+  <p><strong>Biblioteca estándar</strong>: Conjunto de clases,
+  interfaces y métodos preescritos que acompañan a un lenguaje de
+  programación, ofreciendo a los desarrolladores herramientas listas
+  para usar en la resolución de problemas comunes.</p>
   </aside>
   <p>La biblioteca estándar de Java es especialmente extensa. Como ya
   comentamos en el tema 1, para evitar que el programador se sienta
@@ -1989,10 +1990,11 @@
   <p>Existe, sin embargo, un paquete elemental llamado <span
   class="paquete">java.lang</span>; este agrupa las clases de uso más
   frecuente e indispensable para el núcleo de la programación (como, por
-  ejemplo las clases String y System). En este momento nos interesa una
-  de las clases más sencillas de utilizar y, al mismo tiempo, una de las
-  que más frecuentemente encontraremos durante nuestros primeros
-  programas: la clase <span class="clase">Math</span>.</p>
+  ejemplo las clases <span class="clase">String</span> y <span
+  class="clase">System</span>). En este momento nos interesa una de las
+  clases más sencillas de utilizar y, al mismo tiempo, una de las que
+  más frecuentemente encontraremos durante nuestros primeros programas:
+  la clase <span class="clase">Math</span>.</p>
   <h3 id="la-clase-math">La clase Math</h3>
   <p>La clase <span class="clase">Math</span> es una de las herramientas
   de utilidad más importantes de la biblioteca estándar de Java.
@@ -2006,14 +2008,15 @@
   tenemos que escribir un algoritmo que la calcule. Podemos utilizar
   directamente el método proporcionado por la clase <span
   class="clase">Math</span>:</p>
-  <div class="codigo-java">
-  <p>double numero = 25.0; double raiz = Math.sqrt(numero);
-  System.out.println(raiz);</p>
-  </div>
+  <pre class="codigo-java">
+  double numero = 25.0;
+  double raiz = Math.sqrt(numero);
+  System.out.println(raiz);
+  </pre>
   <p>El resultado que obtendremos será:</p>
-  <div class="codigo-java">
-  <p>5.0</p>
-  </div>
+  <pre class="codigo-java">
+  5.0
+  </pre>
   <p>La expresión <span class="clase">Math</span><span
   class="operador">.</span><span class="metodo">sqrt</span><span
   class="operador">(</span><span class="variable">numero</span><span
@@ -2142,7 +2145,7 @@
   <p>Explicamos con un poco más de detalle lo que hemos hecho. Sabemos
   que <span class="metodo">random</span> generará un número entre 0.0 y
   1.0, excluido. Queremos obtener tantos números como hay entre A y B;
-  si, por ejmplo, el rango fuera entre 10 y 20, querríamos obtener once
+  si, por ejemplo, el rango fuera entre 10 y 20, querríamos obtener once
   números: 10, 11, 12, 13, 14, 15, 16, 17, 18, 19 y 20; es decir, <span
   class="nosalto">B - A + 1</span>, porque queremos que B esté incluido.
   Por el ejemplo anterior, hemos visto que al multiplicar el resultado
@@ -2161,11 +2164,39 @@
   biblioteca pero, en el caso de <span class="clase">Math</span>,
   queremos importar sus métodos, cosa que hacemos añadiendo la palabra
   <span class="palabra">static</span>.</p>
+  <div class="plantilla-sintactica">
+  <div class="produccion">
+  <div class="produccion-encabezado">
+  ImportDeclaration:
+  </div>
+  <div class="produccion-alternativas">
+  <p>SingleTypeImportDeclaration<br> SingleStaticImportDeclaration</p>
+  </div>
+  </div>
+  <div class="produccion">
+  <div class="produccion-encabezado">
+  SingleStaticTypeImportDeclaration:
+  </div>
+  <div class="produccion-alternativas">
+  <p><span class="terminal">import static</span> PackageOrTypeName <span
+  class="terminal">.</span> Identifier<br> <span class="terminal">import
+  static</span> PackageOrTypeName <span class="terminal">. *</span></p>
+  </div>
+  </div>
+  </div>
   <p>Así, podemos traer de forma directa al ámbito de nuestro archivo
   fuente una función individual de la clase <span
   class="clase">Math</span> o importar todas sus constantes y métodos de
   manera colectiva utilizando el comodín
   (<span class="literal">*</span>):</p>
+  <pre class=codigo-java>
+  // Importación de funciones individuales
+  import static java.lang.Math.sqrt;
+  import static java.lang.Math.pow;
+
+  // Importación estática de todos los miembros de la clase Math
+  import static java.lang.Math.*;
+  </pre>
   <p>Una vez declarada la importación al inicio de nuestro fichero, ya
   no es necesario calificar los métodos con el nombre de la clase:
   podemos escribir ecuaciones complejas con una sintaxis limpia y
