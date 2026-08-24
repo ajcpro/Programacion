@@ -885,10 +885,11 @@
           System.out.println("Mi primer programa Java");
   </pre>
   <p>Este método, <span class="metodo">println</span> de <span
-  class="instancia">System.out</span>, muestra por pantalla lo que hay
-  entre los paréntesis, que es su lista de argumentos, aunque aquí solo
-  hay uno: la frase <strong>Mi primer programa Java</strong>.
-  Explicaremos más adelante que debe ir entre comillas
+  class="clase">System</span><span class="operador">.</span><span
+  class="instancia">out</span>, muestra por pantalla lo que hay entre
+  los paréntesis, que es su lista de argumentos, aunque aquí solo hay
+  uno: la frase <strong>Mi primer programa Java</strong>. Explicaremos
+  más adelante que debe ir entre comillas
   inglesas<span class="tooltip"><a href="#fn13" class="nota-llamada" id="fnref13">[13]</a><span class="tooltiptext">Normalmente conocidas como comillas dobles.</span></span>
   porque es un literal de cadena.</p>
   <p>Hay que tener en cuenta que <span
@@ -1680,7 +1681,7 @@
   <em>CamelCase</em><span class="tooltip"><a href="#fn23" class="nota-llamada" id="fnref23">[23]</a><span class="tooltiptext">CamelCase es un término en inglés que hace referencia a que las primeras letras de una palabra se escriben en mayúsculas, asemejándose a las jorobas de un camello.</span></span>.</p>
   <p>Las clases son sustantivos en <em>UpperCamelCase</em> (la primera
   letra en mayúsculas), como en <span class="clase">Ejemplo</span> o
-  <span class="cklase">MiClase</span>. Los métodos son verbos en
+  <span class="clase">MiClase</span>. Los métodos son verbos en
   <em>LowerCamelCase</em> (la primera letra en minúsculas), como en
   <span class="metodo">pintar</span> o <span
   class="clase">pagarIntereses</span>. Las variables deben también ir en
@@ -1959,7 +1960,8 @@
   para mostrarnos cosas; de forma predeterminada, la pantalla. Podemos
   enviar mensajes a este objeto pidiéndole que imprima algo en la
   pantalla. El nombre del objeto es <span
-  class="instancia">System.out</span><span class="tooltip"><a href="#fn28" class="nota-llamada" id="fnref28">[28]</a><span class="tooltiptext">El objeto representa la salida estándar, que suele corresponderse con la pantalla y que está preparado para ser utilizado cuando el programa lo necesite.</span></span>
+  class="clase">System</span><span class="operador">.</span><span
+  class="instancia">out</span><span class="tooltip"><a href="#fn28" class="nota-llamada" id="fnref28">[28]</a><span class="tooltiptext">El objeto representa la salida estándar, que suele corresponderse con la pantalla y que está preparado para ser utilizado cuando el programa lo necesite.</span></span>
   y uno de los mensajes que podemos enviar (método que podemos aplicar)
   es <span class="metodo">print</span>. Por ejemplo:</p>
   <pre class="codigo-java">
@@ -2017,9 +2019,9 @@
   siguiente cadena comenzaría en la misma línea, a continuación del
   carácter <em>r</em>. Si se utilizan la declaración y la sentencia -la
   que usa el método <span class="metodo">println</span>- anteriores, la
-  cadena del siguiente mensaje a <span
-  class="instancia">System.out</span> comenzaría en la siguiente
-  línea.</p>
+  cadena del siguiente mensaje a <span class="clase">System</span><span
+  class="operador">.</span><span class="instancia">out</span> comenzaría
+  en la siguiente línea.</p>
   <h3 id="bibliotecas">Bibliotecas</h3>
   <p>Una biblioteca
   (library<span class="tooltip"><a href="#fn29" class="nota-llamada" id="fnref29">[29]</a><span class="tooltiptext">Es común que, en lugar de este término, que es el correcto, lo encontréis como librería: falso amigo del inglés.</span></span>)
@@ -2122,15 +2124,20 @@
   archivo en un dispositivo de almacenamiento auxiliar. Por ahora, todas
   las entradas se harán desde un terminal a través de la entrada
   estándar, representada por el objeto <span
-  class="instancia">System.in</span>.</p>
+  class="clase">System</span><span class="operador">.</span><span
+  class="instancia">in</span>.</p>
   <p>Desafortunadamente, Java no hace que introducir datos desde <span
-  class="instancia">System.in</span> sea tan simple como lo es
-  mostrarlos a través de <span class="instancia">System.out</span>.
-  <span class="instancia">System.in</span> es un objeto muy primitivo,
-  diseñado para servir de base a otros objetos más sofisticados. Con
-  <span class="instancia">System.in</span>, podemos ingresar un solo
-  byte o una serie de bytes pero, para que nos sea útil, estos datos
-  deben convertirse en una cadena u otro tipo de dato.</p>
+  class="clase">System</span><span class="operador">.</span><span
+  class="instancia">in</span> sea tan simple como lo es mostrarlos a
+  través de <span class="clase">System</span><span
+  class="operador">.</span><span class="instancia">out</span>. <span
+  class="clase">System</span><span class="operador">.</span><span
+  class="instancia">in</span> es un objeto muy primitivo, diseñado para
+  servir de base a otros objetos más sofisticados. Con <span
+  class="clase">System</span><span class="operador">.</span><span
+  class="instancia">in</span>, podemos ingresar un solo byte o una serie
+  de bytes pero, para que nos sea útil, estos datos deben convertirse en
+  una cadena u otro tipo de dato.</p>
   <p>Buscamos a través de la documentación de la biblioteca de Java y
   encontramos una clase llamada <span class="clase">Scanner</span>, útil
   para separar los elementos de la línea de entrada en elementos
@@ -2166,15 +2173,16 @@
   objeto o realizar cualquier acción necesaria para que el objeto sea
   utilizable. Por ejemplo, el código anterior, crea primero un objeto de
   la clase <span class="clase">Scanner</span> y hace que utilice <span
-  class="instancia">System.in</span> como origen de datos. El nuevo
-  objeto se asigna a la variable <span class="instancia">teclado</span>.
-  Los constructores se invocan solo a través del operador <span
+  class="clase">System</span><span class="operador">.</span><span
+  class="instancia">in</span> como origen de datos. El nuevo objeto se
+  asigna a la variable <span class="instancia">teclado</span>. Los
+  constructores se invocan solo a través del operador <span
   class="palabra">new</span>; no podemos escribirlos como llamadas a
   métodos normales.</p>
   <p>Los constructores tienen una característica especial que requiere
   una explicación más detallada. La llamada al método constructor no
   está precedida por un nombre de objeto o de clase como en el caso de
-  <span class="metodo">System.out.print</span>, por ejemplo. No tenemos
+  System.out.<span class="metodo">print</span>, por ejemplo. No tenemos
   que preceder el nombre del constructor con el de la clase porque su
   propio nombre le dice a Java a qué clase pertenece: como el
   constructor crea un objeto antes de que se asigne a un campo o
