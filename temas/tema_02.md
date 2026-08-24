@@ -524,7 +524,7 @@ Extensa secuencia de producciones sintácticas para expresar que el cuerpo del m
         System.out.println("Mi primer programa Java");
 </pre>
 
-Este método, <span class="metodo">println</span> de <span class="instancia">System.out</span>, muestra por pantalla lo que hay entre los paréntesis, que es su lista de argumentos, aunque aquí solo hay uno: la frase **Mi primer programa Java**. Explicaremos más adelante que debe ir entre comillas inglesas[^14] porque es un literal de cadena.
+Este método, <span class="metodo">println</span> de <span class="clase">System</span><span class="operador">.</span><span class="instancia">out</span>, muestra por pantalla lo que hay entre los paréntesis, que es su lista de argumentos, aunque aquí solo hay uno: la frase **Mi primer programa Java**. Explicaremos más adelante que debe ir entre comillas inglesas[^14] porque es un literal de cadena.
 
 Hay que tener en cuenta que <span class="produccion-palabra">ExpressionName</span> es una producción recursiva, es decir, que puede ser una sucesión de identificadores, sin especificar cuántos, unidos por el símbolo del punto.
 
@@ -1026,7 +1026,7 @@ Los programadores utilizan una serie de reglas para escribir los identificadores
 
 En Java, distintas comunidades han propuesto y establecido convenciones para los identificadores; nosotros seguiremos las de [Sun Microsystems](https://www.oracle.com/java/technologies/javase/codeconventions-namingconventions.html). Los nombres se construyen utilizando palabras significativas, sin abreviaturas; igualmente, se evitan los acrónimos, utilizando palabras completas sin separar entre ellas, siguiendo un estilo *CamelCase*[^25].
 
-Las clases son sustantivos en *UpperCamelCase* (la primera letra en mayúsculas), como en <span class="clase">Ejemplo</span> o <span class="cklase">MiClase</span>. Los métodos son verbos en *LowerCamelCase* (la primera letra en minúsculas), como en <span class="metodo">pintar</span> o <span class="clase">pagarIntereses</span>. Las variables deben también ir en *LowerCamelCase* y no comenzar por el carácter de subrayado o el símbolo del dólar. Como ya hemos indicado, (estas palabras) deben ser significativas, como un mnemónico. Deben evitarse las variables de un único carácter excepto para temporales, como veremos más adelante. Las constantes con nombre deben utilizar mayúsculas, separando sus palabras componentes con símbolos de subrayado.
+Las clases son sustantivos en *UpperCamelCase* (la primera letra en mayúsculas), como en <span class="clase">Ejemplo</span> o <span class="clase">MiClase</span>. Los métodos son verbos en *LowerCamelCase* (la primera letra en minúsculas), como en <span class="metodo">pintar</span> o <span class="clase">pagarIntereses</span>. Las variables deben también ir en *LowerCamelCase* y no comenzar por el carácter de subrayado o el símbolo del dólar. Como ya hemos indicado, (estas palabras) deben ser significativas, como un mnemónico. Deben evitarse las variables de un único carácter excepto para temporales, como veremos más adelante. Las constantes con nombre deben utilizar mayúsculas, separando sus palabras componentes con símbolos de subrayado.
 
 ### Expresiones y asignación
 
@@ -1239,7 +1239,7 @@ Un sinónimo del término llamar es invocar. Decir que se invoca un método es o
 
 #### Método print
 
-Java proporciona un objeto que representa un dispositivo de salida, para mostrarnos cosas; de forma predeterminada, la pantalla. Podemos enviar mensajes a este objeto pidiéndole que imprima algo en la pantalla. El nombre del objeto es <span class="instancia">System.out</span>[^31] y uno de los mensajes que podemos enviar (método que podemos aplicar) es <span class="metodo">print</span>. Por ejemplo:
+Java proporciona un objeto que representa un dispositivo de salida, para mostrarnos cosas; de forma predeterminada, la pantalla. Podemos enviar mensajes a este objeto pidiéndole que imprima algo en la pantalla. El nombre del objeto es <span class="clase">System</span><span class="operador">.</span><span class="instancia">out</span>[^31] y uno de los mensajes que podemos enviar (método que podemos aplicar) es <span class="metodo">print</span>. Por ejemplo:
 
 <pre class="codigo-java">
 System.out.print("María" + " " + "Pilar");
@@ -1288,7 +1288,7 @@ imprime en la pantalla exactamente lo mismo que la sentencia:
 System.out.print("María Pilar");
 </pre>
 
-Hay una diferencia, sin embargo. Si se usa la última sentencia, la siguiente cadena comenzaría en la misma línea, a continuación del carácter *r*. Si se utilizan la declaración y la sentencia -la que usa el método <span class="metodo">println</span>- anteriores, la cadena del siguiente mensaje a <span class="instancia">System.out</span> comenzaría en la siguiente línea.
+Hay una diferencia, sin embargo. Si se usa la última sentencia, la siguiente cadena comenzaría en la misma línea, a continuación del carácter *r*. Si se utilizan la declaración y la sentencia -la que usa el método <span class="metodo">println</span>- anteriores, la cadena del siguiente mensaje a <span class="clase">System</span><span class="operador">.</span><span class="instancia">out</span> comenzaría en la siguiente línea.
 
 ### Bibliotecas
 
@@ -1341,9 +1341,9 @@ Los programas necesitan datos sobre los que operar. En nuestros ejemplos, hemos 
 
 Una de las mayores ventajas de usar un ordenador es poder escribir un programa que puede utilizarse con muchos conjuntos diferentes de datos. Esto significa, por supuesto, que los datos no pueden escribirse en el código. El programa y los datos deben estar separados hasta el momento en que se ejecuta el programa. En ese momento, las llamadas a métodos en el código harán que el ordenador coloque valores de los datos en las variables del programa. Después de almacenar estos valores en las variables, el código puede seguir y realizar los cálculos correspondientes.
 
-El proceso de colocar valores desde un conjunto de datos externo en las variables del programa se llama entrada. El conjunto de datos para el programa puede venir desde un dispositivo de entrada o desde un archivo en un dispositivo de almacenamiento auxiliar. Por ahora, todas las entradas se harán desde un terminal a través de la entrada estándar, representada por el objeto <span class="instancia">System.in</span>.
+El proceso de colocar valores desde un conjunto de datos externo en las variables del programa se llama entrada. El conjunto de datos para el programa puede venir desde un dispositivo de entrada o desde un archivo en un dispositivo de almacenamiento auxiliar. Por ahora, todas las entradas se harán desde un terminal a través de la entrada estándar, representada por el objeto <span class="clase">System</span><span class="operador">.</span><span class="instancia">in</span>.
 
-Desafortunadamente, Java no hace que introducir datos desde <span class="instancia">System.in</span> sea tan simple como lo es mostrarlos a través de <span class="instancia">System.out</span>. <span class="instancia">System.in</span> es un objeto muy primitivo, diseñado para servir de base a otros objetos más sofisticados. Con <span class="instancia">System.in</span>, podemos ingresar un solo byte o una serie de bytes pero, para que nos sea útil, estos datos deben convertirse en una cadena u otro tipo de dato.
+Desafortunadamente, Java no hace que introducir datos desde <span class="clase">System</span><span class="operador">.</span><span class="instancia">in</span> sea tan simple como lo es mostrarlos a través de <span class="clase">System</span><span class="operador">.</span><span class="instancia">out</span>. <span class="clase">System</span><span class="operador">.</span><span class="instancia">in</span> es un objeto muy primitivo, diseñado para servir de base a otros objetos más sofisticados. Con <span class="clase">System</span><span class="operador">.</span><span class="instancia">in</span>, podemos ingresar un solo byte o una serie de bytes pero, para que nos sea útil, estos datos deben convertirse en una cadena u otro tipo de dato.
 
 Buscamos a través de la documentación de la biblioteca de Java y encontramos una clase llamada <span class="clase">Scanner</span>, útil para separar los elementos de la línea de entrada en elementos individuales, en función de su tipo de datos. Para separar los datos, por defecto, utiliza lo que se conoce como blancos, que son los caracteres espacio en blanco y tabulador.
 
@@ -1360,9 +1360,9 @@ Scanner teclado; // Un escáner de texto asociado al teclado
 teclado = new Scanner(System.in);
 </pre>
 
-El código que sigue a <span class="palabra">new</span> se parece mucho a una llamada a un método. De hecho, es una llamada a un tipo especial de método llamado constructor. Cada clase tiene, al menos, un método constructor. El propósito de un constructor es preparar un nuevo objeto para su uso. El operador <span class="palabra">new</span> crea un objeto de la clase pero lo crea vacío, sin datos, y luego invoca al método constructor, que puede completar los campos del objeto o realizar cualquier acción necesaria para que el objeto sea utilizable. Por ejemplo, el código anterior, crea primero un objeto de la clase <span class="clase">Scanner</span> y hace que utilice <span class="instancia">System.in</span> como origen de datos. El nuevo objeto se asigna a la variable <span class="instancia">teclado</span>. Los constructores se invocan solo a través del operador <span class="palabra">new</span>; no podemos escribirlos como llamadas a métodos normales.
+El código que sigue a <span class="palabra">new</span> se parece mucho a una llamada a un método. De hecho, es una llamada a un tipo especial de método llamado constructor. Cada clase tiene, al menos, un método constructor. El propósito de un constructor es preparar un nuevo objeto para su uso. El operador <span class="palabra">new</span> crea un objeto de la clase pero lo crea vacío, sin datos, y luego invoca al método constructor, que puede completar los campos del objeto o realizar cualquier acción necesaria para que el objeto sea utilizable. Por ejemplo, el código anterior, crea primero un objeto de la clase <span class="clase">Scanner</span> y hace que utilice <span class="clase">System</span><span class="operador">.</span><span class="instancia">in</span> como origen de datos. El nuevo objeto se asigna a la variable <span class="instancia">teclado</span>. Los constructores se invocan solo a través del operador <span class="palabra">new</span>; no podemos escribirlos como llamadas a métodos normales.
 
-Los constructores tienen una característica especial que requiere una explicación más detallada. La llamada al método constructor no está precedida por un nombre de objeto o de clase como en el caso de <span class="metodo">System.out.print</span>, por ejemplo. No tenemos que preceder el nombre del constructor con el de la clase porque su propio nombre le dice a Java a qué clase pertenece: como el constructor crea un objeto antes de que se asigne a un campo o variable, no podemos asociarlo con un objeto en particular.
+Los constructores tienen una característica especial que requiere una explicación más detallada. La llamada al método constructor no está precedida por un nombre de objeto o de clase como en el caso de System.out.<span class="metodo">print</span>, por ejemplo. No tenemos que preceder el nombre del constructor con el de la clase porque su propio nombre le dice a Java a qué clase pertenece: como el constructor crea un objeto antes de que se asigne a un campo o variable, no podemos asociarlo con un objeto en particular.
 
 El nombre del constructor no sigue nuestra regla habitual de que los nombres de los métodos empiecen por minúscula. Por convención, todos los nombres de clases (en la biblioteca de Java) comienzan con una letra mayúscula y el nombre del constructor debe escribirse exactamente igual que el nombre de la clase.
 

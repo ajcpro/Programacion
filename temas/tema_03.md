@@ -136,7 +136,7 @@ Hasta este punto de nuestro aprendizaje, hemos comprendido que un programa de or
 
 No obstante, la programación en el «mundo real» y la resolución de problemas técnicos complejos en entornos productivos requieren una sofisticación mucho mayor. El pensamiento computacional no es una simple sucesión de pasos, sino un tejido o «urdimbre» donde cada hebra lógica debe entrelazarse con precisión. Para lograr esto, un lenguaje de programación debe ser entendido como un conjunto de reglas, símbolos y palabras que nos permiten modelar la realidad.
 
-El proceso por el cual el ordenador interpreta nuestras intenciones comienza con el análisis léxico. Cuando el compilador recibe nuestro código fuente, su primera tarea es identificar elementos con significado propio. Como sucede en el lenguaje natural, no podemos formar una oración coherente amontonando palabras: en los lenguajes de programación combinamos estos componentes léxicos para formar expresiones. Algo como n + 1, por sí solo, es solo un valor latente; para que sea algo capaz de realizar una tarea, debe integrarse en una estructura que le dé sentido.
+El proceso por el cual el ordenador interpreta nuestras intenciones comienza con el análisis léxico. Cuando el compilador recibe nuestro código fuente, su primera tarea es identificar elementos con significado propio. Como sucede en el lenguaje natural, no podemos formar una oración coherente amontonando palabras: en los lenguajes de programación combinamos estos componentes léxicos para formar expresiones. Algo como <span class="nosalto">n + 1</span>, por sí solo, es solo un valor latente; para que sea algo capaz de realizar una tarea, debe integrarse en una estructura que le dé sentido.
 
 La verdadera potencia del software reside en la capacidad de romper la linealidadd el código para establecer un flujo de control. Este define el orden en que las sentencias se ejecutan realmente durante la actividad de la aplicación. Para ilustrarlo, podemos usar la analogía de los músicos: ir tocando las notas según indica el director equivale a una estructura secuencial; sin embargo, podremos tomar una decisión basada en una condición o, quizás, que una serie de acordes se repitan.
 
@@ -301,7 +301,7 @@ Además del formato convencional, en decimal, Java permite representar literales
   class="literal">0</span> y <span
   class="literal">1</span> (por ejemplo, el número <span
   class="literal">10</span> se representa como <span
-  class="literal">0b1010[^2]).
+  class="literal">0b1010</span>[^2]).
 
 <div class="plantilla-sintactica">
 <div class="produccion">
@@ -459,7 +459,7 @@ Los literales de punto flotante se emplean para expresar números reales. Por de
 Existen dos formas estándar de escribir literales de punto flotante:
 
 * **Notación decimal:** utiliza el carácter punto (<span class="literal">.</span>) para separar explícitamente la parte entera de la fraccionaria (por ejemplo, <span class="literal">3.14159</span> o <span class="literal">5</span>).
-* **Notación científica o exponencial:** añade la letra <span class="literal">e</span> o <span class="literal">E</span> seguida de un número entero (positivo o negativo) que representa un exponente o potencia de diez (por ejemplo, <span class="literal">1.5e3</span> para representar $1.5 \times 10^3$, es decir, <span class="literal">1500.0</span>, o <span class="literal">2.5E-4</span> para $2.5 \times 10^{-4}$).
+* **Notación científica o exponencial:** añade la letra <span class="literal">e</span> o <span class="literal">E</span> seguida de un número entero (positivo o negativo) que representa un exponente o potencia de diez (por ejemplo, <span class="literal">1.5e3</span> para representar <span class="nosalto">$1.5 \times 10^3$</span>, es decir, <span class="literal">1500.0</span>, o <span class="literal">2.5E-4</span> para <span class="nosalto">$2.5 \times 10^{-4}$</span>).
 
 <div class="plantilla-sintactica">
 <div class="produccion">
@@ -524,7 +524,7 @@ float gravedad = 9.81f;     // Sufijo <span class="literal">f</span> para forzar
 
 Supongamos que nuestra máquina, en la que cada ubicación de memoria tiene el mismo tamaño, permite representar los números mediante seis dígitos y un signo. Cuando definimos una variable o constante, la ubicación asignada consta de seis dígitos y un signo; si el valor es entero, la interpretación del número almacenado en esa ubicación es sencilla: puedo almacenar valores desde el -999999 hasta el +999999; el cero tiene dos representaciones. Nuestra precisión es seis dígitos y los números en ese rango pueden ser representados de forma exacta.
 
-Supongamos que los dos dígitos de más a la izquierda nos permiten representar un exponente. La representación +561234, por ejemplo, es en realidad el número $1234 \times 10^56$. De hecho, el rango de números que ahora podemos representar es mucho mayor: desde $-9999 \times 10^99$ hasta $+9999 \times 10^99$. Sin embargo, la precisión ahora es de solo cuatro dígitos; es decir, solo los números de cuatro dígitos pueden representarse con exactitud en nuestro sistema. ¿Qué sucede con los números con más dígitos? Los cuatro dígitos de la izquierda se representan correctamente, y los dígitos de la derecha, o dígitos menos significativos, se pierden (se asume que son 0). Por ejemplo, 1000000 puede representarse con exactitud, pero 4932416 no, porque nuestro esquema de codificación nos limita a cuatro dígitos significativos.
+Supongamos que los dos dígitos de más a la izquierda nos permiten representar un exponente. La representación +561234, por ejemplo, es en realidad el número <span class="nosalto">$1234 \times 10^56$</span>. De hecho, el rango de números que ahora podemos representar es mucho mayor: desde <span class="nosalto">$-9999 \times 10^99$</span> hasta <span class="nosalto">$+9999 \times 10^99$</span>. Sin embargo, la precisión ahora es de solo cuatro dígitos; es decir, solo los números de cuatro dígitos pueden representarse con exactitud en nuestro sistema. ¿Qué sucede con los números con más dígitos? Los cuatro dígitos de la izquierda se representan correctamente, y los dígitos de la derecha, o dígitos menos significativos, se pierden (se asume que son 0). Por ejemplo, 1000000 puede representarse con exactitud, pero 4932416 no, porque nuestro esquema de codificación nos limita a cuatro dígitos significativos.
 
 <aside class="definicion">
 
@@ -536,7 +536,7 @@ Supongamos que los dos dígitos de más a la izquierda nos permiten representar 
 
 Para extender nuestro esquema de codificación y representar números de punto flotante, debemos poder representar exponentes negativos. Dado que nuestro esquema no incluye un signo para el exponente, vamos a modificarlo ligeramente: el signo existente se convierte en el signo del exponente y añadimos un signo a la izquierda para representar el signo del número.
 
-Ahora podemos representar con precisión, con cuatro dígitos, todos los números entre $-9999 \times 10^99$ y $+9999 \times 10^99$. Añadir exponentes negativos a nuestro esquema nos permite representar fracciones tan pequeñas como $1 \times 10^{-99}$. Nuestra precisión sigue siendo de cuatro dígitos. Los números 0.1032, 5.406 y 1000000 se pueden representar con exactitud. El número 476.0321, sin embargo, tiene siete cifras significativas, pero se representa como 476.0; ese 0.0321 no se puede representar en nuestro sistema[^5].
+Ahora podemos representar con precisión, con cuatro dígitos, todos los números entre <span class="nosalto">$-9999 \times 10^99$</span> y <span class="nosalto">$+9999 \times 10^99$</span>. Añadir exponentes negativos a nuestro esquema nos permite representar fracciones tan pequeñas como <span class="nosalto">$1 \times 10^{-99}$</span>. Nuestra precisión sigue siendo de cuatro dígitos. Los números 0.1032, 5.406 y 1000000 se pueden representar con exactitud. El número 476.0321, sin embargo, tiene siete cifras significativas, pero se representa como 476.0; ese 0.0321 no se puede representar en nuestro sistema[^5].
 
 La codificación interna sigue la norma **IEEE 754** (formato binario de punto flotante para ordenadores), estructurando el valor en tres campos binarios diferenciados: bit de signo, mantisa y exponente. En el caso de los vaores de tipo <span class="palabra">float</span>, el bit de signo es +1 o -1, la mantisa es un número entero positivo menor que $2^24$ y el exponente en un número entre -126 y 127, incluidos. En el caso de los valores de tipo <span class="palabra">double</span>, la mantisa en un número entero positivo menor que $2^53$ y el exponente en un número entre -1022 y 1023, incluidos.
 
@@ -640,7 +640,7 @@ Gran parte del proceso de aprendizaje de un lenguaje de programación consiste e
 
 Es importante destacar que Java es un lenguaje extremadamente estricto con la forma en que se escriben estos elementos, siendo sensible a la diferencia entre mayúsculas y minúsculas. Todas las palabras reservadas se componen exclusivamente de letras minúsculas. Por esta razón, un término como <span class="palabra">int</span> es reconocido como una palabra reservada para definir tipos enteros, mientras que <span class="variable">Int</span> o <span class="variable">INT</span> serían tratados como identificadores diferentes definidos por el usuario, aunque su uso se desaconseja para evitar ambigüedades en la lectura del código.
 
-Dentro de este grupo, existen casos particulares como las palabras <span class="palabra">goto</span> o <span class="palabra">const</span>. Aunque figuran en la lista oficial y el programador no puede emplearlas como nombres de variables, actualmente no tienen ninguna función operativa dentro del lenguaje Java. Su reserva responde principalmente a razones históricas y al deseo de los diseñadores del lenguaje de evitar que programadores provenientes de otros entornos, como C o C++, intenten aplicar estructuras de programación que son incompatibles con la seguridad y la filosofía de Java.
+Dentro de este grupo, existen casos particulares como las palabras <span class="palabra">goto</span> o <span class="palabra">const</span>. Aunque figuran en la lista oficial y el programador no puede emplearlas como nombres de variables, actualmente no tienen ninguna función operativa dentro del lenguaje Java. Su reserva responde principalmente a razones históricas y al deseo de los diseñadores del lenguaje de evitar que programadores provenientes de otros entornos, como C o <span class="nosalto">C++</span>, intenten aplicar estructuras de programación que son incompatibles con la seguridad y la filosofía de Java.
 
 A continuación, se presenta la relación de palabras reservadas en Java, estructurada conforme a la [Especificación del Lenguaje Java](https://docs.oracle.com/en/java/javase/26/docs/specs/jls/jls-3.html#jls-3.9)[^6]:
 
@@ -742,7 +742,7 @@ Los **operadores** son los elementos funcionales que permiten llevar a cabo oper
 
 #### Operadores aritméticos
 
-Son operadores que afectan a los números enteros y en punto flotante; devuelven un valor del mismo tipo que los operandos: si son enteros, por ejemplo, el resultado es entero. Los **operadores unarios** permiten mantener o cambiar el signo de una expresión numérica mediante el uso del más (+) y el menos (-). Junto a éstos, los **operadores binarios tradicionales**, que incluyen la suma (+), la resta (-), la multiplicación (*) y la división (/). Además, los lenguajes de programación suelen añadir la operación módulo o resto de la división (%).
+Son operadores que afectan a los números enteros y en punto flotante; devuelven un valor del mismo tipo que los operandos: si son enteros, por ejemplo, el resultado es entero. Los **operadores unarios** permiten mantener o cambiar el signo de una expresión numérica mediante el uso del más (<span class="operador">+</span>) y el menos (<span class="operador">-</span>). Junto a éstos, los **operadores binarios tradicionales**, que incluyen la suma (<span class="operador">+</span>), la resta (<span class="operador">-</span>), la multiplicación (<span class="operador">*</span>) y la división (<span class="operador">/</span>). Además, los lenguajes de programación suelen añadir la operación módulo o resto de la división (<span class="operador">%</span>).
 
 <aside class="definicion">
 
@@ -756,20 +756,20 @@ En programación no es habitual usar el más unario y, cuando se trata de un lit
 
 Las operaciones de la suma, resta, producto y división, funcionan de la misma manera que te enseñaron cuando aprendiste a utilizarlas. La división en punto flotante, por ejemplo, genera un resultado en punto flotante:
 
-<pre class="codigo">
+<pre class="codigo-fuente">
 7.2 / 2.0 produce 3.6
 </pre>
 
 No obstante, es menos probable estar familiarizado con la división entera y el módulo, por lo que podemos estudiarlos un poco más en profundidad. Cuando dividimos dos enteros entre sí, obtemos de la división un cociente y un resto. Por ejemplo, la división de 6 entre 2 produce 3 como cociente y 0 como resto; pero la de 7 entre 3, produce también 3 como cociente pero 1 como resto. Y ese resto, 0 ó 1, es el resultado que obtenemos con la operación módulo:
 
-<pre class="codigo">
+<pre class="codigo-fuente">
 6 / 2 produce 3     6 % 2 produce 0
 7 / 2 produce 3     7 % 2 produce 1
 </pre>
 
 Aunque existen lenguajes para los que el operador módulo solo es aplicable a la división entera, puede aplicarse en Java, y otros lenguajes modernos, con números en punto flotante. La forma de obtenerlo[^9] en Java[^10] consiste en obtener la división en punto flotante; multiplicar dicho valor sin decimales (sin redondeo) por el divisor; restar del dividendo el resultado de la multiplicación. Ejemplo:
 
-<pre class="codigo">
+<pre class="codigo-fuente">
 Calculamos 7.8 % 3.0 en Java:
 <b>Dividimos:</b> 7.8 / 3.0 produce 2.6
 <b>Multiplicamos:</b> 3.0 * 2.0 produce 6.0
@@ -824,9 +824,9 @@ Los operadores relacionales son binarios, por lo que tienen dos operandos. Se ut
 
 Java proporciona operadores para verificar:
 
-* La igualdad (==)
-* La desigualdad o diferencia (!=)
-* Relaciones de magnitud: mayor que (>), menor que (<), mayor o igual que (>=) y menor o igual que (<=).
+* La igualdad (<span class="operador">==</span>)
+* La desigualdad o diferencia (<span class="operador">!=</span>)
+* Relaciones de magnitud: mayor que (<span class="operador">&gt;</span>), menor que (<span class="operador">&lt;</span>), mayor o igual que (<span class="operador">&gt;=</span>) y menor o igual que (<span class="operador">&lt;</span>).
 
 <div class="plantilla-sintactica">
 <div class="produccion">
@@ -860,13 +860,15 @@ RelationalExpression <span class="terminal">&gt;=</span> AdditiveExpression
 
 **Cuidado con la asignación:** Un error de lógica muy frecuente en etapas iniciales de aprendizaje consiste en confundir el operador de asignación (=) con el de igualdad (==), siendo el primero una instrucción de almacenamiento de un valor en memoria y el segundo una comparación.
 
+Aunque en otros lenguajes resulte posible, en Java no existe relación de magnitud entre los valores booleanos, por lo que solo les son aplicables la igualdad y la desigualdad.
+
 #### Operadores lógicos
 
 Los operadores lógicos son binarios, por lo que tienen dos operandos, salvo la negación. Permiten combinar valores booleanos o resultados de expresiones relacionales para construir afirmaciones lógicas. Los operadores fundamentales son:
 
-* La negación lógica (NOT) o NO-lógico (!).
-* La conjunción (AND) o Y-lógico (&&).
-* La disyunción (OR) u O-lógico (||).
+* La negación lógica (NOT) o NO-lógico (<span class="operador">!</span>).
+* La conjunción (AND) o Y-lógico (<span class="operador">&amp;&amp;</span>).
+* La disyunción (OR) u O-lógico (<span class="operador">||</span>).
 
 Hay que entender desde el principio que <span class="literal">true</span> y <span class="literal">false</span>, como hemos visto al declarar <span class="produccion-palabra">BooleanLiteral</span>, no son nombres de variable ni palabras reservadas: son dos constantes especiales pero, en la práctica, se comportan como dos palabras reservadas.
 
@@ -917,7 +919,7 @@ Java implementa para estos dos últimos una semántica de **evaluación en corto
 
 #### Operador de asignación
 
-Aunque en muchos lenguajes la asignación se considera una sentencia o instrucción, en Java, el símbolo igual (=) es un operador, el operador de asignación, cuya misión es proporcionar valor a una variable, el de una expresión a su derecha, como ya vimos en el tema anterior.
+Aunque en muchos lenguajes la asignación se considera una sentencia o instrucción, en Java, el símbolo igual (<span class="operador">=</span>) es un operador, el operador de asignación, cuya misión es proporcionar valor a una variable, el de una expresión a su derecha, como ya vimos en el tema anterior.
 
 ### Evaluación en cortocircuito
 
@@ -1013,10 +1015,16 @@ A diferencia de las reglas de promoción, que actúan de forma automática, exis
 
 Para indicar al compilador nuestra intención de realizar un *cast*, debemos utilizar una sintaxis específica, colocando el tipo de destino entre paréntesis justo antes de la expresión que deseamos transformar.
 
+<div class="codigo-java">
+int convertido = (int)3.1416;
+</div>
+
+A efectos prácticos, aunque no lo es, podéis considerarlo un operador cuya precedencia se situaría entre los operadores unarios y los aritméticos multiplicativos. 
+
 Al realizar un *cast*, el programador asume la responsabilidad total de la operación, informando al compilador de que es consciente del riesgo y de que la mezcla de tipos es intencionada. El uso de la conversión explícita conlleva consecuencias críticas en la integridad de los datos que debemos conocer para evitar errores lógicos:
 
 * **Truncamiento de decimales:** Cuando se convierte un número real (como un <span class="palabra">double</span> o <span class="palabra">float</span>) a un tipo entero (<span class="palabra">int</span>, <span class="palabra">long</span>, etc.), Java no realiza un redondeo matemático al valor más cercano; en su lugar, trunca: elimina la parte fraccionaria. Por ejemplo, realizar un *cast* a entero del valor 3.99 producirá como resultado el número entero 3.
-* **Pérdida de bits significativos:** Si intentamos forzar un número entero grande en un tipo que utiliza menos bits (como pasar de <span class="palabra">int</span> a <span class="palabra">bite</span>), el ordenador descartará los bits más significativos para que el valor encaje en el espacio de destino[^14]. Resulta imprescindible validar el rango del número a convertir.
+* **Pérdida de bits significativos:** Si intentamos forzar un número entero grande en un tipo que utiliza menos bits (como pasar de <span class="palabra">int</span> a <span class="palabra">byte</span>), el ordenador descartará los bits más significativos para que el valor encaje en el espacio de destino[^14]. Resulta imprescindible validar el rango del número a convertir.
 * **Restricciones de tipo:** No todas las conversiones son posibles. Por ejemplo, en Java es estrictamente imposible convertir tipos numéricos a booleanos, ni siquiera mediante conversión explícita.
 
 ### Clases envolventes
@@ -1035,7 +1043,123 @@ En el ámbito de la conversión de tipos, su utilidad reside en la capacidad par
 
 ## Uso de la biblioteca estándar
 
+Hasta ahora hemos utilizado algunas operaciones que forman parte directamente de las posibilidades del lenguaje Java. Podemos realizar operaciones aritméticas, comparar valores, construir expresiones lógicas y almacenar sus resultados en variables o realizar llamadas a métodos.
+
+Sin embargo, un lenguaje de programación no tendría mucho sentido si obligara al programador a desarrollar desde cero todas las operaciones que puede necesitar. Pensemos, por ejemplo, en una aplicación que tenga que calcular una raíz cuadrada. Podríamos intentar desarrollar nosotros mismos un algoritmo para calcularla, del mismo modo que podríamos escribir nuestros propios algoritmos para obtener potencias, calcular valores absolutos o trabajar con funciones trigonométricas. Pero hacerlo cada vez que necesitáramos una de estas operaciones sería innecesario y, además, nos obligaría a resolver problemas que ya han sido resueltos muchas veces.
+
+Una de las ventajas de utilizar un lenguaje de programación orientado a objetos, como Java, es que no es necesario partir de cero. Cualquier programa que desarrollemos, por sencillo que parezca, se apoya y se estructura sobre una inmensa base de código preexistente. Esta infraestructura es lo que se conoce como **biblioteca estándar** (en Java, de manera formal, **la API de Java** o ***Application Programming Interface***).
+
+Como vimos en el tema anterior, una biblioteca no es algo diferente al propio lenguaje que nos proporciona nuevas instrucciones mágicas: es una colección de clases y métodos predefinidos que realizan tareas específicas de uso común. Lo que hace es poner a nuestra disposición código escrito previamente y verificado, que podemos utilizar desde nuestros programas. De esta manera, podemos construir soluciones cada vez más complejas combinando las capacidades del lenguaje con las que proporcionan sus bibliotecas, lo que no solo acelera el desarrollo de software, sino que también garantiza la robustez, eficiencia y confiabilidad del código resultante.
+
+<aside class="definicion">
+**Biblioteca estándar**: Conjunto de clases, interfaces y métodos preescritos que acompañan a un lenguaje de programación, ofreciendo a los desarrolladores herramientas listas para usar en la resolución de problemas comunes.
+</aside>
+
+La biblioteca estándar de Java es especialmente extensa. Como ya comentamos en el tema 1, para evitar que el programador se sienta abrumado por el volumen gigantesco de recursos que componen esta biblioteca, la plataforma organiza sus clases en agrupaciones lógicas denominadas **paquetes** (*packages*), que veremos a lo largo del curso.
+
+Existe, sin embargo, un paquete elemental llamado <span class="paquete">java.lang</span>; este agrupa las clases de uso más frecuente e indispensable para el núcleo de la programación (como, por ejemplo las clases String y System). En este momento nos interesa una de las clases más sencillas de utilizar y, al mismo tiempo, una de las que más frecuentemente encontraremos durante nuestros primeros programas: la clase <span class="clase">Math</span>.
+
 ### La clase Math
+
+La clase <span class="clase">Math</span> es una de las herramientas de utilidad más importantes de la biblioteca estándar de Java. Proporciona operaciones matemáticas que podemos utilizar directamente en nuestros programas. Entre ellas encontramos funciones para calcular valores absolutos, potencias, raíces cuadradas, valores máximo y mínimo, redondeos y otras muchas operaciones.
+
+Su utilización nos permitirá resolver problemas matemáticos sin tener que desarrollar previamente el algoritmo correspondiente. Por ejemplo, si necesitamos obtener la raíz cuadrada de un número, no tenemos que escribir un algoritmo que la calcule. Podemos utilizar directamente el método proporcionado por la clase <span class="clase">Math</span>:
+
+<div class="codigo-java">
+double numero = 25.0;
+double raiz = Math.sqrt(numero);
+System.out.println(raiz);
+</div>
+
+El resultado que obtendremos será:
+
+<div class="codigo-java">
+5.0
+</div>
+
+La expresión <span class="clase">Math</span><span class="operador">.</span><span class="metodo">sqrt</span><span class="operador">(</span><span class="variable">numero</span><span class="operador">)</span> es una llamada a un método, como lo son <span class="metodo">print</span> o <span class="metodo">println</span>. La diferencia que encontramos ahora es que, en lugar de hacerlo desde un objeto, invocamos el método desde la misma clase <span class="clase">Math</span> y lo identificamos escribiendo primero el nombre de la clase, seguido de un punto y del nombre del método.
+
+Podemos interpretar la expresión anterior de la siguiente forma:
+
+<pre class="codigo-fuente">
+Math     .     sqrt     ( numero )
+ ↑               ↑          ↑
+clase          método    argumento
+</pre>
+
+El punto (<span class="operador">.</span>) permite acceder a un elemento proporcionado por una clase u objeto. En este caso, escribimos <span class="clase">Math</span><span class="operador">.</span><span class="metodo">sqrt</span> porque queremos utilizar el método <span class="metodo">sqrt</span> de la clase <span class="clase">Math</span>[^15].
+
+Observemos que <span class="metodo">sqrt</span> necesita un argumento: el número del que buscamos la raíz cuadrada. El método realiza la operación y devuelve un resultado, que podemos utilizar como cualquier otro valor obtenido mediante una expresión.
+
+Por ejemplo:
+
+<pre class="codigo-java">
+double resultado = 2 * Math.sqrt(9);
+</pre>
+
+En esta ocasión, primero se obtiene el valor proporcionado por <span class="clase">Math</span><span class="operador">.</span><span class="metodo">sqrt</span><span class="operador">(</span><span class="literal">9</span><span class="operador">)</span>, que es <span class="literal">3.0</span>, y posteriormente se realiza el producto:
+
+Por tanto, la variable resultado terminará conteniendo el valor <span class="literal">6.0</span>.
+
+La clase <span class="clase">Math</span> proporciona numerosos métodos. No es necesario aprenderlos todos de memoria. Lo más importante es aprender a reconocer qué operación necesitamos y saber consultar la [documentación de la biblioteca](https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/lang/Math.html) para encontrar el método apropiado, conocer sus parámetros y saber qué tipo de valor devuelve.
+
+A continuación, vemos algunos de los elementos que pueden ser más interesantes para nosotros en este momento:
+
+* **Math.PI**: Representa el valor de la constante π (aproximadamente 3.141592653589793).
+* **Math.abs(x)**: Calcula el valor absoluto de su argumento, eliminando el signo negativo si lo tuviera. Soporta tanto número enteros como reales.
+* **Math.pow(base, exponente):** Eleva el primer argumento (la base) a la potencia especificada por el segundo argumento (el exponente), gestionando automáticamente casos especiales como potencias fraccionarias o bases negativas.Tanto los argumentos como el resultado son tratados como <span class="palabra">double</span>.
+* **Math.round(x)**: Redondea un número decimal al entero más cercano. Si recibe un <span class="palabra">double</span> devuelve un <span class="palabra">long</span>; si recibe un <span class="palabra">float</span> devuelve un <span class="palabra">int</span>.
+* **Math.floor(x)**: Realiza un redondeo hacia abajo, devolviendo el mayor valor entero (representado como un <span class="palabra">double</span>) que sea menor o igual al argumento decimal.
+
+La utilización de una biblioteca no significa que podamos olvidar la naturaleza de la operación matemática que estamos realizando. La biblioteca nos proporciona los mecanismos para efectuarla, pero sigue siendo responsabilidad del programador comprender qué datos necesita cada método y cómo interpretar el resultado.
+
+#### Generación de números aleatorios
+
+La vida real presenta en muchas ocasiones situaciones que se producen por azar. Cuando nosotros queremos modelar en nuestros programas estas situaciones, recurrimos a generadores de números aleatorios. En realidad, en nuestros programas, lo que usamos no son números aleatorios -aunque los denominemos así- sino pseudoaleatorios[^16]: se generan a través de fórmulas matemáticas que usan algoritmos deterministas y periódicos, que cumplen pruebas estadísticas de aleatorioedad.
+
+El uso de los números aleatorios será algo que ocurra con frecuencia en nuestros ejercicios, por lo que utilizaremos un método que nos proporciona la clase <span class="clase">Math</span>: <span class="metodo">random</span>.
+
+Una llamada:
+
+<pre class="codigo-java">
+Math.random();
+</pre>
+
+devuelve un número de tipo <span class="palabra">double</span> mayor o igual que 0.0 y menor que 1.0.
+
+Es importante observar que no podemos saber de antemano cuál será el valor concreto obtenido. Esto permite utilizar <span class="clase">Math</span><span class="operador">.</span><span class="metodo">random</span> en programas que necesitan introducir cierta variabilidad en su comportamiento.
+
+Podemos combinar este resultado con operaciones aritméticas para obtener valores en otros intervalos: multiplicando el resultado por el valor del límite y realizando una conversión explícita (*casting*) a tipo entero para truncar los decimales. Por ejemplo, la asignación:
+
+<pre class="codigo-java">
+int numero = (int) (Math.random() * 10);
+</pre>
+
+da como resultado que la variable <span class="variable">numero</span> tome un valor entero entre 0 y 9. El uso de los paréntesis es importante: sin ellos, la conversión se aplicaría únicamente al valor devuelto directamente por <span class="clase">Math</span><span class="operador">.</span><span class="metodo nosalto">random()</span>, antes de realizar la multiplicación, lo que demuestra la importancia de comprender la precedencia de los operadores y utilizar los paréntesis cuando queremos expresar de forma clara el orden en que deben realizarse las operaciones.
+
+En general, para obtener un número en un rango [A, B] realizaremos un escalado:
+
+<pre class="codigo-java">
+int numeroAleatorio = (int) (Math.random() * (B - A + 1)) + A;
+</pre>
+
+Explicamos con un poco más de detalle lo que hemos hecho. Sabemos que <span class="metodo">random</span> generará un número entre 0.0 y 1.0, excluido. Queremos obtener tantos números como hay entre A y B; si, por ejmplo, el rango fuera entre 10 y 20, querríamos obtener once números: 10, 11, 12, 13, 14, 15, 16, 17, 18, 19 y 20; es decir, <span class="nosalto">B - A + 1</span>, porque queremos que B esté incluido. Por el ejemplo anterior, hemos visto que al multiplicar el resultado de random por un número, y convertirlo a entero, nos proporciona una cantidad de números igual al multiplicando: si seguimos con el ejemplo, al multiplicarlo por 11 nos proporciona los números del 0 al 10. Ahora solo tenemos que «desplazar» el cero hasta A, sumándolo al resultado de la operación anterior.
+
+#### Importación de Math
+
+Como vemos, cada vez que invocamos un método de la biblioteca debemos escribir el nombe de la misma. En el desarrollo de programas que hagan mucho uso de sus métodos, repetir constantemente el prefijo <span class="clase">Math</span> puede hacer que escribir el código sea tedioso pero, aún peor, que sea incómodo de leer. Como ya vimos, <span class="palabra">import</span> nos permite usar los objetos de una biblioteca pero, en el caso de <span class="clase">Math</span>, queremos importar sus métodos, cosa que hacemos añadiendo la palabra <span class="palabra">static</span>.
+
+Así, podemos traer de forma directa al ámbito de nuestro archivo fuente una función individual de la clase <span class="clase">Math</span> o importar todas sus constantes y métodos de manera colectiva utilizando el comodín (<span class="literal">*</span>):
+
+Una vez declarada la importación al inicio de nuestro fichero, ya no es necesario calificar los métodos con el nombre de la clase: podemos escribir ecuaciones complejas con una sintaxis limpia y natural (como <span class="nosalto">sqrt(pow(ladoA, 2) + pow(ladoB, 2))</span>), que es más claro, mejorando la legibilidad.
+
+### La biblioteca como herramienta de programación
+
+La clase <span class="clase">Math</span> constituye un ejemplo sencillo de una idea mucho más general. Cuando programamos, no siempre debemos construir desde cero todas las operaciones que necesita nuestro problema.
+
+El lenguaje Java, como la mayoría de los lenguajes modernos, proporciona una gran cantidad de funcionalidades ya implementadas que podemos incorporar. Algunas pertenecen directamente al lenguaje y otras se encuentran organizadas en clases de su biblioteca estándar: su uso forma parte de la actividad habitual de un programador.
+
+Por este motivo, cuando aprendamos una nueva clase de la biblioteca estándar no intentaremos memorizar todos sus métodos. Aprenderemos qué problema resuelve, conoceremos algunas de las operaciones que proporciona pero, sobre todo, aprenderemos a consultar su documentación para utilizar correctamente los elementos que necesitemos.
 
 ## Instrucciones
 
@@ -1103,5 +1227,7 @@ En el ámbito de la conversión de tipos, su utilidad reside en la capacidad par
 [^10]: Disponible en la [especificación](https://docs.oracle.com/javase/specs/jls/se21/html/jls-15.html#jls-15.17.3).
 [^11]: Los booleanos corresponden a un tipo de datos lógico que solo pueden contener uno de dos valores: verdadero (<span class="literal">true</span>) y falso (<span class="literal">false</span>).
 [^12]: Es evidente que esta afirmación carece de sentido si estás haciendo un examen en el que debes demostrar conocer cuál es el orden de precedencia y asociatividad de los operadores.
-[^13]: Resulta interesante notar que un long (entero de 64 bits) se promociona automáticamente a float (real de 32 bits) si coinciden en una expresión. Aunque el float ocupa menos memoria, su notación científica le otorga una capacidad de representación de magnitudes exponencialmente mayor, considerándose por tanto un tipo más "amplio", aunque se pierda precisión en los dígitos menos significativos.
+[^13]: Resulta interesante notar que un long (entero de 64 bits) se promociona automáticamente a float (real de 32 bits) si coinciden en una expresión. Aunque el float ocupa menos memoria, su notación científica le otorga una capacidad de representación de magnitudes exponencialmente mayor, considerándose por tanto un tipo más "amplio", aunque se pueda perder precisión en los dígitos menos significativos. También se puede producir pérdida de precisión en las conversiones de int a float y de long a double.
 [^14]: Internamente, al pasar a un tipo entero más pequeño, elimina los bits de la izquierda. En la representación binaria en complemento a dos, esto puede alterar el bit de signo: por ejemplo, la conversión de 1234 a byte produce el número -46.
+[^15]: Explicaremos la diferencia que existe entre invocar un método de un objeto o una clase en el tema 4.
+[^16]: Existen los denominados TRNG (*True Random Number Generators*) que extraen valores aleatorios de fenómenos físicos impredecibles.
