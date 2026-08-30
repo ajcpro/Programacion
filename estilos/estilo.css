@@ -15,7 +15,7 @@
     font-family: Courier, 'Courier New', 'Lucida Console', monospace;
 }
 .literal, .operador, .constante, .variable, .instancia, .metodo,
-.clase, .paquete, .produccion-palabra {
+.clase, .paquete, .produccion-palabra, .codigo {
     font-family: Courier, 'Courier New', 'Lucida Console', monospace;
 }
 .produccion-palabra { /* encabezado de producción sintáctica en texto */
@@ -26,7 +26,7 @@
 }
 
 /* --- 2. Bloques de Código y Contenedores Generales --- */
-pre.codigo-fuente, .code {
+pre.codigo-fuente {
     margin-left: 2em;
     font-family: Courier, 'Courier New', 'Lucida Console', monospace;
     font-size: 0.9em;
