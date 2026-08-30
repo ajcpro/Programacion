@@ -1193,9 +1193,128 @@ Por este motivo, cuando aprendamos una nueva clase de la biblioteca estándar no
 
 ## Instrucciones
 
+Hasta ahora hemos trabajado principalmente con **expresiones**. Hemos visto que una expresión combina valores, variables y operadores y que, después de ser evaluada, produce un resultado. También hemos comprobado que una expresión puede formar parte de una operación más compleja o utilizarse para obtener el valor que almacenaremos en una variable. Pero un programa no está formado únicamente por expresiones. Mientras una expresión representa un cálculo o un valor, un programa necesita además indicar **qué debe hacer el ordenador con esos valores y en qué orden debe hacerlo**. Para ello utilizamos las **instrucciones** o **sentencias**, que constituyen verdaderas acciones con sentido completo.
+
+Desde una perspectiva de alto nivel, una instrucción representa la unidad de ejecución más pequeña de un lenguaje de programación. En esencia, equivale a una orden precisa que le transmitimos a la máquina: cuando escribimos un programa, construimos una sucesión de instrucciones que el ordenador irá ejecutando de acuerdo con las reglas del lenguaje. Así, un programa puede definirse conceptualmente como una secuencia estructurada y ordenada de instrucciones orientadas a alcanzar un objetivo concreto. Algunas instrucciones permiten almacenar un resultado, otras tomar una decisión, repetir una operación o llamar a un método y, finalmente, existen directivas estructurales que gobiernan el orden dinámico en que se ejecutan las demás órdenes bajo determinadas condiciones (sentencias de **flujo de control**). Todas ellas tienen en común que forman parte de la solución concreta del algoritmo que estamos escribiendo en Java.
+
+Por ejemplo, en el siguiente fragmento:
+
+<pre class="codigo-java">
+int edad = 20;
+int añoNacimiento = 2026 - edad;
+System.out.println(añoNacimiento);
+</pre>
+
+tenemos tres instrucciones. La primera declara una variable y le proporciona un valor; la segunda realiza un cálculo y almacena su resultado; la tercera utiliza un método para mostrar información.
+
+Aunque utilicemos los términos *instrucción* y *sentencia* con un significado prácticamente equivalente, en realidad, instrucción es una orden que indica a la máquina que realice una acción; sin embargo, **sentencia** (*statement*) es la unidad gramatical de código, con una estructura formal estricta, que ejecuta una acción completa.
+
 ### Sentencias
 
+Una aplicación está formada por sentencias que, en ausencia de una estructura que modifique el flujo de ejecución, se ejecutan de arriba abajo, en el orden en que aparecen. Ya conocemos algunas sentencias sencillas. Una declaración de variable, una asignación o una llamada a un método pueden constituir una sentencia:
+
+<pre class="codigo-java">
+int edad = 20;
+edad = edad + 1;
+System.out.println(edad);
+</pre>
+
+La mayoría de las sentencias individuales, como las del ejemplo, se denominan sentencias simples y se caracterizan de forma estricta por finalizar con el carácter **punto y coma** (<span class="literal">;</span>). El punto y coma indica al compilador que hemos terminado una sentencia: no actúa como un mero separador de instrucciones sino como un **token terminador obligatorio**. No debemos confundirlo con los operadores que hemos estudiado anteriormente. El punto y coma no realiza ninguna operación sobre los datos; simplemente marca el final de determinadas construcciones sintácticas. La sintaxis del lenguaje es lo suficientemente flexible como para permitir la inclusión de múltiples sentencias consecutivas dentro de una única línea física de código (como en la instrucción <span class="codigo"> i = 0; j = 5; x = i + j;</span>); pero se recomienda escribir cada sentencia en una única línea para favorecer la claridad y la legibilidad.
+
+Lo anterior puede llevarnos a asumir que cualquier expresión válida se transforma automáticamente en una sentencia por el simple hecho de añadirle un punto y coma al final. Esto no es así. Para que una expresión finalizada en punto y coma sea una sentencia legítima, esta debe albergar un significado operativo claro: debe desencadenar una acción concreta o un cambio de estado. Si intentamos añadir un punto y coma a una expresión como un literal aislado (<span class="literal">3.0;</span>), un identificador de variable (<span class="variable">numero;</span>) o una cadena de texto (<span class="literal">"hola";</span>), el compilador rechazará el código emitiendo un error de sintaxis.
+
+Java permite utilizar diferentes tipos de sentencias. Algunas ya las hemos utilizado, como las declaraciones, las asignaciones y las llamadas a métodos, según las plantillas sintácticas que vimos en el tema 2. En general, podemos distinguir, entre otras, las siguientes clases de sentencias:
+
+*   **Expresiones de asignación:** Aquellas cuyo operador principal es el de asignación (<span class="operador">=</span>). Almacenar o actualizar un valor en una variable representa una de las acciones más elementales que le podemos encomendar a una computadora. Resulta vital recordar que no se debe confundir el operador de asignación (<span class="operador">=</span>) con el de comparación de igualdad (<span class="operador">==</span>).
+*   **Invocaciones a métodos:** Llamar a un método de la biblioteca estándar es una acción en sí misma, independientemente de que el método devuelva o no un resultado. Ejemplos de ello son sentencias tan cotidianas como <span class="codigo">System.out.println("Hola");</span> o como <span class="codigo">Math.abs(3.0);</span>.
+*   **Sentencias de declaración:** Aquellas cuya finalidad es reservar un espacio en memoria para almacenar información. Al declarar una variable (como <span class="codigo">int x;</span>), le ordenamos al programa que compruebe el tipo de dato para determinar su tamaño exacto en memoria, busque una zona de almacenamiento físico que esté libre en ese instante y asocie de manera permanente dicho espacio con el identificador que hemos elegido.
+*   **Sentencias de flujo de control:** Su misión fundamental es gobernar el orden preciso y las condiciones específicas bajo las cuales deben ejecutarse las acciones individuales del código. Son las encargadas de dictar el comportamiento dinámico del programa ante la toma de decisiones (selección) y la repetición (bucles).
+
+En cualquier lugar físico o lógico del código donde la sintaxis formal del lenguaje permita ubicar una única sentencia individual, el programador tiene la facultad de colocar un conjunto agrupado de sentencias. Para que el grupo funcione como una sola unidad lógica de acción, es preciso delimitarlo mediante un símbolo contenedor especial; en el caso de Java, esta delimitación estructural se realiza de forma estricta mediante el uso de llaves de apertura y cierre (<span class="literal">{ }</span>). A esta agrupación se la denomina **bloque** de código.
+
+<pre class="codigo-java">
+{
+    sentencia1;
+    sentencia2;
+    sentencia3;
+}
+</pre>
+
+
 ### Bloques y ámbito
+
+Un bloque es una secuencia de cero o más sentencias encerrada entre llaves (<span class="literal">{ }</span>). Su cometido es agrupar lógicamente varias instrucciones para que actúen como una única unidad de acción. Debido a que un bloque puede ser ubicado en cualquier lugar del código donde las reglas del lenguaje lo permitan, la indentación o sangrado del código en el interior de las llaves no es un mero capricho estético: es una práctica metodológica fundamental que permite, al lector, identificar de un solo vistazo el inicio y el fin de cada bloque, previniendo la omisión accidental de las llaves, lo que podría alterar de manera drástica el significado semántico y el comportamiento dinámico del programa durante su ejecución. Además, dado que un bloque contiene un grupo de sentencias, cualquiera de las mismas puede ser sustituida, a su vez, por un bloque, lo que se conoce como  **bloques anidados**.  La anidación exige que cualquier bloque interno se cierre de forma completa mediante su llave correspondiente antes de que pueda cerrarse el bloque exterior que lo contiene.
+
+<pre class="codigo-java">
+{
+    int a = 10;
+    {
+        int b = 20;
+        System.out.println(a);
+        System.out.println(b);
+    }
+}
+</pre>
+
+Cada vez que abrimos una llave <span class="literal">{</span> y cerramos otra <span class="literal">}</span>, no solo estamos estructurando un grupo de instrucciones, sino que estamos delimitando un nuevo **ámbito** o *scope*. El ámbito se define como la zona o porción específica del programa en la que un determinado identificador resulta visible y, por consiguiente, puede ser accedido y utilizado en el interior de una expresión. El ámbito determina tanto la visibilidad de los identificadores como la vida útil o tiempo de persistencia física de las variables en la memoria del ordenador. Las variables locales —aquellas que se definen dentro de un método o en cualquier bloque de código intermedio— se crean en la memoria en el momento en que el flujo de control entra en su bloque y se destruyen en cuanto el control del programa abandona dicho bloque. Podemos pensar en el ámbito como el espacio del programa en el que existe una declaración y puede ser utilizada mediante su identificador. Cuando una variable deja de pertenecer al ámbito en el que fue declarada, no significa necesariamente que el dato haya desaparecido de forma inmediata de la memoria; significa que, desde ese punto del programa, esa variable ya no puede ser utilizada mediante ese nombre.
+
+<aside class="definicion">
+
+**Ámbito**: región del programa dentro de la cual determinadas declaraciones son válidas y pueden ser utilizadas.
+
+</aside>
+
+Dentro de un bloque de código, una variable local solo es válida y utilizable desde el momento exacto en que se realiza su declaración formal hasta que se alcanza la llave de cierre del bloque en el que reside. Intentar hacer uso de una variable o asignarle un valor en una línea anterior a su definición provocará un error insalvable detectado por el compilador en tiempo de compilación. Las variables locales no se inicializan por defecto y no se exige asignarles un valor inicial en la sentencia de su declaración, pero se bloqueará la compilación y emitirá un mensaje de error si el programa intenta leer o utilizar la variable local dentro de una expresión sin que se le haya asignado previamente un valor de forma explícita y segura.
+
+Las reglas que rigen la visibilidad de los identificadores se vuelven sumamente precisas: el bloque exterior envuelve por completo al bloque interno, lo que significa que cualquier identificador declarado en el ámbito externo es perfectamente visible y accesible para todas las instrucciones que se ejecutan dentro del bloque anidado. Consideremos el siguiente ejemplo:
+
+<pre class="codigo-java">
+{
+    int edad = 20;
+    System.out.println(edad);
+}
+</pre>
+
+La variable <span class="variable">edad</span> ha sido declarada dentro del bloque y podemos utilizarla mientras permanezcamos dentro de ese ámbito. Sin embargo, una vez terminado el bloque, esa variable deja de estar disponible:
+
+<pre class="codigo-java">
+{
+    int edad = 20;
+}
+
+System.out.println(edad);
+</pre>
+
+La segunda sentencia no es válida porque <span class="variable">edad</span> pertenece al bloque en el que fue declarada. Fuera de él, su identificador ya no puede utilizarse.
+
+Suiguiendo con el ejemplo que usábamos para los bloques anidados:
+
+<pre class="codigo-java">
+{
+    int a = 10;
+    {
+        int b = 20;
+        System.out.println(a);
+        System.out.println(b);
+    }
+}
+</pre>
+
+el bloque interior tiene acceso a la variable <span class="variable">a</span> porque <span class="variable">a</span> ha sido declarada en un ámbito exterior que contiene al bloque interior. En cambio, <span class="variable">b</span> pertenece al bloque interior y no puede utilizarse desde el bloque exterior después de terminar dicho bloque.
+
+Podemos representar esta relación de una forma sencilla:
+
+<pre class="codigo-fuente">
+ámbito exterior
+│
+├── a
+│
+└── ámbito interior
+    │
+    └── b
+</pre>
+
+Desde el ámbito interior podemos utilizar las declaraciones disponibles en él y las de los ámbitos exteriores que lo contienen. Pero desde un ámbito exterior no podemos utilizar una declaración que solo exista dentro de uno de sus bloques interiores. Esta regla permite que diferentes partes de un programa utilicen nombres sin interferir innecesariamente entre sí. Podemos declarar una variable que solo necesitemos durante una parte concreta de un algoritmo y limitar su uso a ese lugar. El ámbito viene determinado por las reglas sintácticas del lenguaje y por el lugar donde se realiza la declaración.
 
 ## El flujo de ejecución
 
