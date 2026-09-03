@@ -1316,11 +1316,107 @@ Podemos representar esta relación de una forma sencilla:
 
 Desde el ámbito interior podemos utilizar las declaraciones disponibles en él y las de los ámbitos exteriores que lo contienen. Pero desde un ámbito exterior no podemos utilizar una declaración que solo exista dentro de uno de sus bloques interiores. Esta regla permite que diferentes partes de un programa utilicen nombres sin interferir innecesariamente entre sí. Podemos declarar una variable que solo necesitemos durante una parte concreta de un algoritmo y limitar su uso a ese lugar. El ámbito viene determinado por las reglas sintácticas del lenguaje y por el lugar donde se realiza la declaración.
 
-## El flujo de ejecución
+## **Flujo de control**
 
+Hasta ahora hemos visto nuestros programas como algo estrictamente lineal. El ordenador se ha limitado a actuar como un ejecutor pasivo que procesa una instrucción tras otra, siguiendo el  orden en el que las sentencias fueron escritas. Este esquema, aunque resulta intuitivo y constituye la base de cualquier proceso algorítmico, presenta una limitación operativa: no puede adaptarse a la variabilidad del mundo real. No basta con conocer las instrucciones que debe realizar un programa: también es necesario determinar **en qué orden deben ejecutarse**.
+
+En los programas más sencillos, las instrucciones se ejecutan una detrás de otra, siguiendo el orden en el que aparecen escritas. Por ejemplo, si un programa contiene tres instrucciones:
+
+<pre class="codigo-fuente">
+instrucción 1;
+instrucción 2;
+instrucción 3;
+</pre>
+
+la ejecución comienza por <span class="codigo">instrucción 1</span>. Cuando esta termina, se ejecuta <span class="codigo">instrucción 2</span> y, finalmente, <span class="codigo">instrucción 3</span>.
+
+Este comportamiento parece evidente, pero es importante observar que **el orden de las instrucciones forma parte de la solución del problema**. No siempre es posible cambiar el orden de dos instrucciones sin modificar el resultado del programa. Una instrucción puede necesitar que otra se haya ejecutado previamente para disponer de los datos que necesita. Por ejemplo, para calcular el área de un rectángulo es necesario disponer primero de su base y de su altura antes de realizar la multiplicación:
+
+<pre class="codigo-java">
+int base = 8;
+int altura = 5;
+int area = base * altura;
+System.out.println("Área: " + area);
+</pre>
+
+La asignación de <span class="variable">area</span> no puede hacerse antes de las asignaciones de <span class="variable">base</span> y <span class="variable">altura</span>, ya que necesita los valores almacenados en esas variables. El orden de ejecución, por tanto, no es arbitrario.
+ 
 ### Concepto de flujo de control
 
-### Estructuras secuenciales
+El **flujo de control** de un programa es el orden en el que se ejecutan las instrucciones que lo forman. En un sentido figurado, podemos imaginar que la computadora se encuentra bajo el control exclusivo de una única sentencia en cada momento; una vez que esa sentencia ha sido ejecutada, el control se transfiere o «cede» a la sentencia siguiente (como los atletas se entregan el testigo en una carrera de relevos). 
+
+<aside class="definicion">
+
+**Flujo de control:** Orden en el que se ejecutan las instrucciones de un programa.
+
+</aside>
+
+Reiteramos lo importante que es distinguir entre el orden en el que las instrucciones están escritas y el orden en el que se ejecutan. En los programas sencillos que hemos escrito hasta ahora ambos coinciden, pero esto no tiene por qué suceder siempre. Pensemos, por ejemplo, en cómo podemos preparar un bocadillo: necesitamos pan y lo que queramos comer; necesitaremos cortar un trozo de pan de tamaño apropiado; cortar dicho trozo de forma longitudinal, aproximadamente, por la mitad; disponer el alimento entre las dos partes obtenidas por la zona de la miga. No tendría sentido intentar realizar estas acciones en cualquier orden: algunas dependen necesariamente de que otras se hayan realizado previamente.
+
+De manera predeterminada u ordinaria, y de la forma que lo hemos visto hasta ahora, el flujo de c0ntro es lineal. Esto significa que las instrucciones se ejecutan una vez cada una, una detrás de otra, en el orden en el que aparecen en el programa. Sin embargo, los problemas el software debe resolver no siempre pueden expresarse de esta manera, En la mayoría de problemas, debe ser capaz de reaccionar de manera flexible, tomando desvíos, bifurcaciones o repitiendo tareas basándose en datos que pueda determinar durante su ejecución. Por tanto, el flujo de control de un programa puede seguir diferentes caminos dependiendo de las instrucciones que se hayan utilizado para construirlo.
+
+Para lograr esta ejecución no secuencial, los lenguajes de programación proporcionan herramientas sintácticas especiales denominadas **estructuras de control**.
+
+### Estructuras de control
+
+ Una **estructura de control** es una sentencia diseñada específicamente para alterar el flujo ordinario de la aplicación, transfiriendo de manera deliberada el control del programa a una instrucción distinta de aquella que físicamente vendría a continuación en el archivo de texto. De acuerdo con el teorema del programa estructurado de Böhm–Jacopini, cualquier algoritmo puede ser implementado combinandosólo tres tipos de estructuras de control fundamentales:
+
+*   **La estructura secuencial o secuencia:** Representa la ejecución lineal por defecto, donde las sentencias se ejecutan una después de otra en el orden en que aparecen.
+*   **La estructura condicional o de selección:** Permite decidir, en función de si alguna condición es verdadera o falsa, qué instrucciones ejecutar.
+*   **La estructura repetitiva o iteración:** Permite que un conjunto estructurado de instrucciones se ejecute varias veces mientras se cumpla una determinada condición.
+
+Adicionalmente, los lenguajes modernos de alto nivel añaden formas más avanzadas de gobernar este flujo lógico. Un ejemplo de ello, como avanzábamos en el tema anterior, son las llamadas a métodos: funcionan como pequeñas estructuras que detienen temporalmente la secuencia actual para delegar la ejecución en un subprograma específico, regresando al punto de origen una vez completada la tarea.
+
+El dominio del **flujo de control** y la capacidad para trazar la ejecución del código constituyen el pilar fundamental sobre el que se construye un software eficiente, predecible y libre de fallos.
+
+## Estructuras secuenciales
+
+La **estructura secuencial** constituye el punto de partida y la forma más elemental de organizar las instrucciones dentro de un programa. Una secuencia representa un conjunto ordenado de una o más sentencias que la máquina ejecuta, una tras otra, siguiendo el mismo orden en el que están dispuestas en el código fuente. La ejecución comienza en la primera instrucción y continúa con la siguiente hasta alcanzar la última. Por ejemplo:
+
+<pre class="codigo-java">
+int a = 10;
+int b = 20;
+int suma = a + b;
+System.out.println(suma);
+</pre>
+
+La ejecución de este fragmento sigue una secuencia perfectamente determinada:
+
+1. Se declara la variable <span class="variable">a</span> y se le asigna el valor <span class="literal">10</span>.
+2. Se declara la variable <span class="variable">b</span> y se le asigna el valor <span class="literal">20</span>.
+3. Se declara la variable <span class="variable">suma</span>, se calcula la suma de <span class="variable">a</span> y <span class="variable">b</span> y se almacena el resultado en <span class="variable">suma</span>.
+4. Se muestra el valor de <span class="variable">suma</span>.
+
+Cada instrucción se ejecuta exactamente una vez y siempre después de la anterior y antes de la siguiente. El flujo de control avanza, por tanto, **de principio a fin**. Esto puede parecer una característica demasiado sencilla como para necesitar una estructura específica. Sin embargo, la secuencia es fundamental porque **cualquier algoritmo está formado, en última instancia, por operaciones que deben ejecutarse en un determinado orden**.
+
+La secuencia puede representarse gráficamente mediante una sucesión de bloques conectados que indican el sentido del flujo de ejecución:
+
+<figure class="img-lateral-dch">
+    <img src="../imagenes/03_04_secuencia.png" alt="Flujo de control de una estructura secuencial">
+</figure>
+
+<pre class="codigo-fuente">
+┌─────────────────────┐
+│ int a = 10;         │
+└──────────┬──────────┘
+           ↓
+┌─────────────────────┐
+│ int b = 20;         │
+└──────────┬──────────┘
+           ↓
+┌─────────────────────┐
+│ int suma = a + b;   │
+└──────────┬──────────┘
+           ↓
+┌─────────────────────┐
+│ System.out.println  │
+│ (suma);             │
+└─────────────────────┘
+</pre>
+
+Desde el punto de vista de la arquitectura física de la computadora, la estructura secuencial se alinea de manera natural con el ciclo de búsqueda y ejecución de la unidad de control de la CPU. La computadora opera leyendo secuencialmente las direcciones de memoria donde se almacenan las instrucciones, decodificando cada orden en señales de control y enviándolas a los componentes del sistema para ejecutar la tarea. Seguir una estructura secuencial es equivalente a interpretar las notas de una partitura musical de principio a fin de forma lineal.
+
+En la sintaxis de Java, las sentencias simples que integran una secuencia se delimitan formalmente mediante el carácter obligatorio del **punto y coma** (<span class="literal">;</span>), que actúa como el token terminador de cada acción individual. Asimismo, estas instrucciones secuenciales pueden ser agrupadas de manera colectiva dentro de un **bloque de código** delimitado por llaves <span class="literal">{}</span>, comportándose exteriormente frente al compilador como si fuesen una sola unidad de acción indivisible. Dominar la construcción rigurosa de secuencias lógicas coherentes es el requisito previo e ineludible para garantizar la robustez, el orden y la calidad de cualquier algoritmo de software.
 
 ## Selección
 
