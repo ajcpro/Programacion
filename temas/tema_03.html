@@ -1987,9 +1987,9 @@
   <p>Estas clases, además, nos proporcionan constantes y métodos
   asociados a los tipos primitivos que representan como: <span
   class="clase">Integer</span><span class="operador">.</span><span
-  class="costante">MIN_VALUE</span> e <span
+  class="constante">MIN_VALUE</span> e <span
   class="clase">Integer</span><span class="operador">.</span><span
-  class="costante">MAX_VALUE</span>, los valores enteros menor y mayor
+  class="constante">MAX_VALUE</span>, los valores enteros menor y mayor
   representables en Java.</p>
   <p>En el ámbito de la conversión de tipos, su utilidad reside en la
   capacidad para transformar información textual en valores operativos
@@ -2265,8 +2265,9 @@
   <p>Una vez declarada la importación al inicio de nuestro fichero, ya
   no es necesario calificar los métodos con el nombre de la clase:
   podemos escribir ecuaciones complejas con una sintaxis limpia y
-  natural (como <span class="nosalto">sqrt(pow(ladoA, 2) + pow(ladoB,
-  2))</span>), que es más claro, mejorando la legibilidad.</p>
+  natural (como <span class="nosalto codigo">sqrt(pow(ladoA, 2) +
+  pow(ladoB, 2))</span>), que es más claro, mejorando la
+  legibilidad.</p>
   <h3 id="la-biblioteca-como-herramienta-de-programación">La biblioteca
   como herramienta de programación</h3>
   <p>La clase <span class="clase">Math</span> constituye un ejemplo
@@ -2361,9 +2362,9 @@
   acción concreta o un cambio de estado. Si intentamos añadir un punto y
   coma a una expresión como un literal aislado (<span
   class="literal">3.0;</span>), un identificador de variable (<span
-  class="variable">numero;</span>) o una cadena de texto (<span
-  class="literal">“hola”;</span>), el compilador rechazará el código
-  emitiendo un error de sintaxis.</p>
+  class="variable">numero;</span>) o una cadena de texto
+  (<code>"</code><span class="literal">hola;</span><code>"</code>), el
+  compilador rechazará el código emitiendo un error de sintaxis.</p>
   <p>Java permite utilizar diferentes tipos de sentencias. Algunas ya
   las hemos utilizado, como las declaraciones, las asignaciones y las
   llamadas a métodos, según las plantillas sintácticas que vimos en el
@@ -2381,8 +2382,9 @@
   biblioteca estándar es una acción en sí misma, independientemente de
   que el método devuelva o no un resultado. Ejemplos de ello son
   sentencias tan cotidianas como <span
-  class="codigo">System.out.println(“Hola”);</span> o como <span
-  class="codigo">Math.abs(3.0);</span>.</li>
+  class="codigo">System.out.println(</span><code>"</code><span
+  class="codigo">Hola</span><code>"</code><span class="codigo">);</span>
+  o como <span class="codigo">Math.abs(3.0);</span>.</li>
   <li><strong>Sentencias de declaración:</strong> Aquellas cuya
   finalidad es reservar un espacio en memoria para almacenar
   información. Al declarar una variable (como <span class="codigo">int
@@ -2766,7 +2768,7 @@
   combinación de operadores lógicos— que, al ser procesada por el
   ordenador, produce de manera inequívoca uno de dos únicos valores
   posibles: verdadero o falso.</p>
-  <aside class="definición">
+  <aside class="definicion">
   <p><strong>Condición:</strong> Proposición o sentencia lógica que,
   tras ser evaluada sintácticamente por el sistema, devuelve un valor de
   verdad (cierto o falso), sirviendo como base para la toma de
@@ -3026,18 +3028,16 @@
   ambigüedad aparente sobre a qué <span class="palabra">if</span>
   concreta pertenece un determinado <span class="palabra">if</span>.
   Para resolver esta incertidumbre el compilador aplica una regla de
-  asociación sintáctica estricta: <strong>un bloque <span
-  class="palabra">else</span> siempre se asocia con el condicional <span
-  class="palabra">if</span> más cercano y anterior que se encuentre
-  dentro de su mismo bloque de código, siempre y cuando dicho <span
-  class="palabra">if</span> no cuente ya con un <span
-  class="palabra">if</span> asociado</strong>. Recordad que el
-  compilador ignora por completo los espacios en blanco, los retornos de
-  línea y la indentación: alinear visualmente cada grupo
-  <strong>if-else</strong> es fundamental pero, en casos en los que uno
-  quede alejado del otro, puede intentar reflejar su intención lógica
-  pero el código puede tener fallos lógicos difíciles de depurar; en
-  esos casos, es mejor utilizar llaves.</p>
+  asociación sintáctica estricta: <strong>un bloque else siempre se
+  asocia con el condicional if más cercano y anterior que se encuentre
+  dentro de su mismo bloque de código</strong> (siempre y cuando dicho
+  if no cuente ya con un else asociado). Recordad que el compilador
+  ignora por completo los espacios en blanco, los retornos de línea y la
+  indentación: alinear visualmente cada grupo <strong>if-else</strong>
+  es fundamental pero, en casos en los que uno quede alejado del otro o
+  algún <span class="palabra">if</span> no tenga <span
+  class="palabra">else</span>, es mejor utilizar llaves para no tener
+  fallos lógicos difíciles de depurar.</p>
   <h4 id="selección-encadenada">Selección encadenada</h4>
   <p>Reescribamos el código anterior sin anidación y escribiendo cada
   <span class="palabra">if</span> justo a continuación del <span
@@ -3159,8 +3159,7 @@
   SwitchLabel:
   </div>
   <div class="produccion-alternativas">
-  <p><span class="terminal">case</span> CaseConstant {<span
-  class="terminal">,</span> CaseConstant}<br> <span
+  <p><span class="terminal">case</span> CaseConstant<br> <span
   class="terminal">default</span></p>
   </div>
   </div>
@@ -3170,6 +3169,7 @@
   </div>
   <div class="produccion-alternativas">
   <p>ConditionalExpression</p>
+  </div>
   </div>
   </div>
   <p>Vamos a analizar las reglas de diseño y restricciones sintácticas
@@ -3314,15 +3314,28 @@
   control: la <strong>repetición</strong>, que permitirá que un mismo
   conjunto de instrucciones pueda ejecutarse varias veces.</p>
   <h4 id="switch-expressions">Switch expressions</h4>
-  <p>En Java 12 se introdujo esta sentencia como expresión, denominada
-  <a
+  <p>En Java 12 se introdujo la posibilidad de usar esta construcción
+  como una expresión, denominada <a
   href="https://docs.oracle.com/en/java/javase/13/language/switch-expressions.html"><strong>switch
-  expressions</strong></a>, que se implantó como definitivo en Java 14,
-  y que modifica este modo tradicional de la sentencia para hacerla más
-  limpia y compacta. Ya en la plantilla sintáctica podemos ver cómo no
-  es necesario escribir <span class="palabra">case</span> para cada
-  etiqueta: podemos asociar una lista de etiquetas a una sola
-  palabra:</p>
+  expressions</strong></a>, que se implantó como algo definitivo en Java
+  14, y que modifica este modo tradicional de la sentencia para hacerla
+  más limpia y compacta. Podemos modificar ligeramente la plantilla
+  sintáctica para que no sea necesario escribir <span
+  class="palabra">case</span> con cada etiqueta, asociando una lista de
+  etiquetas a una sola palabra:</p>
+  <div class="plantilla-sintactica">
+  <div class="produccion">
+  <div class="produccion-encabezado">
+  SwitchLabel:
+  </div>
+  <div class="produccion-alternativas">
+  <p><span class="terminal">case</span> CaseConstant {<span
+  class="terminal">,</span> CaseConstant}<br> <span
+  class="terminal">default</span></p>
+  </div>
+  </div>
+  </div>
+  <p>Lo que hace que el código pueda escribirse como:</p>
   <pre class="codigo-java">
   switch (diasemana) {
       case 1, 2, 3, 4, 5:
@@ -3336,7 +3349,7 @@
   }
   </pre>
   <p>Análogamente, podemos prescindir de <span
-  class="palabra">case</span> usando el operador flecha (<span
+  class="palabra">break</span> usando el operador flecha (<span
   class="literal">-&gt;</span>):</p>
   <pre class="codigo-java">
   switch (diasemana) {
@@ -3345,7 +3358,7 @@
       default -> laborable = false;
   }
   </pre>
-  <p>Para ello debemos modificar ligeramente nuestra plantilla:</p>
+  <p>Para ello, de nuevo, modificamos ligeramente nuestra plantilla:</p>
   <div class="plantilla-sintactica">
   <div class="produccion">
   <div class="produccion-encabezado">
@@ -3420,8 +3433,9 @@
   </div>
   </div>
   <p>Dentro del bloque escribiremos la sentencia <strong>yield</strong>
-  que incluye dicha palabra contextual, seguida de una expresión, valor
-  a devolver por la sentencia <span class="palabra">switch</span>.</p>
+  que incluye dicha palabra contextual, seguida de una expresión, el
+  valor a devolver por la sentencia <span
+  class="palabra">switch</span>.</p>
   <pre class="codigo-java">
   int precioFinal = switch ( dia ) {
       case 1, 2, 3, 4 -> 5; // sentencia
