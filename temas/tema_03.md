@@ -1090,7 +1090,7 @@ Las clases envolventes son, en esencia, clases diseñadas para actuar como un co
 
 Java convierte automáticamente de un tipo primitivo a un objeto de la clase envolvente equivalente, **boxing**, y viceversa, **unboxing**. Debemos tener en cuenta que solo es posible la conversión entre tipos equivalentes, es decir, que no podemos, por ejemplo, convertir un <span class="palabra">int</span> en <span class="clase">Byte</span>. Y aunque podamos hacer el *cast* entre tipos primitivos, ello tampoco es posible entre objetos de las clases envolventes.
 
-Estas clases, además, nos proporcionan constantes y métodos asociados a los tipos primitivos que representan como: <span class="clase">Integer</span><span class="operador">.</span><span class="costante">MIN_VALUE</span> e <span class="clase">Integer</span><span class="operador">.</span><span class="costante">MAX_VALUE</span>, los valores enteros menor y mayor representables en Java.
+Estas clases, además, nos proporcionan constantes y métodos asociados a los tipos primitivos que representan como: <span class="clase">Integer</span><span class="operador">.</span><span class="constante">MIN_VALUE</span> e <span class="clase">Integer</span><span class="operador">.</span><span class="constante">MAX_VALUE</span>, los valores enteros menor y mayor representables en Java.
 
 En el ámbito de la conversión de tipos, su utilidad reside en la capacidad para transformar información textual en valores operativos para el ordenador. Dado que muchas operaciones de entrada de datos devuelven los resultados en forma de un objeto <span class="clase">String</span>, el programador debe recurrir a métodos específicos. Métodos como <span class="clase">Integer</span><span class="operador">.</span><span class="metodo">parseInt</span> o <span class="clase">Double</span><span class="operador">.</span><span class="metodo">parseDouble</span> permiten analizar el contenido de una cadena y obtener su valor numérico. Es vital validar estas operaciones , pues si el texto analizado no representa un número válido (por ejemplo, intentar convertir "Hola" a un entero), el sistema interrumpirá el flujo de control una excepción de tipo <span class="clase">NumberFormatException</span>.
 
@@ -1234,7 +1234,7 @@ import static java.lang.Math.pow;
 import static java.lang.Math.*;
 </pre>
 
-Una vez declarada la importación al inicio de nuestro fichero, ya no es necesario calificar los métodos con el nombre de la clase: podemos escribir ecuaciones complejas con una sintaxis limpia y natural (como <span class="nosalto">sqrt(pow(ladoA, 2) + pow(ladoB, 2))</span>), que es más claro, mejorando la legibilidad.
+Una vez declarada la importación al inicio de nuestro fichero, ya no es necesario calificar los métodos con el nombre de la clase: podemos escribir ecuaciones complejas con una sintaxis limpia y natural (como <span class="nosalto codigo">sqrt(pow(ladoA, 2) + pow(ladoB, 2))</span>), que es más claro, mejorando la legibilidad.
 
 ### La biblioteca como herramienta de programación
 
@@ -1274,12 +1274,12 @@ System.out.println(edad);
 
 La mayoría de las sentencias individuales, como las del ejemplo, se denominan sentencias simples y se caracterizan de forma estricta por finalizar con el carácter **punto y coma** (<span class="literal">;</span>). El punto y coma indica al compilador que hemos terminado una sentencia: no actúa como un mero separador de instrucciones sino como un **token terminador obligatorio**. No debemos confundirlo con los operadores que hemos estudiado anteriormente. El punto y coma no realiza ninguna operación sobre los datos; simplemente marca el final de determinadas construcciones sintácticas. La sintaxis del lenguaje es lo suficientemente flexible como para permitir la inclusión de múltiples sentencias consecutivas dentro de una única línea física de código (como en la instrucción <span class="codigo"> i = 0; j = 5; x = i + j;</span>); pero se recomienda escribir cada sentencia en una única línea para favorecer la claridad y la legibilidad.
 
-Lo anterior puede llevarnos a asumir que cualquier expresión válida se transforma automáticamente en una sentencia por el simple hecho de añadirle un punto y coma al final. Esto no es así. Para que una expresión finalizada en punto y coma sea una sentencia legítima, esta debe albergar un significado operativo claro: debe desencadenar una acción concreta o un cambio de estado. Si intentamos añadir un punto y coma a una expresión como un literal aislado (<span class="literal">3.0;</span>), un identificador de variable (<span class="variable">numero;</span>) o una cadena de texto (<span class="literal">"hola";</span>), el compilador rechazará el código emitiendo un error de sintaxis.
+Lo anterior puede llevarnos a asumir que cualquier expresión válida se transforma automáticamente en una sentencia por el simple hecho de añadirle un punto y coma al final. Esto no es así. Para que una expresión finalizada en punto y coma sea una sentencia legítima, esta debe albergar un significado operativo claro: debe desencadenar una acción concreta o un cambio de estado. Si intentamos añadir un punto y coma a una expresión como un literal aislado (<span class="literal">3.0;</span>), un identificador de variable (<span class="variable">numero;</span>) o una cadena de texto (`"`<span class="literal">hola;</span>`"`), el compilador rechazará el código emitiendo un error de sintaxis.
 
 Java permite utilizar diferentes tipos de sentencias. Algunas ya las hemos utilizado, como las declaraciones, las asignaciones y las llamadas a métodos, según las plantillas sintácticas que vimos en el tema 2. En general, podemos distinguir, entre otras, las siguientes clases de sentencias:
 
 *   **Expresiones de asignación:** Aquellas cuyo operador principal es el de asignación (<span class="operador">=</span>). Almacenar o actualizar un valor en una variable representa una de las acciones más elementales que le podemos encomendar a una computadora. Resulta vital recordar que no se debe confundir el operador de asignación (<span class="operador">=</span>) con el de comparación de igualdad (<span class="operador">==</span>).
-*   **Invocaciones a métodos:** Llamar a un método de la biblioteca estándar es una acción en sí misma, independientemente de que el método devuelva o no un resultado. Ejemplos de ello son sentencias tan cotidianas como <span class="codigo">System.out.println("Hola");</span> o como <span class="codigo">Math.abs(3.0);</span>.
+*   **Invocaciones a métodos:** Llamar a un método de la biblioteca estándar es una acción en sí misma, independientemente de que el método devuelva o no un resultado. Ejemplos de ello son sentencias tan cotidianas como <span class="codigo">System.out.println(</span>`"`<span class="codigo">Hola</span>`"`<span class="codigo">);</span> o como <span class="codigo">Math.abs(3.0);</span>.
 *   **Sentencias de declaración:** Aquellas cuya finalidad es reservar un espacio en memoria para almacenar información. Al declarar una variable (como <span class="codigo">int x;</span>), le ordenamos al programa que compruebe el tipo de dato para determinar su tamaño exacto en memoria, busque una zona de almacenamiento físico que esté libre en ese instante y asocie de manera permanente dicho espacio con el identificador que hemos elegido.
 *   **Sentencias de flujo de control:** Su misión fundamental es gobernar el orden preciso y las condiciones específicas bajo las cuales deben ejecutarse las acciones individuales del código. Son las encargadas de dictar el comportamiento dinámico del programa ante la toma de decisiones (selección) y la repetición (bucles).
 
@@ -1488,7 +1488,7 @@ Una vez comprendido que la estructura secuencial constituye el esqueleto sobre e
 
 El fundamento de la selección reside en formular una proposición lógica, frecuentemente denominada aserción o **condición**. Una condición no es más que una expresión booleana —ya sea una simple comparación relacional o una compleja combinación de operadores lógicos— que, al ser procesada por el ordenador, produce de manera inequívoca uno de dos únicos valores posibles: verdadero o falso.
 
-<aside class="definición">
+<aside class="definicion">
 
 **Condición:** Proposición o sentencia lógica que, tras ser evaluada sintácticamente por el sistema, devuelve un valor de verdad (cierto o falso), sirviendo como base para la toma de decisiones en las estructuras de control.
 
@@ -1643,7 +1643,7 @@ else
          System.out.println("Suspenso");
 </pre>
 
-En este caso, tenemos una decisión pero, cuando la condición no se cumple, tenemos una nueva condición y esta, a su vez, otra. Esto no constituye de por sí una nueva sentencia ya que se obtiene encadenando decisiones: un <span class="palabra">if</span> dentro de la alternativa <span class="palabra">else</span> de otro <span class="palabra">if</span>. El anidamiento de condicionales introduce un desafío sintáctico y de diseño conocido  como el dilema del **else huérfano** (*dangling else*). Cuando escribimos condicionales anidados complejos puede surgir una ambigüedad aparente sobre a qué <span class="palabra">if</span> concreta pertenece un determinado <span class="palabra">if</span>. Para resolver esta incertidumbre el compilador aplica una regla de asociación sintáctica estricta: **un bloque <span class="palabra">else</span> siempre se asocia con el condicional <span class="palabra">if</span> más cercano y anterior que se encuentre dentro de su mismo bloque de código, siempre y cuando dicho <span class="palabra">if</span> no cuente ya con un <span class="palabra">if</span> asociado**. Recordad que el compilador ignora por completo los espacios en blanco, los retornos de línea y la indentación: alinear visualmente cada grupo **if-else** es fundamental pero, en casos en los que uno quede alejado del otro, puede intentar reflejar su intención lógica pero el código puede tener fallos lógicos difíciles de depurar; en esos casos, es mejor utilizar llaves.
+En este caso, tenemos una decisión pero, cuando la condición no se cumple, tenemos una nueva condición y esta, a su vez, otra. Esto no constituye de por sí una nueva sentencia ya que se obtiene encadenando decisiones: un <span class="palabra">if</span> dentro de la alternativa <span class="palabra">else</span> de otro <span class="palabra">if</span>. El anidamiento de condicionales introduce un desafío sintáctico y de diseño conocido  como el dilema del **else huérfano** (*dangling else*). Cuando escribimos condicionales anidados complejos puede surgir una ambigüedad aparente sobre a qué <span class="palabra">if</span> concreta pertenece un determinado <span class="palabra">if</span>. Para resolver esta incertidumbre el compilador aplica una regla de asociación sintáctica estricta: **un bloque else siempre se asocia con el condicional if más cercano y anterior que se encuentre dentro de su mismo bloque de código** (siempre y cuando dicho if no cuente ya con un else asociado). Recordad que el compilador ignora por completo los espacios en blanco, los retornos de línea y la indentación: alinear visualmente cada grupo **if-else** es fundamental pero, en casos en los que uno quede alejado del otro o algún <span class="palabra">if</span> no tenga <span class="palabra">else</span>, es mejor utilizar llaves para no tener fallos lógicos difíciles de depurar.
 
 #### Selección encadenada
 
@@ -1729,7 +1729,7 @@ SwitchLabel <span class="terminal">:</span> {SwitchLabel <span class="terminal">
 <div class="produccion">
 <div class="produccion-encabezado">SwitchLabel:</div>
 <div class="produccion-alternativas">
-<span class="terminal">case</span> CaseConstant {<span class="terminal">,</span> CaseConstant}<br>
+<span class="terminal">case</span> CaseConstant<br>
 <span class="terminal">default</span>
 </div>
 </div>
@@ -1737,6 +1737,7 @@ SwitchLabel <span class="terminal">:</span> {SwitchLabel <span class="terminal">
 <div class="produccion-encabezado">CaseConstant:</div>
 <div class="produccion-alternativas">
 ConditionalExpression
+</div>
 </div>
 </div>
 
@@ -1814,7 +1815,19 @@ En el siguiente apartado estudiaremos la otra gran estructura de control: la **r
 
 #### Switch expressions
 
-En Java 12 se introdujo esta sentencia como expresión, denominada [**switch expressions**](https://docs.oracle.com/en/java/javase/13/language/switch-expressions.html), que se implantó como definitivo en Java 14, y que modifica este modo tradicional de la sentencia para hacerla más limpia y compacta. Ya en la plantilla sintáctica podemos ver cómo no es necesario escribir <span class="palabra">case</span> para cada etiqueta: podemos asociar una lista de etiquetas a una sola palabra:
+En Java 12 se introdujo la posibilidad de usar esta construcción como una expresión, denominada [**switch expressions**](https://docs.oracle.com/en/java/javase/13/language/switch-expressions.html), que se implantó como algo definitivo en Java 14, y que modifica este modo tradicional de la sentencia para hacerla más limpia y compacta. Podemos modificar ligeramente la plantilla sintáctica para que no sea necesario escribir <span class="palabra">case</span> con cada etiqueta, asociando una lista de etiquetas a una sola palabra:
+
+<div class="plantilla-sintactica">
+<div class="produccion">
+<div class="produccion-encabezado">SwitchLabel:</div>
+<div class="produccion-alternativas">
+<span class="terminal">case</span> CaseConstant {<span class="terminal">,</span> CaseConstant}<br>
+<span class="terminal">default</span>
+</div>
+</div>
+</div>
+
+Lo que hace que el código pueda escribirse como:
 
 <pre class="codigo-java">
 switch (diasemana) {
@@ -1829,7 +1842,7 @@ switch (diasemana) {
 }
 </pre>
 
-Análogamente, podemos prescindir de <span class="palabra">case</span> usando el operador flecha (<span class="literal">-&gt;</span>):
+Análogamente, podemos prescindir de <span class="palabra">break</span> usando el operador flecha (<span class="literal">-&gt;</span>):
 
 <pre class="codigo-java">
 switch (diasemana) {
@@ -1839,7 +1852,7 @@ switch (diasemana) {
 }
 </pre>
 
-Para ello debemos modificar ligeramente nuestra plantilla:
+Para ello, de nuevo, modificamos ligeramente nuestra plantilla:
 
 <div class="plantilla-sintactica">
 <div class="produccion">
@@ -1905,7 +1918,7 @@ YieldStatement
 </div>
 </div>
 
-Dentro del bloque escribiremos la sentencia **yield** que incluye dicha palabra contextual, seguida de una expresión, valor a devolver por la sentencia <span class="palabra">switch</span>.
+Dentro del bloque escribiremos la sentencia **yield** que incluye dicha palabra contextual, seguida de una expresión, el valor a devolver por la sentencia <span class="palabra">switch</span>.
 
 <pre class="codigo-java">
 int precioFinal = switch ( dia ) {
