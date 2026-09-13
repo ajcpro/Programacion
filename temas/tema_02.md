@@ -267,11 +267,11 @@ Veamos una posible plantilla sintáctica para un programa en Java:
 </div>
 </div>
 
-Los datos en cursiva indican que son no terminales: referencias a otra producción. La definición del mismo viene seguida de dos puntos. Si la encontramos rodeada de unas llaves, indica que puede aparecer varias veces (incluida ninguna). Si no está en bastardilla[^8], significa que es un símbolo terminal, como en el ejemplo lo son la palabra ***class*** y las llaves, que deben aparecer en el código tal cual.
+Los datos en cursiva indican que son no terminales: referencias a otra producción. La definición del mismo viene seguida de dos puntos. Si la encontramos rodeada de unas llaves, indica que puede aparecer varias veces (incluida ninguna). Si no está en bastardilla[^8], significa que es un símbolo terminal, como en el ejemplo lo son la palabra <span class="palabra">class</span> y las llaves, que deben aparecer en el código tal cual.
 
 Una aplicación Java puede comenzar, opcionalmente, por una serie de declaraciones de importación. Como se indicó, un lenguaje orientado a objetos (como Java) proporciona una biblioteca muy grande con objetos disponibles para que los usemos en nuestros programas. La biblioteca de Java contiene tantos, de hecho, que deben organizarse en grupos más pequeños llamados **paquetes**. Las declaraciones de importación le dicen al compilador de Java qué paquetes de la biblioteca usa nuestro programa. Veremos cómo escribir declaraciones de importación en breve pero, primero, continuemos nuestro examen de esta plantilla sintáctica.
 
-La siguiente línea puede comenzar opcionalmente con una serie de modificadores de clase, que van seguidos de la palabra ***class*** y un identificador. Esta línea se denomina encabezado de la clase. Una aplicación en Java es una colección de elementos que se agrupan en una **clase**. El encabezado le da a la clase un nombre (el identificador) y puede opcionalmente especificar algunas propiedades generales de la clase (los modificadores de clase). Definiremos los modificadores de clase más adelante pero veamos cómo es un identificador:
+La siguiente línea puede comenzar opcionalmente con una serie de modificadores de clase, que van seguidos de la palabra <span class="palabra">class</span> y un identificador. Esta línea se denomina encabezado de la clase. Una aplicación en Java es una colección de elementos que se agrupan en una **clase**. El encabezado le da a la clase un nombre (el identificador) y puede opcionalmente especificar algunas propiedades generales de la clase (los modificadores de clase). Definiremos los modificadores de clase más adelante pero veamos cómo es un identificador:
 
 <div class="plantilla-sintactica">
 <div class="produccion">

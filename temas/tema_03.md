@@ -45,12 +45,13 @@ css: ["../estilos/estilo.css", "../estilos/tema_03.css"]
 <li><a href="#bloques-y-ámbito">Bloques y ámbito</a></li>
 </ul>
 </li>
-<li><a href="#el-flujo-de-ejecución">El flujo de ejecución</a>
+<li><a href="#flujo-de-control">Flujo de control</a>
 <ul>
 <li><a href="#concepto-de-flujo-de-control">Concepto de flujo de control</a></li>
-<li><a href="#estructuras-secuenciales">Estructuras secuenciales</a></li>
+<li><a href="#estructuras-de-control">Estructuras de control</a></li>
 </ul>
 </li>
+<li><a href="#secuencia">Secuencia</a></li>
 <li><a href="#selección">Selección</a>
 <ul>
 <li><a href="#selección-simple">Selección simple</a></li>
@@ -111,9 +112,10 @@ css: ["../estilos/estilo.css", "../estilos/tema_03.css"]
 * [Instrucciones](#instrucciones)
     * [Sentencias](#sentencias)
     * [Bloques y ámbito](#bloques-y-ámbito)
-* [El flujo de ejecución](#el-flujo-de-ejecución)
+* [Flujo de control](#flujo-de-control)
     * [Concepto de flujo de control](#concepto-de-flujo-de-control)
-    * [Estructuras secuenciales](#estructuras-secuenciales)
+    * [Estructuras de control](#estructuras-de-control)
+* [Secuencia](#secuencia)
 * [Selección](#selección)
     * [Selección simple](#selección-simple)
     * [Selección compuesta](#selección-compuesta)
@@ -1021,6 +1023,57 @@ int convertido = (int)3.1416;
 
 A efectos prácticos, aunque no lo es, podéis considerarlo un operador cuya precedencia se situaría entre los operadores unarios y los aritméticos multiplicativos. 
 
+<div class="plantilla-sintactica">
+<div class="produccion">
+<div class="produccion-encabezado">UnaryExpression:</div>
+<div class="produccion-alternativas">
+<span class="terminal">+</span> Expression<br>
+<span class="terminal">-</span> Expression<br>
+UnaryExpressionNotPlusMinus
+</div>
+</div>
+<div class="produccion">
+<div class="produccion-encabezado">UnaryExpressionNotPlusMinus:</div>
+<div class="produccion-alternativas">
+CastExpression
+</div>
+</div>
+<div class="produccion">
+<div class="produccion-encabezado">CastExpression:</div>
+<div class="produccion-alternativas">
+<span class="terminal">(</span> PrimitiveType <span class="terminal">)</span>  UnaryExpression
+</div>
+</div>
+<div class="produccion">
+<div class="produccion-encabezado">PrimitiveType:</div>
+<div class="produccion-alternativas">
+NumericType<br>
+<span class="terminal">boolean</span>
+</div>
+</div>
+<div class="produccion">
+<div class="produccion-encabezado">NumericType:</div>
+<div class="produccion-alternativas">
+IntegralType<br>
+FloatingPointType
+</div>
+</div>
+<div class="produccion">
+<div class="produccion-encabezado">IntegralType:</div>
+<div class="produccion-alternativas">
+(one of)<br>
+<span class="terminal">byte short int long char</span>
+</div>
+</div>
+<div class="produccion">
+<div class="produccion-encabezado">FloatingPointType:</div>
+<div class="produccion-alternativas">
+(one of)<br>
+<span class="terminal">float double</span>
+</div>
+</div>
+</div>
+
 Al realizar un *cast*, el programador asume la responsabilidad total de la operación, informando al compilador de que es consciente del riesgo y de que la mezcla de tipos es intencionada. El uso de la conversión explícita conlleva consecuencias críticas en la integridad de los datos que debemos conocer para evitar errores lógicos:
 
 * **Truncamiento de decimales:** Cuando se convierte un número real (como un <span class="palabra">double</span> o <span class="palabra">float</span>) a un tipo entero (<span class="palabra">int</span>, <span class="palabra">long</span>, etc.), Java no realiza un redondeo matemático al valor más cercano; en su lugar, trunca: elimina la parte fraccionaria. Por ejemplo, realizar un *cast* a entero del valor 3.99 producirá como resultado el número entero 3.
@@ -1230,7 +1283,17 @@ Java permite utilizar diferentes tipos de sentencias. Algunas ya las hemos utili
 *   **Sentencias de declaración:** Aquellas cuya finalidad es reservar un espacio en memoria para almacenar información. Al declarar una variable (como <span class="codigo">int x;</span>), le ordenamos al programa que compruebe el tipo de dato para determinar su tamaño exacto en memoria, busque una zona de almacenamiento físico que esté libre en ese instante y asocie de manera permanente dicho espacio con el identificador que hemos elegido.
 *   **Sentencias de flujo de control:** Su misión fundamental es gobernar el orden preciso y las condiciones específicas bajo las cuales deben ejecutarse las acciones individuales del código. Son las encargadas de dictar el comportamiento dinámico del programa ante la toma de decisiones (selección) y la repetición (bucles).
 
-En cualquier lugar físico o lógico del código donde la sintaxis formal del lenguaje permita ubicar una única sentencia individual, el programador tiene la facultad de colocar un conjunto agrupado de sentencias. Para que el grupo funcione como una sola unidad lógica de acción, es preciso delimitarlo mediante un símbolo contenedor especial; en el caso de Java, esta delimitación estructural se realiza de forma estricta mediante el uso de llaves de apertura y cierre (<span class="literal">{ }</span>). A esta agrupación se la denomina **bloque** de código.
+#### Sentencia compuesta
+
+Una sentencia simple representa una única acción del programa y, como hemos visto, normalmente termina con un punto y coma. Sin embargo, en muchas ocasiones, necesitamos ejecutar no una única sentencia, sino un conjunto de ellas, como si fueran una sola. En la mayoría de los lenguajes podemos agrupar sentencias delimitándo dicha agrupación mediante palabras reservadas, símbolos especiales o mediante indentación[^17]. A estas de agrupaciones de sentencias se las demonima **sentencias compuestas**.
+
+<aside class="definicion">
+
+**Sentencia compuesta:** Conjunto de sentencias agrupadas dentro de un bloque de código, que puede utilizarse sintácticamente como una única sentencia.
+
+</aside>
+
+En el el caso de Java, en cualquier lugar físico o lógico del código donde la sintaxis formal del lenguaje permita ubicar una única sentencia individual, el programador tiene la facultad de colocar una sentencia compuesta. Es preciso delimitarla mediante el uso de llaves de apertura y cierre (<span class="literal">{ }</span>). La agrupación se denomina **bloque** de código.
 
 <pre class="codigo-java">
 {
@@ -1240,10 +1303,11 @@ En cualquier lugar físico o lógico del código donde la sintaxis formal del le
 }
 </pre>
 
+Ya vimos en la unidad anterior la plantilla sintáctica <span class="produccion-palabra">Block</span>, que se utiliza para definir el bloque de código. La importancia de la sentencia compuesta se apreciará especialmente al utilizar sentencias de control.
 
 ### Bloques y ámbito
 
-Un bloque es una secuencia de cero o más sentencias encerrada entre llaves (<span class="literal">{ }</span>). Su cometido es agrupar lógicamente varias instrucciones para que actúen como una única unidad de acción. Debido a que un bloque puede ser ubicado en cualquier lugar del código donde las reglas del lenguaje lo permitan, la indentación o sangrado del código en el interior de las llaves no es un mero capricho estético: es una práctica metodológica fundamental que permite, al lector, identificar de un solo vistazo el inicio y el fin de cada bloque, previniendo la omisión accidental de las llaves, lo que podría alterar de manera drástica el significado semántico y el comportamiento dinámico del programa durante su ejecución. Además, dado que un bloque contiene un grupo de sentencias, cualquiera de las mismas puede ser sustituida, a su vez, por un bloque, lo que se conoce como  **bloques anidados**.  La anidación exige que cualquier bloque interno se cierre de forma completa mediante su llave correspondiente antes de que pueda cerrarse el bloque exterior que lo contiene.
+El cometido de una sentencia compuesta es agrupar lógicamente varias instrucciones para que actúen como una única unidad de acción. Debido a que puede ser ubicada en cualquier lugar del código donde las reglas del lenguaje lo permitan, la indentación o sangrado del código en su interior no es un mero capricho estético: es una práctica metodológica fundamental que permite, al lector, identificar de un solo vistazo el inicio y el fin de cada sentencia, previniendo, -por ejemplo en Java- la omisión accidental de las llaves, lo que podría alterar de manera drástica el significado semántico y el comportamiento dinámico del programa durante su ejecución. En lenguajes como Java además, cualquiera de las sentencias que un bloque contiene puede ser sustituida, a su vez, por un bloque, lo que se conoce como  **bloques anidados**.  La anidación exige que cualquier bloque interno se cierre de forma completa mediante su llave correspondiente antes de que pueda cerrarse el bloque exterior que lo contiene.
 
 <pre class="codigo-java">
 {
@@ -1316,7 +1380,7 @@ Podemos representar esta relación de una forma sencilla:
 
 Desde el ámbito interior podemos utilizar las declaraciones disponibles en él y las de los ámbitos exteriores que lo contienen. Pero desde un ámbito exterior no podemos utilizar una declaración que solo exista dentro de uno de sus bloques interiores. Esta regla permite que diferentes partes de un programa utilicen nombres sin interferir innecesariamente entre sí. Podemos declarar una variable que solo necesitemos durante una parte concreta de un algoritmo y limitar su uso a ese lugar. El ámbito viene determinado por las reglas sintácticas del lenguaje y por el lugar donde se realiza la declaración.
 
-## **Flujo de control**
+## Flujo de control
 
 Hasta ahora hemos visto nuestros programas como algo estrictamente lineal. El ordenador se ha limitado a actuar como un ejecutor pasivo que procesa una instrucción tras otra, siguiendo el  orden en el que las sentencias fueron escritas. Este esquema, aunque resulta intuitivo y constituye la base de cualquier proceso algorítmico, presenta una limitación operativa: no puede adaptarse a la variabilidad del mundo real. No basta con conocer las instrucciones que debe realizar un programa: también es necesario determinar **en qué orden deben ejecutarse**.
 
@@ -1359,7 +1423,7 @@ Para lograr esta ejecución no secuencial, los lenguajes de programación propor
 
 ### Estructuras de control
 
- Una **estructura de control** es una sentencia diseñada específicamente para alterar el flujo ordinario de la aplicación, transfiriendo de manera deliberada el control del programa a una instrucción distinta de aquella que físicamente vendría a continuación en el archivo de texto. De acuerdo con el teorema del programa estructurado de Böhm–Jacopini, cualquier algoritmo puede ser implementado combinandosólo tres tipos de estructuras de control fundamentales:
+Una **estructura de control** es una sentencia diseñada específicamente para alterar el flujo ordinario de la aplicación, transfiriendo de manera deliberada el control del programa a una instrucción distinta de aquella que físicamente vendría a continuación en el archivo de texto. De acuerdo con el teorema del programa estructurado de Böhm–Jacopini, cualquier algoritmo puede ser implementado combinandosólo tres tipos de estructuras de control fundamentales:
 
 *   **La estructura secuencial o secuencia:** Representa la ejecución lineal por defecto, donde las sentencias se ejecutan una después de otra en el orden en que aparecen.
 *   **La estructura condicional o de selección:** Permite decidir, en función de si alguna condición es verdadera o falsa, qué instrucciones ejecutar.
@@ -1369,7 +1433,7 @@ Adicionalmente, los lenguajes modernos de alto nivel añaden formas más avanzad
 
 El dominio del **flujo de control** y la capacidad para trazar la ejecución del código constituyen el pilar fundamental sobre el que se construye un software eficiente, predecible y libre de fallos.
 
-## Estructuras secuenciales
+## Secuencia
 
 La **estructura secuencial** constituye el punto de partida y la forma más elemental de organizar las instrucciones dentro de un programa. Una secuencia representa un conjunto ordenado de una o más sentencias que la máquina ejecuta, una tras otra, siguiendo el mismo orden en el que están dispuestas en el código fuente. La ejecución comienza en la primera instrucción y continúa con la siguiente hasta alcanzar la última. Por ejemplo:
 
@@ -1420,13 +1484,442 @@ En la sintaxis de Java, las sentencias simples que integran una secuencia se del
 
 ## Selección
 
+Una vez comprendido que la estructura secuencial constituye el esqueleto sobre el cual se disponen las instrucciones simples en el orden de su escritura, que se revela del todo insuficiente para nuestros programas, es el momento de dotarlos de la capacidad de responder y adaptarse dinámicamente a diferentes situaciones. Para que una aplicación sea verdaderamente útil e inteligente, debe abandonar la rigidez de la ejecución lineal y adquirir la facultad de tomar decisiones autónomas basadas en el estado cambiante de sus datos en tiempo de ejecución. Esta capacidad de modificar el flujo de control de un programa haciendo que determinadas instrucciones se ejecuten o no, o escogiendo entre diferentes conjuntos de instrucciones, es lo que denominamos **estructura selectiva** e implementamos de manera formal en el código mediante la estructura de **selección** o condicional.
+
+El fundamento de la selección reside en formular una proposición lógica, frecuentemente denominada aserción o **condición**. Una condición no es más que una expresión booleana —ya sea una simple comparación relacional o una compleja combinación de operadores lógicos— que, al ser procesada por el ordenador, produce de manera inequívoca uno de dos únicos valores posibles: verdadero o falso.
+
+<aside class="definición">
+
+**Condición:** Proposición o sentencia lógica que, tras ser evaluada sintácticamente por el sistema, devuelve un valor de verdad (cierto o falso), sirviendo como base para la toma de decisiones en las estructuras de control.
+
+</aside>
+
+Es importante destacar que la toma de decisiones en programación no añade nuevas operaciones físicas al hardware: altera de forma dinámica el código que ejecuta la máquina. Al introducir estructuras de selección, el código que escribimos deja de ser lineal y pasa a convertirse en una red de alternativas lógicas. La computadora elegirá el flujo de control adecuado según las condiciones establecidas por el programador. Esta versatilidad no solo es la clave para la resolución de problemas prácticos complejos, sino que también representa el pilar básico para construir programas robustos, capaces de validar datos de entrada erróneos o inesperados, reaccionar de manera controlada ante fallos y comportarse de forma coherente durante la actividad ordinaria de la aplicación.
+
 ### Selección simple
+
+La **selección simple** es la estructura de decisión más elemental y fundamental de la que dispone un lenguaje de programación para alterar de forma condicionada el **flujo de control** de una aplicación. Conocida técnicamente como bifurcación condicional de una única rama, esta estructura permite al programador condicionar la ejecución de una sentencia o bloque de instrucciones a que una proposición lógica concreta resulte ser verdadera. Si, al evaluar dicha aserción, el resultado obtenido es verdadero, el ordenador detendrá momentáneamente su avance lineal para ejecutar la acción indicada en la bifurcación; por el contrario, si la condición se evalúa como falsa, la computadora la ignorará por completo y continuará la ejecución en la sentencia secuencial que se encuentre físicamente a continuación del condicional. En resumen, se ejecutará una sentencia **solo cuando se cumple una determinada condición**.
+
+<figure class="img-lateral-dch">
+    <img src="../imagenes/03_05_seleccion-simple.png" alt="Flujo de control de una selección simple">
+</figure>
+
+Sintácticamente, la selección simple se implementa en Java mediante el uso de la palabra reservada <span class="palabra">if</span>, seguida de una expresión booleana encerrada entre paréntesis. La plantilla sintáctica general de esta instrucción responde al siguiente esquema:
+
+<div class="plantilla-sintactica">
+<div class="produccion">
+<div class="produccion-encabezado">Statement:</div>
+<div class="produccion-alternativas">
+StatementWithoutTrailingSubstatement<br>
+IfThenStatement
+</div>
+</div>
+<div class="produccion">
+<div class="produccion-encabezado">IfThenStatement:</div>
+<div class="produccion-alternativas">
+<span class="terminal">if</span> <span class="terminal">(</span> Expression <span class="terminal">)</span> Statement
+</div>
+</div>
+</div>
+
+Por ejemplo, supongamos que queremos mostrar un mensaje únicamente cuando una persona sea mayor de edad:
+
+<pre class="codigo-java">
+int edad = 20;
+
+if ( edad >= 18 ) {
+    System.out.println("Es mayor de edad");
+}
+</pre>
+
+El ordenador comienza ejecutando la asignación de <span class="variable">edad</span>. Cuando llega a la sentencia <span class="palabra">if</span>, evalúa la expresión <span class="codigo">edad >= 18</span>. Si el resultado es <span class="literal">true</span>, ejecuta la sentencia contenida dentro del bloque. Si el resultado es <span class="literal">false</span>, no ejecuta el bloque y continuaría con la siguiente instrucción.
+
+* **La expresión de control o condición**: El contenido entre los paréntesis debe ser una expresión booleana (verdadero o falso). Aunque otros lenguajes puedan permitirlo, Java es fuertemente tipado y solo acepta un valor booleano: el compilador indicará que hay un error de tipo.
+* **El cuerpo de la estructura**: Representa la sentencia o conjunto de sentencias que quedan supeditadas al éxito de la condición. La plantilla declara la sentencia condicional <span class="produccion-palabra">IfThenStatement</span> introduciendo <span class="produccion-palabra">Statement</span> para el caso en que se cumpla la condición: si el cuerpo consta de una única sentencia simple finalizada en punto y coma, la sintaxis de Java permite omitir las llaves delimitadoras; si se requiere ejecutar una secuencia compuesta por más de una instrucción, es imperativo agruparlas dentro de un **bloque de código**.
+
+Desde una perspectiva metodológica y de calidad del software, muchas guías de estilo modernas recomiendan utilizar siempre bloques, incluso cuando el cuerpo de la estructura tenga una única sentencia[^18]. Un error clásico consiste en añadir una instrucción a un cuerpo que carece de llaves, asumiendo erróneamente que ambas quedarán bajo el control de la condición; en realidad, el compilador interpretará que solo la primera sentencia está condicionada y la segunda se ejecutará siempre.
+
+Importante también tener en cuenta un error sintáctico sumamente común y de difícil detección: insertar accidentalmente un **punto y coma tras el paréntesis de cierre** de la condición: el compilador no emite ningún mensaje de error porque interpreta que el cuerpo es la **sentencia nula**, representada por ese punto y coma. Consideremos el siguiente código:
+
+<pre class="codigo-java">
+int divisor = obtenerDivisor(); // Devuelve un entero
+double resultado = 0.0;
+
+// Hacemos uso de la selección simple para reaccionar ante una entrada anómala
+if ( divisor == 0 );
+    System.out.println("Advertencia: El divisor proporcionado es cero.");
+</pre>
+
+Resultan irrelevantes el valor  de <span class="variable">divisor</span> y la indentación: siempre se imprimirá la advertencia.
 
 ### Selección compuesta
 
+La práctica real de la resolución de problemas nos plantea con frecuencia escenarios donde es necesario elegir entre dos alternativas de acción mutuamente excluyentes. La selección simple permite actuar cuando una condición es verdadera pero, en muchos problemas, necesitamos hacer algo diferente cuando la condición es falsa. Imaginemos que, ampliando el ejemplo anterior, queremos también saber si la persona es menor de edad; en definitiva, es lo mismo que decir que no es mayor de edad:
+
+<pre class="codigo-java">
+int edad = 16;
+
+if ( edad >= 18 )
+    System.out.println("Es mayor de edad");
+if ( ! (edad >= 18) ) // edad < 18
+    System.out.println("Es menor de edad");
+</pre>
+
+
+<figure class="img-lateral-dch">
+    <img src="../imagenes/03_06_decision.png" alt="Flujo de control de una decisión">
+</figure>
+
+Hemos escrito la condición de esa manera para significar que necesitamos replicar la sentencia condicional pero negada. Para simplificar esta cicunstancia, surge la denominada **selección compuesta** o bifurcación condicional de dos ramas.
+
+<div class="plantilla-sintactica">
+<div class="produccion">
+<div class="produccion-encabezado">Statement:</div>
+<div class="produccion-alternativas">
+StatementWithoutTrailingSubstatement<br>
+IfThenStatement<br>
+IfThenElseStatement
+</div>
+</div>
+<div class="produccion">
+<div class="produccion-encabezado">IfThenElseStatement:</div>
+<div class="produccion-alternativas">
+<span class="terminal">if</span> <span class="terminal">(</span> Expression <span class="terminal">)</span> Statement <span class="terminal">else</span> Statement
+</div>
+</div>
+</div>
+
+Ahora el flujo de control tiene dos caminos posibles. Si la condición es verdadera, se ejecuta el primer bloque; si es falsa, se ejecuta el segundo:
+
+1. **Evaluación de la expresión de control**: Se evalúa la condición booleana encerrada entre los paréntesis: un valor booleano (verdadero o falso).
+2. **Bifurcación del camino:**
+* Si el resultado de la evaluación de la condición es verdadero, el ordenador transfiere inmediatamente el control a la primera sentencia ( denominado cláusula ***then***). Una vez completada la ejecución el flujo de control continua en la primera sentencia ubicada después de la estructura condicional completa.
+* Si la condición se evalúa como falsa, el flujo de control continua con la segunda sentencia (conocida como cláusula ***else***); y después. con la primera sentencia ubicada después de la estructura condicional completa.
+
+A diferencia de la selección simple, en este caso **siempre se ejecuta una de las sentencias**. Ambas sentencias son **excluyentes**: la estructura garantiza que se procesará una o la otra, nunca ambas en una misma evaluación de la condición.
+
+<aside class="definicion">
+
+**Selección simple:** Estructura de control que permite ejecutar una sentencia si una determinada condición se cumple.
+
+**Selección compuesta**: Estructura de control que permite escoger entre dos alternativas dependiendo de si una condición es verdadera o falsa.
+
+</aside>
+
+Esta estructura se denomina también **decisión** porque permite escoger entre dos alternativas en función del resultado de una condición.
+
+Observemos en la plantilla que tanto la parte asociada al <span class="palabra">if</span> como la asociada al <span class="palabra">else</span> son sintácticamente una <span class="produccion-palabra">Statement</span>. Por tanto, ambas pueden ser una sentencia simple o un bloque de código. Que volviendo a lo que comentábamos antes, muchas guías de estilo recomiendan usar siempre llaves, cosa que, si se hace, debe hacerse en ambos casos.
+
+#### Operador condicional o ternario
+
+<div class="plantilla-sintactica">
+<div class="produccion">
+<div class="produccion-encabezado">ConditionalExpression:</div>
+<div class="produccion-alternativas">
+ConditionalOrExpression<br>
+ConditionalOrExpression <span class="terminal">?</span> Expression <span class="terminal">:</span> ConditionalExpression
+</div>
+</div>
+</div>
+
 ### Selección múltiple
 
-### Lógica de anidamiento
+#### Anidación
+
+En ocasiones, un problema no tiene únicamente dos alternativas. Es habitual encontrarnos con situaciones en las que la toma de decisiones no siempre se presenta como un conjunto de opciones simples dispuestas en un único nivel. Con frecuencia, la resolución de un problema exige evaluar condiciones secundarias que dependen estrictamente del resultado de una evaluación condicional previa. Es en estos escenarios donde cobra pleno sentido la **anidación** (*nesting*). Se considera que una estructura está anidada cuando se ubica físicamente en el cuerpo o rama de otra estructura.
+
+Supongamos que queremos clasificar una calificación:
+
+<pre class="codigo-java">
+if (nota >= 9)
+    System.out.println("Sobresaliente");
+else
+   if (nota >= 7)
+      System.out.println("Notable");
+   else
+      if (nota >= 5)
+        System.out.println("Aprobado");
+      else
+         System.out.println("Suspenso");
+</pre>
+
+En este caso, tenemos una decisión pero, cuando la condición no se cumple, tenemos una nueva condición y esta, a su vez, otra. Esto no constituye de por sí una nueva sentencia ya que se obtiene encadenando decisiones: un <span class="palabra">if</span> dentro de la alternativa <span class="palabra">else</span> de otro <span class="palabra">if</span>. El anidamiento de condicionales introduce un desafío sintáctico y de diseño conocido  como el dilema del **else huérfano** (*dangling else*). Cuando escribimos condicionales anidados complejos puede surgir una ambigüedad aparente sobre a qué <span class="palabra">if</span> concreta pertenece un determinado <span class="palabra">if</span>. Para resolver esta incertidumbre el compilador aplica una regla de asociación sintáctica estricta: **un bloque <span class="palabra">else</span> siempre se asocia con el condicional <span class="palabra">if</span> más cercano y anterior que se encuentre dentro de su mismo bloque de código, siempre y cuando dicho <span class="palabra">if</span> no cuente ya con un <span class="palabra">if</span> asociado**. Recordad que el compilador ignora por completo los espacios en blanco, los retornos de línea y la indentación: alinear visualmente cada grupo **if-else** es fundamental pero, en casos en los que uno quede alejado del otro, puede intentar reflejar su intención lógica pero el código puede tener fallos lógicos difíciles de depurar; en esos casos, es mejor utilizar llaves.
+
+#### Selección encadenada
+
+Reescribamos el código anterior sin anidación y escribiendo cada <span class="palabra">if</span> justo a continuación del <span class="palabra">else</span> en el que se anida:
+
+<pre class="codigo-java">
+if (nota >= 9)
+    System.out.println("Sobresaliente");
+else if (nota >= 7)
+    System.out.println("Notable");
+else if (nota >= 5)
+    System.out.println("Aprobado");
+else
+    System.out.println("Suspenso");
+</pre>
+
+Podemos asimilar que en este caso tenemos varias condiciones y el ordenador las comprueba en orden. Si encuentra una condición verdadera, ejecuta el bloque correspondiente y continúa después de la estructura completa. Las condiciones posteriores no se evalúan.
+
+<figure class="img-lateral-dch">
+    <img src="../imagenes/03_07_seleccion-multiple.png" alt="Flujo de control de una selección múltiple">
+</figure>
+
+Esta forma de construir una selección se denomina estructura de selección encadenada o **if-else-if**. Aunque esta construcción no existe como una palabra reservada o sentencia independiente en la gramática formal del lenguaje, se presenta como un patrón de diseño y tabulación específico con entidad propia. El gran beneficio estético y metodológico de este estilo es que evita que el sangrado del código marche de forma continuada e indefinida hacia la derecha de la pantalla (*indentation march to the right*), lo que dificulta enormemente su lectura. En su lugar, el código se dispone de forma vertical y compacta, transmitiendo visualmente la idea de que estamos ante una bifurcación de múltiples caminos alternativos que se evalúan secuencialmente de arriba a abajo.
+
+### Selección múltiple con switch
+
+Existe otro tipo de problema de selección múltiple especialmente frecuente: necesitamos comparar el valor de una única variable o expresión con una serie extensa de valores concretos y mutuamente excluyentes. Es perfectamente válido resolver este escenario con una selección encadenada **if-else-if** pero puede volverse tedioso y propenso a errores. Una alternativa más limpia y legible es la estructura de selección múltiple conocida como sentencia **switch** (o sentencia **case**, según el lenguaje).
+
+Esta sentencia funciona, conceptualmente, como un conmutador que evalúa una única expresión de control y, en función de su resultado, deriva el **flujo de control** del programa directamente hacia el bloque de instrucciones que corresponde al valor coincidente. Por ejemplo, podemos mostrar el nombre de un día a partir de un número:
+
+<pre class="codigo-java">
+int dia = 3;
+
+switch (dia) {
+    case 1:
+        System.out.println("Lunes");
+        break;
+    case 2:
+        System.out.println("Martes");
+        break;
+    case 3:
+        System.out.println("Miércoles");
+        break;
+    default:
+        System.out.println("Día no válido");
+}
+</pre>
+
+La sentencia <span class="palabra">switch</span> evalúa una expresión y compara su resultado con los diferentes valores indicados mediante la palabra <span class="palabra">case</span>. Cuando encuentra una coincidencia, comienza la ejecución de las instrucciones asociadas a ese valor. La cláusula <span class="palabra">default</span> permite indicar qué debe ejecutarse cuando no se encuentra ninguna coincidencia.
+
+<figure class="img-lateral-dch">
+    <img src="../imagenes/03_08_switch.png" alt="Flujo de control de una selección múltiple mediante switch">
+</figure>
+
+<div class="plantilla-sintactica">
+<div class="produccion">
+<div class="produccion-encabezado">StatementWithoutTrailingSubstatement:</div>
+<div class="produccion-alternativas">
+Block<br>
+EmptyStatement<br>
+ExpressionStatement<br>
+SwitchStatement
+</div>
+</div>
+<div class="produccion">
+<div class="produccion-encabezado">SwitchStatement:</div>
+<div class="produccion-alternativas">
+<span class="terminal">switch</span> <span class="terminal">(</span> Expression <span class="terminal">)</span> SwitchBlock
+</div>
+</div>
+<div class="produccion">
+<div class="produccion-encabezado">SwitchBlock:</div>
+<div class="produccion-alternativas">
+<span class="terminal">{</span> {SwitchBlockStatementGroup} {SwitchLabel <span class="terminal">:</span>} <span class="terminal">}</span>
+</div>
+</div>
+<div class="produccion">
+<div class="produccion-encabezado">SwitchBlockStatementGroup:</div>
+<div class="produccion-alternativas">
+SwitchLabel <span class="terminal">:</span> {SwitchLabel <span class="terminal">:</span>} BlockStatements
+</div>
+</div>
+<div class="produccion">
+<div class="produccion-encabezado">SwitchLabel:</div>
+<div class="produccion-alternativas">
+<span class="terminal">case</span> CaseConstant {<span class="terminal">,</span> CaseConstant}<br>
+<span class="terminal">default</span>
+</div>
+</div>
+<div class="produccion">
+<div class="produccion-encabezado">CaseConstant:</div>
+<div class="produccion-alternativas">
+ConditionalExpression
+</div>
+</div>
+
+Vamos a analizar las reglas de diseño y restricciones sintácticas que el compilador de Java impone sobre cada uno de sus componentes:
+
+* **La expresión de control**: El valor situado entre los paréntesis, el **selector**, debe evaluar a un tipo de dato compatible con la estructura. Habitualmente, en función del lenguaje, esta expresión debe ser un tipo entero o un enumerado[^19]. En Java, además[^20], se permite el uso cadenas de texto (objetos de la clase <span class="clase">String</span>). Java prohíbe de forma explícita el uso de tipos numéricos de coma flotante o expresiones booleanas, aunque pueden ser válidas en otros lenguajes; en cualquier caso, no es recomendable su uso.
+* **La lista de etiquetas**: Cada uno de los caminos lógicos alternativos se define mediante la palabra reservada <span class="palabra">case</span> seguida de una expresión constante, denominada **etiqueta**, y el carácter de dos puntos (<span class="literal">:</span>). La restricción fundamental es que dicha etiqueta debe ser una **constante única conocida en tiempo de compilación**; no está permitido utilizar variables o condiciones lógicas. Además, no deben existir etiquetas duplicadas dentro de una misma estructura switch, garantizando así que no haya ambigüedad sobre qué camino debe tomar la ejecución.
+* **La cláusula por defecto**: Esta sección, identificada por la palabra reservada <span class="palabra">default</span>, actúa como un bloque de contingencia opcional. Las instrucciones contenidas en su interior solo se ejecutarán si el resultado de evaluar la expresión de control no coincide con ninguna de las constantes especificadas en las etiquetas case. Aunque su uso no es obligatorio, muchas fuentes recomiendan incluirla siempre identificar valores imprevistos o inconsistencias en los datos del sistema.
+
+Debemos prestar especial atención a que las instrucciones de una etiqueta no están delimitadas automáticamente por unas llaves. El aspecto más crítico y que requiere mayor atención es el comportamiento conocido como **efecto de caída o cascada** (*fall-through*)[^21]. Cuando se encuentra una coincidencia, el **flujo de control** realiza un salto directo a las instrucciones de esa rama. Sin embargo, a diferencia de lo que ocurre en las bifurcaciones if-else, el final del bloque no provoca la salida automática del condicional: la ejecución continuará discurriendo de forma secuencial, procesando y ejecutando las sentencias de los casos siguientes de manera ininterrumpida, sin importar que sus valores constantes no coincidan con la expresión de control.
+
+En el ejemplo anterior aparece además la sentencia <span class="palabra">break</span>. La llamada a sentencia especial, interrumpe de inmediato el procesamiento dentro del bloque y transfiere el flujo de control a la primera sentencia secuencial que se encuentre físicamente después de la llave de cierre de la estructura.
+
+<div class="plantilla-sintactica">
+<div class="produccion">
+<div class="produccion-encabezado">StatementWithoutTrailingSubstatement:</div>
+<div class="produccion-alternativas">
+Block<br>
+EmptyStatement<br>
+ExpressionStatement<br>
+SwitchStatement<br>
+BreakStatement
+</div>
+</div>
+<div class="produccion">
+<div class="produccion-encabezado">BreakStatement:</div>
+<div class="produccion-alternativas">
+<span class="terminal">break</span> <span class="terminal">;</span>
+</div>
+</div>
+
+Aunque existen lenguajes que no poseen esta característica, el efecto de caída no debe considerarse un defecto de diseño de Java, sino una potente característica sintáctica que, utilizada apropiadamente, permite agrupar múltiples etiquetas case para que desencadenen exactamente la misma acción. Consideremos el siguiente fragmento de código orientado a determinar si un día de la semana representado de forma numérica es laborable o no:
+
+<pre class="codigo-java">
+int diasemana = obtenerDiaDeLaSemana(); // Devuelve un entero entre 1 y 7
+boolean laborable;
+
+switch (diasemana) {
+    case 1:
+    case 2:
+    case 3:
+    case 4:
+    case 5:
+        laborable = true;
+        break;
+    case 6:
+    case 7:
+        laborable = false;
+        break;
+    default:
+        laborable = false;
+}
+</pre>
+
+En este escenario, si la variable <span class="variable">diasemana</span> vale <span class="literal">3</span> (Miércoles), el programa saltará directamente a la etiqueta <span class="literal">3</span>. Como esta cláusula carece de instrucciones y de sentencia <span clas="palabra">break</span>, la ejecución caerá secuencialmente a través de las etiquetas <span class="literal">4</span> y <span class="literal">5</span>, donde finalmente se asignará el valor <span class="literal">true</span> a la variable <span class="variable">laborable</span> antes de que la instrucción <span class="palabra">break</span> detenga de forma segura la caída y finalice el bloque.
+
+Desde el punto de vista del rendimiento del hardware, esta sentencia presenta una ventaja arquitectónica fundamental frente a las secuencias **if-else-if**. El compilador inspecciona las constantes de los casos y genera de forma interna una **tabla de saltos** (*jump table*)[^22] en el código. Gracias a la misma, no se necesita ir comparando uno a uno todos los valores, sino que puede saltar en un solo paso al camino de ejecución exacto en función del valor obtenido. Esto hace que sea una estructura extraordinariamente eficiente cuando el número de alternativas es elevado.
+
+Podemos tener una visión más compacta agrupando las etiquetas que dan lugar a la ejecución de las mismas sentencias; el código anterior podría haber sido escrito como:
+
+<pre class="codigo-java">
+switch (diasemana) {
+    case 1: case 2: case 3: case 4: case 5:
+        laborable = true;
+        break;
+    case 6: case 7:
+        laborable = false;
+        break;
+    default:
+        laborable = false;
+}
+</pre>
+
+En el siguiente apartado estudiaremos la otra gran estructura de control: la **repetición**, que permitirá que un mismo conjunto de instrucciones pueda ejecutarse varias veces.
+
+#### Switch expressions
+
+En Java 12 se introdujo esta sentencia como expresión, denominada [**switch expressions**](https://docs.oracle.com/en/java/javase/13/language/switch-expressions.html), que se implantó como definitivo en Java 14, y que modifica este modo tradicional de la sentencia para hacerla más limpia y compacta. Ya en la plantilla sintáctica podemos ver cómo no es necesario escribir <span class="palabra">case</span> para cada etiqueta: podemos asociar una lista de etiquetas a una sola palabra:
+
+<pre class="codigo-java">
+switch (diasemana) {
+    case 1, 2, 3, 4, 5:
+        laborable = true;
+        break;
+    case 6, 7:
+        laborable = false;
+        break;
+    default:
+        laborable = false;
+}
+</pre>
+
+Análogamente, podemos prescindir de <span class="palabra">case</span> usando el operador flecha (<span class="literal">-&gt;</span>):
+
+<pre class="codigo-java">
+switch (diasemana) {
+    case 1, 2, 3, 4, 5 -> laborable = true;
+    case 6, 7 -> laborable = false;
+    default -> laborable = false;
+}
+</pre>
+
+Para ello debemos modificar ligeramente nuestra plantilla:
+
+<div class="plantilla-sintactica">
+<div class="produccion">
+<div class="produccion-encabezado">SwitchBlock:</div>
+<div class="produccion-alternativas">
+<span class="terminal">{</span> SwitchRule {SwitchRule} <span class="terminal">}</span><br>
+<span class="terminal">{</span> {SwitchBlockStatementGroup} {SwitchLabel <span class="terminal">:</span>} <span class="terminal">}</span>
+</div>
+</div>
+<div class="produccion">
+<div class="produccion-encabezado">SwithRule:</div>
+<div class="produccion-alternativas">
+SwitchLabel <span class="terminal">-&gt;</span> Expression <span class="terminal">;</span><br>
+SwitchLabel <span class="terminal">-&gt;</span> Block
+</div>
+</div>
+</div>
+
+Sin embargo, hasta aquí aún no es una expresión:
+
+<div class="plantilla-sintactica">
+<div class="produccion">
+<div class="produccion-encabezado">UnaryExpressionNotPlusMinus:</div>
+<div class="produccion-alternativas">
+CastExpression<br>
+SwitchExpression
+</div>
+</div>
+<div class="produccion">
+<div class="produccion-encabezado">SwitchExpression:</div>
+<div class="produccion-alternativas">
+<span class="terminal">switch</span> <span class="terminal">(</span> Expression <span class="terminal">)</span> SwitchBlock
+</div>
+</div>
+
+Y ya podemos volver a escribir el código, esta vez como expresión:
+
+<pre class="codigo-java">
+boolean laborable = switch (diasemana) {
+    case 1, 2, 3, 4, 5 -> true;
+    default -> false;
+}
+</pre>
+
+¿Qué sucede si en una de las sentencias debemos ejecutar un bloque de código en lugar de una única sentencia?¿Cómo puede saber Java cuál es el valor que debe retornar desde la expresión a la variable?
+
+<div class="plantilla-sintactica">
+<div class="produccion">
+<div class="produccion-encabezado">StatementWithoutTrailingSubstatement:</div>
+<div class="produccion-alternativas">
+Block<br>
+EmptyStatement<br>
+ExpressionStatement<br>
+SwitchStatement<br>
+BreakStatement<br>
+YieldStatement
+</div>
+</div>
+<div class="produccion">
+<div class="produccion-encabezado">Yield Statement:</div>
+<div class="produccion-alternativas">
+<span class="terminal">yield</span> Expression <span class="terminal">;</span>
+</div>
+</div>
+
+Dentro del bloque escribiremos la sentencia **yield** que incluye dicha palabra contextual, seguida de una expresión, valor a devolver por la sentencia <span class="palabra">switch</span>.
+
+<pre class="codigo-java">
+int precioFinal = switch ( dia ) {
+    case 1, 2, 3, 4 -> 5; // sentencia
+    
+    case 5, 6, 7 -> { // bloque
+        int precioBase = 10;
+        int impuesto = 2;
+        int total = precioBase + impuesto;
+        
+        yield total; // Devuelve el valor y sale del switch
+    }
+};
+</pre>
 
 ## Repetición
 
@@ -1476,3 +1969,9 @@ En la sintaxis de Java, las sentencias simples que integran una secuencia se del
 [^14]: Internamente, al pasar a un tipo entero más pequeño, elimina los bits de la izquierda. En la representación binaria en complemento a dos, esto puede alterar el bit de signo: por ejemplo, la conversión de 1234 a byte produce el número -46.
 [^15]: Explicaremos la diferencia que existe entre invocar un método de un objeto o una clase en el tema 4.
 [^16]: Existen los denominados TRNG (*True Random Number Generators*) que extraen valores aleatorios de fenómenos físicos impredecibles.
+[^17]: Indentación es un anglicismo (indentation) que significa sangría, consistente en desplazar sentencias a la derecha añadiendo espacios o tabulación.
+[^18]: Ese no va a ser nuestro caso, valorando, precisamente, que no cometéis ese error.
+[^19]: Son tipos de datos de usuario que se construyen definiendo un conjunto finito de valores con nombre, conocidos como constantes de enumeración. Un posible ejemplo son los días de la semana: lunes, martes, etc.
+[^20]: A partir de la versión 7 del JDK.
+[^21]: El término *fall-through* es característico de lenguajes herederos de C, donde la omisión del <span class=palabra>break</span> se diseñó intencionadamente para permitir la ejecución agrupada de varios casos sin duplicar código.
+[^22]: La tabla de saltos evalúa el valor de entrada y dirige la ejecución instantáneamente a la dirección de memoria adecuada.
