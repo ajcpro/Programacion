@@ -968,9 +968,9 @@ Sin embargo, existen excepciones técnicas notables: los operadores unarios (com
 
 #### Orden de evaluación de operandos
 
-Es vital no confundir la precedencia de los operadores con el orden de evaluación de los operandos. Java establece un requisito adicional de seguridad y robustez: **los operandos de un operador binario siempre se evalúan de izquierda a derecha**. Esto implica que, incluso si el operador situado a la derecha tiene mayor precedencia, el ordenador primero obtendrá los valores de la parte izquierda de la expresión. Esta característica es crítica para evitar efectos laterales inesperados al realizar trazas de ejecución en algoritmos complejos.
+Es vital no confundir la precedencia de los operadores con el orden de evaluación de los operandos. Java establece un requisito adicional de seguridad y robustez: **los operandos de un operador binario siempre se evalúan de izquierda a derecha**. Esto implica que, incluso si el operador situado a la derecha tiene mayor precedencia, el ordenador primero obtendrá los valores de la parte izquierda de la expresión. Esta característica es crítica para evitar efectos laterales[^12] inesperados al realizar trazas de ejecución en algoritmos complejos.
 
-Aunque las reglas de precedencia permiten escribir expresiones muy compactas, se recomienda el uso de paréntesis para clarificar la intención del código[^12]. El empleo de paréntesis no solo ayuda a evitar errores de lógica difíciles de detectar, sino que facilita la lectura, asegurando que el flujo de control y el procesamiento de los datos sigan exactamente el diseño algorítmico previsto.
+Aunque las reglas de precedencia permiten escribir expresiones muy compactas, se recomienda el uso de paréntesis para clarificar la intención del código[^13]. El empleo de paréntesis no solo ayuda a evitar errores de lógica difíciles de detectar, sino que facilita la lectura, asegurando que el flujo de control y el procesamiento de los datos sigan exactamente el diseño algorítmico previsto.
 
 ## Conversión de tipos
 
@@ -995,7 +995,7 @@ Las reglas de promoción constituyen la base de las **conversiones implícitas**
 Técnicamente, estas transformaciones se denominan **conversiones de ampliación** (*widening conversions*), ya que el tipo de destino posee una capacidad igual o superior al de origen, lo que las convierte en operaciones intrínsecamente seguras. En el caso de Java se sigue una jerarquía estricta para realizar estos ajustes automáticos, basada en el rango numérico y en la distinción entre tipos enteros y reales:
 
 * **Prioridad de la precisión real:** Si al menos uno de los operandos en una expresión es de tipo <span class="palabra">double</span>, el otro operando se convierte automáticamente a <span class="palabra">double</span> antes de realizar la operación. En caso de que no haya un <span class="palabra">double</span> pero sí un componente de tipo <span class="palabra">float</span>, el resto de los elementos se promocionan a <span class="palabra">float</span>.
-* **Jerarquía de tipos enteros:** Si no existen tipos reales involucrados, pero uno de los operandos es de tipo <span class="palabra">long</span>, el sistema promociona los demás operandos de la expresión a <span class="palabra">long</span>[^13].
+* **Jerarquía de tipos enteros:** Si no existen tipos reales involucrados, pero uno de los operandos es de tipo <span class="palabra">long</span>, el sistema promociona los demás operandos de la expresión a <span class="palabra">long</span>[^14].
 * **Promoción obligatoria a entero:** Un aspecto singular de Java es el tratamiento de los tipos de menor capacidad. En cualquier cálculo donde intervengan variables de tipo <span class="palabra">byte</span> o <span class="palabra">short</span>, el compilador las promociona automáticamente a <span class="palabra">int</span> antes de efectuar la operación, incluso si ambos operandos son del mismo tipo.
 * **Tratamiento de caracteres:** De igual forma, el tipo <span class="palabra">char</span> recibe un trato especial; dado que Java almacena los caracteres como valores numéricos sin signo (basados en el estándar Unicode), estos pueden participar en expresiones aritméticas, en cuyo caso se promocionan automáticamente a su equivalente de tipo <span class="palabra">int</span>.
 
@@ -1077,7 +1077,7 @@ FloatingPointType
 Al realizar un *cast*, el programador asume la responsabilidad total de la operación, informando al compilador de que es consciente del riesgo y de que la mezcla de tipos es intencionada. El uso de la conversión explícita conlleva consecuencias críticas en la integridad de los datos que debemos conocer para evitar errores lógicos:
 
 * **Truncamiento de decimales:** Cuando se convierte un número real (como un <span class="palabra">double</span> o <span class="palabra">float</span>) a un tipo entero (<span class="palabra">int</span>, <span class="palabra">long</span>, etc.), Java no realiza un redondeo matemático al valor más cercano; en su lugar, trunca: elimina la parte fraccionaria. Por ejemplo, realizar un *cast* a entero del valor 3.99 producirá como resultado el número entero 3.
-* **Pérdida de bits significativos:** Si intentamos forzar un número entero grande en un tipo que utiliza menos bits (como pasar de <span class="palabra">int</span> a <span class="palabra">byte</span>), el ordenador descartará los bits más significativos para que el valor encaje en el espacio de destino[^14]. Resulta imprescindible validar el rango del número a convertir.
+* **Pérdida de bits significativos:** Si intentamos forzar un número entero grande en un tipo que utiliza menos bits (como pasar de <span class="palabra">int</span> a <span class="palabra">byte</span>), el ordenador descartará los bits más significativos para que el valor encaje en el espacio de destino[^15]. Resulta imprescindible validar el rango del número a convertir.
 * **Restricciones de tipo:** No todas las conversiones son posibles. Por ejemplo, en Java es estrictamente imposible convertir tipos numéricos a booleanos, ni siquiera mediante conversión explícita.
 
 ### Clases envolventes
@@ -1142,7 +1142,7 @@ Math     .     sqrt     ( numero )
 clase          método    argumento
 </pre>
 
-El punto (<span class="operador">.</span>) permite acceder a un elemento proporcionado por una clase u objeto. En este caso, escribimos <span class="clase">Math</span><span class="operador">.</span><span class="metodo">sqrt</span> porque queremos utilizar el método <span class="metodo">sqrt</span> de la clase <span class="clase">Math</span>[^15].
+El punto (<span class="operador">.</span>) permite acceder a un elemento proporcionado por una clase u objeto. En este caso, escribimos <span class="clase">Math</span><span class="operador">.</span><span class="metodo">sqrt</span> porque queremos utilizar el método <span class="metodo">sqrt</span> de la clase <span class="clase">Math</span>[^16].
 
 Observemos que <span class="metodo">sqrt</span> necesita un argumento: el número del que buscamos la raíz cuadrada. El método realiza la operación y devuelve un resultado, que podemos utilizar como cualquier otro valor obtenido mediante una expresión.
 
@@ -1170,7 +1170,7 @@ La utilización de una biblioteca no significa que podamos olvidar la naturaleza
 
 #### Generación de números aleatorios
 
-La vida real presenta en muchas ocasiones situaciones que se producen por azar. Cuando nosotros queremos modelar en nuestros programas estas situaciones, recurrimos a generadores de números aleatorios. En realidad, en nuestros programas, lo que usamos no son números aleatorios -aunque los denominemos así- sino pseudoaleatorios[^16]: se generan a través de fórmulas matemáticas que usan algoritmos deterministas y periódicos, que cumplen pruebas estadísticas de aleatorioedad.
+La vida real presenta en muchas ocasiones situaciones que se producen por azar. Cuando nosotros queremos modelar en nuestros programas estas situaciones, recurrimos a generadores de números aleatorios. En realidad, en nuestros programas, lo que usamos no son números aleatorios -aunque los denominemos así- sino pseudoaleatorios[^17]: se generan a través de fórmulas matemáticas que usan algoritmos deterministas y periódicos, que cumplen pruebas estadísticas de aleatorioedad.
 
 El uso de los números aleatorios será algo que ocurra con frecuencia en nuestros ejercicios, por lo que utilizaremos un método que nos proporciona la clase <span class="clase">Math</span>: <span class="metodo">random</span>.
 
@@ -1285,7 +1285,7 @@ Java permite utilizar diferentes tipos de sentencias. Algunas ya las hemos utili
 
 #### Sentencia compuesta
 
-Una sentencia simple representa una única acción del programa y, como hemos visto, normalmente termina con un punto y coma. Sin embargo, en muchas ocasiones, necesitamos ejecutar no una única sentencia, sino un conjunto de ellas, como si fueran una sola. En la mayoría de los lenguajes podemos agrupar sentencias delimitándo dicha agrupación mediante palabras reservadas, símbolos especiales o mediante indentación[^17]. A estas de agrupaciones de sentencias se las demonima **sentencias compuestas**.
+Una sentencia simple representa una única acción del programa y, como hemos visto, normalmente termina con un punto y coma. Sin embargo, en muchas ocasiones, necesitamos ejecutar no una única sentencia, sino un conjunto de ellas, como si fueran una sola. En la mayoría de los lenguajes podemos agrupar sentencias delimitándo dicha agrupación mediante palabras reservadas, símbolos especiales o mediante indentación[^18]. A estas de agrupaciones de sentencias se las demonima **sentencias compuestas**.
 
 <aside class="definicion">
 
@@ -1537,7 +1537,7 @@ El ordenador comienza ejecutando la asignación de <span class="variable">edad</
 * **La expresión de control o condición**: El contenido entre los paréntesis debe ser una expresión booleana (verdadero o falso). Aunque otros lenguajes puedan permitirlo, Java es fuertemente tipado y solo acepta un valor booleano: el compilador indicará que hay un error de tipo.
 * **El cuerpo de la estructura**: Representa la sentencia o conjunto de sentencias que quedan supeditadas al éxito de la condición. La plantilla declara la sentencia condicional <span class="produccion-palabra">IfThenStatement</span> introduciendo <span class="produccion-palabra">Statement</span> para el caso en que se cumpla la condición: si el cuerpo consta de una única sentencia simple finalizada en punto y coma, la sintaxis de Java permite omitir las llaves delimitadoras; si se requiere ejecutar una secuencia compuesta por más de una instrucción, es imperativo agruparlas dentro de un **bloque de código**.
 
-Desde una perspectiva metodológica y de calidad del software, muchas guías de estilo modernas recomiendan utilizar siempre bloques, incluso cuando el cuerpo de la estructura tenga una única sentencia[^18]. Un error clásico consiste en añadir una instrucción a un cuerpo que carece de llaves, asumiendo erróneamente que ambas quedarán bajo el control de la condición; en realidad, el compilador interpretará que solo la primera sentencia está condicionada y la segunda se ejecutará siempre.
+Desde una perspectiva metodológica y de calidad del software, muchas guías de estilo modernas recomiendan utilizar siempre bloques, incluso cuando el cuerpo de la estructura tenga una única sentencia[^19]. Un error clásico consiste en añadir una instrucción a un cuerpo que carece de llaves, asumiendo erróneamente que ambas quedarán bajo el control de la condición; en realidad, el compilador interpretará que solo la primera sentencia está condicionada y la segunda se ejecutará siempre.
 
 Importante también tener en cuenta un error sintáctico sumamente común y de difícil detección: insertar accidentalmente un **punto y coma tras el paréntesis de cierre** de la condición: el compilador no emite ningún mensaje de error porque interpreta que el cuerpo es la **sentencia nula**, representada por ese punto y coma. Consideremos el siguiente código:
 
@@ -1610,17 +1610,46 @@ Esta estructura se denomina también **decisión** porque permite escoger entre 
 
 Observemos en la plantilla que tanto la parte asociada al <span class="palabra">if</span> como la asociada al <span class="palabra">else</span> son sintácticamente una <span class="produccion-palabra">Statement</span>. Por tanto, ambas pueden ser una sentencia simple o un bloque de código. Que volviendo a lo que comentábamos antes, muchas guías de estilo recomiendan usar siempre llaves, cosa que, si se hace, debe hacerse en ambos casos.
 
-#### Operador condicional o ternario
+#### Operador condicional ternario
+
+Dentro del estudio de la **selección compuesta**, el lenguaje Java ofrece un mecanismo compacto diseñado para resolver un escenario algorítmico sumamente frecuente: la evaluación de una condición booleana para seleccionar y devolver uno de dos valores posibles. Aunque la sentencia **if-else** resuelve perfectamente cualquier bifurcación lógica, esta se concibe como una instrucción de control orientada a ejecutar bloques de código. Sin embargo, cuando la única finalidad de una bifurcaciónes asignar un valor a una variable o pasar un argumento a un método, el uso de una estructura completa puede resultar tedioso. Para estos casos, Java proporciona un **operador ternario** que permite llevar a cabo esta tarea dentro de una única expresión.
+
+La denominación de operador ternario proviene directamente de su aridad[^20]: es el único operador en Java que requiere exactamente tres operandos para formar una expresión válida. Sintácticamente, se construye combinando los símbolos del signo de interrogación (<span class="literal">?</span>) y los dos puntos (<span class="literal">:</span>), respondiendo a la siguiente plantilla sintáctica:
 
 <div class="plantilla-sintactica">
 <div class="produccion">
 <div class="produccion-encabezado">ConditionalExpression:</div>
 <div class="produccion-alternativas">
 ConditionalOrExpression<br>
-ConditionalOrExpression <span class="terminal">?</span> Expression <span class="terminal">:</span> ConditionalExpression
+ConditionalOrExpression <span class="temiral">?</span> Expression <span class="temiral">:</span> ConditionalExpression
 </div>
 </div>
 </div>
+
+La secuencia de evaluación es la siguiente:
+
+1.  **Evaluación de la condición**: En primer lugar, se procesa el primer operando, <span class="produccion-palabra">ConditionalOrExpression</span>, que debe ser una expresión booleana (verdadero o falso).
+2.  **Selección del resultado**: Si la condición resulta ser verdadera, el operador evalúa únicamente la primera expresión, <span class="produccion-palabra">Expression</span>, y su resultado se convierte en el valor final de toda la expresión condicional. Por el contrario, si la condición se evalúa como falsa, el sistema evalúa exclusivamente la segunda expresión, <span class="produccion-palabra">ConditionalExpression</span>, devolviendo su valor como resultado global.
+3.  **Evaluación condicional de expresiones**: De forma análoga a la evaluación en cortocircuito, el operador ternario jamás evalúa ambas expresiones de forma simultánea. Solo se procesa la correspondiente al resultado del primer operando, lo que previene la ejecución de cálculos innecesarios o con efectos laterales.
+
+Una restricción de tipo fundamental es que las dos expresiones de retorno deben evaluar a tipos de datos compatibles entre sí y con la variable que recibirá el resultado. Para apreciar la elegancia y concisión de este operador, podemos comparar la forma de obtener el valor absoluto de un número mediante una sentencia **if-else** frente a este operador condicional:
+
+<pre class="codigo-java">
+int valor = -10;
+int valorAbsoluto;
+
+// Mediante selección compuesta (if-else)
+if (valor < 0) {
+    valorAbsoluto = -valor;
+} else {
+    valorAbsoluto = valor;
+}
+
+// Utilizando el operador ternario
+int valorAbsolutoTernario = (valor < 0) ? -valor : valor;
+</pre>
+
+El operador ternario no debe considerarse un sustituto universal de la sentencia **if-else**: es un recurso sintáctico para decisiones simples a nivel de expresión. Un error habitual cuando se está aprendiendo consiste en intentar anidar múltiples operadores ternarios (<span class="codigo">cond1 ? exp1 : cond2 ? exp2 : exp3</span>) para emular múltiples caminos **if-else-if**; esto genera un código intrincado, difícil de leer y propenso a errores. La recomendación de estilo es la de priorizar siempre la claridad estructural del código sobre la brevedad de la sintaxis.
 
 ### Selección múltiple
 
@@ -1743,11 +1772,11 @@ ConditionalExpression
 
 Vamos a analizar las reglas de diseño y restricciones sintácticas que el compilador de Java impone sobre cada uno de sus componentes:
 
-* **La expresión de control**: El valor situado entre los paréntesis, el **selector**, debe evaluar a un tipo de dato compatible con la estructura. Habitualmente, en función del lenguaje, esta expresión debe ser un tipo entero o un enumerado[^19]. En Java, además[^20], se permite el uso cadenas de texto (objetos de la clase <span class="clase">String</span>). Java prohíbe de forma explícita el uso de tipos numéricos de coma flotante o expresiones booleanas, aunque pueden ser válidas en otros lenguajes; en cualquier caso, no es recomendable su uso.
+* **La expresión de control**: El valor situado entre los paréntesis, el **selector**, debe evaluar a un tipo de dato compatible con la estructura. Habitualmente, en función del lenguaje, esta expresión debe ser un tipo entero o un enumerado[^21]. En Java, además[^22], se permite el uso cadenas de texto (objetos de la clase <span class="clase">String</span>). Java prohíbe de forma explícita el uso de tipos numéricos de coma flotante o expresiones booleanas, aunque pueden ser válidas en otros lenguajes; en cualquier caso, no es recomendable su uso.
 * **La lista de etiquetas**: Cada uno de los caminos lógicos alternativos se define mediante la palabra reservada <span class="palabra">case</span> seguida de una expresión constante, denominada **etiqueta**, y el carácter de dos puntos (<span class="literal">:</span>). La restricción fundamental es que dicha etiqueta debe ser una **constante única conocida en tiempo de compilación**; no está permitido utilizar variables o condiciones lógicas. Además, no deben existir etiquetas duplicadas dentro de una misma estructura switch, garantizando así que no haya ambigüedad sobre qué camino debe tomar la ejecución.
 * **La cláusula por defecto**: Esta sección, identificada por la palabra reservada <span class="palabra">default</span>, actúa como un bloque de contingencia opcional. Las instrucciones contenidas en su interior solo se ejecutarán si el resultado de evaluar la expresión de control no coincide con ninguna de las constantes especificadas en las etiquetas case. Aunque su uso no es obligatorio, muchas fuentes recomiendan incluirla siempre identificar valores imprevistos o inconsistencias en los datos del sistema.
 
-Debemos prestar especial atención a que las instrucciones de una etiqueta no están delimitadas automáticamente por unas llaves. El aspecto más crítico y que requiere mayor atención es el comportamiento conocido como **efecto de caída o cascada** (*fall-through*)[^21]. Cuando se encuentra una coincidencia, el **flujo de control** realiza un salto directo a las instrucciones de esa rama. Sin embargo, a diferencia de lo que ocurre en las bifurcaciones if-else, el final del bloque no provoca la salida automática del condicional: la ejecución continuará discurriendo de forma secuencial, procesando y ejecutando las sentencias de los casos siguientes de manera ininterrumpida, sin importar que sus valores constantes no coincidan con la expresión de control.
+Debemos prestar especial atención a que las instrucciones de una etiqueta no están delimitadas automáticamente por unas llaves. El aspecto más crítico y que requiere mayor atención es el comportamiento conocido como **efecto de caída o cascada** (*fall-through*)[^23]. Cuando se encuentra una coincidencia, el **flujo de control** realiza un salto directo a las instrucciones de esa rama. Sin embargo, a diferencia de lo que ocurre en las bifurcaciones if-else, el final del bloque no provoca la salida automática del condicional: la ejecución continuará discurriendo de forma secuencial, procesando y ejecutando las sentencias de los casos siguientes de manera ininterrumpida, sin importar que sus valores constantes no coincidan con la expresión de control.
 
 En el ejemplo anterior aparece además la sentencia <span class="palabra">break</span>. La llamada a sentencia especial, interrumpe de inmediato el procesamiento dentro del bloque y transfiere el flujo de control a la primera sentencia secuencial que se encuentre físicamente después de la llave de cierre de la estructura.
 
@@ -1766,6 +1795,7 @@ BreakStatement
 <div class="produccion-encabezado">BreakStatement:</div>
 <div class="produccion-alternativas">
 <span class="terminal">break</span> <span class="terminal">;</span>
+</div>
 </div>
 </div>
 
@@ -1794,7 +1824,7 @@ switch (diasemana) {
 
 En este escenario, si la variable <span class="variable">diasemana</span> vale <span class="literal">3</span> (Miércoles), el programa saltará directamente a la etiqueta <span class="literal">3</span>. Como esta cláusula carece de instrucciones y de sentencia <span clas="palabra">break</span>, la ejecución caerá secuencialmente a través de las etiquetas <span class="literal">4</span> y <span class="literal">5</span>, donde finalmente se asignará el valor <span class="literal">true</span> a la variable <span class="variable">laborable</span> antes de que la instrucción <span class="palabra">break</span> detenga de forma segura la caída y finalice el bloque.
 
-Desde el punto de vista del rendimiento del hardware, esta sentencia presenta una ventaja arquitectónica fundamental frente a las secuencias **if-else-if**. El compilador inspecciona las constantes de los casos y genera de forma interna una **tabla de saltos** (*jump table*)[^22] en el código. Gracias a la misma, no se necesita ir comparando uno a uno todos los valores, sino que puede saltar en un solo paso al camino de ejecución exacto en función del valor obtenido. Esto hace que sea una estructura extraordinariamente eficiente cuando el número de alternativas es elevado.
+Desde el punto de vista del rendimiento del hardware, esta sentencia presenta una ventaja arquitectónica fundamental frente a las secuencias **if-else-if**. El compilador inspecciona las constantes de los casos y genera de forma interna una **tabla de saltos** (*jump table*)[^24] en el código. Gracias a la misma, no se necesita ir comparando uno a uno todos los valores, sino que puede saltar en un solo paso al camino de ejecución exacto en función del valor obtenido. Esto hace que sea una estructura extraordinariamente eficiente cuando el número de alternativas es elevado.
 
 Podemos tener una visión más compacta agrupando las etiquetas que dan lugar a la ejecución de las mismas sentencias; el código anterior podría haber sido escrito como:
 
@@ -1977,14 +2007,16 @@ int precioFinal = switch ( dia ) {
 [^9]:  El método estándar IEEE 754 puede obtenerse usando el método <span class="metodo">Math.IEEEremainder</span>.
 [^10]: Disponible en la [especificación](https://docs.oracle.com/javase/specs/jls/se21/html/jls-15.html#jls-15.17.3).
 [^11]: Los booleanos corresponden a un tipo de datos lógico que solo pueden contener uno de dos valores: verdadero (<span class="literal">true</span>) y falso (<span class="literal">false</span>).
-[^12]: Es evidente que esta afirmación carece de sentido si estás haciendo un examen en el que debes demostrar conocer cuál es el orden de precedencia y asociatividad de los operadores.
-[^13]: Resulta interesante notar que un long (entero de 64 bits) se promociona automáticamente a float (real de 32 bits) si coinciden en una expresión. Aunque el float ocupa menos memoria, su notación científica le otorga una capacidad de representación de magnitudes exponencialmente mayor, considerándose por tanto un tipo más "amplio", aunque se pueda perder precisión en los dígitos menos significativos. También se puede producir pérdida de precisión en las conversiones de int a float y de long a double.
-[^14]: Internamente, al pasar a un tipo entero más pequeño, elimina los bits de la izquierda. En la representación binaria en complemento a dos, esto puede alterar el bit de signo: por ejemplo, la conversión de 1234 a byte produce el número -46.
-[^15]: Explicaremos la diferencia que existe entre invocar un método de un objeto o una clase en el tema 4.
-[^16]: Existen los denominados TRNG (*True Random Number Generators*) que extraen valores aleatorios de fenómenos físicos impredecibles.
-[^17]: Indentación es un anglicismo (indentation) que significa sangría, consistente en desplazar sentencias a la derecha añadiendo espacios o tabulación.
-[^18]: Ese no va a ser nuestro caso, valorando, precisamente, que no cometéis ese error.
-[^19]: Son tipos de datos de usuario que se construyen definiendo un conjunto finito de valores con nombre, conocidos como constantes de enumeración. Un posible ejemplo son los días de la semana: lunes, martes, etc.
-[^20]: A partir de la versión 7 del JDK.
-[^21]: El término *fall-through* es característico de lenguajes herederos de C, donde la omisión del <span class=palabra>break</span> se diseñó intencionadamente para permitir la ejecución agrupada de varios casos sin duplicar código.
-[^22]: La tabla de saltos evalúa el valor de entrada y dirige la ejecución instantáneamente a la dirección de memoria adecuada.
+[^12]: Cualquier función o línea de código que modifica algo fuera de su entorno local. Observad que es *lateral*, no *colateral*; debería denominarse efecto secundario pero surge de su traducción literal del inglés, *side effect*, siendo el término más extendido.
+[^13]: Es evidente que esta afirmación carece de sentido si estás haciendo un examen en el que debes demostrar conocer cuál es el orden de precedencia y asociatividad de los operadores.
+[^14]: Resulta interesante notar que un long (entero de 64 bits) se promociona automáticamente a float (real de 32 bits) si coinciden en una expresión. Aunque el float ocupa menos memoria, su notación científica le otorga una capacidad de representación de magnitudes exponencialmente mayor, considerándose por tanto un tipo más "amplio", aunque se pueda perder precisión en los dígitos menos significativos. También se puede producir pérdida de precisión en las conversiones de int a float y de long a double.
+[^15]: Internamente, al pasar a un tipo entero más pequeño, elimina los bits de la izquierda. En la representación binaria en complemento a dos, esto puede alterar el bit de signo: por ejemplo, la conversión de 1234 a byte produce el número -46.
+[^16]: Explicaremos la diferencia que existe entre invocar un método de un objeto o una clase en el tema 4.
+[^17]: Existen los denominados TRNG (*True Random Number Generators*) que extraen valores aleatorios de fenómenos físicos impredecibles.
+[^18]: Indentación es un anglicismo (indentation) que significa sangría, consistente en desplazar sentencias a la derecha añadiendo espacios o tabulación.
+[^19]: Ese no va a ser nuestro caso, valorando, precisamente, que no cometéis ese error.
+[^20]: En el análisis matemático, la aridad de un operador matemático o de una función es el número mínimo de argumentos necesarios para que dicho operador funcione, o se pueda calcular.
+[^21]: Son tipos de datos de usuario que se construyen definiendo un conjunto finito de valores con nombre, conocidos como constantes de enumeración. Un posible ejemplo son los días de la semana: lunes, martes, etc.
+[^22]: A partir de la versión 7 del JDK.
+[^23]: El término *fall-through* es característico de lenguajes herederos de C, donde la omisión del <span class=palabra>break</span> se diseñó intencionadamente para permitir la ejecución agrupada de varios casos sin duplicar código.
+[^24]: La tabla de saltos evalúa el valor de entrada y dirige la ejecución instantáneamente a la dirección de memoria adecuada.
