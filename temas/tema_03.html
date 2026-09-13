@@ -1725,12 +1725,13 @@
   incluso si el operador situado a la derecha tiene mayor precedencia,
   el ordenador primero obtendrá los valores de la parte izquierda de la
   expresión. Esta característica es crítica para evitar efectos
-  laterales inesperados al realizar trazas de ejecución en algoritmos
+  laterales<span class="tooltip"><a href="#fn12" class="nota-llamada" id="fnref12">[12]</a><span class="tooltiptext">Cualquier función o línea de código que modifica algo fuera de su entorno local. Observad que es lateral, no colateral; debería denominarse efecto secundario pero surge de su traducción literal del inglés, side effect, siendo el término más extendido.</span></span>
+  inesperados al realizar trazas de ejecución en algoritmos
   complejos.</p>
   <p>Aunque las reglas de precedencia permiten escribir expresiones muy
   compactas, se recomienda el uso de paréntesis para clarificar la
   intención del
-  código<span class="tooltip"><a href="#fn12" class="nota-llamada" id="fnref12">[12]</a><span class="tooltiptext">Es evidente que esta afirmación carece de sentido si estás haciendo un examen en el que debes demostrar conocer cuál es el orden de precedencia y asociatividad de los operadores.</span></span>.
+  código<span class="tooltip"><a href="#fn13" class="nota-llamada" id="fnref13">[13]</a><span class="tooltiptext">Es evidente que esta afirmación carece de sentido si estás haciendo un examen en el que debes demostrar conocer cuál es el orden de precedencia y asociatividad de los operadores.</span></span>.
   El empleo de paréntesis no solo ayuda a evitar errores de lógica
   difíciles de detectar, sino que facilita la lectura, asegurando que el
   flujo de control y el procesamiento de los datos sigan exactamente el
@@ -1807,7 +1808,7 @@
   reales involucrados, pero uno de los operandos es de tipo <span
   class="palabra">long</span>, el sistema promociona los demás operandos
   de la expresión a <span
-  class="palabra">long</span><span class="tooltip"><a href="#fn13" class="nota-llamada" id="fnref13">[13]</a><span class="tooltiptext">Resulta interesante notar que un long (entero de 64 bits) se promociona automáticamente a float (real de 32 bits) si coinciden en una expresión. Aunque el float ocupa menos memoria, su notación científica le otorga una capacidad de representación de magnitudes exponencialmente mayor, considerándose por tanto un tipo más “amplio”, aunque se pueda perder precisión en los dígitos menos significativos. También se puede producir pérdida de precisión en las conversiones de int a float y de long a double.</span></span>.</li>
+  class="palabra">long</span><span class="tooltip"><a href="#fn14" class="nota-llamada" id="fnref14">[14]</a><span class="tooltiptext">Resulta interesante notar que un long (entero de 64 bits) se promociona automáticamente a float (real de 32 bits) si coinciden en una expresión. Aunque el float ocupa menos memoria, su notación científica le otorga una capacidad de representación de magnitudes exponencialmente mayor, considerándose por tanto un tipo más “amplio”, aunque se pueda perder precisión en los dígitos menos significativos. También se puede producir pérdida de precisión en las conversiones de int a float y de long a double.</span></span>.</li>
   <li><strong>Promoción obligatoria a entero:</strong> Un aspecto
   singular de Java es el tratamiento de los tipos de menor capacidad. En
   cualquier cálculo donde intervengan variables de tipo <span
@@ -1944,7 +1945,7 @@
   pasar de <span class="palabra">int</span> a <span
   class="palabra">byte</span>), el ordenador descartará los bits más
   significativos para que el valor encaje en el espacio de
-  destino<span class="tooltip"><a href="#fn14" class="nota-llamada" id="fnref14">[14]</a><span class="tooltiptext">Internamente, al pasar a un tipo entero más pequeño, elimina los bits de la izquierda. En la representación binaria en complemento a dos, esto puede alterar el bit de signo: por ejemplo, la conversión de 1234 a byte produce el número -46.</span></span>.
+  destino<span class="tooltip"><a href="#fn15" class="nota-llamada" id="fnref15">[15]</a><span class="tooltiptext">Internamente, al pasar a un tipo entero más pequeño, elimina los bits de la izquierda. En la representación binaria en complemento a dos, esto puede alterar el bit de signo: por ejemplo, la conversión de 1234 a byte produce el número -46.</span></span>.
   Resulta imprescindible validar el rango del número a convertir.</li>
   <li><strong>Restricciones de tipo:</strong> No todas las conversiones
   son posibles. Por ejemplo, en Java es estrictamente imposible
@@ -2105,7 +2106,7 @@
   class="operador">.</span><span class="metodo">sqrt</span> porque
   queremos utilizar el método <span class="metodo">sqrt</span> de la
   clase <span
-  class="clase">Math</span><span class="tooltip"><a href="#fn15" class="nota-llamada" id="fnref15">[15]</a><span class="tooltiptext">Explicaremos la diferencia que existe entre invocar un método de un objeto o una clase en el tema 4.</span></span>.</p>
+  class="clase">Math</span><span class="tooltip"><a href="#fn16" class="nota-llamada" id="fnref16">[16]</a><span class="tooltiptext">Explicaremos la diferencia que existe entre invocar un método de un objeto o una clase en el tema 4.</span></span>.</p>
   <p>Observemos que <span class="metodo">sqrt</span> necesita un
   argumento: el número del que buscamos la raíz cuadrada. El método
   realiza la operación y devuelve un resultado, que podemos utilizar
@@ -2165,7 +2166,7 @@
   programas estas situaciones, recurrimos a generadores de números
   aleatorios. En realidad, en nuestros programas, lo que usamos no son
   números aleatorios -aunque los denominemos así- sino
-  pseudoaleatorios<span class="tooltip"><a href="#fn16" class="nota-llamada" id="fnref16">[16]</a><span class="tooltiptext">Existen los denominados TRNG (True Random Number Generators) que extraen valores aleatorios de fenómenos físicos impredecibles.</span></span>:
+  pseudoaleatorios<span class="tooltip"><a href="#fn17" class="nota-llamada" id="fnref17">[17]</a><span class="tooltiptext">Existen los denominados TRNG (True Random Number Generators) que extraen valores aleatorios de fenómenos físicos impredecibles.</span></span>:
   se generan a través de fórmulas matemáticas que usan algoritmos
   deterministas y periódicos, que cumplen pruebas estadísticas de
   aleatorioedad.</p>
@@ -2407,7 +2408,7 @@
   mayoría de los lenguajes podemos agrupar sentencias delimitándo dicha
   agrupación mediante palabras reservadas, símbolos especiales o
   mediante
-  indentación<span class="tooltip"><a href="#fn17" class="nota-llamada" id="fnref17">[17]</a><span class="tooltiptext">Indentación es un anglicismo (indentation) que significa sangría, consistente en desplazar sentencias a la derecha añadiendo espacios o tabulación.</span></span>.
+  indentación<span class="tooltip"><a href="#fn18" class="nota-llamada" id="fnref18">[18]</a><span class="tooltiptext">Indentación es un anglicismo (indentation) que significa sangría, consistente en desplazar sentencias a la derecha añadiendo espacios o tabulación.</span></span>.
   A estas de agrupaciones de sentencias se las demonima
   <strong>sentencias compuestas</strong>.</p>
   <aside class="definicion">
@@ -2865,7 +2866,7 @@
   <p>Desde una perspectiva metodológica y de calidad del software,
   muchas guías de estilo modernas recomiendan utilizar siempre bloques,
   incluso cuando el cuerpo de la estructura tenga una única
-  sentencia<span class="tooltip"><a href="#fn18" class="nota-llamada" id="fnref18">[18]</a><span class="tooltiptext">Ese no va a ser nuestro caso, valorando, precisamente, que no cometéis ese error.</span></span>.
+  sentencia<span class="tooltip"><a href="#fn19" class="nota-llamada" id="fnref19">[19]</a><span class="tooltiptext">Ese no va a ser nuestro caso, valorando, precisamente, que no cometéis ese error.</span></span>.
   Un error clásico consiste en añadir una instrucción a un cuerpo que
   carece de llaves, asumiendo erróneamente que ambas quedarán bajo el
   control de la condición; en realidad, el compilador interpretará que
@@ -2977,8 +2978,28 @@
   ser una sentencia simple o un bloque de código. Que volviendo a lo que
   comentábamos antes, muchas guías de estilo recomiendan usar siempre
   llaves, cosa que, si se hace, debe hacerse en ambos casos.</p>
-  <h4 id="operador-condicional-o-ternario">Operador condicional o
+  <h4 id="operador-condicional-ternario">Operador condicional
   ternario</h4>
+  <p>Dentro del estudio de la <strong>selección compuesta</strong>, el
+  lenguaje Java ofrece un mecanismo compacto diseñado para resolver un
+  escenario algorítmico sumamente frecuente: la evaluación de una
+  condición booleana para seleccionar y devolver uno de dos valores
+  posibles. Aunque la sentencia <strong>if-else</strong> resuelve
+  perfectamente cualquier bifurcación lógica, esta se concibe como una
+  instrucción de control orientada a ejecutar bloques de código. Sin
+  embargo, cuando la única finalidad de una bifurcaciónes asignar un
+  valor a una variable o pasar un argumento a un método, el uso de una
+  estructura completa puede resultar tedioso. Para estos casos, Java
+  proporciona un <strong>operador ternario</strong> que permite llevar a
+  cabo esta tarea dentro de una única expresión.</p>
+  <p>La denominación de operador ternario proviene directamente de su
+  aridad<span class="tooltip"><a href="#fn20" class="nota-llamada" id="fnref20">[20]</a><span class="tooltiptext">En el análisis matemático, la aridad de un operador matemático o de una función es el número mínimo de argumentos necesarios para que dicho operador funcione, o se pueda calcular.</span></span>:
+  es el único operador en Java que requiere exactamente tres operandos
+  para formar una expresión válida. Sintácticamente, se construye
+  combinando los símbolos del signo de interrogación (<span
+  class="literal">?</span>) y los dos puntos (<span
+  class="literal">:</span>), respondiendo a la siguiente plantilla
+  sintáctica:</p>
   <div class="plantilla-sintactica">
   <div class="produccion">
   <div class="produccion-encabezado">
@@ -2986,11 +3007,61 @@
   </div>
   <div class="produccion-alternativas">
   <p>ConditionalOrExpression<br> ConditionalOrExpression <span
-  class="terminal">?</span> Expression <span class="terminal">:</span>
+  class="temiral">?</span> Expression <span class="temiral">:</span>
   ConditionalExpression</p>
   </div>
   </div>
   </div>
+  <p>La secuencia de evaluación es la siguiente:</p>
+  <ol type="1">
+  <li><strong>Evaluación de la condición</strong>: En primer lugar, se
+  procesa el primer operando, <span
+  class="produccion-palabra">ConditionalOrExpression</span>, que debe
+  ser una expresión booleana (verdadero o falso).</li>
+  <li><strong>Selección del resultado</strong>: Si la condición resulta
+  ser verdadera, el operador evalúa únicamente la primera expresión,
+  <span class="produccion-palabra">Expression</span>, y su resultado se
+  convierte en el valor final de toda la expresión condicional. Por el
+  contrario, si la condición se evalúa como falsa, el sistema evalúa
+  exclusivamente la segunda expresión, <span
+  class="produccion-palabra">ConditionalExpression</span>, devolviendo
+  su valor como resultado global.</li>
+  <li><strong>Evaluación condicional de expresiones</strong>: De forma
+  análoga a la evaluación en cortocircuito, el operador ternario jamás
+  evalúa ambas expresiones de forma simultánea. Solo se procesa la
+  correspondiente al resultado del primer operando, lo que previene la
+  ejecución de cálculos innecesarios o con efectos laterales.</li>
+  </ol>
+  <p>Una restricción de tipo fundamental es que las dos expresiones de
+  retorno deben evaluar a tipos de datos compatibles entre sí y con la
+  variable que recibirá el resultado. Para apreciar la elegancia y
+  concisión de este operador, podemos comparar la forma de obtener el
+  valor absoluto de un número mediante una sentencia
+  <strong>if-else</strong> frente a este operador condicional:</p>
+  <pre class="codigo-java">
+  int valor = -10;
+  int valorAbsoluto;
+
+  // Mediante selección compuesta (if-else)
+  if (valor < 0) {
+      valorAbsoluto = -valor;
+  } else {
+      valorAbsoluto = valor;
+  }
+
+  // Utilizando el operador ternario
+  int valorAbsolutoTernario = (valor < 0) ? -valor : valor;
+  </pre>
+  <p>El operador ternario no debe considerarse un sustituto universal de
+  la sentencia <strong>if-else</strong>: es un recurso sintáctico para
+  decisiones simples a nivel de expresión. Un error habitual cuando se
+  está aprendiendo consiste en intentar anidar múltiples operadores
+  ternarios (<span class="codigo">cond1 ? exp1 : cond2 ? exp2 :
+  exp3</span>) para emular múltiples caminos
+  <strong>if-else-if</strong>; esto genera un código intrincado, difícil
+  de leer y propenso a errores. La recomendación de estilo es la de
+  priorizar siempre la claridad estructural del código sobre la brevedad
+  de la sintaxis.</p>
   <h3 id="selección-múltiple">Selección múltiple</h3>
   <h4 id="anidación">Anidación</h4>
   <p>En ocasiones, un problema no tiene únicamente dos alternativas. Es
@@ -3180,9 +3251,9 @@
   los paréntesis, el <strong>selector</strong>, debe evaluar a un tipo
   de dato compatible con la estructura. Habitualmente, en función del
   lenguaje, esta expresión debe ser un tipo entero o un
-  enumerado<span class="tooltip"><a href="#fn19" class="nota-llamada" id="fnref19">[19]</a><span class="tooltiptext">Son tipos de datos de usuario que se construyen definiendo un conjunto finito de valores con nombre, conocidos como constantes de enumeración. Un posible ejemplo son los días de la semana: lunes, martes, etc.</span></span>.
+  enumerado<span class="tooltip"><a href="#fn21" class="nota-llamada" id="fnref21">[21]</a><span class="tooltiptext">Son tipos de datos de usuario que se construyen definiendo un conjunto finito de valores con nombre, conocidos como constantes de enumeración. Un posible ejemplo son los días de la semana: lunes, martes, etc.</span></span>.
   En Java,
-  además<span class="tooltip"><a href="#fn20" class="nota-llamada" id="fnref20">[20]</a><span class="tooltiptext">A partir de la versión 7 del JDK.</span></span>,
+  además<span class="tooltip"><a href="#fn22" class="nota-llamada" id="fnref22">[22]</a><span class="tooltiptext">A partir de la versión 7 del JDK.</span></span>,
   se permite el uso cadenas de texto (objetos de la clase <span
   class="clase">String</span>). Java prohíbe de forma explícita el uso
   de tipos numéricos de coma flotante o expresiones booleanas, aunque
@@ -3212,7 +3283,7 @@
   etiqueta no están delimitadas automáticamente por unas llaves. El
   aspecto más crítico y que requiere mayor atención es el comportamiento
   conocido como <strong>efecto de caída o cascada</strong>
-  (<em>fall-through</em>)<span class="tooltip"><a href="#fn21" class="nota-llamada" id="fnref21">[21]</a><span class="tooltiptext">El término fall-through es característico de lenguajes herederos de C, donde la omisión del break se diseñó intencionadamente para permitir la ejecución agrupada de varios casos sin duplicar código.</span></span>.
+  (<em>fall-through</em>)<span class="tooltip"><a href="#fn23" class="nota-llamada" id="fnref23">[23]</a><span class="tooltiptext">El término fall-through es característico de lenguajes herederos de C, donde la omisión del break se diseñó intencionadamente para permitir la ejecución agrupada de varios casos sin duplicar código.</span></span>.
   Cuando se encuentra una coincidencia, el <strong>flujo de
   control</strong> realiza un salto directo a las instrucciones de esa
   rama. Sin embargo, a diferencia de lo que ocurre en las bifurcaciones
@@ -3244,6 +3315,7 @@
   <div class="produccion-alternativas">
   <p><span class="terminal">break</span> <span
   class="terminal">;</span></p>
+  </div>
   </div>
   </div>
   <p>Aunque existen lenguajes que no poseen esta característica, el
@@ -3289,7 +3361,7 @@
   secuencias <strong>if-else-if</strong>. El compilador inspecciona las
   constantes de los casos y genera de forma interna una <strong>tabla de
   saltos</strong> (<em>jump
-  table</em>)<span class="tooltip"><a href="#fn22" class="nota-llamada" id="fnref22">[22]</a><span class="tooltiptext">La tabla de saltos evalúa el valor de entrada y dirige la ejecución instantáneamente a la dirección de memoria adecuada.</span></span>
+  table</em>)<span class="tooltip"><a href="#fn24" class="nota-llamada" id="fnref24">[24]</a><span class="tooltiptext">La tabla de saltos evalúa el valor de entrada y dirige la ejecución instantáneamente a la dirección de memoria adecuada.</span></span>
   en el código. Gracias a la misma, no se necesita ir comparando uno a
   uno todos los valores, sino que puede saltar en un solo paso al camino
   de ejecución exacto en función del valor obtenido. Esto hace que sea
@@ -3536,12 +3608,20 @@
   class="literal">false</span>). <a href="#fnref11" class="footnote-back">↩</a></p>
   </li>
   <li class="footnote" id="fn12">
+  <p>Cualquier función o línea de código que modifica algo fuera de su
+  entorno local. Observad que es <em>lateral</em>, no
+  <em>colateral</em>; debería denominarse efecto secundario pero surge
+  de su traducción literal del inglés, <em>side effect</em>, siendo el
+  término más
+  extendido. <a href="#fnref12" class="footnote-back">↩</a></p>
+  </li>
+  <li class="footnote" id="fn13">
   <p>Es evidente que esta afirmación carece de sentido si estás haciendo
   un examen en el que debes demostrar conocer cuál es el orden de
   precedencia y asociatividad de los
-  operadores. <a href="#fnref12" class="footnote-back">↩</a></p>
+  operadores. <a href="#fnref13" class="footnote-back">↩</a></p>
   </li>
-  <li class="footnote" id="fn13">
+  <li class="footnote" id="fn14">
   <p>Resulta interesante notar que un long (entero de 64 bits) se
   promociona automáticamente a float (real de 32 bits) si coinciden en
   una expresión. Aunque el float ocupa menos memoria, su notación
@@ -3550,55 +3630,61 @@
   aunque se pueda perder precisión en los dígitos menos significativos.
   También se puede producir pérdida de precisión en las conversiones de
   int a float y de long a
-  double. <a href="#fnref13" class="footnote-back">↩</a></p>
+  double. <a href="#fnref14" class="footnote-back">↩</a></p>
   </li>
-  <li class="footnote" id="fn14">
+  <li class="footnote" id="fn15">
   <p>Internamente, al pasar a un tipo entero más pequeño, elimina los
   bits de la izquierda. En la representación binaria en complemento a
   dos, esto puede alterar el bit de signo: por ejemplo, la conversión de
   1234 a byte produce el número
-  -46. <a href="#fnref14" class="footnote-back">↩</a></p>
-  </li>
-  <li class="footnote" id="fn15">
-  <p>Explicaremos la diferencia que existe entre invocar un método de un
-  objeto o una clase en el tema
-  4. <a href="#fnref15" class="footnote-back">↩</a></p>
+  -46. <a href="#fnref15" class="footnote-back">↩</a></p>
   </li>
   <li class="footnote" id="fn16">
-  <p>Existen los denominados TRNG (<em>True Random Number
-  Generators</em>) que extraen valores aleatorios de fenómenos físicos
-  impredecibles. <a href="#fnref16" class="footnote-back">↩</a></p>
+  <p>Explicaremos la diferencia que existe entre invocar un método de un
+  objeto o una clase en el tema
+  4. <a href="#fnref16" class="footnote-back">↩</a></p>
   </li>
   <li class="footnote" id="fn17">
-  <p>Indentación es un anglicismo (indentation) que significa sangría,
-  consistente en desplazar sentencias a la derecha añadiendo espacios o
-  tabulación. <a href="#fnref17" class="footnote-back">↩</a></p>
+  <p>Existen los denominados TRNG (<em>True Random Number
+  Generators</em>) que extraen valores aleatorios de fenómenos físicos
+  impredecibles. <a href="#fnref17" class="footnote-back">↩</a></p>
   </li>
   <li class="footnote" id="fn18">
-  <p>Ese no va a ser nuestro caso, valorando, precisamente, que no
-  cometéis ese error. <a href="#fnref18" class="footnote-back">↩</a></p>
+  <p>Indentación es un anglicismo (indentation) que significa sangría,
+  consistente en desplazar sentencias a la derecha añadiendo espacios o
+  tabulación. <a href="#fnref18" class="footnote-back">↩</a></p>
   </li>
   <li class="footnote" id="fn19">
+  <p>Ese no va a ser nuestro caso, valorando, precisamente, que no
+  cometéis ese error. <a href="#fnref19" class="footnote-back">↩</a></p>
+  </li>
+  <li class="footnote" id="fn20">
+  <p>En el análisis matemático, la aridad de un operador matemático o de
+  una función es el número mínimo de argumentos necesarios para que
+  dicho operador funcione, o se pueda
+  calcular. <a href="#fnref20" class="footnote-back">↩</a></p>
+  </li>
+  <li class="footnote" id="fn21">
   <p>Son tipos de datos de usuario que se construyen definiendo un
   conjunto finito de valores con nombre, conocidos como constantes de
   enumeración. Un posible ejemplo son los días de la semana: lunes,
-  martes, etc. <a href="#fnref19" class="footnote-back">↩</a></p>
+  martes, etc. <a href="#fnref21" class="footnote-back">↩</a></p>
   </li>
-  <li class="footnote" id="fn20">
+  <li class="footnote" id="fn22">
   <p>A partir de la versión 7 del
-  JDK. <a href="#fnref20" class="footnote-back">↩</a></p>
+  JDK. <a href="#fnref22" class="footnote-back">↩</a></p>
   </li>
-  <li class="footnote" id="fn21">
+  <li class="footnote" id="fn23">
   <p>El término <em>fall-through</em> es característico de lenguajes
   herederos de C, donde la omisión del <span
   class="palabra">break</span> se diseñó intencionadamente para permitir
   la ejecución agrupada de varios casos sin duplicar
-  código. <a href="#fnref21" class="footnote-back">↩</a></p>
+  código. <a href="#fnref23" class="footnote-back">↩</a></p>
   </li>
-  <li class="footnote" id="fn22">
+  <li class="footnote" id="fn24">
   <p>La tabla de saltos evalúa el valor de entrada y dirige la ejecución
   instantáneamente a la dirección de memoria
-  adecuada. <a href="#fnref22" class="footnote-back">↩</a></p>
+  adecuada. <a href="#fnref24" class="footnote-back">↩</a></p>
   </li>
   </ol>
 
