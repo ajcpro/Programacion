@@ -510,7 +510,7 @@ En general siempre va a ser apropiado:
   
 <div class="navegacion-secundaria">
 <!-- Renderizar solo si existen en el tema -->
-<a href="ejercicios.html">Ejercicios</a>
+<a href="../ejercicios/tema_01.html">Ejercicios</a>
 <!--a href="problemas.html">Problemas</a-->
 </div>
 </footer>
