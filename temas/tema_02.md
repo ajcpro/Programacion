@@ -1,9 +1,9 @@
 ---
-title: "Tema 02: Entrada, salida y metodología de diseño"
+title: "Tema 02: Metodología de diseño"
 css: ["../estilos/estilo.css", "../estilos/tema_02.css"]
 ---
 
-# Entrada, salida y metodología de diseño
+# Metodología de diseño
 
 <a href="../pdf/tema_02.pdf" target="_blank" class="boton-descarga-top">📥 PDF</a>
 

@@ -58,7 +58,7 @@ blockquote.cita-dijkstra .autor {
 <nav>
 
 * [Tema 01: Lenguajes y técnicas de programación](temas/tema_01.html)
-* [Tema 02: Entrada, salida y metodología de diseño](temas/tema_02.html)
+* [Tema 02: Metodología de diseño](temas/tema_02.html)
 * [Tema 03: Estructuras de programación](temas/tema_03.html)
 * Tema 04: Fundamentos de la POO
 * Tema 05: Gestión de errores y excepciones
@@ -80,7 +80,13 @@ blockquote.cita-dijkstra .autor {
 
 <div class="columna-texto">
 
-Apuntes del módulo programación.
+# Apuntes del módulo programación
+
+Apuntes para el alumnado de los ciclos formativos de desarrollo DAM y DAW.
+Los textos, aunque reorganizados y revisados, provienen de apuntes previos.
+Las imágenes, en su mayoría, han sido generadas por IA a partir de imágenes
+que ya se encontraban en los apuntes previos o a partir de descripciones,
+cuando no existía dicha imagen.
 
 <blockquote class="cita-dijkstra">
   «En cuanto a la ausencia de bibliografía, no ofrezco ni explicaciones ni disculpas»
