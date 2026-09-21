@@ -58,13 +58,13 @@ css: ["../estilos/estilo.css"]
     * La inicial de un nombre.
 19. El siguiente código contiene varios errores. Indícalos y corrígelo:
 
-    ```java
+    <pre class="java-code">
     int edad
     String nombre;
     nombre = Antonio;
     inicial = "A";
-    ```
-    
+    </pre>
+
 20. ¿Qué diferencia existe entre una declaración y una asignación?
 21. Explica qué sucede al ejecutar cada una de las siguientes sentencias, suponiendo que las variables han sido declaradas correctamente:
     * `nombre = "Antonio";`
