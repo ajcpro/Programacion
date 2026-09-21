@@ -114,14 +114,20 @@ diseño</title>
   <li>¿Qué valor conserva finalmente <code>nombre</code>?</li>
   </ul></li>
   <li><p>Explica por qué la siguiente construcción no representa una
-  ecuación matemática válida en Java:
-  <code>java     x + y = z;</code></p></li>
+  ecuación matemática válida en Java:</p>
+  <pre class="codigo-java">
+  x + y = z;
+  </pre></li>
   <li><p>¿Qué significa que una variable sea de un determinado tipo?
   ¿Qué relación existe entre el tipo de una variable y los valores que
   puede almacenar?</p></li>
-  <li><p>Dadas las siguientes declaraciones:
-  <code>java     String nombre;     String apellido;     char inicial;</code>
-  indica cuáles de las siguientes asignaciones son válidas:</p>
+  <li><p>Dadas las siguientes declaraciones:</p>
+  <pre class="codigo-java">
+  String nombre;
+  String apellido;
+  char inicial;
+  </pre>
+  <p>indica cuáles de las siguientes asignaciones son válidas:</p>
   <ul>
   <li><code>nombre = "Ana";</code></li>
   <li><code>apellido = "García";</code></li>
@@ -132,9 +138,12 @@ diseño</title>
   <li><p>¿Por qué podemos utilizar el operador <code>+</code> para
   concatenar cadenas? ¿Qué resultado se obtiene al concatenar dos
   cadenas?</p></li>
-  <li><p>Si:
-  <code>java     String nombre = "Ana";     String apellido = "López";</code>
-  indica el resultado de las siguientes expresiones:</p>
+  <li><p>Si:</p>
+  <pre class="codigo-java">
+  String nombre = "Ana";
+  String apellido = "López";
+  </pre>
+  <p>indica el resultado de las siguientes expresiones:</p>
   <ul>
   <li><code>nombre + apellido</code></li>
   <li><code>nombre + " " + apellido</code></li>
@@ -150,18 +159,23 @@ diseño</title>
   <li><code>System.out.println("Hola");</code></li>
   </ul></li>
   <li><p>¿Qué es una llamada a un método?</p></li>
-  <li><p>En la siguiente llamada:
-  <code>java     System.out.println("Hola");</code> identifica:</p>
+  <li><p>En la siguiente llamada:</p>
+  <pre class="codigo-java">
+  System.out.println("Hola");
+  </pre>
+  <p>identifica:</p>
   <ul>
   <li>La clase;</li>
   <li>El objeto;</li>
   <li>El método;</li>
   <li>El argumento.</li>
   </ul></li>
-  <li><p>En la siguiente llamada:
-  <code>java     String nombre = teclado.next();</code> identifica la
-  expresión que produce el valor que se almacena en <code>nombre</code>.
-  ¿Qué diferencia existe entre esta llamada y
+  <li><p>En la siguiente llamada:</p>
+  <pre class="codigo-java">
+  String nombre = teclado.next();
+  </pre>
+  <p>identifica la expresión que produce el valor que se almacena en
+  <code>nombre</code>. ¿Qué diferencia existe entre esta llamada y
   <code>System.out.println(...)</code>?</p></li>
   <li><p>Explica la diferencia entre una función y un
   procedimiento.</p></li>
@@ -179,10 +193,12 @@ diseño</title>
   <li><p>¿Qué es un paquete y para qué sirve?</p></li>
   <li><p>Explica para qué sirve una sentencia
   <code>import</code>.</p></li>
-  <li><p>¿Qué diferencia existe entre escribir:
-  <code>java     import java.util.Scanner;</code> y utilizar
-  directamente una clase que pertenece a <code>java.lang</code>, como
-  <code>String</code>?</p></li>
+  <li><p>¿Qué diferencia existe entre escribir:</p>
+  <pre class="codigo-java">
+  import java.util.Scanner;
+  </pre>
+  <p>y utilizar directamente una clase que pertenece a
+  <code>java.lang</code>, como <code>String</code>?</p></li>
   <li><p>La clase <code>Scanner</code> se encuentra en un paquete de la
   biblioteca estándar. Explica qué necesitamos hacer para poder
   utilizarla en un programa.</p></li>
@@ -204,19 +220,35 @@ diseño</title>
   <li><p>¿Qué es la impresión del eco? ¿En qué circunstancias puede ser
   útil?</p></li>
   <li><p>Analiza el siguiente fragmento e indica qué datos debe
-  introducir el usuario y qué información se mostrará:
-  <code>java     System.out.print("Nombre: ");     nombre = teclado.nextLine();     System.out.print("Apellido: ");     apellido = teclado.nextLine();     System.out.println("Nombre introducido: " + nombre + " " + apellido);</code></p></li>
+  introducir el usuario y qué información se mostrará:</p>
+  <pre class="codigo-java">
+  System.out.print("Nombre: ");
+  nombre = teclado.nextLine();
+  System.out.print("Apellido: ");
+  apellido = teclado.nextLine();
+  System.out.println("Nombre introducido: " + nombre + " " + apellido);
+  </pre></li>
   <li><p>Modifica mentalmente el ejercicio anterior para que, además del
   nombre y apellido, el programa solicite el nombre del ciclo formativo
   y posteriormente muestre todos los datos en una única línea.</p></li>
   <li><p>Explica qué ventajas tiene utilizar nombres significativos en
   lugar de identificadores como <code>a</code>, <code>b</code>,
   <code>c</code> o <code>x1</code>.</p></li>
-  <li><p>En el siguiente programa:
-  <code>java     public class Alumno {         String nombre;         String ciclo;         public static void main(String[] args) {             Scanner teclado = new Scanner(System.in);             System.out.print("Nombre: ");             nombre = teclado.nextLine();         }     }</code>
-  identifica todos los elementos que ya conocemos y señala los elementos
-  que todavía no podríamos explicar completamente en este punto del
-  curso.</p></li>
+  <li><p>En el siguiente programa:</p>
+  <pre class="codigo-java">
+  public class Alumno {
+      String nombre;
+      String ciclo;
+      public static void main ( String[] args ) {
+          Scanner teclado = new Scanner(System.in);
+          System.out.print("Nombre: ");
+          nombre = teclado.nextLine();
+      }
+  }
+  </pre>
+  <p>identifica todos los elementos que ya conocemos y señala los
+  elementos que todavía no podríamos explicar completamente en este
+  punto del curso.</p></li>
   <li><p>Explica por qué es posible aprender a utilizar una clase de la
   biblioteca sin conocer todavía cómo está implementada
   internamente.</p></li>
@@ -227,12 +259,19 @@ diseño</title>
   estudiada en el tema, determina cuál de los siguientes nombres podría
   utilizarse para una variable y cuál sería preferible como nombre de
   una clase:
-  <code>java     cuenta, Cuenta, numeroDeAlumnos, Alumno, nombreCompleto, Persona</code>
+  <code>text     cuenta, Cuenta, numeroDeAlumnos, Alumno, nombreCompleto, Persona</code>
   Explica qué criterio has utilizado.</p></li>
-  <li><p>Lee el siguiente fragmento y responde sin ejecutarlo:
-  <code>java     String nombre;     String ciclo;     nombre = "Ana";     ciclo = "DAW";     System.out.println("Alumno: " + nombre);     System.out.println("Ciclo: " + ciclo);</code>
-  ¿Qué valores contienen las variables antes de ejecutar las llamadas a
-  <code>println</code>? ¿Qué aparecerá por pantalla?</p></li>
+  <li><p>Lee el siguiente fragmento y responde sin ejecutarlo:</p>
+  <pre class="codigo-java">
+  String nombre;
+  String ciclo;
+  nombre = "Ana";
+  ciclo = "DAW";
+  System.out.println("Alumno: " + nombre);
+  System.out.println("Ciclo: " + ciclo);
+  </pre>
+  <p>¿Qué valores contienen las variables antes de ejecutar las llamadas
+  a <code>println</code>? ¿Qué aparecerá por pantalla?</p></li>
   <li><p>Diseña, utilizando las plantillas sintácticas estudiadas, la
   declaración de las variables necesarias para almacenar los siguientes
   datos de un alumno: nombre, primer apellido, edad, inicial del segundo
