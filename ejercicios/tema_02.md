@@ -71,16 +71,16 @@ css: ["../estilos/estilo.css"]
     * `nombre = "María";`
     * ¿Qué valor conserva finalmente `nombre`?
 22. Explica por qué la siguiente construcción no representa una ecuación matemática válida en Java:
-    ```java
+    <pre class="codigo-java">
     x + y = z;
-    ```
+    </pre>
 23. ¿Qué significa que una variable sea de un determinado tipo? ¿Qué relación existe entre el tipo de una variable y los valores que puede almacenar?
 24. Dadas las siguientes declaraciones:
-    ```java
+    <pre class="codigo-java">
     String nombre;
     String apellido;
     char inicial;
-    ```
+    </pre>
     indica cuáles de las siguientes asignaciones son válidas:
     * `nombre = "Ana";`
     * `apellido = "García";`
@@ -89,10 +89,10 @@ css: ["../estilos/estilo.css"]
     * `nombre = apellido;`
 25. ¿Por qué podemos utilizar el operador `+` para concatenar cadenas? ¿Qué resultado se obtiene al concatenar dos cadenas?
 26. Si:
-    ```java
+    <pre class="codigo-java">
     String nombre = "Ana";
     String apellido = "López";
-    ```
+    </pre>
     indica el resultado de las siguientes expresiones:
     * `nombre + apellido`
     * `nombre + " " + apellido`
@@ -104,18 +104,18 @@ css: ["../estilos/estilo.css"]
     * `System.out.println("Hola");`
 29. ¿Qué es una llamada a un método?
 30. En la siguiente llamada:
-    ```java
+    <pre class="codigo-java">
     System.out.println("Hola");
-    ```
+    </pre>
     identifica:
     * La clase;
     * El objeto;
     * El método;
     * El argumento.
 31. En la siguiente llamada:
-    ```java
+    <pre class="codigo-java">
     String nombre = teclado.next();
-    ```
+    </pre>
     identifica la expresión que produce el valor que se almacena en `nombre`. ¿Qué diferencia existe entre esta llamada y `System.out.println(...)`?
 32. Explica la diferencia entre una función y un procedimiento.
 33. Indica cuáles de las siguientes llamadas corresponden a una función y cuáles a un procedimiento, según la distinción estudiada en el tema:
@@ -127,9 +127,9 @@ css: ["../estilos/estilo.css"]
 35. ¿Qué es un paquete y para qué sirve?
 36. Explica para qué sirve una sentencia `import`.
 37. ¿Qué diferencia existe entre escribir:
-    ```java
+    <pre class="codigo-java">
     import java.util.Scanner;
-    ```
+    </pre>
     y utilizar directamente una clase que pertenece a `java.lang`, como `String`?
 38. La clase `Scanner` se encuentra en un paquete de la biblioteca estándar. Explica qué necesitamos hacer para poder utilizarla en un programa.
 39. ¿Qué diferencia existe entre `System.in` y `System.out`?
@@ -144,44 +144,44 @@ css: ["../estilos/estilo.css"]
 44. ¿Qué es el indicativo de petición de entrada? ¿Por qué es importante?
 45. ¿Qué es la impresión del eco? ¿En qué circunstancias puede ser útil?
 46. Analiza el siguiente fragmento e indica qué datos debe introducir el usuario y qué información se mostrará:
-    ```java
+    <pre class="codigo-java">
     System.out.print("Nombre: ");
     nombre = teclado.nextLine();
     System.out.print("Apellido: ");
     apellido = teclado.nextLine();
     System.out.println("Nombre introducido: " + nombre + " " + apellido);
-    ```
+    </pre>
 47. Modifica mentalmente el ejercicio anterior para que, además del nombre y apellido, el programa solicite el nombre del ciclo formativo y posteriormente muestre todos los datos en una única línea.
 48. Explica qué ventajas tiene utilizar nombres significativos en lugar de identificadores como `a`, `b`, `c` o `x1`.
 49. En el siguiente programa:
-    ```java
+    <pre class="codigo-java">
     public class Alumno {
         String nombre;
         String ciclo;
-        public static void main(String[] args) {
+        public static void main ( String[] args ) {
             Scanner teclado = new Scanner(System.in);
             System.out.print("Nombre: ");
             nombre = teclado.nextLine();
         }
     }
-    ```
+    </pre>
     identifica todos los elementos que ya conocemos y señala los elementos que todavía no podríamos explicar completamente en este punto del curso.
 50. Explica por qué es posible aprender a utilizar una clase de la biblioteca sin conocer todavía cómo está implementada internamente.
 51. Un compañero afirma: «Para programar bien Java hay que memorizar todos los métodos de las bibliotecas». ¿Estás de acuerdo? Explica tu respuesta.
 52. Utilizando la plantilla sintáctica de los identificadores estudiada en el tema, determina cuál de los siguientes nombres podría utilizarse para una variable y cuál sería preferible como nombre de una clase:
-    ```java
+    ```text
     cuenta, Cuenta, numeroDeAlumnos, Alumno, nombreCompleto, Persona
     ```
     Explica qué criterio has utilizado.
 53. Lee el siguiente fragmento y responde sin ejecutarlo:
-    ```java
+    <pre class="codigo-java">
     String nombre;
     String ciclo;
     nombre = "Ana";
     ciclo = "DAW";
     System.out.println("Alumno: " + nombre);
     System.out.println("Ciclo: " + ciclo);
-    ```
+    </pre>
     ¿Qué valores contienen las variables antes de ejecutar las llamadas a `println`? ¿Qué aparecerá por pantalla?
 54. Diseña, utilizando las plantillas sintácticas estudiadas, la declaración de las variables necesarias para almacenar los siguientes datos de un alumno: nombre, primer apellido, edad, inicial del segundo apellido y si está matriculado.
 55. Explica qué partes de un programa pertenecen al lenguaje Java y cuáles proceden de la biblioteca estándar.
