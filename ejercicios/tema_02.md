@@ -64,6 +64,7 @@ css: ["../estilos/estilo.css"]
     nombre = Antonio;
     inicial = "A";
     ```
+    
 20. ¿Qué diferencia existe entre una declaración y una asignación?
 21. Explica qué sucede al ejecutar cada una de las siguientes sentencias, suponiendo que las variables han sido declaradas correctamente:
     * `nombre = "Antonio";`
