@@ -58,7 +58,7 @@ css: ["../estilos/estilo.css"]
     * La inicial de un nombre.
 19. El siguiente código contiene varios errores. Indícalos y corrígelo:
 
-    <pre class="java-code">
+    <pre class="codigo-java">
     int edad
     String nombre;
     nombre = Antonio;
