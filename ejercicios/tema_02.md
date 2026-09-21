@@ -57,6 +57,7 @@ css: ["../estilos/estilo.css"]
     * El nombre de un ciclo formativo;
     * La inicial de un nombre.
 19. El siguiente código contiene varios errores. Indícalos y corrígelo:
+
     ```java
     int edad
     String nombre;
