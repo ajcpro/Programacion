@@ -186,3 +186,5 @@ css: ["../estilos/estilo.css"]
 54. Diseña, utilizando las plantillas sintácticas estudiadas, la declaración de las variables necesarias para almacenar los siguientes datos de un alumno: nombre, primer apellido, edad, inicial del segundo apellido y si está matriculado.
 55. Explica qué partes de un programa pertenecen al lenguaje Java y cuáles proceden de la biblioteca estándar.
 56. ¿Por qué puede afirmarse que utilizar una biblioteca permite concentrarnos en resolver nuestro problema en lugar de volver a programar operaciones que ya han sido desarrolladas?
+
+[Tema2](../temas/tema_02.html)
