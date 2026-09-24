@@ -263,6 +263,7 @@ jobs:
             directorio=$(dirname "$archivo")
    
             mkdir -p "public/$directorio"
+            mkdir -p "public/pdf/$directorio"
    
             # Generar el HTML usando la nueva plantilla, script y filtros
             pandoc "$archivo" --template=template.html -V js-path="../scripts/script.js" --lua-filter=tooltips.lua -c ../estilos/estilo.css -c ../estilos/$nombre.css -o "public/$directorio/$nombre.html"
@@ -270,7 +271,7 @@ jobs:
             # Generar el PDF resolviendo imágenes, notas y eliminando la navegación anterior/siguiente
             pandoc "$archivo" --template=template.html --lua-filter=pdf_notas.lua --wrap=none -c estilos/estilo.css -c estilos/$nombre.css -o "temporal_impresion.html"
             # cp "temporal_impresion.html" "public/pdf/$nombre.html"
-            weasyprint "temporal_impresion.html" "public/pdf/$nombre.pdf"
+            weasyprint "temporal_impresion.html" "public/pdf/$directorio/$nombre.pdf"
             rm temporal_impresion.html
           done
 

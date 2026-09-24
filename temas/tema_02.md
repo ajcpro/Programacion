@@ -5,7 +5,7 @@ css: ["../estilos/estilo.css", "../estilos/tema_02.css"]
 
 # Metodología de diseño
 
-<a href="../pdf/tema_02.pdf" target="_blank" class="boton-descarga-top">📥 PDF</a>
+<a href="../pdf/temas/tema_02.pdf" target="_blank" class="boton-descarga-top">📥 PDF</a>
 
 <nav class="menu-flotante">
 <input type="checkbox" id="menu-toggle" class="menu-checkbox">

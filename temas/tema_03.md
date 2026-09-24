@@ -5,7 +5,7 @@ css: ["../estilos/estilo.css", "../estilos/tema_03.css"]
 
 # Estructuras de programación
 
-<a href="../pdf/tema_03.pdf" target="_blank" class="boton-descarga-top">📥 PDF</a>
+<a href="../pdf/temas/tema_03.pdf" target="_blank" class="boton-descarga-top">📥 PDF</a>
 
 <nav class="menu-flotante">
 <input type="checkbox" id="menu-toggle" class="menu-checkbox">
@@ -1965,6 +1965,24 @@ int precioFinal = switch ( dia ) {
 </pre>
 
 ## Repetición
+
+Hasta el momento hemos analizado cómo el flujo de control de un programa puede ejecutarse de manera lineal o bifurcarse. Estas dos estructuras nos permiten resolver muchos problemas pero si la capacidad de cómputo estuviera restringida a procesar cada línea de código una única vez, cuando se alcanza su posición dentro del flujo de control del programa, la utilidad del software se vería drásticamente reducida. La verdadera potencia de las computadoras modernas no reside sólo en su capacidad para almacenar datos o tomar decisiones puntuales, sino en su asombrosa velocidad para ejecutar la misma secuencia de instrucciones tantas veces como sea necesario sin cometer errores por fatiga o distracción.
+
+Supongamos, por ejemplo, que queremos mostrar en pantalla los números del 1 al 5. Una forma de hacerlo consistiría en escribir cinco sentencias de salida:
+
+<pre class="codigo-java">
+System.out.println(1);
+System.out.println(2);
+System.out.println(3);
+System.out.println(4);
+System.out.println(5);
+</pre>
+
+El programa funciona correctamente, pero resulta evidente que estamos repitiendo la misma operación. Si quisiéramos mostrar los números del 1 al 1000, escribir mil sentencias no sería una solución razonable. Y el problema sería todavía mayor si el número de repeticiones no fuese conocido de antemano, sino que dependiese de los datos que se obtienen durante la ejecución del programa. El verdadero problema que debemos resolver como programadores es cómo expresar esa repetición sin tener que escribir varias veces las mismas instrucciones.
+
+La **estructura repetitiva**, también denominada , bucle o *loop*, permite precisamente indicar que una misma sentencia o un conjunto de sentencias debe ejecutarse varias veces dentro de un programa. En lugar de copiar las instrucciones tantas veces como queramos ejecutarlas, escribimos una sola vez el conjunto de operaciones y establecemos las condiciones que determinan su repetición.
+
+Desde un punto de vista formal, un bucle es una construcción sintáctica que permite ejecutar un bloque de sentencias de forma reiterada mientras se mantenga verdadera una determinada proposición lógica, conocida como **condición de permanencia** o condición de control. Cada una de las ejecuciones individuales del bloque de código contenido en el interior del bucle recibe el nombre de **iteración**. De este modo, la repetición transforma una secuencia finita de instrucciones en un proceso capaz de iterar sobre colecciones de información o mantener una aplicación en ejecución continua a la espera de eventos del usuario.
 
 ### Sentencia while
 
