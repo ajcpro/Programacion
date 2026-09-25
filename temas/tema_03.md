@@ -1917,6 +1917,7 @@ SwitchExpression
 <span class="terminal">switch</span> <span class="terminal">(</span> Expression <span class="terminal">)</span> SwitchBlock
 </div>
 </div>
+</div>
 
 Y ya podemos volver a escribir el código, esta vez como expresión:
 
@@ -2026,7 +2027,6 @@ Sintácticamente, la sentencia <span class="palabra">while</span> es una nueva c
 StatementWithoutTrailingSubstatement<br>
 IfThenStatement<br>
 IfThenElseStatement<br>
-SwitchStatement<br>
 WhileStatement
 </div>
 </div>
