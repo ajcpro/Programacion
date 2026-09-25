@@ -1980,11 +1980,164 @@ System.out.println(5);
 
 El programa funciona correctamente, pero resulta evidente que estamos repitiendo la misma operación. Si quisiéramos mostrar los números del 1 al 1000, escribir mil sentencias no sería una solución razonable. Y el problema sería todavía mayor si el número de repeticiones no fuese conocido de antemano, sino que dependiese de los datos que se obtienen durante la ejecución del programa. El verdadero problema que debemos resolver como programadores es cómo expresar esa repetición sin tener que escribir varias veces las mismas instrucciones.
 
-La **estructura repetitiva**, también denominada , bucle o *loop*, permite precisamente indicar que una misma sentencia o un conjunto de sentencias debe ejecutarse varias veces dentro de un programa. En lugar de copiar las instrucciones tantas veces como queramos ejecutarlas, escribimos una sola vez el conjunto de operaciones y establecemos las condiciones que determinan su repetición.
+La **estructura repetitiva**, también denominada, **bucle** o ***loop***, permite precisamente indicar que una misma sentencia o un conjunto de sentencias debe ejecutarse varias veces dentro de un programa. En lugar de copiar las instrucciones tantas veces como queramos ejecutarlas, escribimos una sola vez el conjunto de operaciones y establecemos las condiciones que determinan su repetición.
 
 Desde un punto de vista formal, un bucle es una construcción sintáctica que permite ejecutar un bloque de sentencias de forma reiterada mientras se mantenga verdadera una determinada proposición lógica, conocida como **condición de permanencia** o condición de control. Cada una de las ejecuciones individuales del bloque de código contenido en el interior del bucle recibe el nombre de **iteración**. De este modo, la repetición transforma una secuencia finita de instrucciones en un proceso capaz de iterar sobre colecciones de información o mantener una aplicación en ejecución continua a la espera de eventos del usuario.
 
+<figure class="img-lateral-izq">
+    <img src="../imagenes/03_0?_repetición.png" alt="Recorrido circular del flujo de control">
+</figure>
+
+Podemos entender la repetición como una modificación del flujo de control que ya conocemos. En una estructura secuencial, después de ejecutar una sentencia el control pasa a la siguiente; en una selección, el resultado de una condición determina qué camino debe seguir la ejecución. En una repetición aparece una posibilidad nueva: después de ejecutar unas sentencias, el flujo de control puede regresar a una posición anterior del programa para volver a ejecutarlas. De esta forma, el flujo de control deja de avanzar únicamente hacia delante: una parte del programa puede recorrerse varias veces.
+
+La característica fundamental de cualquier repetición es, por tanto, que existe un **conjunto de instrucciones que puede ejecutarse más de una vez**. En cada iteración se realiza nuevamente el mismo conjunto de operaciones, aunque los valores sobre los que trabajan dichas operaciones pueden haber cambiado desde la iteración anterior.
+
+<aside class="definicion">
+
+**Repetición:** Estructura de control que permite ejecutar varias veces una misma sentencia o conjunto de sentencias, de acuerdo con una determinada condición o criterio de repetición.
+
+**Iteración:** Cada una de las ejecuciones completas del cuerpo de una estructura repetitiva.
+
+</aside>
+
+Para que una estructura repetitiva funcione de manera correcta, predecible y segura dentro de un algoritmo, debe articularse internamente alrededor de cuatro componentes fundamentales:
+* Inicialización: Consiste en establecer el estado inicial de las variables que van a gobernar el comportamiento del bucle antes de que el flujo de control alcance la estructura por primera vez.
+* Condición de control o permanencia: Es una expresión booleana que se evalúa en cada iteración. Mientras esta condición sea verdadera, el bucle continuará ejecutando iteraciones; en el instante exacto en que se evalúe como falsa, la repetición se interrumpirá y el flujo de control saltará a la primera sentencia ubicada tras el bucle.
+* Cuerpo del bucle: Es el bloque de sentencias que contiene las operaciones destinadas a ejecutarse en cada iteración.
+* Actualización o modificación del estado: Es la instrucción (o grupo de instrucciones) dentro del cuerpo del bucle que actualiza el valor de las variables de control. Su función es garantizar que, tras un número finito de iteraciones, la condición de permanencia deje de cumplirse.
+
+La omisión o la incorrecta formulación del mecanismo de actualización da lugar a uno de los fallos más graves y comunes en programación: el bucle infinito. Un bucle infinito se produce cuando la condición de permanencia nunca llega a evaluarse como falsa, provocando que la máquina  quede atrapada en una repetición ininterrumpida que consume recursos del sistema (CPU y memoria) y bloquea la respuesta de la aplicación. Por consiguiente, el diseño de cualquier bucle exige garantizar que el proceso repetitivo concluirá en un tiempo finito.
+
+Este es la idea esencial de todos los bucles, aunque todavía no nos dice cómo se construyen. Lo que cambia de un tipo de repetición a otro es precisamente la forma de expresar ese criterio de repetición, la manera de controlar las iteraciones y el momento en el que se comprueba si debemos continuar o abandonar el bucle.
+
+A partir de aquí estudiaremos las diferentes formas de construir estas estructuras en Java. Comenzaremos por la sentencia <span class="palabra">while</span>, que nos permitirá observar con claridad el mecanismo básico de una repetición y, a partir de él, comprender las distintas situaciones en las que podemos necesitar controlar un bucle para la construcción de algoritmos eficientes, estructurados y de alto rendimiento.
+
 ### Sentencia while
+
+La sentencia  <span class="palabra">while</span>recibe su nombre del inglés *while*, que podemos traducir como «mientras», y constituye la estructura repetitiva más elemental, flexible y conceptualmente pura de las que proporciona el lenguaje Java.  Su funcionamiento resulta especialmente sencillo si lo relacionamos con la selección simple que acabamos de estudiar: en ambos casos se evalúa una condición y, según el resultado, se decide qué instrucciones debe ejecutar el ordenador. La diferencia fundamental es que, en una selección, una vez ejecutadas las instrucciones de la alternativa correspondiente el flujo continúa hacia delante; en una repetición, si la condición lo permite, el flujo de control **regresa al comienzo de la estructura para volver a ejecutar las mismas instrucciones**.
+
+Sintácticamente, la sentencia <span class="palabra">while</span> es una nueva clase de <span class="produccion-palabra">Statement</span>:
+
+<div class="plantilla-sintactica">
+<div class="produccion">
+<div class="produccion-encabezado">Statement:</div>
+<div class="produccion-alternativas">
+StatementWithoutTrailingSubstatement<br>
+IfThenStatement<br>
+IfThenElseStatement<br>
+SwitchStatement<br>
+WhileStatement
+</div>
+</div>
+<div class="produccion">
+<div class="produccion-encabezado">WhileStatement:</div>
+<div class="produccion-alternativas">
+<span class="terminal">while</span> <span class="terminal">(</span> Expression <span class="terminal">)</span> Statement
+</div>
+</div>
+</div>
+
+Como podemos observar, la estructura de la sentencia <span class="palabra">while</span> es muy similar a la de <span class="palabra">if</span>. En ambos casos encontramos la palabra reservada correspondiente, una expresión encerrada entre paréntesis y, finalmente, una sentencia:
+
+<pre class="codigo-fuente">
+if     ( expresión ) sentencia
+while  ( expresión ) sentencia
+</pre>
+
+La diferencia no está, por tanto, en la forma general de la estructura, sino en el comportamiento del flujo de control. En la selección, la sentencia asociada a la condición se ejecuta como máximo una vez. En la repetición, esa misma sentencia puede ejecutarse ninguna, una o muchas veces dependiendo del valor de la condición en cada momento.
+
+Una característica importante que debemos observar en este esquema es que **la condición se comprueba antes de ejecutar el cuerpo del bucle**. Si resulta verdadera, se ejecutan las sentencias que forman dicho cuerpo y, al finalizar, el flujo de control vuelve a evaluar la condición. Si sigue siendo verdadera, las sentencias vuelven a ejecutarse. Este proceso continúa hasta que, en alguna de las comprobaciones, la condición resulta falsa. Esto es lo que se conoce como **estructura repetitiva precondicional**, bucle de prueba previa, bucle de precondición o *pre-test loop*.
+
+Esto explica una propiedad importante de la sentencia <span class="palabra">while</span>: **el cuerpo del bucle puede no ejecutarse ninguna vez**. Si la condición es falsa cuando el flujo de control alcanza por primera vez la sentencia <span class="palabra">while</span>, el ordenador no ejecuta ninguna de las instrucciones de su cuerpo y continúa directamente con la primera sentencia situada después del bucle.
+
+Supongamos, por ejemplo, que queremos mostrar los números del 1 al 5. Ya hemos visto que escribir una sentencia de salida para cada número permite resolver el problema, pero que esa solución obliga a repetir innecesariamente la misma instrucción. Mediante una repetición podemos escribir una sola vez la instrucción que debe ejecutarse y hacer que el ordenador vuelva a ella mientras se cumpla una condición:
+
+<pre class="codigo-java">
+int numero = 1;
+
+while ( numero <= 5 ) {
+    System.out.println(numero);
+    numero = numero + 1;
+}
+</pre>
+
+Veamos con detenimiento qué sucede durante la ejecución.
+
+En primer lugar, se declara la variable <span class="variable">numero</span> y se le asigna el valor <span class="literal">1</span>. Cuando el flujo de control alcanza la sentencia <span class="palabra">while</span>, el ordenador evalúa la expresión <span class="codigo">numero <= 5</span>. Como en ese momento la expresión vale <span class="literal">true</span>, ejecuta el cuerpo del bucle.
+
+La primera iteración muestra el valor <span class="literal">1</span> y, después, modifica el valor de <span class="variable">numero</span>, que pasa a ser <span class="literal">2</span>. Al terminar el cuerpo, el flujo de control no continúa todavía con la siguiente sentencia del programa, sino que **regresa a la condición del <span class="palabra">while</span>**.
+
+Ahora se vuelve a evaluar <span class="codigo">numero <= 5</span>. Como <span class="variable">numero</span> vale <span class="literal">2</span>, la condición continúa siendo verdadera y se produce una nueva iteración. El mismo proceso se repite para los valores <span class="literal">3</span>, <span class="literal">4</span> y <span class="literal">5</span>.
+
+Después de la quinta iteración, la variable <span class="variable">numero</span> adquiere el valor <span class="literal">6</span>. El ordenador vuelve a evaluar la condición:
+
+<pre class="codigo-fuente">
+condición: numero <= 5
+¿ 6 <= 5 ? --> false
+</pre>
+
+En este momento la condición ya no se cumple. El cuerpo del bucle no se vuelve a ejecutar y el flujo de control continúa con la primera sentencia situada después de la estructura <span class="palabra">while</span>.
+
+Podemos representar las sucesivas comprobaciones mediante una tabla:
+
+<table>
+<tr><th>numero<th>condición<th>acción</tr>
+<tr><td>1<td>1 <= 5 → sí<td>ejecutar cuerpo
+<tr><td>2<td>2 <= 5 → sí<td>ejecutar cuerpo
+<tr><td>3<td>3 <= 5 → sí<td>ejecutar cuerpo
+<tr><td>4<td>4 <= 5 → sí<td>ejecutar cuerpo
+<tr><td>5<td>5 <= 5 → sí<td>ejecutar cuerpo
+<tr><td>6<td>6 <= 5 → no<td>salir del bucle
+</table>
+
+El ejemplo anterior nos permite observar que una repetición necesita algo más que una condición. Para que el bucle pueda terminar, **algún elemento del programa debe cambiar entre una iteración y la siguiente de manera que, finalmente, la condición deje de cumplirse**. En nuestro caso, ese elemento es la variable <span class="variable">numero</span>, cuyo valor aumenta en cada iteración.
+
+Esta circunstancia resulta esencial para comprender el funcionamiento de cualquier bucle. Si durante la ejecución del cuerpo ninguna de las circunstancias que intervienen en la condición puede cambiar, es posible que la condición permanezca indefinidamente verdadera. En ese caso, el programa continuaría ejecutando el mismo conjunto de instrucciones sin alcanzar nunca la sentencia siguiente. Eliminemos, simplemente, <span class="codigo">numero = numero + 1;</span>:
+
+<pre class="codigo-java">
+int numero = 1;
+
+while (numero <= 5)
+    System.out.println(numero);
+</pre>
+
+En este caso, <span class="variable">numero</span> conserva siempre el valor <span class="literal">1</span>. Por tanto, la condición <span class="codigo">numero <= 5</span> será siempre verdadera y el ordenador continuará mostrando el número <span class="literal">1</span> una y otra vez. Hemos construido un **bucle infinito**.
+
+<aside class="definicion">
+
+**Bucle infinito:** Repetición cuya condición de continuidad permanece verdadera indefinidamente, de manera que el flujo de control no llega a abandonar el bucle.
+
+</aside>
+
+Los bucles infinitos no son necesariamente consecuencia de un error sintáctico. El programa anterior, desde el punto de vista de las reglas del lenguaje Java, es correcto y el compilador no tiene por qué advertirnos de que nunca terminaremos la repetición. Se trata de un problema relacionado con la lógica del algoritmo y, por tanto, tendremos que ser capaces de detectarlo durante su diseño o mediante la depuración del programa.
+
+Debemos prestar también atención a una diferencia importante respecto de una secuencia ordinaria cuando se ejecuta un bloque. Las sentencias que forman el cuerpo del bucle no deben interpretarse como acciones que se ejecutan una sola vez en el lugar en el que están escritas. Constituyen el **conjunto de instrucciones que se repite cada vez que la condición resulta verdadera**. Como consecuencia, la posición de una sentencia dentro del cuerpo puede ser relevante para el funcionamiento del algoritmo. En el ejemplo anterior, primero mostramos el número y después modificamos su valor. Si invirtiéramos las dos instrucciones, el resultado sería diferente:
+
+<pre class="codigo-java">
+while (numero <= 5) {
+    numero = numero + 1;
+    System.out.println(numero);
+}
+</pre>
+
+Ahora la primera iteración mostraría el valor <span class="literal">2</span> en lugar del <span class="literal">1</span>. Esto nos recuerda una idea que ya apareció al estudiar las estructuras secuenciales: **el orden de las instrucciones forma parte del algoritmo**. En una repetición esta importancia se multiplica porque el mismo orden vuelve a aplicarse en cada iteración.
+
+Con todo lo explicado en mente, es necesario destacar las siguientes restricciones de diseño:
+
+*   **La expresión de control o condición de permanencia:** El contenido delimitado por los paréntesis debe ser una expresión que produzca un valor de tipo booleano. Al igual que ocurre en las estructuras de selección, Java prohíbe el uso de valores enteros o referencias como criterios de control directo.
+*   **El cuerpo del bucle:** Comprende la sentencia (o bloque) destinada a repetirse en cada ciclo.
+
+Podemos resumir el funcionamiento de <span class="palabra">while</span> mediante la siguiente secuencia:
+
+1.  **Evaluación de la condición *pre-test*:** El ordenador evalúa la expresión booleana.
+2.  **Decisión y ejecución de la iteración:** 
+    *   Si el resultado de la evaluación es verdadero, se ejcuta el cuerpo del bucle.
+    *   Si el resultado es falso, la estructura repetitiva se abandona.
+3.  **Retroceso del flujo de control (*loopback*):** Al finalizar el cuerpo del bucle, el flujo de control regresa al paso 1.
+
+La contrucción del código debe garantizar la presencia de tres elementos metodológicos indispensables: la **inicialización** de las variables de control, la **comprobación** de la condición en el encabezado y la **actualización explícita** del estado dentro del cuerpo. La ausencia de la sentencia de actualización —o una formulación defectuosa— conducirá a un **bucle infinito**.
+
+Asimismo, como ya se indicó para la condición, es un error sintáctico sumamente sutil y extendido la colocación accidental de un **punto y coma** inmediatamente después del paréntesis de cierre: el compilador no detectará ningún fallo de sintaxis, pero interpretará que el cuerpo del bucle está constituido únicamente por la **sentencia nula** representada por ese punto y coma. Si la condición inicial es verdadera, la aplicación entrará en un bucle infinito silencioso y transparente.
 
 ### Bucles controlados por condición
 
