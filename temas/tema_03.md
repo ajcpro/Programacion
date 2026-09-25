@@ -1947,6 +1947,7 @@ YieldStatement
 <span class="terminal">yield</span> Expression <span class="terminal">;</span>
 </div>
 </div>
+</div>
 
 Dentro del bloque escribiremos la sentencia **yield** que incluye dicha palabra contextual, seguida de una expresión, el valor a devolver por la sentencia <span class="palabra">switch</span>.
 
