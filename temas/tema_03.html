@@ -3599,21 +3599,24 @@
   </aside>
   <p>Para que una estructura repetitiva funcione de manera correcta,
   predecible y segura dentro de un algoritmo, debe articularse
-  internamente alrededor de cuatro componentes fundamentales: *
-  Inicialización: Consiste en establecer el estado inicial de las
+  internamente alrededor de cuatro componentes fundamentales:</p>
+  <ul>
+  <li>Inicialización: Consiste en establecer el estado inicial de las
   variables que van a gobernar el comportamiento del bucle antes de que
-  el flujo de control alcance la estructura por primera vez. * Condición
-  de control o permanencia: Es una expresión booleana que se evalúa en
-  cada iteración. Mientras esta condición sea verdadera, el bucle
-  continuará ejecutando iteraciones; en el instante exacto en que se
-  evalúe como falsa, la repetición se interrumpirá y el flujo de control
-  saltará a la primera sentencia ubicada tras el bucle. * Cuerpo del
-  bucle: Es el bloque de sentencias que contiene las operaciones
-  destinadas a ejecutarse en cada iteración. * Actualización o
-  modificación del estado: Es la instrucción (o grupo de instrucciones)
-  dentro del cuerpo del bucle que actualiza el valor de las variables de
-  control. Su función es garantizar que, tras un número finito de
-  iteraciones, la condición de permanencia deje de cumplirse.</p>
+  el flujo de control alcance la estructura por primera vez.</li>
+  <li>Condición de control o permanencia: Es una expresión booleana que
+  se evalúa en cada iteración. Mientras esta condición sea verdadera, el
+  bucle continuará ejecutando iteraciones; en el instante exacto en que
+  se evalúe como falsa, la repetición se interrumpirá y el flujo de
+  control saltará a la primera sentencia ubicada tras el bucle.</li>
+  <li>Cuerpo del bucle: Es el bloque de sentencias que contiene las
+  operaciones destinadas a ejecutarse en cada iteración.</li>
+  <li>Actualización o modificación del estado: Es la instrucción (o
+  grupo de instrucciones) dentro del cuerpo del bucle que actualiza el
+  valor de las variables de control. Su función es garantizar que, tras
+  un número finito de iteraciones, la condición de permanencia deje de
+  cumplirse.</li>
+  </ul>
   <p>La omisión o la incorrecta formulación del mecanismo de
   actualización da lugar a uno de los fallos más graves y comunes en
   programación: el bucle infinito. Un bucle infinito se produce cuando
@@ -3636,8 +3639,8 @@
   bucle para la construcción de algoritmos eficientes, estructurados y
   de alto rendimiento.</p>
   <h3 id="sentencia-while">Sentencia while</h3>
-  <p>La sentencia <span class="palabra">while</span>recibe su nombre del
-  inglés <em>while</em>, que podemos traducir como «mientras», y
+  <p>La sentencia <span class="palabra">while</span> recibe su nombre
+  del inglés <em>while</em>, que podemos traducir como «mientras», y
   constituye la estructura repetitiva más elemental, flexible y
   conceptualmente pura de las que proporciona el lenguaje Java. Su
   funcionamiento resulta especialmente sencillo si lo relacionamos con
@@ -3719,29 +3722,26 @@
       numero = numero + 1;
   }
   </pre>
-  <p>Veamos con detenimiento qué sucede durante la ejecución.</p>
-  <p>En primer lugar, se declara la variable <span
-  class="variable">numero</span> y se le asigna el valor <span
-  class="literal">1</span>. Cuando el flujo de control alcanza la
-  sentencia <span class="palabra">while</span>, el ordenador evalúa la
-  expresión <span class="codigo">numero &lt;= 5</span>. Como en ese
-  momento la expresión vale <span class="literal">true</span>, ejecuta
-  el cuerpo del bucle.</p>
-  <p>La primera iteración muestra el valor <span
-  class="literal">1</span> y, después, modifica el valor de <span
-  class="variable">numero</span>, que pasa a ser <span
-  class="literal">2</span>. Al terminar el cuerpo, el flujo de control
-  no continúa todavía con la siguiente sentencia del programa, sino que
-  <strong>regresa a la condición del <span
-  class="palabra">while</span></strong>.</p>
-  <p>Ahora se vuelve a evaluar <span class="codigo">numero &lt;=
-  5</span>. Como <span class="variable">numero</span> vale <span
-  class="literal">2</span>, la condición continúa siendo verdadera y se
-  produce una nueva iteración. El mismo proceso se repite para los
-  valores <span class="literal">3</span>, <span class="literal">4</span>
-  y <span class="literal">5</span>.</p>
-  <p>Después de la quinta iteración, la variable <span
-  class="variable">numero</span> adquiere el valor <span
+  <p>Veamos con detenimiento qué sucede durante la ejecución. En primer
+  lugar, se declara la variable <span class="variable">numero</span> y
+  se le asigna el valor <span class="literal">1</span>. Cuando el flujo
+  de control alcanza la sentencia <span class="palabra">while</span>, el
+  ordenador evalúa la expresión <span class="codigo">numero &lt;=
+  5</span>. Como en ese momento la expresión vale <span
+  class="literal">true</span>, ejecuta el cuerpo del bucle. La primera
+  iteración muestra el valor <span class="literal">1</span> y, después,
+  modifica el valor de <span class="variable">numero</span>, que pasa a
+  ser <span class="literal">2</span>. Al terminar el cuerpo, el flujo de
+  control no continúa todavía con la siguiente sentencia del programa,
+  sino que <strong>regresa a la condición del <span
+  class="palabra">while</span></strong>. Ahora se vuelve a evaluar <span
+  class="codigo">numero &lt;= 5</span>. Como <span
+  class="variable">numero</span> vale <span class="literal">2</span>, la
+  condición continúa siendo verdadera y se produce una nueva iteración.
+  El mismo proceso se repite para los valores <span
+  class="literal">3</span>, <span class="literal">4</span> y <span
+  class="literal">5</span>. Después de la quinta iteración, la variable
+  <span class="variable">numero</span> adquiere el valor <span
   class="literal">6</span>. El ordenador vuelve a evaluar la
   condición:</p>
   <pre class="codigo-fuente">
@@ -3751,9 +3751,8 @@
   <p>En este momento la condición ya no se cumple. El cuerpo del bucle
   no se vuelve a ejecutar y el flujo de control continúa con la primera
   sentencia situada después de la estructura <span
-  class="palabra">while</span>.</p>
-  <p>Podemos representar las sucesivas comprobaciones mediante una
-  tabla:</p>
+  class="palabra">while</span>. Podemos representar las sucesivas
+  comprobaciones mediante una tabla:</p>
   <table>
   <tr>
   <th>
