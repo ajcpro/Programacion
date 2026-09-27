@@ -1,5 +1,5 @@
 ---
-title: "Ejercicios Tema 02: Entrada, salida y metodología de diseño"
+title: "Ejercicios Tema 02: Metodología de diseño"
 css: ["../estilos/estilo.css"]
 ---
 
@@ -187,4 +187,4 @@ css: ["../estilos/estilo.css"]
 55. Explica qué partes de un programa pertenecen al lenguaje Java y cuáles proceden de la biblioteca estándar.
 56. ¿Por qué puede afirmarse que utilizar una biblioteca permite concentrarnos en resolver nuestro problema en lugar de volver a programar operaciones que ya han sido desarrolladas?
 
-[Tema2](../temas/tema_02.html)
+[Tema2](../temas/tema_02.html) | [Problemas](../problemas/tema_02.md)

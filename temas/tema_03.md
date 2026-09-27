@@ -2003,6 +2003,7 @@ La característica fundamental de cualquier repetición es, por tanto, que exist
 </aside>
 
 Para que una estructura repetitiva funcione de manera correcta, predecible y segura dentro de un algoritmo, debe articularse internamente alrededor de cuatro componentes fundamentales:
+
 * Inicialización: Consiste en establecer el estado inicial de las variables que van a gobernar el comportamiento del bucle antes de que el flujo de control alcance la estructura por primera vez.
 * Condición de control o permanencia: Es una expresión booleana que se evalúa en cada iteración. Mientras esta condición sea verdadera, el bucle continuará ejecutando iteraciones; en el instante exacto en que se evalúe como falsa, la repetición se interrumpirá y el flujo de control saltará a la primera sentencia ubicada tras el bucle.
 * Cuerpo del bucle: Es el bloque de sentencias que contiene las operaciones destinadas a ejecutarse en cada iteración.
@@ -2016,7 +2017,7 @@ A partir de aquí estudiaremos las diferentes formas de construir estas estructu
 
 ### Sentencia while
 
-La sentencia  <span class="palabra">while</span>recibe su nombre del inglés *while*, que podemos traducir como «mientras», y constituye la estructura repetitiva más elemental, flexible y conceptualmente pura de las que proporciona el lenguaje Java.  Su funcionamiento resulta especialmente sencillo si lo relacionamos con la selección simple que acabamos de estudiar: en ambos casos se evalúa una condición y, según el resultado, se decide qué instrucciones debe ejecutar el ordenador. La diferencia fundamental es que, en una selección, una vez ejecutadas las instrucciones de la alternativa correspondiente el flujo continúa hacia delante; en una repetición, si la condición lo permite, el flujo de control **regresa al comienzo de la estructura para volver a ejecutar las mismas instrucciones**.
+La sentencia <span class="palabra">while</span> recibe su nombre del inglés *while*, que podemos traducir como «mientras», y constituye la estructura repetitiva más elemental, flexible y conceptualmente pura de las que proporciona el lenguaje Java.  Su funcionamiento resulta especialmente sencillo si lo relacionamos con la selección simple que acabamos de estudiar: en ambos casos se evalúa una condición y, según el resultado, se decide qué instrucciones debe ejecutar el ordenador. La diferencia fundamental es que, en una selección, una vez ejecutadas las instrucciones de la alternativa correspondiente el flujo continúa hacia delante; en una repetición, si la condición lo permite, el flujo de control **regresa al comienzo de la estructura para volver a ejecutar las mismas instrucciones**.
 
 Sintácticamente, la sentencia <span class="palabra">while</span> es una nueva clase de <span class="produccion-palabra">Statement</span>:
 
@@ -2062,24 +2063,14 @@ while ( numero <= 5 ) {
 }
 </pre>
 
-Veamos con detenimiento qué sucede durante la ejecución.
-
-En primer lugar, se declara la variable <span class="variable">numero</span> y se le asigna el valor <span class="literal">1</span>. Cuando el flujo de control alcanza la sentencia <span class="palabra">while</span>, el ordenador evalúa la expresión <span class="codigo">numero <= 5</span>. Como en ese momento la expresión vale <span class="literal">true</span>, ejecuta el cuerpo del bucle.
-
-La primera iteración muestra el valor <span class="literal">1</span> y, después, modifica el valor de <span class="variable">numero</span>, que pasa a ser <span class="literal">2</span>. Al terminar el cuerpo, el flujo de control no continúa todavía con la siguiente sentencia del programa, sino que **regresa a la condición del <span class="palabra">while</span>**.
-
-Ahora se vuelve a evaluar <span class="codigo">numero <= 5</span>. Como <span class="variable">numero</span> vale <span class="literal">2</span>, la condición continúa siendo verdadera y se produce una nueva iteración. El mismo proceso se repite para los valores <span class="literal">3</span>, <span class="literal">4</span> y <span class="literal">5</span>.
-
-Después de la quinta iteración, la variable <span class="variable">numero</span> adquiere el valor <span class="literal">6</span>. El ordenador vuelve a evaluar la condición:
+Veamos con detenimiento qué sucede durante la ejecución. En primer lugar, se declara la variable <span class="variable">numero</span> y se le asigna el valor <span class="literal">1</span>. Cuando el flujo de control alcanza la sentencia <span class="palabra">while</span>, el ordenador evalúa la expresión <span class="codigo">numero <= 5</span>. Como en ese momento la expresión vale <span class="literal">true</span>, ejecuta el cuerpo del bucle. La primera iteración muestra el valor <span class="literal">1</span> y, después, modifica el valor de <span class="variable">numero</span>, que pasa a ser <span class="literal">2</span>. Al terminar el cuerpo, el flujo de control no continúa todavía con la siguiente sentencia del programa, sino que **regresa a la condición del <span class="palabra">while</span>**. Ahora se vuelve a evaluar <span class="codigo">numero <= 5</span>. Como <span class="variable">numero</span> vale <span class="literal">2</span>, la condición continúa siendo verdadera y se produce una nueva iteración. El mismo proceso se repite para los valores <span class="literal">3</span>, <span class="literal">4</span> y <span class="literal">5</span>. Después de la quinta iteración, la variable <span class="variable">numero</span> adquiere el valor <span class="literal">6</span>. El ordenador vuelve a evaluar la condición:
 
 <pre class="codigo-fuente">
 condición: numero <= 5
 ¿ 6 <= 5 ? --> false
 </pre>
 
-En este momento la condición ya no se cumple. El cuerpo del bucle no se vuelve a ejecutar y el flujo de control continúa con la primera sentencia situada después de la estructura <span class="palabra">while</span>.
-
-Podemos representar las sucesivas comprobaciones mediante una tabla:
+En este momento la condición ya no se cumple. El cuerpo del bucle no se vuelve a ejecutar y el flujo de control continúa con la primera sentencia situada después de la estructura <span class="palabra">while</span>. Podemos representar las sucesivas comprobaciones mediante una tabla:
 
 <table>
 <tr><th>numero<th>condición<th>acción</tr>
