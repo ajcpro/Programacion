@@ -11,11 +11,15 @@ css: ["../estilos/estilo.css"]
    * Una variable de tipo `int` a la que se pretende asignar una cadena.
    * Una palabra reservada escrita con mayúsculas cuando el lenguaje distingue entre mayúsculas y minúsculas.
 3. ¿Qué es una plantilla sintáctica y para qué sirve?
-4. Observa la siguiente plantilla sintáctica:
-   ```text
-   Programa: {ImportDeclaration} ClassDeclaration
-   ```
-   ¿Qué elemento es obligatorio? ¿Qué elemento puede aparecer varias veces? ¿Puede no aparecer ninguna declaración de importación?
+4. Observa la siguiente plantilla sintáctica:<div class="plantilla-sintactica">
+<div class="produccion">
+<div class="produccion-encabezado">Programa:</div>
+<div class="produccion-alternativas">
+{ImportDeclaration} ClassDeclaration
+</div>
+</div>
+</div>
+¿Qué elemento es obligatorio? ¿Qué elemento puede aparecer varias veces? ¿Puede no aparecer ninguna declaración de importación?
 5. Observa la plantilla de una declaración de variable que aparece en el tema. Indica cuáles de las siguientes declaraciones son válidas y cuáles no:
    * `int edad;`
    * `String nombre;`
@@ -57,14 +61,12 @@ css: ["../estilos/estilo.css"]
     * El nombre de un ciclo formativo;
     * La inicial de un nombre.
 19. El siguiente código contiene varios errores. Indícalos y corrígelo:
-
     <pre class="codigo-java">
     int edad
     String nombre;
     nombre = Antonio;
     inicial = "A";
     </pre>
-
 20. ¿Qué diferencia existe entre una declaración y una asignación?
 21. Explica qué sucede al ejecutar cada una de las siguientes sentencias, suponiendo que las variables han sido declaradas correctamente:
     * `nombre = "Antonio";`
@@ -136,9 +138,9 @@ css: ["../estilos/estilo.css"]
 40. ¿Qué hace el objeto `Scanner` cuando utilizamos sus métodos de lectura?
 41. ¿Qué diferencia existe entre `next()`, `nextLine()` y `nextInt()`?
 42. Supongamos que la entrada contiene:
-    ```text
+    <pre class="codigo-fuente">
     Ana López
-    ```
+    </pre>
     ¿Qué obtendríamos mediante `next()` en dos llamadas consecutivas? ¿Y qué obtendríamos mediante `nextLine()`?
 43. Explica por qué un programa interactivo debería indicar al usuario qué dato debe introducir antes de realizar una lectura.
 44. ¿Qué es el indicativo de petición de entrada? ¿Por qué es importante?
@@ -169,9 +171,9 @@ css: ["../estilos/estilo.css"]
 50. Explica por qué es posible aprender a utilizar una clase de la biblioteca sin conocer todavía cómo está implementada internamente.
 51. Un compañero afirma: «Para programar bien Java hay que memorizar todos los métodos de las bibliotecas». ¿Estás de acuerdo? Explica tu respuesta.
 52. Utilizando la plantilla sintáctica de los identificadores estudiada en el tema, determina cuál de los siguientes nombres podría utilizarse para una variable y cuál sería preferible como nombre de una clase:
-    ```text
+    <pre class="codigo-fuente">
     cuenta, Cuenta, numeroDeAlumnos, Alumno, nombreCompleto, Persona
-    ```
+    </pre>
     Explica qué criterio has utilizado.
 53. Lee el siguiente fragmento y responde sin ejecutarlo:
     <pre class="codigo-java">
@@ -187,4 +189,4 @@ css: ["../estilos/estilo.css"]
 55. Explica qué partes de un programa pertenecen al lenguaje Java y cuáles proceden de la biblioteca estándar.
 56. ¿Por qué puede afirmarse que utilizar una biblioteca permite concentrarnos en resolver nuestro problema en lugar de volver a programar operaciones que ya han sido desarrolladas?
 
-[Tema2](../temas/tema_02.html) | [Problemas](../problemas/tema_02.md)
+[Tema2](../temas/tema_02.html) | [Problemas](../problemas/tema_02.html)
