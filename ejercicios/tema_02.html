@@ -9,10 +9,10 @@
 <body>
   <h1 id="ejercicios-tema-02">Ejercicios: Tema 02</h1>
   <ol type="1">
-  <li><p>¿Qué diferencia existe entre la sintaxis y la semántica de un
-  lenguaje de programación?</p></li>
-  <li><p>Indica si cada uno de los siguientes ejemplos presenta un
-  problema de sintaxis o de semántica y explica por qué:</p>
+  <li>¿Qué diferencia existe entre la sintaxis y la semántica de un
+  lenguaje de programación?</li>
+  <li>Indica si cada uno de los siguientes ejemplos presenta un problema
+  de sintaxis o de semántica y explica por qué:
   <ul>
   <li>Una sentencia de declaración sin el punto y coma final.</li>
   <li>Una variable de tipo <code>int</code> a la que se pretende asignar
@@ -20,14 +20,23 @@
   <li>Una palabra reservada escrita con mayúsculas cuando el lenguaje
   distingue entre mayúsculas y minúsculas.</li>
   </ul></li>
-  <li><p>¿Qué es una plantilla sintáctica y para qué sirve?</p></li>
-  <li><p>Observa la siguiente plantilla sintáctica:</p>
-  <pre class="text"><code>Programa: {ImportDeclaration} ClassDeclaration</code></pre>
-  <p>¿Qué elemento es obligatorio? ¿Qué elemento puede aparecer varias
-  veces? ¿Puede no aparecer ninguna declaración de importación?</p></li>
-  <li><p>Observa la plantilla de una declaración de variable que aparece
-  en el tema. Indica cuáles de las siguientes declaraciones son válidas
-  y cuáles no:</p>
+  <li>¿Qué es una plantilla sintáctica y para qué sirve?</li>
+  <li>Observa la siguiente plantilla sintáctica:
+  <div class="plantilla-sintactica">
+  <div class="produccion">
+  <div class="produccion-encabezado">
+  Programa:
+  </div>
+  <div class="produccion-alternativas">
+  <p>{ImportDeclaration} ClassDeclaration</p>
+  </div>
+  </div>
+  </div>
+  ¿Qué elemento es obligatorio? ¿Qué elemento puede aparecer varias
+  veces? ¿Puede no aparecer ninguna declaración de importación?</li>
+  <li>Observa la plantilla de una declaración de variable que aparece en
+  el tema. Indica cuáles de las siguientes declaraciones son válidas y
+  cuáles no:
   <ul>
   <li><code>int edad;</code></li>
   <li><code>String nombre;</code></li>
@@ -36,15 +45,14 @@
   <li><code>String nombre apellido;</code></li>
   <li><code>public int contador;</code></li>
   </ul></li>
-  <li><p>Utilizando la plantilla sintáctica correspondiente, escribe
-  tres formas distintas de declarar variables de tipo <code>int</code>,
-  <code>double</code> y <code>String</code>.</p></li>
-  <li><p>¿Por qué una plantilla sintáctica puede utilizar palabras y
+  <li>Utilizando la plantilla sintáctica correspondiente, escribe tres
+  formas distintas de declarar variables de tipo <code>int</code>,
+  <code>double</code> y <code>String</code>.</li>
+  <li>¿Por qué una plantilla sintáctica puede utilizar palabras y
   símbolos que deben aparecer literalmente en el programa y, al mismo
-  tiempo, nombres que representan otras construcciones
-  sintácticas?</p></li>
-  <li><p>Indica si los siguientes identificadores son válidos en Java.
-  En los que no lo sean, explica el motivo:</p>
+  tiempo, nombres que representan otras construcciones sintácticas?</li>
+  <li>Indica si los siguientes identificadores son válidos en Java. En
+  los que no lo sean, explica el motivo:
   <ul>
   <li><code>Nombre</code></li>
   <li><code>2nombre</code></li>
@@ -54,28 +62,27 @@
   <li><code>dato2</code></li>
   <li><code>nombre completo</code></li>
   </ul></li>
-  <li><p>Explica por qué <code>nombre</code> y <code>Nombre</code> son
-  dos identificadores diferentes en Java.</p></li>
-  <li><p>¿Por qué no es recomendable utilizar identificadores formados
-  por una sola letra, salvo en los casos en que tenga sentido
-  hacerlo?</p></li>
-  <li><p>Indica qué representa cada identificador de los siguientes
-  fragmentos: una clase, una variable, una instancia o un método.</p>
+  <li>Explica por qué <code>nombre</code> y <code>Nombre</code> son dos
+  identificadores diferentes en Java.</li>
+  <li>¿Por qué no es recomendable utilizar identificadores formados por
+  una sola letra, salvo en los casos en que tenga sentido hacerlo?</li>
+  <li>Indica qué representa cada identificador de los siguientes
+  fragmentos: una clase, una variable, una instancia o un método.
   <ul>
   <li><code>String nombre;</code></li>
   <li><code>Scanner teclado;</code></li>
   <li><code>teclado.next();</code></li>
   <li><code>MiPrograma.main(...)</code></li>
   </ul></li>
-  <li><p>¿Qué diferencia existe entre un tipo primitivo y una clase como
-  <code>String</code>?</p></li>
-  <li><p>¿Qué es una variable? ¿Qué información debemos indicar al
-  declararla?</p></li>
-  <li><p>¿Qué diferencia existe entre declarar una variable y darle un
-  valor?</p></li>
-  <li><p>Explica qué sucede en memoria cuando se declara una variable
-  pero todavía no se le ha asignado un valor.</p></li>
-  <li><p>Indica cuáles de los siguientes elementos son literales:</p>
+  <li>¿Qué diferencia existe entre un tipo primitivo y una clase como
+  <code>String</code>?</li>
+  <li>¿Qué es una variable? ¿Qué información debemos indicar al
+  declararla?</li>
+  <li>¿Qué diferencia existe entre declarar una variable y darle un
+  valor?</li>
+  <li>Explica qué sucede en memoria cuando se declara una variable pero
+  todavía no se le ha asignado un valor.</li>
+  <li>Indica cuáles de los siguientes elementos son literales:
   <ul>
   <li><code>25</code></li>
   <li><code>Edad</code></li>
@@ -84,49 +91,48 @@
   <li><code>True</code></li>
   <li><code>TAMAÑO</code></li>
   </ul></li>
-  <li><p>¿Qué diferencia existe entre un literal y una constante con
+  <li>¿Qué diferencia existe entre un literal y una constante con
   nombre? Indica alguna ventaja de utilizar una constante con
-  nombre.</p></li>
-  <li><p>Escribe una declaración de constante con nombre para
-  representar:</p>
+  nombre.</li>
+  <li>Escribe una declaración de constante con nombre para representar:
   <ul>
   <li>El número máximo de alumnos de una clase;</li>
   <li>El nombre de un ciclo formativo;</li>
   <li>La inicial de un nombre.</li>
   </ul></li>
-  <li><p>El siguiente código contiene varios errores. Indícalos y
-  corrígelo:</p>
+  <li>El siguiente código contiene varios errores. Indícalos y
+  corrígelo:
   <pre class="codigo-java">
   int edad
   String nombre;
   nombre = Antonio;
   inicial = "A";
   </pre></li>
-  <li><p>¿Qué diferencia existe entre una declaración y una
-  asignación?</p></li>
-  <li><p>Explica qué sucede al ejecutar cada una de las siguientes
+  <li>¿Qué diferencia existe entre una declaración y una
+  asignación?</li>
+  <li>Explica qué sucede al ejecutar cada una de las siguientes
   sentencias, suponiendo que las variables han sido declaradas
-  correctamente:</p>
+  correctamente:
   <ul>
   <li><code>nombre = "Antonio";</code></li>
   <li><code>nombre = "María";</code></li>
   <li>¿Qué valor conserva finalmente <code>nombre</code>?</li>
   </ul></li>
-  <li><p>Explica por qué la siguiente construcción no representa una
-  ecuación matemática válida en Java:</p>
+  <li>Explica por qué la siguiente construcción no representa una
+  ecuación matemática válida en Java:
   <pre class="codigo-java">
   x + y = z;
   </pre></li>
-  <li><p>¿Qué significa que una variable sea de un determinado tipo?
-  ¿Qué relación existe entre el tipo de una variable y los valores que
-  puede almacenar?</p></li>
-  <li><p>Dadas las siguientes declaraciones:</p>
+  <li>¿Qué significa que una variable sea de un determinado tipo? ¿Qué
+  relación existe entre el tipo de una variable y los valores que puede
+  almacenar?</li>
+  <li>Dadas las siguientes declaraciones:
   <pre class="codigo-java">
   String nombre;
   String apellido;
   char inicial;
   </pre>
-  <p>indica cuáles de las siguientes asignaciones son válidas:</p>
+  indica cuáles de las siguientes asignaciones son válidas:
   <ul>
   <li><code>nombre = "Ana";</code></li>
   <li><code>apellido = "García";</code></li>
@@ -134,92 +140,91 @@
   <li><code>inicial = "G";</code></li>
   <li><code>nombre = apellido;</code></li>
   </ul></li>
-  <li><p>¿Por qué podemos utilizar el operador <code>+</code> para
+  <li>¿Por qué podemos utilizar el operador <code>+</code> para
   concatenar cadenas? ¿Qué resultado se obtiene al concatenar dos
-  cadenas?</p></li>
-  <li><p>Si:</p>
+  cadenas?</li>
+  <li>Si:
   <pre class="codigo-java">
   String nombre = "Ana";
   String apellido = "López";
   </pre>
-  <p>indica el resultado de las siguientes expresiones:</p>
+  indica el resultado de las siguientes expresiones:
   <ul>
   <li><code>nombre + apellido</code></li>
   <li><code>nombre + " " + apellido</code></li>
   <li><code>"Nombre: " + nombre</code></li>
   <li><code>"Nombre: " + nombre + " " + apellido</code></li>
   </ul></li>
-  <li><p>¿Qué ocurre cuando se concatena una cadena con un valor de un
-  tipo primitivo?</p></li>
-  <li><p>Explica la diferencia entre las siguientes dos
-  instrucciones:</p>
+  <li>¿Qué ocurre cuando se concatena una cadena con un valor de un tipo
+  primitivo?</li>
+  <li>Explica la diferencia entre las siguientes dos instrucciones:
   <ul>
   <li><code>System.out.print("Hola");</code></li>
   <li><code>System.out.println("Hola");</code></li>
   </ul></li>
-  <li><p>¿Qué es una llamada a un método?</p></li>
-  <li><p>En la siguiente llamada:</p>
+  <li>¿Qué es una llamada a un método?</li>
+  <li>En la siguiente llamada:
   <pre class="codigo-java">
   System.out.println("Hola");
   </pre>
-  <p>identifica:</p>
+  identifica:
   <ul>
   <li>La clase;</li>
   <li>El objeto;</li>
   <li>El método;</li>
   <li>El argumento.</li>
   </ul></li>
-  <li><p>En la siguiente llamada:</p>
+  <li>En la siguiente llamada:
   <pre class="codigo-java">
   String nombre = teclado.next();
   </pre>
-  <p>identifica la expresión que produce el valor que se almacena en
+  identifica la expresión que produce el valor que se almacena en
   <code>nombre</code>. ¿Qué diferencia existe entre esta llamada y
-  <code>System.out.println(...)</code>?</p></li>
-  <li><p>Explica la diferencia entre una función y un
-  procedimiento.</p></li>
-  <li><p>Indica cuáles de las siguientes llamadas corresponden a una
+  <code>System.out.println(...)</code>?</li>
+  <li>Explica la diferencia entre una función y un procedimiento.</li>
+  <li>Indica cuáles de las siguientes llamadas corresponden a una
   función y cuáles a un procedimiento, según la distinción estudiada en
-  el tema:</p>
+  el tema:
   <ul>
   <li><code>teclado.next()</code></li>
   <li><code>teclado.nextLine()</code></li>
   <li><code>System.out.print(...)</code></li>
   <li><code>System.out.println(...)</code></li>
   </ul></li>
-  <li><p>¿Qué es una biblioteca? ¿Qué ventaja proporciona al
-  programador?</p></li>
-  <li><p>¿Qué es un paquete y para qué sirve?</p></li>
-  <li><p>Explica para qué sirve una sentencia
-  <code>import</code>.</p></li>
-  <li><p>¿Qué diferencia existe entre escribir:</p>
+  <li>¿Qué es una biblioteca? ¿Qué ventaja proporciona al
+  programador?</li>
+  <li>¿Qué es un paquete y para qué sirve?</li>
+  <li>Explica para qué sirve una sentencia <code>import</code>.</li>
+  <li>¿Qué diferencia existe entre escribir:
   <pre class="codigo-java">
   import java.util.Scanner;
   </pre>
-  <p>y utilizar directamente una clase que pertenece a
-  <code>java.lang</code>, como <code>String</code>?</p></li>
-  <li><p>La clase <code>Scanner</code> se encuentra en un paquete de la
+  y utilizar directamente una clase que pertenece a
+  <code>java.lang</code>, como <code>String</code>?</li>
+  <li>La clase <code>Scanner</code> se encuentra en un paquete de la
   biblioteca estándar. Explica qué necesitamos hacer para poder
-  utilizarla en un programa.</p></li>
-  <li><p>¿Qué diferencia existe entre <code>System.in</code> y
-  <code>System.out</code>?</p></li>
-  <li><p>¿Qué hace el objeto <code>Scanner</code> cuando utilizamos sus
-  métodos de lectura?</p></li>
-  <li><p>¿Qué diferencia existe entre <code>next()</code>,
-  <code>nextLine()</code> y <code>nextInt()</code>?</p></li>
-  <li><p>Supongamos que la entrada contiene:
-  <code>text     Ana López</code> ¿Qué obtendríamos mediante
-  <code>next()</code> en dos llamadas consecutivas? ¿Y qué obtendríamos
-  mediante <code>nextLine()</code>?</p></li>
-  <li><p>Explica por qué un programa interactivo debería indicar al
-  usuario qué dato debe introducir antes de realizar una
-  lectura.</p></li>
-  <li><p>¿Qué es el indicativo de petición de entrada? ¿Por qué es
-  importante?</p></li>
-  <li><p>¿Qué es la impresión del eco? ¿En qué circunstancias puede ser
-  útil?</p></li>
-  <li><p>Analiza el siguiente fragmento e indica qué datos debe
-  introducir el usuario y qué información se mostrará:</p>
+  utilizarla en un programa.</li>
+  <li>¿Qué diferencia existe entre <code>System.in</code> y
+  <code>System.out</code>?</li>
+  <li>¿Qué hace el objeto <code>Scanner</code> cuando utilizamos sus
+  métodos de lectura?</li>
+  <li>¿Qué diferencia existe entre <code>next()</code>,
+  <code>nextLine()</code> y <code>nextInt()</code>?</li>
+  <li>Supongamos que la entrada contiene:
+  <pre class="codigo-fuente">
+  Ana López
+  </pre>
+  ¿Qué obtendríamos mediante <code>next()</code> en dos llamadas
+  consecutivas? ¿Y qué obtendríamos mediante
+  <code>nextLine()</code>?</li>
+  <li>Explica por qué un programa interactivo debería indicar al usuario
+  qué dato debe introducir antes de realizar una lectura.</li>
+  <li>¿Qué es el indicativo de petición de entrada? ¿Por qué es
+  importante?</li>
+  <li>¿Qué es la impresión del eco? ¿En qué circunstancias puede ser
+  útil?</li>
+  <li>Analiza el siguiente fragmento e indica qué datos debe introducir
+  el usuario y qué información se mostrará:
   <pre class="codigo-java">
   System.out.print("Nombre: ");
   nombre = teclado.nextLine();
@@ -227,13 +232,13 @@
   apellido = teclado.nextLine();
   System.out.println("Nombre introducido: " + nombre + " " + apellido);
   </pre></li>
-  <li><p>Modifica mentalmente el ejercicio anterior para que, además del
+  <li>Modifica mentalmente el ejercicio anterior para que, además del
   nombre y apellido, el programa solicite el nombre del ciclo formativo
-  y posteriormente muestre todos los datos en una única línea.</p></li>
-  <li><p>Explica qué ventajas tiene utilizar nombres significativos en
+  y posteriormente muestre todos los datos en una única línea.</li>
+  <li>Explica qué ventajas tiene utilizar nombres significativos en
   lugar de identificadores como <code>a</code>, <code>b</code>,
-  <code>c</code> o <code>x1</code>.</p></li>
-  <li><p>En el siguiente programa:</p>
+  <code>c</code> o <code>x1</code>.</li>
+  <li>En el siguiente programa:
   <pre class="codigo-java">
   public class Alumno {
       String nombre;
@@ -245,22 +250,24 @@
       }
   }
   </pre>
-  <p>identifica todos los elementos que ya conocemos y señala los
-  elementos que todavía no podríamos explicar completamente en este
-  punto del curso.</p></li>
-  <li><p>Explica por qué es posible aprender a utilizar una clase de la
+  identifica todos los elementos que ya conocemos y señala los elementos
+  que todavía no podríamos explicar completamente en este punto del
+  curso.</li>
+  <li>Explica por qué es posible aprender a utilizar una clase de la
   biblioteca sin conocer todavía cómo está implementada
-  internamente.</p></li>
-  <li><p>Un compañero afirma: «Para programar bien Java hay que
-  memorizar todos los métodos de las bibliotecas». ¿Estás de acuerdo?
-  Explica tu respuesta.</p></li>
-  <li><p>Utilizando la plantilla sintáctica de los identificadores
+  internamente.</li>
+  <li>Un compañero afirma: «Para programar bien Java hay que memorizar
+  todos los métodos de las bibliotecas». ¿Estás de acuerdo? Explica tu
+  respuesta.</li>
+  <li>Utilizando la plantilla sintáctica de los identificadores
   estudiada en el tema, determina cuál de los siguientes nombres podría
   utilizarse para una variable y cuál sería preferible como nombre de
   una clase:
-  <code>text     cuenta, Cuenta, numeroDeAlumnos, Alumno, nombreCompleto, Persona</code>
-  Explica qué criterio has utilizado.</p></li>
-  <li><p>Lee el siguiente fragmento y responde sin ejecutarlo:</p>
+  <pre class="codigo-fuente">
+  cuenta, Cuenta, numeroDeAlumnos, Alumno, nombreCompleto, Persona
+  </pre>
+  Explica qué criterio has utilizado.</li>
+  <li>Lee el siguiente fragmento y responde sin ejecutarlo:
   <pre class="codigo-java">
   String nombre;
   String ciclo;
@@ -269,20 +276,20 @@
   System.out.println("Alumno: " + nombre);
   System.out.println("Ciclo: " + ciclo);
   </pre>
-  <p>¿Qué valores contienen las variables antes de ejecutar las llamadas
-  a <code>println</code>? ¿Qué aparecerá por pantalla?</p></li>
-  <li><p>Diseña, utilizando las plantillas sintácticas estudiadas, la
+  ¿Qué valores contienen las variables antes de ejecutar las llamadas a
+  <code>println</code>? ¿Qué aparecerá por pantalla?</li>
+  <li>Diseña, utilizando las plantillas sintácticas estudiadas, la
   declaración de las variables necesarias para almacenar los siguientes
   datos de un alumno: nombre, primer apellido, edad, inicial del segundo
-  apellido y si está matriculado.</p></li>
-  <li><p>Explica qué partes de un programa pertenecen al lenguaje Java y
-  cuáles proceden de la biblioteca estándar.</p></li>
-  <li><p>¿Por qué puede afirmarse que utilizar una biblioteca permite
+  apellido y si está matriculado.</li>
+  <li>Explica qué partes de un programa pertenecen al lenguaje Java y
+  cuáles proceden de la biblioteca estándar.</li>
+  <li>¿Por qué puede afirmarse que utilizar una biblioteca permite
   concentrarnos en resolver nuestro problema en lugar de volver a
-  programar operaciones que ya han sido desarrolladas?</p></li>
+  programar operaciones que ya han sido desarrolladas?</li>
   </ol>
   <p><a href="../temas/tema_02.html">Tema2</a> | <a
-  href="../problemas/tema_02.md">Problemas</a></p>
+  href="../problemas/tema_02.html">Problemas</a></p>
 
     <script src="../scripts/script.js"></script>
   </body>
