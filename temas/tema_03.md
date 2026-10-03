@@ -719,7 +719,7 @@ Ahora que conocemos los literales y las palabras reservadas, vamos a modificar l
 
 <div class="plantilla-sintactica">
 <div class="produccion">
-<div class="produccion-encabezado">Identificador:</div>
+<div class="produccion-encabezado">Identifier:</div>
 <div class="produccion-alternativas">
 IdentifierChars but not a Keyword or BooleanLiteral or NullLiteral
 </div>
@@ -1987,7 +1987,7 @@ La **estructura repetitiva**, también denominada, **bucle** o ***loop***, permi
 Desde un punto de vista formal, un bucle es una construcción sintáctica que permite ejecutar un bloque de sentencias de forma reiterada mientras se mantenga verdadera una determinada proposición lógica, conocida como **condición de permanencia** o condición de control. Cada una de las ejecuciones individuales del bloque de código contenido en el interior del bucle recibe el nombre de **iteración**. De este modo, la repetición transforma una secuencia finita de instrucciones en un proceso capaz de iterar sobre colecciones de información o mantener una aplicación en ejecución continua a la espera de eventos del usuario.
 
 <figure class="img-lateral-izq">
-    <img src="../imagenes/03_0?_repetición.png" alt="Recorrido circular del flujo de control">
+    <img src="../imagenes/03_09_repetición.png" alt="Recorrido circular del flujo de control">
 </figure>
 
 Podemos entender la repetición como una modificación del flujo de control que ya conocemos. En una estructura secuencial, después de ejecutar una sentencia el control pasa a la siguiente; en una selección, el resultado de una condición determina qué camino debe seguir la ejecución. En una repetición aparece una posibilidad nueva: después de ejecutar unas sentencias, el flujo de control puede regresar a una posición anterior del programa para volver a ejecutarlas. De esta forma, el flujo de control deja de avanzar únicamente hacia delante: una parte del programa puede recorrerse varias veces.
@@ -2131,11 +2131,593 @@ La contrucción del código debe garantizar la presencia de tres elementos metod
 
 Asimismo, como ya se indicó para la condición, es un error sintáctico sumamente sutil y extendido la colocación accidental de un **punto y coma** inmediatamente después del paréntesis de cierre: el compilador no detectará ningún fallo de sintaxis, pero interpretará que el cuerpo del bucle está constituido únicamente por la **sentencia nula** representada por ese punto y coma. Si la condición inicial es verdadera, la aplicación entrará en un bucle infinito silencioso y transparente.
 
-### Bucles controlados por condición
+### **Bucles controlados por condición**
 
-### Bucles controlados por contador
+La sentencia <span class="palabra">while</span> que acabamos de estudiar es un ejemplo de **bucle controlado por condición**. El número de iteraciones viene determinado por el resultado de una **condición lógica** que se comprueba durante la ejecución. Dentro de las estructuras repetitivas, los **bucles controlados por condición** representan una categoría fundamental de algoritmos donde el número exacto de iteraciones no se conoce con anterioridad a la entrada del bucle.
+
+La sentencia <span class="palabra">while</span> presenta precisamente este comportamiento: antes de cada iteración se comprueba una condición y el cuerpo se ejecuta mientras esta sea verdadera. Por ello recibe también el nombre de **bucle de prueba previa** o **bucle de entrada** (*pre-test loop*): la condición se comprueba antes de entrar en el cuerpo del bucle.
+
+<aside class="definicion">
+
+**Bucle controlado por condición:** Estructura repetitiva en la que la continuidad de las iteraciones depende del resultado de una condición que se evalúa durante la ejecución.
+
+</aside>
+
+Los bucles controlados por condición son la herramienta estándar para gestionar entradas interactivas de usuario, procesar flujos de datos de longitud variable o ejecutar algoritmos de búsqueda, por ejemplo. Dependiendo del mecanismo utilizado para señalar la finalización de las repeticiones, estos bucles se organizan en tres estrategias de diseño principales:
+
+*   **Bucles controlados por valor centinela (*sentinel-controlled loops*):** Se emplean cuando un programa debe leer y procesar una secuencia indeterminada de datos procedentes de un flujo de entrada (como el teclado). En este modelo, una variable denominada **centinela** actua como señal de terminación para indicar al programa que la introducción de información ha finalizado. El centinela será un dato claramente distinguible que no pueda confundirse con un valor válido dentro del dominio del problema como introducir la cadena `"FIN"`.
+*   **Bucles controlados por bandera o indicador (*flag-controlled loops*):** La repetición es gobernada por una variable de tipo booleano denominada **bandera** o *flag*. La bandera se inicializa con un valor booleano adecuado, verdadero o falso, antes de emprezar y se evalúa dentro de la condición. La bandera permanece inalterada en cada iteración hasta que, en respuesta a un evento o condición específica dentro del procesamiento, una sentencia modifica su estado (booleano), provocando la salida en la siguiente comprobación del bucle.
+*   **Bucles controlados por fin de flujo o fichero (*EOF-controlled loops*):** Son una especialización de la lectura de información desde archivos. La condición de permanencia no depende de un valor introducido manualmente por el usuario, sino de si los datos de entrada han terminado, como si en un objeto `Scanner` hubiera elementos pendientes de leer (<span class="metodo">hasNext()</span>).
+
+Para consolidar la implementación práctica de estas técnicas, consideremos el siguiente ejemplo didáctico de un bucle controlado por valor centinela diseñado para sumar una cantidad indeterminada de números enteros introducidos interactivamente por el usuario hasta que se teclee el valor centinela <span class="literal">0</span>:
+
+<pre class="codigo-java">
+import java.util.Scanner;
+
+public class SumaCentinela {
+    public static void main ( String[] args ) {
+        Scanner teclado = new Scanner(System.in);
+        final int CENTINELA = 0; // Valor especial que señala el fin de los datos
+        int sumaTotal = 0;
+
+        // 1. Lectura antes de evaluar la condición del bucle
+        System.out.print("Introduce un número entero (o " + CENTINELA + " para finalizar): ");
+        int numero = teclado.nextInt();
+
+        // 2. Condición del bucle: se itera mientras el dato leído NO sea el centinela
+        while ( numero != CENTINELA ) {            
+            sumaTotal = sumaTotal + numero; // Procesamiento del dato válido
+
+            // 3. Lectura de actualización al final del cuerpo del bucle
+            System.out.print("Introduce el siguiente número (o " + CENTINELA + " para finalizar): ");
+            numero = teclado.nextInt();
+        }
+
+        System.out.println("La suma de los valores introducidos es: " + sumaTotal);
+    }
+}
+</pre>
+
+En este fragmento, la lectura previa fuera del bucle asegura que, si el usuario introduce <span class="literal">0</span> en el primer intento, la condición <span class="variable">numero</span> <span class="operador">!=</span> <span class="variable">CENTINELA</span> se evaluará inmediatamente como falsa y el cuerpo no se ejecutará ni una sola vez. Si el dato es válido, se suma a la variable acumuladora y la lectura de actualización al término del bloque solicita el siguiente número, manteniendo una coherencia lógica absoluta entre la recepción del dato y su evaluación por la Máquina Virtual de Java.
+
+Como podemos ver, hay situaciones como esta en la que no tiene sentido comprobar el dato antes de pedirlo. Una posible solución consiste en utilizar una estructura cuya comprobación se realiza después de ejecutar el cuerpo. Java proporciona para ello la sentencia **do-while**.
+
+#### La sentencia do-while
+
+La sentencia **do-while** permite ejecutar un conjunto de instrucciones y, una vez ejecutado, comprobar una condición para decidir si debemos volver a ejecutarlo.
+
+La sintaxis de la sentencia se corresponde con la siguiente plantilla:
+
+<div class="plantilla-sintactica">
+<div class="produccion">
+<div class="produccion-encabezado">Statement:</div>
+<div class="produccion-alternativas">
+StatementWithoutTrailingSubstatement<br>
+IfThenStatement<br>
+IfThenElseStatement<br>
+SwitchStatement<br>
+WhileStatement<br>
+DoStatement
+</div>
+</div>
+<div class="produccion">
+<div class="produccion-encabezado">DoStatement:</div>
+<div class="produccion-alternativas">
+<span class="terminal">do</span> Statement <span class="terminal">while</span> <span class="terminal">(</span> Expression <span class="terminal">)</span> <span class="terminal">;</span>
+</div>
+</div>
+</div>
+
+A diferencia de la sentencia **while**, la palabra reservada <span class="palabra">do</span> aparece al comienzo de la estructura y la expresión de control se encuentra al final, seguida obligatoriamente por el punto y coma.
+
+Podemos comparar ambas estructuras directamente:
+
+<pre class="codigo-fuente">
+while ( condición ) {
+    Sentencias
+}
+
+do {
+    Sentencias
+} while ( condición );
+</pre>
+
+En las dos estructuras encontramos una condición que determina si debemos continuar con la repetición. La diferencia está exclusivamente en **cuándo se comprueba**.
+
+En **while**, la condición se comprueba antes de ejecutar el cuerpo. En **do-while**, el cuerpo se ejecuta primero y la condición se comprueba después. Por ello, podemos distinguir entre: **bucle de prueba previa** y **bucle de prueba posterior**.
+
+<aside class="definicion">
+
+**Bucle de prueba previa:** Bucle en el que la condición que controla la repetición se evalúa antes de ejecutar el cuerpo.
+
+**Bucle de prueba posterior:** Bucle en el que la condición que controla la repetición se evalúa después de ejecutar el cuerpo.
+
+</aside>
+
+Tomamos el ejemplo anterior y lo escribimos ahora usando **do-while**:
+
+<pre class="codigo-java">
+import java.util.Scanner;
+
+public class SumaCentinela {
+    public static void main ( String[] args ) {
+        Scanner teclado = new Scanner(System.in);
+        final int CENTINELA = 0; // Valor especial que señala el fin de los datos
+        int sumaTotal = 0;
+
+         do {
+            // 1. Lectura antes de evaluar la condición del bucle
+            System.out.print("Introduce un número entero (o " + CENTINELA + " para finalizar): ");
+            int numero = teclado.nextInt();
+
+            sumaTotal = sumaTotal + numero; // Procesamiento del dato
+
+            // 2. Verificación al final del cuerpo del bucle
+        } while ( numero != CENTINELA );
+
+        System.out.println("La suma de los valores introducidos es: " + sumaTotal);
+    }
+}
+</pre>
+
+Observemos la diferencia fundamental respecto de <span class="palabra">while</span>: en este caso, **la primera ejecución del cuerpo se produce siempre**, porque la condición todavía no se ha comprobado cuando entramos en la estructura. Después de ejecutar el cuerpo, se evalúa la condición. Si resulta verdadera, el flujo de control regresa al principio del cuerpo y se produce una nueva iteración. Si resulta falsa, el bucle termina y la ejecución continúa con la sentencia siguiente.
+
+Por tanto, la elección entre <span class="palabra">while</span> y <span class="palabra">do</span>-<span class="palabra">while</span> no depende de que una estructura sea capaz de realizar algo que la otra no pueda hacer. Ambas permiten repetir un conjunto de instrucciones mientras se cumpla una condición. La diferencia está en **el número mínimo de veces que puede ejecutarse el cuerpo** y en el momento en que se realiza la primera comprobación.
+
+Podemos resumirlo de la siguiente manera:
+
+<pre class="codigo-fuente">
+while
+─────
+¿Condición?
+   │
+   ├── no ──► 0 iteraciones
+   │
+   └── sí ──► 1 o más iteraciones
+
+
+do-while
+─────────
+Sentencias
+   │
+   ▼
+¿Condición?
+   │
+   ├── no ──► 1 iteración
+   │
+   └── sí ──► 2 o más iteraciones
+</pre>
+
+Esta diferencia aparentemente pequeña tiene una gran importancia en el diseño de algoritmos. Cuando planteamos una repetición debemos preguntarnos, antes de escoger la estructura sintáctica, **si tiene sentido que el cuerpo pueda ejecutarse cero veces o si necesariamente debe ejecutarse al menos una vez**.
+
+Existe otra cuestión que debemos considerar. En un bucle controlado por condición, el número de iteraciones no suele conocerse directamente al escribir el programa. El comportamiento del usuario, los datos almacenados, los resultados de cálculos anteriores o cualquier otra circunstancia que cambie durante la ejecución pueden determinar cuándo deja de cumplirse la condición.
+
+En el caso particular de este ejemplo nos planteamos la posibilidad de que siempre se ejecute porque el valor del centinela, cero, no afecta al resultado. Tened en cuenta que si debe verificarse el dato antes de alguna acción de una iteración, la comprobación del bucle sirve como verificación.
+
+### **Bucles controlados por contador**
+
+Los bucles que hemos estudiado hasta ahora están controlados directamente por una **condición**. No sabemos necesariamente cuántas veces se ejecutará el cuerpo: el programa continúa repitiéndolo mientras la condición se mantenga verdadera y termina cuando deje de cumplirse. Sin embargo, en muchos problemas, la repetición tiene una característica diferente: sabemos que una operación debe realizarse un determinado número de veces. En contraposición a los bucles controlados por condición, los **bucles controlados por contador** (denominados también **bucles determinados** o por recuento) constituyen la categoría de estructuras repetitivas en las que el número exacto de iteraciones se conoce con anterioridad a la ejecución del cuerpo del bucle.
+
+El **flujo de control** de la repetición se confía a la evolución ordenada de una variable específica denominada **variable de control** o **contador**, establecida a un valor inicial hasta uno final. Para que un bucle controlado por contador funcione de manera precisa y determinista, la arquitectura del código debe articular de manera explícita cuatro componentes fundamentales:
+
+1.  **La inicialización del contador:** Asignación del valor numérico de partida a la variable de control antes de que el flujo de ejecución alcance la primera comprobación del bucle.
+2.  **La condición de permanencia o valor límite:** Expresión booleana que compara de forma continua el valor actual del contador frente al límite final del intervalo.
+3.  **El cuerpo del bucle:** Bloque de sentencias que realiza el trabajo útil del algoritmo en cada una de las iteraciones.
+4.  **La sentencia de actualización o paso:** Modificación explícita (incremento o decremento) del valor del contador al término de cada iteración, garantizando que el estado de la variable avance de manera uniforme hacia el valor final.
+
+<aside class="definicion">
+
+**Contador:** Variable utilizada para controlar una repetición, cuyo valor cambia de forma sistemática de una iteración a la siguiente y permite determinar cuándo debe finalizar el bucle.
+
+**Bucle controlado por contador:** Estructura repetitiva en la que una variable contador determina el número de iteraciones que se realizan.
+
+</aside>
+
+Un ejemplo muy sencillo es el que ya utilizamos para mostrar los números del 1 al 5:
+
+<pre class="codigo-java">
+int numero = 1;
+
+while ( numero <= 5 ) {
+    System.out.println(numero);
+    numero = numero + 1;
+}
+</pre>
+
+En este caso, <span class="variable">numero</span> es el contador. Comienza teniendo el valor <span class="literal">1</span>, se utiliza para realizar la operación que nos interesa y, al terminar cada iteración, aumenta su valor en una unidad. La condición del <span class="palabra">while</span> determina cuándo debemos terminar.
+
+Aunque este ejemplo está escrito utilizando un bucle controlado por condición, podemos observar que existe una relación muy clara entre la condición y el contador. La variable <span class="variable">numero</span> adopta sucesivamente los valores <span class="literal">1</span>, <span class="literal">2</span>, <span class="literal">3</span>, <span class="literal">4</span> y <span class="literal">5</span>; cuando pasa a valer <span class="literal">6</span>, la condición deja de cumplirse.
+
+Podemos decir, por tanto, que el contador está determinando de manera indirecta el número de iteraciones. El siguiente patrón genérico ilustra la disposición formal de un bucle controlado por contador mediante la sentencia **while**:
+
+<pre class="codigo-java">
+int contador = VALOR_INICIAL; // 1. Inicialización de la variable de control
+
+while ( contador <= VALOR_LIMITE ) { // 2. Comprobación del límite de parada
+    // 3. Cuerpo del bucle (procesamiento de la iteración)
+    
+    contador = contador + PASO; // 4. Actualización del contador (paso de incremento)
+}
+</pre>
+
+### Operadores de asignación
+
+Para trabajar cómodamente con contadores necesitamos realizar con mucha frecuencia una operación muy sencilla: aumentar o disminuir su valor en una unidad. Hasta ahora hemos escrito esa operación de forma explícita:
+
+<pre class="codigo-fuente">
+numero = numero + 1;
+</pre>
+
+Pero Java dispone de una forma abreviada de expresar modificaciones de una variable que resulta especialmente útil al trabajar con contadores: los operadores de **asignación compuesta**, que combinan una operación aritmética con la asignación del resultado en un único token:
+
+<pre class="codigo-java">
+numero += 1;
+</pre>
+
+Del mismo modo:
+
+<table>
+<tr><th>
+Asignación compuesta
+</th><th>
+Operación explícita
+</th></tr>
+<tr><td>
+<pre class="codigo-fuente">
+contador -= 3;
+</pre>
+</td><td>
+<pre class="codigo-fuente">
+contador = contador - 3;
+</pre>
+</td></tr><tr><td>
+<pre class="codigo-fuente">
+contador *= 2;
+</pre>
+</td><td>
+<pre class="codigo-fuente">
+contador = contador * 2;
+</pre>
+</td></tr>
+</table>
+
+La correspondencia puede resumirse así:
+
+<table>
+<thead>
+<tr>
+<th>Operador</th>
+<th>Forma equivalente</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="operador">+=</span></td>
+<td><span class="operador">=</span> + operación</td>
+</tr>
+<tr>
+<td><span class="operador">-=</span></td>
+<td><span class="operador">=</span> − operación</td>
+</tr>
+<tr>
+<td><span class="operador">*=</span></td>
+<td><span class="operador">=</span> × operación</td>
+</tr>
+<tr>
+<td><span class="operador">/=</span></td>
+<td><span class="operador">=</span> ÷ operación</td>
+</tr>
+<tr>
+<td><span class="operador">%=</span></td>
+<td><span class="operador">=</span> % operación</td>
+</tr>
+</tbody>
+</table>
+
+<div class="produccion">
+<div class="produccion-encabezado">AssignmentOperator:</div>
+<div class="produccion-alternativas">
+<p>(one of)<br>
+<span class="terminal">=  *=  /=  %=  +=  -=<span>
+</p>
+</div>
+</div>
+
+### Sentencia for
+
+Aunque la sentencia *while* es capaz de implementar perfectamente un bucle controlado por condición, la estructura resultante presenta tres elementos que aparecen siempre asociados:
+
+1. la inicialización del contador;
+2. la condición que determina si debemos continuar;
+3. la modificación del contador al terminar cada iteración.
+
+La inicialización aparece antes del bucle, la condición aparece en su cabecera y la actualización del contador aparece al final de su cuerpo. Los lenguajes de programación suelen proporcionar una sentencia específica para reunir estos tres elementos en un mismo lugar; en el caso de Java, esta sentencia es: **for**. En la arquitectura del lenguaje, **for** no representa una estructura de control conceptualmente distinta a las anteriores, sino que se constituye como una **forma compacta de expresar un bucle controlado por contador**, especialmente adecuada cuando la inicialización, la condición y la modificación de la variable están claramente relacionadas.
+
+Su estructura general puede representarse mediante la siguiente plantilla:
+
+<div class="plantilla-sintactica">
+<div class="produccion">
+<div class="produccion-encabezado">Statement:</div>
+<div class="produccion-alternativas">
+StatementWithoutTrailingSubstatement<br>
+IfThenStatement<br>
+IfThenElseStatement<br>
+SwitchStatement<br>
+WhileStatement<br>
+DoStatement<br>
+ForStatement
+</div>
+</div>
+<div class="produccion">
+<div class="produccion-encabezado">ForStatement:</div>
+<div class="produccion-alternativas">
+<span class="terminal">for</span> <span class="terminal">(</span> [ForInit] <span class="terminal">;</span> [Expression] <span class="terminal">;</span> [ForUpdate] <span class="terminal">)</span> Statement
+</div>
+</div>
+<div class="produccion">
+<div class="produccion-encabezado">ForInit:</div>
+<div class="produccion-alternativas">
+StatementExpression
+</div>
+</div>
+<div class="produccion">
+<div class="produccion-encabezado">ForUpdate:</div>
+<div class="produccion-alternativas">
+StatementExpression
+</div>
+</div>
+<div class="produccion">
+<div class="produccion-encabezado">ForInit:</div>
+<div class="produccion-alternativas">
+StatementExpression
+</div>
+</div>
+<div class="produccion">
+<div class="produccion-encabezado">StatementExpression:</div>
+<div class="produccion-alternativas">
+Asignment
+</div>
+</div>
+</div>
+
+Para comprender la equivalencia absoluta entre ambas construcciones en Java, basta comparar el esquema formal de una sentencia `while` frente a su traducción directa a una sentencia `for`:
+
+<pre class="codigo-fuente">
+// Estructura de un bucle por recuento con la sentencia while
+inicialización;
+while ( condición ) {
+    sentencias;
+    actualización;
+}
+
+// Estructura equivalente y compacta con la sentencia for
+for ( inicialización; condición; actualización )
+    sentencias;
+</pre>
+
+Sintácticamente, la cabecera de la sentencia **for** se delimita mediante paréntesis obligatorios y exige exactamente **dos puntos y coma** (<span class="literal">;</span>) para separar de forma inequívoca las tres expresiones que la integran:
+
+1.  **Sección de inicialización:** Es la primera expresión contenida en el encabezado. Se ejecuta una **única vez** antes de iniciar la primera iteración. Su propósito es declarar e inicializar la variable de control. Una característica clave de Java es que la variable puede declararse en esta sección, de modo que su **ámbito o alcance** (*scope*) queda estrictamente restringido al cuerpo del bucle.
+2.  **Sección de condición:** Es la segunda expresión del encabezado y actúa exactamente como la condición *pre-test* del bucle **while**. Se evalúa antes de procesar cada iteración, ejecutandose las sentencias del cuerpo del bucle si es verdadero; en caso contrario, la repetición se interrumpe inmediatamente y el flujo de control continua en la sentencia siguiente al **for**.
+3.  **Sección de actualización:** Es la tercera expresión de la cabecera. Se ejecuta automáticamente al **finalizar cada iteración**, inmediatamente después de procesar la última instrucción del cuerpo del bucle y antes de retornar a la sección de condición para evaluar la siguiente iteración. Habitualmente contiene una operación de incremento o decremento.
+
+Para apreciar la concisión y la seguridad que aporta **for** frente a **while** en bucles determinados, consideremos el ejemplo que ya veíamos:
+
+
+<pre class="codigo-java">
+for ( int contador = 1;  contador <= 5; contador += 1 ) {
+    System.out.println(contador);
+}
+</pre>
+
+La estructura puede resultar inicialmente algo extraña porque concentra en una sola línea todos esos elementos que hasta ahora habíamos visto separados. Podemos seguir el ejemplo anterior paso a paso:
+
+<pre class="codigo-fuente">
+1. int contador = 1;
+2. comprobar contador <= 5
+3. ejecutar el cuerpo
+4. ejecutar contador += 1
+5. volver al paso 2
+6. cuando la condición sea falsa, continuar
+</pre>
+
+La correspondencia entre **for** y **while** nos permite comprender también que no está limitado a incrementar una variable en una unidad. La actualización puede utilizar cualquiera de las operaciones que permita modificar el contador:
+
+<pre class="codigo-java">
+for (int numero = 2; numero <= 10; numero += 2) {
+    System.out.println(numero);
+}
+</pre>
+
+En este caso el contador comienza en <span class="literal">2</span> y aumenta de dos en dos. El algoritmo es el mismo que habríamos expresado con **while**:
+
+<pre class="codigo-java">
+int numero = 2;
+
+while (numero <= 10) {
+    System.out.println(numero);
+    numero += 2;
+}
+</pre>
+
+También podemos utilizar decrementos:
+
+<pre class="codigo-java">
+for (int numero = 10; numero >= 1; numero -= 1) {
+    System.out.println(numero);
+}
+</pre>
+
+Aquí el contador comienza en <span class="literal">10</span> y va disminuyendo hasta que la condición deja de cumplirse.
+
+Debido a su estructura compacta, legibilidad y prevención natural contra bucles infinitos, la sentencia **for** se consolida como la construcción estándar en Java (y otros lenguajes) para recorrer intervalos numéricos o procesar iteraciones de las que conocemos el número de veces que deben ejecutarse (antes de comenzar el bucle).
+
+#### Operadores de incremento y decremento
+
+Durante el diseño de algoritmos repetitivos, resulta sumamente habitual encontrar operaciones destinadas a contar elementos o acumular totales, entre otras. Aunque estas operaciones pueden expresarse perfectamente mediante sentencias de asignación ordinarias en las que sumamos uno, la frecuencia con la que se emplean llevó a los diseñadores de lenguajes como C y Java a incorporar una serie de operadores sintácticos compactos específicamente orientados a este fin.
+
+En primer lugar, disponemos de los **operadores unarios de incremento y decremento**:
+
+*   **Operador de incremento (<span class="operador">++</span>):** Suma exactamente una unidad (<span class="literal">1</span>) al valor actual del operando numérico sobre el que se aplica. Por consiguiente, la instrucción <span class="codigo">x++</span> equivale de forma exacta a escribir <span class="codigo">x = x+1</span>.
+*   **Operador de decremento (<span class="operador">++</span>):** Resta exactamente una unidad (<span class="literal">1</span>) al valor actual del operando numérico. De este modo, <span class="codigo">x--</span> equivale a la sentencia <span class="codigo">x = x-1</span>.
+
+Estos operadores pueden utilizarse antes o después de la variable: **notación prefija** (<span class="codigo">++x</span> o <span class="codigo">--x</span>) y **notación posfija** (<span class="codigo">x++</span> o <span class="codigo">x--</span>). Cuando el operador se utiliza como una sentencia independiente, como suele ocurrir al modificar un contador, ambas formas producen exactamente el mismo resultado final: incrementar o decrementar la variable en una unidad. La diferencia aparece cuando el operador forma parte de una expresión y, por tanto, necesitamos utilizar el valor que produce:
+
+*   **Modalidad prefija (<span class="codigo">++x</span>):** Se aplica el incremento sobre la variable **antes** de evaluar y utilizar su valor dentro de la expresión global.
+*   **Modalidad posfija (<span class="codigo">x++</span>):** Se utiliza el valor actual de la variable para la expresión y, **después** de completar dicha evaluación, efectúa el incremento sobre la variable en memoria.
+
+<figure class="img-lateral-dch">
+    <img src="../imagenes/03_10_operadores.png" alt="Operadores de Java, ordenados según su precedencia, de mayor a menor">
+    <p>Operadores de Java de mayor precedencia (arriba) a menor (abajo)<p>
+</figure>
+
+Ejemplo:
+
+<pre class="codigo-java">
+int numero = 5;
+int resultado = numero++;
+</pre>
+
+Después de estas instrucciones, <span class="variable">numero</span> vale <span class="literal">6</span>, mientras que <span class="variable">resultado</span> contiene el valor <span class="literal">5</span>: la expresión ha utilizado primero el valor que tenía el contador y después lo ha incrementado.
+
+En cambio:
+
+<pre class="codigo-java">
+int numero = 5;
+int resultado = ++numero;
+</pre>
+
+deja también <span class="variable">numero</span> con el valor <span class="literal">6</span>, pero ahora <span class="variable">resultado</span> contiene <span class="literal">6</span>, porque el incremento se ha realizado antes de obtener el valor de la expresión.
+
+La misma diferencia se aplica a los operadores de decremento.
+
+<div class="plantilla-sintactica">
+<div class="produccion">
+<div class="produccion-encabezado">UnaryExpression:</div>
+<div class="produccion-alternativas">
+PreIncrementExpression<b>
+PreDecrementExpression<b>
+<span class="terminal">+</span> Expression<br>
+<span class="terminal">-</span> Expression<br>
+UnaryExpressionNotPlusMinus
+</div>
+</div>
+<div class="produccion">
+<div class="produccion-encabezado">PreIncrementExpression:</div>
+<div class="produccion-alternativas">
+<span class="terminal">++</span> UnaryExpression
+</div>
+</div>
+<div class="produccion">
+<div class="produccion-encabezado">PreDecrementExpression:</div>
+<div class="produccion-alternativas">
+<span class="terminal">--</span> UnaryExpression
+</div>
+</div>
+<div class="produccion">
+<div class="produccion-encabezado">UnaryExpressionNotPlusMinus:</div>
+<div class="produccion-alternativas">
+PostFixExpression<br>
+CastExpression<br>
+SwitchExpression
+</div>
+</div>
+<div class="produccion">
+<div class="produccion-encabezado">PostFixExpression:</div>
+<div class="produccion-alternativas">
+Expression<br>
+PostIncrementExpression<b>
+PostDecrementExpression<b>
+</div>
+</div>
+
+<div class="produccion">
+<div class="produccion-encabezado">PostIncrementExpression:</div>
+<div class="produccion-alternativas">
+PostFixExpression <span class="terminal">++</span>
+</div>
+</div>
+<div class="produccion">
+<div class="produccion-encabezado">PostDecrementExpression:</div>
+<div class="produccion-alternativas">
+PostFixExpression <span class="terminal">--</span>
+</div>
+</div>
+</div>
 
 ### Diseño de bucles
+
+El diseño de una estructura repetitiva constituye una de las tareas más críticas en la construcción de algoritmos robustos. Diseñar un bucle no consiste simplemente en seleccionar de forma arbitraria una palabra reservada del lenguaje, sino en analizar minuciosamente la lógica interna del problema para dar respuesta a tres interrogantes fundamentales de diseño:
+1. ¿Se conoce con anterioridad a la ejecución del bucle el número exacto de iteraciones que deben realizarse?
+2. ¿Existe la posibilidad de que, bajo determinadas condiciones iniciales de los datos, el cuerpo del bucle no deba ejecutarse ni una sola vez?
+3. ¿Requiere el algoritmo de una **lectura adelantada** (*priming read*) antes de verificar la condición de permanencia, o, por el contrario, el proceso exige ejecutar el cuerpo de instrucciones **al menos una vez** antes de poder evaluar si se debe continuar?
+
+A partir de la respuesta a estas preguntas, el programador debe seleccionar la estructura repetitiva más adecuada de entre las que ofrece el lenguaje (en Java, **for**, **while** y **do-while**), aplicando el patrón de diseño que garantice la máxima claridad, eficiencia y prevención defensiva contra errores lógicos.
+
+<figure class="img-lateral-izq">
+    <img src="../imagenes/03_11_bucles.png" alt="Criterios para la elección del tipo de bucle">
+</figure>
+
+#### La sentencia **do-while**
+
+Cuando el análisis del problema revela que la primera iteración de un bucle debe ejecutarse de manera obligatoria antes de poder comprobar si la repetición debe proseguir, las estructuras apropiada es utilizar una estructura repetitiva **post-test** del lenguaje: en Java, la sentencia **do-while**.
+
+Sintácticamente, **do-while** se construye delimitando el bloque de instrucciones mediante la palabra reservada <span class="palabra">do</span> (que en inglés significa «haz») y situando la cláusula de control con la palabra reservada <span class="palabra">while</span> al final del bloque. Es imperativo destacar una regla sintáctica fundamental que la distingue de todas las demás estructuras de control de Java: la sentencia **do-while** exige obligatoriamente la inclusión de un punto y coma (<span class="literal">;</span>) inmediatamente después del paréntesis de cierre de la condición. La omisión de este punto y coma final constituye un error sintáctico que el compilador rechazará de inmediato.
+
+#### La sentencia **for**
+
+El diseño de bucles controlados por contador exige al programador prestar una especial atención a tres fuentes clásicas de error:
+
+*   **Errores por desviación en uno (*off-by-one errors*):** Ocurren cuando la condición de límite utiliza incorrectamente un operador relacional estricto (<span class="operador">&lt;</span> o <span class="operador">&gt;</span>) en lugar de un operador incluyente (<span class="operador">&lt;=</span> o <span class="operador">&gt;=</span>) o viceversa; o cuando la variable de control se inicializa en (<span class="literal">0</span> en lugar de (<span class="literal">1</span> (o al revés). Esto provoca que el bucle ejecute una iteración de más o una iteración de menos respecto a las previstas en el diseño del algoritmo.
+*   **Actualización en sentido inverso:** Si en un bucle incremental la instrucción de actualización decrementa el contador en lugar de incrementarlo (lo contrario en un bucle decremental), la variable de control se alejará progresivamente del valor límite en lugar de aproximarse a él, transformando la estructura en un **bucle infinito**.
+*   **Efectos laterales sobre la variable de control:** Modificar de forma arbitraria el valor del contador dentro del cuerpo del bucle mediante sentencias ajenas al paso regular dificulta enormemente el rastreo del algoritmo, pudiendo adelantar la salida del bucle o provocar saltos impredecibles en el número de iteraciones.
+
+#### Criterios de elección
+
+La decisión entre utilizar **while** con lectura adelantada o **do-while** depende de la relación temporal que existe entre la obtención de los datos de entrada y la evaluación de la condición de terminación.
+
+Cuando se utiliza la sentencia **while** para procesar flujos de datos guiados por un **valor centinela**, es indispensable aplicar la técnica de la **lectura adelantada**[^25] (*priming read*) antes de alcanzar el encabezado del bucle. Esta asignación previa permite inicializar la variable de control de modo que la primera comprobación del bucle sea capaz de detectar si el primer dato introducido por el usuario es ya el propio valor centinela. Si este es el caso, la condición fallará de inmediato y el cuerpo (del bucle) no se ejecutará ninguna vez, evitando procesar o alterar el estado del programa con un valor de terminación no válido.
+
+Por el contrario, existen escenarios algorítmicos donde la propia naturaleza de la tarea exige que la interacción o lectura del dato se realice **dentro** del propio proceso repetitivo. El ejemplo más representativo de este patrón es la **validación defensiva de datos de entrada**[^26]. En la validación de entradas, el programa debe solicitar obligatoriamente un dato al usuario, leerlo desde el teclado y, a continuación, comprobar si cumple los requisitos de validez prefijados. Si el dato es incorrecto, el programa debe mostrar un mensaje de error y volver a solicitarlo de forma reiterada hasta que la entrada sea correcta.
+
+Si intentáramos implementar un proceso de validación utilizando la sentencia **while**, nos veríamos obligados a duplicar la instrucción de petición y lectura del dato fuera y dentro del bucle:
+
+<pre class="codigo-java">
+// Implementación redundante de validación de entrada con bucle while (desaconsejada)
+System.out.print("Introduce una nota (0 a 10): ");
+double nota = teclado.nextDouble(); // Lectura adelantada
+while ( nota < 0d || nota > 10d ) {
+    System.out.println("Error: La nota debe estar entre 0.0 y 10.0.");
+    System.out.print("Introduce una nota (0 a 10): ");
+    nota = teclado.nextDouble(); // Lectura duplicada
+}
+</pre>
+
+El uso de la sentencia **do-while** elimina por completo esta redundancia de código. Puesto que la primera solicitud y lectura debe ocurrir necesariamente al menos una vez, ubicar la entrada de datos dentro del cuerpo del bucle permite que la lectura se realice de forma incondicional, evaluando la validez del dato en la condición post-test:
+
+<pre class="codigo-java">
+// Implementación con validación de entrada en bucle do-while
+double nota;
+
+do {
+    System.out.print("Introduce una nota (0 a 10): ");
+    nota = teclado.nextDouble(); // Se ejecuta incondicionalmente al menos una vez
+    
+    if ( nota < 0d || nota > 10d ) {
+        System.out.println("Error: La nota introducida no está en el rango permitido.");
+    }
+} while ( nota < 0d || nota > 10d ); // Se repite MIENTRAS la nota siga siendo inválida
+</pre>
+
+En este diseño, la variable <span class="variable">nota</span> se declara fuera del bucle para garantizar que su ámbito (*scope*) sea accesible tanto dentro del cuerpo como en la expresión de control. La petición y la lectura ocurren en la primera pasada; si el usuario introduce un valor correcto, la condición se evalúa inmediatamente como falsa, permitiendo la salida limpia del bucle tras una única iteración.
+
+#### Reglas metodológicas para el diseño de bucles seguros
+
+Para garantizar que cualquier estructura repetitiva sea correcta y segura, el proceso de diseño debe supervisar tres principios:
+
+1. **Principio de terminación finita:** Todo bucle debe diseñarse con la garantía de que alcanzará la condición de terminación en un número finito de pasos. En los bucles por contador hay que verificar el sentido de la actualización; en los bucles por condición, el cuerpo del bucle debe contener sentencias que modifiquen de manera efectiva el estado de la variable de control.
+2. **Definición clara del ámbito de la variable de control:** La variable de control de un bucle debe utilizarse solo en el bucle para el que se declara; Java permite, cuando se usa **for**, que esto se haga en la propia cabecera de la estructura, lo qeu permite que la memoria de la variable sea liberada automáticamente al concluir el bucle. Si la variable va a ser utilizada tras la finalización del proceso repetitivo (como un acumulado o dato validado), debe declararse en el bloque superior antes de ingresar en la estructura.
+3. **Identificación de la invariante del bucle:** En la fase de análisis, es altamente recomendable determinar la **invariante del bucle**, definida como una proposición lógica que se mantiene verdadera antes de iniciar el bucle, al término de cada iteración y al concluir la estructura. Formular la invariante permite verificar razonadamente que el bucle transforma progresivamente el estado inicial de los datos en la solución buscada sin introducir efectos laterales ni inconsistencias en memoria.
 
 ## Depuración y verificación
 
@@ -2183,3 +2765,5 @@ Asimismo, como ya se indicó para la condición, es un error sintáctico sumamen
 [^22]: A partir de la versión 7 del JDK.
 [^23]: El término *fall-through* es característico de lenguajes herederos de C, donde la omisión del <span class=palabra>break</span> se diseñó intencionadamente para permitir la ejecución agrupada de varios casos sin duplicar código.
 [^24]: La tabla de saltos evalúa el valor de entrada y dirige la ejecución instantáneamente a la dirección de memoria adecuada.
+[^25]: La lectura adelantada (*priming read*) es un patrón de diseño clásico en la programación estructurada que consiste en obtener el primer dato de una secuencia antes de evaluar la condición del bucle por primera vez, garantizando que la variable de control o condición adquiera un estado válido y fiable antes de entrar en la estructura iterativa.
+[^26]: Que veremos en el tema 5.
