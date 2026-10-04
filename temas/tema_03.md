@@ -2534,6 +2534,11 @@ Debido a su estructura compacta, legibilidad y prevención natural contra bucles
 
 Durante el diseño de algoritmos repetitivos, resulta sumamente habitual encontrar operaciones destinadas a contar elementos o acumular totales, entre otras. Aunque estas operaciones pueden expresarse perfectamente mediante sentencias de asignación ordinarias en las que sumamos uno, la frecuencia con la que se emplean llevó a los diseñadores de lenguajes como C y Java a incorporar una serie de operadores sintácticos compactos específicamente orientados a este fin.
 
+<figure class="img-lateral-dch">
+    <img src="../imagenes/03_10_operadores.png" alt="Operadores de Java, ordenados según su precedencia, de mayor a menor">
+    <figcaption>Operadores de Java de mayor precedencia (arriba) a menor (abajo)</figcaption>
+</figure>
+
 En primer lugar, disponemos de los **operadores unarios de incremento y decremento**:
 
 *   **Operador de incremento (<span class="operador">++</span>):** Suma exactamente una unidad (<span class="literal">1</span>) al valor actual del operando numérico sobre el que se aplica. Por consiguiente, la instrucción <span class="codigo">x++</span> equivale de forma exacta a escribir <span class="codigo">x = x+1</span>.
@@ -2543,11 +2548,6 @@ Estos operadores pueden utilizarse antes o después de la variable: **notación 
 
 *   **Modalidad prefija (<span class="codigo">++x</span>):** Se aplica el incremento sobre la variable **antes** de evaluar y utilizar su valor dentro de la expresión global.
 *   **Modalidad posfija (<span class="codigo">x++</span>):** Se utiliza el valor actual de la variable para la expresión y, **después** de completar dicha evaluación, efectúa el incremento sobre la variable en memoria.
-
-<figure class="img-lateral-dch">
-    <img src="../imagenes/03_10_operadores.png" alt="Operadores de Java, ordenados según su precedencia, de mayor a menor">
-    <figcaption>Operadores de Java de mayor precedencia (arriba) a menor (abajo)</figcaption>
-</figure>
 
 Ejemplo:
 
@@ -2604,8 +2604,8 @@ SwitchExpression
 <div class="produccion-encabezado">PostFixExpression:</div>
 <div class="produccion-alternativas">
 Expression<br>
-PostIncrementExpression<b>
-PostDecrementExpression<b>
+PostIncrementExpression<br>
+PostDecrementExpression<br>
 </div>
 </div>
 
