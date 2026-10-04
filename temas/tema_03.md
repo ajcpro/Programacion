@@ -1532,7 +1532,7 @@ if ( edad >= 18 ) {
 }
 </pre>
 
-El ordenador comienza ejecutando la asignación de <span class="variable">edad</span>. Cuando llega a la sentencia <span class="palabra">if</span>, evalúa la expresión <span class="codigo">edad >= 18</span>. Si el resultado es <span class="literal">true</span>, ejecuta la sentencia contenida dentro del bloque. Si el resultado es <span class="literal">false</span>, no ejecuta el bloque y continuaría con la siguiente instrucción.
+El ordenador comienza ejecutando la asignación de <span class="variable">edad</span>. Cuando llega a la sentencia **if**, evalúa la expresión <span class="codigo">edad >= 18</span>. Si el resultado es <span class="literal">true</span>, ejecuta la sentencia contenida dentro del bloque. Si el resultado es <span class="literal">false</span>, no ejecuta el bloque y continuaría con la siguiente instrucción.
 
 * **La expresión de control o condición**: El contenido entre los paréntesis debe ser una expresión booleana (verdadero o falso). Aunque otros lenguajes puedan permitirlo, Java es fuertemente tipado y solo acepta un valor booleano: el compilador indicará que hay un error de tipo.
 * **El cuerpo de la estructura**: Representa la sentencia o conjunto de sentencias que quedan supeditadas al éxito de la condición. La plantilla declara la sentencia condicional <span class="produccion-palabra">IfThenStatement</span> introduciendo <span class="produccion-palabra">Statement</span> para el caso en que se cumpla la condición: si el cuerpo consta de una única sentencia simple finalizada en punto y coma, la sintaxis de Java permite omitir las llaves delimitadoras; si se requiere ejecutar una secuencia compuesta por más de una instrucción, es imperativo agruparlas dentro de un **bloque de código**.
@@ -1672,7 +1672,7 @@ else
          System.out.println("Suspenso");
 </pre>
 
-En este caso, tenemos una decisión pero, cuando la condición no se cumple, tenemos una nueva condición y esta, a su vez, otra. Esto no constituye de por sí una nueva sentencia ya que se obtiene encadenando decisiones: un <span class="palabra">if</span> dentro de la alternativa <span class="palabra">else</span> de otro <span class="palabra">if</span>. El anidamiento de condicionales introduce un desafío sintáctico y de diseño conocido  como el dilema del **else huérfano** (*dangling else*). Cuando escribimos condicionales anidados complejos puede surgir una ambigüedad aparente sobre a qué <span class="palabra">if</span> concreta pertenece un determinado <span class="palabra">if</span>. Para resolver esta incertidumbre el compilador aplica una regla de asociación sintáctica estricta: **un bloque else siempre se asocia con el condicional if más cercano y anterior que se encuentre dentro de su mismo bloque de código** (siempre y cuando dicho if no cuente ya con un else asociado). Recordad que el compilador ignora por completo los espacios en blanco, los retornos de línea y la indentación: alinear visualmente cada grupo **if-else** es fundamental pero, en casos en los que uno quede alejado del otro o algún <span class="palabra">if</span> no tenga <span class="palabra">else</span>, es mejor utilizar llaves para no tener fallos lógicos difíciles de depurar.
+En este caso, tenemos una decisión pero, cuando la condición no se cumple, tenemos una nueva condición y esta, a su vez, otra. Esto no constituye de por sí una nueva sentencia ya que se obtiene encadenando decisiones: un **if** dentro de la alternativa **else** de otro **if**. El anidamiento de condicionales introduce un desafío sintáctico y de diseño conocido  como el dilema del **else huérfano** (*dangling else*). Cuando escribimos condicionales anidados complejos puede surgir una ambigüedad aparente sobre a qué **if** concreta pertenece un determinado **if**. Para resolver esta incertidumbre el compilador aplica una regla de asociación sintáctica estricta: **un bloque else siempre se asocia con el condicional if más cercano y anterior que se encuentre dentro de su mismo bloque de código** (siempre y cuando dicho if no cuente ya con un else asociado). Recordad que el compilador ignora por completo los espacios en blanco, los retornos de línea y la indentación: alinear visualmente cada grupo **if-else** es fundamental pero, en casos en los que uno quede alejado del otro o algún **if** no tenga **else**, es mejor utilizar llaves para no tener fallos lógicos difíciles de depurar.
 
 #### Selección encadenada
 
@@ -1772,13 +1772,13 @@ Vamos a analizar las reglas de diseño y restricciones sintácticas que el compi
 * **La lista de etiquetas**: Cada uno de los caminos lógicos alternativos se define mediante la palabra reservada <span class="palabra">case</span> seguida de una expresión constante, denominada **etiqueta**, y el carácter de dos puntos (<span class="literal">:</span>). La restricción fundamental es que dicha etiqueta debe ser una **constante única conocida en tiempo de compilación**; no está permitido utilizar variables o condiciones lógicas. Además, no deben existir etiquetas duplicadas dentro de una misma estructura switch, garantizando así que no haya ambigüedad sobre qué camino debe tomar la ejecución.
 * **La cláusula por defecto**: Esta sección, identificada por la palabra reservada <span class="palabra">default</span>, actúa como un bloque de contingencia opcional. Las instrucciones contenidas en su interior solo se ejecutarán si el resultado de evaluar la expresión de control no coincide con ninguna de las constantes especificadas en las etiquetas case. Aunque su uso no es obligatorio, muchas fuentes recomiendan incluirla siempre identificar valores imprevistos o inconsistencias en los datos del sistema.
 
-<figure class="img-lateral-dch">
+Debemos prestar especial atención a que las instrucciones de una etiqueta no están delimitadas automáticamente por unas llaves. El aspecto más crítico y que requiere mayor atención es el comportamiento conocido como **efecto de caída o cascada** (*fall-through*)[^23]. Cuando se encuentra una coincidencia, el **flujo de control** realiza un salto directo a las instrucciones de esa rama. Sin embargo, a diferencia de lo que ocurre en las bifurcaciones if-else, el final del bloque no provoca la salida automática del condicional: la ejecución continuará discurriendo de forma secuencial, procesando y ejecutando las sentencias de los casos siguientes de manera ininterrumpida, sin importar que sus valores constantes no coincidan con la expresión de control.
+
+<figure class="img-grande">
     <img src="../imagenes/03_08_switch.png" alt="Flujo de control de una selección múltiple mediante switch">
 </figure>
 
-Debemos prestar especial atención a que las instrucciones de una etiqueta no están delimitadas automáticamente por unas llaves. El aspecto más crítico y que requiere mayor atención es el comportamiento conocido como **efecto de caída o cascada** (*fall-through*)[^23]. Cuando se encuentra una coincidencia, el **flujo de control** realiza un salto directo a las instrucciones de esa rama. Sin embargo, a diferencia de lo que ocurre en las bifurcaciones if-else, el final del bloque no provoca la salida automática del condicional: la ejecución continuará discurriendo de forma secuencial, procesando y ejecutando las sentencias de los casos siguientes de manera ininterrumpida, sin importar que sus valores constantes no coincidan con la expresión de control.
-
-En el ejemplo anterior aparece además la sentencia <span class="palabra">break</span>. La llamada a sentencia especial, interrumpe de inmediato el procesamiento dentro del bloque y transfiere el flujo de control a la primera sentencia secuencial que se encuentre físicamente después de la llave de cierre de la estructura.
+En el ejemplo anterior aparece además la sentencia <span class="palabra">break</span>. La llamada a esta sentencia especial interrumpe de inmediato el procesamiento dentro del bloque y transfiere el flujo de control a la primera sentencia que se encuentre físicamente después de la llave de cierre de la estructura.
 
 <div class="plantilla-sintactica">
 <div class="produccion">
@@ -1984,11 +1984,11 @@ El programa funciona correctamente, pero resulta evidente que estamos repitiendo
 
 La **estructura repetitiva**, también denominada, **bucle** o ***loop***, permite precisamente indicar que una misma sentencia o un conjunto de sentencias debe ejecutarse varias veces dentro de un programa. En lugar de copiar las instrucciones tantas veces como queramos ejecutarlas, escribimos una sola vez el conjunto de operaciones y establecemos las condiciones que determinan su repetición.
 
-Desde un punto de vista formal, un bucle es una construcción sintáctica que permite ejecutar un bloque de sentencias de forma reiterada mientras se mantenga verdadera una determinada proposición lógica, conocida como **condición de permanencia** o condición de control. Cada una de las ejecuciones individuales del bloque de código contenido en el interior del bucle recibe el nombre de **iteración**. De este modo, la repetición transforma una secuencia finita de instrucciones en un proceso capaz de iterar sobre colecciones de información o mantener una aplicación en ejecución continua a la espera de eventos del usuario.
-
 <figure class="img-lateral-izq">
     <img src="../imagenes/03_09_repeticion.png" alt="Recorrido circular del flujo de control">
 </figure>
+
+Desde un punto de vista formal, un bucle es una construcción sintáctica que permite ejecutar un bloque de sentencias de forma reiterada mientras se mantenga verdadera una determinada proposición lógica, conocida como **condición de permanencia** o condición de control. Cada una de las ejecuciones individuales del bloque de código contenido en el interior del bucle recibe el nombre de **iteración**. De este modo, la repetición transforma una secuencia finita de instrucciones en un proceso capaz de iterar sobre colecciones de información o mantener una aplicación en ejecución continua a la espera de eventos del usuario.
 
 Podemos entender la repetición como una modificación del flujo de control que ya conocemos. En una estructura secuencial, después de ejecutar una sentencia el control pasa a la siguiente; en una selección, el resultado de una condición determina qué camino debe seguir la ejecución. En una repetición aparece una posibilidad nueva: después de ejecutar unas sentencias, el flujo de control puede regresar a una posición anterior del programa para volver a ejecutarlas. De esta forma, el flujo de control deja de avanzar únicamente hacia delante: una parte del programa puede recorrerse varias veces.
 
@@ -2017,7 +2017,7 @@ A partir de aquí estudiaremos las diferentes formas de construir estas estructu
 
 ### Sentencia while
 
-La sentencia <span class="palabra">while</span> recibe su nombre del inglés *while*, que podemos traducir como «mientras», y constituye la estructura repetitiva más elemental, flexible y conceptualmente pura de las que proporciona el lenguaje Java.  Su funcionamiento resulta especialmente sencillo si lo relacionamos con la selección simple que acabamos de estudiar: en ambos casos se evalúa una condición y, según el resultado, se decide qué instrucciones debe ejecutar el ordenador. La diferencia fundamental es que, en una selección, una vez ejecutadas las instrucciones de la alternativa correspondiente el flujo continúa hacia delante; en una repetición, si la condición lo permite, el flujo de control **regresa al comienzo de la estructura para volver a ejecutar las mismas instrucciones**.
+La sentencia **while** recibe su nombre del inglés *while*, que podemos traducir como «mientras», y constituye la estructura repetitiva más elemental, flexible y conceptualmente pura de las que proporciona el lenguaje Java.  Su funcionamiento resulta especialmente sencillo si lo relacionamos con la selección simple que acabamos de estudiar: en ambos casos se evalúa una condición y, según el resultado, se decide qué instrucciones debe ejecutar el ordenador. La diferencia fundamental es que, en una selección, una vez ejecutadas las instrucciones de la alternativa correspondiente el flujo continúa hacia delante; en una repetición, si la condición lo permite, el flujo de control **regresa al comienzo de la estructura para volver a ejecutar las mismas instrucciones**.
 
 Sintácticamente, la sentencia <span class="palabra">while</span> es una nueva clase de <span class="produccion-palabra">Statement</span>:
 
@@ -2039,7 +2039,7 @@ WhileStatement
 </div>
 </div>
 
-Como podemos observar, la estructura de la sentencia <span class="palabra">while</span> es muy similar a la de <span class="palabra">if</span>. En ambos casos encontramos la palabra reservada correspondiente, una expresión encerrada entre paréntesis y, finalmente, una sentencia:
+Como podemos observar, la estructura de la sentencia **while** es muy similar a la de **if**. En ambos casos encontramos la palabra reservada correspondiente, una expresión encerrada entre paréntesis y, finalmente, una sentencia:
 
 <pre class="codigo-fuente">
 if     ( expresión ) sentencia
@@ -2050,7 +2050,7 @@ La diferencia no está, por tanto, en la forma general de la estructura, sino en
 
 Una característica importante que debemos observar en este esquema es que **la condición se comprueba antes de ejecutar el cuerpo del bucle**. Si resulta verdadera, se ejecutan las sentencias que forman dicho cuerpo y, al finalizar, el flujo de control vuelve a evaluar la condición. Si sigue siendo verdadera, las sentencias vuelven a ejecutarse. Este proceso continúa hasta que, en alguna de las comprobaciones, la condición resulta falsa. Esto es lo que se conoce como **estructura repetitiva precondicional**, bucle de prueba previa, bucle de precondición o *pre-test loop*.
 
-Esto explica una propiedad importante de la sentencia <span class="palabra">while</span>: **el cuerpo del bucle puede no ejecutarse ninguna vez**. Si la condición es falsa cuando el flujo de control alcanza por primera vez la sentencia <span class="palabra">while</span>, el ordenador no ejecuta ninguna de las instrucciones de su cuerpo y continúa directamente con la primera sentencia situada después del bucle.
+Esto explica una propiedad importante de <span class="palabra">while</span>: **el cuerpo del bucle puede no ejecutarse ninguna vez**. Si la condición es falsa cuando el flujo de control alcanza por primera vez la sentencia **while**, el ordenador no ejecuta ninguna de las instrucciones de su cuerpo y continúa directamente con la primera sentencia situada después del bucle.
 
 Supongamos, por ejemplo, que queremos mostrar los números del 1 al 5. Ya hemos visto que escribir una sentencia de salida para cada número permite resolver el problema, pero que esa solución obliga a repetir innecesariamente la misma instrucción. Mediante una repetición podemos escribir una sola vez la instrucción que debe ejecutarse y hacer que el ordenador vuelva a ella mientras se cumpla una condición:
 
@@ -2063,7 +2063,7 @@ while ( numero <= 5 ) {
 }
 </pre>
 
-Veamos con detenimiento qué sucede durante la ejecución. En primer lugar, se declara la variable <span class="variable">numero</span> y se le asigna el valor <span class="literal">1</span>. Cuando el flujo de control alcanza la sentencia <span class="palabra">while</span>, el ordenador evalúa la expresión <span class="codigo">numero <= 5</span>. Como en ese momento la expresión vale <span class="literal">true</span>, ejecuta el cuerpo del bucle. La primera iteración muestra el valor <span class="literal">1</span> y, después, modifica el valor de <span class="variable">numero</span>, que pasa a ser <span class="literal">2</span>. Al terminar el cuerpo, el flujo de control no continúa todavía con la siguiente sentencia del programa, sino que **regresa a la condición del <span class="palabra">while</span>**. Ahora se vuelve a evaluar <span class="codigo">numero <= 5</span>. Como <span class="variable">numero</span> vale <span class="literal">2</span>, la condición continúa siendo verdadera y se produce una nueva iteración. El mismo proceso se repite para los valores <span class="literal">3</span>, <span class="literal">4</span> y <span class="literal">5</span>. Después de la quinta iteración, la variable <span class="variable">numero</span> adquiere el valor <span class="literal">6</span>. El ordenador vuelve a evaluar la condición:
+Veamos con detenimiento qué sucede durante la ejecución. En primer lugar, se declara la variable <span class="variable">numero</span> y se le asigna el valor <span class="literal">1</span>. Cuando el flujo de control alcanza la sentencia **while**, el ordenador evalúa la expresión <span class="codigo">numero <= 5</span>. Como en ese momento la expresión vale <span class="literal">true</span>, ejecuta el cuerpo del bucle. La primera iteración muestra el valor <span class="literal">1</span> y, después, modifica el valor de <span class="variable">numero</span>, que pasa a ser <span class="literal">2</span>. Al terminar el cuerpo, el flujo de control no continúa todavía con la siguiente sentencia del programa, sino que **regresa a la condición del while**. Ahora se vuelve a evaluar <span class="codigo">numero <= 5</span>. Como <span class="variable">numero</span> vale <span class="literal">2</span>, la condición continúa siendo verdadera y se produce una nueva iteración. El mismo proceso se repite para los valores <span class="literal">3</span>, <span class="literal">4</span> y <span class="literal">5</span>. Después de la quinta iteración, la variable <span class="variable">numero</span> adquiere el valor <span class="literal">6</span>. El ordenador vuelve a evaluar la condición:
 
 <pre class="codigo-fuente">
 condición: numero <= 5
@@ -2119,7 +2119,7 @@ Con todo lo explicado en mente, es necesario destacar las siguientes restriccion
 *   **La expresión de control o condición de permanencia:** El contenido delimitado por los paréntesis debe ser una expresión que produzca un valor de tipo booleano. Al igual que ocurre en las estructuras de selección, Java prohíbe el uso de valores enteros o referencias como criterios de control directo.
 *   **El cuerpo del bucle:** Comprende la sentencia (o bloque) destinada a repetirse en cada ciclo.
 
-Podemos resumir el funcionamiento de <span class="palabra">while</span> mediante la siguiente secuencia:
+Podemos resumir el funcionamiento de **while** mediante la siguiente secuencia:
 
 1.  **Evaluación de la condición *pre-test*:** El ordenador evalúa la expresión booleana.
 2.  **Decisión y ejecución de la iteración:** 
@@ -2133,9 +2133,9 @@ Asimismo, como ya se indicó para la condición, es un error sintáctico sumamen
 
 ### Bucles controlados por condición
 
-La sentencia <span class="palabra">while</span> que acabamos de estudiar es un ejemplo de **bucle controlado por condición**. El número de iteraciones viene determinado por el resultado de una **condición lógica** que se comprueba durante la ejecución. Dentro de las estructuras repetitivas, los **bucles controlados por condición** representan una categoría fundamental de algoritmos donde el número exacto de iteraciones no se conoce con anterioridad a la entrada del bucle.
+La sentencia **while** que acabamos de estudiar es un ejemplo de **bucle controlado por condición**. El número de iteraciones viene determinado por el resultado de una **condición lógica** que se comprueba durante la ejecución. Dentro de las estructuras repetitivas, los **bucles controlados por condición** representan una categoría fundamental de algoritmos donde el número exacto de iteraciones no se conoce con anterioridad a la entrada del bucle.
 
-La sentencia <span class="palabra">while</span> presenta precisamente este comportamiento: antes de cada iteración se comprueba una condición y el cuerpo se ejecuta mientras esta sea verdadera. Por ello recibe también el nombre de **bucle de prueba previa** o **bucle de entrada** (*pre-test loop*): la condición se comprueba antes de entrar en el cuerpo del bucle.
+La sentencia **while** presenta precisamente este comportamiento: antes de cada iteración se comprueba una condición y el cuerpo se ejecuta mientras esta sea verdadera. Por ello recibe también el nombre de **bucle de prueba previa** o **bucle de entrada** (*pre-test loop*): la condición se comprueba antes de entrar en el cuerpo del bucle.
 
 <aside class="definicion">
 
@@ -2145,7 +2145,7 @@ La sentencia <span class="palabra">while</span> presenta precisamente este compo
 
 Los bucles controlados por condición son la herramienta estándar para gestionar entradas interactivas de usuario, procesar flujos de datos de longitud variable o ejecutar algoritmos de búsqueda, por ejemplo. Dependiendo del mecanismo utilizado para señalar la finalización de las repeticiones, estos bucles se organizan en tres estrategias de diseño principales:
 
-*   **Bucles controlados por valor centinela (*sentinel-controlled loops*):** Se emplean cuando un programa debe leer y procesar una secuencia indeterminada de datos procedentes de un flujo de entrada (como el teclado). En este modelo, una variable denominada **centinela** actua como señal de terminación para indicar al programa que la introducción de información ha finalizado. El centinela será un dato claramente distinguible que no pueda confundirse con un valor válido dentro del dominio del problema como introducir la cadena `"FIN"`.
+*   **Bucles controlados por valor centinela (*sentinel-controlled loops*):** Se emplean cuando un programa debe leer y procesar una secuencia indeterminada de datos procedentes de un flujo de entrada (como el teclado). En este modelo, una variable denominada **centinela** actua como señal de terminación para indicar al programa que la introducción de información ha finalizado. El centinela será un dato claramente distinguible que no pueda confundirse con un valor válido dentro del dominio del problema como introducir la cadena <span class="literal">FIN</span>.
 *   **Bucles controlados por bandera o indicador (*flag-controlled loops*):** La repetición es gobernada por una variable de tipo booleano denominada **bandera** o *flag*. La bandera se inicializa con un valor booleano adecuado, verdadero o falso, antes de emprezar y se evalúa dentro de la condición. La bandera permanece inalterada en cada iteración hasta que, en respuesta a un evento o condición específica dentro del procesamiento, una sentencia modifica su estado (booleano), provocando la salida en la siguiente comprobación del bucle.
 *   **Bucles controlados por fin de flujo o fichero (*EOF-controlled loops*):** Son una especialización de la lectura de información desde archivos. La condición de permanencia no depende de un valor introducido manualmente por el usuario, sino de si los datos de entrada han terminado, como si en un objeto `Scanner` hubiera elementos pendientes de leer (<span class="metodo">hasNext()</span>).
 
@@ -2218,7 +2218,7 @@ while ( condición ) {
     Sentencias
 }
 </pre>
-</td></tr><tr><td>
+</td><td>
 <pre class="codigo-fuente">
 do {
     Sentencias
@@ -2264,9 +2264,9 @@ public class SumaCentinela {
 }
 </pre>
 
-Observemos la diferencia fundamental respecto de <span class="palabra">while</span>: en este caso, **la primera ejecución del cuerpo se produce siempre**, porque la condición todavía no se ha comprobado cuando entramos en la estructura. Después de ejecutar el cuerpo, se evalúa la condición. Si resulta verdadera, el flujo de control regresa al principio del cuerpo y se produce una nueva iteración. Si resulta falsa, el bucle termina y la ejecución continúa con la sentencia siguiente.
+Observemos la diferencia fundamental respecto de **while**: en este caso, **la primera ejecución del cuerpo se produce siempre**, porque la condición todavía no se ha comprobado cuando entramos en la estructura. Después de ejecutar el cuerpo, se evalúa la condición. Si resulta verdadera, el flujo de control regresa al principio del cuerpo y se produce una nueva iteración. Si resulta falsa, el bucle termina y la ejecución continúa con la sentencia siguiente.
 
-Por tanto, la elección entre <span class="palabra">while</span> y <span class="palabra">do</span>-<span class="palabra">while</span> no depende de que una estructura sea capaz de realizar algo que la otra no pueda hacer. Ambas permiten repetir un conjunto de instrucciones mientras se cumpla una condición. La diferencia está en **el número mínimo de veces que puede ejecutarse el cuerpo** y en el momento en que se realiza la primera comprobación.
+Por tanto, la elección entre **while** y **do-while** no depende de que una estructura sea capaz de realizar algo que la otra no pueda hacer. Ambas permiten repetir un conjunto de instrucciones mientras se cumpla una condición. La diferencia está en **el número mínimo de veces que puede ejecutarse el cuerpo** y en el momento en que se realiza la primera comprobación.
 
 Podemos resumirlo de la siguiente manera:
 
@@ -2274,6 +2274,9 @@ Podemos resumirlo de la siguiente manera:
 <tr><th>while</th><th>do-while</th></tr>
 <tr><td>
 <pre class="codigo-fuente">
+
+
+
 ¿Condición?
    │
    ├── no ──► 0 iteraciones
@@ -2299,7 +2302,7 @@ Existe otra cuestión que debemos considerar. En un bucle controlado por condici
 
 En el caso particular de este ejemplo nos planteamos la posibilidad de que siempre se ejecute porque el valor del centinela, cero, no afecta al resultado. Tened en cuenta que si debe verificarse el dato antes de alguna acción de una iteración, la comprobación del bucle sirve como verificación.
 
-### **Bucles controlados por contador**
+### Bucles controlados por contador
 
 Los bucles que hemos estudiado hasta ahora están controlados directamente por una **condición**. No sabemos necesariamente cuántas veces se ejecutará el cuerpo: el programa continúa repitiéndolo mientras la condición se mantenga verdadera y termina cuando deje de cumplirse. Sin embargo, en muchos problemas, la repetición tiene una característica diferente: sabemos que una operación debe realizarse un determinado número de veces. En contraposición a los bucles controlados por condición, los **bucles controlados por contador** (denominados también **bucles determinados** o por recuento) constituyen la categoría de estructuras repetitivas en las que el número exacto de iteraciones se conoce con anterioridad a la ejecución del cuerpo del bucle.
 
@@ -2329,7 +2332,7 @@ while ( numero <= 5 ) {
 }
 </pre>
 
-En este caso, <span class="variable">numero</span> es el contador. Comienza teniendo el valor <span class="literal">1</span>, se utiliza para realizar la operación que nos interesa y, al terminar cada iteración, aumenta su valor en una unidad. La condición del <span class="palabra">while</span> determina cuándo debemos terminar.
+En este caso, <span class="variable">numero</span> es el contador. Comienza teniendo el valor <span class="literal">1</span>, se utiliza para realizar la operación que nos interesa y, al terminar cada iteración, aumenta su valor en una unidad. La condición del **while** determina cuándo debemos terminar.
 
 Aunque este ejemplo está escrito utilizando un bucle controlado por condición, podemos observar que existe una relación muy clara entre la condición y el contador. La variable <span class="variable">numero</span> adopta sucesivamente los valores <span class="literal">1</span>, <span class="literal">2</span>, <span class="literal">3</span>, <span class="literal">4</span> y <span class="literal">5</span>; cuando pasa a valer <span class="literal">6</span>, la condición deja de cumplirse.
 
@@ -2643,7 +2646,7 @@ Sintácticamente, **do-while** se construye delimitando el bloque de instruccion
 
 El diseño de bucles controlados por contador exige al programador prestar una especial atención a tres fuentes clásicas de error:
 
-*   **Errores por desviación en uno (*off-by-one errors*):** Ocurren cuando la condición de límite utiliza incorrectamente un operador relacional estricto (<span class="operador">&lt;</span> o <span class="operador">&gt;</span>) en lugar de un operador incluyente (<span class="operador">&lt;=</span> o <span class="operador">&gt;=</span>) o viceversa; o cuando la variable de control se inicializa en (<span class="literal">0</span> en lugar de (<span class="literal">1</span> (o al revés). Esto provoca que el bucle ejecute una iteración de más o una iteración de menos respecto a las previstas en el diseño del algoritmo.
+*   **Errores por desviación en uno (*off-by-one errors*):** Ocurren cuando la condición de límite utiliza incorrectamente un operador relacional estricto (<span class="operador">&lt;</span> o <span class="operador">&gt;</span>) en lugar de un operador incluyente (<span class="operador">&lt;=</span> o <span class="operador">&gt;=</span>) o viceversa; o cuando la variable de control se inicializa en <span class="literal">0</span> en lugar de <span class="literal">1</span> (o al revés). Esto provoca que el bucle ejecute una iteración de más o una iteración de menos respecto a las previstas en el diseño del algoritmo.
 *   **Actualización en sentido inverso:** Si en un bucle incremental la instrucción de actualización decrementa el contador en lugar de incrementarlo (lo contrario en un bucle decremental), la variable de control se alejará progresivamente del valor límite en lugar de aproximarse a él, transformando la estructura en un **bucle infinito**.
 *   **Efectos laterales sobre la variable de control:** Modificar de forma arbitraria el valor del contador dentro del cuerpo del bucle mediante sentencias ajenas al paso regular dificulta enormemente el rastreo del algoritmo, pudiendo adelantar la salida del bucle o provocar saltos impredecibles en el número de iteraciones.
 
