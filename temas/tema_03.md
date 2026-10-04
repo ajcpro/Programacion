@@ -682,8 +682,8 @@ A continuación, se presenta la relación de palabras reservadas en Java, estruc
       <tr>
         <td>transient</td><td>try</td><td>void</td><td>volatile</td><td>while</td>
       </tr>
-      <tr colspan="5">
-        <td><span class="kw-rojo">_</span> (caracter de subrayado)</td>
+      <tr>
+        <td colspan="5"><span class="kw-rojo">_</span> (caracter de subrayado)</td>
       </tr>
     </tbody>
   </table>
