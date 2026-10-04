@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Ejercicios Tema 03: Estructuras de programación</title>
+    <link rel="stylesheet" href="../estilos/estilo.css">
+    <link rel="stylesheet" href="../estilos/tema3.css">
+  </head>
+<body>
+  <h1 id="ejercicios-tema-03">Ejercicios: Tema 03</h1>
+  <ol type="1">
+  <li>Explica qué es un token y qué es un separador. Indica qué función
+  desempeña cada uno en el análisis léxico de un programa.</li>
+  <li>En el siguiente fragmento:
+  <pre class="codigo-java">
+   int numero = 25;
+   System.out.println(numero);
+   </pre>
+  Identifica los diferentes tokens que aparecen y clasifícalos como
+  palabra reservada, identificador, literal, operador o separador.</li>
+  <li>Indica qué función cumplen los espacios, tabuladores y saltos de
+  línea desde el punto de vista del análisis léxico de Java. ¿Podría
+  escribirse un programa completo en una sola línea?</li>
+  <li>Indica cuáles de los siguientes elementos son literales:
+  <pre class="codigo-fuente">
+   25
+   numero
+   "25"
+   '2'
+   true
+   false
+   null
+   MAXIMO
+   2.5
+   0xFF
+   </pre>
+  Clasifícalos además según el tipo de valor que representan.</li>
+  <li>Indica cuáles de los siguientes elementos son palabras reservadas
+  de Java y cuáles pueden ser identificadores:
+  <pre class="codigo-fuente">
+   while
+   Mientras
+   int
+   Integer
+   class
+   Clase
+   true
+   verdadero
+   return
+   retorno
+   for
+   FOR
+   </pre></li>
+  <li>Explica por qué true, false y null no pueden utilizarse como
+  identificadores.</li>
+  <li>Según la plantilla sintáctica de Identifier, indica si los
+  siguientes identificadores son válidos en Java:
+  <pre class="codigo-fuente">
+   numero
+   2numero
+   numero2
+   _numero
+   numero_2
+   true
+   null
+   class
+   miNumero
+   mi numero
+   </pre>
+  Justifica los casos inválidos.</li>
+  <li>Observa la siguiente plantilla sintáctica:
+  <div class="plantilla-sintactica">
+  <div class="produccion">
+  <div class="produccion-encabezado">
+  Literal:
+  </div>
+  <div class="produccion-alternativas">
+  IntegerLiteral<br> FloatingPointLiteral<br> BooleanLiteral<br>
+  CharacterLiteral<br> StringLiteral<br> NullLiteral
+  </div>
+  </div>
+  </div>
+  ¿De cuántas alternativas dispone Literal? ¿Qué significa que aparezcan
+  varias alternativas?</li>
+  <li>Interpreta la siguiente producción:
+  <div class="plantilla-sintactica">
+  <div class="produccion">
+  <div class="produccion-encabezado">
+  IntegerLiteral:
+  </div>
+  <div class="produccion-alternativas">
+  DecimalNumeral<br> HexNumeral<br> OctalNumeral<br> BinaryNumeral
+  </div>
+  </div>
+  </div>
+  ¿Qué cuatro formas de representación de un entero permite?</li>
+  <li>Indica cuáles de los siguientes literales enteros son válidos en
+  Java y, cuando sean válidos, qué valor representan:
+  <pre class="codigo-fuente">
+  26
+  026
+  0x1A
+  0b11010
+  0X1a
+  012
+  08
+  0b102
+  1_000_000
+  1__000
+  </pre></li>
+  <li>Indica qué diferencia existe entre <code>5</code>,
+  <code>5.0</code> y <code>5L</code> desde el punto de vista del tipo
+  del literal.</li>
+  <li>Indica qué tipo tendrá cada uno de los siguientes literales:
+  <pre class="codigo-fuente">
+  10
+  10L
+  10.0
+  10.0f
+  true
+  'A'
+  " A "
+  null
+  </pre></li>
+  <li>Indica cuáles de las siguientes construcciones son expresiones y
+  qué tipo de valor producen al evaluarse:
+  <pre class="codigo-fuente">
+  5 + 3
+  5 > 3
+  !true
+  numero
+  numero = 5
+  </pre></li>
+  <li>Calcula el resultado de las siguientes expresiones suponiendo que
+  todas las variables son de tipo int:
+  <pre class="codigo-fuente">
+  10 + 3 * 2
+  (10 + 3) * 2
+  18 / 5
+  18 % 5
+  7 + 4 * 3 - 2
+  20 / 4 * 3
+  20 / (4 * 3)
+  </pre></li>
+  <li>Repite el ejercicio anterior indicando además qué operadores se
+  han aplicado y en qué orden.</li>
+  <li>Indica si las siguientes expresiones producen un resultado entero,
+  real o booleano:
+  <pre class="codigo-fuente">
+  7 / 2 7.0 / 2 7 % 2 7 &gt; 2 7 == 2 7 + 2.0</li>
+  <li>Explica la diferencia entre los operadores de igualdad (==) y
+  asignación (=). ¿Qué problema produciría confundirlos en una
+  selección?</li>
+  <li>Indica cuáles de las siguientes expresiones son válidas en Java:
+  <pre class="codigo-fuente">
+  a < b
+  a <= b
+  a == b
+  a = b
+  a && b
+  a < b < c
+  </pre>
+  Supón que a, b y c son variables de tipo int.</li>
+  <li>Supón que a y b son variables de tipo boolean. Indica cuáles de
+  las siguientes expresiones son válidas:
+  <pre class="codigo-fuente">
+  a == b
+  a != b
+  a < b
+  a && b
+  a || b
+  </pre></li>
+  <li>Completa la tabla de verdad de:
+  <pre class="codigo-fuente">
+  !p
+  p && q
+  p || q
+  </pre>
+  para todos los valores posibles de p y q.</li>
+  <li>Sin ejecutar el programa, indica qué expresiones se evalúan cuando
+  x vale 5:
+  <pre class="codigo-java">
+  if (x < 0 && obtenerDato())
+  ...
+  </pre>
+  y cuando x vale -5. Explica la respuesta teniendo en cuenta la
+  evaluación en cortocircuito.</li>
+  <li>Haz lo mismo con:
+  <pre class="codigo-java">
+  if (x > 0 || obtenerDato())
+  ...
+  </pre>
+  para x = 5 y x = -5.</li>
+  <li>Explica por qué el orden de los operandos de &amp;&amp; y || puede
+  ser importante en Java.</li>
+  <li>Calcula el resultado de las siguientes expresiones teniendo en
+  cuenta la precedencia de los operadores:
+  <pre class="codigo-fuente">
+  3 + 4 * 2
+  10 - 6 / 2
+  2 + 3 * 4 > 10
+  5 > 2 && 8 < 10
+  5 > 2 || 8 > 10
+  ! (5 > 2)
+  </pre></li>
+  <li>Añade paréntesis a las siguientes expresiones para dejar explícito
+  el orden de evaluación que corresponde a las reglas de precedencia:
+  <pre class="codigo-fuente">
+  a + b * c
+  a < b && c < d
+  a + b > c * d
+  a == b || c != d && e > f
+  </pre></li>
+  <li>Explica qué significa que dos operadores tengan la misma
+  precedencia y cómo interviene la asociatividad para determinar el
+  orden de evaluación.</li>
+  <li>Considera:
+  <pre class="codigo-fuente">
+  int a = 4;
+  int b = 9;
+  int c = 2;
+  </pre>
+  Indica qué valor queda almacenado en a después de cada una de las
+  siguientes sentencias, considerándolas independientes:
+  <pre class="codigo-fuente">
+  a = b;
+  a = a + b;
+  a = a * c + b;
+  a = b % c;
+  </pre></li>
+  <li>Indica qué ocurre con el tipo de resultado en las siguientes
+  expresiones:
+  <pre class="codigo-fuente">
+  int + int
+  int + long
+  int + float
+  long + double
+  </pre></li>
+  <li>Explica qué significa que un operando sea promocionado a un tipo
+  más amplio durante la evaluación de una expresión.</li>
+  <li>Indica qué tipo tendrá cada resultado:
+  <pre class="codigo-fuente">
+  int a = 5;
+  double b = 2.0;
+  a + b
+  a * b
+  a / b
+  </pre></li>
+  <li>Explica qué ocurre al convertir explícitamente:
+  <pre class="codigo-fuente">
+  double x = 7.8;
+  int y = (int) x;
+  </pre>
+  ¿Qué valor contiene y?</li>
+  <li>Calcula los resultados de:
+  <pre class="codigo-fuente">
+  (int) 7.9
+  (int) -7.9
+  (double) 7
+  (char) 65
+  </pre></li>
+  <li>Explica por qué una conversión explícita puede provocar pérdida de
+  información.</li>
+  </ol>
+  <p><a href="../temas/tema_03.html">Tema3</a> | <a
+  href="../problemas/tema_03.html">Problemas</a></p>
+
+    <script src="../scripts/script.js"></script>
+  </body>
+</html>
