@@ -55,6 +55,7 @@ pre.codigo-java {
   border: 1px solid #feebc8;
   padding: 1.2em;
   padding-bottom: 0.6em;
+  font-variant-ligatures: none;
   font-family: 'Courier New', Courier, monospace;
   font-style: italic; /* TODO el bloque nace en cursiva (No terminales) */
   font-size: 10pt;

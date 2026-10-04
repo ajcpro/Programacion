@@ -50,3 +50,7 @@ table.tabla-jls-keywords td {
 .kw-rojo {
   color: #e61703;
 }
+
+figcaption {
+  text-align: center;
+}
