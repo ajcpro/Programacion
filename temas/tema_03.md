@@ -1676,6 +1676,10 @@ En este caso, tenemos una decisión pero, cuando la condición no se cumple, ten
 
 #### Selección encadenada
 
+<figure class="img-lateral-dch">
+    <img src="../imagenes/03_07_seleccion-multiple.png" alt="Flujo de control de una selección múltiple">
+</figure>
+
 Reescribamos el código anterior sin anidación y escribiendo cada <span class="palabra">if</span> justo a continuación del <span class="palabra">else</span> en el que se anida:
 
 <pre class="codigo-java">
@@ -1690,10 +1694,6 @@ else
 </pre>
 
 Podemos asimilar que en este caso tenemos varias condiciones y el ordenador las comprueba en orden. Si encuentra una condición verdadera, ejecuta el bloque correspondiente y continúa después de la estructura completa. Las condiciones posteriores no se evalúan.
-
-<figure class="img-lateral-dch">
-    <img src="../imagenes/03_07_seleccion-multiple.png" alt="Flujo de control de una selección múltiple">
-</figure>
 
 Esta forma de construir una selección se denomina estructura de selección encadenada o **if-else-if**. Aunque esta construcción no existe como una palabra reservada o sentencia independiente en la gramática formal del lenguaje, se presenta como un patrón de diseño y tabulación específico con entidad propia. El gran beneficio estético y metodológico de este estilo es que evita que el sangrado del código marche de forma continuada e indefinida hacia la derecha de la pantalla (*indentation march to the right*), lo que dificulta enormemente su lectura. En su lugar, el código se dispone de forma vertical y compacta, transmitiendo visualmente la idea de que estamos ante una bifurcación de múltiples caminos alternativos que se evalúan secuencialmente de arriba a abajo.
 
@@ -1722,10 +1722,6 @@ switch (dia) {
 </pre>
 
 La sentencia <span class="palabra">switch</span> evalúa una expresión y compara su resultado con los diferentes valores indicados mediante la palabra <span class="palabra">case</span>. Cuando encuentra una coincidencia, comienza la ejecución de las instrucciones asociadas a ese valor. La cláusula <span class="palabra">default</span> permite indicar qué debe ejecutarse cuando no se encuentra ninguna coincidencia.
-
-<figure class="img-lateral-dch">
-    <img src="../imagenes/03_08_switch.png" alt="Flujo de control de una selección múltiple mediante switch">
-</figure>
 
 <div class="plantilla-sintactica">
 <div class="produccion">
@@ -1775,6 +1771,10 @@ Vamos a analizar las reglas de diseño y restricciones sintácticas que el compi
 * **La expresión de control**: El valor situado entre los paréntesis, el **selector**, debe evaluar a un tipo de dato compatible con la estructura. Habitualmente, en función del lenguaje, esta expresión debe ser un tipo entero o un enumerado[^21]. En Java, además[^22], se permite el uso cadenas de texto (objetos de la clase <span class="clase">String</span>). Java prohíbe de forma explícita el uso de tipos numéricos de coma flotante o expresiones booleanas, aunque pueden ser válidas en otros lenguajes; en cualquier caso, no es recomendable su uso.
 * **La lista de etiquetas**: Cada uno de los caminos lógicos alternativos se define mediante la palabra reservada <span class="palabra">case</span> seguida de una expresión constante, denominada **etiqueta**, y el carácter de dos puntos (<span class="literal">:</span>). La restricción fundamental es que dicha etiqueta debe ser una **constante única conocida en tiempo de compilación**; no está permitido utilizar variables o condiciones lógicas. Además, no deben existir etiquetas duplicadas dentro de una misma estructura switch, garantizando así que no haya ambigüedad sobre qué camino debe tomar la ejecución.
 * **La cláusula por defecto**: Esta sección, identificada por la palabra reservada <span class="palabra">default</span>, actúa como un bloque de contingencia opcional. Las instrucciones contenidas en su interior solo se ejecutarán si el resultado de evaluar la expresión de control no coincide con ninguna de las constantes especificadas en las etiquetas case. Aunque su uso no es obligatorio, muchas fuentes recomiendan incluirla siempre identificar valores imprevistos o inconsistencias en los datos del sistema.
+
+<figure class="img-lateral-dch">
+    <img src="../imagenes/03_08_switch.png" alt="Flujo de control de una selección múltiple mediante switch">
+</figure>
 
 Debemos prestar especial atención a que las instrucciones de una etiqueta no están delimitadas automáticamente por unas llaves. El aspecto más crítico y que requiere mayor atención es el comportamiento conocido como **efecto de caída o cascada** (*fall-through*)[^23]. Cuando se encuentra una coincidencia, el **flujo de control** realiza un salto directo a las instrucciones de esa rama. Sin embargo, a diferencia de lo que ocurre en las bifurcaciones if-else, el final del bloque no provoca la salida automática del condicional: la ejecución continuará discurriendo de forma secuencial, procesando y ejecutando las sentencias de los casos siguientes de manera ininterrumpida, sin importar que sus valores constantes no coincidan con la expresión de control.
 
@@ -1987,7 +1987,7 @@ La **estructura repetitiva**, también denominada, **bucle** o ***loop***, permi
 Desde un punto de vista formal, un bucle es una construcción sintáctica que permite ejecutar un bloque de sentencias de forma reiterada mientras se mantenga verdadera una determinada proposición lógica, conocida como **condición de permanencia** o condición de control. Cada una de las ejecuciones individuales del bloque de código contenido en el interior del bucle recibe el nombre de **iteración**. De este modo, la repetición transforma una secuencia finita de instrucciones en un proceso capaz de iterar sobre colecciones de información o mantener una aplicación en ejecución continua a la espera de eventos del usuario.
 
 <figure class="img-lateral-izq">
-    <img src="../imagenes/03_09_repetición.png" alt="Recorrido circular del flujo de control">
+    <img src="../imagenes/03_09_repeticion.png" alt="Recorrido circular del flujo de control">
 </figure>
 
 Podemos entender la repetición como una modificación del flujo de control que ya conocemos. En una estructura secuencial, después de ejecutar una sentencia el control pasa a la siguiente; en una selección, el resultado de una condición determina qué camino debe seguir la ejecución. En una repetición aparece una posibilidad nueva: después de ejecutar unas sentencias, el flujo de control puede regresar a una posición anterior del programa para volver a ejecutarlas. De esta forma, el flujo de control deja de avanzar únicamente hacia delante: una parte del programa puede recorrerse varias veces.
@@ -2131,7 +2131,7 @@ La contrucción del código debe garantizar la presencia de tres elementos metod
 
 Asimismo, como ya se indicó para la condición, es un error sintáctico sumamente sutil y extendido la colocación accidental de un **punto y coma** inmediatamente después del paréntesis de cierre: el compilador no detectará ningún fallo de sintaxis, pero interpretará que el cuerpo del bucle está constituido únicamente por la **sentencia nula** representada por ese punto y coma. Si la condición inicial es verdadera, la aplicación entrará en un bucle infinito silencioso y transparente.
 
-### **Bucles controlados por condición**
+### Bucles controlados por condición
 
 La sentencia <span class="palabra">while</span> que acabamos de estudiar es un ejemplo de **bucle controlado por condición**. El número de iteraciones viene determinado por el resultado de una **condición lógica** que se comprueba durante la ejecución. Dentro de las estructuras repetitivas, los **bucles controlados por condición** representan una categoría fundamental de algoritmos donde el número exacto de iteraciones no se conoce con anterioridad a la entrada del bucle.
 
@@ -2212,15 +2212,19 @@ A diferencia de la sentencia **while**, la palabra reservada <span class="palabr
 
 Podemos comparar ambas estructuras directamente:
 
+<table><tr><td>
 <pre class="codigo-fuente">
 while ( condición ) {
     Sentencias
 }
-
+</pre>
+</td></tr><tr><td>
+<pre class="codigo-fuente">
 do {
     Sentencias
 } while ( condición );
 </pre>
+</td></tr></table>
 
 En las dos estructuras encontramos una condición que determina si debemos continuar con la repetición. La diferencia está exclusivamente en **cuándo se comprueba**.
 
@@ -2266,18 +2270,18 @@ Por tanto, la elección entre <span class="palabra">while</span> y <span class="
 
 Podemos resumirlo de la siguiente manera:
 
+<table>
+<tr><th>while</th><th>do-while</th></tr>
+<tr><td>
 <pre class="codigo-fuente">
-while
-─────
 ¿Condición?
    │
    ├── no ──► 0 iteraciones
    │
    └── sí ──► 1 o más iteraciones
-
-
-do-while
-─────────
+</pre>
+</td><td>
+<pre class="codigo-fuente">
 Sentencias
    │
    ▼
@@ -2287,6 +2291,7 @@ Sentencias
    │
    └── sí ──► 2 o más iteraciones
 </pre>
+</td></tr></table>
 
 Esta diferencia aparentemente pequeña tiene una gran importancia en el diseño de algoritmos. Cuando planteamos una repetición debemos preguntarnos, antes de escoger la estructura sintáctica, **si tiene sentido que el cuerpo pueda ejecutarse cero veces o si necesariamente debe ejecutarse al menos una vez**.
 
@@ -2334,6 +2339,7 @@ Podemos decir, por tanto, que el contador está determinando de manera indirecta
 int contador = VALOR_INICIAL; // 1. Inicialización de la variable de control
 
 while ( contador <= VALOR_LIMITE ) { // 2. Comprobación del límite de parada
+
     // 3. Cuerpo del bucle (procesamiento de la iteración)
     
     contador = contador + PASO; // 4. Actualización del contador (paso de incremento)
@@ -2381,45 +2387,14 @@ contador = contador * 2;
 </td></tr>
 </table>
 
-La correspondencia puede resumirse así:
-
-<table>
-<thead>
-<tr>
-<th>Operador</th>
-<th>Forma equivalente</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><span class="operador">+=</span></td>
-<td><span class="operador">=</span> + operación</td>
-</tr>
-<tr>
-<td><span class="operador">-=</span></td>
-<td><span class="operador">=</span> − operación</td>
-</tr>
-<tr>
-<td><span class="operador">*=</span></td>
-<td><span class="operador">=</span> × operación</td>
-</tr>
-<tr>
-<td><span class="operador">/=</span></td>
-<td><span class="operador">=</span> ÷ operación</td>
-</tr>
-<tr>
-<td><span class="operador">%=</span></td>
-<td><span class="operador">=</span> % operación</td>
-</tr>
-</tbody>
-</table>
-
+<div class="plantilla-sintactica">
 <div class="produccion">
 <div class="produccion-encabezado">AssignmentOperator:</div>
 <div class="produccion-alternativas">
 <p>(one of)<br>
 <span class="terminal">=  *=  /=  %=  +=  -=<span>
 </p>
+</div>
 </div>
 </div>
 
@@ -2497,7 +2472,7 @@ for ( inicialización; condición; actualización )
 
 Sintácticamente, la cabecera de la sentencia **for** se delimita mediante paréntesis obligatorios y exige exactamente **dos puntos y coma** (<span class="literal">;</span>) para separar de forma inequívoca las tres expresiones que la integran:
 
-1.  **Sección de inicialización:** Es la primera expresión contenida en el encabezado. Se ejecuta una **única vez** antes de iniciar la primera iteración. Su propósito es declarar e inicializar la variable de control. Una característica clave de Java es que la variable puede declararse en esta sección, de modo que su **ámbito o alcance** (*scope*) queda estrictamente restringido al cuerpo del bucle.
+1.  **Sección de inicialización:** Es la primera expresión contenida en el encabezado. Se ejecuta una **única vez** antes de iniciar la primera iteración. Su propósito es inicializar la variable de control del bucle. Una característica clave de Java es que la variable puede declararse en esta sección, de modo que su **ámbito o alcance** (*scope*) queda estrictamente restringido al cuerpo del bucle.
 2.  **Sección de condición:** Es la segunda expresión del encabezado y actúa exactamente como la condición *pre-test* del bucle **while**. Se evalúa antes de procesar cada iteración, ejecutandose las sentencias del cuerpo del bucle si es verdadero; en caso contrario, la repetición se interrumpe inmediatamente y el flujo de control continua en la sentencia siguiente al **for**.
 3.  **Sección de actualización:** Es la tercera expresión de la cabecera. Se ejecuta automáticamente al **finalizar cada iteración**, inmediatamente después de procesar la última instrucción del cuerpo del bucle y antes de retornar a la sección de condición para evaluar la siguiente iteración. Habitualmente contiene una operación de incremento o decremento.
 
@@ -2559,7 +2534,7 @@ Durante el diseño de algoritmos repetitivos, resulta sumamente habitual encontr
 En primer lugar, disponemos de los **operadores unarios de incremento y decremento**:
 
 *   **Operador de incremento (<span class="operador">++</span>):** Suma exactamente una unidad (<span class="literal">1</span>) al valor actual del operando numérico sobre el que se aplica. Por consiguiente, la instrucción <span class="codigo">x++</span> equivale de forma exacta a escribir <span class="codigo">x = x+1</span>.
-*   **Operador de decremento (<span class="operador">++</span>):** Resta exactamente una unidad (<span class="literal">1</span>) al valor actual del operando numérico. De este modo, <span class="codigo">x--</span> equivale a la sentencia <span class="codigo">x = x-1</span>.
+*   **Operador de decremento (<span class="operador">--</span>):** Resta exactamente una unidad (<span class="literal">1</span>) al valor actual del operando numérico. De este modo, <span class="codigo">x--</span> equivale a la sentencia <span class="codigo">x = x-1</span>.
 
 Estos operadores pueden utilizarse antes o después de la variable: **notación prefija** (<span class="codigo">++x</span> o <span class="codigo">--x</span>) y **notación posfija** (<span class="codigo">x++</span> o <span class="codigo">x--</span>). Cuando el operador se utiliza como una sentencia independiente, como suele ocurrir al modificar un contador, ambas formas producen exactamente el mismo resultado final: incrementar o decrementar la variable en una unidad. La diferencia aparece cuando el operador forma parte de una expresión y, por tanto, necesitamos utilizar el valor que produce:
 
@@ -2568,7 +2543,7 @@ Estos operadores pueden utilizarse antes o después de la variable: **notación 
 
 <figure class="img-lateral-dch">
     <img src="../imagenes/03_10_operadores.png" alt="Operadores de Java, ordenados según su precedencia, de mayor a menor">
-    <p>Operadores de Java de mayor precedencia (arriba) a menor (abajo)<p>
+    <figcaption>Operadores de Java de mayor precedencia (arriba) a menor (abajo)</figcaption>
 </figure>
 
 Ejemplo:
@@ -2595,8 +2570,8 @@ La misma diferencia se aplica a los operadores de decremento.
 <div class="produccion">
 <div class="produccion-encabezado">UnaryExpression:</div>
 <div class="produccion-alternativas">
-PreIncrementExpression<b>
-PreDecrementExpression<b>
+PreIncrementExpression<br>
+PreDecrementExpression<br>
 <span class="terminal">+</span> Expression<br>
 <span class="terminal">-</span> Expression<br>
 UnaryExpressionNotPlusMinus

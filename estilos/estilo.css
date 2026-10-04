@@ -16,6 +16,7 @@
 }
 .literal, .operador, .constante, .variable, .instancia, .metodo,
 .clase, .paquete, .produccion-palabra, .codigo {
+    font-variant-ligatures: none;
     font-family: Courier, 'Courier New', 'Lucida Console', monospace;
 }
 .produccion-palabra { /* encabezado de producción sintáctica en texto */
