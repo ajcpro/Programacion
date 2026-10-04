@@ -3110,6 +3110,9 @@
   class="palabra">else</span>, es mejor utilizar llaves para no tener
   fallos lógicos difíciles de depurar.</p>
   <h4 id="selección-encadenada">Selección encadenada</h4>
+  <figure class="img-lateral-dch">
+  <img src="../imagenes/03_07_seleccion-multiple.png" alt="Flujo de control de una selección múltiple">
+  </figure>
   <p>Reescribamos el código anterior sin anidación y escribiendo cada
   <span class="palabra">if</span> justo a continuación del <span
   class="palabra">else</span> en el que se anida:</p>
@@ -3127,9 +3130,6 @@
   ordenador las comprueba en orden. Si encuentra una condición
   verdadera, ejecuta el bloque correspondiente y continúa después de la
   estructura completa. Las condiciones posteriores no se evalúan.</p>
-  <figure class="img-lateral-dch">
-  <img src="../imagenes/03_07_seleccion-multiple.png" alt="Flujo de control de una selección múltiple">
-  </figure>
   <p>Esta forma de construir una selección se denomina estructura de
   selección encadenada o <strong>if-else-if</strong>. Aunque esta
   construcción no existe como una palabra reservada o sentencia
@@ -3183,9 +3183,6 @@
   asociadas a ese valor. La cláusula <span
   class="palabra">default</span> permite indicar qué debe ejecutarse
   cuando no se encuentra ninguna coincidencia.</p>
-  <figure class="img-lateral-dch">
-  <img src="../imagenes/03_08_switch.png" alt="Flujo de control de una selección múltiple mediante switch">
-  </figure>
   <div class="plantilla-sintactica">
   <div class="produccion">
   <div class="produccion-encabezado">
@@ -3279,6 +3276,9 @@
   incluirla siempre identificar valores imprevistos o inconsistencias en
   los datos del sistema.</li>
   </ul>
+  <figure class="img-lateral-dch">
+  <img src="../imagenes/03_08_switch.png" alt="Flujo de control de una selección múltiple mediante switch">
+  </figure>
   <p>Debemos prestar especial atención a que las instrucciones de una
   etiqueta no están delimitadas automáticamente por unas llaves. El
   aspecto más crítico y que requiere mayor atención es el comportamiento
@@ -3572,7 +3572,7 @@
   sobre colecciones de información o mantener una aplicación en
   ejecución continua a la espera de eventos del usuario.</p>
   <figure class="img-lateral-izq">
-  <img src="../imagenes/03_09_repetición.png" alt="Recorrido circular del flujo de control">
+  <img src="../imagenes/03_09_repeticion.png" alt="Recorrido circular del flujo de control">
   </figure>
   <p>Podemos entender la repetición como una modificación del flujo de
   control que ya conocemos. En una estructura secuencial, después de
@@ -3909,8 +3909,8 @@
   la <strong>sentencia nula</strong> representada por ese punto y coma.
   Si la condición inicial es verdadera, la aplicación entrará en un
   bucle infinito silencioso y transparente.</p>
-  <h3 id="bucles-controlados-por-condición"><strong>Bucles controlados
-  por condición</strong></h3>
+  <h3 id="bucles-controlados-por-condición">Bucles controlados por
+  condición</h3>
   <p>La sentencia <span class="palabra">while</span> que acabamos de
   estudiar es un ejemplo de <strong>bucle controlado por
   condición</strong>. El número de iteraciones viene determinado por el
@@ -4044,15 +4044,26 @@
   estructura y la expresión de control se encuentra al final, seguida
   obligatoriamente por el punto y coma.</p>
   <p>Podemos comparar ambas estructuras directamente:</p>
+  <table>
+  <tr>
+  <td>
   <pre class="codigo-fuente">
   while ( condición ) {
       Sentencias
   }
-
+  </pre>
+  </td>
+  </tr>
+  <tr>
+  <td>
+  <pre class="codigo-fuente">
   do {
       Sentencias
   } while ( condición );
   </pre>
+  </td>
+  </tr>
+  </table>
   <p>En las dos estructuras encontramos una condición que determina si
   debemos continuar con la repetición. La diferencia está exclusivamente
   en <strong>cuándo se comprueba</strong>.</p>
@@ -4110,18 +4121,27 @@
   número mínimo de veces que puede ejecutarse el cuerpo</strong> y en el
   momento en que se realiza la primera comprobación.</p>
   <p>Podemos resumirlo de la siguiente manera:</p>
-  <pre class="codigo-fuente">
+  <table>
+  <tr>
+  <th>
   while
-  ─────
+  </th>
+  <th>
+  do-while
+  </th>
+  </tr>
+  <tr>
+  <td>
+  <pre class="codigo-fuente">
   ¿Condición?
      │
      ├── no ──► 0 iteraciones
      │
      └── sí ──► 1 o más iteraciones
-
-
-  do-while
-  ─────────
+  </pre>
+  </td>
+  <td>
+  <pre class="codigo-fuente">
   Sentencias
      │
      ▼
@@ -4131,6 +4151,9 @@
      │
      └── sí ──► 2 o más iteraciones
   </pre>
+  </td>
+  </tr>
+  </table>
   <p>Esta diferencia aparentemente pequeña tiene una gran importancia en
   el diseño de algoritmos. Cuando planteamos una repetición debemos
   preguntarnos, antes de escoger la estructura sintáctica, <strong>si
@@ -4223,6 +4246,7 @@
   int contador = VALOR_INICIAL; // 1. Inicialización de la variable de control
 
   while ( contador <= VALOR_LIMITE ) { // 2. Comprobación del límite de parada
+
       // 3. Cuerpo del bucle (procesamiento de la iteración)
       
       contador = contador + PASO; // 4. Actualización del contador (paso de incremento)
@@ -4279,61 +4303,7 @@
   </td>
   </tr>
   </table>
-  <p>La correspondencia puede resumirse así:</p>
-  <table>
-  <thead>
-  <tr>
-  <th>
-  Operador
-  </th>
-  <th>
-  Forma equivalente
-  </th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-  <td>
-  <span class="operador">+=</span>
-  </td>
-  <td>
-  <span class="operador">=</span> + operación
-  </td>
-  </tr>
-  <tr>
-  <td>
-  <span class="operador">-=</span>
-  </td>
-  <td>
-  <span class="operador">=</span> − operación
-  </td>
-  </tr>
-  <tr>
-  <td>
-  <span class="operador">*=</span>
-  </td>
-  <td>
-  <span class="operador">=</span> × operación
-  </td>
-  </tr>
-  <tr>
-  <td>
-  <span class="operador">/=</span>
-  </td>
-  <td>
-  <span class="operador">=</span> ÷ operación
-  </td>
-  </tr>
-  <tr>
-  <td>
-  <span class="operador">%=</span>
-  </td>
-  <td>
-  <span class="operador">=</span> % operación
-  </td>
-  </tr>
-  </tbody>
-  </table>
+  <div class="plantilla-sintactica">
   <div class="produccion">
   <div class="produccion-encabezado">
   AssignmentOperator:
@@ -4342,6 +4312,7 @@
   <p>
   (one of)<br> <span class="terminal">= *= /= %= += -=<span>
   </p>
+  </div>
   </div>
   </div>
   <h3 id="sentencia-for">Sentencia for</h3>
@@ -4446,9 +4417,9 @@
   <li><strong>Sección de inicialización:</strong> Es la primera
   expresión contenida en el encabezado. Se ejecuta una <strong>única
   vez</strong> antes de iniciar la primera iteración. Su propósito es
-  declarar e inicializar la variable de control. Una característica
-  clave de Java es que la variable puede declararse en esta sección, de
-  modo que su <strong>ámbito o alcance</strong> (<em>scope</em>) queda
+  inicializar la variable de control del bucle. Una característica clave
+  de Java es que la variable puede declararse en esta sección, de modo
+  que su <strong>ámbito o alcance</strong> (<em>scope</em>) queda
   estrictamente restringido al cuerpo del bucle.</li>
   <li><strong>Sección de condición:</strong> Es la segunda expresión del
   encabezado y actúa exactamente como la condición <em>pre-test</em> del
@@ -4539,7 +4510,7 @@
   class="codigo">x++</span> equivale de forma exacta a escribir <span
   class="codigo">x = x+1</span>.</li>
   <li><strong>Operador de decremento (<span
-  class="operador">++</span>):</strong> Resta exactamente una unidad
+  class="operador">–</span>):</strong> Resta exactamente una unidad
   (<span class="literal">1</span>) al valor actual del operando
   numérico. De este modo, <span class="codigo">x–</span> equivale a la
   sentencia <span class="codigo">x = x-1</span>.</li>
@@ -4567,9 +4538,9 @@
   </ul>
   <figure class="img-lateral-dch">
   <img src="../imagenes/03_10_operadores.png" alt="Operadores de Java, ordenados según su precedencia, de mayor a menor">
-  <p>
+  <figcaption>
   Operadores de Java de mayor precedencia (arriba) a menor (abajo)
-  <p>
+  </figcaption>
   </figure>
   <p>Ejemplo:</p>
   <pre class="codigo-java">
@@ -4598,7 +4569,7 @@
   UnaryExpression:
   </div>
   <div class="produccion-alternativas">
-  <p>PreIncrementExpression<b> PreDecrementExpression<b> <span
+  <p>PreIncrementExpression<br> PreDecrementExpression<br> <span
   class="terminal">+</span> Expression<br> <span
   class="terminal">-</span> Expression<br>
   UnaryExpressionNotPlusMinus</p>
