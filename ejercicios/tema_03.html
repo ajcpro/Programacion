@@ -332,9 +332,9 @@
   <pre class="codigo-java">
   int a = 10;
   {
-  int b = 20;
-  System.out.println(a);
-  System.out.println(b);
+      int b = 20;
+      System.out.println(a);
+      System.out.println(b);
   }
   System.out.println(a);
   </pre>
@@ -363,48 +363,48 @@
   cuando la condición es verdadera y cuando es falsa.</li>
   <li>Explica la diferencia entre:
   <pre class="codigo-java">
-  if (condicion)
-  sentencia;
+  if ( condicion )
+      sentencia;
   </pre>
   y
   <pre class="codigo-java">
-  if (condicion)
-  sentencia1;
+  if ( condicion )
+      sentencia1;
   else
-  sentencia2;
+      sentencia2;
   </pre></li>
   <li>Indica cuántas sentencias de las siguientes se ejecutan en cada
   caso:
   <pre class="codigo-java">
-  if (a > 10)
-  System.out.println("A");
+  if ( a > 10 )
+      System.out.println("A");
   System.out.println("B");
   </pre>
   para <code>a = 5</code> y <code>a = 20</code>.</li>
   <li>Explica qué problema puede producir el siguiente fragmento:
   <pre class="codigo-java">
-  if (a > 0);
-  System.out.println("Positivo");
+  if ( a > 0 );
+      System.out.println("Positivo");
   </pre>
   ¿Se ejecutará siempre la segunda sentencia?</li>
   <li>Reescribe el siguiente código utilizando una selección compuesta:
   <pre class="codigo-java">
-  if (nota >= 5)
-  System.out.println("Aprobado");
+  if ( nota >= 5 )
+      System.out.println("Aprobado");
   </pre>
   para que también se muestre <code>"Suspenso"</code> cuando
   corresponda.</li>
   <li>Indica qué camino seguirá el siguiente programa si
   <code>nota</code> vale <code>8</code>:
   <pre class="codigo-java">
-  if (nota >= 9)
-  System.out.println("Sobresaliente");
-  else if (nota >= 7)
-  System.out.println("Notable");
-  else if (nota >= 5)
-  System.out.println("Aprobado");
+  if ( nota >= 9 )
+      System.out.println("Sobresaliente");
+  else if ( nota >= 7 )
+      System.out.println("Notable");
+  else if ( nota >= 5 )
+      System.out.println("Aprobado");
   else
-  System.out.println("Suspenso");
+      System.out.println("Suspenso");
   </pre></li>
   <li>¿Cuántas condiciones se evalúan si <code>nota</code> vale
   <code>8</code>? ¿Y si vale <code>3</code>?</li>
@@ -413,10 +413,10 @@
   <code>if-else-if</code> independiente en la gramática de Java.</li>
   <li>Reescribe conceptualmente mediante un operador ternario:
   <pre class="codigo-java">
-  if (edad >= 18)
-  tipo = "mayor";
+  if ( edad >= 18 )
+      tipo = "mayor";
   else
-  tipo = "menor";
+      tipo = "menor";
   </pre></li>
   <li>Explica por qué el operador ternario es una expresión y no debe
   utilizarse para sustituir indiscriminadamente a cualquier
@@ -424,11 +424,11 @@
   <li>Indica a qué <code>if</code> pertenece cada <code>else</code> del
   siguiente fragmento:
   <pre class="codigo-java">
-  if (a > 0)
-  if (b > 0)
-      System.out.println("A");
-  else
-      System.out.println("B");
+  if ( a > 0 )
+      if ( b > 0 )
+          System.out.println("A");
+      else
+          System.out.println("B");
   </pre>
   Explica la regla que utiliza Java.</li>
   <li>Indica para qué tipo de problema resulta especialmente apropiado
@@ -437,15 +437,15 @@
   <li>En el siguiente <code>switch</code>, indica qué se imprime si
   <code>dia</code> vale <code>2</code>:
   <pre class="codigo-java">
-  switch (dia. {
-  case 1:
-      System.out.println("Lunes");
-      break;
-  case 2:
-      System.out.println("Martes");
-      break;
-  default:
-      System.out.println("Otro");
+  switch ( dia )
+      case 1:
+          System.out.println("Lunes");
+          break;
+      case 2:
+          System.out.println("Martes");
+          break;
+      default:
+          System.out.println("Otro");
   }
   </pre></li>
   <li>Explica qué es el <em>fall-through</em> de un <code>switch</code>
@@ -462,40 +462,40 @@
   <li>Indica qué es una iteración.</li>
   <li>Considera:
   <pre class="codigo-java">
-  int numero = 1;</li>
-  </ol>
-  while (numero &lt;= 5. { System.out.println(numero); numero = numero +
-  1; }
+  int numero = 1;
+
+  while ( numero <= 5 )
+      System.out.println(numero);
+      numero = numero + 1;
+  }
   </pre>
   Haz una traza en papel indicando el valor de <code>numero</code> y el
-  resultado de la condición en cada comprobación. 75. ¿Cuántas
-  iteraciones realiza el siguiente bucle?
+  resultado de la condición en cada comprobación.</li>
+  <li>¿Cuántas iteraciones realiza el siguiente bucle?
   <pre class="codigo-java">
   int numero = 10;
 
-  while (numero < 5. {
+  while ( numero < 5 )
       numero++;
-  }
-  </pre>
-  <ol start="76" type="1">
+  </pre></li>
   <li>Explica por qué un <code>while</code> puede realizar cero
   iteraciones.</li>
   <li>Explica qué problema presenta el siguiente código:
   <pre class="codigo-java">
-  int numero = 1;</li>
-  </ol>
-  while (numero &lt;= 5) System.out.println(numero);
-  </pre>
-  <ol start="78" type="1">
+  int numero = 1;
+
+  while ( numero <= 5 )
+      System.out.println(numero);
+  </pre></li>
   <li>¿Es necesariamente un error sintáctico un bucle infinito? Razona
   la respuesta.</li>
   <li>Explica qué caracteriza a un bucle controlado por condición.</li>
   <li>Diferencia entre:
-  <pre class="codigo-fuente">
-  bucle controlado por valor centinela
-  bucle controlado por bandera
-  bucle controlado por fin de flujo
-  </pre></li>
+  <ol type="a">
+  <li>bucle controlado por valor centinela</li>
+  <li>bucle controlado por bandera</li>
+  <li>bucle controlado por fin de flujo</li>
+  </ol></li>
   <li>Indica qué valor centinela elegirías para una aplicación que lea
   edades válidas entre <code>0</code> y <code>120</code>.</li>
   <li>Explica por qué el centinela debe poder distinguirse
@@ -504,8 +504,7 @@
   bucle controlado por bandera.</li>
   <li>Explica la diferencia fundamental entre <code>while</code> y
   <code>do-while</code>.</li>
-  <li>Indica cuál de los dos utilizarías en cada situación:</li>
-  </ol>
+  <li>Indica cuál de los dos utilizarías en cada situación:
   <ol type="a">
   <li>Leer datos hasta encontrar un <code>0</code>, pudiendo ser el
   primer dato el propio <code>0</code>.</li>
@@ -513,14 +512,12 @@
   y <code>10</code>.</li>
   <li>Mostrar números mientras un contador siga dentro de un
   intervalo.</li>
-  </ol>
-  <ol start="86" type="1">
+  </ol></li>
   <li>Convierte conceptualmente el siguiente <code>while</code> en un
   <code>do-while</code>, sin cambiar el significado:
   <pre class="codigo-java">
-  while (dato < 1 || dato > 10. {
-  dato = teclado.nextInt();
-  }
+  while ( dato < 1 || dato > 10 )
+      dato = teclado.nextInt();
   </pre>
   ¿Qué condición inicial necesitas para que ambas estructuras tengan
   realmente el mismo comportamiento?</li>
@@ -531,28 +528,25 @@
   controlado por contador.</li>
   <li>Identifica esos cuatro componentes en:
   <pre class="codigo-java">
-  for (int i = 1; i <= 10; i++. {
-  System.out.println(i);
-  }
+  for ( int i = 1; i <= 10; i++ )
+      System.out.println(i);
   </pre></li>
   <li>Escribe la forma equivalente mediante <code>while</code>:
   <pre class="codigo-java">
-  for (int i = 1; i <= 10; i++. {
-  System.out.println(i);
-  }
+  for ( int i = 1; i <= 10; i++ )
+      System.out.println(i);
   </pre></li>
   <li>Explica qué parte de un <code>for</code> se ejecuta una única vez,
   cuál antes de cada iteración y cuál después de cada iteración.</li>
   <li>Haz una traza del siguiente bucle:
   <pre class="codigo-java">
-  for (int i = 2; i <= 10; i += 2. {
-  System.out.println(i);
-  }
+  for ( int i = 2; i <= 10; i += 2 )
+      System.out.println(i);
   </pre></li>
   <li>Escribe los valores que toma el contador en:
   <pre class="codigo-java">
-  for (int i = 10; i >= 1; i -= 2. {
-  ...
+  for ( int i = 10; i >= 1; i -= 2 ) {
+      ...
   }
   </pre></li>
   <li>Explica qué error produciría intercambiar accidentalmente el
@@ -586,91 +580,88 @@
   <code>b</code>.</li>
   <li>Haz lo mismo con los operadores de decremento:
   <pre class="codigo-java">
-  int contador = 5;
-  int a = contador--;
-  int b = --contador;
-  </pre></li>
+      int contador = 5;
+      int a = contador--;
+      int b = --contador;
+      </pre></li>
   <li>Completa las equivalencias:
   <pre class="codigo-fuente">
-  contador += 5
-  contador -= 3
-  contador *= 2
-  contador /= 4
-  contador %= 3
-  </pre>
+      contador += 5
+      contador -= 3
+      contador *= 2
+      contador /= 4
+      contador %= 3
+      </pre>
   utilizando solamente el operador <code>=</code>.</li>
   <li>Indica qué valor queda en <code>x</code> después de cada una de
   las siguientes sentencias, suponiendo inicialmente
   <code>x = 10</code>:
   <pre class="codigo-java">
-  x += 5;
-  x -= 3;
-  x *= 2;
-  x /= 4;
-  x %= 3;
-  </pre>
-  Considera cada caso de forma independiente.</li>
+      x += 5;
+      x -= 3;
+      x *= 2;
+      x /= 4;
+      x %= 3;
+      </pre>
+  <pre><code>Considera cada caso de forma independiente.</code></pre></li>
   <li>Explica por qué <code>contador += 1</code> y
   <code>contador++</code> pueden producir el mismo estado final cuando
   se utilizan como sentencias independientes, aunque no sean la misma
   construcción sintáctica.</li>
   <li>Elige entre <code>if</code>, <code>if-else</code>,
   <code>switch</code>, <code>while</code>, <code>do-while</code> y
-  <code>for</code> para cada una de las siguientes situaciones:</li>
-  </ol>
-  <ol type="a">
-  <li>Mostrar un mensaje únicamente si una edad es mayor de edad.</li>
-  <li>Elegir una acción entre tres opciones de un menú.</li>
-  <li>Leer datos hasta que aparezca un valor especial.</li>
-  <li>Mostrar los números del 1 al 100.</li>
-  <li>Solicitar una contraseña hasta que sea correcta, debiendo
-  solicitarla al menos una vez.</li>
-  </ol>
-  <ol start="105" type="1">
+  <code>for</code> para cada una de las siguientes situaciones: a.
+  Mostrar un mensaje únicamente si una edad es mayor de edad. b. Elegir
+  una acción entre tres opciones de un menú. c. Leer datos hasta que
+  aparezca un valor especial. d. Mostrar los números del 1 al 100. e.
+  Solicitar una contraseña hasta que sea correcta, debiendo solicitarla
+  al menos una vez.</li>
   <li>Para cada una de las situaciones anteriores, explica por qué las
   demás estructuras serían menos apropiadas.</li>
   <li>Haz sobre el papel la traza completa del siguiente programa:
   <pre class="codigo-java">
   int i = 1; int suma = 0;</li>
   </ol>
-  <p>while (i &lt;= 4. { suma += i; i++; }</p>
-  System.out.println(suma);
-  </pre>
-  Indica los valores de <code>i</code> y <code>suma</code> antes y
-  después de cada iteración. 107. Haz una traza del siguiente programa e
-  indica exactamente qué se imprime:
+  <pre><code>while ( i &lt;= 4 ) {
+    suma += i;
+    i++;
+}
+
+System.out.println(suma);
+&lt;/pre&gt;
+Indica los valores de `i` y `suma` antes y después de cada iteración.</code></pre>
+  <ol start="107" type="1">
+  <li>Haz una traza del siguiente programa e indica exactamente qué se
+  imprime:
   <pre class="codigo-java">
-  for (int i = 1; i <= 3; i++. {
-      for (int j = 1; j <= i; j++. {
-          System.out.print(j + " ");
+      for ( int i = 1; i <= 3; i++ ) {
+     for ( int j = 1; j <= i; j++ )
+         System.out.print(j + " ");
+     System.out.println();
       }
-      System.out.println();
-  }
-  </pre>
-  <ol start="108" type="1">
+      </pre></li>
   <li>Explica, sin escribir código, qué estructura o combinación de
   estructuras utilizarías para resolver cada uno de los siguientes
-  algoritmos:</li>
-  </ol>
-  <ol type="a">
-  <li>Obtener el mayor de tres valores.</li>
-  <li>Mostrar todos los números pares entre dos valores.</li>
-  <li>Leer una serie de valores hasta encontrar un valor especial.</li>
-  <li>Mostrar una tabla de multiplicar.</li>
-  <li>Clasificar una calificación en cuatro categorías.</li>
-  <li>Repetir una solicitud hasta que el dato sea válido.</li>
-  </ol>
-  <ol start="109" type="1">
+  algoritmos: a. Obtener el mayor de tres valores. b. Mostrar todos los
+  números pares entre dos valores. c. Leer una serie de valores hasta
+  encontrar un valor especial. d. Mostrar una tabla de multiplicar. e.
+  Clasificar una calificación en cuatro categorías. f. Repetir una
+  solicitud hasta que el dato sea válido.</li>
   <li>Observa el siguiente código y localiza cualquier posible problema
   lógico relacionado con el flujo de control:
   <pre class="codigo-java">
   int i = 1;</li>
   </ol>
-  while (i &lt;= 10. { System.out.println(i); i–; }
-  </pre>
-  <p>Explica qué ocurre y por qué. 110. Explica qué elementos de un
-  bucle debes comprobar sistemáticamente cuando realizas una revisión
-  manual de un algoritmo repetitivo.</p>
+  <pre><code>while ( i &lt;= 10 ) {
+    System.out.println(i);
+    i--;
+}
+&lt;/pre&gt;
+Explica qué ocurre y por qué.</code></pre>
+  <ol start="110" type="1">
+  <li>Explica qué elementos de un bucle debes comprobar sistemáticamente
+  cuando realizas una revisión manual de un algoritmo repetitivo.</li>
+  </ol>
   <p><a href="../temas/tema_03.html">Tema3</a> | <a
   href="../problemas/tema_03.html">Problemas</a></p>
 
