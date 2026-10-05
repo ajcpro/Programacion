@@ -2712,7 +2712,7 @@ Para garantizar que cualquier estructura repetitiva sea correcta y segura, el pr
   
 <div class="navegacion-secundaria">
 <!-- Renderizar solo si existen en el tema -->
-<a href="ejercicios.html">Ejercicios</a>
+<a href="../ejercicios/tema_03.html">Ejercicios</a>
 <!--a href="problemas.html">Problemas</a-->
 </div>
 </footer>
