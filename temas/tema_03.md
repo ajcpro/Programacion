@@ -2699,9 +2699,467 @@ Para garantizar que cualquier estructura repetitiva sea correcta y segura, el pr
 
 ## Depuración y verificación
 
+Hasta este momento hemos aprendido a construir programas que pueden ser traducidos por el compilador y a organizar sus instrucciones mediante secuencias, selecciones y repeticiones. Hemos visto cómo expresar operaciones, cómo utilizar condiciones para modificar el flujo de control y cómo construir algoritmos que pueden ejecutar una misma serie de instrucciones varias veces. Sin embargo, que un programa compile sin mensajes de advertencia o error representa una condición necesaria, pero en absoluto suficiente, para garantizar el éxito de la aplicación. Un programa cuyo código fuente cumple escrupulosamente con todas las reglas léxicas y sintácticas del lenguaje Java puede, sin embargo, detener su ejecución de manera abrupta o que permanezca ejecutándose indefinidamente. También puede suceder que el programa funcione correctamente para unos datos de prueba y falle cuando recibe otros. Por ello, la construcción de un programa no termina cuando conseguimos que el compilador lo acepte: debemos comprobar que su comportamiento es el que pretendíamos y, cuando no lo sea, averiguar por qué.
+
+Esta parte del desarrollo recibe dos nombres relacionados pero no equivalentes: la **verificación** y la **depuración**. Mientras que la verificación abarca el conjunto de técnicas orientadas a evaluar si un programa satisface sus requisitos y produce los resultados esperados bajo cualquier escenario posible, la depuración (conocida universalmente en la jerga informática por el término inglés *debugging*[^27]) comprende el proceso activo y sistemático mediante el cual el programador localiza la causa de una anomalía, aísla el fallo en el código fuente y corrige la lógica para que el programa tenga un comportamiento correcto. Por consiguiente, la verificación y la depuración no deben contemplarse como actividades improvisadas o accesorias al término del desarrollo: debe formar parte de todas las fases del diseño[^28].
+
+<aside class="definicion">
+
+**Verificación:** Proceso mediante el cual comprobamos que un programa produce los resultados y el comportamiento esperados.
+
+**Depuración:** Proceso de localizar y corregir las causas de los errores detectados en un programa o en el algoritmo que lo sustenta.
+
+**Error de sintaxis:** Infracción de las reglas gramaticales del lenguaje de programación que impide la traducción del código fuente a código objeto por parte del compilador.
+
+**Error lógico o semántico:** Anomalía en el diseño del algoritmo que permite la compilación y ejecución del programa pero genera resultados incorrectos o no deseados.
+
+**Error de ejecución:** Fallo producido durante la ejecución del programa debido al intento de realizar una operación no permitida, provocando la interrupción de la aplicación.
+
+</aside>
+
+Podemos entender fácilmente la relación entre ambas actividades si pensamos en un problema cotidiano. Cuando comprobamos que un aparato realiza correctamente la tarea para la que ha sido diseñado, estamos verificando su funcionamiento. Si descubrimos que no lo hace y buscamos qué componente está provocando el problema para corregirlo, estamos depurándolo.
+
+En programación sucede algo semejante. Primero debemos preguntarnos **qué debería hacer el programa** y después observar **qué hace realmente**. Si ambos comportamientos coinciden, podremos considerar que la solución ha superado las pruebas realizadas. Si no coinciden, debemos determinar en qué punto se produce la desviación.
+
+Consideremos, por ejemplo, el siguiente programa:
+
+<pre class="codigo-java">
+int numero = 1;
+int suma = 0;
+
+while ( numero <= 5 ) {
+    suma += numero;
+    numero++;
+}
+
+System.out.println(suma);
+</pre>
+
+A simple vista puede parecer evidente que el resultado será `15`. Sin embargo, para asegurarnos de que el programa es correcto debemos ser capaces de justificar ese resultado y comprobar qué sucede en cada una de las iteraciones. Debemos saber qué valor tiene <span class="variable">numero</span> al entrar en el bucle, qué valor adquiere después de cada iteración, qué sucede con <span class="variable">suma</span> y en qué momento deja de cumplirse la condición.
+
+La necesidad de realizar este análisis no desaparece cuando el programa funciona aparentemente bien. De hecho, una de las capacidades que debemos adquirir como programadores es la de **no confiar únicamente en una ejecución que haya producido el resultado esperado para un caso concreto**.
+
+Supongamos que hemos escrito un programa que calcula el precio de un producto y lo probamos introduciendo un valor positivo. Si obtenemos el resultado esperado, no sabemos qué sucedería si el usuario introduce cero o un valor negativo, por ejemplo. Analogamente, un bucle que funciona correctamente cuando debe realizar diez iteraciones puede contener un error que solo aparezca cuando tenga que realizar cero, una o cien.
+
+La verificación debe considerar, por tanto, **las diferentes situaciones que puede encontrar el programa**, no únicamente el caso que nos resulte más cómodo para comprobarlo.
+
+Algunos errores son detectados directamente por las herramientas que utilizamos para escribir y traducir el programa. Otros solo aparecen cuando intentamos ejecutar determinadas instrucciones. Y otros, que son especialmente importantes, no producen ningún mensaje de error porque el programa es perfectamente válido desde el punto de vista del lenguaje, pero realiza una operación distinta de la que pretendíamos. Por tanto, no debemos confundir **«el programa no tiene errores»** con **«el programa es correcto»**.
+
+Para abordar la depuración de manera eficiente, el primer paso consiste en categorizar la naturaleza de los fallos atendiendo al momento en el que son detectados y la entidad encargada de su identificación:
+
+1. **Errores de compilación:** El código fuente vulnera la gramática formal del lenguaje. Estos errores son detectados de forma automática por el compilador (en Java, <span class="palabra">javac</span>) antes de generar el código objeto. Aunque puedan resultar frustrantes para el principiante, son los más fáciles de subsanar.
+2. **Errores de ejecución (*runtime errors*):** El programa ha superado con éxito la compilación y empieza a ejecutarse pero, en un momento dado, intenta realizar una instrucción inviable o prohibida. Un ejemplo clásico es la división entre cero.
+3. **Errores lógicos o semánticos:** Son los más complejos. Un programa con un error lógico es plenamente válido para el compilador: no genera fallos de sintaxis ni interrumpe su ejecución. Sin embargo, la secuencia de operaciones conduce a resultados erróneos, selecciones incorrectas o bucles que nunca concluyen. Puesto que las computadoras se limitan a ejecutar ciegamente las órdenes recibidas, estos errores sólo pueden sacarse a la luz mediante el análisis crítico, la ejecución de baterías de prueba contrastadas y el rastreo minucioso del estado interno de las variables durante la ejecución.
+
+Por esta razón, durante la programación:
+* Primero, analizamos el problema y construimos una solución.
+* Después, la codificamos en el lenguaje de programación.
+* A continuación, comprobamos su comportamiento. Si descubrimos una discrepancia, buscamos la causa y modificamos el código; y, si es necesario, revisamos el propio algoritmo.
+
+La posibilidad de volver atrás es una característica normal del desarrollo de software. Esta última situación es especialmente importante durante el aprendizaje. Programar no consiste exclusivamente en aprender la sintaxis del lenguaje. Debemos aprender a **razonar sobre el comportamiento del algoritmo** y a comprobar de manera sistemática que ese comportamiento coincide con el que exige el problema.
+
+Por ello, verificar un programa significa algo más que ejecutarlo y observar si aparentemente «sale bien». Debemos elegir datos que nos permitan poner a prueba las distintas partes de la solución, conocer de antemano cuál debería ser el resultado y comparar ese resultado con el obtenido. Esto puede hacerse observando directamente la salida de la aplicación. En otras, necesitaremos conocer qué está ocurriendo con las variables durante la ejecución. Hay un amplio abanico de herramientas que va desde las técnicas manuales de comprobación en papel hasta el empleo de sofisticados depuradores interactivos (*debuggers*) integrados en los entornos de desarrollo (IDE). Entre estas técnicas destaca la **traza de ejecución**, un procedimiento sistemático que nos permite reconstruir paso a paso la ejecución del programa.
+
+Una traza permite seguir el flujo de control del programa y registrar los cambios relevantes que se producen durante su ejecución. De este modo podemos averiguar no solo qué resultado obtiene el programa, sino también **cómo ha llegado hasta él**. Con estructuras repetitivas, una misma secuencia de sentencias puede ejecutarse muchas veces, pero los valores de las variables pueden ser diferentes en cada iteración. En el caso de las estructuras de selección, si el programa sigue un camino diferente del esperado, la traza permite determinar qué condición se evaluó, qué resultado produjo y qué alternativa fue ejecutada.
+
+En definitiva, la verificación nos permite responder a la pregunta **«¿el programa hace lo que debería hacer?»**, mientras que la depuración nos obliga a responder a una pregunta más difícil cuando la respuesta es negativa: **«¿por qué no lo hace?»**.
+
+Para responder a esta segunda pregunta debemos ser capaces de observar el programa durante su ejecución, seguir el flujo de control y conocer el estado de las variables en los distintos puntos del algoritmo. Por ello, antes de estudiar los errores que podemos encontrar en nuestros programas, veremos cómo realizar una **traza de ejecución**.
+
 ### Trazas de ejecución
 
+Una **traza de ejecución** —denominada también tradicionalmente en la metodología de la programación **prueba de escritorio** o seguimiento manual— es una de las técnicas más sencillas y, al mismo tiempo, más útiles para verificar el funcionamiento de un algoritmo que consiste, como su nombre indica, en realizar un **recorrido** de la ejecución. Es una técnica analítica fundamental que consiste en simular el comportamiento del programa ejecutando paso a paso un algoritmo sobre papel o mediante una herramienta automatizada. El objetivo no es únicamente comprobar cuál es el resultado que muestra el programa al terminar, sino registrar la evolución del **flujo de control**. De esta forma podemos determinar en qué momento una variable adquiere un valor incorrecto, qué condición se evalúa de manera distinta de lo esperado o qué sentencias se ejecutan un número de veces diferente al previsto.
+
+Durante el aprendizaje de la programación, la traza de ejecución constituye la herramienta pedagógica más potente para desarrollar el modelo mental correcto sobre cómo un ordenador procesa el código. Es una representación ordenada de la ejecución de un programa. Para realizarla debemos partir del estado inicial de los datos e ir aplicando, en el mismo orden en que lo haría el ordenador, las instrucciones que forman el programa.
+
+<aside class="definicion">
+
+**Traza de ejecución:** Registro ordenado y cronológico de los estados sucesivos que adopta la memoria de un programa durante la ejecución paso a paso de sus instrucciones.
+
+**Prueba de escritorio:** Método manual de verificación en el que el desarrollador simula la ejecución de un algoritmo siguiendo sus instrucciones sobre papel con un conjunto de datos de entrada representativos.
+
+**Estado del programa:** Conjunto de valores que contienen todas las variables, constantes y estructuras de datos en un instante concreto del tiempo de ejecución.
+
+</aside>
+
+Para construir una traza de ejecución de forma rigurosa y libre de ambigüedades, se utiliza una **tabla de traza**. En esta representación tabular, las columnas se organizan divididas en bloques funcionales:
+
+0. **Paso:** Opcionalmente, el número de instrucción ejecutada.
+1. **Sentencia:** Columna que indica el número de línea del código fuente o sentencia que se está ejecutando en ese preciso instante.
+2. **Estado de la memoria (Variables):** Una o más columnas dedicadas a cada variable declarada en el programa, en la que se anota el valor que pasa a almacenar la variable cuando la instrucción en curso modifica su contenido.
+3. **Resultado:** Columna auxiliar destinada a registrar el resultado: mensajes o datos que el programa imprime por la salida estándar.
+
+#### Seguimiento de la ejecución
+
+Veamos un programa sencillo; por ejemplo:
+
+<pre class="codigo-java">
+int a = 5;
+int b = 3;
+int resultado = a + b;
+System.out.println(resultado);
+</pre>
+
+Al comenzar, no existe ninguna de las variables utilizadas en el programa. La primera sentencia crea <span class="variable">a</span> y le asigna el valor <span class="literal">5</span>. La segunda crea <span class="variable">b</span> con el valor <span class="literal">3</span>. A continuación se evalúa la expresión <span class="variable">a</span> <span class="operador">+</span> <span class="variable">b</span>, cuyo resultado es <span class="literal">8</span>, y este valor se almacena en <span class="variable">resultado</span>. Finalmente, se muestra ese valor. Podemos representar esta ejecución mediante la tabla:
+
+<pre class="codigo-fuente">
+
+| Paso | Sentencia                        | `a` | `b` | `resultado` |
+| :--: | -------------------------------- | --: | --: | ----------: |
+|   1  | `int a = 5;`                     |   5 |   — |           — |
+|   2  | `int b = 3;`                     |   5 |   3 |           — |
+|   3  | `int resultado = a + b;`         |   5 |   3 |           8 |
+|   4  | `System.out.println(resultado);` |   5 |   3 |           8 |
+</pre>
+
+El símbolo «—» indica que en ese momento la variable todavía no existe o no dispone de un valor que podamos utilizar. La tabla permite observar algo que el resultado final por sí solo no muestra: el valor de cada variable después de cada sentencia que modifica el estado del programa.
+
+#### Trazas y flujo de control
+
+Las trazas adquieren especial importancia cuando el programa contiene *estructuras de selección*. En estos casos, no todas las sentencias del programa se ejecutan. El flujo de control depende del resultado de una expresión lógica.
+
+Por ejemplo:
+
+<pre class="codigo-java">
+int edad = 20;
+
+if ( edad >= 18 )
+    System.out.println("Mayor de edad");
+else
+    System.out.println("Menor de edad");
+
+System.out.println("Fin");
+</pre>
+
+Para realizar la traza debemos seguir el mismo proceso que seguiría el ordenador. Primero se crea la variable <span class="variable">edad</span> con el valor <span class="literal">20</span>. Después se evalúa la condición: <span class="variable">edad</span> <span class="operador">&gt;=</span> <span class="literal">18</span>. El resultado es <span class="literal">true</span>, por lo que se ejecutan las sentencias correspondientes a la rama <span class="literal">sí</span> y no las de la rama <span class="literal">else</span>.
+
+La traza podría quedar así:
+
+| Paso | Ejecución                              | `edad` | Resultado de la condición |
+| :--: | -------------------------------------- | -----: | :-----------------------: |
+|   1  | `int edad = 20;`                       |     20 |             —             |
+|   2  | `edad >= 18`                           |     20 |           `true`          |
+|   3  | `System.out.println("Mayor de edad");` |     20 |           `true`          |
+|   4  | `System.out.println("Fin");`           |     20 |           `true`          |
+
+La sentencia situada en el bloque <span class="literal">else</span> no aparece como paso ejecutado porque *no forma parte del recorrido seguido por el flujo de control* en esta ejecución concreta.
+
+Esto es importante porque una traza no debe confundirse con una lectura lineal del código. El programa puede contener muchas sentencias, pero en una ejecución determinada solo se recorren aquellas que corresponden al camino seguido por el flujo de control. Podemos pensar, por tanto, que una traza responde en cada instante a dos preguntas: ¿Qué sentencia se está ejecutando? ¿Cuál es el estado del programa en ese momento? En un programa con selección, además, debemos prestar atención a *qué condiciones se evalúan y qué resultado producen*.
+
+#### Trazas de estructuras repetitivas
+
+Para ilustrar de forma práctica la elaboración de una traza sobre un algoritmo con estructuras repetitivas y operaciones numéricas, consideremos el siguiente fragmento escrito en Java, orientado a calcular el Máximo Común Divisor (MCD) de dos números enteros positivos mediante el algoritmo clásico de Euclides:
+
+<pre class="codigo-java">
+int a = 12;
+int b = 18;
+
+while ( b != 0 ) {
+    int resto = a % b;
+    a = b;
+    b = resto;
+}
+
+System.out.println("MCD = " + a);
+</pre>
+
+La tabla de traza resultante adopta la siguiente estructura:
+
+<table>
+<tr><th>Paso</th><th>Sentencia</th><th>a</th><th>b</th><th>resto</th><th>Condición (b != 0)</th><th>Salida estándar</th></tr>
+<tr><td>1</td><td>Declaración <span class="variable">a</span></td><td>12</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>2</td><td>Declaración <span class="variable">b</span></td><td>12</td><td>18</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>3</td><td>Eval. <span class="palabra">while</span></td><td>12</td><td>18</td><td>—</td><td>18 != 0 → <span class="literal">true</span></td><td>—</td></tr>
+<tr><td>4</td><td><span class="codigo">resto = a % b</span></td><td>12</td><td>18</td><td>12</td><td>—</td><td>—</td></tr>
+<tr><td>5</td><td><span class="codigo">a = b</span></td><td>18</td><td>18</td><td>12</td><td>—</td><td>—</td></tr>
+<tr><td>6</td><td><span class="codigo">b = resto</span></td><td>18</td><td>12</td><td>12</td><td>—</td><td>—</td></tr>
+<tr><td>7</td><td>Eval. <span class="palabra">while</span></td><td>18</td><td>12</td><td>12</td><td>12 != 0 → <span class="literal">true</span></td><td>—</td></tr>
+<tr><td>8</td><td><span class="codigo">resto = a % b</span></td><td>18</td><td>12</td><td>6</td><td>—</td><td>—</td></tr>
+<tr><td>9</td><td><span class="codigo">a = b</span></td><td>12</td><td>12</td><td>6</td><td>—</td><td>—</td></tr>
+<tr><td>10</td><td><span class="codigo">b = resto</span></td><td>12</td><td>6</td><td>6</td><td>—</td><td>—</td></tr>
+<tr><td>11</td><td>Eval. <span class="palabra">while</span></td><td>12</td><td>6</td><td>6</td><td>6 != 0 → <span class="literal">true</span></td><td>—</td></tr>
+<tr><td>12</td><td><span class="codigo">resto = a % b</span></td><td>12</td><td>6</td><td>0</td><td>—</td><td>—</td></tr>
+<tr><td>13</td><td><span class="codigo">a = b</span></td><td>6</td><td>6</td><td>0</td><td>—</td><td>—</td></tr>
+<tr><td>14</td><td><span class="codigo">b = resto</span></td><td>6</td><td>0</td><td>0</td><td>—</td><td>—</td></tr>
+<tr><td>15</td><td>Eval. <span class="palabra">while</span></td><td>6</td><td>0</td><td>0</td><td>0 != 0 → <span class="literal">false</span></td><td>—</td></tr>
+<tr><td>16</td><td>Impresión final</td><td>6</td><td>0</td><td>0</td><td>—</td><td><span class="literal">MCD = 6</span></td></tr>
+</table>
+
+El método de Euclides divide el número mayor (dividendo) por el menor (divisor), obteniendo un cociente y un resto. Si es resto es cero, el divisor es el MCD;  si es distinto de cero, el menor (divisor) pasa a ser el mayor (dividendo) y el resto pasa a ser el menor (divisor), repitiendo hasta que el resto es cero.
+
+En el ejemplo, no ordenamos los números pero el algoritmo se corrige solo porque el cociente es cero, lo que provoca que el divisor (<span class="literal">18</span>) pase a ser el dividendo y el resto (<span class="literal">12</span>) pase a ser el divisor. En cada iteración, el resto reduce progresivamente el valor de <span class="variable">b</span>, garantizando que el algoritmo converja matemáticamente hacia el caso base. En la cuarta comprobación de la condición (<span class="codigo">b != 0</span>), el valor de <span class="variable">b</span> ha pasado a ser <span class="literal">0</span>: la expresión evalúa a <span class="literal">false</span>, lo que provoca la salida del bucle. El resultado final (<span class="literal">6</span>) queda almacenado en <span class="variable">a</span>, permitiendo que la sentencia posterior imprima la respuesta correcta.
+
+#### Reglas metodológicas para la realización de trazas efectivas
+
+Para que una traza de ejecución cumpla eficazmente su función, es preciso asegurar:
+
+1. **Selección de los juegos de prueba:** Una traza realizada con datos de entrada triviales puede ocultar errores. Es indispensable diseñar datos de prueba que incluyan **casos normales** (valores estándar), **casos límite o de frontera** (como valores nulos, cero o extremos de rangos numéricos) y **casos de error** (datos anómalos o fuera de rango) para comprobar la robustez de las validaciones defensivas.
+2. **Fidelidad al código:** El diseñador debe abstenerse de presuponer lo que el programa "debería hacer" y limitarse a anotar estrictamente lo que las instrucciones escritas especifican. Asumir mentalmente que una variable ha sido actualizada cuando la instrucción explícita de incremento no figura en el código es la causa principal de que los errores lógicos pasen desapercibidos durante la prueba.
+3. **Actualización de variables:** En cada paso de la tabla, solo debe anotarse el valor de las variables que hayan sufrido una modificación explícita en la línea de código evaluada. Dejar las celdas en blanco o repetir el valor anterior permite identificar de un solo vistazo la frecuencia real de cambio de cada variable en memoria.
+
 ### Errores comunes
+
+A lo largo del aprendizaje de programación los programas aumentan su complejidad lo que implica que aumente la posibilidad de cometer errores. El alumnado se enfrenta de forma recurrente a una serie de fallos característicos que no se deben, en su mayoría, a una falta de comprensión teórica de los problemas, sino a la discrepancia entre el lenguaje natural —implícito, ambiguo y flexible— y la rigurosidad sintáctica y semántica que exige un lenguaje de programación. Una parte importante del aprendizaje de la programación consiste precisamente en aprender a reconocerlos, localizar su origen y corregirlos.
+
+No todos los errores tienen la misma naturaleza ni se manifiestan del mismo modo. Como ya hemos comentado, algunos son detectados por el compilador (error sintáctico); otros aparecen durante la ejecución; y otros, los más difíciles de encontrar, no producen ningún mensaje de error y hacen que el programa obtenga un resultado diferente del esperado (error semántico).
+
+Cuando el compilador muestra un error, debemos revisar primero la sintaxis y las restricciones del lenguaje. Cuando el programa se detiene durante la ejecución, debemos estudiar la operación que estaba realizando en ese momento. Y cuando termina normalmente pero el resultado no es el correcto, una traza de ejecución puede ayudarnos a descubrir dónde comenzó a desviarse el comportamiento respecto del esperado.
+
+#### Errores de sintaxis y compilación
+
+Uno de los errores sintácticos con mayor impacto lógico consiste en insertar un punto y coma tras la condición de control. Al colocar un punto y coma justo después de los paréntesis de un **if**, **while** o **for**, el compilador interpreta que el cuerpo supeditado a la condición es la *sentencia nula*:
+<pre class="codigo-java">
+// ERROR: El punto y coma anula el bloque condicional
+if ( nota >= 5.0 );
+    System.out.println("Aprobado"); 
+
+// ERROR: Bucle infinito sobre la sentencia nula
+while ( contador < 10 );
+    contador++; 
+</pre>
+
+En la selección, la sentencia entre llaves se ejecutará siempre incondicionalmente. En la repetición, si la condición es verdadera, el programa entrará en un bucle infinito atrapado en la sentencia vacía.
+
+Los errores más sencillos de detectar son aquellos que impiden compilar el programa. El compilador conoce las reglas sintácticas de Java y puede comprobar que las instrucciones están correctamente construidas. Entre los más habituales encontramos la omisión de un punto y coma, el uso incorrecto de paréntesis o llaves, una palabra reservada escrita en un lugar en el que se esperaba un identificador o una expresión que no cumple las reglas del lenguaje. Por ejemplo:
+
+<pre class="codigo-java">
+int numero = 10
+System.out.println(numero);
+</pre>
+
+La primera sentencia carece del punto y coma que debe cerrarla. El programa no puede llegar a ejecutarse porque la compilación se detiene al encontrar el problema. Otro caso frecuente es el de utilizar una variable que no ha sido declarada:
+
+<pre class="codigo-java">
+numero = 10;
+System.out.println(numero);
+</pre>
+
+En este caso el problema tampoco se encuentra durante la ejecución. El compilador no conoce ninguna variable denominada <span class="variable">numero</span> y, por tanto, no puede construir un programa válido.
+
+Aunque menos, también es habitual durante el aprendizaje confundir las reglas sintácticas con las reglas de significado. Que una construcción tenga una forma aparentemente correcta no garantiza que Java permita utilizarla en ese contexto. Los tipos de datos forman parte de estas restricciones. Por ejemplo:
+
+<pre class="codigo-java">
+int numero = 5;
+boolean mayor = numero;
+</pre>
+
+La sintaxis de ambas declaraciones es reconocible, pero la segunda asignación intenta almacenar un valor de tipo <span class="palabra">int</span> en una variable de tipo <span class="palabra">boolean</span>. El compilador detectará que los tipos no son compatibles.
+
+Algo similar es la confusión entre el operador de asignación (<span class="operador">=</span>) y el de igualdad (<span class="operador">==</span>): intentar evaluar una condición lógica utilizando la asignación en lugar de la comparación . Por ejmplo:
+
+<pre class="codigo-java">
+int x = 5;
+if ( x = 10 )
+   x += 4;
+</pre>
+
+Mientras existen otros lenguajes en los que esto produce un fallo lógico, la fuerte tipificación de Java provoca un error porque el tipo no es booleano: sucede al intentar emplear valores numéricos (o de otro tipo) dentro de la condición de una estructura de control. Java exige de forma estricta que la expresión de control evalúe a un tipo primitivo <span class="palabra">boolean</span> (<span class="literal">true</span> o <span class="literal">false</span>).
+
+También, no asignar un valor inicial a variables locales es un error: el compilador detecta el riesgo de lectura de memoria no inicializada y detiene el proceso de compilación. Explicaremos este caso con detalle en el tema siguiente.
+
+Cuando se produce un error de compilación conviene leer con atención el mensaje proporcionado por el compilador. El mensaje no siempre identifica exactamente la causa real del problema: en ocasiones señala el lugar en el que ha dejado de poder interpretar correctamente el código, que puede encontrarse después del punto en el que se introdujo el error. Aun así, proporciona una información valiosa para localizarlo.
+
+#### Errores de ejecución
+
+Se producen cuando la aplicación compila correctamente pero la máquina virtual interrumpe la ejecución al intentar procesar una operación no válida. Un ejemplo sencillo aparece en las operaciones aritméticas. Una división entera por cero no es una operación válida:
+
+<pre class="codigo-java">int dividendo = 10;
+int divisor = 0;
+int resultado = dividendo / divisor;</pre>
+
+El programa es sintácticamente correcto y sus tipos son compatibles, pero al ejecutar la división se produce un error.
+
+Muchos errores de ejecución tienen una característica especialmente importante: <strong>el mismo programa puede ejecutarse correctamente para unos datos y fallar para otros</strong>. Por ello, comprobar un único caso de prueba no garantiza que el programa esté preparado para cualquier entrada.
+
+#### Errores en expresiones
+
+Las expresiones son una fuente frecuente de errores lógicos porque una expresión puede ser completamente válida para el lenguaje y, aun así, no representar lo que el programador pretendía calcular. Uno de los errores más habituales consiste en olvidar las *reglas de precedencia* de los operadores. Por ejemplo:
+
+<pre class="codigo-java">
+int resultado = 10 + 5 * 2;
+</pre>
+
+El resultado es <span class="literal">20</span>, porque la multiplicación tiene mayor precedencia que la suma. Si nuestra intención era sumar primero <span class="literal">10</span> y <span class="literal">5</span> y multiplicar después, tendremos que utilizar paréntesis:
+
+<pre class="codigo-java">int resultado = (10 + 5) * 2;</pre>
+
+No existe ningún error de compilación en la primera versión. El problema está en que la expresión válida no representa el cálculo que pretendíamos realizar. Otro error frecuente aparece al mezclar valores enteros y reales sin tener en cuenta las reglas de conversión. En particular, debemos recordar que la división entre dos enteros produce un resultado entero:
+
+<pre class="codigo-java">
+int a = 5;
+int b = 2;
+double resultado = a / b;
+</pre>
+
+El valor almacenado en <span class="variable">resultado</span> será <span class="literal">2.0</span>, no <span class="literal">2.5</span>. La división se ha realizado entre dos operandos de tipo entero antes de asignar el resultado al <span class="palabra">double</span>. Si necesitamos realizar una división real debemos conseguir que alguno de los operandos participe como un valor de tipo real:
+
+<pre class="codigo-java">
+double resultado = (double) a / b;
+</pre>
+
+El error, por tanto, no está necesariamente en la conversión final, sino en no haber tenido en cuenta el tipo de los operandos en el momento de evaluar la expresión. También puede producirse pérdida de información cuando utilizamos una conversión explícita. La conversión de un valor real a un tipo entero elimina su parte fraccionaria:
+
+<pre class="codigo-java">
+double numero = 7.8;
+int entero = (int) numero;
+</pre>
+
+En este caso <span class="variable">entero</span> tendrá el valor <span class="literal">7</span>. El *cast* no redondea el número.
+
+#### Errores en condiciones
+
+Las condiciones controlan el flujo de ejecución y, por tanto, un error en una condición puede cambiar completamente el comportamiento del programa. Un error muy frecuente consiste en escribir una comparación diferente de la que exige el problema. Por ejemplo, si queremos procesar los números comprendidos entre <span class="literal">1</span> y <span class="literal">10</span>, debemos determinar cuidadosamente si los extremos forman parte del intervalo:
+
+<pre class="codigo-java">
+numero >= 1 && numero <= 10
+</pre>
+
+no representa exactamente lo mismo que:
+
+<pre class="codigo-java">
+numero > 1 && numero < 10
+</pre>
+
+La diferencia se encuentra únicamente en los operadores de comparación, pero provoca que los valores <span class="literal">1</span> y <span class="literal">10</span> sean tratados de forma distinta.
+
+Otro error habitual consiste en invertir la condición de una estructura de control. Cuando esto sucede, el programa sigue una rama diferente de la prevista y puede parecer que «ignora» determinadas instrucciones. Las trazas permiten detectar estos errores de forma bastante directa. Basta con anotar la condición evaluada y comprobar si su resultado coincide con el que debería producirse para los datos utilizados.
+
+También debemos prestar especial atención a las expresiones lógicas formadas por varios operadores. Una expresión como:
+
+<pre class="codigo-java">
+edad >= 18 && tienePermiso || esInvitado
+</pre>
+
+debe interpretarse teniendo en cuenta la precedencia de <span class="operador">&&</span> y <span class="operador">||</span>. Cuando una condición es compleja y puede resultar difícil de interpretar, es preferible utilizar paréntesis para hacer explícita la intención del algoritmo:
+
+<pre class="codigo-java">
+(edad >= 18 && tienePermiso) || esInvitado
+</pre>
+
+Los paréntesis no siempre son necesarios desde el punto de vista sintáctico, pero sí pueden serlo desde el punto de vista de la claridad y de la prevención de errores.
+
+#### Errores en estructuras de selección
+
+En las estructuras **if-else** es frecuente escribir correctamente cada bloque y, sin embargo, asociar una sentencia al bloque equivocado. La indentación ayuda a visualizar esta estructura, pero debemos recordar que los espacios y tabulaciones no determinan el ámbito de las sentencias en Java. Por ello, cuando un bloque contiene más de una sentencia, debemos utilizar llaves de forma explícita:
+
+<pre class="codigo-java">
+if ( condición ) {
+    sentencia1;
+    sentencia2;
+}
+</pre>
+
+También es posible que una cadena de decisiones **if-else-if** contenga condiciones que se solapen. En ese caso, puede existir una condición posterior que nunca llegue a evaluarse porque una condición anterior ya resulta verdadera. Cuando esto sucede, la estructura es válida para Java, pero puede ser incorrecta desde el punto de vista del algoritmo. Conviene revisar siempre si las condiciones están ordenadas y construidas de forma que todas las situaciones que deben distinguirse puedan alcanzarse.
+
+Análogamente puede producirse una asociación errónea de *else* huérfano. El desarrollador puede indentar el código intentando vincular el **else** con el primer **if**, pero la regla gramatical de Java lo asocia invariablemente con el **if** más cercano:
+
+<pre class="codigo-java">
+// Código engañoso debido a la sangría
+if ( saldo > 0 )
+    if ( importe <= saldo )
+        saldo -= importe;
+else
+    System.out.println("Saldo insuficiente"); // ¡Se asocia al segundo 'if', no al primero!
+</pre>
+
+En una sentencia **switch**, el error más característico consiste en olvidar que, en su forma normal, una vez encontrada una etiqueta <span class="palabra">case</span>, la ejecución continúa con las sentencias siguientes hasta abandonar el bloque (o hasta encontrar un <span class="palabra">break</span>).
+
+Por ejemplo:
+
+<pre class="codigo-java">switch (dia) {
+    case 1:
+        System.out.println("Lunes");
+    case 2:
+        System.out.println("Martes");
+        break;
+}</pre>
+
+Si <span class="variable">dia</span> vale <span class="literal">1</span>, se mostrará «Lunes» y, a continuación, también «Martes». Esto no es un error del lenguaje: es el comportamiento definido por la sentencia. El error aparece cuando este comportamiento no era el que pretendíamos.
+
+Por esta razón, cuando una sentencia **switch** no produce el resultado esperado, debemos comprobar cuidadosamente el camino seguido por cada **case** y la presencia de las sentencias **break** allí donde sean necesarias.
+
+#### Errores en bucles
+
+Los bucles concentran algunos de los errores más habituales durante el aprendizaje de la programación. El problema puede estar en la condición, en la inicialización, en la actualización de la variable de control o en la relación entre estos elementos. Uno de los errores más graves es diseñar un bucle infinito:
+
+<pre class="codigo-java">
+int numero = 1;
+
+while ( numero <= 10 )
+    System.out.println(numero);
+</pre>
+
+La condición depende de <span class="variable">numero</span>, pero ninguna sentencia del cuerpo modifica su valor. Como consecuencia, si <span class="variable">numero</span> comienza siendo <span class="literal">1</span>, la condición continuará siendo verdadera indefinidamente. Un error de este tipo puede detectarse mediante una traza. Si construimos varias iteraciones y observamos que el estado relevante no cambia de manera que permita alcanzar la condición de terminación, el problema resulta evidente.
+
+También es frecuente actualizar la variable de control en el sentido contrario al necesario. Por ejemplo:
+
+<pre class="codigo-java">
+for ( int numero = 1; numero <= 10; numero -= 1 )
+    System.out.println(numero);
+</pre>
+
+La condición exige que <span class="variable">numero</span> aumente hasta superar <span class="literal">10</span>, pero la actualización hace que disminuya. En este caso el bucle tampoco podrá alcanzar la condición de terminación prevista.
+
+Otro error clásico consiste en utilizar mal los límites del bucle, provocando que se ejecute una iteración de más o de menos. Este problema se conoce habitualmente como **desviación en uno** o *off-by-one*. Por ejemplo, para mostrar los números del <span class="literal">1</span> al <span class="literal">10</span>, estas dos condiciones no son equivalentes:
+
+<pre class="codigo-fuente">
+numero <= 10
+
+numero < 10
+</pre>
+
+La segunda excluye el valor <span class="literal">10</span>. La diferencia puede parecer pequeña, pero en algoritmos más complejos puede alterar completamente el resultado. Para evitar estos errores es conveniente preguntarse siempre, antes de escribir el bucle, cuál debe ser el primer valor tratado, cuál debe ser el último y qué debe suceder inmediatamente después de procesar ese último valor.
+
+También puede producirse el error contrario: utilizar un bucle **while** cuando el cuerpo debe ejecutarse necesariamente al menos una vez. En estas situaciones, un **do-while** representa de forma más natural el algoritmo y evita tener que duplicar la lectura o la inicialización fuera de la estructura.
+
+##### Confundir el valor de una variable con su actualización
+
+Cuando se utiliza una variable como contador o acumulador, debemos distinguir claramente entre el valor que contiene y la operación que modifica dicho valor. Por ejemplo:
+
+<pre class="codigo-java">suma = suma + numero;</pre>
+
+no significa que <span class="variable">suma</span> tome simplemente el valor de <span class="variable">numero</span>. Su nuevo valor es el resultado de combinar el valor anterior de <span class="variable">suma</span> con el de <span class="variable">numero</span>. Si escribimos por error:
+
+<pre class="codigo-java">suma = numero;</pre>
+
+el valor acumulado anterior se pierde en cada iteración. Las trazas resultan especialmente útiles para descubrir este tipo de errores, porque permiten observar si una variable que debería conservar y ampliar progresivamente su información está siendo sobrescrita en lugar de actualizada.
+
+Algo semejante sucede con los operadores de incremento y decremento. En una sentencia independiente:
+
+<pre class="codigo-java">numero++;</pre>
+
+el efecto final es incrementar <span class="variable">numero</span> en una unidad. Pero cuando el operador forma parte de una expresión, la diferencia entre su utilización prefija y posfija puede modificar el valor utilizado por el resto de la expresión. Por ello, cuando aparezca un <span class="operador">++</span> o un <span class="operador">--</span> dentro de una expresión, debemos seguir cuidadosamente el orden de evaluación.
+
+#### Errores que el compilador no puede detectar
+
+Existe una idea fundamental que debemos recordar: el compilador puede comprobar las reglas de Java, pero no puede conocer nuestra intención. Si escribimos:
+
+<pre class="codigo-java">
+int precio = 100;
+int descuento = 20;
+int resultado = precio + descuento;
+</pre>
+
+no existe ningún motivo para que Java rechace el programa. Todas las sentencias son correctas y los tipos son compatibles. Sin embargo, si lo que queríamos calcular era el precio después de aplicar un descuento del veinte por ciento, el algoritmo es incorrecto.
+
+Este tipo de error no puede solucionarse simplemente leyendo los mensajes del compilador. Debemos comprobar el comportamiento del programa y compararlo con lo que establece el problema. Aquí adquieren toda su importancia las **trazas de ejecución y los casos de prueba**. Una traza nos permite reconstruir qué ha hecho realmente el programa; los casos de prueba nos permiten comprobar si ese comportamiento coincide con el que debería producirse para diferentes situaciones.
+
+#### Estrategia general para localizar fallos
+
+Cuando un programa no funciona correctamente, no resulta eficaz modificar el código al azar hasta que aparentemente produzca el resultado esperado. Es preferible seguir un proceso ordenado.
+
+En primer lugar, determinar qué comportamiento esperábamos y compararlo con el que se ha producido realmente. A partir de esa diferencia podemos decidir dónde comenzar la investigación.
+
+Si el programa no compila, debemos revisar el código en busca de errores sintácticos, de tipos o de uso incorrecto de las construcciones del lenguaje.
+
+Si compila pero se detiene durante la ejecución, debemos estudiar la operación que se estaba realizando en el momento del fallo y los valores de los datos que intervenían en ella.
+
+Si termina sin producir errores pero ofrece un resultado incorrecto, debemos realizar una traza, siguiendo el flujo de control y anotando la evolución de las variables relevantes. El punto que debemos buscar es la primera decisión o modificación que se aparta del comportamiento esperado. Una vez localizada, debemos preguntarnos si el problema se encuentra en la implementación del algoritmo o en el propio algoritmo. No siempre basta con modificar una sentencia: en ocasiones la solución exige revisar el planteamiento que condujo a ella. Esta forma de trabajar es especialmente importante en los bucles y en las estructuras de selección, donde una pequeña modificación puede alterar todo el recorrido de la ejecución. Cambiar una condición porque «parece que funciona» puede ocultar el problema en lugar de resolverlo.
+
+La programación no consiste únicamente en conseguir que un programa compile o produzca una salida para un caso concreto. Un programa correcto debe respetar las reglas del lenguaje, comportarse de forma adecuada durante su ejecución y, sobre todo, implementar el algoritmo que resuelve el problema planteado.
+
+Aprender a localizar errores forma parte, por tanto, del propio proceso de programación. La escritura del código, su ejecución, la realización de pruebas, las trazas y la corrección de los errores no son actividades independientes, sino partes de un mismo proceso de construcción y verificación de programas.
+
 
 <footer class="pie">
 <div class="navegacion-principal">
@@ -2745,3 +3203,5 @@ Para garantizar que cualquier estructura repetitiva sea correcta y segura, el pr
 [^24]: La tabla de saltos evalúa el valor de entrada y dirige la ejecución instantáneamente a la dirección de memoria adecuada.
 [^25]: La lectura adelantada (*priming read*) es un patrón de diseño clásico en la programación estructurada que consiste en obtener el primer dato de una secuencia antes de evaluar la condición del bucle por primera vez, garantizando que la variable de control o condición adquiera un estado válido y fiable antes de entrar en la estructura iterativa.
 [^26]: Que veremos en el tema 5.
+[^27]: El término *bug* ya era utilizado en el siglo XIX para referirse a pequeños fallos pero es en 1947 cuando la almirante Grace Hopper lo utilizó, tal vez como una broma, al descubrir que un mal funcionamiento en el Mark II era causado por una polilla; desde entonces el término *debugging* se asocia a identificar y corregir errores de programación.
+[^28]:  *Las pruebas de software pueden demostrar la presencia de errores, pero nunca su ausencia*. Edsger W. Dijkstra.

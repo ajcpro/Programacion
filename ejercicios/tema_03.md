@@ -72,18 +72,19 @@ NullLiteral
 </div>
 </div>
 ¿De cuántas alternativas dispone Literal? ¿Qué significa que aparezcan varias alternativas?
-9. Interpreta la siguiente producción:<div class="plantilla-sintactica">
-    <div class="produccion">
-    <div class="produccion-encabezado">IntegerLiteral:</div>
-    <div class="produccion-alternativas">
-    DecimalNumeral<br>
-    HexNumeral<br>
-    OctalNumeral<br>
-    BinaryNumeral
-    </div>
-    </div>
-    </div>
-    ¿Qué cuatro formas de representación de un entero permite?
+9. Interpreta la siguiente producción:
+<div class="plantilla-sintactica">
+<div class="produccion">
+<div class="produccion-encabezado">IntegerLiteral:</div>
+<div class="produccion-alternativas">
+DecimalNumeral<br>
+HexNumeral<br>
+OctalNumeral<br>
+BinaryNumeral
+</div>
+</div>
+</div>
+¿Qué cuatro formas de representación de un entero permite?
 10. Indica cuáles de los siguientes literales enteros son válidos en Java y, cuando sean válidos, qué valor representan:
     <pre class="codigo-fuente">
     26
