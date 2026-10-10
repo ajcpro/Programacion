@@ -57,8 +57,7 @@ css: ["../estilos/estilo.css"]
     mi numero
     </pre>
     Justifica los casos inválidos.
-8. Observa la siguiente plantilla sintáctica:
-    <div class="plantilla-sintactica">
+8. Observa la siguiente plantilla sintáctica:<div class="plantilla-sintactica">
     <div class="produccion">
     <div class="produccion-encabezado">Literal:</div>
     <div class="produccion-alternativas">
@@ -72,8 +71,7 @@ css: ["../estilos/estilo.css"]
     </div>
     </div>
     ¿De cuántas alternativas dispone Literal? ¿Qué significa que aparezcan varias alternativas?
-9. Interpreta la siguiente producción:
-    <div class="plantilla-sintactica">
+9. Interpreta la siguiente producción:<div class="plantilla-sintactica">
     <div class="produccion">
     <div class="produccion-encabezado">IntegerLiteral:</div>
     <div class="produccion-alternativas">
