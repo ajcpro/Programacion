@@ -4510,22 +4510,21 @@
   class="codigo">x++</span> equivale de forma exacta a escribir <span
   class="codigo">x = x+1</span>.</li>
   <li><strong>Operador de decremento (<span
-  class="operador"><code>–</code></span>):</strong> Resta exactamente
-  una unidad (<span class="literal">1</span>) al valor actual del
-  operando numérico. De este modo, <span
-  class="codigo">x<code>–</code></span> equivale a la sentencia <span
-  class="codigo">x = x-1</span>.</li>
+  class="operador">--</span>):</strong> Resta exactamente una unidad
+  (<span class="literal">1</span>) al valor actual del operando
+  numérico. De este modo, <span class="codigo">x--</span> equivale a la
+  sentencia <span class="codigo">x = x-1</span>.</li>
   </ul>
   <p>Estos operadores pueden utilizarse antes o después de la variable:
   <strong>notación prefija</strong> (<span class="codigo">++x</span> o
-  <span class="codigo"><code>–</code>x</span>) y <strong>notación
-  posfija</strong> (<span class="codigo">x++</span> o <span
-  class="codigo">x<code>–</code></span>). Cuando el operador se utiliza
-  como una sentencia independiente, como suele ocurrir al modificar un
-  contador, ambas formas producen exactamente el mismo resultado final:
-  incrementar o decrementar la variable en una unidad. La diferencia
-  aparece cuando el operador forma parte de una expresión y, por tanto,
-  necesitamos utilizar el valor que produce:</p>
+  <span class="codigo">--x</span>) y <strong>notación posfija</strong>
+  (<span class="codigo">x++</span> o <span class="codigo">x--</span>).
+  Cuando el operador se utiliza como una sentencia independiente, como
+  suele ocurrir al modificar un contador, ambas formas producen
+  exactamente el mismo resultado final: incrementar o decrementar la
+  variable en una unidad. La diferencia aparece cuando el operador forma
+  parte de una expresión y, por tanto, necesitamos utilizar el valor que
+  produce:</p>
   <ul>
   <li><strong>Modalidad prefija (<span
   class="codigo">++x</span>):</strong> Se aplica el incremento sobre la
@@ -4583,7 +4582,7 @@
   PreDecrementExpression:
   </div>
   <div class="produccion-alternativas">
-  <p><span class="terminal"><code>–</code></span> UnaryExpression</p>
+  <p><span class="terminal">--</span> UnaryExpression</p>
   </div>
   </div>
   <div class="produccion">
@@ -4616,7 +4615,7 @@
   PostDecrementExpression:
   </div>
   <div class="produccion-alternativas">
-  <p>PostFixExpression <span class="terminal"><code>–</code></span></p>
+  <p>PostFixExpression <span class="terminal">--</span></p>
   </div>
   </div>
   </div>
@@ -6062,8 +6061,8 @@
   la diferencia entre su utilización prefija y posfija puede modificar
   el valor utilizado por el resto de la expresión. Por ello, cuando
   aparezca un <span class="operador">++</span> o un <span
-  class="operador"><code>–</code></span> dentro de una expresión,
-  debemos seguir cuidadosamente el orden de evaluación.</p>
+  class="operador">--</span> dentro de una expresión, debemos seguir
+  cuidadosamente el orden de evaluación.</p>
   <h4 id="errores-que-el-compilador-no-puede-detectar">Errores que el
   compilador no puede detectar</h4>
   <p>Existe una idea fundamental que debemos recordar: el compilador
