@@ -56,18 +56,28 @@ figcaption {
 }
 
 table.asignacion {
-  border-collapse: collapse;
-  margin: 0;
-  border: none; 
+  border-collapse: separate;
+  border-spacing: 10px 0px;
+  border: none;
+  text-align: left; 
+}
+
+tr.codigo {
+  font-family: Courier, 'Courier New', 'Lucida Console', monospace;
+  font-size: 0.9em;
 }
 
 table.traza {
-  width: 100%;
   border-collapse: collapse;
   margin: 20px 0;
   font-family: "Segoe UI", Helvetica, Arial, sans-serif;
   font-size: 12px;
   color: #24292e; /* Color de texto estilo GitHub */
+}
+
+table.traza th, table.traza td {
+  border: 1px solid;
+  padding: 3px 6px;
 }
 
 .text-center {
@@ -76,4 +86,8 @@ table.traza {
 
 .text-right {
   text-align: right;
+}
+
+.text-left {
+  text-align: left;
 }

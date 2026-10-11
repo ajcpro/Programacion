@@ -527,7 +527,7 @@ utilizando solamente el operador `=`.
    <pre class="codigo-java">
     int i = 1;
     int suma = 0;
-
+    
     while ( i <= 4 ) {
         suma += i;
         i++;
@@ -545,12 +545,14 @@ utilizando solamente el operador `=`.
     }
     </pre>
 108. Explica, sin escribir código, qué estructura o combinación de estructuras utilizarías para resolver cada uno de los siguientes algoritmos:
+
     a. Obtener el mayor de tres valores.
     b. Mostrar todos los números pares entre dos valores.
     c. Leer una serie de valores hasta encontrar un valor especial.
     d. Mostrar una tabla de multiplicar.
     e. Clasificar una calificación en cuatro categorías.
     f. Repetir una solicitud hasta que el dato sea válido.
+
 109. Observa el siguiente código y localiza cualquier posible problema lógico relacionado con el flujo de control:
     <pre class="codigo-java">
     int i = 1;
@@ -604,7 +606,7 @@ utilizando solamente el operador `=`.
         }
         numero--;
     }
-
+    
     System.out.println(suma);
     </pre>
     Identifica los errores, explica si cada uno es sintáctico, de compilación o lógico y describe las consecuencias que produciría. Después, escribe una versión correcta y realiza una traza que compruebe que se muestran los números del 1 al 5 y que la suma final es 15.

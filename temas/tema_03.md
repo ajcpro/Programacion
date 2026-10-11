@@ -2072,7 +2072,7 @@ condición: numero <= 5
 
 En este momento la condición ya no se cumple. El cuerpo del bucle no se vuelve a ejecutar y el flujo de control continúa con la primera sentencia situada después de la estructura <span class="palabra">while</span>. Podemos representar las sucesivas comprobaciones mediante una tabla:
 
-<table>
+<table class="traza">
 <tr><th>numero<th>condición<th>acción</tr>
 <tr><td>1<td>1 <= 5 → sí<td>ejecutar cuerpo
 <tr><td>2<td>2 <= 5 → sí<td>ejecutar cuerpo
@@ -2365,28 +2365,21 @@ numero += 1;
 
 Del mismo modo:
 
-<table>
+<table class="asignacion">
 <tr><th>
 Asignación compuesta
 </th><th>
 Operación explícita
 </th></tr>
-<tr><td>
-<pre class="codigo-fuente">
+<tr class="codigo"><td>
 contador -= 3;
-</pre>
 </td><td>
-<pre class="codigo-fuente">
 contador = contador - 3;
-</pre>
-</td></tr><tr><td>
-<pre class="codigo-fuente">
+</td></tr>
+<tr class="codigo"><td>
 contador *= 2;
-</pre>
 </td><td>
-<pre class="codigo-fuente">
 contador = contador * 2;
-</pre>
 </td></tr>
 </table>
 
@@ -3233,8 +3226,8 @@ Aprender a localizar errores forma parte, por tanto, del propio proceso de progr
   
 <div class="navegacion-secundaria">
 <!-- Renderizar solo si existen en el tema -->
-<a href="../ejercicios/tema_03.html">Ejercicios</a>
-<!--a href="problemas.html">Problemas</a-->
+<a href="../ejercicios/tema_03.html">Ejercicios</a> | 
+<a href="../problemas/tema_03.html">Problemas</a>
 </div>
 </footer>
 
@@ -3267,4 +3260,4 @@ Aprender a localizar errores forma parte, por tanto, del propio proceso de progr
 [^25]: La lectura adelantada (*priming read*) es un patrón de diseño clásico en la programación estructurada que consiste en obtener el primer dato de una secuencia antes de evaluar la condición del bucle por primera vez, garantizando que la variable de control o condición adquiera un estado válido y fiable antes de entrar en la estructura iterativa.
 [^26]: Que veremos en el tema 5.
 [^27]: El término *bug* ya era utilizado en el siglo XIX para referirse a pequeños fallos pero es en 1947 cuando la almirante Grace Hopper lo utilizó, tal vez como una broma, al descubrir que un mal funcionamiento en el Mark II era causado por una polilla; desde entonces el término *debugging* se asocia a identificar y corregir errores de programación.
-[^28]:  *Las pruebas de software pueden demostrar la presencia de errores, pero nunca su ausencia*. Edsger W. Dijkstra.
+[^28]: <span class="cita">Las pruebas de software pueden demostrar la presencia de errores, pero nunca su ausencia</span>. --Edsger W. Dijkstra.
