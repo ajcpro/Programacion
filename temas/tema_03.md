@@ -2542,9 +2542,9 @@ Durante el diseño de algoritmos repetitivos, resulta sumamente habitual encontr
 En primer lugar, disponemos de los **operadores unarios de incremento y decremento**:
 
 *   **Operador de incremento (<span class="operador">++</span>):** Suma exactamente una unidad (<span class="literal">1</span>) al valor actual del operando numérico sobre el que se aplica. Por consiguiente, la instrucción <span class="codigo">x++</span> equivale de forma exacta a escribir <span class="codigo">x = x+1</span>.
-*   **Operador de decremento (<span class="operador"><code>--</code></span>):** Resta exactamente una unidad (<span class="literal">1</span>) al valor actual del operando numérico. De este modo, <span class="codigo">x<code>--</code></span> equivale a la sentencia <span class="codigo">x = x-1</span>.
+*   **Operador de decremento (<span class="operador">&#45;&#45;</span>):** Resta exactamente una unidad (<span class="literal">1</span>) al valor actual del operando numérico. De este modo, <span class="codigo">x&#45;&#45;</span> equivale a la sentencia <span class="codigo">x = x-1</span>.
 
-Estos operadores pueden utilizarse antes o después de la variable: **notación prefija** (<span class="codigo">++x</span> o <span class="codigo"><code>--</code>x</span>) y **notación posfija** (<span class="codigo">x++</span> o <span class="codigo">x<code>--</code></span>). Cuando el operador se utiliza como una sentencia independiente, como suele ocurrir al modificar un contador, ambas formas producen exactamente el mismo resultado final: incrementar o decrementar la variable en una unidad. La diferencia aparece cuando el operador forma parte de una expresión y, por tanto, necesitamos utilizar el valor que produce:
+Estos operadores pueden utilizarse antes o después de la variable: **notación prefija** (<span class="codigo">++x</span> o <span class="codigo">&#45;&#45;x</span>) y **notación posfija** (<span class="codigo">x++</span> o <span class="codigo">x&#45;&#45;</span>). Cuando el operador se utiliza como una sentencia independiente, como suele ocurrir al modificar un contador, ambas formas producen exactamente el mismo resultado final: incrementar o decrementar la variable en una unidad. La diferencia aparece cuando el operador forma parte de una expresión y, por tanto, necesitamos utilizar el valor que produce:
 
 *   **Modalidad prefija (<span class="codigo">++x</span>):** Se aplica el incremento sobre la variable **antes** de evaluar y utilizar su valor dentro de la expresión global.
 *   **Modalidad posfija (<span class="codigo">x++</span>):** Se utiliza el valor actual de la variable para la expresión y, **después** de completar dicha evaluación, efectúa el incremento sobre la variable en memoria.
@@ -2589,7 +2589,7 @@ UnaryExpressionNotPlusMinus
 <div class="produccion">
 <div class="produccion-encabezado">PreDecrementExpression:</div>
 <div class="produccion-alternativas">
-<span class="terminal"><code>--</code></span> UnaryExpression
+<span class="terminal">&#45;&#45;</span> UnaryExpression
 </div>
 </div>
 <div class="produccion">
@@ -2618,7 +2618,7 @@ PostFixExpression <span class="terminal">++</span>
 <div class="produccion">
 <div class="produccion-encabezado">PostDecrementExpression:</div>
 <div class="produccion-alternativas">
-PostFixExpression <span class="terminal"><code>--</code></span>
+PostFixExpression <span class="terminal">&#45;&#45;</span>
 </div>
 </div>
 </div>
@@ -3191,7 +3191,7 @@ Algo semejante sucede con los operadores de incremento y decremento. En una sent
 
 <pre class="codigo-java">numero++;</pre>
 
-el efecto final es incrementar <span class="variable">numero</span> en una unidad. Pero cuando el operador forma parte de una expresión, la diferencia entre su utilización prefija y posfija puede modificar el valor utilizado por el resto de la expresión. Por ello, cuando aparezca un <span class="operador">++</span> o un <span class="operador"><code>--</code></span> dentro de una expresión, debemos seguir cuidadosamente el orden de evaluación.
+el efecto final es incrementar <span class="variable">numero</span> en una unidad. Pero cuando el operador forma parte de una expresión, la diferencia entre su utilización prefija y posfija puede modificar el valor utilizado por el resto de la expresión. Por ello, cuando aparezca un <span class="operador">++</span> o un <span class="operador">&#45;&#45;</span> dentro de una expresión, debemos seguir cuidadosamente el orden de evaluación.
 
 #### Errores que el compilador no puede detectar
 
