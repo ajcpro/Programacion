@@ -2542,9 +2542,9 @@ Durante el diseño de algoritmos repetitivos, resulta sumamente habitual encontr
 En primer lugar, disponemos de los **operadores unarios de incremento y decremento**:
 
 *   **Operador de incremento (<span class="operador">++</span>):** Suma exactamente una unidad (<span class="literal">1</span>) al valor actual del operando numérico sobre el que se aplica. Por consiguiente, la instrucción <span class="codigo">x++</span> equivale de forma exacta a escribir <span class="codigo">x = x+1</span>.
-*   **Operador de decremento (<span class="operador">--</span>):** Resta exactamente una unidad (<span class="literal">1</span>) al valor actual del operando numérico. De este modo, <span class="codigo">x--</span> equivale a la sentencia <span class="codigo">x = x-1</span>.
+*   **Operador de decremento (<span class="operador"><code>--<code></span>):** Resta exactamente una unidad (<span class="literal">1</span>) al valor actual del operando numérico. De este modo, <span class="codigo">x<code>--<code></span> equivale a la sentencia <span class="codigo">x = x-1</span>.
 
-Estos operadores pueden utilizarse antes o después de la variable: **notación prefija** (<span class="codigo">++x</span> o <span class="codigo">--x</span>) y **notación posfija** (<span class="codigo">x++</span> o <span class="codigo">x--</span>). Cuando el operador se utiliza como una sentencia independiente, como suele ocurrir al modificar un contador, ambas formas producen exactamente el mismo resultado final: incrementar o decrementar la variable en una unidad. La diferencia aparece cuando el operador forma parte de una expresión y, por tanto, necesitamos utilizar el valor que produce:
+Estos operadores pueden utilizarse antes o después de la variable: **notación prefija** (<span class="codigo">++x</span> o <span class="codigo"><code>--<code>x</span>) y **notación posfija** (<span class="codigo">x++</span> o <span class="codigo">x<code>--<code></span>). Cuando el operador se utiliza como una sentencia independiente, como suele ocurrir al modificar un contador, ambas formas producen exactamente el mismo resultado final: incrementar o decrementar la variable en una unidad. La diferencia aparece cuando el operador forma parte de una expresión y, por tanto, necesitamos utilizar el valor que produce:
 
 *   **Modalidad prefija (<span class="codigo">++x</span>):** Se aplica el incremento sobre la variable **antes** de evaluar y utilizar su valor dentro de la expresión global.
 *   **Modalidad posfija (<span class="codigo">x++</span>):** Se utiliza el valor actual de la variable para la expresión y, **después** de completar dicha evaluación, efectúa el incremento sobre la variable en memoria.
@@ -2589,7 +2589,7 @@ UnaryExpressionNotPlusMinus
 <div class="produccion">
 <div class="produccion-encabezado">PreDecrementExpression:</div>
 <div class="produccion-alternativas">
-<span class="terminal">--</span> UnaryExpression
+<span class="terminal"><code>--<code></span> UnaryExpression
 </div>
 </div>
 <div class="produccion">
@@ -2618,7 +2618,7 @@ PostFixExpression <span class="terminal">++</span>
 <div class="produccion">
 <div class="produccion-encabezado">PostDecrementExpression:</div>
 <div class="produccion-alternativas">
-PostFixExpression <span class="terminal">--</span>
+PostFixExpression <span class="terminal"><code>--<code></span>
 </div>
 </div>
 </div>
@@ -2747,11 +2747,12 @@ Algunos errores son detectados directamente por las herramientas que utilizamos 
 
 Para abordar la depuración de manera eficiente, el primer paso consiste en categorizar la naturaleza de los fallos atendiendo al momento en el que son detectados y la entidad encargada de su identificación:
 
-1. **Errores de compilación:** El código fuente vulnera la gramática formal del lenguaje. Estos errores son detectados de forma automática por el compilador (en Java, <span class="palabra">javac</span>) antes de generar el código objeto. Aunque puedan resultar frustrantes para el principiante, son los más fáciles de subsanar.
+1. **Errores de compilación:** El código fuente vulnera la gramática formal del lenguaje. Estos errores son detectados de forma automática por el compilador (en Java, *javac*) antes de generar el código objeto. Aunque puedan resultar frustrantes para el principiante, son los más fáciles de subsanar.
 2. **Errores de ejecución (*runtime errors*):** El programa ha superado con éxito la compilación y empieza a ejecutarse pero, en un momento dado, intenta realizar una instrucción inviable o prohibida. Un ejemplo clásico es la división entre cero.
 3. **Errores lógicos o semánticos:** Son los más complejos. Un programa con un error lógico es plenamente válido para el compilador: no genera fallos de sintaxis ni interrumpe su ejecución. Sin embargo, la secuencia de operaciones conduce a resultados erróneos, selecciones incorrectas o bucles que nunca concluyen. Puesto que las computadoras se limitan a ejecutar ciegamente las órdenes recibidas, estos errores sólo pueden sacarse a la luz mediante el análisis crítico, la ejecución de baterías de prueba contrastadas y el rastreo minucioso del estado interno de las variables durante la ejecución.
 
 Por esta razón, durante la programación:
+
 * Primero, analizamos el problema y construimos una solución.
 * Después, la codificamos en el lenguaje de programación.
 * A continuación, comprobamos su comportamiento. Si descubrimos una discrepancia, buscamos la causa y modificamos el código; y, si es necesario, revisamos el propio algoritmo.
@@ -2802,15 +2803,47 @@ System.out.println(resultado);
 
 Al comenzar, no existe ninguna de las variables utilizadas en el programa. La primera sentencia crea <span class="variable">a</span> y le asigna el valor <span class="literal">5</span>. La segunda crea <span class="variable">b</span> con el valor <span class="literal">3</span>. A continuación se evalúa la expresión <span class="variable">a</span> <span class="operador">+</span> <span class="variable">b</span>, cuyo resultado es <span class="literal">8</span>, y este valor se almacena en <span class="variable">resultado</span>. Finalmente, se muestra ese valor. Podemos representar esta ejecución mediante la tabla:
 
-<pre class="codigo-fuente">
-
-| Paso | Sentencia                        | `a` | `b` | `resultado` |
-| :--: | -------------------------------- | --: | --: | ----------: |
-|   1  | `int a = 5;`                     |   5 |   — |           — |
-|   2  | `int b = 3;`                     |   5 |   3 |           — |
-|   3  | `int resultado = a + b;`         |   5 |   3 |           8 |
-|   4  | `System.out.println(resultado);` |   5 |   3 |           8 |
-</pre>
+<table class="traza">
+  <thead>
+    <tr>
+      <th class="text-center">Paso</th>
+      <th>Sentencia</th>
+      <th class="text-right"><code>a</code></th>
+      <th class="text-right"><code>b</code></th>
+      <th class="text-right"><code>resultado</code></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="text-center">1</td>
+      <td><code>int a = 5;</code></td>
+      <td class="text-right">5</td>
+      <td class="text-right">—</td>
+      <td class="text-right">—</td>
+    </tr>
+    <tr>
+      <td class="text-center">2</td>
+      <td><code>int b = 3;</code></td>
+      <td class="text-right">5</td>
+      <td class="text-right">3</td>
+      <td class="text-right">—</td>
+    </tr>
+    <tr>
+      <td class="text-center">3</td>
+      <td><code>int resultado = a + b;</code></td>
+      <td class="text-right">5</td>
+      <td class="text-right">3</td>
+      <td class="text-right">8</td>
+    </tr>
+    <tr>
+      <td class="text-center">4</td>
+      <td><code>System.out.println(resultado);</code></td>
+      <td class="text-right">5</td>
+      <td class="text-right">3</td>
+      <td class="text-right">8</td>
+    </tr>
+  </tbody>
+</table>
 
 El símbolo «—» indica que en ese momento la variable todavía no existe o no dispone de un valor que podamos utilizar. La tabla permite observar algo que el resultado final por sí solo no muestra: el valor de cada variable después de cada sentencia que modifica el estado del programa.
 
@@ -2835,12 +2868,42 @@ Para realizar la traza debemos seguir el mismo proceso que seguiría el ordenado
 
 La traza podría quedar así:
 
-| Paso | Ejecución                              | `edad` | Resultado de la condición |
-| :--: | -------------------------------------- | -----: | :-----------------------: |
-|   1  | `int edad = 20;`                       |     20 |             —             |
-|   2  | `edad >= 18`                           |     20 |           `true`          |
-|   3  | `System.out.println("Mayor de edad");` |     20 |           `true`          |
-|   4  | `System.out.println("Fin");`           |     20 |           `true`          |
+<table class="traza">
+  <thead>
+    <tr>
+      <th class="text-center">Paso</th>
+      <th>Ejecución</th>
+      <th class="text-right"><code>edad</code></th>
+      <th class="text-center">Resultado de la condición</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="text-center">1</td>
+      <td><code>int edad = 20;</code></td>
+      <td class="text-right">20</td>
+      <td class="text-center">—</td>
+    </tr>
+    <tr>
+      <td class="text-center">2</td>
+      <td><code>edad &gt;= 18</code></td>
+      <td class="text-right">20</td>
+      <td class="text-center"><code>true</code></td>
+    </tr>
+    <tr>
+      <td class="text-center">3</td>
+      <td><code>System.out.println("Mayor de edad");</code></td>
+      <td class="text-right">20</td>
+      <td class="text-center"><code>true</code></td>
+    </tr>
+    <tr>
+      <td class="text-center">4</td>
+      <td><code>System.out.println("Fin");</code></td>
+      <td class="text-right">20</td>
+      <td class="text-center"><code>true</code></td>
+    </tr>
+  </tbody>
+</table>
 
 La sentencia situada en el bloque <span class="literal">else</span> no aparece como paso ejecutado porque *no forma parte del recorrido seguido por el flujo de control* en esta ejecución concreta.
 
@@ -2865,7 +2928,7 @@ System.out.println("MCD = " + a);
 
 La tabla de traza resultante adopta la siguiente estructura:
 
-<table>
+<table class="traza">
 <tr><th>Paso</th><th>Sentencia</th><th>a</th><th>b</th><th>resto</th><th>Condición (b != 0)</th><th>Salida estándar</th></tr>
 <tr><td>1</td><td>Declaración <span class="variable">a</span></td><td>12</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
 <tr><td>2</td><td>Declaración <span class="variable">b</span></td><td>12</td><td>18</td><td>—</td><td>—</td><td>—</td></tr>
@@ -3128,7 +3191,7 @@ Algo semejante sucede con los operadores de incremento y decremento. En una sent
 
 <pre class="codigo-java">numero++;</pre>
 
-el efecto final es incrementar <span class="variable">numero</span> en una unidad. Pero cuando el operador forma parte de una expresión, la diferencia entre su utilización prefija y posfija puede modificar el valor utilizado por el resto de la expresión. Por ello, cuando aparezca un <span class="operador">++</span> o un <span class="operador">--</span> dentro de una expresión, debemos seguir cuidadosamente el orden de evaluación.
+el efecto final es incrementar <span class="variable">numero</span> en una unidad. Pero cuando el operador forma parte de una expresión, la diferencia entre su utilización prefija y posfija puede modificar el valor utilizado por el resto de la expresión. Por ello, cuando aparezca un <span class="operador">++</span> o un <span class="operador"><code>--<code></span> dentro de una expresión, debemos seguir cuidadosamente el orden de evaluación.
 
 #### Errores que el compilador no puede detectar
 
@@ -3185,12 +3248,12 @@ Aprender a localizar errores forma parte, por tanto, del propio proceso de progr
 [^6]: La documentación y especificación oficial actualizada de Java puede consultarse en la plataforma [Oracle Java Specification](https://docs.oracle.com/javase/specs/jls/).
 [^7]: La palabra `strictfp` fue introducida para restringir los cálculos de punto flotante a la norma IEEE 754; su uso es obsoleto.
 [^8]: A partir de Java 9 (JEP 213), el carácter de subrayado `_` dejó de ser un identificador válido y pasó a ser un término reservado.
-[^9]:  El método estándar IEEE 754 puede obtenerse usando el método <span class="metodo">Math.IEEEremainder</span>.
+[^9]: El método estándar IEEE 754 puede obtenerse usando el método <span class="metodo">Math.IEEEremainder</span>.
 [^10]: Disponible en la [especificación](https://docs.oracle.com/javase/specs/jls/se21/html/jls-15.html#jls-15.17.3).
 [^11]: Los booleanos corresponden a un tipo de datos lógico que solo pueden contener uno de dos valores: verdadero (<span class="literal">true</span>) y falso (<span class="literal">false</span>).
 [^12]: Cualquier función o línea de código que modifica algo fuera de su entorno local. Observad que es *lateral*, no *colateral*; debería denominarse efecto secundario pero surge de su traducción literal del inglés, *side effect*, siendo el término más extendido.
 [^13]: Es evidente que esta afirmación carece de sentido si estás haciendo un examen en el que debes demostrar conocer cuál es el orden de precedencia y asociatividad de los operadores.
-[^14]: Resulta interesante notar que un long (entero de 64 bits) se promociona automáticamente a float (real de 32 bits) si coinciden en una expresión. Aunque el float ocupa menos memoria, su notación científica le otorga una capacidad de representación de magnitudes exponencialmente mayor, considerándose por tanto un tipo más "amplio", aunque se pueda perder precisión en los dígitos menos significativos. También se puede producir pérdida de precisión en las conversiones de int a float y de long a double.
+[^14]: Resulta interesante notar que un long (entero de 64 bits) se promociona automáticamente a float (real de 32 bits) si coinciden en una expresión. Aunque el float ocupa menos memoria, su notación científica le otorga una capacidad de representación de magnitudes exponencialmente mayor, considerándose por tanto un tipo más «amplio», aunque se pueda perder precisión en los dígitos menos significativos. También se puede producir pérdida de precisión en las conversiones de int a float y de long a double.
 [^15]: Internamente, al pasar a un tipo entero más pequeño, elimina los bits de la izquierda. En la representación binaria en complemento a dos, esto puede alterar el bit de signo: por ejemplo, la conversión de 1234 a byte produce el número -46.
 [^16]: Explicaremos la diferencia que existe entre invocar un método de un objeto o una clase en el tema 4.
 [^17]: Existen los denominados TRNG (*True Random Number Generators*) que extraen valores aleatorios de fenómenos físicos impredecibles.
