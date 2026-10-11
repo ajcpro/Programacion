@@ -662,7 +662,92 @@ Explica qué ocurre y por qué.</code></pre>
   <ol start="110" type="1">
   <li>Explica qué elementos de un bucle debes comprobar sistemáticamente
   cuando realizas una revisión manual de un algoritmo repetitivo.</li>
+  <li>Explica la diferencia entre <strong>verificación</strong> y
+  <strong>depuración</strong>. ¿Por qué el hecho de que un programa
+  compile correctamente no garantiza que resuelva el problema para el
+  que se ha escrito?</li>
+  <li>El siguiente programa debería calcular la suma de los enteros
+  comprendidos entre 1 y 5, ambos incluidos. Sin ejecutarlo, realiza una
+  traza y determina qué valor obtiene realmente. Localiza el primer
+  punto en el que la ejecución deja de seguir el proceso esperado y
+  corrige el código.
+  <pre class="codigo-java">
+  int numero = 1; int suma = 0;</li>
   </ol>
+  <pre><code>while ( numero &lt;= 5 ) {
+    numero++;
+    suma += numero;
+}
+System.out.println(suma);
+&lt;/pre&gt;</code></pre>
+  <ol start="113" type="1">
+  <li>Un programa debe clasificar una nota comprendida entre 0 y 10. Las
+  notas inferiores a 5 son insuficientes; las notas desde 5 hasta menos
+  de 7 son aprobadas; las notas desde 7 hasta menos de 9 son notables; y
+  las notas desde 9 hasta 10 son sobresalientes. Propón un conjunto de
+  datos de prueba que permita comprobar todas las categorías y los
+  valores situados en sus límites. Para cada dato, indica cuál debería
+  ser el resultado.</li>
+  <li>El siguiente fragmento debería sumar los valores de una secuencia.
+  Al probarlo con los datos 3, 4 y 5, el resultado no es el esperado.
+  <pre class="codigo-java">
+  int suma = 0; int numero = teclado.nextInt();</li>
+  </ol>
+  <pre><code>while ( numero != 0 ) {
+    suma = numero;
+    numero = teclado.nextInt();
+}
+System.out.println(suma);
+&lt;/pre&gt;
+Realiza una traza para los datos indicados, anota el valor de `suma` después de cada iteración y explica qué sentencia provoca el error lógico. Corrige el programa.</code></pre>
+  <ol start="115" type="1">
+  <li>Se ha escrito un programa que debe determinar si un entero es
+  primo. Antes de ejecutarlo, diseña una pequeña batería de pruebas que
+  incluya casos normales y casos límite. Para cada entrada propuesta,
+  escribe el resultado que debería proporcionar el programa y explica
+  qué aspecto de la solución permite verificar.</li>
+  <li>Un programa lee enteros hasta que se introduce el cero. Debe
+  calcular cuántos datos se han leído y su suma, sin incluir el cero
+  centinela. Explica qué casos de prueba utilizarías para comprobar que
+  el programa funciona correctamente cuando se introducen varios
+  valores, cuando el primer valor es cero y cuando el cero aparece
+  después de un único dato.</li>
+  <li>Un programa valida una nota y debe aceptar exclusivamente valores
+  comprendidos entre 0 y 10, ambos incluidos. Diseña pruebas para
+  comprobar los dos extremos del intervalo, dos valores interiores y un
+  valor inmediatamente fuera de cada extremo. Indica para cada dato si
+  debe aceptarse o rechazarse.</li>
+  <li>Un programa presenta cuatro alternativas mediante una estructura
+  de selección. Explica qué significa comprobar los diferentes caminos
+  de ejecución. Propón un conjunto de pruebas que permita verificar que
+  se alcanza cada alternativa y que también se trata correctamente una
+  opción no válida.</li>
+  <li>¿Por qué una traza correcta para un único conjunto de datos no
+  demuestra que un programa sea correcto para todas las entradas?
+  Utiliza como ejemplo un programa que calcula el factorial y propone
+  datos que permitan comprobar su comportamiento normal, los límites de
+  entrada y algún caso que pueda revelar un error.</li>
+  <li>Al probar un programa, observas que compila y termina normalmente,
+  pero calcula un resultado incorrecto. Describe un procedimiento
+  ordenado para localizar la causa. Incluye en tu explicación la
+  comparación entre el resultado esperado y el obtenido, la elección de
+  datos de prueba y la utilización de una traza para localizar el primer
+  estado incorrecto.</li>
+  <li>El siguiente bucle pretende mostrar los números del 1 al 5 y sumar
+  sus valores, pero contiene varios errores:
+  <pre class="codigo-java">
+  int numero = 1; int suma = 0;</li>
+  </ol>
+  <pre><code>while ( numero &lt;= 5 ); {
+    if ( numero = 3 ) {
+        suma += numero;
+    }
+    numero--;
+}
+
+System.out.println(suma);
+&lt;/pre&gt;
+Identifica los errores, explica si cada uno es sintáctico, de compilación o lógico y describe las consecuencias que produciría. Después, escribe una versión correcta y realiza una traza que compruebe que se muestran los números del 1 al 5 y que la suma final es 15.</code></pre>
   <p><a href="../temas/tema_03.html">Tema3</a> | <a
   href="../problemas/tema_03.html">Problemas</a></p>
 
