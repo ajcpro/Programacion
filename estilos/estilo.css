@@ -5,7 +5,9 @@
 /* --- 1. Elementos Tipográficos e Inline --- */
 .llamadaSO { font-style: oblique; }
 
-.cita       { }
+.cita       { 
+    font-style: italic;
+}
 .cita .autor { }
 .modificado { color: #0264e6; }
 

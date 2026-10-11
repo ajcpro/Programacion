@@ -3747,7 +3747,7 @@
   sentencia situada después de la estructura <span
   class="palabra">while</span>. Podemos representar las sucesivas
   comprobaciones mediante una tabla:</p>
-  <table>
+  <table class="traza">
   <tr>
   <th>
   numero
@@ -4263,7 +4263,7 @@
   numero += 1;
   </pre>
   <p>Del mismo modo:</p>
-  <table>
+  <table class="asignacion">
   <tr>
   <th>
   Asignación compuesta
@@ -4272,28 +4272,20 @@
   Operación explícita
   </th>
   </tr>
-  <tr>
+  <tr class="codigo">
   <td>
-  <pre class="codigo-fuente">
   contador -= 3;
-  </pre>
   </td>
   <td>
-  <pre class="codigo-fuente">
   contador = contador - 3;
-  </pre>
   </td>
   </tr>
-  <tr>
+  <tr class="codigo">
   <td>
-  <pre class="codigo-fuente">
   contador *= 2;
-  </pre>
   </td>
   <td>
-  <pre class="codigo-fuente">
   contador = contador * 2;
-  </pre>
   </td>
   </tr>
   </table>
@@ -4820,7 +4812,7 @@
   depuración no deben contemplarse como actividades improvisadas o
   accesorias al término del desarrollo: debe formar parte de todas las
   fases del
-  diseño<span class="tooltip"><a href="#fn28" class="nota-llamada" id="fnref28">[28]</a><span class="tooltiptext">Las pruebas de software pueden demostrar la presencia de errores, pero nunca su ausencia. Edsger W. Dijkstra.</span></span>.</p>
+  diseño<span class="tooltip"><a href="#fn28" class="nota-llamada" id="fnref28">[28]</a><span class="tooltiptext">Las pruebas de software pueden demostrar la presencia de errores, pero nunca su ausencia. –Edsger W. Dijkstra.</span></span>.</p>
   <aside class="definicion">
   <p><strong>Verificación:</strong> Proceso mediante el cual comprobamos
   que un programa produce los resultados y el comportamiento
@@ -6130,8 +6122,8 @@
   </div>
   <div class="navegacion-secundaria">
   <!-- Renderizar solo si existen en el tema -->
-  <p><a href="../ejercicios/tema_03.html">Ejercicios</a>
-  <!--a href="problemas.html">Problemas</a--></p>
+  <p><a href="../ejercicios/tema_03.html">Ejercicios</a> |
+  <a href="../problemas/tema_03.html">Problemas</a></p>
   </div>
   </footer>
   <hr />
@@ -6300,8 +6292,8 @@
   programación. <a href="#fnref27" class="footnote-back">↩</a></p>
   </li>
   <li class="footnote" id="fn28">
-  <p><em>Las pruebas de software pueden demostrar la presencia de
-  errores, pero nunca su ausencia</em>. Edsger W.
+  <p><span class="cita">Las pruebas de software pueden demostrar la
+  presencia de errores, pero nunca su ausencia</span>. –Edsger W.
   Dijkstra. <a href="#fnref28" class="footnote-back">↩</a></p>
   </li>
   </ol>
