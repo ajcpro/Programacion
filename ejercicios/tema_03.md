@@ -381,7 +381,7 @@ Explica la regla que utiliza Java.
 66. Indica para qué tipo de problema resulta especialmente apropiado un `switch` frente a una secuencia de `if-else-if`.
 67. En el siguiente `switch`, indica qué se imprime si `dia` vale `2`:
     <pre class="codigo-java">
-    switch ( dia )
+    switch ( dia ) {
         case 1:
             System.out.println("Lunes");
             break;
@@ -402,7 +402,7 @@ Explica la regla que utiliza Java.
     <pre class="codigo-java">
     int numero = 1;
 
-    while ( numero <= 5 )
+    while ( numero <= 5 ) {
         System.out.println(numero);
         numero = numero + 1;
     }
@@ -524,71 +524,69 @@ utilizando solamente el operador `=`.
     e. Solicitar una contraseña hasta que sea correcta, debiendo solicitarla al menos una vez.
 105. Para cada una de las situaciones anteriores, explica por qué las demás estructuras serían menos apropiadas.
 106. Haz sobre el papel la traza completa del siguiente programa:
-   <pre class="codigo-java">
-    int i = 1;
-    int suma = 0;
-    
-    while ( i <= 4 ) {
-        suma += i;
-        i++;
-    }
+<pre class="codigo-java">
+int i = 1;
+int suma = 0;
 
-    System.out.println(suma);
-    </pre>
-    Indica los valores de `i` y `suma` antes y después de cada iteración.
+while ( i <= 4 ) {
+    suma += i;
+    i++;
+}
+
+System.out.println(suma);
+</pre>
+Indica los valores de `i` y `suma` antes y después de cada iteración.
 107. Haz una traza del siguiente programa e indica exactamente qué se imprime:
-    <pre class="codigo-java">
-    for ( int i = 1; i <= 3; i++ ) {
-        for ( int j = 1; j <= i; j++ )
-            System.out.print(j + " ");
+<pre class="codigo-java">
+for ( int i = 1; i <= 3; i++ ) {
+    for ( int j = 1; j <= i; j++ )
+        System.out.print(j + " ");
         System.out.println();
     }
-    </pre>
+</pre>
 108. Explica, sin escribir código, qué estructura o combinación de estructuras utilizarías para resolver cada uno de los siguientes algoritmos:
-
     a. Obtener el mayor de tres valores.
     b. Mostrar todos los números pares entre dos valores.
     c. Leer una serie de valores hasta encontrar un valor especial.
     d. Mostrar una tabla de multiplicar.
     e. Clasificar una calificación en cuatro categorías.
     f. Repetir una solicitud hasta que el dato sea válido.
-
 109. Observa el siguiente código y localiza cualquier posible problema lógico relacionado con el flujo de control:
-    <pre class="codigo-java">
-    int i = 1;
+<pre class="codigo-java">
+int i = 1;
 
-    while ( i <= 10 ) {
-        System.out.println(i);
-        i--;
-    }
-    </pre>
-    Explica qué ocurre y por qué.
+while ( i <= 10 ) {
+    System.out.println(i);
+    i--;
+}
+</pre>
+Explica qué ocurre y por qué.
 110. Explica qué elementos de un bucle debes comprobar sistemáticamente cuando realizas una revisión manual de un algoritmo repetitivo.
 111. Explica la diferencia entre **verificación** y **depuración**. ¿Por qué el hecho de que un programa compile correctamente no garantiza que resuelva el problema para el que se ha escrito?
 112. El siguiente programa debería calcular la suma de los enteros comprendidos entre 1 y 5, ambos incluidos. Sin ejecutarlo, realiza una traza y determina qué valor obtiene realmente. Localiza el primer punto en el que la ejecución deja de seguir el proceso esperado y corrige el código.
-    <pre class="codigo-java">
-    int numero = 1;
-    int suma = 0;
+<pre class="codigo-java">
+int numero = 1;
+int suma = 0;
 
-    while ( numero <= 5 ) {
-        numero++;
-        suma += numero;
-    }
-    System.out.println(suma);
-    </pre>
+while ( numero <= 5 ) {
+    numero++;
+    suma += numero;
+}
+System.out.println(suma);
+</pre>
 113. Un programa debe clasificar una nota comprendida entre 0 y 10. Las notas inferiores a 5 son insuficientes; las notas desde 5 hasta menos de 7 son aprobadas; las notas desde 7 hasta menos de 9 son notables; y las notas desde 9 hasta 10 son sobresalientes. Propón un conjunto de datos de prueba que permita comprobar todas las categorías y los valores situados en sus límites. Para cada dato, indica cuál debería ser el resultado.
 114. El siguiente fragmento debería sumar los valores de una secuencia. Al probarlo con los datos 3, 4 y 5, el resultado no es el esperado.
-    <pre class="codigo-java">
-    int suma = 0;
-    int numero = teclado.nextInt();
+<pre class="codigo-java">
+int suma = 0;
+int numero = teclado.nextInt();
 
-    while ( numero != 0 ) {
-        suma = numero;
-        numero = teclado.nextInt();
-    }
-    System.out.println(suma);
-    </pre>
-    Realiza una traza para los datos indicados, anota el valor de `suma` después de cada iteración y explica qué sentencia provoca el error lógico. Corrige el programa.
+while ( numero != 0 ) {
+    suma = numero;
+    numero = teclado.nextInt();
+}
+System.out.println(suma);
+</pre>
+Realiza una traza para los datos indicados, anota el valor de `suma` después de cada iteración y explica qué sentencia provoca el error lógico. Corrige el programa.
 115. Se ha escrito un programa que debe determinar si un entero es primo. Antes de ejecutarlo, diseña una pequeña batería de pruebas que incluya casos normales y casos límite. Para cada entrada propuesta, escribe el resultado que debería proporcionar el programa y explica qué aspecto de la solución permite verificar.
 116. Un programa lee enteros hasta que se introduce el cero. Debe calcular cuántos datos se han leído y su suma, sin incluir el cero centinela. Explica qué casos de prueba utilizarías para comprobar que el programa funciona correctamente cuando se introducen varios valores, cuando el primer valor es cero y cuando el cero aparece después de un único dato.
 117. Un programa valida una nota y debe aceptar exclusivamente valores comprendidos entre 0 y 10, ambos incluidos. Diseña pruebas para comprobar los dos extremos del intervalo, dos valores interiores y un valor inmediatamente fuera de cada extremo. Indica para cada dato si debe aceptarse o rechazarse.
@@ -596,19 +594,19 @@ utilizando solamente el operador `=`.
 119. ¿Por qué una traza correcta para un único conjunto de datos no demuestra que un programa sea correcto para todas las entradas? Utiliza como ejemplo un programa que calcula el factorial y propone datos que permitan comprobar su comportamiento normal, los límites de entrada y algún caso que pueda revelar un error.
 120. Al probar un programa, observas que compila y termina normalmente, pero calcula un resultado incorrecto. Describe un procedimiento ordenado para localizar la causa. Incluye en tu explicación la comparación entre el resultado esperado y el obtenido, la elección de datos de prueba y la utilización de una traza para localizar el primer estado incorrecto.
 121. El siguiente bucle pretende mostrar los números del 1 al 5 y sumar sus valores, pero contiene varios errores:
-    <pre class="codigo-java">
-    int numero = 1;
-    int suma = 0;
+<pre class="codigo-java">
+int numero = 1;
+int suma = 0;
 
-    while ( numero <= 5 ); {
-        if ( numero = 3 ) {
-            suma += numero;
-        }
-        numero--;
+while ( numero <= 5 ); {
+    if ( numero = 3 ) {
+        suma += numero;
     }
-    
-    System.out.println(suma);
-    </pre>
-    Identifica los errores, explica si cada uno es sintáctico, de compilación o lógico y describe las consecuencias que produciría. Después, escribe una versión correcta y realiza una traza que compruebe que se muestran los números del 1 al 5 y que la suma final es 15.
+    numero--;
+    }
+
+System.out.println(suma);
+</pre>
+Identifica los errores, explica si cada uno es sintáctico, de compilación o lógico y describe las consecuencias que produciría. Después, escribe una versión correcta y realiza una traza que compruebe que se muestran los números del 1 al 5 y que la suma final es 15.
 
 [Tema3](../temas/tema_03.html) | [Problemas](../problemas/tema_03.html)

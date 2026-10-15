@@ -7,71 +7,116 @@ css: ["../estilos/estilo.css", "../estilos/tema_03.css"]
 
 <a href="../pdf/temas/tema_03.pdf" target="_blank" class="boton-descarga-top">📥 PDF</a>
 
+<a href="../pdf/temas/tema_03.pdf" target="_blank" class="boton-descarga-top">📥 PDF</a>
+
 <nav class="menu-flotante">
 <input type="checkbox" id="menu-toggle" class="menu-checkbox">
 <label for="menu-toggle" class="menu-boton">☰</label>
 <div class="menu-contenido">
 <h3>Contenido</h3>
 <ul>
-<li><a href="#introducción">Introducción</a></li>
-<li><a href="#análisis-léxico-y-componentes-del-lenguaje">Análisis léxico y componentes del lenguaje</a>
+<li><a href="#introducción">Introducción</a>
 <ul>
-<li><a href="#concepto-de-token-y-separador">Concepto de Token y separador</a></li>
-<li><a href="#palabras-reservadas">Palabras reservadas</a></li>
 </ul>
 </li>
-<li><a href="#expresiones-y-operadores">Expresiones y Operadores</a>
+<li><a href="#análisis-léxico-y-componentes-del-lenguaje">Análisis léxico y componentes del lenguaje</a>
 <ul>
-<li><a href="#operadores">Operadores</a></li>
-<li><a href="#evaluación-en-cortocircuito">Evaluación en cortocircuito</a></li>
-<li><a href="#precedencia-y-asociatividad">Precedencia y asociatividad</a></li>
+<li><a href="#concepto-de-token-y-separador">Concepto de Token y separador</a>
+</li>
+<li><a href="#literales">Literales</a>
+</li>
+<li><a href="#palabras-reservadas">Palabras reservadas</a>
+</li>
+</ul>
+</li>
+<li><a href="#expresiones-y-operadores">Expresiones y operadores</a>
+<ul>
+<li><a href="#operadores">Operadores</a>
+</li>
+<li><a href="#evaluación-en-cortocircuito">Evaluación en cortocircuito</a>
+</li>
+<li><a href="#precedencia-y-asociatividad">Precedencia y asociatividad</a>
+</li>
 </ul>
 </li>
 <li><a href="#conversión-de-tipos">Conversión de tipos</a>
 <ul>
-<li><a href="#reglas-de-promoción">Reglas de promoción</a></li>
-<li><a href="#conversión-explícita">Conversión explícita</a></li>
-<li><a href="#clases-envolventes">Clases envolventes</a></li>
+<li><a href="#reglas-de-promoción">Reglas de promoción</a>
+</li>
+<li><a href="#conversión-explícita">Conversión explícita</a>
+</li>
+<li><a href="#clases-envolventes">Clases envolventes</a>
+</li>
 </ul>
 </li>
 <li><a href="#uso-de-la-biblioteca-estándar">Uso de la biblioteca estándar</a>
 <ul>
-<li><a href="#la-clase-math">La clase Math</a></li>
+<li><a href="#la-clase-math">La clase Math</a>
+</li>
+<li><a href="#la-biblioteca-como-herramienta-de-programación">La biblioteca como herramienta de programación</a>
+</li>
 </ul>
 </li>
 <li><a href="#instrucciones">Instrucciones</a>
 <ul>
-<li><a href="#sentencias">Sentencias</a></li>
-<li><a href="#bloques-y-ámbito">Bloques y ámbito</a></li>
+<li><a href="#sentencias">Sentencias</a>
+</li>
+<li><a href="#bloques-y-ámbito">Bloques y ámbito</a>
+</li>
 </ul>
 </li>
 <li><a href="#flujo-de-control">Flujo de control</a>
 <ul>
-<li><a href="#concepto-de-flujo-de-control">Concepto de flujo de control</a></li>
-<li><a href="#estructuras-de-control">Estructuras de control</a></li>
+<li><a href="#concepto-de-flujo-de-control">Concepto de flujo de control</a>
+</li>
+<li><a href="#estructuras-de-control">Estructuras de control</a>
+</li>
 </ul>
 </li>
-<li><a href="#secuencia">Secuencia</a></li>
+<li><a href="#secuencia">Secuencia</a>
+<ul>
+</ul>
+</li>
 <li><a href="#selección">Selección</a>
 <ul>
-<li><a href="#selección-simple">Selección simple</a></li>
-<li><a href="#selección-compuesta">Selección compuesta</a></li>
-<li><a href="#selección-múltiple">Selección múltiple</a></li>
-<li><a href="#lógica-de-anidamiento">Lógica de anidamiento</a></li>
+<li><a href="#selección-simple">Selección simple</a>
+</li>
+<li><a href="#selección-compuesta">Selección compuesta</a>
+</li>
+<li><a href="#selección-múltiple">Selección múltiple</a>
+<ul>
+<li><a href="#anidación">Anidación</a>
+</li>
+<li><a href="#selección-encadenada">Selección encadenada</a>
+</li>
+</ul>
+</li>
+<li><a href="#selección-múltiple-con-switch">Selección múltiple con switch</a>
+</li>
 </ul>
 </li>
 <li><a href="#repetición">Repetición</a>
 <ul>
-<li><a href="#sentencia-while">Sentencia while</a></li>
-<li><a href="#bucles-controlados-por-condición">Bucles controlados por condición</a></li>
-<li><a href="#bucles-controlados-por-contador">Bucles controlados por contador</a></li>
-<li><a href="#diseño-de-bucles">Diseño de bucles</a></li>
+<li><a href="#sentencia-while">Sentencia while</a>
+</li>
+<li><a href="#bucles-controlados-por-condición">Bucles controlados por condición</a>
+</li>
+<li><a href="#bucles-controlados-por-contador">Bucles controlados por contador</a>
+</li>
+<li><a href="#operadores-de-asignación">Operadores de asignación</a>
+</li>
+<li><a href="#sentencia-for">Sentencia for</a>
+</li>
+<li><a href="#diseño-de-bucles">Diseño de bucles</a>
+</li>
 </ul>
 </li>
 <li><a href="#depuración-y-verificación">Depuración y verificación</a>
 <ul>
-<li><a href="#trazas-de-ejecución">Trazas de ejecución</a></li>
-<li><a href="#errores-comunes">Errores comunes</a></li>
+<li><a href="#trazas-de-ejecución">Trazas de ejecución</a>
+</li>
+<li><a href="#errores-comunes">Errores comunes</a>
+</li>
 </ul>
 </li>
 </ul>
@@ -84,11 +129,13 @@ css: ["../estilos/estilo.css", "../estilos/tema_03.css"]
 * Comprender la diferencia entre análisis léxico, sintaxis y semántica.
 * Identificar los componentes léxicos de Java.
 * Construir y evaluar expresiones matemáticas y lógicas.
+* Comprender las reglas de promoción.
 * Utilizar métodos de la biblioteca estándar de Java.
 * Reconocer los distintos tipos de sentencias.
 * Entender el concepto de flujo de control.
 * Desarrollar algoritmos iterativos.
 * Realizar trazas de ejecución.
+* Identificar errores frecuentes.
 
 </section>
 
@@ -98,8 +145,9 @@ css: ["../estilos/estilo.css", "../estilos/tema_03.css"]
 * [Introducción](#introducción)
 * [Análisis léxico y componentes del lenguaje](#análisis-léxico-y-componentes-del-lenguaje)
     * [Concepto de Token y separador](#concepto-de-token-y-separador)
+    * [Literales](#literales)
     * [Palabras reservadas](#palabras-reservadas)
-* [Expresiones y Operadores](#expresiones-y-operadores)
+* [Expresiones y operadores](#expresiones-y-operadores)
     * [Operadores](#operadores)
     * [Evaluación en cortocircuito](#evaluación-en-cortocircuito)
     * [Precedencia y asociatividad](#precedencia-y-asociatividad)
@@ -109,6 +157,7 @@ css: ["../estilos/estilo.css", "../estilos/tema_03.css"]
     * [Clases envolventes](#clases-envolventes)
 * [Uso de la biblioteca estándar](#uso-de-la-biblioteca-estándar)
     * [La clase Math](#la-clase-math)
+    * [La biblioteca como herramienta de programación](#la-biblioteca-como-herramienta-de-programación)
 * [Instrucciones](#instrucciones)
     * [Sentencias](#sentencias)
     * [Bloques y ámbito](#bloques-y-ámbito)
@@ -120,11 +169,15 @@ css: ["../estilos/estilo.css", "../estilos/tema_03.css"]
     * [Selección simple](#selección-simple)
     * [Selección compuesta](#selección-compuesta)
     * [Selección múltiple](#selección-múltiple)
-    * [Lógica de anidamiento](#lógica-de-anidamiento)
+        * [Anidación](#anidación)
+        * [Selección encadenada](#selección-encadenada)
+    * [Selección múltiple con switch](#selección-múltiple-con-switch)
 * [Repetición](#repetición)
     * [Sentencia while](#sentencia-while)
     * [Bucles controlados por condición](#bucles-controlados-por-condición)
     * [Bucles controlados por contador](#bucles-controlados-por-contador)
+    * [Operadores de asignación](#operadores-de-asignación)
+    * [Sentencia for](#sentencia-for)
     * [Diseño de bucles](#diseño-de-bucles)
 * [Depuración y verificación](#depuración-y-verificación)
     * [Trazas de ejecución](#trazas-de-ejecución)
@@ -3019,7 +3072,8 @@ Cuando se produce un error de compilación conviene leer con atención el mensaj
 
 Se producen cuando la aplicación compila correctamente pero la máquina virtual interrumpe la ejecución al intentar procesar una operación no válida. Un ejemplo sencillo aparece en las operaciones aritméticas. Una división entera por cero no es una operación válida:
 
-<pre class="codigo-java">int dividendo = 10;
+<pre class="codigo-java">
+int dividendo = 10;
 int divisor = 0;
 int resultado = dividendo / divisor;</pre>
 
@@ -3122,7 +3176,8 @@ En una sentencia **switch**, el error más característico consiste en olvidar q
 
 Por ejemplo:
 
-<pre class="codigo-java">switch (dia) {
+<pre class="codigo-java">
+switch (dia) {
     case 1:
         System.out.println("Lunes");
     case 2:
@@ -3172,17 +3227,23 @@ También puede producirse el error contrario: utilizar un bucle **while** cuando
 
 Cuando se utiliza una variable como contador o acumulador, debemos distinguir claramente entre el valor que contiene y la operación que modifica dicho valor. Por ejemplo:
 
-<pre class="codigo-java">suma = suma + numero;</pre>
+<pre class="codigo-java">
+suma = suma + numero;
+</pre>
 
 no significa que <span class="variable">suma</span> tome simplemente el valor de <span class="variable">numero</span>. Su nuevo valor es el resultado de combinar el valor anterior de <span class="variable">suma</span> con el de <span class="variable">numero</span>. Si escribimos por error:
 
-<pre class="codigo-java">suma = numero;</pre>
+<pre class="codigo-java">
+suma = numero;
+</pre>
 
 el valor acumulado anterior se pierde en cada iteración. Las trazas resultan especialmente útiles para descubrir este tipo de errores, porque permiten observar si una variable que debería conservar y ampliar progresivamente su información está siendo sobrescrita en lugar de actualizada.
 
 Algo semejante sucede con los operadores de incremento y decremento. En una sentencia independiente:
 
-<pre class="codigo-java">numero++;</pre>
+<pre class="codigo-java">
+numero++;
+</pre>
 
 el efecto final es incrementar <span class="variable">numero</span> en una unidad. Pero cuando el operador forma parte de una expresión, la diferencia entre su utilización prefija y posfija puede modificar el valor utilizado por el resto de la expresión. Por ello, cuando aparezca un <span class="operador">++</span> o un <span class="operador">&#45;&#45;</span> dentro de una expresión, debemos seguir cuidadosamente el orden de evaluación.
 
