@@ -1,0 +1,83 @@
+/* ==========================================================================
+   COMPONENTES EXCLUSIVOS Y ESPECÍFICOS - TEMA 04
+   ========================================================================== */
+
+/* --- Tabla comparativa: abstracción y encapsulación --- */
+table.tabla-comparativa-principios {
+    width: 100%;
+    margin: 1.2em 0;
+    border-collapse: collapse;
+    table-layout: fixed;
+    font-size: 0.95em;
+    color: #202835;
+    background-color: #ffffff;
+    break-inside: avoid;
+    page-break-inside: avoid;
+}
+
+table.tabla-comparativa-principios caption {
+    caption-side: bottom;
+    padding-top: 0.45em;
+    color: #666666;
+    font-size: 0.85em;
+    font-style: italic;
+    text-align: left;
+}
+
+table.tabla-comparativa-principios th,
+table.tabla-comparativa-principios td {
+    padding: 0.7em;
+    border: 1px solid #cbd5e0;
+    text-align: left;
+    vertical-align: top;
+    overflow-wrap: anywhere;
+}
+
+table.tabla-comparativa-principios thead th {
+    font-weight: bold;
+    vertical-align: middle;
+}
+
+table.tabla-comparativa-principios th.aspecto {
+    width: 22%;
+    background-color: #edf2f7;
+    color: #2d3748;
+}
+
+table.tabla-comparativa-principios th.abstraccion {
+    width: 39%;
+    background-color: #e3f0ed;
+    color: #24574f;
+}
+
+table.tabla-comparativa-principios th.encapsulacion {
+    width: 39%;
+    background-color: #f9ead8;
+    color: #80521d;
+}
+
+table.tabla-comparativa-principios tbody tr:nth-child(even) td {
+    background-color: #f8fafc;
+}
+
+table.tabla-comparativa-principios tbody tr:nth-child(even) th.aspecto {
+    background-color: #e7edf4;
+}
+
+/* Evita dividir filas entre páginas al generar el PDF. */
+table.tabla-comparativa-principios tr {
+    break-inside: avoid;
+    page-break-inside: avoid;
+}
+
+/* Ajustes para pantallas estrechas. */
+@media screen and (max-width: 640px) {
+    table.tabla-comparativa-principios {
+        font-size: 0.85em;
+    }
+
+    table.tabla-comparativa-principios th,
+    table.tabla-comparativa-principios td {
+        padding: 0.45em;
+    }
+}

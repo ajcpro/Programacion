@@ -10,6 +10,8 @@
   <h1 id="estructuras-de-programación">Estructuras de programación</h1>
   <p><a href="../pdf/temas/tema_03.pdf" target="_blank" class="boton-descarga-top">📥
   PDF</a></p>
+  <p><a href="../pdf/temas/tema_03.pdf" target="_blank" class="boton-descarga-top">📥
+  PDF</a></p>
   <nav class="menu-flotante">
   <input type="checkbox" id="menu-toggle" class="menu-checkbox">
   <label for="menu-toggle" class="menu-boton">☰</label>
@@ -20,6 +22,8 @@
   <ul>
   <li>
   <a href="#introducción">Introducción</a>
+  <ul>
+  </ul>
   </li>
   <li>
   <a href="#análisis-léxico-y-componentes-del-lenguaje">Análisis léxico
@@ -30,12 +34,15 @@
   separador</a>
   </li>
   <li>
+  <a href="#literales">Literales</a>
+  </li>
+  <li>
   <a href="#palabras-reservadas">Palabras reservadas</a>
   </li>
   </ul>
   </li>
   <li>
-  <a href="#expresiones-y-operadores">Expresiones y Operadores</a>
+  <a href="#expresiones-y-operadores">Expresiones y operadores</a>
   <ul>
   <li>
   <a href="#operadores">Operadores</a>
@@ -69,6 +76,10 @@
   <li>
   <a href="#la-clase-math">La clase Math</a>
   </li>
+  <li>
+  <a href="#la-biblioteca-como-herramienta-de-programación">La
+  biblioteca como herramienta de programación</a>
+  </li>
   </ul>
   </li>
   <li>
@@ -96,6 +107,8 @@
   </li>
   <li>
   <a href="#secuencia">Secuencia</a>
+  <ul>
+  </ul>
   </li>
   <li>
   <a href="#selección">Selección</a>
@@ -108,9 +121,18 @@
   </li>
   <li>
   <a href="#selección-múltiple">Selección múltiple</a>
+  <ul>
+  <li>
+  <a href="#anidación">Anidación</a>
   </li>
   <li>
-  <a href="#lógica-de-anidamiento">Lógica de anidamiento</a>
+  <a href="#selección-encadenada">Selección encadenada</a>
+  </li>
+  </ul>
+  </li>
+  <li>
+  <a href="#selección-múltiple-con-switch">Selección múltiple con
+  switch</a>
   </li>
   </ul>
   </li>
@@ -127,6 +149,12 @@
   <li>
   <a href="#bucles-controlados-por-contador">Bucles controlados por
   contador</a>
+  </li>
+  <li>
+  <a href="#operadores-de-asignación">Operadores de asignación</a>
+  </li>
+  <li>
+  <a href="#sentencia-for">Sentencia for</a>
   </li>
   <li>
   <a href="#diseño-de-bucles">Diseño de bucles</a>
@@ -156,11 +184,13 @@
   semántica.</li>
   <li>Identificar los componentes léxicos de Java.</li>
   <li>Construir y evaluar expresiones matemáticas y lógicas.</li>
+  <li>Comprender las reglas de promoción.</li>
   <li>Utilizar métodos de la biblioteca estándar de Java.</li>
   <li>Reconocer los distintos tipos de sentencias.</li>
   <li>Entender el concepto de flujo de control.</li>
   <li>Desarrollar algoritmos iterativos.</li>
   <li>Realizar trazas de ejecución.</li>
+  <li>Identificar errores frecuentes.</li>
   </ul>
   </section>
   <section class="toc">
@@ -174,9 +204,10 @@
   <ul>
   <li><a href="#concepto-de-token-y-separador">Concepto de Token y
   separador</a></li>
+  <li><a href="#literales">Literales</a></li>
   <li><a href="#palabras-reservadas">Palabras reservadas</a></li>
   </ul></li>
-  <li><a href="#expresiones-y-operadores">Expresiones y Operadores</a>
+  <li><a href="#expresiones-y-operadores">Expresiones y operadores</a>
   <ul>
   <li><a href="#operadores">Operadores</a></li>
   <li><a href="#evaluación-en-cortocircuito">Evaluación en
@@ -194,6 +225,8 @@
   estándar</a>
   <ul>
   <li><a href="#la-clase-math">La clase Math</a></li>
+  <li><a href="#la-biblioteca-como-herramienta-de-programación">La
+  biblioteca como herramienta de programación</a></li>
   </ul></li>
   <li><a href="#instrucciones">Instrucciones</a>
   <ul>
@@ -211,8 +244,13 @@
   <ul>
   <li><a href="#selección-simple">Selección simple</a></li>
   <li><a href="#selección-compuesta">Selección compuesta</a></li>
-  <li><a href="#selección-múltiple">Selección múltiple</a></li>
-  <li><a href="#lógica-de-anidamiento">Lógica de anidamiento</a></li>
+  <li><a href="#selección-múltiple">Selección múltiple</a>
+  <ul>
+  <li><a href="#anidación">Anidación</a></li>
+  <li><a href="#selección-encadenada">Selección encadenada</a></li>
+  </ul></li>
+  <li><a href="#selección-múltiple-con-switch">Selección múltiple con
+  switch</a></li>
   </ul></li>
   <li><a href="#repetición">Repetición</a>
   <ul>
@@ -221,6 +259,9 @@
   condición</a></li>
   <li><a href="#bucles-controlados-por-contador">Bucles controlados por
   contador</a></li>
+  <li><a href="#operadores-de-asignación">Operadores de
+  asignación</a></li>
+  <li><a href="#sentencia-for">Sentencia for</a></li>
   <li><a href="#diseño-de-bucles">Diseño de bucles</a></li>
   </ul></li>
   <li><a href="#depuración-y-verificación">Depuración y verificación</a>
@@ -5817,7 +5858,8 @@
   operación no válida. Un ejemplo sencillo aparece en las operaciones
   aritméticas. Una división entera por cero no es una operación
   válida:</p>
-  <pre class="codigo-java">int dividendo = 10;
+  <pre class="codigo-java">
+  int dividendo = 10;
   int divisor = 0;
   int resultado = dividendo / divisor;</pre>
   <p>El programa es sintácticamente correcto y sus tipos son
@@ -5958,7 +6000,8 @@
   ejecución continúa con las sentencias siguientes hasta abandonar el
   bloque (o hasta encontrar un <span class="palabra">break</span>).</p>
   <p>Por ejemplo:</p>
-  <pre class="codigo-java">switch (dia) {
+  <pre class="codigo-java">
+  switch (dia) {
       case 1:
           System.out.println("Lunes");
       case 2:
@@ -6033,13 +6076,17 @@
   <p>Cuando se utiliza una variable como contador o acumulador, debemos
   distinguir claramente entre el valor que contiene y la operación que
   modifica dicho valor. Por ejemplo:</p>
-  <pre class="codigo-java">suma = suma + numero;</pre>
+  <pre class="codigo-java">
+  suma = suma + numero;
+  </pre>
   <p>no significa que <span class="variable">suma</span> tome
   simplemente el valor de <span class="variable">numero</span>. Su nuevo
   valor es el resultado de combinar el valor anterior de <span
   class="variable">suma</span> con el de <span
   class="variable">numero</span>. Si escribimos por error:</p>
-  <pre class="codigo-java">suma = numero;</pre>
+  <pre class="codigo-java">
+  suma = numero;
+  </pre>
   <p>el valor acumulado anterior se pierde en cada iteración. Las trazas
   resultan especialmente útiles para descubrir este tipo de errores,
   porque permiten observar si una variable que debería conservar y
@@ -6047,7 +6094,9 @@
   lugar de actualizada.</p>
   <p>Algo semejante sucede con los operadores de incremento y
   decremento. En una sentencia independiente:</p>
-  <pre class="codigo-java">numero++;</pre>
+  <pre class="codigo-java">
+  numero++;
+  </pre>
   <p>el efecto final es incrementar <span class="variable">numero</span>
   en una unidad. Pero cuando el operador forma parte de una expresión,
   la diferencia entre su utilización prefija y posfija puede modificar
