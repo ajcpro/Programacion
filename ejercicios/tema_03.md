@@ -451,7 +451,7 @@ Explica la regla que utiliza Java.
         System.out.println(i);
     </pre>
 90. Escribe la forma equivalente mediante `while`:
-<pre class="codigo-java">
+    <pre class="codigo-java">
     for ( int i = 1; i <= 10; i++ )
         System.out.println(i);
     </pre>
@@ -505,7 +505,7 @@ Explica la regla que utiliza Java.
     contador /= 4
     contador %= 3
     </pre>
-utilizando solamente el operador `=`.
+    utilizando solamente el operador `=`.
 102. Indica qué valor queda en `x` después de cada una de las siguientes sentencias, suponiendo inicialmente `x = 10`:
     <pre class="codigo-java">
     x += 5;
@@ -527,12 +527,12 @@ utilizando solamente el operador `=`.
     <pre class="codigo-java">
     int i = 1;
     int suma = 0;
-
+    
     while ( i <= 4 ) {
         suma += i;
         i++;
     }
-
+    
     System.out.println(suma);
     </pre>
     Indica los valores de `i` y `suma` antes y después de cada iteración.
@@ -545,16 +545,16 @@ utilizando solamente el operador `=`.
         }
     </pre>
 108. Explica, sin escribir código, qué estructura o combinación de estructuras utilizarías para resolver cada uno de los siguientes algoritmos:
-    a) Obtener el mayor de tres valores.
-    b) Mostrar todos los números pares entre dos valores.
-    c) Leer una serie de valores hasta encontrar un valor especial.
-    d) Mostrar una tabla de multiplicar.
-    e) Clasificar una calificación en cuatro categorías.
-    f) Repetir una solicitud hasta que el dato sea válido.
+    a. Obtener el mayor de tres valores.
+    b. Mostrar todos los números pares entre dos valores.
+    c. Leer una serie de valores hasta encontrar un valor especial.
+    d. Mostrar una tabla de multiplicar.
+    e. Clasificar una calificación en cuatro categorías.
+    f. Repetir una solicitud hasta que el dato sea válido.
 109. Observa el siguiente código y localiza cualquier posible problema lógico relacionado con el flujo de control:
     <pre class="codigo-java">
     int i = 1;
-
+    
     while ( i <= 10 ) {
         System.out.println(i);
         i--;
@@ -567,7 +567,7 @@ utilizando solamente el operador `=`.
     <pre class="codigo-java">
     int numero = 1;
     int suma = 0;
-
+    
     while ( numero <= 5 ) {
         numero++;
         suma += numero;
@@ -579,7 +579,7 @@ utilizando solamente el operador `=`.
     <pre class="codigo-java">
     int suma = 0;
     int numero = teclado.nextInt();
-
+    
     while ( numero != 0 ) {
         suma = numero;
         numero = teclado.nextInt();
@@ -597,14 +597,14 @@ utilizando solamente el operador `=`.
     <pre class="codigo-java">
     int numero = 1;
     int suma = 0;
-
+    
     while ( numero <= 5 ); {
         if ( numero = 3 ) {
             suma += numero;
         }
         numero--;
     }
-
+    
     System.out.println(suma);
     </pre>
     Identifica los errores, explica si cada uno es sintáctico, de compilación o lógico y describe las consecuencias que produciría. Después, escribe una versión correcta y realiza una traza que compruebe que se muestran los números del 1 al 5 y que la suma final es 15.
