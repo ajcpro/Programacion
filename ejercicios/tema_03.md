@@ -498,7 +498,7 @@ Explica la regla que utiliza Java.
     int b = --contador;
     </pre>
 101. Completa las equivalencias:
-    <pre class="codigo-fuente">
+    <pre class="codigo-java">
     contador += 5
     contador -= 3
     contador *= 2
@@ -524,7 +524,7 @@ Explica la regla que utiliza Java.
     e. Solicitar una contraseña hasta que sea correcta, debiendo solicitarla al menos una vez.
 105. Para cada una de las situaciones anteriores, explica por qué las demás estructuras serían menos apropiadas.
 106. Haz sobre el papel la traza completa del siguiente programa:
-    <pre class="codigo-java">
+    <pre class="codigo-fuente">
     int i = 1;
     int suma = 0;
     
@@ -537,7 +537,7 @@ Explica la regla que utiliza Java.
     </pre>
     Indica los valores de `i` y `suma` antes y después de cada iteración.
 107. Haz una traza del siguiente programa e indica exactamente qué se imprime:
-    <pre class="codigo-java">
+    <pre class="codigo-fuente">
     for ( int i = 1; i <= 3; i++ ) {
         for ( int j = 1; j <= i; j++ )
             System.out.print(j + " ");
@@ -552,7 +552,7 @@ Explica la regla que utiliza Java.
     e. Clasificar una calificación en cuatro categorías.
     f. Repetir una solicitud hasta que el dato sea válido.
 109. Observa el siguiente código y localiza cualquier posible problema lógico relacionado con el flujo de control:
-    <pre class="codigo-java">
+    <pre class="codigo-fuente">
     int i = 1;
     
     while ( i <= 10 ) {
@@ -564,7 +564,7 @@ Explica la regla que utiliza Java.
 110. Explica qué elementos de un bucle debes comprobar sistemáticamente cuando realizas una revisión manual de un algoritmo repetitivo.
 111. Explica la diferencia entre **verificación** y **depuración**. ¿Por qué el hecho de que un programa compile correctamente no garantiza que resuelva el problema para el que se ha escrito?
 112. El siguiente programa debería calcular la suma de los enteros comprendidos entre 1 y 5, ambos incluidos. Sin ejecutarlo, realiza una traza y determina qué valor obtiene realmente. Localiza el primer punto en el que la ejecución deja de seguir el proceso esperado y corrige el código.
-    <pre class="codigo-java">
+    <pre class="codigo-fuente">
     int numero = 1;
     int suma = 0;
     
@@ -576,7 +576,7 @@ Explica la regla que utiliza Java.
     </pre>
 113. Un programa debe clasificar una nota comprendida entre 0 y 10. Las notas inferiores a 5 son insuficientes; las notas desde 5 hasta menos de 7 son aprobadas; las notas desde 7 hasta menos de 9 son notables; y las notas desde 9 hasta 10 son sobresalientes. Propón un conjunto de datos de prueba que permita comprobar todas las categorías y los valores situados en sus límites. Para cada dato, indica cuál debería ser el resultado.
 114. El siguiente fragmento debería sumar los valores de una secuencia. Al probarlo con los datos 3, 4 y 5, el resultado no es el esperado.
-    <pre class="codigo-java">
+    <pre class="codigo-fuente">
     int suma = 0;
     int numero = teclado.nextInt();
     
@@ -594,7 +594,7 @@ Explica la regla que utiliza Java.
 119. ¿Por qué una traza correcta para un único conjunto de datos no demuestra que un programa sea correcto para todas las entradas? Utiliza como ejemplo un programa que calcula el factorial y propone datos que permitan comprobar su comportamiento normal, los límites de entrada y algún caso que pueda revelar un error.
 120. Al probar un programa, observas que compila y termina normalmente, pero calcula un resultado incorrecto. Describe un procedimiento ordenado para localizar la causa. Incluye en tu explicación la comparación entre el resultado esperado y el obtenido, la elección de datos de prueba y la utilización de una traza para localizar el primer estado incorrecto.
 121. El siguiente bucle pretende mostrar los números del 1 al 5 y sumar sus valores, pero contiene varios errores:
-    <pre class="codigo-java">
+    <pre class="codigo-fuente">
     int numero = 1;
     int suma = 0;
     
