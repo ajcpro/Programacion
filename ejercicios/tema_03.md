@@ -401,7 +401,7 @@ Explica la regla que utiliza Java.
 74. Considera:
     <pre class="codigo-java">
     int numero = 1;
-
+    
     while ( numero <= 5 ) {
         System.out.println(numero);
         numero = numero + 1;
@@ -411,7 +411,7 @@ Explica la regla que utiliza Java.
 75. ¿Cuántas iteraciones realiza el siguiente bucle?
     <pre class="codigo-java">
     int numero = 10;
-
+    
     while ( numero < 5 )
         numero++;
     </pre>
@@ -419,7 +419,7 @@ Explica la regla que utiliza Java.
 77. Explica qué problema presenta el siguiente código:
     <pre class="codigo-java">
     int numero = 1;
-
+    
     while ( numero <= 5 )
         System.out.println(numero);
     </pre>
