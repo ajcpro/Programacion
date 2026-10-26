@@ -668,7 +668,7 @@
   una imagen irregular y abultada que exagera la escala vertical unas
   10000 veces.</p>
   <figure class="img-grande">
-  <img src="../imagenes/04_01_planeta_tierra.png" alt="Diferentes representaciones del planeta Tierra, según nuestros intereses">
+  <img src="../imagenes/04_01_planeta_tierra.png" alt="Diferentes representaciones del planeta Tierra, según nuestros intereses, e imagen desde el espacio">
   </figure>
   <p>Este ejemplo muestra que <strong>la abstracción depende del
   problema que deseamos resolver</strong>. Una misma entidad del mundo
@@ -836,6 +836,604 @@
   de implementación interna de un módulo deben permanecer ocultos tras
   una interfaz pública estable.</p>
   </aside>
+  <h3 id="clases-y-objetos">Clases y objetos</h3>
+  <p>Hemos estudiado los principios que sustentan la programación
+  orientada a objetos. El mundo real se modela mediante objetos que
+  poseen un estado, un comportamiento y una identidad, y que la
+  abstracción y la encapsulación nos ayudan a determinar qué información
+  resulta relevante y cómo organizarla junto con las operaciones que
+  actúan sobre ella.</p>
+  <p>Sin embargo, cuando una aplicación necesita representar numerosas
+  entidades del mismo tipo, debemos utilizar un mecanismo que permita
+  definir la estructura común y utilizarla para representar cada entidad
+  concreta. Este mecanismo se basa fundamentalmente en las
+  <strong>clases</strong> (que permiten definir las características y
+  comportamientos que comparten las entidades del mismo tipo) y los
+  <strong>objetos</strong> (entidades concretas que se ajustan a la
+  definición). En los siguientes apartados vamos a ver cómo se declara
+  una clase, cómo se crean objetos y cómo se organiza su funcionamiento
+  dentro del programa.</p>
+  <h4 id="la-clase-como-plantilla">La clase como plantilla</h4>
+  <p>Desde una perspectiva conceptual, una <strong>clase</strong> es un
+  modelo abstracto, una definición que establece la estructura y el
+  comportamiento que tendrán los objetos de un determinado tipo. Para
+  comprender esta idea, pensemos en la <strong>analogía del plano de
+  arquitectura y la vivienda</strong>: el plano de construcción es una
+  plantilla de diseño (<em>blueprint</em>), no una casa física; no es
+  habitable, no resguarda del frío o la lluvia, etc. A partir del plano,
+  sin embargo, se pueden edificar cientos de casas físicas distintas,
+  que compartirán la misma distribución trazada en el plano. La clase
+  describe de manera unificada las propiedades (atributos) y los
+  comportamientos (métodos) comunes que compartirán todos los objetos
+  que se creen a partir de ella.</p>
+  <p>La clase actúa como una plantilla que <strong>describe las
+  características comunes</strong>, mientras que los objetos que se
+  creen a partir de ella representarán entidades individuales. Esta
+  distinción permite separar la definición general de un tipo de la
+  información concreta que corresponde a cada una de sus instancias.</p>
+  <aside class="definicion">
+  <p><strong>Clase (<em>Class</em>):</strong> Estructura del código
+  fuente que actúa como plantilla, molde o especificación abstracta para
+  la creación de objetos, definiendo sus atributos (estado) y métodos
+  (comportamiento).</p>
+  <p><strong>Tipo de datos de usuario:</strong> Tipo de datos complejo
+  creado por el desarrollador mediante la definición de una clase,
+  ampliando los tipos primitivos proporcionados por el lenguaje.</p>
+  <p><strong>Interfaz pública de la clase:</strong> Conjunto de miembros
+  (atributos y métodos) declarados con visibilidad pública que definen
+  cómo pueden interactuar otras clases con sus instancias.</p>
+  </aside>
+  <h4 id="declaración-de-una-clase-en-java">Declaración de una clase en
+  Java</h4>
+  <p>En el lenguaje Java, la declaración de una clase se realiza
+  utilizando la palabra reservada <span class="palabra">class</span>,
+  seguida del identificador que le asignemos y, entre llaves, los
+  elementos que la compondrán.</p>
+  <p>La estructura más sencilla de una declaración de clase, <span
+  class="produccion-palabra">ClassDeclaration</span>, puede
+  representarse de la siguiente forma:</p>
+  <pre class="codigo-java">
+  class Punto {
+
+      // Datos que describen un punto
+
+      // Operaciones que pueden realizarse sobre el mismo
+
+  }
+  </pre>
+  <p>Esto corresponde a la estructura externa de una clase, pero aún no
+  contiene datos ni operaciones. Los comentarios indican los lugares en
+  los que incorporaremos esos elementos cuando estudiemos cómo es una
+  clase. Podemos distinguir tres elementos en la declaración:</p>
+  <ul>
+  <li>La palabra reservada <span class="palabra">class</span>, que
+  indica que estamos definiendo una clase.</li>
+  <li>El identificador <span class="clase">Punto</span>, que es el
+  nombre que utilizaremos para referirnos a esa definición.</li>
+  <li>Las llaves, que delimitan el cuerpo de la clase y contienen sus
+  declaraciones.</li>
+  </ul>
+  <p>La declaración establece una definición que el programa puede
+  utilizar para trabajar con objetos de ese tipo. Sin embargo,
+  <strong>declarar una clase no equivale a crear un punto en
+  concreto</strong>. La definición describe cómo serán las entidades que
+  se creen a partir de ella, pero la información particular de cada
+  entidad corresponderá a cada objeto.</p>
+  <h4 id="una-clase-distintos-objetos">Una clase, distintos objetos</h4>
+  <p>Supongamos que nuestra aplicación gestiona dos o más puntos. Todos
+  ellos van a tener un identificador y una posición, y permitirán
+  realizar las mismas operaciones. Sin embargo, cada uno tendrá sus
+  propios valores y podrá encontrarse en una situación diferente.</p>
+  <p>La clase <span class="clase">Punto</span> define la estructura
+  común que deberán tener los puntos, pero no determina que sus
+  posiciones deban coincidir ni que sus estados deban evolucionar de la
+  misma forma. Un punto puede estar cerca del origen y otro muy alejado.
+  Si cambia la posición del primero, el del segundo no debe modificarse
+  por ese solo hecho.</p>
+  <p>La clase permite establecer <strong>qué tienen en común los
+  objetos</strong>, mientras que cada objeto conserva la información que
+  le corresponde como entidad individual. Del mismo modo, las
+  operaciones que define la clase describen comportamientos comunes,
+  pero sus efectos dependerán del objeto concreto sobre el que se
+  realicen.</p>
+  <p>Podemos resumir esta relación mediante la siguiente
+  comparación:</p>
+  <aside class="definicion">
+  <p><strong>Clase:</strong> Definición que establece la estructura y el
+  comportamiento comunes a los objetos de un determinado tipo.</p>
+  <p><strong>Objeto:</strong> Entidad concreta que posee su propia
+  identidad y su propio estado, y cuyo comportamiento se ajusta a la
+  definición de una clase.</p>
+  </aside>
+  <p>En Java, no obstante, un clase es una construcción del propio
+  lenguaje que permite definir tipos y organizar los elementos de un
+  programa. La comparación que hacíamos con una plantilla facilita la
+  comprensión de su función, pero la clase forma parte del código que
+  escribimos y constituye la base sobre la que se crean y utilizan los
+  objetos.</p>
+  <h4 id="el-objeto-como-instancia-en-tiempo-de-ejecución">El objeto
+  como instancia en tiempo de ejecución</h4>
+  <p>En el apartado anterior hemos visto que la clase representa la
+  especificación de los objetos de un determinado tipo. Sin embargo, la
+  declaración de una clase no representa por sí misma una entidad
+  concreta: establece una definición que podremos utilizar para crear
+  objetos durante la ejecución del programa.</p>
+  <p>Un <strong>objeto</strong> —denominado formalmente
+  <strong>instancia</strong>— constituye la entidad concreta que se
+  ajusta a la definición establecida por la clase. Mientras que la clase
+  describe qué características y comportamientos tendrán los objetos de
+  un determinado tipo, cada instancia representa un objeto individual,
+  con su propia identidad y su propio estado.</p>
+  <p>La expresión <em>tiempo de ejecución</em> hace referencia al
+  periodo en el que el programa se está ejecutando. Es entonces cuando
+  se crean y utilizan las instancias que necesita la aplicación y cuando
+  sus estados pueden cambiar como consecuencia de las operaciones
+  realizadas. Por tanto, debemos distinguir entre la definición que
+  escribimos en el código fuente y los objetos concretos que se crean a
+  partir de ella.</p>
+  <p>Imaginemos que nuestra aplicación debe gestionar dos puntos. Ambos
+  necesitan disponer de un identificador, una posición y deben permitir
+  realizar las operaciones pertinentes. En lugar de escribir una
+  definición diferente para cada punto, utilizamos la misma clase <span
+  class="clase">Punto</span> para crear las dos instancias. De esta
+  manera, ambas comparten la estructura y los comportamientos definidos
+  por la clase, pero cada objeto mantiene los valores que le
+  corresponden.</p>
+  <p>Esta separación, en la que la clase existe como un único bloque de
+  código compilado, permite que una aplicación gestione numerosas
+  entidades que comparten características y operaciones, sin que por
+  ello deban compartir necesariamente sus valores de estado. <strong>La
+  clase define lo que tienen en común; cada instancia representa una
+  entidad concreta con sus propios valores.</strong></p>
+  <h4 id="creación-de-objetos-en-java">Creación de objetos en Java</h4>
+  <h6 id="la-anatomía-del-proceso-de-instanciación-el-operador-new">La
+  anatomía del proceso de instanciación: El operador
+  <code>new</code></h6>
+  <p>En Java, la creación de una instancia exige la intervención
+  explícita del operador <span class="operador">new</span>, seguido de
+  la información necesaria para construir el objeto. Por el momento, nos
+  interesa reconocer la relación entre la clase y las instancias que se
+  crean a partir de ella; estudiaremos la sintaxis de la instanciación y
+  el funcionamiento de este operador en el apartado dedicado a la
+  gestión de memoria y al ciclo de vida de los objetos.</p>
+  <p>A modo de ejemplo, si disponemos de la clase <span
+  class="clase">Punto</span>, dentro de un método podríamos encontrar
+  las siguientes declaraciones:</p>
+  <pre class="codigo-java">
+  Punto origen = new Punto();
+  Punto destino = new Punto();
+  </pre>
+  <p>En este fragmento aparecen dos creaciones de objetos basadas en la
+  misma clase. La primera instancia se asocia a la variable <span
+  class="variable">origen</span>, mientras que la segunda se asocia a
+  <span class="variable">destino</span>. No estamos declarando dos
+  clases distintas, sino creando dos objetos del mismo tipo.</p>
+  <p>Debemos tener presente que el fragmento anterior es ilustrativo de
+  la relación entre una clase y sus instancias. La definición completa
+  de <span class="clase">Punto</span>, así como los detalles relativos a
+  la creación de los objetos y a la información que mantiene cada uno,
+  se estudiarán en los apartados correspondientes.</p>
+  <aside class="definicion">
+  <p><strong>Instancia:</strong> Objeto concreto creado a partir de la
+  definición de una clase.</p>
+  <p><strong>Instanciación:</strong> Acto sintáctico y semántico
+  mediante el cual se solicitala reserva de memoria y la inicialización
+  de un nuevo objeto utilizando el operador <span
+  class="palabra">new</span>.</p>
+  <p><strong>Tiempo de ejecución:</strong> Periodo durante el cual el
+  programa se está ejecutando y puede crear, utilizar y modificar
+  objetos.</p>
+  <p><strong>Operador Punto (<code>.</code>):</strong> Operador de
+  selección de miembros utilizado para acceder a los atributos e invocar
+  los métodos de una instancia a través de su variable de
+  referencia.</p>
+  </aside>
+  <p>La distinción entre clase e instancia permite comprender mejor los
+  conceptos que hemos estudiado anteriormente. La clase establece las
+  características y los comportamientos comunes, mientras que cada
+  objeto posee su propia identidad y mantiene un estado particular.</p>
+  <p>Si creamos tres objetos a partir de una clase que representa
+  vehículos, los tres podrán compartir características comunes —como la
+  matrícula, el color o el número de plazas— y comportamientos —como
+  arrancar o detenerse—. Sin embargo, cada vehículo corresponderá a una
+  entidad concreta, con sus propios valores de estado. Que dos vehículos
+  tengan el mismo color no significa que sean el mismo vehículo.</p>
+  <p>Esta relación entre una definición común y múltiples entidades
+  individuales es una de las bases de la programación orientada a
+  objetos. Permite describir una estructura una sola vez y utilizarla
+  para representar tantas entidades como necesite la aplicación,
+  manteniendo diferenciadas sus identidades y sus estados.</p>
+  <h5 id="interfaz-pública">Interfaz pública</h5>
+  <p>Hemos visto que la clase establece las características y los
+  comportamientos, mientras que cada instancia representa una entidad
+  con su propio estado. También hemos estudiado la encapsulación como el
+  principio que permite organizar la información y las operaciones de
+  una entidad y delimitar la forma en que el resto del programa puede
+  utilizarlas. Esta organización introduce una distinción fundamental:
+  <strong>no es necesario conocer cómo funciona internamente un objeto
+  para poder utilizarlo</strong>. Basta con conocer qué operaciones
+  ofrece, qué información necesita y qué resultado podemos esperar del
+  mismo. Esta separación se establece mediante una interfaz pública que
+  define cómo puede utilizarse el objeto, independientemente de los
+  detalles de su implementación, y constituye la piedra angular para
+  construir software modular, flexible y preparado para evolucionar a lo
+  largo del tiempo.</p>
+  <h4 id="la-interfaz-pública-qué-ofrece-el-objeto">La interfaz pública:
+  qué ofrece el objeto</h4>
+  <p>La <strong>interfaz pública</strong> representa su cara visible
+  hacia el exterior. Está formada por las operaciones que pone a
+  disposición del resto del programa y por las condiciones que deben
+  cumplirse para utilizarlas correctamente. Es, por tanto, la parte de
+  su funcionamiento que necesitan conocer los componentes que
+  interactúan con él.</p>
+  <p>La interfaz pública define el <strong>“qué hace”</strong> el
+  objeto, omitiendo por completo el <strong>“cómo lo hace”</strong>.
+  Cualquier componente que necesite trabajar con el objeto deberá
+  conocer qué operación debe solicitar y qué parámetros necesita
+  proporcionar. Si una operación devuelve un resultado, también deberá
+  conocer qué representa ese resultado.</p>
+  <p>Por ejemplo, un programa podría utilizar una instancia de la clase
+  estándar <span class="clase">Scanner</span> para leer datos desde el
+  teclado con una llamada como la siguiente:</p>
+  <pre class="codigo-java">
+  teclado.next();
+  </pre>
+  <p>La expresión representa una solicitud para leer del
+  <em>scanner</em> identificado por <span
+  class="variable">teclado</span>. Quien realiza la llamada necesita
+  conocer el nombre de la operación y la información que debe
+  proporcionar, pero no necesita saber qué estructuras de memoria o qué
+  algoritmos internos utiliza para procesar los caracteres.</p>
+  <p>De manera semejante, otro componente podría solicitar un entero. No
+  necesitaría conocer cómo se almacena internamente esa información ni
+  cómo se ha actualizado a consecuencia de operaciones anteriores. Esta
+  forma de interacción permite que cada componente se concentre en la
+  tarea que le corresponde. La interfaz debe definir con claridad cómo
+  se utilizan sus operaciones. Por ejemplo, el comportamiento que tendrá
+  si la aplicación solicita un entero pero lo que se lee de la entrada
+  no lo es. Puede indicar qué sucede cuando se cumplen las condiciones y
+  qué resultado se produce cuando la operación no puede realizarse.</p>
+  <p>Por tanto, <strong>la interfaz pública establece qué puede
+  solicitarse al objeto y cómo debe utilizarse</strong>, sin obligar a
+  conocer todos los pasos necesarios para atender esas solicitudes.</p>
+  <h4 id="los-detalles-de-implementación-cómo-funciona-internamente">Los
+  detalles de implementación: cómo funciona internamente</h4>
+  <p>Los <strong>detalles de implementación</strong> comprenden las
+  decisiones y los mecanismos internos utilizados para llevar a cabo las
+  operaciones que ofrece un objeto. Incluyen cómo se representa y se
+  actualiza la información, qué cálculos se realizan y qué
+  comprobaciones se ejecutan para garantizar el comportamiento
+  previsto.</p>
+  <p>En el ejemplo del <em>scanner</em> la implementación debe comprobar
+  si hay datos en la entrada, si son del tipo solicitado y, cuando se
+  cumplen las condiciones, devolverlo. También qué sucede cuando alguna
+  condición impide completar la operación. El componente que hace la
+  solicitud no necesita conocer todos esos pasos. Su responsabilidad
+  consiste en solicitar la operación mediante la interfaz disponible; la
+  responsabilidad de aplicar las reglas correspondientes pertenece al
+  objeto que implementa ese comportamiento.</p>
+  <p>La misma separación se mantiene si cambia la forma de realizar
+  internamente una operación. Podríamos modificar el procedimiento
+  utilizado para validar los datos o cambiar la representación interna
+  de los mismos. Si la operación continúa ofreciendo el mismo servicio y
+  mantiene el comportamiento establecido, los componentes que la
+  utilizan no deberían necesitar modificaciones por el mero hecho de que
+  haya cambiado su implementación.</p>
+  <p>Esta independencia es importante porque el software evoluciona. Una
+  decisión de diseño que resulta adecuada al principio puede necesitar
+  ajustes posteriores, ya sea para mejorar el funcionamiento, corregir
+  errores o incorporar nuevos requisitos. Si todos los componentes
+  dependen de los detalles internos de los demás, estos cambios pueden
+  propagarse por todo el programa. En cambio, una separación adecuada
+  entre la interfaz y la implementación permite modificar el
+  funcionamiento interno sin alterar necesariamente el código que
+  utiliza el objeto.</p>
+  <p>Debemos aclarar que esta separación no significa que la
+  implementación pueda cambiar de cualquier manera. Si una modificación
+  altera el significado de una operación, sus condiciones de utilización
+  o los resultados que ofrece, los componentes que dependen de ese
+  comportamiento pueden verse afectados. Para mantener la independencia,
+  es necesario respetar lo establecido por la interfaz.</p>
+  <h4 id="relación-entre-interfaz-pública-y-encapsulación">Relación
+  entre interfaz pública y encapsulación</h4>
+  <p>La separación entre interfaz pública y detalles de implementación
+  está estrechamente relacionada con la encapsulación. Encapsular no
+  consiste únicamente en agrupar información y operaciones en un objeto,
+  sino también en establecer límites que eviten que el resto del
+  programa dependa innecesariamente de sus mecanismos internos.</p>
+  <p>Imaginemos que el saldo de una cuenta bancaria pudiera modificarse
+  directamente desde cualquier parte de la aplicación. Cada componente
+  tendría que conocer cómo se representa ese dato y sería responsable de
+  respetar las condiciones necesarias para mantenerlo en un estado
+  válido. Si uno de ellos modificase el saldo sin comprobar si la
+  operación está permitida, podría introducir una inconsistencia.</p>
+  <p>En cambio, si el saldo se gestiona mediante las operaciones
+  previstas en la interfaz, el resto del programa puede solicitar
+  ingresos o retiradas sin tener que modificar directamente la
+  información interna. La implementación de esas operaciones se encarga
+  de aplicar las comprobaciones correspondientes y de actualizar el
+  estado cuando procede.</p>
+  <p>Esta organización ayuda a reducir el <strong>acoplamiento</strong>
+  entre componentes, puesto que evita que cada uno dependa de los
+  detalles internos de los demás. También facilita el mantenimiento:
+  cuando una parte del programa necesita cambiar su implementación,
+  podemos hacerlo con menos repercusiones si se conserva la forma en que
+  interactúa con el resto.</p>
+  <p>No obstante, la existencia de una interfaz no garantiza por sí sola
+  que el objeto esté bien diseñado. Es necesario definir operaciones
+  coherentes con sus responsabilidades, establecer condiciones de uso
+  claras y evitar que la interfaz exponga información u operaciones que
+  no deberían necesitar los demás componentes.</p>
+  <aside class="definicion">
+  <p><strong>Interfaz pública:</strong> Conjunto de operaciones y
+  condiciones de utilización que un objeto ofrece al resto del programa
+  para que pueda interactuar con él.</p>
+  <p><strong>Detalles de implementación:</strong> Decisiones y
+  mecanismos internos que permiten realizar las operaciones ofrecidas
+  por un objeto.</p>
+  <p><strong>Separación entre interfaz e implementación:</strong>
+  Principio por el que los componentes que utilizan un objeto dependen
+  de los servicios que ofrece y no de los detalles concretos de cómo los
+  realiza.</p>
+  </aside>
+  <p>Esta separación conceptual constituye la base de la programación
+  modular moderna, permitiendo que equipos de desarrolladores trabajen
+  de forma paralela en distintos módulos del sistema con la única
+  condición de acordar previamente sus respectivas interfaces
+  públicas.</p>
+  <h4 id="convenciones-de-nomenclatura">Convenciones de
+  nomenclatura</h4>
+  <p>En el tema anterior aprendimos qué son los identificadores, es
+  decir, los nombres que utilizamos para designar los distintos
+  elementos de un programa. Vimos que hay unas reglas sintácticas para
+  determinar qué nombres son válidos y que no podemos utilizar palabras
+  reservadas. Sin embargo, que un nombre sea sintácticamente válido no
+  significa necesariamente que sea adecuado.</p>
+  <p>En el desarrollo de software profesional, el código fuente no se
+  escribe únicamente para ser interpretado y traducido por un
+  compilador, sino para ser leído, comprendido, auditado y mantenido por
+  seres humanos. Los nombres que asignamos a las clases, las variables y
+  los métodos forman parte de la información que utilizamos para
+  comprender el código. Un identificador bien elegido nos permite
+  reconocer la función del elemento sin examinar continuamente las
+  instrucciones en las que aparece. Por el contrario, los nombres
+  ambiguos, excesivamente abreviados o que no reflejan la finalidad de
+  dicho elemento dificultan la lectura y el mantenimiento del
+  programa.</p>
+  <p>Java cuenta con una serie de <strong>convenciones de
+  nomenclatura</strong> (<em>naming conventions</em>) que establecen
+  criterios comunes para nombrar los elementos de un programa. Estas
+  directrices regulan la asignación de identificadores a las clases,
+  interfaces, atributos, métodos, constantes y paquetes. No todas estas
+  convenciones son reglas obligatorias del lenguaje: en muchos casos, el
+  compilador admite nombres diferentes, pero los programadores
+  familiarizados con el lenguaje pueden deducir la naturaleza, la
+  visibilidad y el rol sintáctico de un elemento sin necesidad de buscar
+  su declaración formal.</p>
+  <p>Los nombres de las clases se escriben habitualmente mediante la
+  convención denominada <em>UpperCamelCase</em> o <em>PascalCase</em>.
+  Consiste en escribir cada palabra con su inicial en mayúscula, sin
+  separar las palabras mediante espacios ni guiones bajos. Por ejemplo,
+  si deseamos representar una cuenta bancaria, una factura o un
+  estudiante, podemos utilizar las clases siguientes:</p>
+  <pre class="codigo-java">
+  class CuentaBancaria {
+  }
+
+  class Factura {
+  }
+
+  class Estudiante {
+  }
+  </pre>
+  <p>Como podemos observar, cada nombre comienza con mayúscula y, cuando
+  está formado por varias palabras, cada una de ellas comienza también
+  con mayúscula. Esta convención permite distinguir visualmente los
+  nombres de las clases de los nombres habituales de variables y
+  métodos.</p>
+  <p>Además, los nombres de las clases suelen ser <strong>sustantivos
+  singulares o expresiones nominales</strong> que describen el tipo de
+  entidad representada. Puesto que la clase representa el modelo
+  abstracto de un concepto individual del dominio, su identificador debe
+  expresarse mediante un sustantivo singular en mayúsculas iniciales
+  (<span class="clase">Factura</span>, <span
+  class="clase">Cliente</span>, <span
+  class="clase">SensorTemperatura</span>). Deben evitarse nombres en
+  plural (<span class="clase">Facturas</span>) o verbos en
+  infinitivo.</p>
+  <p>Elegir nombres acordes con la función de cada elemento facilita la
+  comprensión del diseño. No obstante, la convención no obliga a que
+  todos los nombres de clases sigan una estructura determinada más allá
+  de las reglas generales de los identificadores. Su finalidad es
+  establecer una forma de escritura uniforme y fácilmente
+  reconocible.</p>
+  <p>Los nombres de las variables y de los objetos suelen seguir la
+  convención <em>lowerCamelCase</em>. A diferencia de los nombres de las
+  clases, comienzan con una letra minúscula, mientras que la inicial de
+  cada palabra posterior se escribe en mayúscula. Veamos algunos
+  ejemplos:</p>
+  <pre class="codigo-fuente">
+  saldoDisponible
+  Cliente
+  ana
+  luis
+  fechaNacimiento
+  </pre>
+  <p>Esta forma de escribir los nombres permite distinguirlos de los
+  identificadores de las clases. Así, <span class="clase">Cliente</span>
+  designa una clase, mientras que <span class="variable">ana</span>
+  puede utilizarse como nombre de una variable que hace referencia a un
+  objeto de esa clase.</p>
+  <p>Los nombres de las variables deben reflejar, siempre que sea
+  posible, la información que representan o la función que desempeñan.
+  No resulta igualmente expresivo utilizar <span
+  class="variable">x</span> o <span class="variable">valor</span> que
+  emplear <span class="variable">precioProducto</span> o <span
+  class="variable">numeroEstudiantes</span>, siempre que estos últimos
+  describan realmente la información almacenada.</p>
+  <p>Por supuesto, existen situaciones en las que los nombres cortos son
+  apropiados: una variable utilizada como contador en un bucle muy
+  sencillo puede llamarse <span class="variable">i</span>, por ejemplo.
+  Sin embargo, cuando una variable tiene una función relevante en el
+  algoritmo, es preferible utilizar un nombre que permita reconocer su
+  significado.</p>
+  <p>Debemos distinguir, además, entre el nombre de la clase y el de la
+  variable que permite trabajar con uno de sus objetos. Ambos
+  identificadores cumplen funciones diferentes: la clase define un tipo,
+  mientras que la variable permite referirse a una entidad concreta
+  durante la ejecución del programa.</p>
+  <p>Los métodos suelen seguir también la convención
+  <em>lowerCamelCase</em>, comenzando con una letra minúscula y
+  escribiendo con mayúscula inicial las palabras posteriores. Sin
+  embargo, a diferencia de los nombres de variables, <strong>los nombres
+  de los métodos suelen expresar una acción o una operación</strong>. Se
+  emplean <strong>verbos en infinitivo</strong> o frases verbales que
+  describan la acción que ejecuta la operación. Por ejemplo, en una
+  clase <span class="class">CuentaBancaria</span> podríamos definir
+  operaciones con nombres como los siguientes:</p>
+  <pre class="codigo-fuente">
+  ingresar
+  retirar
+  consultarSaldo
+  calcularIntereses
+  actualizarTitular
+  </pre>
+  <p>Estos nombres ayudan a comprender qué operación se solicita al
+  invocar un método. Si encontramos una llamada como <span
+  class="variable">cuentaCliente</span><span
+  class="operador">.</span><span class="metodo">consultarSaldo()</span>,
+  podemos deducir que se está solicitando una consulta del saldo de la
+  cuenta representada por <span
+  class="variable">cuentaCliente</span>.</p>
+  <p>También es habitual utilizar expresiones como <span
+  class="metodo">esValida</span>, <span class="metodo">estaActiva</span>
+  o <span class="metodo">tieneSaldo</span> para métodos que permiten
+  comprobar una condición y obtener un resultado lógico. La elección del
+  nombre debe tener en cuenta la responsabilidad real del método. Si sus
+  nombres no describen adecuadamente lo que hacen, el código resulta más
+  difícil de interpretar y puede inducir a errores.</p>
+  <p>Las constantes simbólicas suelen nombrarse utilizando
+  exclusivamente letras mayúsculas, separando las palabras mediante
+  guiones bajos: se rigen por el estilo <em>UPPER_SNAKE_CASE</em> . Esta
+  convención permite reconocerlas visualmente frente a las variables
+  ordinarias. Por ejemplo:</p>
+  <pre class="codigo-fuente">
+  IVA_GENERAL
+  MAXIMO_INTENTOS
+  NUMERO_DIAS_SEMANA
+  </pre>
+  <p>Debemos tener presente que escribir un identificador en mayúsculas
+  no convierte por sí mismo una variable en una constante. La
+  nomenclatura es una convención que comunica la intención del
+  programador; la condición de constante depende de cómo se haya
+  declarado el elemento.</p>
+  <p>Java permite organizar las clases en paquetes, que proporcionan una
+  forma de agrupar clases relacionadas. Sus nombres suelen escribirse en
+  minúsculas, sin utilizar mayúsculas para separar palabras. En
+  proyectos de mayor tamaño es habitual utilizar la <strong>convención
+  de dominio invertido</strong> como base de los nombres de los
+  paquetes, con el propósito de reducir posibles coincidencias entre
+  organizaciones diferentes. Así, <span
+  class="codigo">pabloserrano.programacion.tema04</span> podría servir
+  para identificar el paquete <span class="codigo">tema04</span> de
+  <span class="codigo">programacion</span> en <span
+  class="codigo">pabloserrano</span>.</p>
+  <p>No necesitamos profundizar ahora en la organización de proyectos
+  mediante paquetes, pero conviene conocer esta convención porque
+  encontraremos estos nombres en las bibliotecas de Java y en
+  aplicaciones desarrolladas por otras personas.</p>
+  <p>Podemos reunir las pautas anteriores en la siguiente tabla:</p>
+  <table>
+  <tr>
+  <th>
+  Elemento
+  </th>
+  <th>
+  Convención
+  </th>
+  <th>
+  Ejemplo
+  </th>
+  <th>
+  Ejemplos Representativos
+  </th>
+  </tr>
+  <tr>
+  <td>
+  <b>Clase</b>
+  </td>
+  <td>
+  <i>UpperCamelCase</i>
+  </td>
+  <td>
+  <span class="clase">NombreClase</span>
+  </td>
+  <td>
+  <span class="clase">CuentaBancaria</span>, <span
+  class="clase">PuntoDosDimensiones</span>
+  </td>
+  </tr>
+  <tr>
+  <td>
+  <b>Variable u objeto</b>
+  </td>
+  <td>
+  <i>lowerCamelCase</i>
+  </td>
+  <td>
+  <span class="variable">nombreVariable</span>
+  </td>
+  <td>
+  <span class="variable">saldoActual</span>, <span
+  class="variable">numeroMatricula</span>
+  </td>
+  </tr>
+  <tr>
+  <td>
+  <b>Método</b>
+  </td>
+  <td>
+  <i>lowerCamelCase</i>
+  </td>
+  <td>
+  <span class="metodo">nombreMetodo</span>
+  </td>
+  <td>
+  <span class="metodo">getSaldo()</span>, <span
+  class="metodo">calcularSuperficie()</span>
+  </td>
+  </tr>
+  <tr>
+  <td>
+  <b>Constante</b>
+  </td>
+  <td>
+  <i>UPPER_SNAKE_CASE</i>
+  </td>
+  <td>
+  <span class="variable">NOMBRE_CONSTANTE</span>
+  </td>
+  <td>
+  <span class="variable">VALOR_MAXIMO</span>, <span
+  class="variable">FACTOR_CONVERSION</span>
+  </td>
+  </tr>
+  <tr>
+  <td>
+  <b>Paquete</b>
+  </td>
+  <td>
+  minúsculas continuas
+  </td>
+  <td>
+  <span class="codigo">dominio.proyecto</span>
+  </td>
+  <td>
+  <span class="codigo">java.lang</span>, <span
+  class="codigo">pabloserrano.programacion.tema04</span>
+  </td>
+  </tr>
+  </table>
   <footer class="pie">
   <div class="navegacion-principal">
   <p><a href="tema_03.html" class="anterior">Anterior</a> |
