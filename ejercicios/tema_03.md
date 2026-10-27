@@ -589,7 +589,7 @@ css: ["../estilos/estilo.css"]
       contador /= 4
       contador %= 3
       </pre>
-  <pre><codigo>utilizando solamente el operador `=`.</codigo></pre></li>
+  utilizando solamente el operador <span class="operador">=</span>.</li>
   <li>Indica qué valor queda en <codigo>x</codigo> después de cada una de
   las siguientes sentencias, suponiendo inicialmente
   <codigo>x = 10</codigo>:
@@ -600,7 +600,7 @@ css: ["../estilos/estilo.css"]
       x /= 4;
       x %= 3;
       </pre>
-  <pre><codigo>Considera cada caso de forma independiente.</codigo></pre></li>
+  Considera cada caso de forma independiente.</li>
   <li>Explica por qué <codigo>contador += 1</codigo> y
   <codigo>contador++</codigo> pueden producir el mismo estado final cuando
   se utilizan como sentencias independientes, aunque no sean la misma
@@ -620,7 +620,7 @@ css: ["../estilos/estilo.css"]
   <pre class="codigo-fuente">
 int i = 1;
 int suma = 0;
-while ( i &lt;= 4 ) {
+while ( i <>= 4 ) {
     suma += i;
     i++;
 }
@@ -652,7 +652,7 @@ for ( int i = 1; i <= 3; i++ ) {
   lógico relacionado con el flujo de control:
   <pre class="codigo-fuente">
 int i = 1;
-while ( i <&lt;>= 10 ) {
+while ( i <= 10 ) {
     System.out.println(i);
     i--;
 }
