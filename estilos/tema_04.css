@@ -85,7 +85,7 @@ table tr {
 }
 
 figure.img-referencia img {
-  max-width: 8%;
+  max-width: 20%;
 }
 
 figure.img-referencia, figure.img-objeto, fifigure.img-alias {
@@ -100,6 +100,8 @@ figure.img-objetos {
   max-width: 42%;
   margin: 0 0 0 1.5em;
   text-align: left;
+  display: flex;
+  gap: 8px;  
 }
 
 figure.img-objetos img {
