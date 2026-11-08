@@ -229,7 +229,7 @@ Conviene recordar que estas características constituyen un modelo conceptual, n
 
 A continuación, estudiaremos dos principios que ayudan a tomar estas decisiones: **la abstracción** y **la encapsulación**.
 
-##### Abstracción y encapsulación
+### Abstracción y encapsulación
 
 Estos dos conceptos representan los dos primeros **pilares fundamentales** de la programación orientada a objetos. No basta con identificar el estado, el comportamiento y la identidad: hay que decidir qué características necesitamos conservar, qué comportamientos nos interesan y cómo organizamos estos elementos para usarlos coherentemente.
 
@@ -297,13 +297,13 @@ Gracias a ambos principios, el resto de la aplicación puede trabajar con la ent
 
 </aside>
 
-### Clases y objetos
+## Clases y objetos
 
 Hemos estudiado los principios que sustentan la programación orientada a objetos. El mundo real se modela mediante objetos que poseen un estado, un comportamiento y una identidad, y que la abstracción y la encapsulación nos ayudan a determinar qué información resulta relevante y cómo organizarla junto con las operaciones que actúan sobre ella.
 
 Sin embargo, cuando una aplicación necesita representar numerosas entidades del mismo tipo, debemos utilizar un mecanismo que permita definir la estructura común y utilizarla para representar cada entidad concreta. Este mecanismo se basa fundamentalmente en las **clases** (que permiten definir las características y comportamientos que comparten las entidades del mismo tipo) y los **objetos** (entidades concretas que se ajustan a la definición). En los siguientes apartados vamos a ver cómo se declara una clase, cómo se crean objetos y cómo se organiza su funcionamiento dentro del programa.
 
-#### La clase como plantilla
+### La clase como plantilla
 
 Desde una perspectiva conceptual, una **clase** es un modelo abstracto, una definición que establece la estructura y el comportamiento que tendrán los objetos de un determinado tipo. Para comprender esta idea, pensemos en la **analogía del plano de arquitectura y la vivienda**: el plano de construcción es una plantilla de diseño (*blueprint*), no una casa física; no es habitable, no resguarda del frío o la lluvia, etc. A partir del plano, sin embargo, se pueden edificar cientos de casas físicas distintas, que compartirán la misma distribución trazada en el plano. La clase describe de manera unificada las propiedades (atributos) y los comportamientos (métodos) comunes que compartirán todos los objetos que se creen a partir de ella. 
 
@@ -364,7 +364,7 @@ Podemos resumir esta relación mediante la siguiente comparación:
 
 En Java, no obstante, un clase es una construcción del propio lenguaje que permite definir tipos y organizar los elementos de un programa. La comparación que hacíamos con una plantilla facilita la comprensión de su función, pero la clase forma parte del código que escribimos y constituye la base sobre la que se crean y utilizan los objetos.
 
-#### El objeto como instancia en tiempo de ejecución
+### El objeto como instancia en tiempo de ejecución
 
 En el apartado anterior hemos visto que la clase representa la especificación de los objetos de un determinado tipo. Sin embargo, la declaración de una clase no representa por sí misma una entidad concreta: establece una definición que podremos utilizar para crear objetos durante la ejecución del programa.
 
@@ -376,9 +376,7 @@ Imaginemos que nuestra aplicación debe gestionar dos puntos. Ambos necesitan di
 
 Esta separación, en la que la clase existe como un único bloque de código compilado, permite que una aplicación gestione numerosas entidades que comparten características y operaciones, sin que por ello deban compartir necesariamente sus valores de estado. **La clase define lo que tienen en común; cada instancia representa una entidad concreta con sus propios valores.**
 
-#### Creación de objetos en Java
-
-###### La anatomía del proceso de instanciación: El operador `new`
+#### El operador new
 
 En Java, la creación de una instancia exige la intervención explícita del operador <span class="operador">new</span>, seguido de la información necesaria para construir el objeto. Por el momento, nos interesa reconocer la relación entre la clase y las instancias que se crean a partir de ella; estudiaremos la sintaxis de la instanciación y el funcionamiento de este operador en el apartado dedicado a la gestión de memoria y al ciclo de vida de los objetos.
 
@@ -401,7 +399,7 @@ Debemos tener presente que el fragmento anterior es ilustrativo de la relación 
 
 **Tiempo de ejecución:** Periodo durante el cual el programa se está ejecutando y puede crear, utilizar y modificar objetos.
 
-**Operador Punto (`.`):** Operador de selección de miembros utilizado para acceder a los atributos e invocar los métodos de una instancia a través de su variable de referencia.
+**Operador Punto (<span class="operador">.</span>):** Operador de selección de miembros utilizado para acceder a los atributos e invocar los métodos de una instancia a través de su variable de referencia.
 
 </aside>
 
@@ -411,7 +409,7 @@ Si creamos tres objetos a partir de una clase que representa vehículos, los tre
 
 Esta relación entre una definición común y múltiples entidades individuales es una de las bases de la programación orientada a objetos. Permite describir una estructura una sola vez y utilizarla para representar tantas entidades como necesite la aplicación, manteniendo diferenciadas sus identidades y sus estados.
 
-##### Interfaz pública
+### Interfaz pública
 
 Hemos visto que la clase establece las características y los comportamientos, mientras que cada instancia representa una entidad con su propio estado. También hemos estudiado la encapsulación como el principio que permite organizar la información y las operaciones de una entidad y delimitar la forma en que el resto del programa puede utilizarlas. Esta organización introduce una distinción fundamental: **no es necesario conocer cómo funciona internamente un objeto para poder utilizarlo**. Basta con conocer qué operaciones ofrece, qué información necesita y qué resultado podemos esperar del mismo. Esta separación se establece mediante una interfaz pública que define cómo puede utilizarse el objeto, independientemente de los detalles de su implementación, y constituye la piedra angular para construir software modular, flexible y preparado para evolucionar a lo largo del tiempo.
 
@@ -469,7 +467,7 @@ No obstante, la existencia de una interfaz no garantiza por sí sola que el obje
 
 Esta separación conceptual constituye la base de la programación modular moderna, permitiendo que equipos de desarrolladores trabajen de forma paralela en distintos módulos del sistema con la única condición de acordar previamente sus respectivas interfaces públicas.
 
-#### Convenciones de nomenclatura
+### Convenciones de nomenclatura
 
 En el tema anterior aprendimos qué son los identificadores, es decir, los nombres que utilizamos para designar los distintos elementos de un programa. Vimos que hay unas reglas sintácticas para determinar qué nombres son válidos y que no podemos utilizar palabras reservadas. Sin embargo, que un nombre sea sintácticamente válido no significa necesariamente que sea adecuado.
 
@@ -553,6 +551,1036 @@ Podemos reunir las pautas anteriores en la siguiente tabla:
 <tr><td><b>Paquete</b></td><td>minúsculas continuas</td><td><span class="codigo">dominio.proyecto</span></td><td><span class="codigo">java.lang</span>, <span class="codigo">pabloserrano.programacion.tema04</span></td></tr>
 </table>
 
+## Gestión de memoria y ciclo de vida
+
+Hasta este momento hemos estudiado cómo se definen y se instancian objetos, qué papel desempeña la interfaz  y qué convenciones de nomenclatura permiten escribir código claro y legible. Sin embargo, para que un programa pueda utilizar estas entidades, necesita reservar espacio en memoria, almacenar información y disponer de algún mecanismo que permita localizar y utilizar los diferentes objetos.
+
+A diferencia de los tipos primitivos que estudiamos en el tema 2, donde los valores se gestionan directamente en la correspondiente variable, los objetos utilizan un modelo indirecto: existen de forma independiente a las variables que utilizamos para acceder a ellos. Esta distinción es fundamental para comprender cómo funciona Java: **una variable no contiene un objeto, sino que puede contener una referencia para localizarlo y trabajar con él**. El lenguaje distingue claramente entre las **variables que permiten referirse a los objetos** y las **instancias propiamente dichas que residen en la memoria**.
+
+Debemos comprender, por tanto, que **declarar una variable de una clase no equivale a crear una instancia**.
+
+### Variables de referencia
+
+En la programación en Java, una de las distinciones fundamentales que debemos dominar es la diferencia entre los **tipos primitivos** y los **tipos de referencia**.
+
+Cuando declaramos una variable de un tipo primitivo, como <span class="codigo">int</span>, <span class="codigo">double</span> o <span class="codigo">boolean</span>, establecemos un identificador asociado a un valor del tipo correspondiente reservando un espacio de memoria suficiente para almacenar dicho valor. Por ejemplo:
+
+<pre class="codigo-java">
+int coordenadaX = 10;
+double distancia = 25.5;
+boolean visible = true;
+</pre>
+
+En estos casos, las variables almacenan directamente los valores que representan: la variable y el valor forman una unidad indivisible en el espacio de memoria asignado.
+
+Sin embargo, cuando declaramos una variable cuyo tipo es una clase el comportamiento es sustancialmente diferente. La variable no almacena el objeto sino una **referencia** que permite acceder a una instancia de ese tipo, es decir, una dirección de memoria que indica en qué lugar del sistema se encuentra alojado el objeto real. Por este motivo, este tipo de variables reciben el nombre de **variables de referencia** (o variables de tipo objeto).
+
+Recordemos nuestra clase <span class="clase">Punto</span> y consideremos la siguiente declaración:
+
+<figure class="img-referencia">
+    <img src="../imagenes/04_02_referencia.png" alt="Representación de un elemento como variable de referencia">
+</figure>
+
+<pre class="codigo-java">
+Punto origen;
+</pre>
+
+Esta instrucción declara una variable <span class="variable">origen</span> de tipo <span class="clase">Punto</span>. Es decir, su tipo permite almacenar una referencia a un objeto que sea una instancia de esa clase. Se reserva el espacio necesario para almacenar la referencia correspondientepero **aún no se ha creado ningún punto**.
+
+Esta diferencia es esencial: **la variable de referencia y el objeto al que permite acceder son dos elementos distintos**. La variable es un identificador utilizado por el programa para trabajar con una instancia, mientras que el objeto es la entidad concreta que mantiene su propio estado y ofrece los comportamientos definidos por su clase.
+
+Observemos la siguiente sentencia:
+
+<figure class="img-objeto">
+    <img src="../imagenes/04_03_objeto.png" alt="Representación de una variable de referencia apuntando a una instanacia">
+</figure>
+
+<pre class="codigo-java">
+origen = new Punto();
+</pre>
+
+En este caso, la expresión <span class="literal">new Punto()</span> permite crear una instancia de la clase <span class="clase">Punto</span>, mientras que la variable <span class="variable">origen</span> recibe la referencia que permite acceder a ese objeto. Por tanto, no debemos interpretar que el objeto se encuentra almacenado dentro de la variable, sino que esta contiene el valor de referencia necesario para localizarlo y utilizarlo.
+
+Podemos establecer así una diferencia entre lo que contiene una variable primitiva y lo que contiene una variable de referencia:
+
+<table>
+<tr><th>Tipo de variable</th><th>Ejemplo</th><th>Contenido</th></tr>
+<tr><td>Tipo primitivo</td><td><span class="variable">coordenadaX</span></td><td>El valor primitivo que representa, por ejemplo, <span class="literal">10</span>.</td></tr>
+<tr><td>Tipo de referencia</td><td><span class="variable">origen</span></td><td>Una referencia que permite acceder a una instancia de la clase <span class="clase">Punto</span>.</td></tr>
+</table>
+
+Esta distinción tiene consecuencias importantes. Cuando trabajamos con una variable primitiva, el valor que contiene constituye directamente la información sobre la que realizamos las operaciones. En cambio, cuando utilizamos una variable de referencia, estamos accediendo indirectamente al objeto al que hace referencia. El estado y el comportamiento pertenecen al objeto, no a la variable que permite utilizarlo.
+
+También debemos tener en cuenta que una referencia no debe confundirse con una dirección física de memoria que el programador pueda consultar o modificar directamente. Aunque  la máquina, internamente, necesita mecanismos para localizar los objetos, el lenguaje de programación abstrae estos detalles y proporciona referencias que utilizamos mediante las operaciones habituales. No tenemos que calcular posiciones de memoria ni manipular direcciones para acceder a una instancia.
+
+El tipo declarado para una variable de referencia determina qué clase de objetos puede utilizar a través de ella. Así, una variable de tipo <span class="clase">Punto</span> está destinada a contener una referencia a una instancia compatible con ese tipo. El compilador utiliza esta información para comprobar que las operaciones que realizamos mediante la variable son coherentes con las características definidas por la clase.
+
+Por otra parte, **una misma clase puede tener muchas variables de referencia y cada una de ellas puede permitir acceder a una instancia diferente**. Si una aplicación necesita trabajar con varios puntos, podemos declarar las variables correspondientes:
+
+<figure class="img-objeto">
+    <img src="../imagenes/04_03b_objeto2.png" alt="Representación de un elemento como variable referencia: un segundo objeto">
+    <img src="../imagenes/04_03_objeto.png" alt="Representación de un elemento como variable de referencia">
+</figure>
+
+<pre class="codigo-java">
+Punto origen = new Punto();
+Punto destino = new Punto();
+</pre>
+
+En este fragmento declaramos dos variables de referencia del mismo tipo y creamos dos instancias de la clase <span class="clase">Punto</span>. Cada variable permite acceder a su correspondiente objeto, que mantiene su propia identidad y su propio estado. Aunque los tres objetos procedan de la misma definición, son entidades independientes.
+
+Esta forma de trabajar permite que una aplicación gestione simultáneamente numerosos objetos, utilizando variables de referencia para acceder a ellos y realizar las operaciones que correspondan. La variable proporciona el medio de acceso, mientras que el objeto conserva la información y el comportamiento que definen a la entidad representada.
+
+<aside class="definicion">
+
+**Tipo primitivo:** Tipo de dato básico proporcionado por el lenguaje cuya variable almacena directamente su valor en la celda de memoria.
+
+**Tipo de referencia:** Tipo de dato definido mediante una clase cuya variable no contiene directamente el objeto, sino la dirección de memoria donde este se encuentra alojado.
+
+**Variable de referencia:** Variable cuyo tipo permite almacenar una referencia a un objeto, proporcionando un medio para localizarlo y acceder a él durante la ejecución del programa.
+
+**Referencia:** Valor que permite identificar y acceder a una instancia de un tipo de referencia. No debe confundirse con el objeto al que hace referencia ni con una dirección física de memoria manipulable por el programador.
+
+</aside>
+
+En definitiva, debemos distinguir tres elementos que, aunque están relacionados, no son equivalentes: **la clase**, que define las características y los comportamientos comunes; **el objeto**, que representa una entidad concreta; y **la variable de referencia**, que permite acceder a esa instancia. Esta separación constituye la base para comprender cómo Java organiza y gestiona los objetos en memoria.
+
+### La referencia null
+
+Al estudiar las variables de referencia, hemos visto que una variable de este tipo  permite acceder a un objeto. Sin embargo, existen situaciones en las que una variable de referencia no apunta a ningún objeto en particular. Puede haber situaciones en las que todavía no dispongamos del objeto que necesitamos, que la entidad representada no exista o que, sencillamente, queramos indicar que una variable no hace referencia a ningún objeto en ese momento.
+
+Para representar esta ausencia explícita de referencia, Java proporciona un valor especial denominado <span class="literal">null</span>. **El valor <span class="literal">null</span> representa la ausencia de una referencia a un objeto**. Es decir, permite indicar que una variable de tipo referencia no está asociada a ninguna instancia.
+
+Por ejemplo, si declaramos una variable de tipo <span class="clase">Punto</span> y le asignamos expresamente el valor <span class="literal">null</span>, estamos indicando que, por el momento, no hace referencia a ningún objeto de esa clase:
+
+<figure class="img-null">
+    <img src="../imagenes/04_04_null.png" alt="Representación de un elemento de la pila como variable de referencia apuntando a null">
+</figure>
+
+<pre class="codigo-java">
+Punto origen = null;
+</pre>
+
+La declaración anterior es perfectamente válida. La variable <span class="variable">origen</span> existe y puede utilizarse, pero su valor indica que no hay ninguna instancia de <span class="clase">Punto</span> asociada a ella. **<span class="literal">null</span>` no es un objeto ni representa una instancia vacía de la clase**: es un valor especial que expresa que no existe una referencia hacia un objeto.
+
+Debemos tener presente que <span class="literal">null</span> puede asignarse a cualquier variable de tipo referencia, independientemente de la clase a la que pertenezca, pero no puede utilizarse como valor de una variable de tipo primitivo. Por tanto, podemos asignarlo a una variable de tipo <span class="clase">Punto</span>, <span class="clase">String</span> o cualquier otra clase, pero no a una variable de tipo <span class="palabra">int</span>, por ejemplo.
+
+#### Comprobación de una referencia vacía
+
+Si una variable de tipo referencia puede contener la referencia a un objeto o el valor <span class="literal">null</span>, en ocasiones necesitamos comprobar cuál de estas situaciones se está produciendo antes de utilizarla. Java permite realizar esta comprobación mediante los operadores de igualdad (<span class="operador">==</span>) y desigualdad (<span class="operador">!=</span>), que ya conocemos.
+
+Si deseamos comprobar que una variable no hace referencia a ningún objeto, podemos compararla con el valor <span class="literal">null</span> utilizando el operador de igualdad:
+
+<pre class="codigo-java">
+if ( origen == null ) {
+    // No hay ningún objeto asociado a origen
+}
+</pre>
+
+Por el contrario, si queremos comprobar que existe una referencia a un objeto, podemos utilizar el operador de desigualdad:
+
+<pre class="codigo-java">
+if ( origen != null ) {
+    // Podemos utilizar el objeto al que hace referencia origen
+}
+</pre>
+
+Es importante destacar que **la comparación con <span class="literal">null</span> no comprueba las características del objeto ni el contenido de su estado**. Únicamente determina si la variable contiene una referencia o no.
+
+### El operador new
+
+En el apartado anterior hemos analizado la naturaleza de las variables de referencia y el significado del valor <span class="literal">null</span>. Hemos visto que declarar una variable de tipo referencia únicamente reserva espacio para almacenar una dirección de memoria, pero no crea el objeto en sí mismo. Para dar nacimiento a un objeto en la memoria del ordenador durante la ejecución del programa, es imprescindible llevar a cabo el proceso de **instanciación**.
+
+En el lenguaje Java, la instanciación de un objeto se realiza mediante la utilización explícita del operador <span class="palabra">new</span>. Este operador unario es el responsable directo de solicitar la creación de una nueva instancia, reservar el espacio necesario para almacenarla y, como veremos más adelante, invocar al constructor correspondiente para inicializarla. Como resultado de la operación obtenemos una referencia al objeto recién creado, que podremos almacenar en una variable y utilizar posteriormente.
+
+La forma general de crear una instancia de una clase mediante el operador <span class="palabra">new</span> es la siguiente:
+
+<pre class="codigo-fuente">
+NombreClase variable = new NombreClase(argumentos);
+</pre>
+
+Podemos observar que la expresión está formada por dos partes diferenciadas: la declaración de una variable de referencia y la creación de un objeto mediante el operador <span class="palabra">new</span>. La segunda parte constituye una expresión que produce una referencia al objeto creado, y ese valor se asigna a la variable situada a la izquierda del operador de asignación.
+
+Si queremos crear una instancia y asociarla a una variable denominada <span class="variable">origen</span>, escribiremos:
+
+<pre class="codigo-java">
+Punto origen = new Punto();
+</pre>
+
+En esta instrucción podemos distinguir los siguientes elementos:
+
+1. **Tipo de referencia:** <span class="clase">Punto</span> indica que la variable que vamos a declarar podrá almacenar referencias a objetos compatibles con esa clase.
+2. **Identificador:** <span class="variable">origen</span> es el nombre de la variable que utilizaremos para acceder a la instancia.
+3. **Operador de asignación:** <span class="operador">=</span> permite almacenar en la variable el resultado de la expresión situada a su derecha.
+4. **Operador de instanciación:** <span class="operador">new</span> solicita la creación de un nuevo objeto.
+5. **Clase que se instancia:** <span class="clase">Punto</span> identifica el tipo de objeto que deseamos crear.
+6. **Paréntesis:** <span class="literal">()</span> delimitan los argumentos que se proporcionan al constructor. En este caso no se entrega ninguno.
+
+Es importante detenernos en el último elemento. La expresión <span class="palabra">new</span> no se limita a reservar memoria: también invoca un **constructor**, que es el mecanismo encargado de realizar la inicialización del objeto.  Cuando el constructor no necesita recibir información para inicializar el objeto, los paréntesis permanecen vacíos, como en el ejemplo anterior. En otros casos, podremos proporcionar valores entre ellos, siempre que correspondan a los parámetros que admita el constructor definido para esa clase. Por ejemplo, la forma general podría ser:
+
+<pre class="codigo-fuente">
+new NombreClase(valor1, valor2, ...);
+</pre>
+
+El número, el orden y los tipos de los argumentos dependerán del constructor que se vaya a utilizar. Más adelante estudiaremos cómo se definen estos constructores y cómo podemos disponer de diferentes formas de inicializar una misma clase.
+
+#### Qué sucede cuando utilizamos new
+
+Aunque la expresión de instanciación se escribe en una única línea, durante su ejecución se realizan varias operaciones. Para comprenderlas, podemos descomponer el proceso de creación de un objeto en las siguientes etapas:
+
+1. **Reserva de memoria:** la JVM solicita el espacio necesario para almacenar una nueva instancia de la clase. Ese espacio deberá permitir conservar el estado del objeto.
+
+2. **Inicialización:** el espacio reservado se prepara con los valores iniciales que establece el lenguaje para los atributos del objeto. Posteriormente, el constructor podrá asignar los valores específicos que correspondan.
+
+3. **Ejecución del constructor:** se invoca el constructor seleccionado, que completa la inicialización de la instancia y establece las condiciones iniciales del objeto.
+
+4. **Obtención de la referencia:** una vez completada correctamente la creación, la expresión produce una referencia que permite localizar el objeto recién creado.
+
+5. **Asignación de la referencia:** cuando la expresión forma parte de una declaración como la del ejemplo anterior, esa referencia se almacena en la variable <span class="variable">origen</span>, que desde ese momento permite acceder a la instancia.
+
+No debemos confundir la invocación del constructor con la asignación posterior de la referencia. El constructor actúa sobre el objeto que se está creando, mientras que la asignación permite que la variable pueda acceder a él. Son operaciones relacionadas, pero cumplen funciones diferentes.
+
+Una característica fundamental del operador <span class="palabra">new</span> es que **cada vez que lo ejecutamos se solicita la creación de un objeto nuevo**, aunque utilicemos siempre la misma clase y los mismos argumentos. Esta característica es la que permite que un programa gestione un número elevado de objetos de una misma clase sin que todos tengan que compartir el mismo estado. La definición de la clase se escribe una sola vez, mientras que las instancias se crean tantas veces como necesite la aplicación.
+
+Conviene insistir en que el operador <span class="palabra">new</span> produce una referencia al objeto creado. No copia el objeto dentro de la variable ni transforma la variable en el propio objeto. La variable almacena el valor de referencia que permite acceder a la instancia. También debemos observar que <span class="palabra">new</span> no es necesario para utilizar una instancia que ya existe: se utiliza cuando queremos crear un objeto nuevo.
+
+<aside class="definicion">
+
+**Instanciación:** Proceso de creación de un objeto a partir de la definición de una clase.
+
+**Operador <span class="palabra">new</span>:** Palabra reservada de Java para solicitar la asignación de memoria para un nuevo objeto y devolver su referencia.
+
+**Constructor:** Elemento especial de una clase que se ejecuta durante la creación de sus instancias y permite inicializar el estado del nuevo objeto.
+
+**Inicialización por defecto:** Mecanismo automático mediante el cual la JVM asigna valores a los atributos de un objeto recién creado antes de ejecutar su constructor.
+
+</aside>
+
+Una vez comprendido cómo se crean las instancias, podemos estudiar dónde se almacenan y cómo se organizan durante la ejecución. Para ello, en el siguiente subapartado analizaremos las estructuras de memoria **Stack y Heap**, que permiten comprender mejor la relación entre las variables de referencia y los objetos.
+
+
+### Stack y Heap
+
+Nuestros programas se organizan en la memoria del ordenador utilizando diferentes áreas, cada una de ellas con una finalidad específica. Para comprender cómo gestiona la JVM las variables y las instancias durante la ejecución nos centraremos en dos estructuras fundamentales: **Stack (pila de ejecución)** y **Heap (montículo o área de objetos)**. Aunque ambas estructuras residen en la memoria asignada al proceso de la JVM, están diseñadas con propósitos y forma de funcionamiento son diferentes.
+
+<figure class="img-grande">
+    <img src="../imagenes/04_05_segmentos.png" alt="Representación de los segmentos de un programa">
+</figure>
+
+#### Stack: pila de ejecución
+
+La memoria denominada **Stack** (o pila) es una estructura destinada a gestionar la ejecución de los métodos del programa, almacenando la información necesaria. Cada vez que se invoca a un método (incluido el método <span class="metodo">main</span>), la JVM crea de forma automática un espacio de trabajo denominado **marco de pila** (*Stack Frame*). Dentro de este marco se almacenan, entre otros elementos, las variables locales declaradas en el método, los parámetros que recibe y los valores temporales necesarios para realizar las operaciones. De esta manera, cada método dispone de su propio espacio de trabajo y puede utilizar sus variables sin interferir directamente en las de otros métodos.
+
+Una característica clave del marco de pila es su **gestión automática y efímera**. Cuando la ejecución de un método concluye, su marco de pila correspondiente se destruye liberando el espacio ocupado.
+
+#### Heap: los objetos
+
+La memoria denominada **Heap** es una gran zona de almacenamiento dinámico, utilizada para almacenar las instancias que se crean durante la ejecución del programa. Es la región de la memoria donde se reserva el espacio cuando se solicita su creación mediante el operador <span class="palabra">new</span>.
+
+A diferencia de *Stack*, *Heap* proporciona el espacio necesario para mantener los objetos durante su existencia en el programa. Las instancias se crean en esta estructura y contienen la información que corresponde a cada objeto concreto. Por tanto, debemos distinguir claramente las funciones de ambas estructuras. La primera proporciona proporciona el espacio de trabajo necesario para ejecutar los métodos, mientras que la segunda almacena los objetos que utiliza la aplicación. La variable local que permite acceder a una instancia puede estar en la pila, mientras que la instancia propiamente dicha se encuentra en el montículo.
+
+Es importante no interpretar estas estructuras como dos dispositivos físicos independientes ni como dos zonas que podamos identificar directamente en los módulos de memoria del ordenador: son áreas lógicas definidas por el modelo de ejecución que permiten organizar la información necesaria para ejecutar los programas y gestionar los objetos. También debemos evitar una confusión habitual: que una variable local desaparezca al finalizar el método en el que se declaró no significa que el objeto al que hacía referencia tenga que desaparecer en ese mismo instante. El marco de ejecución y la instancia son elementos independientes, y su permanencia en memoria responde a criterios diferentes.
+
+<aside class="definicion">
+
+**Stack (pila de ejecución):** Área de memoria utilizada para gestionar las llamadas a métodos.
+
+**Marco de pila (*Stack Frame*):** Espacio de trabajo asociado a una invocación concreta de un método. Se asigna en la pila cuando comienza la ejecución del método y se retira cuando finaliza.
+
+**Heap (montículo o área de objetos):** Área de memoria en la que se almacenan las instancias creadas durante la ejecución del programa.
+
+</aside>
+
+En definitiva, **Stack y Heap desempeñan funciones complementarias en la gestión de memoria de Java**. La primera estructura organiza la ejecución de los métodos y mantiene sus variables locales, mientras que la segunda proporciona el espacio necesario para almacenar los objetos. Comprender esta separación nos permitirá interpretar correctamente las referencias y entender por qué una variable puede dejar de existir sin que necesariamente desaparezca el objeto al que permitía acceder.
+
+### Alias de referencia
+
+Hemos visto que una variable de referencia almacena la dirección de memoria de un objeto y no el objeto en sí mismo y que, mediante el operador <span class="operador">new</span>, podemos crear nuevas instancias de una clase. También hemos estudiado cómo se organizan las variables en el *Stack* y los objetos en el *Heap*. Una de las consecuencias más importantes de este modelode gestión de la memoria es que **un mismo objeto puede estar referenciado simultáneamente por varias variables diferentes**.
+
+Esta situación recibe el nombre de **alias de referencia** (*aliuasing* o *reference aliasing*) y se produce cuando dos o más variables independientes permiten acceder a una misma instancia. Dicho de otra manera, un objeto puede tener varios nombres dentro de un programa, aunque todos ellos permitan acceder a la misma entidad. Esto se consigue porque almacenan la misma dirección de memoria, apuntando simultáneamente a una **única y misma instancia**.
+
+Supongamos que creamos un objeto y almacenamos su referencia en una variable denominada <span class="variable">origen</span>:
+
+<pre class="codigo-java">
+Punto origen = new Punto();
+</pre>
+
+La expresión <span class="operador">new</span> crea una instancia de <span class="clase">Punto</span> y la variable <span class="variable">origen</span> almacena la referencia que permite acceder a ella. Ahora imaginemos que declaramos una segunda variable y le asignamos el contenido de la primera:
+
+<figure class="img-alias">
+    <img src="../imagenes/04_06_alias.png" alt="Representación de dos referencias apuntando a la misma instanacia">
+</figure>
+
+<pre class="codigo-java">
+Punto origen = new Punto();
+Punto otroNombre = origen;
+</pre>
+
+En este caso, la segunda instrucción **no crea un objeto nuevo**; **no duplica ni clona el objeto en el *Heap***. Al realizar la asignación, estamos copiando el valor de la referencia almacenada en <span class="variable">origen</span> a la variable <span class="variable">otroNombre</span>. Por tanto, ambas variables contienen referencias al mismo objeto: la dirección de memoria alojada de la pila.
+
+Esta característica tiene una consecuencia fundamental: **las dos variables permiten actuar sobre la misma entidad**. Por tanto, cualquier operación que modifique el estado del objeto utilizando una de ellas será observable cuando accedamos a ese mismo objeto mediante la otra. Supongamos, por ejemplo, que la clase <span class="clase">Punto</span> dispone de un método denominado <span class="metodo">desplazar</span>, que modifica su posición. Si ejecutamos la siguiente instrucción:
+
+<pre class="codigo-java">
+otroNombre.desplazar(5, 3);
+</pre>
+
+Estamos actuando sobre el objeto al que hace referencia <span class="variable">otroNombre</span>. Sin embargo, como <span class="variable">origen</span> contiene una referencia a esa misma instancia, si consultamos posteriormente su posición, obtendremos el estado modificado. No debemos interpretar, por tanto, que hemos desplazado una copia del punto o que existen dos objetos cuyas posiciones se han actualizado simultáneamente. **Solo existe un objeto y su estado ha cambiado; lo que ocurre es que podemos acceder a él utilizando dos variables diferentes.**
+
+Conviene distinguir con claridad que cuando utilizamos el operador <span class="palabra">new</span>, solicitamos la creación de una instancia nueva. Cuando asignamos una variable de referencia a otra, en cambio, únicamente copiamos el valor de la referencia:
+
+<pre class="codigo-java">
+Punto origen = new Punto();
+Punto alias = origen;
+Punto destino = new Punto();
+</pre>
+
+En este ejemplo se crean dos objetos: uno asociado inicialmente a la variable <span class="variable">origen</span> y otro asociado a <span class="variable">destino</span>. La variable <span class="variable">alias</span> no provoca una nueva instanciación, sino que comparte la referencia de <span class="variable">origen</span>.
+
+Por tanto, **asignar una referencia no equivale a copiar el objeto**. Esta distinción es especialmente importante porque, cuando trabajamos con tipos primitivos, estamos acostumbrados a que una asignación copie el valor almacenado en una variable. Con las variables de referencia también se copia un valor, pero ese valor es una referencia al objeto, no el conjunto de atributos que lo componen.
+
+Otra cuestión que debemos tener presente es que la existencia de un alias no obliga a que las variables mantengan esa relación de forma permanente Cada variable de referencia puede recibir posteriormente otro valor, de modo que podemos modificar una de las referencias sin alterar las demás. Consideremos el siguiente fragmento:
+
+<pre class="codigo-java">
+Punto origen = new Punto();
+Punto alias = origen;
+
+alias = new Punto();
+</pre>
+
+Inicialmente, las variables <span class="variable">origen</span> y <span class="variable">alias</span> contienen referencias al mismo objeto, tal como ocurría en el ejemplo anterior. Sin embargo, en la tercera instrucción volvemos a utilizar el operador <span class="palabra">new</span> y asignamos a <span class="variable">alias</span> la referencia de una nueva instancia.
+
+El resultado es que ahora tenemos dos objetos diferentes: <span class="variable">origen</span> continúa permitiendo acceder al objeto inicial, mientras que <span class="variable">alias</span> permite acceder al nuevo. La primera instancia no se ha modificado ni se ha copiado; sencillamente, una de las variables ha dejado de referirse a ella.
+
+Esto nos permite apreciar que **las variables son independientes entre sí, aunque en determinados momentos puedan contener el mismo valor de referencia**. La modificación del valor de una variable no altera automáticamente el contenido de las demás, del mismo modo que cambiar una referencia no implica modificar el objeto al que apuntaba anteriormente.
+
+El uso de varias referencias a un mismo objeto es una característica habitual de la programación orientada a objetos. Permite que distintas partes de una aplicación trabajen con una misma entidad sin necesidad de crear copias independientes de ella. Por ejemplo, diferentes componentes de un sistema pueden necesitar acceder a una misma cuenta bancaria, configuración o punto geográfico.
+
+Sin embargo, esta posibilidad también puede provocar errores si no tenemos en cuenta que las referencias compartidas conducen al mismo objeto. Imaginemos que dos partes de una aplicación mantienen variables que aparentemente representan puntos diferentes, pero que ambas proceden de una asignación de referencia. Si una de ellas modifica el estado del punto, la otra observará también ese cambio. Cuando no conocemos la existencia del alias, podemos interpretar erróneamente que una operación ha modificado un objeto que no debería verse afectado.
+
+Por esta razón, al trabajar con objetos debemos prestar atención no solo al nombre de las variables, sino también a **qué instancia concreta referencia cada una de ellas**. Dos variables con identificadores diferentes no implican necesariamente dos objetos distintos; del mismo modo, dos variables del mismo tipo pueden referirse a instancias completamente independientes.
+
+Comprender los alias resulta imprescindible para no cometer errores al comparar objetos en Java. El operador relacional de igualdad (<span class="operador">==</span>), cuando se aplica sobre variables de referencia, no compara si dos objetos contienen los mismos valores de estado; evalúa únicamente si dos referencias son alias del mismo objeto.
+
+<pre class="codigo-java">
+Punto origen = new Punto();
+Punto alias = origen;
+Punto destino = new Punto();
+
+System.out.println(origen == destino); // Imprime false
+System.out.println(origen == alias); // Imprime true
+</pre>
+
+Independientemente de si los objetos <span class="variable">origen</span> y <span class="variable">destino</span> posean estados idénticos (ambos representen el mismo punto), su comparación devuelve <span class="literal">false</span> porque fueron creados mediante llamadas independientes al operador <span class="palabra">new</span>, alojándose en espacios diferentes de la pila. Para comprobar si dos objetos independientes contienen el mismo estado (igualdad por contenido), no debe usarse el operador <span class="operador">==</span>, sino el método <span class="metodo">equals</span>, cuya implementación analizaremos en temas posteriores.
+
+Los alias son, por tanto, un mecanismo útil, pero requieren comprender adecuadamente las referencias y sus efectos. Una asignación aparentemente sencilla puede establecer una relación entre distintas partes del programa que comparten una misma entidad, y cualquier operación que modifique su estado podrá ser observada desde todas las referencias que conduzcan a ella.
+
+<aside class="definicion">
+
+**Alias de referencia (*reference aliasing*):** Situación en la que dos o más variables de referencia contienen el mismo valor de referencia y, por tanto, permiten acceder a una misma instancia de un objeto.
+
+**Referencia compartida:** Referencia a un objeto que se encuentra almacenada en varias variables diferentes.
+
+**Igualdad de referencias:** Operación de comparación que evalúa si dos variables de referencia son alias del mismo objeto.
+
+</aside>
+
+En definitiva, debemos recordar que **las variables de referencia no contienen los objetos, sino valores que permiten acceder a ellos**. Cuando copiamos una referencia, no creamos una instancia adicional, sino que establecemos un alias que permite utilizar el mismo objeto mediante otro identificador. Esta característica explica por qué una modificación realizada a través de una variable puede observarse desde otra y constituye un aspecto esencial para comprender cómo se relacionan los objetos durante la ejecución de un programa.
+
+### Recolector de basura
+
+Durante la ejecución de un programa podemos crear numerosos objetos; cada uno necesita disponer de un espacio de memoria en el que almacenar su estado y la información necesaria para su funcionamiento. Sin embargo, no todos los objetos van a necesitarse durante el tiempo que permanezca activo el programa. Algunos dejarán de utilizarse cuando finalice una determinada operación, cuando cambie el estado de una variable o cuando desaparezcan las referencias que permitían acceder a ellos. Esta circunstancia plantea una cuestión importante: **¿qué sucede con la memoria ocupada por los objetos que ya no necesitamos?** La memoria disponible para almacenar objetos es limitada. Si el programa creara continuamente nuevas instancias y nunca recuperase el espacio de las que han dejado de utilizarse, acabaría consumiendo progresivamente toda la memoria disponible.
+
+En la mayoría de los lenguajes de programación clásicos la responsabilidad de liberar esa memoria es del programador. Esto significa que, además de crear los objetos y utilizarlos, debe determinar cuándo han dejado de ser necesarios y ejecutar las operaciones correspondientes para devolver el espacio ocupado a la memoria disponible. Esta gestión manual exige un control riguroso del ciclo de vida de los objetos: liberar demasiado pronto la memoria genera **punteros colgados** (*dangling pointers*) lo que puede provocar que se intente acceder a un objeto que ya no existe, mientras que no liberarla cuando corresponde produce **fugas de memoria** (*memory leaks*) lo que puede ocasionar un consumo innecesario de memoria.
+
+olvidar liberar un objeto produce **fugas de memoria** (*memory leaks*), donde la memoria ocupada queda bloqueada e inutilizable hasta agotar el sistema; por otro lado, liberar un objeto demasiado pronto o por duplicado genera **punteros colgados** (*dangling pointers*), provocando la corrupción de datos o la caída del programa.
+
+El lenguaje Java eliminó de raíz esta fuente de errores adoptando un enfoque diferente. La máquina virtual de Java (JVM) incorpora un mecanismo de gestión automática de memoria denominado **recolector de basura** (*Garbage Collector* o *GC*). Su responsabilidad consiste en identificar los objetos que ya no pueden utilizarse desde el programa y recuperar el espacio de memoria que ocupan, permitiendo que pueda aprovecharse posteriormente para crear otros objetos.
+
+De esta manera, el programador puede concentrarse en determinar qué objetos necesita la aplicación y cómo deben relacionarse entre sí, sin tener que ejecutar explícitamente una operación de liberación de memoria cada vez que una instancia deja de ser necesaria. La JVM asume esa responsabilidad mediante el recolector de basura, que realiza su trabajo de acuerdo con las necesidades de memoria de la aplicación y con los criterios internos de la máquina virtual.
+
+El **Recolector de Basura** es un proceso que se ejecuta en segundo plano dentro de la Máquina Virtual de Java (JVM), encargado de supervisar continuamente la memoria *Heap*, identificar los objetos que han quedado inaccesibles para el programa y recuperar automáticamente el espacio de almacenamiento que ocupaban para ponerlo de nuevo a disposición de futuras instanciaciones.
+
+Para comprender cómo determina el recolector de basura qué objetos puede eliminar, debemos recordar la función de las **variables de referencia**. Una variable de este tipo permite acceder a un objeto mediante la referencia que mantiene. Por tanto, mientras exista alguna referencia accesible que conduzca a una instancia, el programa puede seguir utilizando ese objeto, aunque la variable que lo utilizaba inicialmente haya cambiado de valor.
+
+La premisa fundamental que guía el funcionamiento del Recolector de Basura es el principio de **inalcanzabilidad** (*unreachability*). No consiste simplemente en comprobar si una variable ha dejado de utilizarse, sino en determinar si existe algún camino de referencias que permita llegar al objeto desde las referencias que permanecen activas en el programa. Si no existe ninguno, la instancia ya no puede intervenir en el funcionamiento de la aplicación y su memoria puede recuperarse.
+
+Un objeto se considera **inalcanzable** (o huérfano) cuando **no existe ninguna referencia activa** que permita acceder al mismo. Cuando un objeto queda en estado inalcanzable, resulta físicamente imposible que el programa vuelva a invocar sus métodos o lea sus atributos; por consiguiente, el objeto ha completado su ciclo de vida útil. Existen tres situaciones habituales mediante las cuales un objeto pasa a ser inalcanzable:
+1.- Puede suceder que se asigne una nueva instancia a una variable de referencia, quedando huérfana aquella a la que apuntaba
+2.- Asignamos de forma explícita el literal <span class="literal">null</span> a la única variable de referencia que apuntaba al objeto.
+3.- La variable deja de estar disponible al finalizar el ámbito en el que fue declarada, por lo que la referencia que mantenía deja de ser accesible.
+
+El recolector de basura es un mecanismo interno de la JVM que analiza las referencias existentes y determina qué objetos continúan siendo alcanzables. Cuando identifica instancias que ya no pueden utilizarse, puede recuperar el espacio que ocupan en el montículo, dejando esa memoria disponible para futuras asignaciones. No obstante, debemos comprender que **la posibilidad de recuperar un objeto y el momento en que se recupera su memoria son dos cuestiones diferentes**. El Recolector de Basura actúa de forma **asíncrona y no determinista**. La JVM decide cuándo realizar la recolección en función de sus necesidades y de los mecanismos internos que utiliza para administrar la memoria.
+
+Esto significa que un objeto puede permanecer físicamente en el *heap* durante cierto tiempo después de haber dejado de ser alcanzable. Aunque el programa ya no pueda utilizarlo, no tenemos garantizado que su espacio se recupere inmediatamente. La memoria se liberará cuando el recolector realice el proceso correspondiente. Tampoco debemos confundir el hecho de que un objeto siga existiendo en memoria con que continúe siendo útil para la aplicación. Una instancia inalcanzable puede ocupar temporalmente espacio, pero ya no puede ser utilizada por el programa. Precisamente, el trabajo del recolector consiste en identificar estas situaciones y recuperar la memoria que ha quedado disponible para su reutilización.
+
+En el lenguaje Java existe la llamada al método <span class="codigo">System.gc()</span>, que permite al desarrollador solicitar la ejecución del Recolector de Basura. Sin embargo, es muy importante destacar que esta instrucción es **una mera sugerencia o recomendación a la JVM**, y no una orden de ejecución obligatoria o inmediata. La máquina virtual puede ignorar la solicitud si considera que no es oportuna.
+
+<aside class="definicion">
+
+**Recolector de Basura (*Garbage Collector*):** Mecanismo de la máquina virtual de Java (JVM) encargado de identificar los objetos que han dejado de ser alcanzables desde el programa y recuperar automáticamente la memoria que ocupan.
+
+**Objeto inalcanzable:** Instancia a la que no es posible acceder mediante ninguna referencia que permanezca activa en el programa. Se considera candidata para la recolección de basura.
+
+</aside>
+
+La incorporación de un recolector de basura simplifica considerablemente la gestión de memoria en Java. El programador no necesita encargarse de liberar manualmente cada instancia cuando deja de utilizarse, lo que reduce una fuente importante de errores y facilita la construcción de aplicaciones en las que se crean y utilizan numerosos objetos.
+
+Esta automatización también contribuye a evitar determinados problemas relacionados con una gestión incorrecta de la memoria. Por ejemplo, cuando se libera manualmente un bloque de memoria que todavía se está utilizando, pueden producirse accesos a posiciones que ya no corresponden al objeto original. Por el contrario, si se olvida liberar un bloque que ya no se necesita, la memoria permanece ocupada sin aportar ninguna utilidad. El recolector de basura reduce estos riesgos al asumir la identificación y recuperación de los objetos inalcanzables.
+
+Sin embargo, **la gestión automática de memoria no significa que el programador pueda despreocuparse por completo del consumo de memoria**. El recolector solo puede recuperar los objetos que han dejado de ser alcanzables. Si el programa conserva referencias a instancias que ya no necesita, estas seguirán siendo consideradas accesibles y el recolector no podrá eliminarlas, aunque desde el punto de vista de la aplicación hayan perdido su utilidad.
+
+Por esta razón, debemos seguir prestando atención al ciclo de vida de los objetos y a las referencias que mantenemos sobre ellos. La responsabilidad del programador no consiste en liberar directamente la memoria, sino en diseñar el programa de manera que conserve únicamente las referencias que necesita y permita que las instancias que han dejado de utilizarse puedan ser recuperadas.
+
+En definitiva, el recolector de basura permite que Java gestione automáticamente la recuperación de la memoria ocupada por objetos que ya no pueden utilizarse. La JVM se encarga de recuperar posteriormente el espacio correspondiente, mientras que el desarrollador debe mantener una gestión adecuada de las referencias para que los objetos innecesarios puedan llegar a ser recolectados.
+
+## Anatomía de una clase
+
+A lo largo de los apartados anteriores hemos estudiado las bases del paradigma orientado a objetos desde una perspectiva conceptual. Hemos aprendido que las clases actúan como plantillas de diseño, que el operador <span class="palabra">new</span> crea instancias individuales, con su propia identidad y su propio estado, que podemos gestionar mediante las variables de referencia y cómo el recolector de basura automatiza la liberación de recursos. Sin embargo, no sabemos cómo se organiza internamente una clase ni cuáles son los elementos que permiten representar la información y las operaciones asociadas a los objetos, en definitiva, **cómo se estructura una clase por dentro**.
+
+El estado y el comportamiento constituyen las dos características fundamentales de cualquier objeto. El estado representa la información que describe a una entidad en un momento determinado, mientras que el comportamiento comprende las operaciones que puede realizar o las respuestas que ofrece cuando interactuamos con ella. En Java, la **anatomía de una clase** hace referencia a la organización sintáctica y semántica de los elementos que componen su cuerpo dentro del archivo fuente. Una clase no es un bloque homogéneo e indivisible de código, sino una estructura articulada en la que estas dos características se materializan fundamentalmente mediante los **atributos** y los **métodos**, que constituyen los elementos principales de la estructura de una clase, denominados **miembros de la clase** (*class members*). Modificamos ligeramente la plantilla sintáctica que vimos en el tema 2.
+
+<div class="plantilla-sintactica">
+<div class="produccion">
+<div class="produccion-encabezado">ClassMemberDeclaration:</div>
+<div class="produccion-alternativas">
+FieldDeclaration<br>
+MethodDeclaration
+</div>
+</div>
+</div>
+
+Los atributos permiten declarar la información que caracteriza a los objetos de una determinada clase. La definición establece qué datos forman parte de sus instancias, aunque cada objeto mantendrá sus propios valores. Los métodos, por su parte, representan las operaciones que podemos realizar sobre esas instancias. A través de ellos podemos consultar información, modificar el estado o efectuar otras tareas relacionadas con las responsabilidades de la entidad. **Atributos y métodos no son elementos independientes: los métodos permiten trabajar con la información que mantienen los objetos y determinan cómo evoluciona su estado.**
+
+También debemos considerar que las operaciones no siempre se realizan de manera aislada. En muchas ocasiones necesitan recibir información para poder efectuar su cometido y pueden devolver un resultado al componente que las ha solicitado. Por esta razón, estudiaremos cómo se transmiten los datos mediante los parámetros de los métodos y qué mecanismos podemos utilizar para consultar y modificar la información de los objetos.
+
+En este apartado analizaremos, por tanto, los distintos componentes que forman parte de una clase y cómo colaboran para representar una entidad. Analizaremos en primer lugar los **atributos de objeto**, que permiten definir su estado. A continuación, estudiaremos los **métodos de objeto**, que establecen su comportamiento y veremos cómo se intercambia información con ellos. Finalmente, veremos cómo organizar operaciones destinadas a observar o modificar los valores que caracterizar a las instancias.
+
+### Atributos
+
+Si el estado de un objeto está constituido por el conjunto de valores que describen sus características en un momento determinado, en Java, la información que define ese estado se representa mediante los **atributos** (denominados **variables de instancia**). Un **atributo** es una variable declarada dentro de una clase que representa una característica de los objetos de ese tipo. A diferencia de las variables locales que utilizamos para almacenar temporalmente información durante la ejecución de un método, los atributos almacenan la información que conforma el **estado de un objeto**. Esto significa que **cada objeto dispone de sus propios atributos y conserva sus correspondientes valores**, independientemente de los que tengan las demás instancias de la misma clase.
+
+Los atributos se declaran, como ya vimos, mediante la producción <span
+  class="produccion-palabra">FieldDeclaration</span>. Para ilustrar de forma concreta la declaración de atributos, consideremos la clase <span class="clase">Punto</span> que hemos venido utilizando como modelo conceptual. Para describir un punto mediante coordenadas cartesianas necesitamos conservar dos valores: uno correspondiente al eje horizontal y otro al eje vertical. Podemos representar esta información mediante dos atributos:
+
+<pre class="codigo-java">
+class Punto {
+    
+    // Atributos de instancia
+    double x;
+    double y;
+
+}
+</pre>
+
+En esta declaración podemos distinguir varios elementos. En primer lugar, encontramos los identificadores <span class="variable">x</span> e <span class="variable">y</span>, que representan los nombres de los atributos. Cada uno de ellos está precedido por el tipo de dato <span class="palabra">double</span>, que determina la clase de valores que podemos almacenar. Finalmente, las declaraciones terminan con el separador <span class="operador">;</span>, como sucede con las demás declaraciones de variables que conocemos.
+
+Debemos observar que **los atributos se declaran directamente dentro del cuerpo de la clase, pero fuera de cualquier método**. De esta manera, pasan a formar parte de la estructura común que define la clase y estarán presentes en todas las instancias que creemos a partir de ella. No estamos declarando dos variables para un punto concreto, sino estableciendo que todos los objetos de tipo <span class="clase">Punto</span> tendrán dos características denominadas <span class="variable">x</span> e <span class="variable">y</span>.
+
+#### Tipos de datos de los atributos
+
+Cada atributo debe declararse indicando el tipo de dato que puede almacenar. Java permite utilizar tanto los tipos primitivos como los tipos de referencia, por lo que un objeto puede conservar información numérica, lógica, textual o referencias a otras instancias; modificamos la plantilla sintáctica que veíamos en el tema 3:
+
+<div class="plantilla-sintactica">
+<div class="produccion">
+<div class="produccion-encabezado"> FieldDeclaration: </div>
+<div class="produccion-alternativas">
+{TypeModifier} UnannType IdentifierList <span class="terminal">;</span>
+  </div>
+  </div>
+<div class="produccion">
+<div class="produccion-encabezado">UnannType:</div>
+<div class="produccion-alternativas">
+PrimitiveType<br>
+ClassType
+</div>
+</div>
+<div class="produccion">
+<div class="produccion-encabezado">ClassType:</div>
+<div class="produccion-alternativas">
+TypeIdentifier</div>
+</div>
+<div class="produccion">
+<div class="produccion-encabezado">TypeIdentifier:</div>
+<div class="produccion-alternativas">
+Identifier but not permits, record, sealed, var, or yield
+</div>
+</div>
+</div>
+
+En el ejemplo de <span class="clase">Punto</span>, hemos utilizado el tipo primitivo <span class="palabra">double</span> porque las coordenadas pueden contener valores decimales. Sin embargo, una clase destinada a representar una cuenta bancaria podría necesitar conservar un saldo, un número identificativo o el nombre de su titular. En ese caso, podríamos utilizar diferentes tipos de atributos:
+
+<pre class="codigo-java">
+class CuentaBancaria {
+    String numeroCuenta;
+    String titular;
+    double saldo;
+    boolean activa;
+}
+</pre>
+
+Como podemos observar, los atributos <span class="variable">numeroCuenta</span> y <span class="variable">titular</span> son de tipo <span class="clase">String</span>, mientras que <span class="variable">saldo</span> es de tipo primitivo <span class="palabra">double</span> y <span class="variable">activa</span> de tipo primitivo <span class="palabra">boolean</span>. La clase establece de este modo qué información necesita conservar cada cuenta bancaria.
+
+Un atributo de tipo primitivo almacena directamente un valor de su tipo, mientras que un atributo de referencia contiene una referencia que permite acceder a otro objeto. Por tanto, **un objeto puede mantener información propia y, al mismo tiempo, establecer relaciones con otras instancias mediante atributos de referencia**.
+
+Por ejemplo, una clase que represente a un alumno podría disponer de un atributo de tipo <span class="clase">String</span> para conservar su nombre y de otro atributo de tipo <span class="clase">Direccion</span> para mantener una referencia a un objeto que represente su dirección. La clase define qué información necesita para representar al alumno, aunque parte de esa información se encuentre organizada en otras instancias.
+
+#### Atributos e instancias
+
+La declaración de los atributos establece qué información debe formar parte de los objetos, pero no significa que exista un único conjunto de valores compartido por todas las instancias. **Cada vez que creamos un objeto, este dispone de su propio espacio para almacenar los valores correspondientes a los atributos definidos por su clase.**
+
+Imaginemos que nuestra aplicación necesita trabajar simultáneamente con dos puntos. Podemos crear dos instancias de la clase <span class="clase">Punto</span>:
+
+<pre class="codigo-java">
+Punto origen = new Punto();
+Punto destino = new Punto();
+</pre>
+
+Ambas instancias tienen los mismos atributos porque proceden de la misma definición, pero cada una contiene sus propios valores. Por ejemplo, podemos asignarles las coordenadas siguientes:
+
+<pre class="codigo-java">
+origen.x = 3.5;
+origen.y = 2.0;
+
+destino.x = -1.0;
+destino.y = 4.5;
+</pre>
+
+En este fragmento utilizamos el operador punto (<span class="operador">.</span>) para acceder a los atributos de cada instancia. La expresión formada por el nombre de una variable de referencia, el operador punto y el identificador del atributo permite designar un dato concreto del objeto al que conduce esa referencia.
+
+Así, <span class="variable">origen.x</span> representa el atributo <span class="variable">x</span> de la instancia a la que hace referencia <span class="variable">origen</span>, mientras que <span class="variable">destino.x</span> representa el atributo homónimo de la instancia referenciada por <span class="variable">destino</span>. Aunque ambos atributos proceden de la misma declaración de clase, almacenan valores independientes.
+
+Podemos modificar la coordenada horizontal del punto de origen sin que ello afecte a la coordenada del punto de destino. Cada objeto mantiene su propio estado y las operaciones realizadas sobre una instancia no modifican automáticamente los atributos de las demás.
+
+Esta distinción es esencial para comprender la relación entre clases y objetos. La clase establece la estructura, es decir, qué atributos tendrán sus instancias; cada objeto mantiene los valores particulares que describen a la entidad que representa.
+
+#### Identificación y nomenclatura de los atributos
+
+Los atributos son identificadores del programa y, por tanto, deben respetar las reglas sintácticas que ya conocemos. Además, conviene seguir las convenciones de nomenclatura que hemos estudiado anteriormente para que el código resulte fácil de leer y mantener.
+
+Los atributos de objeto suelen utilizar la convención *lowerCamelCase*: comienzan con una letra minúscula y, si su nombre está formado por varias palabras, las siguientes comienzan con mayúscula. Por ejemplo, podemos encontrar identificadores como <span class="variable">coordenadaX</span>, <span class="variable">fechaNacimiento</span>, <span class="variable">saldoActual</span> o <span class="variable">numeroCuenta</span>.
+
+También es recomendable que **el nombre de un atributo describa claramente la información que representa**. Un identificador como <span class="variable">coordenadaX</span> permite comprender mejor su finalidad que otro más genérico como <span class="variable">x</span>. Esta elección adquiere especial importancia cuando una clase contiene numerosos atributos, puesto que sus nombres ayudan a interpretar el estado del objeto sin tener que examinar continuamente el resto del código.
+
+#### Inicialización por defecto
+
+Los atributos de instancia son **inicializados automáticamente por la JVM** en el momento de crear el objeto con el operador <span class="palabra">new</span>.
+
+Si el programador no asigna explícitamente un valor al declarar el atributo ni en el constructor, la máquina virtual asigna el valor cero o nulo correspondiente a su tipo de dato:
+
+* Los tipos numéricos se inicializan a <span class="literal">0</span> o <span class="literal">0.0</span>; también los caractéres a <span class="literal">`'`\u0000`'`</span>
+* Los booleanos se inicializan a <span class="literal">false</span>.
+* Y los tipos de referencia (instancias de clases) se inicializan al valor <span class="literal">null</span>.
+
+Consideremos el ejemplo CuentaBancaria anterior:
+* <span class="variable">cuenta</span>numeroCuenta se inicializa automáticamente a <span class="literal">null</span>
+* <span class="variable">cuenta</span>titular se inicializa automáticamente a <span class="literal">null</span>
+* <span class="variable">saldo</span> se inicializa automáticamente a <span class="literal">0.0</span>
+* <span class="variable">activa</span> se inicializa automáticamente a <span class="literal">false</span>
+
+Si instanciamos la clase mediante <span class="codigo">CuentaBancaria cuenta = new CuentaBancaria();</span> el estado inicial de <span class="variable">cuenta</span> será:
+
+<pre class="codigo-fuente">
+numeroCuenta: null
+titular: null
+saldo: 0.0
+activa: false
+</pre>
+
+Esta inicialización por defecto garantiza que la memoria del objeto en el *heap* permanezca en todo momento en un estado consistente y predecible, evitando lecturas de memoria no controladas.
+
+<aside class="definicion">
+
+**Atributo:** Variable de instancia declarada en la clase que define una propiedad del objeto.
+
+**Valor por defecto:** Valor asignado automáticamente a un atributo durante el proceso de instanciación si el desarrollador no proporciona un valor inicial explícito.
+
+</aside>
+
+### Métodos
+
+Si los atributos representan la información almacenada en un objeto, los **métodos** (denominados formalmente **métodos de instancia**) constituyen el mecanismo mediante el cual definimos las operaciones que pueden realizar las instancias de una clase. Los métodos definen las acciones, los cálculos y los comportamientos que un objeto es capaz de ejecutar en respuesta a las llamadas que recibe de otros componentes del programa.
+
+En el marco de la encapsulación, los métodos actúan como el único punto legítimo de interacción con el estado interno del objeto, permitiendo consultar la información que mantienen, modificar su estado o realizar cálculos a partir de ella. Por tanto, los métodos no son simples bloques de instrucciones independientes: forman parte de la definición de una clase y representan las responsabilidades que corresponden a los objetos creados a partir de ella.
+
+#### Declaración de método
+
+En Java, los métodos se declaran dentro del cuerpo de una clase, al igual que los atributos. Su definición establece su nombre, qué operación se puede realizar, qué información necesita para ejecutarla y qué resultado proporciona, si procede. Todas las instancias de una misma clase comparten las declaraciones de los métodos, pero **cada invocación actúa sobre un objeto concreto**. De esta manera, una misma operación puede ejecutarse sobre distintas instancias y producir efectos diferentes, puesto que cada una mantiene su propio estado.
+
+<div class="plantilla-sintactica">
+<div class="produccion">
+<div class="produccion-encabezado"> MethodHeader: </div>
+<div class="produccion-alternativas">
+Result Identifier <span class="terminal">(</span> [FormalParameterList] <span class="terminal">)</span>
+  </div>
+  </div>
+<div class="produccion">
+<div class="produccion-encabezado">Result:</div>
+<div class="produccion-alternativas">
+UnannType<br>
+<span class="terminal">void</span>
+</div>
+</div>
+</div>
+
+Veamos, por ejemplo, cómo podríamos incorporar a nuestra clase <span class="clase">Punto</span> un método que permita desplazar el punto una determinada cantidad de unidades en cada uno de los dos ejes:
+
+<pre class="codigo-java">
+class Punto {
+
+    double coordenadaX;
+    double coordenadaY;
+
+    void desplazar ( double desplazamientoX, double desplazamientoY ) {
+        coordenadaX = coordenadaX + desplazamientoX;
+        coordenadaY = coordenadaY + desplazamientoY;
+    }
+
+}
+</pre>
+
+En este ejemplo, el método <span class="metodo">desplazar</span> representa una operación que modifica la posición del punto. Para realizarla necesita recibir dos valores: el desplazamiento horizontal y el desplazamiento vertical. A partir de ellos, actualiza las coordenadas almacenadas en los atributos del objeto sobre el que se ejecuta.
+
+Podemos observar que el método se encuentra declarado dentro de la clase, pero fuera de cualquier otro método. Esta ubicación es importante: **los métodos forman parte de la estructura de la clase y no se declaran dentro de otros métodos**. Su cuerpo, delimitado por llaves, contiene las instrucciones que se ejecutarán cuando se solicite la operación.
+
+En el caso anterior, el nombre del método va precedido de <span class="palabra">void</span> porque la operación se limita a realizar una acción y no necesita proporcionar ningún resultado pero, si es pertinente, puede producir un resultado. El tipo de retorno del resultado puede ser cualquiera de los tipos de datos que admite Java, tanto primitivos como de referencia. Cuando el método debe proporcionar un resultado, se utiliza la sentencia <span class="palabra">return</span> para devolver el valor correspondiente.
+
+Por ejemplo, además del método <span class="metodo">desplazar</span>, podríamos incorporar otro que calcule la distancia del punto al origen de coordenadas:
+
+<pre class="codigo-java">
+double distanciaAlOrigen() {
+    return Math.sqrt(coordenadaX * coordenadaX + coordenadaY * coordenadaY);
+}
+</pre>
+
+En este caso, el método no necesita recibir parámetros, puesto que dispone de la información necesaria en los atributos del propio objeto. Su ejecución calcula la distancia aplicando el teorema de Pitágoras y devuelve el resultado mediante <span class="palabra">return</span>. El tipo de retorno es <span class="palabra">double</span>, ya que el resultado del cálculo puede contener una parte decimal.
+
+Debemos tener presente que **el tipo de retorno forma parte de la declaración del método, pero no de su nombre**. La combinación del nombre, junto con los tipos y el orden de sus parámetros se denomina **firma del método (*method signature*)** y permite identificar distintas versiones de una operación, cuestión que estudiaremos más adelante.
+
+#### Invocación de método
+
+Una vez declarado un método, podemos solicitar su ejecución mediante una **invocación**. Para ello utilizamos el nombre de la variable de referencia que permite acceder al objeto, seguido del operador Punto (<span class="operador">.</span>), el nombre del método y los paréntesis que contienen los argumentos necesarios.
+
+Por ejemplo, si disponemos de dos instancias de la clase <span class="clase">Punto</span>, podemos desplazar cada una de ellas de forma independiente:
+
+<pre class="codigo-java">
+Punto origen = new Punto();
+Punto destino = new Punto();
+
+origen.desplazar(5.0, 3.0);
+destino.desplazar(-2.0, 4.0);
+</pre>
+
+En la primera invocación solicitamos al objeto referenciado por <span class="variable">origen</span> que ejecute el método <span class="metodo">desplazar</span>, transmitiéndole los valores <span class="literal">5.0</span> y <span class="literal">3.0</span>. En la segunda, la misma operación se solicita al objeto referenciado por <span class="variable">destino</span>, pero utilizando unos argumentos diferentes.
+
+Aunque ambos objetos ejecutan el mismo método, cada uno modifica sus propios atributos. El desplazamiento del objeto <span class="variable">origen</span> no altera las coordenadas del objeto <span class="variable">destino</span>, puesto que se trata de dos instancias independientes. **La implementación del método es común, pero los datos sobre los que actúa pertenecen al objeto concreto que recibe la invocación.**
+
+Cuando un método necesita parámetros, los argumentos proporcionados en la invocación deben corresponderse con ellos en número, orden y tipos compatibles. Si el método no necesita recibir información adicional, los paréntesis se mantienen vacíos:
+
+<pre class="codigo-java">
+double distancia = origen.distanciaAlOrigen();
+</pre>
+
+En este caso, solicitamos al objeto <span class="variable">origen</span> que calcule la distancia al origen de coordenadas y almacenamos el resultado devuelto en la variable <span class="variable">distancia</span>. Como el método devuelve un valor de tipo <span class="palabra">double</span>, podemos utilizar su invocación en una asignación, en una expresión matemática o en cualquier otro contexto compatible con ese tipo.
+
+También podemos ejecutar un método sin utilizar directamente el valor que devuelve, aunque en ese caso estaremos descartando el resultado de la operación. Por el contrario, un método declarado con tipo de retorno <span class="palabra">void</span> no proporciona un valor que podamos asignar a una variable o utilizar como parte de una expresión.
+
+#### El objeto receptor y el funcionamiento del método
+
+Una característica fundamental de los métodos de objeto es que **se ejecutan en el contexto de una instancia concreta**. Cuando escribimos una invocación como <span class="variable">origen</span><span class="operador">.</span><span class="metodo">desplazar</span><span class="operador">(</span><span class="literal">5.0</span><span class="operador">,</span> <span class="literal">3.0</span><span class="operador">)</span>, la variable <span class="variable">origen</span> identifica el objeto sobre el que se solicita la operación. Este objeto recibe la petición y ejecuta las instrucciones del método utilizando sus propios atributos.
+
+En este sentido, podemos distinguir dos elementos en una invocación: por una parte, el objeto receptor, que es la instancia sobre la que se ejecuta el método; por otra, los argumentos, que son los valores adicionales que se transmiten para realizar la operación. Esta característica permite el **acceso directo a los atributos del propio objeto**: dentro del cuerpo de un método, no es necesario emplear el operador punto ni calificar las variables de instancia para leer o modificar sus valores; es decir, esto permite que el código de un método haga referencia directamente a los atributos de la instancia a la que pertenece, sin necesidad de recibirlos como parámetros. En nuestro ejemplo, las instrucciones:
+
+<pre class="codigo-java">
+coordenadaX = coordenadaX + desplazamientoX;
+coordenadaY = coordenadaY + desplazamientoY;
+</pre>
+
+utilizan los atributos <span class="variable">coordenadaX</span> y <span class="variable">coordenadaY</span> del objeto receptor, mientras que <span class="variable">desplazamientoX</span> y <span class="variable">desplazamientoY</span> son los parámetros recibidos para determinar cuánto debe cambiar cada coordenada.
+
+Por tanto, **los parámetros representan información que se proporciona al método desde el exterior, mientras que los atributos contienen la información propia del objeto sobre la que puede actuar**. Esta distinción permite definir operaciones generales que pueden utilizarse sobre distintas instancias sin necesidad de conocer previamente los valores concretos que mantiene cada una.
+
+El comportamiento de los objetos se construye mediante estas operaciones. Cada método expresa una responsabilidad de la entidad representada y establece una forma de interactuar con ella. Así, un punto puede desplazarse, una cuenta bancaria puede ingresar o retirar dinero y una factura puede calcular su importe total. No se trata de agrupar instrucciones por comodidad, sino de asociar cada operación con el objeto al que corresponde.
+
+<aside class="definicion">
+
+**Método de objeto:** Operación declarada dentro de una clase que define un comportamiento de sus instancias y que se ejecuta sobre un objeto concreto.
+
+**Declaración de método:** Definición de las características de una operación, incluyendo su tipo de retorno, nombre, parámetros y cuerpo.
+
+**Firma de método (*Method Signature*):** Combinación única formada por el nombre del método y la secuencia ordenada de los tipos de datos de sus parámetros de entrada.
+
+**Invocación:** Solicitud de ejecución de un método. Se realiza mediante una referencia a la instancia receptora, el operador Punto, el nombre del método y los argumentos correspondientes.
+
+**Objeto receptor:** Instancia concreta sobre la que se solicita la ejecución de un método.
+
+**Tipo de retorno:** Tipo de dato del valor que proporciona un método al finalizar su ejecución. <span class="palabra">void</span> indica que no devuelve ningún valor.
+
+**Sentencia de retorno:** Instrucción con <span class="palabra">return</span> que devuelve un valor al código cliente y transfiere el flujo de control de vuelta al punto donde se produjo la llamada (al método).
+
+</aside>
+
+En definitiva, los métodos permiten definir las operaciones que corresponden a cada tipo de entidad y establecer cómo pueden interactuar los demás elementos del programa con sus instancias. La clase proporciona una implementación común de los comportamientos, mientras que cada objeto ejecuta esas operaciones sobre su propio estado. De esta manera, **los métodos completan la definición de las clases al incorporar el comportamiento que, junto con los atributos, caracteriza a sus objetos**.
+
+### Paso de parámetros
+
+Los métodos permiten realizar operaciones sobre los objetos y, en muchas ocasiones, necesitan recibir información para poder llevarlas a cabo. Por ejemplo, si queremos desplazar un punto del plano, debemos indicar cuánto queremos modificar sus coordenadas; si deseamos calcular una operación matemática, tendremos que proporcionar los valores sobre los que se realizará el cálculo. Para transmitir esta información utilizamos los **parámetros**.
+
+Como ya vimos en el tema 2, una llamada a un método puede incluir una lista de valores entre paréntesis. Estos valores constituyen el mecanismo de comunicación entre el código que realiza la llamada y el método que se ejecuta. Sin embargo, ahora que estamos estudiando cómo se organizan los objetos y sus atributos, debemos profundizar en cómo se reciben esos datos y, especialmente, qué sucede cuando transmitimos referencias a otras instancias.
+
+#### Parámetros y argumentos
+
+Para comprender el funcionamiento de este mecanismo, debemos distinguir entre los parámetros declarados en un método y los valores que se proporcionan cuando lo invocamos.
+En la terminología de la programación, es necesario distinguir entre dos conceptos estrechamente relacionados, los parámetros declarados en un método y los valores que se proporcionan cuando lo invocamos:
+
+* Los **parámetros formales** son las variables que se declaran en la definición del método, entre los paréntesis que siguen a su nombre. Determinan qué información necesita recibir la operación y de qué tipo debe ser. Cada parámetro dispone de un identificador propio, mediante el cual podemos utilizar el valor recibido dentro del cuerpo del método.
+* Los **parámetros actuales** o **argumentos** son los valores o expresiones que proporcionamos al realizar la llamada. Estos valores se utilizan para inicializar los correspondientes parámetros formales durante la ejecución del método.
+
+Por ejemplo, el método que permite desplazar una instancia de nuestra clase <span class="clase">Punto</span> lo hace mediante dos incrementos, uno para cada coordenada:
+
+<pre class="codigo-java">
+void desplazar ( double incrementoX, double incrementoY ) {
+    coordenadaX = coordenadaX + incrementoX;
+    coordenadaY = coordenadaY + incrementoY;
+}
+</pre>
+
+En la declaración anterior, <span class="variable">incrementoX</span> e <span class="variable">incrementoY</span> son los parámetros formales. Ambos son variables de tipo <span class="palabra">double</span> y representan los desplazamientos que se aplicarán a las coordenadas del punto. Cuando invoquemos el método, tendremos que proporcionar los valores correspondientes:
+
+<pre class="codigo-java">
+Punto origen = new Punto();
+
+origen.desplazar(5.0, 3.0);
+</pre>
+
+En esta llamada, los valores <span class="literal">5.0</span> y <span class="literal">3.0</span> son los argumentos que se transmiten al método. El primero inicializa el parámetro <span class="variable">incrementoX</span> y el segundo, <span class="variable">incrementoY</span>. Por tanto, durante esa invocación, el método utilizará esos valores para modificar las coordenadas de la instancia <span class="clase">Punto</span> a la que hace referencia <span class="variable">origen</span>.
+
+Debemos observar que **los parámetros formales se declaran indicando su tipo y su identificador, mientras que los parámetros actuales se expresan mediante las expresiones que proporcionamos en la llamada**. No es necesario que los identificadores coincidan: de hecho, normalmente utilizaremos nombres que describan el propósito de cada elemento en su contexto.
+
+La correspondencia entre parámetros y argumentos se establece por su posición en la lista. El primer argumento se transmite al primer parámetro, el segundo al segundo y así sucesivamente. Por tanto, debemos proporcionar el número de argumentos requerido y respetar el orden y los tipos compatibles con los parámetros declarados. Si un método necesita dos valores de tipo <span class="palabra">double</span>, no podemos invocarlo proporcionando únicamente uno ni intercambiar el significado de los argumentos sin tener en cuenta el orden establecido.
+
+Un método también puede declararse sin parámetros cuando no necesita recibir información externa para realizar su cometido. En ese caso, los paréntesis de su declaración y de su llamada permanecen, aunque estén vacíos. La presencia de parámetros depende, por tanto, de la información que necesita la operación, no de que todos los métodos deban recibir obligatoriamente algún valor.
+
+#### Transmisión de los argumentos
+
+Para entender como se produce este mecanismo, debemos separar dos realidades que a menudo se confunden, pero que operan en niveles distintos: el contrato lógico (la semántica de qué hace el programa) y el mecanismo físico (cómo gestiona la memoria el ordenador).
+
+El nivel lógico define un *contrato de uso* entre el método y el programador: ¿hacia dónde se dirige la información? En este modelo, la información puede viajar en tres sentidos: entrada, salida y en ambas direcciones (entrada y salida). En el modo de entrada, el dato viaja exclusivamente desde el código que invoca al método hacia el subprograma. En el modo de salida, el dato viaja exclusivamente desde el método hacia el código invocador. Y en el modo de entrada y salida la información fluye en ambas direcciones.
+
+En el modo de entrada (*input*) el método recibe el valor como un dato de **solo lectura**. Puede usarlo para hacer cálculos, pero no tiene permitido (y no tiene sentido) modificar la variable original que le enviaron; puede ser cualquier expresión. En el modo de salida (*output*), el parámetro no tiene un valor útil al comienzo del método, encargándose éste de calcular o generar un dato; el argumento necesita ser una variable para que, al finalizar, deposite el valor del dato en la misma. Finalmente, cuando fluye en ambas direcciones (*input/output*), el método necesita conocer el valor inicial, realiza operaciones con dicho valor, lo modifica y el resultado final lo altera para el código que lo invoca: el argumento necesita ser una variable.
+
+En el nivel físico, ¿cómo se implementa el paso de parámetros? Se utilizan dos técnicas diferentes: el paso por valor y el paso por referencia. Cuando el método se ejecuta, éste utiliza las variables (parámetros actuales) que se le han dado en la invocación: la máquina proporciona al método un espacio en la pila con una lista de posiciones, en el orden en que aparecen en la lista de parámetros actuales.
+
+En el paso por referencia, el programa proporciona las posiciones de los valores de los datos para coger la información que necesita. Es importante tener en cuenta que son las posiciones de los parámetros actuales y no sus valores: solo hay una copia de la información. Cuando se invoca al método, se emparejan los parámetros formales y los actuales por posición, haciéndose sinónimos para las mismas posiciones de memoria. Cualquier valor que modifique el método será el que se encontrará allí el código que invocó el método. Por tanto, hay que tener cuidado en el uso de los parámetros formales dado que cualquier cambio afectará a los parámetros actuales. Esta técnica es la usada en los modos de salida y de entrada y salida.
+
+En el caso del paso por valor  (*pass by value*), el sistema copia el valor del dato en la pila. Los parámetros son variables propias de la invocación del método: reciben una copia del valor transmitido y pueden utilizarla y modificarla durante su ejecución sin que ello implique modificar la variable que proporcionó el argumento: el parámetro actual está protegido de cualquier cambio que el método pueda querer hacer en el mismo; si alguna sentencia modifica un parámetro por valor solo se cambia la copia del parámetro actual, no el original. Como podemos apreciar, los parámetros por valor son perfectos para introducir valores al método, cuando no necesitamos que proporcionen una salida.
+
+#### Paso de parámetros en Java
+
+El lenguaje Java utiliza siempre el **paso de parámetros por valor**. Esto significa que, al invocar un método, la JVM evalúa los argumentos y realiza una copia física de sus valores dentro de la piladel método: nunca trabaja con la variable original del código llamante, sino con una copia local independiente.
+
+Este comportamiento se comprende fácilmente cuando trabajamos con tipos primitivos. Supongamos que declaramos un método que modifica el valor de un parámetro entero:
+
+<pre class="codigo-java">
+void modificar ( int cantidad ) {
+    cantidad = 100;
+}
+</pre>
+
+Si disponemos de una variable y la transmitimos como argumento:
+
+<pre class="codigo-java">
+int numero = 5;
+
+modificar(numero);
+</pre>
+
+Al invocar el método, el valor <span class="literal">5</span> se copia en el parámetro <span class="variable">cantidad</span>. Dentro del método, esta variable recibe el nuevo valor <span class="literal">100</span>, pero la variable original <span class="variable">numero</span> continúa conteniendo <span class="literal">5</span>.
+
+Esto sucede porque **el parámetro y el argumento no son la misma variable**. Son variables independientes que, inicialmente, contienen el mismo valor. La modificación realizada sobre el parámetro afecta únicamente a la variable local del método y no se propaga a la variable que proporcionó el argumento. Por tanto, cuando transmitimos valores de tipos primitivos, el método recibe una copia del valor original. Puede realizar operaciones con él y modificar su propia variable, pero no puede alterar directamente el contenido de la variable desde la que se realizó la llamada.
+
+La situación requiere un análisis más detallado cuando los argumentos son variables de tipo referencia, como una instancia de <span class="clase">Punto</span>, por ejemplo. Como ya sabemos, estas variables no contienen directamente los objetos, sino referencias que permiten acceder a ellos. Por tanto, si transmitimos una variable de referencia como argumento, **lo que se copia es el valor de la referencia, no el objeto al que permite acceder**:  el parámetro formal dentro del método se convierte en un **alias** temporal de la variable de referencia original. Supongamos que disponemos de un método que recibe un punto y realiza una operación sobre el mismo:
+
+<pre class="codigo-java">
+void desplazarPunto ( Punto punto ) {
+    punto.desplazar(5.0, 3.0);
+}
+</pre>
+
+Podemos invocar este método proporcionando como argumento una variable de referencia:
+
+<pre class="codigo-java">
+Punto origen = new Punto();
+
+desplazarPunto(origen);
+</pre>
+
+Cuando se realiza la llamada, el valor de la referencia almacenada en <span class="variable">origen</span> se copia en el parámetro <span class="variable">punto</span>. Como consecuencia, ambas variables permiten acceder a la misma instancia de <span class="clase">Punto</span>, aunque sean variables diferentes.
+
+Esto tiene una consecuencia fundamental: **el método puede modificar el objeto utilizando la referencia que ha recibido como parámetro**, y esos cambios serán observables desde la variable original. En nuestro ejemplo, la llamada a <span class="metodo">desplazar</span> modifica el estado del objeto al que hacen referencia tanto <span class="variable">punto</span> como <span class="variable">origen</span>. No estamos trabajando con una copia del objeto, sino con una referencia copiada que permite acceder a la misma instancia.
+
+Este comportamiento no contradice el paso por valor. Java sigue copiando el valor del argumento, pero, en este caso, el valor copiado es una referencia. El parámetro recibe una referencia que permite acceder al mismo objeto que la variable original, por lo que las operaciones que modifiquen esa instancia pueden observarse desde ambos lugares. La variable <span class="variable">origen</span> y el parámetro <span class="variable">punto</span> son alias. Por este motivo, cualquier modificación del estado de la instancia realizada mediante una de ellas será visible al acceder al objeto mediante la otra.
+
+##### Modificar una referencia no equivale a modificar el objeto
+
+La distinción anterior nos lleva a una cuestión especialmente importante: aunque el método pueda modificar el objeto al que hace referencia un parámetro, **no puede modificar directamente el contenido de la variable original que proporcionó el argumento**. Imaginemos ahora que, dentro del método, en lugar de modificar el objeto recibido, asignamos al parámetro una referencia diferente:
+
+<pre class="codigo-java">
+void sustituirPunto ( Punto punto ) {
+    punto = new Punto();
+}
+</pre>
+
+Si invocamos el método de la siguiente manera:
+
+<pre class="codigo-java">
+Punto origen = new Punto();
+
+sustituirPunto(origen);
+</pre>
+
+La variable <span class="variable">punto</span> recibe inicialmente una copia de la referencia que contiene <span class="variable">origen</span>. Sin embargo, cuando ejecutamos la asignación <span class="codigo">punto = new Punto()</span>, estamos modificando únicamente el valor del parámetro. Se crea una nueva instancia y se asigna su referencia a <span class="variable">punto</span>, pero la variable <span class="variable">origen</span> conserva la referencia que tenía antes de realizar la llamada.
+
+Al finalizar el método, la variable parámetro deja de estar disponible y la variable original continúa apuntando al objeto inicial. Por tanto, **asignar una nueva referencia al parámetro no modifica la referencia almacenada en la variable que proporcionó el argumento**. De este modo, debemos distinguir entre dos operaciones que, aunque pueden parecer similares, tienen consecuencias diferentes:
+
+* **Modificar el objeto:** actuar sobre sus atributos mediante una referencia. Los cambios serán visibles desde todas las referencias que permitan acceder a esa misma instancia.
+*  **Modificar la referencia:** asignar otro valor al parámetro, por ejemplo una nueva instancia o <span class="literal">null</span>. Solo cambia la variable parámetro, no la variable original.
+
+Esta diferencia es una de las cuestiones más importantes que debemos dominar al trabajar con métodos que reciben objetos como parámetros. Nos permite comprender por qué una operación puede modificar una instancia compartida y, al mismo tiempo, por qué no puede sustituir directamente la referencia que conserva el código que realizó la llamada.
+
+<aside class="definicion">
+
+**Parámetro formal:** Variable declarada en la definición de un método.
+
+**Parámetro actual (argumento):** Expresión proporcionada en la llamada a un método.
+
+**Paso por valor (*pass by value*):** Mecanismo de transmisión de argumentos mediante el cual el método recibe una copia del valor proporcionado en la llamada.
+
+</aside>
+
+En definitiva, debemos recordar que **Java transmite todos los argumentos por valor**, independientemente de que correspondan a tipos primitivos o a tipos de referencia. La diferencia reside en qué valor se copia: en el primer caso se copia el valor primitivo, mientras que en el segundo se copia la referencia que permite acceder al objeto. Esta característica explica por qué los métodos pueden modificar el estado de las instancias que reciben como parámetros, pero no pueden sustituir directamente las referencias almacenadas en las variables originales.
+
+### Variables locales
+
+En el tema 3, al estudiar los bloques y el ámbito de visibilidad de los identificadores, introducíamos el concepto de **variable local** como aquella que se define en un método o cualquier bloque de código intermedio. Actualizamos algunas plantillas:
+
+<div class="plantilla-sintactica">
+<div class="produccion">
+<div class="produccion-encabezado">BlockStatement:</div>
+<div class="produccion-alternativas">
+ClassDeclaration<br>
+LocalVariableDeclaration<br>
+Statement
+</div>
+</div>
+<div class="produccion">
+<div class="produccion-encabezado">LocalVariableDeclaration:</div>
+<div class="produccion-alternativas">
+{VariableModifier} UnannType IdentifierList <span class="terminal">;</span>
+</div>
+</div>
+<div class="produccion">
+<div class="produccion-encabezado">VariableModifier:</div>
+<div class="produccion-alternativas">
+<span class="terminal">final</span>
+</div>
+</div>
+</div>
+
+Resulta de vital importancia distinguir entre las **variables de instancia** (atributos) y las **variables locales** declaradas dentro del cuerpo de un método. Aunque ambas utilizan sintaxis similares para su definición, se diferencian en: su ubicación en memoria, montón (dentro de la instancia) frente a pila; ciclo de vida, la alcanzabilidad del objeto frente a la finalización del método; inicialización automática frente a obligada; y modificadores disponibles
+
+<table>
+<tr><th>Criterio</th><th>Variable de Instancia (Atributo)</th><th>Variable Local</th></tr>
+<tr><td><b>Lugar de declaración</b></td><td>Dentro de la clase, fuera de los métodos.</td><td>Dentro del bloque de un método o bucle.</td></tr>
+<tr><td><b>Ubicación en memoria</b></td><td>Memoria <b>Heap</b> (dentro del objeto).</td><td>Memoria <b>Stack</b> (marco de pila del método).</td></tr>
+<tr><td><b>Ciclo de vida</b></td><td>Existe mientras el objeto sea alcanzable.</td><td>Destruida al finalizar la ejecución del método.</td></tr>
+<tr><td><b>Inicialización</b></td><td><b>Automática por defecto</b> si no se asigna valor.</td><td><b>Obligatoria explícita</b> antes de su lectura.</td></tr>
+<tr><td><b>Modificadores de acceso</b></td><td>Admite <span class="palabra">public</span> y otros que veremos más adelante.</td><td>Solo admite <span class="palabra">final</span></td></tr>
+</table>
+
+### Métodos observadores y transformadores
+
+Los atributos permiten almacenar la información que constituye el estado de cada objeto. Los métodos representan las operaciones que podemos realizar sobre las instancias de una clase. Pero, además, para que un objeto resulte útil, el resto del programa necesita con frecuencia conocer el valor de sus características o solicitar la actualización de las mismas; entre las operaciones existen dos grupos especialmente importantes: aquellas que permiten **consultar la información de un objeto sin modificarla** y aquellas que permiten **modificar los valores de sus atributos y, por tanto, transformar su estado**.
+
+La programación orientada a objetos utiliza un patrón estandarizado: estos dos tipos de operaciones suelen implementarse mediante métodos observadores (conocidos como *getters*) y métodos transformadores (conocidos como *setters*). Ambos constituyen una parte fundamental de la interfaz de una clase, puesto que permiten que el resto del programa consulte o modifique la información de sus objetos mediante operaciones expresamente definidas para ello.
+
+La distinción no es únicamente sintáctica. Un método observador tiene como finalidad proporcionar información sobre el objeto, mientras que un transformador permite realizar cambios en su estado. Esta separación resulta importante para organizar las responsabilidades de una clase, controlar cómo se utiliza su información y mantener la coherencia de los objetos durante la ejecución del programa.
+
+#### Métodos observadores (*getters*)
+
+Los **métodos observadores** son operaciones cuya finalidad consiste en consultar información de un objeto y devolverla al componente que realiza la llamada. Reciben el nombre de *getters* porque habitualmente utilizan el prefijo inglés *get*[^3], seguido del nombre de la característica cuyo valor deseamos obtener.
+
+Un método observador permite conocer el valor de un atributo sin necesidad de acceder directamente a su declaración. De esta manera, el objeto proporciona la información que necesita el resto del programa mediante una operación de consulta, manteniendo separada la forma de obtenerla de la representación interna de los datos, como hemos establecido al estudiar el principio de encapsulación.
+
+Si queremos consultar la coordenada horizontal de un punto, podemos definir un método que devuelva el valor de su atributo correspondiente:
+
+<pre class="codigo-java">
+double getCoordenadaX ( ) {
+    return coordenadaX;
+}
+</pre>
+
+En esta declaración encontramos algunos elementos que debemos conocer. En primer lugar, el tipo <span class="palabra">double</span> indica el tipo de valor que devuelve el método. A continuación, encontramos el identificador <span class="metodo">getCoordenadaX</span>, que sigue la convención habitual de los métodos observadores. Los paréntesis indican que no necesita recibir argumentos para realizar su consulta y, finalmente, el cuerpo contiene una sentencia <span class="palabra">return</span>, que devuelve el valor almacenado en el atributo <span class="variable">coordenadaX</span>.
+
+La sentencia <span class="palabra">return</span> permite finalizar la ejecución del método y proporcionar el resultado a quien ha realizado la llamada. Por tanto, el valor devuelto puede utilizarse posteriormente en una asignación, en una expresión o como argumento de otra operación. Por ejemplo, podemos utilizar el método mediante una llamada a través de una variable de referencia:
+
+<pre class="codigo-java">
+Punto origen = new Punto();
+
+double x = origen.getCoordenadaX();
+</pre>
+
+En este caso, solicitamos el valor de la coordenada horizontal del objeto al que hace referencia <span class="variable">origen</span>. El método devuelve ese valor, que se utiliza para inicializar la variable <span class="variable">x</span>.
+
+Es importante observar que **la llamada al método no modifica el estado del objeto**. Únicamente consulta uno de sus atributos y devuelve el valor correspondiente. Si volvemos a ejecutar la misma llamada sin que haya cambiado previamente la información del punto, obtendremos el mismo resultado.
+
+Podemos completar la clase añadiendo el método observador de la segunda coordenada:
+
+<pre class="codigo-java">
+class Punto {
+
+    double coordenadaX;
+    double coordenadaY;
+
+    double getCoordenadaX ( ) {
+        return coordenadaX;
+    }
+
+    double getCoordenadaY ( ) {
+        return coordenadaY;
+    }
+
+}
+</pre>
+
+La interfaz de la clase proporciona dos operaciones diferentes para consultar las coordenadas de cada instancia. El resto del programa no necesita conocer cómo se representan internamente esos valores: simplemente solicita la información que necesita mediante el método correspondiente.
+
+Aunque los ejemplos anteriores devuelven directamente el contenido de un atributo, debemos tener presente que **un método observador no tiene por qué limitarse a devolver una variable**. Puede calcular un resultado a partir de varios atributos o proporcionar una información derivada del estado del objeto. Lo importante es que su finalidad sea ofrecer información sin modificar la instancia.
+
+Por ejemplo, si deseamos obtener las coordenadas polares, en lugar de las cartesianas, podría proporcionar un método observador denominado <span class="metodo">getRadio</span>, que calculara el radio utilizando el teorema de Pitágoras. En este caso, el método no necesitaría que existiera un atributo específico para almacenar el radio: podría obtenerlo cada vez que se solicitara, a partir de las coordenadas cartesianas. Lo mismo en el caso del ángulo. Piensa, además, que también podríamos haber definido las propiedades de la clase <span class="clase">Punto</span> mediante sus coordenadas polares, en lugar de las cartesianas, y definir los observadores <span class="metodo">getCoordenadaX</span> y <span class="metodo">getCoordenadaY</span>.
+
+Por tanto, **un método observador permite consultar información sobre el estado de una instancia sin alterarlo**, independientemente de que esa información se encuentre almacenada directamente en un atributo o tenga que calcularse.
+
+#### Métodos transformadores (*setters*)
+
+Los **métodos transformadores** son operaciones cuya finalidad consiste en modificar el estado de un objeto, alterando uno o varios de los valores que contienen sus atributos. Habitualmente reciben el nombre de *setters* y utilizan el prefijo inglés *set*, seguido del nombre de la característica que queremos modificar.
+
+A diferencia de los métodos observadores, que devuelven información sobre el objeto, los transformadores reciben los nuevos valores mediante parámetros y los utilizan para actualizar sus atributos. Por este motivo, suelen declararse con el tipo de retorno <span class="palabra">void</span>, puesto que su propósito principal no es proporcionar un resultado, sino producir un cambio en el estado de la instancia.
+
+Siguiendo con nuestra clase <span class="clase">Punto</span>, podemos definir un método que permita modificar la coordenada horizontal:
+
+<pre class="codigo-java">
+void setCoordenadaX ( double nuevaCoordenadaX ) {
+    coordenadaX = nuevaCoordenadaX;
+}
+</pre>
+
+En este caso, el método se denomina <span class="metodo">setCoordenadaX</span> y recibe un parámetro de tipo <span class="palabra">double</span>, denominado <span class="variable">nuevaCoordenadaX</span>. Cuando se realiza la llamada, el valor proporcionado como argumento se transmite al parámetro y posteriormente se asigna al atributo <span class="variable">coordenadaX</span> del objeto.
+
+Podemos utilizarlo de la siguiente manera:
+
+<pre class="codigo-java">
+Punto origen = new Punto();
+
+origen.setCoordenadaX(3.5);
+</pre>
+
+La llamada anterior solicita que la coordenada horizontal del punto pase a tener el valor <span class="literal">3.5</span>. El método recibe ese valor y modifica el atributo correspondiente de la instancia a la que hace referencia <span class="variable">origen</span>. Debemos fijarnos en que el identificador del parámetro es diferente del identificador del atributo. De esta manera, podemos distinguir claramente el nuevo valor que recibimos de la información que queremos modificar. La asignación:
+
+<pre class="codigo-java">
+coordenadaX = nuevaCoordenadaX;
+</pre>
+
+modifica el atributo del objeto utilizando el valor recibido como argumento. **No estamos modificando la variable que ha proporcionado el argumento, sino el estado de la instancia sobre la que se ha invocado el método**. Al igual que hemos hecho con la coordenada horizontal, podemos definir un segundo transformador para modificar la coordenada vertical:
+
+<pre class="codigo-java">
+void setCoordenadaY ( double nuevaCoordenadaY ) {
+    coordenadaY = nuevaCoordenadaY;
+}
+</pre>
+
+De esta forma, podemos disponer de operaciones independientes para actualizar cada una de las características del objeto. La clase completa quedaría así:
+
+<pre class="codigo-java">
+class Punto {
+
+    double coordenadaX;
+    double coordenadaY;
+
+    double getCoordenadaX ( ) {
+        return coordenadaX;
+    }
+
+    double getCoordenadaY ( ) {
+        return coordenadaY;
+    }
+
+    void setCoordenadaX ( double nuevaCoordenadaX ) {
+        coordenadaX = nuevaCoordenadaX;
+    }
+
+    void setCoordenadaY ( double nuevaCoordenadaY ) {
+        coordenadaY = nuevaCoordenadaY;
+    }
+
+}
+</pre>
+
+Ahora podemos crear un punto, modificar sus coordenadas y consultar posteriormente los valores que contiene:
+
+<pre class="codigo-java">
+Punto origen = new Punto();
+
+origen.setCoordenadaX(3.5);
+origen.setCoordenadaY(2.0);
+
+System.out.println(origen.getCoordenadaX());
+System.out.println(origen.getCoordenadaY());
+</pre>
+
+El resultado de la ejecución será:
+
+<pre class="codigo-fuente">
+3.5
+2.0
+</pre>
+
+Como podemos observar, los métodos transformadores permiten actualizar la información del objeto, mientras que los observadores proporcionan los valores que contiene en cada momento. Ambos trabajan sobre la misma instancia y cumplen funciones complementarias.
+
+#### Relación con la encapsulación
+
+La utilización de métodos observadores y transformadores está estrechamente relacionada con el principio de **encapsulación** como hemos indicado anteriormente. Recordemos que encapsular no consiste únicamente en agrupar los atributos y métodos de una entidad dentro de una clase, sino también en establecer una forma de interacción que permita utilizar su información sin depender directamente de su representación interna. Los *getters* y *setters* proporcionan precisamente ese mecanismo de interacción. En lugar de que el resto del programa tenga que conocer cómo están representados los datos, puede solicitar su consulta o modificación mediante operaciones definidas por la propia clase.
+
+Esta separación resulta especialmente interesante cuando necesitamos modificar el diseño interno de una clase. Supongamos que, inicialmente, representamos un punto mediante coordenadas cartesianas, pero posteriormente, como ya hemos apuntado, decidimos utilizar coordenadas polares. Si el resto del programa acceiera directamente a los atributos, los cambios en su representación nos obligarían a revisar numerosas partes del código. Sin embargo, si la interacción se realiza mediante observadores y transformadores que mantienen el comportamiento dela clase, podemos modificar la implementación interna sin alterar las llamadas que realizan los demás componentes. Por ejemplo, como ya hemos apuntado, podríamos conservar una operación como <span class="metodo">getCoordenadaX</span>, aunque la implementación tuviera que calcular el valor a partir de la representación polar.
+
+Los métodos transformadores también permiten establecer comprobaciones antes de modificar la información. No siempre debemos aceptar cualquier valor que se proporcione como argumento. Dependiendo de la entidad que estemos representando, puede haber condiciones que deban cumplirse para que el nuevo estado sea válido.
+
+Imaginemos, por ejemplo, una clase que representa una cuenta bancaria. No sería conveniente permitir que cualquier componente del programa modificara el saldo sin comprobar previamente las condiciones establecidas para esa operación. El transformador puede realizar las comprobaciones necesarias, actuando como un filtro que valida el parámetro recibido antes de asignarlo, y actualizar el atributo únicamente cuando se cumplen las condiciones previstas. De esta forma, **la propia clase asume la responsabilidad de mantener la coherencia de su estado**.
+
+<pre class="codigo-java">
+// Transformador que protege el estado válido
+public void setSaldo ( double nuevoSaldo ) {
+    if ( nuevoSaldo >= 0.0 ) {
+        saldo = nuevoSaldo;
+    } else {
+        System.out.println("Error: El saldo no puede ser negativo. Modificación rechazada.");
+    }
+}
+</pre>
+
+Debemos tener presente que disponer de un método transformador no garantiza automáticamente que la encapsulación esté bien implementada. Si la operación permite asignar cualquier valor sin comprobar las condiciones necesarias, podemos seguir introduciendo estados incoherentes. Lo importante es que los métodos constituyan una interfaz adecuada para consultar y modificar la información, de acuerdo con las responsabilidades de cada objeto.
+
+También debemos aclarar que, en la mayoría de los casos, las clases **no necesitan proporcionar un *getter* y un *setter* para cada uno de sus atributos**. Una clase bien diseñada debe ofrecer las operaciones que realmente necesita el resto del programa. Puede haber información que solo deba consultarse, datos que deban modificarse mediante operaciones específicas o atributos que no deban exponerse directamente. La decisión depende de las características de la entidad y de las reglas que regulan su funcionamiento.
+
+<aside class="definicion">
+
+**Método observador (*getter*):** Método cuya finalidad es consultar y devolver información sobre el estado de un objeto sin modificar sus atributos.
+
+**Método transformador (*setter*):** Método cuya finalidad es modificar el estado de un objeto mediante la actualización de uno o varios de sus atributos, normalmente utilizando los valores recibidos como parámetros.
+
+</aside>
+
+En definitiva, los métodos observadores y los transformadores permiten establecer una forma controlada de consultar y modificar, respectivamente, el estado de los objetos. Los primeros proporcionan información sin alterar la instancia, mientras que los segundos actualizan los valores que la describen. Su utilización contribuye a separar la interfaz de la implementación, facilita el mantenimiento del programa y permite que cada clase conserve la responsabilidad de gestionar adecuadamente la información de sus propias instancias.
+
 <footer class="pie">
 <div class="navegacion-principal">
 <a href="tema_03.html" class="anterior">Anterior</a> | 
@@ -569,3 +1597,4 @@ Podemos reunir las pautas anteriores en la siguiente tabla:
 
 [^1]: J. Sklenar, *Introduction to Simula*, Universidad de Malta. Disponible en: https://staff.um.edu.mt/jskl1/talk.html. Véase también el capítulo sobre Simula 67 en *General Concepts of the Simula 67 Programming Language*, de J. D. Ichbiah y S. P. Morse.
 [^2]: Alan C. Kay, *The Early History of Smalltalk*, ACM SIGPLAN Notices, vol. 28, n.º 3, 1993. DOI: https://doi.org/10.1145/155360.155364. Véase también *Kids and Us: The Story of Smalltalk*, IEEE Spectrum: https://spectrum.ieee.org/xerox-parc/smalltalk-history.
+[^3]: Cuando el atributo es booleano, la convención estándar sustituye el prefijo *get* por *is* o *has* (por ejemplo, <span class="metodo">isActiva</span> para el atributo <span class="variable">activa</span>, o <span class="metodo">hasAcceso</span> para <span class="variable">acceso</span>).
