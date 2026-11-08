@@ -618,7 +618,7 @@ El tipo declarado para una variable de referencia determina qué clase de objeto
 Por otra parte, **una misma clase puede tener muchas variables de referencia y cada una de ellas puede permitir acceder a una instancia diferente**. Si una aplicación necesita trabajar con varios puntos, podemos declarar las variables correspondientes:
 
 <figure class="img-objetos">
-    <img src="../imagenes/04_03b_objeto2.png" alt="Representación de un elemento como variable referencia: un segundo objeto">
+    <img src="../imagenes/04_03b_objeto2.png" alt="Representación de un elemento como variable de referencia: un segundo objeto">
     <img src="../imagenes/04_03_objeto.png" alt="Representación de un elemento como variable de referencia">
 </figure>
 

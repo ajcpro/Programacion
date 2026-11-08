@@ -56,6 +56,7 @@ table th.encapsulacion {
     color: #80521d;
 }
 
+/*
 table tbody tr:nth-child(even) td {
     background-color: #f8fafc;
 }
@@ -63,6 +64,7 @@ table tbody tr:nth-child(even) td {
 table tbody tr:nth-child(even) th.aspecto {
     background-color: #e7edf4;
 }
+*/
 
 /* Evita dividir filas entre páginas al generar el PDF. */
 table tr {
@@ -82,14 +84,11 @@ table tr {
     }
 }
 
-figure.img-referencia {
-  float: right;
+figure.img-referencia img {
   max-width: 8%;
-  margin: 0 0 0 1.5em;
-  text-align: left;
 }
 
-figure.img-objeto, fifigure.img-alias {
+figure.img-referencia, figure.img-objeto, fifigure.img-alias {
   float: right;
   max-width: 20%;
   margin: 0 0 0 1.5em;
@@ -101,6 +100,10 @@ figure.img-objetos {
   max-width: 42%;
   margin: 0 0 0 1.5em;
   text-align: left;
+}
+
+figure.img-objetos img {
+  max-width: 50%;
 }
 
 figure.img-null {
