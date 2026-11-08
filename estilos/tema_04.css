@@ -2,8 +2,8 @@
    COMPONENTES EXCLUSIVOS Y ESPECÍFICOS - TEMA 04
    ========================================================================== */
 
-/* --- Tabla comparativa: abstracción y encapsulación --- */
-table.tabla-comparativa-principios {
+/* --- Tabla comparativa --- */
+table {
     width: 100%;
     margin: 1.2em 0;
     border-collapse: collapse;
@@ -15,7 +15,7 @@ table.tabla-comparativa-principios {
     page-break-inside: avoid;
 }
 
-table.tabla-comparativa-principios caption {
+table caption {
     caption-side: bottom;
     padding-top: 0.45em;
     color: #666666;
@@ -24,8 +24,8 @@ table.tabla-comparativa-principios caption {
     text-align: left;
 }
 
-table.tabla-comparativa-principios th,
-table.tabla-comparativa-principios td {
+table th,
+table td {
     padding: 0.7em;
     border: 1px solid #cbd5e0;
     text-align: left;
@@ -33,51 +33,79 @@ table.tabla-comparativa-principios td {
     overflow-wrap: anywhere;
 }
 
-table.tabla-comparativa-principios thead th {
+table thead th {
     font-weight: bold;
     vertical-align: middle;
 }
 
-table.tabla-comparativa-principios th.aspecto {
+table th.aspecto {
     width: 22%;
     background-color: #edf2f7;
     color: #2d3748;
 }
 
-table.tabla-comparativa-principios th.abstraccion {
+table th.abstraccion {
     width: 39%;
     background-color: #e3f0ed;
     color: #24574f;
 }
 
-table.tabla-comparativa-principios th.encapsulacion {
+table th.encapsulacion {
     width: 39%;
     background-color: #f9ead8;
     color: #80521d;
 }
 
-table.tabla-comparativa-principios tbody tr:nth-child(even) td {
+table tbody tr:nth-child(even) td {
     background-color: #f8fafc;
 }
 
-table.tabla-comparativa-principios tbody tr:nth-child(even) th.aspecto {
+table tbody tr:nth-child(even) th.aspecto {
     background-color: #e7edf4;
 }
 
 /* Evita dividir filas entre páginas al generar el PDF. */
-table.tabla-comparativa-principios tr {
+table tr {
     break-inside: avoid;
     page-break-inside: avoid;
 }
 
 /* Ajustes para pantallas estrechas. */
 @media screen and (max-width: 640px) {
-    table.tabla-comparativa-principios {
+    table {
         font-size: 0.85em;
     }
 
-    table.tabla-comparativa-principios th,
-    table.tabla-comparativa-principios td {
+    table th,
+    table td {
         padding: 0.45em;
     }
+}
+
+figure.img-referencia {
+  float: right;
+  max-width: 8%;
+  margin: 0 0 0 1.5em;
+  text-align: left;
+}
+
+figure.img-objeto, fifigure.img-alias {
+  float: right;
+  max-width: 20%;
+  margin: 0 0 0 1.5em;
+  text-align: left;
+}
+
+figure.img-objetos {
+  float: right;
+  max-width: 42%;
+  margin: 0 0 0 1.5em;
+  text-align: left;
+}
+
+figure.img-null {
+  float: right;
+  max-width: 20%;
+  margin: 0 0 0 1.5em;
+  text-align: left;
 }
