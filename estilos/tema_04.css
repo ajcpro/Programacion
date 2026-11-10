@@ -85,10 +85,10 @@ table tr {
 }
 
 figure.img-referencia img {
-  max-width: 20%;
+  max-width: 40%;
 }
 
-figure.img-referencia, figure.img-objeto, fifigure.img-alias {
+figure.img-referencia, figure.img-objeto, figure.img-alias {
   float: right;
   max-width: 20%;
   margin: 0 0 0 1.5em;
