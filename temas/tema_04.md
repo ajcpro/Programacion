@@ -982,11 +982,11 @@ Cada atributo debe declararse indicando el tipo de dato que puede almacenar. Jav
 
 <div class="plantilla-sintactica">
 <div class="produccion">
-<div class="produccion-encabezado"> FieldDeclaration: </div>
+<div class="produccion-encabezado">FieldDeclaration:</div>
 <div class="produccion-alternativas">
 {TypeModifier} UnannType IdentifierList <span class="terminal">;</span>
-  </div>
-  </div>
+</div>
+</div>
 <div class="produccion">
 <div class="produccion-encabezado">UnannType:</div>
 <div class="produccion-alternativas">
@@ -1108,11 +1108,11 @@ En Java, los métodos se declaran dentro del cuerpo de una clase, al igual que l
 
 <div class="plantilla-sintactica">
 <div class="produccion">
-<div class="produccion-encabezado"> MethodHeader: </div>
+<div class="produccion-encabezado">MethodHeader:</div>
 <div class="produccion-alternativas">
 Result Identifier <span class="terminal">(</span> [FormalParameterList] <span class="terminal">)</span>
-  </div>
-  </div>
+</div>
+</div>
 <div class="produccion">
 <div class="produccion-encabezado">Result:</div>
 <div class="produccion-alternativas">
@@ -1581,6 +1581,482 @@ También debemos aclarar que, en la mayoría de los casos, las clases **no neces
 
 En definitiva, los métodos observadores y los transformadores permiten establecer una forma controlada de consultar y modificar, respectivamente, el estado de los objetos. Los primeros proporcionan información sin alterar la instancia, mientras que los segundos actualizan los valores que la describen. Su utilización contribuye a separar la interfaz de la implementación, facilita el mantenimiento del programa y permite que cada clase conserve la responsabilidad de gestionar adecuadamente la información de sus propias instancias.
 
+## Inicialización: constructores
+
+En el apartado anterior hemos explorado la anatomía interna de una clase, analizando cómo los atributos almacenan el estado de las instancias y cómo los métodos definen su comportamiento e interfaz pública. Cuando creamos un objeto mediante el operador <span class="palabra">new</span>, no solo se reserva el espacio de memoria necesario para almacenar sus atributos: también debemos establecer los valores iniciales que definirán su estado y que permitirán que la instancia comience a utilizarse de forma coherente. Este proceso recibe el nombre de **inicialización** y constituye una parte fundamental de la creación de cualquier objeto.
+
+En el mundo real, una entidad raras veces nace en un estado genérico o vacío. Una cuenta bancaria no debería existir en el sistema sin un número de cuenta asignado o con un titular indefinido; o un punto en un espacio cartesiano puede requerir coordenadas iniciales específicas para ser operativo desde su origen. Si los objetos se crearan en un estado incompleto o no válido, correríamos el riesgo de que el programador olvidase asignarlo, dejando el objeto en un **estado inconsistente** y propenso a errores en tiempo de ejecución.
+
+Hasta ahora hemos visto que Java asigna automáticamente unos valores por defecto a los atributos de instancia cuando se crea un objeto. Este comportamiento garantiza que los atributos tengan un valor inicial determinado, incluso cuando el programador no les ha asignado ninguno de forma explícita. Sin embargo, estos valores no siempre son adecuados para representar la entidad que queremos modelar. En muchas ocasiones, como indicábamos, necesitamos que el objeto comience su ciclo de vida con unos datos concretos, que pueden depender de las circunstancias en las que se crea o de la información que proporciona el resto del programa.
+
+Imaginemos, por ejemplo, que nuestra aplicación debe gestionar distintos puntos del plano. Si creamos una instancia de la clase <span class="clase">Punto</span>, las coordenadas recibirán inicialmente el valor <span class="literal">0.0</span>, siempre que no hayamos establecido otros valores. Pero, ¿qué sucede si necesitamos crear directamente un punto situado en las coordenadas (3.5, 2.0)? Podríamos crear primero el objeto y modificar después sus atributos mediante las operaciones correspondientes. No obstante, este procedimiento obliga a realizar varias instrucciones y permite que el objeto exista temporalmente con unos valores que quizá no representan el estado con el que debería comenzar a utilizarse.
+
+Para resolver esta situación, la POO proporciona un mecanismo específico que permite **inicializar los objetos en el mismo momento en que se crean**. Este mecanismo se basa en los **constructores**. Un **constructor** es un miembro especial de una clase cuya función primaria es inicializar el estado del objeto en el mismo momento en que es creado (en Java, mediante el operador <span class="palabra">new</span>).  El constructor se ejecuta automáticamente durante el proceso de instanciación y permite establecer el estado inicial de cada nueva instancia.
+
+<div class="plantilla-sintactica">
+<div class="produccion">
+<div class="produccion-encabezado">ClassBodyDeclaration:</div>
+<div class="produccion-alternativas">
+ClassMemberDeclaration<br>
+ConstructorDeclaration
+</div>
+</div>
+</div>
+
+Los constructores forman parte de la definición de una clase y están estrechamente relacionados con sus atributos. Su cometido principal consiste en preparar el objeto para que pueda utilizarse desde el primer momento, asignando a sus atributos los valores iniciales que correspondan. Para ello, pueden recibir información mediante parámetros, de manera que el código que solicita la creación de una instancia pueda proporcionar los datos necesarios para determinar su estado inicial.
+
+Debemos destacar que los constructores no son métodos ordinarios, aunque presentan algunas semejanzas con ellos. Se declaran dentro de la clase, pueden recibir parámetros y contienen instrucciones que se ejecutan cuando se solicita la creación de un objeto. Sin embargo, tienen una finalidad específica: **no representan una operación que podamos invocar libremente sobre una instancia ya existente, sino que intervienen en su proceso de creación e inicialización**. Por este motivo, su ejecución está vinculada al operador <span class="palabra">new</span>.
+
+<aside class="definicion">
+
+**Constructor:** Miembro especial de una clase que se invoca de forma automática durante la instanciación para inicializar el estado del nuevo objeto.
+
+**Estado válido:** Principio de diseño que dictamina que ningún objeto debe ser accesible o utilizable dentro del programa si sus atributos no tienen valores válidos.
+
+</aside>
+
+En los siguientes apartados estudiaremos cómo se declaran los constructores en Java, qué reglas sintácticas deben respetar y cómo podemos definir distintas alternativas para inicializar las instancias de una misma clase.
+
+### Sintaxis de los constructores
+
+Los constructores se declaran dentro del cuerpo de una clase, al igual que los métodos y los atributos, pero presentan una sintaxis particular que permite distinguirlos del resto de los miembros. Su característica más importante es que **el nombre del constructor debe coincidir exactamente con el nombre de la clase a la que pertenece**. De esta manera, Java puede identificar qué constructor debe ejecutar cuando se solicita la creación de una nueva instancia mediante el operador <span class="palabra">new</span>.
+
+
+A diferencia de los métodos, los constructores **no tienen tipo de retorno**: ** los constructores no devuelven nada**. No debemos indicar ningún tipo de dato delante de su nombre, ni siquiera <span class="palabra">void</span>. Aunque su ejecución forma parte del proceso de creación del objeto, no devuelven una referencia ni ningún otro valor mediante una sentencia <span class="palabra">return</span>. La referencia al objeto recién creado es el resultado de la expresión de instanciación, no de la ejecución del constructor.
+
+<div class="plantilla-sintactica">
+<div class="produccion">
+<div class="produccion-encabezado">ConstructorDeclaration:</div>
+<div class="produccion-alternativas">
+{ConstructorModifier} ConstructorDeclarator ConstructorBody
+</div>
+</div>
+<div class="produccion">
+<div class="produccion-encabezado">ConstructorDeclarator:</div>
+<div class="produccion-alternativas">
+TypeIdentifier <span class="terminal">(</span> [FormalParameterList] <span class="terminal">)</span>
+</div>
+</div>
+<div class="produccion">
+<div class="produccion-encabezado">ConstructorBody:</div>
+<div class="produccion-alternativas">
+<span class="terminal">{</span> [BlockStatements] <span class="terminal">}</span>
+</div>
+</div>
+</div>
+
+Podemos identificar tres elementos fundamentales:
+
+1. **Nombre del constructor:** debe ser idéntico al nombre de la clase, respetando las mismas mayúsculas y minúsculas. No se trata de un identificador elegido libremente, sino de una condición sintáctica del lenguaje.
+2. **Lista de parámetros:** aparece entre paréntesis y permite recibir los valores necesarios para inicializar el objeto. Como sucede con los métodos, cada parámetro debe declarar su tipo de dato y su identificador. Si no necesitamos recibir información, los paréntesis permanecen vacíos.
+3. **Cuerpo del constructor:** es el bloque de instrucciones delimitado por llaves. Contiene las operaciones que se ejecutarán durante la inicialización de la instancia, normalmente asignaciones a los atributos y otras instrucciones necesarias para establecer su estado inicial.
+
+Veamos cómo podemos declarar un constructor para <span class="clase">Punto</span>. Si queremos que todos los puntos se creen inicialmente en el origen de coordenadas, podemos definir un constructor sin parámetros:
+
+<pre class="codigo-java">
+class Punto {
+
+    double coordenadaX;
+    double coordenadaY;
+
+    Punto ( ) {
+        coordenadaX = 0.0;
+        coordenadaY = 0.0;
+    }
+
+}
+</pre>
+
+En este caso, el constructor se denomina <span class="metodo">Punto</span>, exactamente igual que la clase, y no recibe ningún parámetro. Su cuerpo contiene dos asignaciones que establecen el valor inicial de los atributos <span class="variable">coordenadaX</span> y <span class="variable">coordenadaY</span>. Cuando creemos una instancia, el constructor se encargará de realizar estas asignaciones durante el proceso de inicialización. Para utilizarlo, basta con escribir la expresión de instanciación habitual:
+
+<pre class="codigo-java">
+Punto origen = new Punto();
+</pre>
+
+Observemos que los paréntesis de la expresión <span class="literal">new Punto()</span> están vacíos, puesto que el constructor no necesita recibir argumentos. Al ejecutar esta instrucción, Java crea la instancia e invoca automáticamente el constructor correspondiente. No tenemos que realizar una llamada independiente al constructor ni escribir su nombre después de haber creado el objeto.
+
+También podemos definir constructores que reciban parámetros para establecer los valores iniciales a partir de la información que proporciona el código que crea la instancia. Por ejemplo, si queremos que cada punto pueda crearse directamente en una posición determinada, podemos escribir:
+
+<pre class="codigo-java">
+class Punto {
+
+    double coordenadaX;
+    double coordenadaY;
+
+    Punto ( double x, double y ) {
+        coordenadaX = x;
+        coordenadaY = y;
+    }
+
+}
+</pre>
+
+En este segundo ejemplo, el constructor recibe dos parámetros de tipo <span class="palabra">double</span>, denominados <span class="variable">x</span> e <span class="variable">y</span>. Las instrucciones de su cuerpo asignan los valores recibidos a los atributos correspondientes. De esta forma, el estado inicial del objeto queda determinado por los argumentos que se proporcionen durante su creación. La instanciación de un punto situado en las coordenadas (3.5, 2.0) se realizaría de la siguiente manera:
+
+<pre class="codigo-java">
+Punto origen = new Punto(3.5, 2.0);
+</pre>
+
+En esta ocasión, los valores <span class="literal">3.5</span> y <span class="literal">2.0</span> se transmiten a los parámetros del constructor siguiendo el mismo mecanismo de paso de argumentos que hemos estudiado para los métodos. El primer argumento se asigna al parámetro <span class="variable">x</span> y el segundo a <span class="variable">y</span>. A continuación, las instrucciones del constructor utilizan esos valores para inicializar los atributos de la nueva instancia.
+
+Debemos prestar atención a una diferencia importante entre los parámetros y los atributos. Aunque ambos representan datos numéricos de tipo <span class="palabra">double</span>, no son las mismas variables: los parámetros reciben temporalmente los argumentos proporcionados durante la creación del objeto, mientras que los atributos conservan los valores que constituyen su estado. Las asignaciones del constructor permiten transferir la información recibida a los atributos de la instancia.
+
+<aside class="definicion">
+
+**Constructor sin parámetros:** Constructor cuya lista de parámetros está vacía y que, por tanto, no necesita recibir argumentos para inicializar la instancia.
+
+**Constructor parametrizado:** Constructor que declara uno o varios parámetros para recibir la información necesaria para inicializar el objeto.
+
+</aside>
+
+Por tanto, la sintaxis de los constructores es similar a la de los métodos en cuanto a la posibilidad de recibir parámetros y disponer de un cuerpo con instrucciones, pero se diferencia claramente por su nombre y por la ausencia de tipo de retorno. **El constructor debe llamarse como la clase, no declara ningún valor de retorno y se ejecuta automáticamente cuando se crea una instancia mediante <span class="palabra">new</span>.**
+
+### Constructor por defecto
+
+Como hemos visto, los constructores permiten establecer el estado inicial de los objetos durante el proceso de instanciación. Sin embargo, no siempre es necesario que el programador declare expresamente un constructor para poder crear instancias de una clase. Java proporciona un mecanismo que simplifica esta tarea y que debemos distinguir de los constructores que definimos nosotros mismos.
+
+Cuando declaramos una clase y no incluimos ningún constructor, **el compilador proporciona automáticamente un constructor por defecto** (*default constructor*). Este constructor permite crear instancias sin necesidad de proporcionar argumentos y realiza una inicialización básica del objeto. Su cuerpo no contiene instrucciones específicas de inicialización escritas por el programador, por lo que los atributos reciben los valores iniciales que establece Java según sus respectivos tipos de datos.
+
+Consideremos, por ejemplo, la siguiente clase <span class="clase">Punto</span>:
+
+<pre class="codigo-java">
+class Punto {
+
+    double coordenadaX;
+    double coordenadaY;
+
+}
+</pre>
+
+En esta declaración no hemos definido ningún constructor. A pesar de ello, podemos crear instancias de la clase mediante la siguiente instrucción:
+
+<pre class="codigo-java">
+Punto origen = new Punto();
+</pre>
+
+La expresión <span class="codigo">new Punto()</span> es válida porque el compilador proporciona automáticamente un constructor por defecto que no recibe parámetros. Al crear el objeto, sus atributos <span class="variable">coordenadaX</span> y <span class="variable">coordenadaY</span> se inicializan con el valor <span class="literal">0.0</span>, que es el valor por defecto correspondiente al tipo <span class="palabra">double</span>.
+
+Si queremos establecer unas condiciones de inicialización particulares, podemos declarar nuestros propios constructores. Estos reciben el nombre de **constructores explícitos**, porque es el programador quien escribe su declaración y determina las instrucciones que deben ejecutarse durante la creación de cada instancia.
+
+El primer ejemplo de constructor que hemos creado es un constructor sin parámetros que establece expresamente las coordenadas iniciales del punto en el origen. Aunque el resultado de la inicialización coincide con el que obtendríamos utilizando el constructor por defecto, en este caso el constructor ha sido declarado explícitamente. Las asignaciones que aparecen en su cuerpo forman parte de la implementación definida por el programador.
+
+También hemos declarado un constructor parametrizado para permitir que cada instancia se cree con unas coordenadas determinadas. De esta forma, podemos crear puntos en distintas posiciones directamente durante su instanciación.
+
+Pero debemos prestar atención a una **regla muy importante** del lenguaje:
+<aside>
+**Cuando declaramos cualquier constructor explícito, Java deja de proporcionar automáticamente el constructor por defecto**.
+</aside>
+
+Esto significa que si hemos escrito el constructor parametrizado anterior, la siguiente instrucción deja de ser válida:
+
+<pre class="codigo-java">
+Punto origen = new Punto();
+</pre>
+
+El compilador de Java detendrá el proceso de compilación emitiendo un error claro:
+
+<pre class="codigo-fuente">
+error: constructor Punto in class Punto cannot be applied to given types;
+  required: double,double
+  found: no arguments
+  reason: actual and formal argument lists differ in length
+</pre>
+
+El motivo es que la clase tiene un constructor que exige dos argumentos y no existe un constructor sin parámetros (proporcionado automáticamente por el compilador).
+
+<aside class="definicion">
+
+**Constructor por defecto (*Default Constructor*):** Constructor sin parámetros generado implícitamente por el compilador cuando una clase carece de constructores explícitos.
+
+**Regla de supresión de constructores:** Principio del compilador por el cual la presencia de cualquier constructor explícito anula la generación automática del constructor por defecto.
+
+</aside>
+
+#### Error: incluir tipo de retorno
+
+Existe una trampa sintáctica común durante el aprendizaje de Java: añadir por error un tipo de retorno (como <span class="palabra">void</span>) antes del nombre del constructor:
+
+<pre class="codigo-java">
+void Punto ( double x, double y ) {
+        coordenadaX = x;
+        coordenadaY = y;
+}
+</pre>
+
+Para el compilador de Java, esta sentencia **no constituye un error de sintaxis formal**, pero tiene un efecto completamente indeseado: Java interpreta que estamos declarando un **método ordinario** llamado <span class="metodo">Punto</span> que devuelve <span class="palabra">void</span>, en lugar de un constructor. Como consecuencia, la clase se queda sin ese constructor y cualquier intento de invocar <span class="codigo">new Punto(3.0, 4.0)</span> provocará un error de compilación por falta de un constructor adecuado.
+
+### Sobrecarga de constructores
+
+Acabamos de ver que  si declaramos un constructor, de manera automática, desaparece el constructor por defecto. Si, por ejemplo, al trabajar con nuestra clase <span class="clase">Punto</span>, un programa cliente puede desear instanciar un punto ubicado en el origen de coordenadas sin necesidad de especificar dichos valores, mientras otro componente quiere disponer de dos coordenadas cartesianas concretas, necesitamos conservar ambas posibilidades de creación por lo que tendremos que declarar expresamente los dos constructores.
+
+Para responder a esta diversidad de escenarios de instanciación sin necesidad de recurrir a nombres de clases distintos ni a métodos de inicialización secundarios, el lenguaje Java proporciona un mecanismo denominado **sobrecarga de constructores** (*constructor overload*).
+
+La sobrecarga permite definir diferentes formas de crear objetos de un mismo tipo, adaptando la inicialización a la información disponible en cada situación. Aunque todos los constructores pertenecen a la misma clase y tienen como finalidad preparar el estado inicial de sus instancias, cada uno puede necesitar una cantidad diferente de información y realizar unas operaciones de inicialización específicas.
+
+Para comprenderlo, consideremos la siguiente declaración de la clase <span class="clase">Punto</span>:
+
+<pre class="codigo-java">
+class Punto {
+
+    double x;
+    double y;
+
+    Punto ( ) {
+        x = 0.0;
+        y = 0.0;
+    }
+
+    Punto ( double coordenadaX, double coordenadaY ) {
+        x = coordenadaX;
+        y = coordenadaY;
+    }
+
+}
+</pre>
+
+En esta clase hemos declarado dos constructores diferentes. El primero no recibe parámetros y establece las coordenadas del punto en el origen. El segundo recibe dos valores de tipo <span class="palabra">double</span> y los utiliza para inicializar las coordenadas de la nueva instancia.
+
+Podemos utilizar cualquiera de ellos dependiendo de cómo queramos crear el objeto:
+
+<pre class="codigo-java">
+Punto origen = new Punto();
+Punto destino = new Punto(3.5, 2.0);
+</pre>
+
+En la primera instrucción, al no proporcionar argumentos, Java selecciona el constructor cuya lista de parámetros está vacía. En la segunda, los dos argumentos proporcionados permiten seleccionar el constructor que recibe dos parámetros de tipo <span class="palabra">double</span>. **La elección del constructor se realiza durante la compilación, a partir de los argumentos indicados en la expresión de instanciación.**
+
+Para que Java pueda distinguir entre los diferentes constructores de una clase, sus declaraciones deben presentar listas de parámetros diferentes. Esta diferencia puede establecerse mediante el número de parámetros, sus tipos de datos o el orden en el que aparecen. No basta con cambiar los nombres de los parámetros ni con modificar las instrucciones que contiene el cuerpo del constructor: lo que permite distinguir las distintas declaraciones es su lista de parámetros.
+
+Veamos algunas posibilidades de sobrecarga para nuestra clase <span class="clase">Punto</span>:
+
+<pre class="codigo-java">
+class Punto {
+
+    double coordenadaX;
+    double coordenadaY;
+
+    Punto ( ) {
+        coordenadaX = 0.0;
+        coordenadaY = 0.0;
+    }
+
+    Punto ( double x ) {
+        coordenadaX = x;
+        coordenadaY = 0.0;
+    }
+
+    Punto ( double x, double y ) {
+        coordenadaX = x;
+        coordenadaY = y;
+    }
+
+}
+</pre>
+
+Ahora disponemos de tres constructores. El primero permite crear un punto en el origen de coordenadas; el segundo establece la coordenada horizontal y mantiene la vertical en cero; y el tercero permite indicar las dos coordenadas. Por tanto, podemos crear instancias utilizando cualquiera de las tres alternativas:
+
+<pre class="codigo-java">
+Punto origen = new Punto();
+Punto horizontal = new Punto(5.0);
+Punto destino = new Punto(3.5, 2.0);
+</pre>
+
+Cada expresión de instanciación proporciona un número de argumentos que permite identificar el constructor correspondiente. De esta manera, podemos adaptar la creación de los objetos a las necesidades concretas del programa sin tener que utilizar nombres diferentes para cada operación de inicialización.
+
+También es posible sobrecargar constructores utilizando distintos tipos de parámetros. Por ejemplo, podríamos disponer de un constructor que recibiera las coordenadas como valores de tipo <span class="palabra">double</span> y otro que recibiera valores de tipo <span class="palabra">int</span>. Aunque ambos tuvieran el mismo número de parámetros, sus listas serían diferentes y el compilador podría distinguirlos.  Sin embargo, **la sobrecarga no se basa en el nombre de los parámetros ni en el tipo de retorno**, sino en la secuencia de tipos de datos de los parámetros. Dos constructores sobrecargados se consideran válidos si difieren en al menos uno de los siguientes criterios:
+
+1. **En el número de parámetros:** En el ejemplo, un constructor no recibe argumentos, otro recibe uno y el tercero recibe dos..
+2. **En los tipos de datos de los parámetros:** Un constructor podría recibir un entero y un real, mientras que otro podría recibir una cadena y un real.
+3. **En el orden de los tipos de datos:** podría recibir un entero y una cadena, mientras que otro podría recibir una cadena y un entero
+
+Además, los argumentos de una invocación deben ser compatibles con los parámetros del constructor seleccionado. Si existen varias posibilidades y el compilador no puede determinar cuál debe utilizar, se producirá un error de compilación.[^4]
+
+<aside class="definicion">
+
+**Sobrecarga de constructores (*constructor overload*):** Mecanismo de Java que permite declarar varios constructores dentro de una misma clase, diferenciados por sus listas de parámetros.
+
+**Lista de parámetros:** Secuencia ordenada de parámetros declarados en un constructor o método. Está determinada por el número, los tipos y el orden de los parámetros, y permite distinguir las diferentes versiones sobrecargadas.
+
+</aside>
+
+En definitiva, la sobrecarga de constructores permite que una misma clase ofrezca distintas alternativas para crear sus objetos, sin necesidad de definir clases diferentes ni de realizar posteriormente operaciones adicionales para establecer su estado inicial. **Cada constructor representa una forma específica de inicializar una instancia, y Java selecciona automáticamente el que corresponde a los argumentos proporcionados durante la instanciación.**
+
+#### Diseño: ¿Debe existir constructor sin parámetros?
+
+Cuando el dominio exija que un objeto nazca siempre con todos (o parte de)  sus datos (por ejemplo, una clase <span class="clase">Empleado</span> que no debería existir sin su NIF), **no debe proporcionarse un constructor sin parámetros**. De este modo, se obliga sintácticamente al código cliente a suministrar los datos obligatorios al ejecutar <span class="palabra">new</span>.
+
+### La palabra reservada this
+
+Al trabajar con constructores y métodos de objeto, es habitual que necesitemos hacer referencia a los atributos de la instancia sobre la que se está ejecutando una operación. Hasta ahora hemos accedido a ellos utilizando directamente sus identificadores, como <span class="variable">coordenadaX</span> y <span class="variable">coordenadaY</span> en nuestra clase <span class="clase">Punto</span>. Y cuando hemos querido dar un valor inicial a través de sus constructores hemos usado los parámetros <span class="variable">x</span> e <span class="variable">y</span>, que son identificadores no significativos. Además, es una práctica estándar nombrar los parámetros formales de entrada exactamente igual que los atributos de la clase:
+
+<pre class="codigo-java">
+Punto ( double coordenadaX, double coordenadaY ) {
+    coordenadaX = coordenadaX;
+    coordenadaY = coordenadaY;
+}
+</pre>
+
+A primera vista, podríamos pensar que las dos instrucciones del constructor asignan los valores recibidos a los atributos del objeto. Sin embargo, no es así. Dentro del constructor, los parámetros tienen el mismo nombre que los atributos. Esta coincidencia de nombres genera una situación sintáctica denominada **ocultación de nombres** (*variable shadowing*): dentro del cuerpo del constructor, el nombre <span class="variable">coordenadaX</span> hace referencia por defecto al parámetro local de entrada por ser el ámbito más cercano. Lo mismo sucede con <span class="variable">coordenadaY</span>.
+
+Para resolver esta situación podemos utilizar <span class="palabra">this</span>. Java proporciona esta palabra reservada que representa una **referencia al propio objeto sobre el que se está ejecutando un método o un constructor**. Por tanto, permite acceder a sus atributos y métodos desde el interior de la propia clase. No se trata de una variable que debamos declarar ni de una referencia que tengamos que inicializar: Java la proporciona automáticamente durante la ejecución de los métodos de objeto y los constructores.
+
+Así pues, <span class="palabra">this</span> permite distinguir los atributos de la instancia de los parámetros locales. Cuando escribimos <span class="palabra">this</span><span class="operador">.</span><span class="variable">coordenadaX</span>, estamos haciendo referencia al atributo <span class="variable">coordenadaX</span> del objeto actual. En cambio, cuando escribimos simplemente <span class="variable">coordenadaY</span>, nos referimos al parámetro del constructor.
+
+De esta forma, podemos corregir la declaración anterior:
+
+<pre class="codigo-java">
+Punto ( double coordenadaX, double coordenadaY ) {
+    this.coordenadaX = coordenadaX;
+    this.coordenadaY = coordenadaY;
+}
+</pre>
+
+Ahora sí, las asignaciones realizan la inicialización que pretendíamos. En la instrucción <span class="codigo><span class="operador">this</span><span class="operador">.</span><span class="variable">coordenadaX</span> <span class="operador">=</span> <span class="variable">coordenadaX</span></span>, el elemento situado a la izquierda del operador de asignación es el atributo <span class="variable">coordenadaX</span> del objeto que se está construyendo, mientras que el elemento situado a la derecha es el parámetro recibido por el constructor. De manera equivalente, la segunda instrucción asigna el valor del parámetro <span class="variable">coordenadaY</span> al atributo correspondiente.
+
+Esta forma de escribir los constructores es muy habitual en Java, especialmente cuando los parámetros representan los valores iniciales de los atributos y se utilizan identificadores iguales para ambos. Además de evitar ambigüedades, permite mantener una correspondencia clara entre los datos que recibe el constructor y los atributos que debe inicializar.
+
+#### Acceso a los miembros del objeto actual
+
+Aunque uno de sus usos más frecuentes aparece en los constructores, la palabra reservada <span class="palabra">this</span> no está limitada a ellos. También podemos utilizarla dentro de cualquier método de objeto para acceder explícitamente a los atributos y a otros métodos de la misma instancia.
+
+Por ejemplo, podríamos definir en nuestra clase <span class="clase">Punto</span> un método que desplazase sus coordenadas:
+
+<pre class="codigo-java">
+void desplazar ( double desplazamientoX, double desplazamientoY ) {
+    this.coordenadaX += desplazamientoX;
+    this.coordenadaY += desplazamientoY;
+}
+</pre>
+
+En este caso, <span class="palabra">this</span> identifica al punto sobre el que se ha invocado el método. Si ejecutamos <span class="metodo">desplazar</span> sobre el objeto referenciado por <span class="variable">origen</span>, las expresiones <span class="palabra">this</span><span class="operador">.</span><span class="variable">coordenadaX</span> y <span class="palabra">this</span><span class="operador">.</span><span class="variable">coordenadaY</span> hacen referencia a sus coordenadas. Si lo invocamos sobre el objeto referenciado por <span class="variable">destino</span>, esas mismas expresiones se refieren a las coordenadas de esa otra instancia.
+
+Por tanto, <span class="palabra">this</span> permite que una misma implementación trabaje con distintas instancias sin necesidad de conocer el nombre de las variables de referencia que se utilizan desde el exterior. El objeto actual queda determinado por la invocación que ha provocado la ejecución del método. Cuando no existe ambigüedad, podemos omitir <span class="palabra">this</span> y acceder directamente a los atributos o métodos de la instancia. Por ejemplo, las siguientes instrucciones tienen el mismo efecto:
+
+<pre class="codigo-java">
+coordenadaX += desplazamientoX;
+this.coordenadaX += desplazamientoX;
+</pre>
+
+En el primer caso, como no existe un parámetro ni otra variable local denominada <span class="variable">x</span>, Java interpreta que nos referimos al atributo de la instancia. En el segundo, utilizamos <span class="palabra">this</span> para indicarlo expresamente. Por ello, su utilización es opcional cuando el contexto permite identificar sin dudas el miembro al que queremos acceder, aunque puede resultar conveniente para hacer más explícita la relación con el objeto actual.
+
+<aside class="definicion">
+
+**this:** Palabra reservada de Java que representa una referencia al objeto actual, es decir, a la instancia sobre la que se está ejecutando un método o un constructor.
+
+**Ocultación de atributo:** Situación que se produce cuando una variable local o un parámetro tiene el mismo identificador que un atributo de la clase. Dentro del ámbito de esa variable, el identificador hace referencia a la variable local o al parámetro, ocultando el acceso directo al atributo.
+
+</aside>
+
+En definitiva, la palabra reservada <span class="palabra">this</span> permite identificar explícitamente la instancia actual y acceder a sus atributos y métodos. Su utilidad resulta evidente cuando los parámetros de un constructor o de un método tienen los mismos nombres que los atributos, ya que permite distinguir claramente entre la información recibida y los datos que forman parte del estado del objeto.
+
+### Encadenamiento de constructores
+
+Cuando una clase dispone de varios constructores, como sucede en el caso de la sobrecarga que hemos estudiado anteriormente, es posible que algunos de ellos necesiten realizar operaciones de inicialización muy similares. Por ejemplo, imaginemos que nuestra clase <span class="clase">Punto</span> dispone de tres constructores: uno sin parámetros, otro que recibe una coordenada y un tercero que recibe las dos coordenadas. En los tres casos necesitamos establecer los valores de los atributos <span class="variable">coordenadaX</span> y <span class="variable">coordenadaY</span>, aunque la información recibida en cada constructor sea diferente.
+
+Una primera posibilidad consiste en escribir por separado las instrucciones necesarias para inicializar los atributos en cada constructor, como hacíamos antes. Este código funciona correctamente, pero presenta un inconveniente: algunas instrucciones se repiten en varios constructores. Si posteriormente necesitásemos modificar la forma en que se inicializa un punto, tendríamos que revisar todos los constructores afectados. Esta duplicación puede provocar que olvidemos actualizar alguno de ellos y que la clase termine utilizando criterios de inicialización diferentes.
+
+Para evitarlo, Java permite que un constructor invoque a otro constructor de la misma clase. Esta técnica recibe el nombre de **encadenamiento de constructores** y permite reutilizar las instrucciones de inicialización que ya se encuentran definidas en otro constructor. La invocación se realiza mediante la palabra <span class="palabra">this</span>, seguida de una lista de argumentos entre paréntesis. Aunque hemos utilizado anteriormente <span class="palabra">this</span> para hacer referencia al objeto actual y acceder a sus atributos, en este caso su utilización tiene una finalidad diferente: permite llamar a otro constructor de la misma clase.
+
+Por ejemplo, podemos modificar nuestra clase <span class="clase">Punto</span> para que el constructor sin parámetros invoque al constructor que recibe las dos coordenadas:
+
+<pre class="codigo-java">
+class Punto {
+
+    double coordenadaX;
+    double coordenadaY;
+
+    Punto ( ) {
+        this(0.0, 0.0);
+    }
+
+    Punto ( double coordenadaX ) {
+        this(coordenadaX, 0.0);
+    }
+
+    Punto ( double coordenadaX, double coordenadaY ) {
+        this.coordenadaX = coordenadaX;
+        this.coordenadaY = coordenadaY;
+    }
+
+}
+</pre>
+
+En esta nueva versión, el constructor sin parámetros no necesita realizar directamente ninguna asignación. En su lugar, invoca al constructor que recibe dos valores, proporcionándole las coordenadas iniciales (0.0, 0.0). De forma similar, el constructor que recibe una única coordenada delega la inicialización en el constructor de dos parámetros, utilizando el valor recibido para la coordenada <span class="variable">coordenadaX</span> y estableciendo la coordenada <span class="variable">coordenadaY</span> a 0.0.
+
+De esta manera, **la inicialización efectiva de los atributos se concentra en un único constructor**, mientras que los demás se limitan a proporcionar los argumentos adecuados para utilizarlo. Así evitamos repetir instrucciones y conseguimos que todos los constructores sigan el mismo procedimiento de inicialización.
+
+Podemos observar el comportamiento de los distintos constructores mediante las siguientes instanciaciones:
+
+<pre class="codigo-java">
+Punto origen = new Punto();
+Punto puntoX = new Punto(5.0);
+Punto destino = new Punto(3.5, 2.0);
+</pre>
+
+Aunque las tres instrucciones invocan constructores diferentes, en todos los casos se acaba ejecutando el constructor que recibe las dos coordenadas y que contiene las asignaciones a los atributos.
+
+Es importante tener presente que el encadenamiento no implica la creación de varios objetos. Todas las llamadas a constructores que forman parte de una misma cadena actúan sobre **la misma instancia que se está construyendo**. El constructor invocado inicialmente delega parte de su trabajo en otro constructor, pero no se reserva memoria para un objeto adicional ni se obtiene una referencia nueva.
+
+#### Reglas para el encadenamiento de constructores
+
+La invocación de un constructor mediante <span class="palabra">this</span> tiene algunas particularidades que debemos conocer para utilizarla correctamente.
+
+En primer lugar, **la llamada a otro constructor debe ser la primera instrucción del constructor que la realiza**. Esto significa que no podemos escribir instrucciones de asignación, llamadas a métodos u otras operaciones antes de la invocación. Por ejemplo, el siguiente código no es válido:
+
+<pre class="codigo-java">
+Punto ( double coordenadaX ) {
+    this.coordenadaX = coordenadaX;
+    this(coordenadaX, 0.0); // Error: no es la primera instrucción
+}
+</pre>
+
+La razón es que Java establece que la delegación a otro constructor debe realizarse antes de ejecutar el resto del cuerpo del constructor. De esta forma, se garantiza que el proceso de inicialización siga un orden definido.
+
+<div class="plantilla-sintactica">
+<div class="produccion">
+<div class="produccion-encabezado">ConstructorBody:</div>
+<div class="produccion-alternativas">
+<span class="terminal">{</span> [ExplicitConstructorInvocation] [BlockStatements] <span class="terminal">}</span>
+</div>
+</div>
+<div class="produccion">
+<div class="produccion-encabezado">ExplicitConstructorInvocation:</div>
+<div class="produccion-alternativas">
+<span class="terminal">this</span> <span class="terminal">(</span> [ArgumentList] <span class="terminal">)</span> <span class="terminal">;</span>
+</div>
+</div>
+<div class="produccion">
+<div class="produccion-encabezado">ArgumentList:</div>
+<div class="produccion-alternativas">
+Expression {, Expression}
+</div>
+</div>
+</div>
+
+En segundo lugar, **un constructor no puede invocarse a sí mismo de forma directa ni indirecta**. Si un constructor llama a otro que, a su vez, termina llamando al primero, se produce un encadenamiento circular que el compilador no permite. Por ejemplo, una clase en la que el constructor sin parámetros invocase al de un parámetro y este volviese a invocar al constructor sin parámetros contendría una dependencia circular.
+
+<pre class="codigo-java">
+Punto ( ) {
+    this(0.0);
+}
+
+Punto ( double coordenadaX ) {
+    this();
+}
+</pre>
+
+Este ejemplo no es válido porque ninguno de los dos constructores llega a realizar la inicialización: cada uno delega en el otro indefinidamente. Java detecta este problema y produce un error de compilación.
+
+Por último, debemos distinguir entre las dos formas de utilizar <span class="palabra">this</span> que hemos estudiado. Cuando escribimos <span class="palabra">this</span><span class="operador">.</span><span class="variable">coordenadaX</span>, estamos accediendo al atributo <span class="variable">coordenadaX</span> del objeto actual. En cambio, cuando escribimos <span class="palabra">this</span><span class="literal">( ... )</span>, estamos invocando otro constructor de la misma clase. Aunque ambas expresiones utilizan la misma palabra reservada, su significado depende de cómo aparece escrita.
+
+<aside class="definicion">
+
+**Encadenamiento de constructores:** Técnica que permite invocar un constructor desde otro constructor de la misma clase mediante la expresión <span class="palabra">this</span><span class="literal">( ... )</span>, con el propósito de reutilizar las operaciones de inicialización y evitar la duplicación de código.
+
+</aside>
+
+En definitiva, el encadenamiento de constructores permite organizar las distintas alternativas de inicialización de una clase de forma que unas puedan apoyarse en otras. De este modo, podemos ofrecer varios constructores para adaptarnos a las necesidades de creación de los objetos, manteniendo centralizadas las operaciones comunes y facilitando el mantenimiento del código.
+
 <footer class="pie">
 <div class="navegacion-principal">
 <a href="tema_03.html" class="anterior">Anterior</a> | 
@@ -1598,3 +2074,4 @@ En definitiva, los métodos observadores y los transformadores permiten establec
 [^1]: J. Sklenar, *Introduction to Simula*, Universidad de Malta. Disponible en: https://staff.um.edu.mt/jskl1/talk.html. Véase también el capítulo sobre Simula 67 en *General Concepts of the Simula 67 Programming Language*, de J. D. Ichbiah y S. P. Morse.
 [^2]: Alan C. Kay, *The Early History of Smalltalk*, ACM SIGPLAN Notices, vol. 28, n.º 3, 1993. DOI: https://doi.org/10.1145/155360.155364. Véase también *Kids and Us: The Story of Smalltalk*, IEEE Spectrum: https://spectrum.ieee.org/xerox-parc/smalltalk-history.
 [^3]: Cuando el atributo es booleano, la convención estándar sustituye el prefijo *get* por *is* o *has* (por ejemplo, <span class="metodo">isActiva</span> para el atributo <span class="variable">activa</span>, o <span class="metodo">hasAcceso</span> para <span class="variable">acceso</span>).
+[^4]: Durante la fase de resolución de firmas, si no existe una coincidencia exacta de tipos, el compilador de Java aplica reglas de **promoción implícita de tipos** (*widening primitive conversion*). Por ejemplo, si se pasa un entero a una sobrecarga que espera un real, el compilador promocionará automáticamente el valor para satisfacer la firma.
