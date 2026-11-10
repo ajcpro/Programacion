@@ -997,7 +997,8 @@ ClassType
 <div class="produccion">
 <div class="produccion-encabezado">ClassType:</div>
 <div class="produccion-alternativas">
-TypeIdentifier</div>
+TypeIdentifier
+</div>
 </div>
 <div class="produccion">
 <div class="produccion-encabezado">TypeIdentifier:</div>
@@ -1067,17 +1068,18 @@ Los atributos de instancia son **inicializados automáticamente por la JVM** en 
 
 Si el programador no asigna explícitamente un valor al declarar el atributo ni en el constructor, la máquina virtual asigna el valor cero o nulo correspondiente a su tipo de dato:
 
-* Los tipos numéricos se inicializan a <span class="literal">0</span> o <span class="literal">0.0</span>; también los caractéres a <span class="literal">`'`\u0000`'`</span>
+* Los tipos numéricos se inicializan a <span class="literal">0</span> o <span class="literal">0.0</span>; también los caractéres a `'`<span class="literal">\\u0000</span>`'`
 * Los booleanos se inicializan a <span class="literal">false</span>.
 * Y los tipos de referencia (instancias de clases) se inicializan al valor <span class="literal">null</span>.
 
 Consideremos el ejemplo CuentaBancaria anterior:
-* <span class="variable">cuenta</span>numeroCuenta se inicializa automáticamente a <span class="literal">null</span>
-* <span class="variable">cuenta</span>titular se inicializa automáticamente a <span class="literal">null</span>
-* <span class="variable">saldo</span> se inicializa automáticamente a <span class="literal">0.0</span>
-* <span class="variable">activa</span> se inicializa automáticamente a <span class="literal">false</span>
 
-Si instanciamos la clase mediante <span class="codigo">CuentaBancaria cuenta = new CuentaBancaria();</span> el estado inicial de <span class="variable">cuenta</span> será:
+* <span class="variable">numeroCuenta</span> es una referencia por lo que se inicializa automáticamente a <span class="literal">null</span>
+* <span class="variable">titular</span>, como numeroCuenta se inicializa automáticamente a <span class="literal">null</span> por ser una referencia
+* <span class="variable">saldo</span> se inicializa automáticamente a <span class="literal">0.0</span> por ser un valor de tipo <span class="palabra">double</span>
+* <span class="variable">activa</span> se inicializa automáticamente a <span class="literal">false</span> por ser de tipo booleano
+
+Si instanciamos la clase mediante <span class="codigo">CuentaBancaria cuenta = new CuentaBancaria()</span> el estado inicial de <span class="variable">cuenta</span> será:
 
 <pre class="codigo-fuente">
 numeroCuenta: null
@@ -1272,11 +1274,11 @@ En el nivel físico, ¿cómo se implementa el paso de parámetros? Se utilizan d
 
 En el paso por referencia, el programa proporciona las posiciones de los valores de los datos para coger la información que necesita. Es importante tener en cuenta que son las posiciones de los parámetros actuales y no sus valores: solo hay una copia de la información. Cuando se invoca al método, se emparejan los parámetros formales y los actuales por posición, haciéndose sinónimos para las mismas posiciones de memoria. Cualquier valor que modifique el método será el que se encontrará allí el código que invocó el método. Por tanto, hay que tener cuidado en el uso de los parámetros formales dado que cualquier cambio afectará a los parámetros actuales. Esta técnica es la usada en los modos de salida y de entrada y salida.
 
-En el caso del paso por valor  (*pass by value*), el sistema copia el valor del dato en la pila. Los parámetros son variables propias de la invocación del método: reciben una copia del valor transmitido y pueden utilizarla y modificarla durante su ejecución sin que ello implique modificar la variable que proporcionó el argumento: el parámetro actual está protegido de cualquier cambio que el método pueda querer hacer en el mismo; si alguna sentencia modifica un parámetro por valor solo se cambia la copia del parámetro actual, no el original. Como podemos apreciar, los parámetros por valor son perfectos para introducir valores al método, cuando no necesitamos que proporcionen una salida.
+En el caso del paso por valor  (*pass by value*), el sistema copia el valor del dato en la pila. Los parámetros son variables propias de la invocación del método: reciben una copia del valor transmitido y pueden utilizarla y modificarla durante su ejecución sin que ello implique modificar la variable que proporcionó el argumento. El parámetro actual está protegido de cualquier cambio que el método pueda querer hacer en el mismo; si alguna sentencia modifica un parámetro por valor solo se cambia la copia del parámetro actual, no el original. Como podemos apreciar, los parámetros por valor son perfectos para introducir valores al método, cuando no necesitamos que proporcionen una salida.
 
 #### Paso de parámetros en Java
 
-El lenguaje Java utiliza siempre el **paso de parámetros por valor**. Esto significa que, al invocar un método, la JVM evalúa los argumentos y realiza una copia física de sus valores dentro de la piladel método: nunca trabaja con la variable original del código llamante, sino con una copia local independiente.
+El lenguaje Java utiliza siempre el **paso de parámetros por valor**. Esto significa que, al invocar un método, la JVM evalúa los argumentos y realiza una copia física de sus valores dentro de la pila del método: nunca trabaja con la variable original del código llamante, sino con una copia local independiente.
 
 Este comportamiento se comprende fácilmente cuando trabajamos con tipos primitivos. Supongamos que declaramos un método que modifica el valor de un parámetro entero:
 
@@ -1548,9 +1550,9 @@ Como podemos observar, los métodos transformadores permiten actualizar la infor
 
 #### Relación con la encapsulación
 
-La utilización de métodos observadores y transformadores está estrechamente relacionada con el principio de **encapsulación** como hemos indicado anteriormente. Recordemos que encapsular no consiste únicamente en agrupar los atributos y métodos de una entidad dentro de una clase, sino también en establecer una forma de interacción que permita utilizar su información sin depender directamente de su representación interna. Los *getters* y *setters* proporcionan precisamente ese mecanismo de interacción. En lugar de que el resto del programa tenga que conocer cómo están representados los datos, puede solicitar su consulta o modificación mediante operaciones definidas por la propia clase.
+La utilización de métodos observadores y transformadores está estrechamente relacionada con el principio de **encapsulación**, como hemos indicado anteriormente. Recordemos que encapsular no consiste únicamente en agrupar los atributos y métodos de una entidad dentro de una clase, sino también en establecer una forma de interacción que permita utilizar su información sin depender directamente de su representación interna. Los *getters* y *setters* proporcionan precisamente ese mecanismo de interacción. En lugar de que el resto del programa tenga que conocer cómo están representados los datos, puede solicitar su consulta o modificación mediante operaciones definidas por la propia clase.
 
-Esta separación resulta especialmente interesante cuando necesitamos modificar el diseño interno de una clase. Supongamos que, inicialmente, representamos un punto mediante coordenadas cartesianas, pero posteriormente, como ya hemos apuntado, decidimos utilizar coordenadas polares. Si el resto del programa acceiera directamente a los atributos, los cambios en su representación nos obligarían a revisar numerosas partes del código. Sin embargo, si la interacción se realiza mediante observadores y transformadores que mantienen el comportamiento dela clase, podemos modificar la implementación interna sin alterar las llamadas que realizan los demás componentes. Por ejemplo, como ya hemos apuntado, podríamos conservar una operación como <span class="metodo">getCoordenadaX</span>, aunque la implementación tuviera que calcular el valor a partir de la representación polar.
+Esta separación resulta especialmente interesante cuando necesitamos modificar el diseño interno de una clase. Supongamos que, inicialmente, representamos un punto mediante coordenadas cartesianas, pero posteriormente, como ya hemos apuntado, decidimos utilizar coordenadas polares. Si el resto del programa accediera directamente a los atributos, los cambios en su representación nos obligarían a revisar numerosas partes del código. Sin embargo, si la interacción se realiza mediante observadores y transformadores que mantienen el comportamiento de la clase, podemos modificar la implementación interna sin alterar las llamadas que realizan los demás componentes. Por ejemplo, como ya hemos apuntado, podríamos conservar una operación como <span class="metodo">getCoordenadaX</span>, aunque la implementación tuviera que calcular el valor a partir de la representación polar.
 
 Los métodos transformadores también permiten establecer comprobaciones antes de modificar la información. No siempre debemos aceptar cualquier valor que se proporcione como argumento. Dependiendo de la entidad que estemos representando, puede haber condiciones que deban cumplirse para que el nuevo estado sea válido.
 
@@ -1622,7 +1624,7 @@ En los siguientes apartados estudiaremos cómo se declaran los constructores en 
 Los constructores se declaran dentro del cuerpo de una clase, al igual que los métodos y los atributos, pero presentan una sintaxis particular que permite distinguirlos del resto de los miembros. Su característica más importante es que **el nombre del constructor debe coincidir exactamente con el nombre de la clase a la que pertenece**. De esta manera, Java puede identificar qué constructor debe ejecutar cuando se solicita la creación de una nueva instancia mediante el operador <span class="palabra">new</span>.
 
 
-A diferencia de los métodos, los constructores **no tienen tipo de retorno**: ** los constructores no devuelven nada**. No debemos indicar ningún tipo de dato delante de su nombre, ni siquiera <span class="palabra">void</span>. Aunque su ejecución forma parte del proceso de creación del objeto, no devuelven una referencia ni ningún otro valor mediante una sentencia <span class="palabra">return</span>. La referencia al objeto recién creado es el resultado de la expresión de instanciación, no de la ejecución del constructor.
+A diferencia de los métodos, los constructores **no tienen tipo de retorno**: **los constructores no devuelven nada**. No debemos indicar ningún tipo de dato delante de su nombre, ni siquiera <span class="palabra">void</span>. Aunque su ejecución forma parte del proceso de creación del objeto, no devuelven una referencia ni ningún otro valor mediante una sentencia <span class="palabra">return</span>. La referencia al objeto recién creado es el resultado de la expresión de instanciación, no de la ejecución del constructor.
 
 <div class="plantilla-sintactica">
 <div class="produccion">
@@ -1743,6 +1745,7 @@ El primer ejemplo de constructor que hemos creado es un constructor sin parámet
 También hemos declarado un constructor parametrizado para permitir que cada instancia se cree con unas coordenadas determinadas. De esta forma, podemos crear puntos en distintas posiciones directamente durante su instanciación.
 
 Pero debemos prestar atención a una **regla muy importante** del lenguaje:
+
 <aside>
 **Cuando declaramos cualquier constructor explícito, Java deja de proporcionar automáticamente el constructor por defecto**.
 </aside>
@@ -1787,9 +1790,9 @@ Para el compilador de Java, esta sentencia **no constituye un error de sintaxis 
 
 ### Sobrecarga de constructores
 
-Acabamos de ver que  si declaramos un constructor, de manera automática, desaparece el constructor por defecto. Si, por ejemplo, al trabajar con nuestra clase <span class="clase">Punto</span>, un programa cliente puede desear instanciar un punto ubicado en el origen de coordenadas sin necesidad de especificar dichos valores, mientras otro componente quiere disponer de dos coordenadas cartesianas concretas, necesitamos conservar ambas posibilidades de creación por lo que tendremos que declarar expresamente los dos constructores.
+Acabamos de ver que  si declaramos un constructor, de manera automática, desaparece el constructor por defecto. Al trabajar con nuestra clase <span class="clase">Punto</span>, un programa cliente puede desear instanciar un punto ubicado en el origen de coordenadas sin necesidad de especificar dichos valores, mientras otro componente quiere disponer de dos coordenadas cartesianas concretas; necesitamos conservar ambas posibilidades de creación por lo que tendremos que declarar expresamente los dos constructores.
 
-Para responder a esta diversidad de escenarios de instanciación sin necesidad de recurrir a nombres de clases distintos ni a métodos de inicialización secundarios, el lenguaje Java proporciona un mecanismo denominado **sobrecarga de constructores** (*constructor overload*).
+Para responder a esta diversidad de escenarios de instanciación sin necesidad de recurrir a nombres de clases distintos ni a métodos de inicialización secundarios, el lenguaje Java proporciona un mecanismo denominado **sobrecarga de constructores** (*constructor overloading*).
 
 La sobrecarga permite definir diferentes formas de crear objetos de un mismo tipo, adaptando la inicialización a la información disponible en cada situación. Aunque todos los constructores pertenecen a la misma clase y tienen como finalidad preparar el estado inicial de sus instancias, cada uno puede necesitar una cantidad diferente de información y realizar unas operaciones de inicialización específicas.
 
@@ -1873,7 +1876,7 @@ Además, los argumentos de una invocación deben ser compatibles con los paráme
 
 <aside class="definicion">
 
-**Sobrecarga de constructores (*constructor overload*):** Mecanismo de Java que permite declarar varios constructores dentro de una misma clase, diferenciados por sus listas de parámetros.
+**Sobrecarga de constructores (*constructor overloading*):** Mecanismo de Java que permite declarar varios constructores dentro de una misma clase, diferenciados por sus listas de parámetros.
 
 **Lista de parámetros:** Secuencia ordenada de parámetros declarados en un constructor o método. Está determinada por el número, los tipos y el orden de los parámetros, y permite distinguir las diferentes versiones sobrecargadas.
 
@@ -1900,7 +1903,7 @@ A primera vista, podríamos pensar que las dos instrucciones del constructor asi
 
 Para resolver esta situación podemos utilizar <span class="palabra">this</span>. Java proporciona esta palabra reservada que representa una **referencia al propio objeto sobre el que se está ejecutando un método o un constructor**. Por tanto, permite acceder a sus atributos y métodos desde el interior de la propia clase. No se trata de una variable que debamos declarar ni de una referencia que tengamos que inicializar: Java la proporciona automáticamente durante la ejecución de los métodos de objeto y los constructores.
 
-Así pues, <span class="palabra">this</span> permite distinguir los atributos de la instancia de los parámetros locales. Cuando escribimos <span class="palabra">this</span><span class="operador">.</span><span class="variable">coordenadaX</span>, estamos haciendo referencia al atributo <span class="variable">coordenadaX</span> del objeto actual. En cambio, cuando escribimos simplemente <span class="variable">coordenadaY</span>, nos referimos al parámetro del constructor.
+Así pues, <span class="palabra">this</span> permite distinguir los atributos de la instancia de los parámetros locales. Cuando escribimos <span class="instancia">this</span><span class="operador">.</span><span class="variable">coordenadaX</span>, estamos haciendo referencia al atributo <span class="variable">coordenadaX</span> del objeto actual. En cambio, cuando escribimos simplemente <span class="variable">coordenadaY</span>, nos referimos al parámetro del constructor.
 
 De esta forma, podemos corregir la declaración anterior:
 
@@ -1911,7 +1914,7 @@ Punto ( double coordenadaX, double coordenadaY ) {
 }
 </pre>
 
-Ahora sí, las asignaciones realizan la inicialización que pretendíamos. En la instrucción <span class="codigo><span class="operador">this</span><span class="operador">.</span><span class="variable">coordenadaX</span> <span class="operador">=</span> <span class="variable">coordenadaX</span></span>, el elemento situado a la izquierda del operador de asignación es el atributo <span class="variable">coordenadaX</span> del objeto que se está construyendo, mientras que el elemento situado a la derecha es el parámetro recibido por el constructor. De manera equivalente, la segunda instrucción asigna el valor del parámetro <span class="variable">coordenadaY</span> al atributo correspondiente.
+Ahora sí, las asignaciones realizan la inicialización que pretendíamos. En la instrucción <span class="codigo">this.coordenadaX = coordenadaX</span>, el elemento situado a la izquierda del operador de asignación es el atributo <span class="variable">coordenadaX</span> del objeto que se está construyendo, mientras que el elemento situado a la derecha es el parámetro recibido por el constructor. De manera equivalente, la segunda instrucción asigna el valor del parámetro <span class="variable">coordenadaY</span> al atributo correspondiente.
 
 Esta forma de escribir los constructores es muy habitual en Java, especialmente cuando los parámetros representan los valores iniciales de los atributos y se utilizan identificadores iguales para ambos. Además de evitar ambigüedades, permite mantener una correspondencia clara entre los datos que recibe el constructor y los atributos que debe inicializar.
 
@@ -1928,7 +1931,7 @@ void desplazar ( double desplazamientoX, double desplazamientoY ) {
 }
 </pre>
 
-En este caso, <span class="palabra">this</span> identifica al punto sobre el que se ha invocado el método. Si ejecutamos <span class="metodo">desplazar</span> sobre el objeto referenciado por <span class="variable">origen</span>, las expresiones <span class="palabra">this</span><span class="operador">.</span><span class="variable">coordenadaX</span> y <span class="palabra">this</span><span class="operador">.</span><span class="variable">coordenadaY</span> hacen referencia a sus coordenadas. Si lo invocamos sobre el objeto referenciado por <span class="variable">destino</span>, esas mismas expresiones se refieren a las coordenadas de esa otra instancia.
+En este caso, <span class="palabra">this</span> identifica al punto sobre el que se ha invocado el método. Si ejecutamos <span class="metodo">desplazar</span> sobre el objeto referenciado por <span class="variable">origen</span>, las expresiones <span class="instancia">this</span><span class="operador">.</span><span class="variable">coordenadaX</span> y <span class="instancia">this</span><span class="operador">.</span><span class="variable">coordenadaY</span> hacen referencia a sus coordenadas. Si lo invocamos sobre el objeto referenciado por <span class="variable">destino</span>, esas mismas expresiones se refieren a las coordenadas de esa otra instancia.
 
 Por tanto, <span class="palabra">this</span> permite que una misma implementación trabaje con distintas instancias sin necesidad de conocer el nombre de las variables de referencia que se utilizan desde el exterior. El objeto actual queda determinado por la invocación que ha provocado la ejecución del método. Cuando no existe ambigüedad, podemos omitir <span class="palabra">this</span> y acceder directamente a los atributos o métodos de la instancia. Por ejemplo, las siguientes instrucciones tienen el mismo efecto:
 
@@ -1937,7 +1940,7 @@ coordenadaX += desplazamientoX;
 this.coordenadaX += desplazamientoX;
 </pre>
 
-En el primer caso, como no existe un parámetro ni otra variable local denominada <span class="variable">x</span>, Java interpreta que nos referimos al atributo de la instancia. En el segundo, utilizamos <span class="palabra">this</span> para indicarlo expresamente. Por ello, su utilización es opcional cuando el contexto permite identificar sin dudas el miembro al que queremos acceder, aunque puede resultar conveniente para hacer más explícita la relación con el objeto actual.
+En el primer caso, como no existe un parámetro ni otra variable local denominada <span class="variable">coordenadaX</span>, Java interpreta que nos referimos al atributo de la instancia. En el segundo, utilizamos <span class="palabra">this</span> para indicarlo expresamente. Por ello, su utilización es opcional cuando el contexto permite identificar sin dudas el miembro al que queremos acceder, aunque puede resultar conveniente para hacer más explícita la relación con el objeto actual.
 
 <aside class="definicion">
 
@@ -2033,7 +2036,7 @@ Expression {, Expression}
 </div>
 </div>
 
-En segundo lugar, **un constructor no puede invocarse a sí mismo de forma directa ni indirecta**. Si un constructor llama a otro que, a su vez, termina llamando al primero, se produce un encadenamiento circular que el compilador no permite. Por ejemplo, una clase en la que el constructor sin parámetros invocase al de un parámetro y este volviese a invocar al constructor sin parámetros contendría una dependencia circular.
+En segundo lugar, **un constructor no puede invocarse a sí mismo de forma directa ni indirecta**[^5]. Si un constructor llama a otro que, a su vez, termina llamando al primero, se produce una recursividad mutua que el compilador no permite. Por ejemplo, una clase en la que el constructor sin parámetros invocase al de un parámetro y este volviese a invocar al constructor sin parámetros contendría recursividad indirecta.
 
 <pre class="codigo-java">
 Punto ( ) {
@@ -2047,11 +2050,11 @@ Punto ( double coordenadaX ) {
 
 Este ejemplo no es válido porque ninguno de los dos constructores llega a realizar la inicialización: cada uno delega en el otro indefinidamente. Java detecta este problema y produce un error de compilación.
 
-Por último, debemos distinguir entre las dos formas de utilizar <span class="palabra">this</span> que hemos estudiado. Cuando escribimos <span class="palabra">this</span><span class="operador">.</span><span class="variable">coordenadaX</span>, estamos accediendo al atributo <span class="variable">coordenadaX</span> del objeto actual. En cambio, cuando escribimos <span class="palabra">this</span><span class="literal">( ... )</span>, estamos invocando otro constructor de la misma clase. Aunque ambas expresiones utilizan la misma palabra reservada, su significado depende de cómo aparece escrita.
+Por último, debemos distinguir entre las dos formas de utilizar <span class="palabra">this</span> que hemos estudiado. Cuando escribimos <span class="instancia">this</span><span class="operador">.</span><span class="variable">coordenadaX</span>, estamos accediendo al atributo <span class="variable">coordenadaX</span> del objeto actual. En cambio, cuando escribimos <span class="metodo">this</span><span class="literal">( ... )</span>, estamos invocando otro constructor de la misma clase. Aunque ambas expresiones utilizan la misma palabra reservada, su significado depende de cómo aparece escrita.
 
 <aside class="definicion">
 
-**Encadenamiento de constructores:** Técnica que permite invocar un constructor desde otro constructor de la misma clase mediante la expresión <span class="palabra">this</span><span class="literal">( ... )</span>, con el propósito de reutilizar las operaciones de inicialización y evitar la duplicación de código.
+**Encadenamiento de constructores:** Técnica que permite invocar un constructor desde otro constructor de la misma clase mediante la expresión <span class="metodo">this</span><span class="literal">( ... )</span>, con el propósito de reutilizar las operaciones de inicialización y evitar la duplicación de código.
 
 </aside>
 
@@ -2075,3 +2078,4 @@ En definitiva, el encadenamiento de constructores permite organizar las distinta
 [^2]: Alan C. Kay, *The Early History of Smalltalk*, ACM SIGPLAN Notices, vol. 28, n.º 3, 1993. DOI: https://doi.org/10.1145/155360.155364. Véase también *Kids and Us: The Story of Smalltalk*, IEEE Spectrum: https://spectrum.ieee.org/xerox-parc/smalltalk-history.
 [^3]: Cuando el atributo es booleano, la convención estándar sustituye el prefijo *get* por *is* o *has* (por ejemplo, <span class="metodo">isActiva</span> para el atributo <span class="variable">activa</span>, o <span class="metodo">hasAcceso</span> para <span class="variable">acceso</span>).
 [^4]: Durante la fase de resolución de firmas, si no existe una coincidencia exacta de tipos, el compilador de Java aplica reglas de **promoción implícita de tipos** (*widening primitive conversion*). Por ejemplo, si se pasa un entero a una sobrecarga que espera un real, el compilador promocionará automáticamente el valor para satisfacer la firma.
+[^5]: La recursividad es una técnica en la que un método puede invocarse a sí mismo; se explica en el anexo ii.
