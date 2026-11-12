@@ -285,6 +285,10 @@ Aunque ambas tienen finalidades distintas, se complementan en el diseño orienta
 
 Gracias a ambos principios, el resto de la aplicación puede trabajar con la entidad sin necesitar conocer todos sus detalles internos. El código que solicita una operación debe identificar la entidad concreta y pedir que se efectúe dicha operación; no necesita reproducir en cada lugar todos los mecanismos internos ni conocer cómo es la abstracción.
 
+<figure class="img-lateral-izq">
+    <img src="../imagenes/04_08_sinergia.png" alt="Un entidad se usa desde fuera de forma sencilla (abstracción), mientras en su interior está formada por muchos componentes (encapsulación)">
+</figure>
+
 <aside class="definicion">
 
 **Abstracción:** Proceso de identificar y seleccionar las características y los comportamientos relevantes de una entidad para construir una representación adecuada al problema que se desea resolver.
@@ -1632,6 +1636,9 @@ En los siguientes apartados estudiaremos cómo se declaran los constructores en 
 
 Los constructores se declaran dentro del cuerpo de una clase, al igual que los métodos y los atributos, pero presentan una sintaxis particular que permite distinguirlos del resto de los miembros. Su característica más importante es que **el nombre del constructor debe coincidir exactamente con el nombre de la clase a la que pertenece**. De esta manera, Java puede identificar qué constructor debe ejecutar cuando se solicita la creación de una nueva instancia mediante el operador <span class="palabra">new</span>.
 
+<figure class="img-lateral-izq">
+    <img src="../imagenes/04_07_creacion.png" alt="Proceso de creación de un objeto en Java: el constructor no crea la instancia, sino que es invocado por new para establecer su estado inicial.">
+</figure>
 
 A diferencia de los métodos, los constructores **no tienen tipo de retorno**: **los constructores no devuelven nada**. No debemos indicar ningún tipo de dato delante de su nombre, ni siquiera <span class="palabra">void</span>. Aunque su ejecución forma parte del proceso de creación del objeto, no devuelven una referencia ni ningún otro valor mediante una sentencia <span class="palabra">return</span>. La referencia al objeto recién creado es el resultado de la expresión de instanciación, no de la ejecución del constructor.
 
@@ -2087,7 +2094,6 @@ Cuando utilizamos el modificador <span class="palabra">static</span> el miembro 
 
 <div class="plantilla-sintactica">
 <div class="produccion">
-<div class="produccion">
 <div class="produccion-encabezado">FieldModifier:</div>
 <div class="produccion-alternativas">
 One of<br>
@@ -2230,7 +2236,7 @@ En programación, es habitual utilizar valores que representan datos cuyo signif
 
 El uso de constantes con nombre presenta varias ventajas. En primer lugar, mejora la legibilidad del código, puesto que permite sustituir valores numéricos o textuales cuyo significado podría no resultar evidente por identificadores descriptivos. En segundo lugar, facilita el mantenimiento del programa: si necesitamos modificar un valor, podremos localizar su declaración y actualizarlo en un único lugar, en vez de buscar todas las apariciones de un mismo literal a lo largo del código. Finalmente, evita modificaciones accidentales de datos que, por su significado, deben permanecer invariables.
 
-A diferencia de lo que veíamos en el tema 2, donde introdujimos las constantes de forma explícita usando <span class="palabra">final</span>, esta palabra reservada es un modificador:
+Si bien en el tema 2 introdujimos las constantes de forma explícita usando <span class="palabra">final</span>, en realidad, como ya hemos visto con los modificadores de las variables locales (<span class="produccion-palabra">VariableModifier</span>), Java define esta palabra reservada como un modificador:
 
 <div class="plantilla-sintactica">
 <div class="produccion">
@@ -2242,7 +2248,7 @@ One of<br>
 </div>
 </div>
 
-Java, como podemos ver en <span class="produccion-palabra">FieldDeclaration</span> permite el uso de más de un modificador (<span class="produccion-palabra">FieldModifier</span>); estos pueden aparecer en cualquier orden aunque se recomienda que, si hay más de uno, se escriban en el orden en que aparecen en la plantilla sintáctica.
+Como podemos ver en <span class="produccion-palabra">FieldDeclaration</span> se permite el uso de más de un modificador (<span class="produccion-palabra">FieldModifier</span>); estos pueden aparecer en cualquier orden aunque se recomienda que, si hay más de uno, se escriban en el orden en que aparecen en la plantilla sintáctica.
 
 Aunque <span class="palabra">final</span> puede utilizarse en distintos ámbitos, en este apartado nos interesan especialmente las constantes que pertenecen a una clase. Para ello, combinamos los modificadores <span class="palabra">static</span> y <span class="palabra">final</span> en la declaración de un atributo. De esta manera, obtenemos una **constante de clase**: un valor único, compartido por todas las instancias y que no puede modificarse después de su inicialización. El modificador <span class="palabra">static</span> establece que el atributo pertenece a la clase, mientras que <span class="palabra">final</span> impide que se le asigne un valor diferente una vez inicializado.
 
@@ -2329,4 +2335,4 @@ Por tanto, debemos distinguir entre los dos modificadores: <span class="palabra"
 [^4]: Cuando el atributo es booleano, la convención estándar sustituye el prefijo *get* por *is* o *has* (por ejemplo, <span class="metodo">isActiva</span> para el atributo <span class="variable">activa</span>, o <span class="metodo">hasAcceso</span> para <span class="variable">acceso</span>).
 [^5]: Durante la fase de resolución de firmas, si no existe una coincidencia exacta de tipos, el compilador de Java aplica reglas de **promoción implícita de tipos** (*widening primitive conversion*). Por ejemplo, si se pasa un entero a una sobrecarga que espera un real, el compilador promocionará automáticamente el valor para satisfacer la firma.
 [^6]: La recursividad es una técnica en la que un método puede invocarse a sí mismo; se explica en el anexo ii.
-[^7]: Los elementos estáticos no se almacenan ni en la pila ni en el montículo, sino en un área especial de la memoria de la JVM, *Metaspace*, asignada a la carga de clases (denominada *Method Area* en la documentación de Oracle); parte de la misma reside en *Text* y parte en *Data*, si lo comparamos con el modelo de segmentación tradicional.
+[^7]: Los elementos estáticos no se almacenan ni en la pila ni en el montículo, sino en un área especial de la memoria de la JVM, *Metaspace*, asignada a la carga de clases (denominada *Method Area* en la [documentación de Oracle](https://docs.oracle.com/javase/specs/jvms/se26/html/jvms-2.html#jvms-2.5)); parte de la misma reside en *Text* y parte en *Data*, si lo comparamos con el modelo de segmentación tradicional.
