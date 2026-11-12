@@ -765,6 +765,9 @@ Nuestros programas se organizan en la memoria del ordenador utilizando diferente
 
 <figure class="img-grande">
     <img src="../imagenes/04_05_segmentos.png" alt="Representación de los segmentos de un programa">
+    <figcaption>
+        Modelo de <a href="https://es.wikipedia.org/wiki/Segmentaci%C3%B3n_de_memoria" target="_blank">segmentación</a> clásico[^3].
+    </figcaption>
 </figure>
 
 #### Stack: pila de ejecución
@@ -984,7 +987,13 @@ Cada atributo debe declararse indicando el tipo de dato que puede almacenar. Jav
 <div class="produccion">
 <div class="produccion-encabezado">FieldDeclaration:</div>
 <div class="produccion-alternativas">
-{TypeModifier} UnannType IdentifierList <span class="terminal">;</span>
+{FieldModifier} UnannType IdentifierList <span class="terminal">;</span>
+</div>
+</div>
+<div class="produccion">
+<div class="produccion-encabezado">FieldModifier:</div>
+<div class="produccion-alternativas">
+<span class="terminal">public</span>
 </div>
 </div>
 <div class="produccion">
@@ -1409,7 +1418,7 @@ La distinción no es únicamente sintáctica. Un método observador tiene como f
 
 #### Métodos observadores (*getters*)
 
-Los **métodos observadores** son operaciones cuya finalidad consiste en consultar información de un objeto y devolverla al componente que realiza la llamada. Reciben el nombre de *getters* porque habitualmente utilizan el prefijo inglés *get*[^3], seguido del nombre de la característica cuyo valor deseamos obtener.
+Los **métodos observadores** son operaciones cuya finalidad consiste en consultar información de un objeto y devolverla al componente que realiza la llamada. Reciben el nombre de *getters* porque habitualmente utilizan el prefijo inglés *get*[^4], seguido del nombre de la característica cuyo valor deseamos obtener.
 
 Un método observador permite conocer el valor de un atributo sin necesidad de acceder directamente a su declaración. De esta manera, el objeto proporciona la información que necesita el resto del programa mediante una operación de consulta, manteniendo separada la forma de obtenerla de la representación interna de los datos, como hemos establecido al estudiar el principio de encapsulación.
 
@@ -1872,7 +1881,7 @@ También es posible sobrecargar constructores utilizando distintos tipos de par�
 2. **En los tipos de datos de los parámetros:** Un constructor podría recibir un entero y un real, mientras que otro podría recibir una cadena y un real.
 3. **En el orden de los tipos de datos:** podría recibir un entero y una cadena, mientras que otro podría recibir una cadena y un entero
 
-Además, los argumentos de una invocación deben ser compatibles con los parámetros del constructor seleccionado. Si existen varias posibilidades y el compilador no puede determinar cuál debe utilizar, se producirá un error de compilación.[^4]
+Además, los argumentos de una invocación deben ser compatibles con los parámetros del constructor seleccionado. Si existen varias posibilidades y el compilador no puede determinar cuál debe utilizar, se producirá un error de compilación.[^5]
 
 <aside class="definicion">
 
@@ -2036,7 +2045,7 @@ Expression {, Expression}
 </div>
 </div>
 
-En segundo lugar, **un constructor no puede invocarse a sí mismo de forma directa ni indirecta**[^5]. Si un constructor llama a otro que, a su vez, termina llamando al primero, se produce una recursividad mutua que el compilador no permite. Por ejemplo, una clase en la que el constructor sin parámetros invocase al de un parámetro y este volviese a invocar al constructor sin parámetros contendría recursividad indirecta.
+En segundo lugar, **un constructor no puede invocarse a sí mismo de forma directa ni indirecta**[^6]. Si un constructor llama a otro que, a su vez, termina llamando al primero, se produce una recursividad mutua que el compilador no permite. Por ejemplo, una clase en la que el constructor sin parámetros invocase al de un parámetro y este volviese a invocar al constructor sin parámetros contendría recursividad indirecta.
 
 <pre class="codigo-java">
 Punto ( ) {
@@ -2060,6 +2069,246 @@ Por último, debemos distinguir entre las dos formas de utilizar <span class="pa
 
 En definitiva, el encadenamiento de constructores permite organizar las distintas alternativas de inicialización de una clase de forma que unas puedan apoyarse en otras. De este modo, podemos ofrecer varios constructores para adaptarnos a las necesidades de creación de los objetos, manteniendo centralizadas las operaciones comunes y facilitando el mantenimiento del código.
 
+## Miembros de clase
+
+Hasta ahora hemos estudiado los atributos y métodos como elementos asociados a los objetos. Cada instancia dispone de sus propios atributos, que almacenan su estado particular, y puede ejecutar los métodos definidos en su clase para consultar o modificar esa información. Sin embargo, no todas las características y operaciones que necesitamos representar en un programa están vinculadas a un objeto concreto. Surgen situaciones en las que necesitamos representar información o definir operaciones que no pertenecen a un objeto concreto, sino a la **clase en su totalidad**.
+
+Java permite declarar miembros que pertenecen directamente a la **clase**, en lugar de a cada una de sus instancias. Estos elementos reciben el nombre de **miembros de clase** y se identifican mediante la palabra reservada <span class="palabra">static</span>. A diferencia de los atributos de objeto, que mantienen una copia independiente de sus valores en cada instancia, un atributo estático dispone de una única copia compartida por todos los objetos de la clase. Este tipo de atributos existen en la memoria desde el momento en que la clase es cargada en el sistema, independientemente de que creemos objetos a partir de ella[^7]. Del mismo modo, un método estático puede invocarse utilizando el nombre de la clase, sin necesidad de crear previamente una instancia.
+
+Esta distinción resulta especialmente útil cuando queremos representar datos o funcionalidades que no dependen de las características particulares de cada objeto. Por ejemplo, si una clase representa vehículos, el color o la velocidad de cada vehículo serán características propias de sus instancias; sin embargo, podríamos necesitar mantener un contador del número total de vehículos creados. Este contador no debería pertenecer a cada vehículo individual, sino a la propia clase, puesto que su valor debe ser común y reflejar el conjunto de instancias.
+
+Además de los miembros estáticos, las clases pueden incorporar **constantes**, es decir, valores que, una vez inicializados, no pueden modificarse. Java permite establecer esta restricción mediante la palabra reservada <span class="palabra">final</span>, que puede aplicarse a distintos elementos y que estudiaremos en relación con la declaración de constantes.
+
+En este apartado veremos, por tanto, cómo distinguir los elementos asociados a cada objeto de aquellos que pertenecen a la clase y cómo utilizar ambos mecanismos para organizar la información y las operaciones de nuestros programas.
+
+### Miembros estáticos
+
+Cuando utilizamos el modificador <span class="palabra">static</span> el miembro deja de estar asociado individualmente a cada objeto y pasa a pertenecer a la **clase**. Por este motivo, hablamos de **atributos de clase** y **métodos de clase**, también denominados miembros estáticos.
+
+<div class="plantilla-sintactica">
+<div class="produccion">
+<div class="produccion">
+<div class="produccion-encabezado">FieldModifier:</div>
+<div class="produccion-alternativas">
+One of<br>
+<span class="terminal">public static</span>
+</div>
+</div>
+<div class="produccion">
+<div class="produccion-encabezado">MethodModifier:</div>
+<div class="produccion-alternativas">
+One of<br>
+<span class="terminal">public static</span>
+</div>
+</div>
+</div>
+
+La diferencia fundamental entre ambos tipos de miembros está en su relación con las instancias. Mientras que cada objeto dispone de sus propios atributos de instancia, los atributos estáticos son compartidos por todas las instancias de la clase. Del mismo modo, los métodos de instancia se ejecutan sobre un objeto concreto, mientras que los métodos estáticos pueden invocarse directamente a través del nombre de la clase, sin necesidad de crear previamente ningún objeto.
+
+#### Atributos estáticos
+
+Un **atributo estático** es una variable declarada dentro de una clase mediante el modificador <span class="palabra">static</span>. A diferencia de los atributos de instancia, de los que se crea una nueva copia en la pila cada vez que ejecutamos el operador <span class="palabra">new</span>, existe una única variable, una única celda de memoria en todo el programa, compartida por todas las instancias de esa clase y por la propia clase.
+
+Para comprender su utilidad, imaginemos una clase <span class="clase">Vehiculo</span> cómo representar cuántos vehículos se han creado en total, según el ejemplo que comentábamos antes. Esta información no debería almacenarse en cada objeto, puesto que no representa una característica particular de ninguno de ellos, sino una propiedad del conjunto de instancias. Podemos resolver esta situación declarando un atributo estático:
+
+<pre class="codigo-java">
+class Vehiculo {
+
+    // Atributos de instancia
+    String color;
+    int modelo;
+
+    // Atributo de clase
+    static int numeroVehiculos = 0;
+
+}
+</pre>
+
+En esta declaración podemos observar que <span class="variable">color</span> y <span class="variable">modelo</span> son atributos de instancia, mientras que <span class="variable">numeroVehiculos</span> es un atributo estático. Por tanto, cada vehículo tendrá sus propios valores para el color y el modelo, pero todos compartirán el mismo contador.
+
+Si creamos varias instancias de la clase, no se generará una copia de <span class="variable">numeroVehiculos</span> para cada una de ellas. Todas accederán a la misma variable. Esto significa que una modificación realizada sobre ese atributo será visible desde cualquiera de las instancias.
+
+Podemos representar esta situación mediante el siguiente ejemplo:
+
+<pre class="codigo-java">
+Vehiculo coche1 = new Vehiculo();
+Vehiculo coche2 = new Vehiculo();
+
+coche1.color = "rojo";
+coche2.color = "azul";
+
+Vehiculo.numeroVehiculos = 2;
+</pre>
+
+En este ejemplo, los objetos referenciados por <span class="variable">coche1</span> y <span class="variable">coche2</span> mantienen valores diferentes para su atributo <span class="variable">color</span>. Sin embargo, ambos comparten el atributo <span class="variable">numeroVehiculos</span>, cuyo valor es único para toda la clase.
+
+Aunque Java permite acceder a un atributo estático utilizando una referencia a un objeto, la forma recomendada de hacerlo es mediante el nombre de la clase. Por tanto, escribiremos <span class="codigo">Vehiculo.numeroVehiculos</span>, en lugar de utilizar <span class="codigo">coche1.numeroVehiculos</span>. De esta manera, dejamos claro que estamos accediendo a un miembro de la clase y no a una característica particular de una instancia.
+
+#### Métodos estáticos
+
+Dado que los atributos estáticos pertenecen a la clase y no a una instancia en particular, la buena práctica establece que deben consultarse o modificarse **utilizando el nombre de la clase**, en lugar de emplear una variable de referencia. Java permite declarar **métodos estáticos**, que son aquellos que pertenecen a la clase y no a sus instancias. Para ello, debemos incluir el modificador <span class="palabra">static</span> en su declaración.
+
+La principal característica de estos métodos es que **pueden invocarse sin necesidad de crear un objeto**. En lugar de utilizar una referencia a una instancia, empleamos directamente el nombre de la clase seguido del operador <span class="operador">.</span> y del nombre del método.
+
+En temas anteriores hemos utilizado métodos estáticos proporcionados por la biblioteca estándar, como <span class="metodo">sqrt</span> o <span class="metodo">pow</span> de la clase <span class="clase">Math</span>:
+
+<pre class="codigo-java">
+double raiz = Math.sqrt(25.0);
+double potencia = Math.pow(2.0, 3.0);
+</pre>
+
+En ambos casos, invocamos los métodos utilizando directamente el nombre de la clase <span class="clase">Math</span>. No existe un objeto concreto sobre el que se realicen estas operaciones, puesto que su resultado depende únicamente de los argumentos que reciben.
+
+Por ejemplo, podemos incorporar a nuestra clase <span class="clase">Vehiculo</span> un método que permita consultar el número total de vehículos registrados:
+
+<pre class="codigo-java">
+class Vehiculo {
+
+    String color;
+    int modelo;
+
+    static int numeroVehiculos = 0;
+
+    // Método de clase
+    static int obtenerNumeroVehiculos ( ) {
+        return numeroVehiculos;
+    }
+
+}
+</pre>
+
+El método <span class="metodo">obtenerNumeroVehiculos</span> no necesita trabajar con ningún vehículo en particular. Su cometido consiste en consultar un dato que pertenece a la propia clase, por lo que podemos invocarlo directamente:
+
+<pre class="codigo-java">
+int total = Vehiculo.obtenerNumeroVehiculos();
+</pre>
+
+Como podemos observar, no hemos necesitado crear una instancia de <span class="clase">Vehiculo</span> para ejecutar el método. El nombre de la clase identifica al elemento sobre el que realizamos la operación. Esta característica hace que los métodos estáticos resulten especialmente apropiados para operaciones que no dependen del estado particular de ningún objeto.
+
+<aside class="definicion">
+
+**Miembro de clase:** Atributo o método declarado con el modificador <span class="palabra">static</span> cuyo ámbito y existencia están ligados a la clase en su totalidad y no a ninguna instancia concreta.
+
+**Atributo de clase:** Variable declarada en una clase compartida por todas las instancias de esa clase. Su valor pertenece a la clase y no a un objeto concreto.
+
+**Método de clase:** Método que se invoca sobre la propia clase sin requerir la existencia de una instancia.
+
+</aside>
+
+#### Restricciones de los métodos estáticos
+
+La ausencia de una instancia concreta sobre la que trabajar tiene una consecuencia importante: **un método estático no dispone de una referencia al objeto actual**. Por tanto, dentro de un método estático no podemos utilizar <span class="palabra">this</span>, ya que esta representa precisamente la referencia a la instancia sobre la que se está ejecutando un método de objeto.
+
+Del mismo modo, un método estático no puede acceder directamente a los atributos ni invocar los métodos de instancia de su clase. Para hacerlo sería necesario disponer de una referencia a un objeto concreto, puesto que esos miembros pueden tener valores y comportamientos diferentes en cada instancia. En cambio, un método estático sí puede acceder directamente a los atributos estáticos e invocar otros métodos estáticos de su misma clase. Todos ellos pertenecen a la clase y, por tanto, pueden utilizarse sin necesidad de identificar una instancia particular.
+
+Veamos un ejemplo que permite distinguir estas situaciones:
+
+<pre class="codigo-java">
+class Vehiculo {
+
+    String color;
+    static int numeroVehiculos = 0;
+
+    static int obtenerNumeroVehiculos ( ) {
+
+        // Acceso correcto a un atributo estático
+        return numeroVehiculos;
+
+        // No podemos acceder directamente a color
+        // ni utilizar this desde este método.
+
+    }
+
+}
+</pre>
+
+El atributo <span class="variable">numeroVehiculos</span> puede utilizarse directamente porque es estático y pertenece a la clase. Sin embargo, el atributo <span class="variable">color</span> pertenece a cada instancia y no existe un valor único que el método pueda consultar sin identificar previamente un vehículo. Por tanto, debemos tener presente que la diferencia entre métodos estáticos y métodos de instancia no es únicamente la forma en que los invocamos. También determina qué información pueden utilizar directamente durante su ejecución y si necesitan trabajar sobre un objeto concreto.
+
+### Constantes de clase
+
+En programación, es habitual utilizar valores que representan datos cuyo significado permanece invariable durante la ejecución de un programa. Algunos ejemplos pueden ser el número de días de una semana, el valor aproximado de π, una tasa de conversión o el número máximo de elementos que admite una determinada estructura. Aunque podríamos escribir directamente estos valores cada vez que los necesitamos, como vimos en el tema 2, resulta más conveniente asignarles un nombre que permita identificar su significado y utilizarlos de forma coherente en todo el código.
+
+El uso de constantes con nombre presenta varias ventajas. En primer lugar, mejora la legibilidad del código, puesto que permite sustituir valores numéricos o textuales cuyo significado podría no resultar evidente por identificadores descriptivos. En segundo lugar, facilita el mantenimiento del programa: si necesitamos modificar un valor, podremos localizar su declaración y actualizarlo en un único lugar, en vez de buscar todas las apariciones de un mismo literal a lo largo del código. Finalmente, evita modificaciones accidentales de datos que, por su significado, deben permanecer invariables.
+
+A diferencia de lo que veíamos en el tema 2, donde introdujimos las constantes de forma explícita usando <span class="palabra">final</span>, esta palabra reservada es un modificador:
+
+<div class="plantilla-sintactica">
+<div class="produccion">
+<div class="produccion-encabezado">FieldModifier:</div>
+<div class="produccion-alternativas">
+One of<br>
+<span class="terminal">public static final</span>
+</div>
+</div>
+</div>
+
+Java, como podemos ver en <span class="produccion-palabra">FieldDeclaration</span> permite el uso de más de un modificador (<span class="produccion-palabra">FieldModifier</span>); estos pueden aparecer en cualquier orden aunque se recomienda que, si hay más de uno, se escriban en el orden en que aparecen en la plantilla sintáctica.
+
+Aunque <span class="palabra">final</span> puede utilizarse en distintos ámbitos, en este apartado nos interesan especialmente las constantes que pertenecen a una clase. Para ello, combinamos los modificadores <span class="palabra">static</span> y <span class="palabra">final</span> en la declaración de un atributo. De esta manera, obtenemos una **constante de clase**: un valor único, compartido por todas las instancias y que no puede modificarse después de su inicialización. El modificador <span class="palabra">static</span> establece que el atributo pertenece a la clase, mientras que <span class="palabra">final</span> impide que se le asigne un valor diferente una vez inicializado.
+
+Por ejemplo, podemos definir en nuestra clase <span class="clase">Vehiculo</span> una constante que represente el número máximo de ruedas que consideramos en nuestro modelo:
+
+<pre class="codigo-java">
+class Vehiculo {
+
+    static final int NUMERO_MAXIMO_RUEDAS = 4;
+
+    String color;
+    int modelo;
+
+}
+</pre>
+
+En este caso, <span class="variable">NUMERO_MAXIMO_RUEDAS</span> es un atributo estático y final. Por tanto, no existe una copia independiente en cada vehículo, sino un único valor asociado a la clase. Además, ese valor no puede modificarse una vez inicializado.
+
+Al igual que sucede con los demás miembros estáticos, podemos acceder a esta constante utilizando directamente el nombre de la clase:
+
+<pre class="codigo-java">
+int maximo = Vehiculo.NUMERO_MAXIMO_RUEDAS;
+</pre>
+
+No necesitamos crear un objeto de tipo <span class="clase">Vehiculo</span> para consultar el valor de la constante. Su pertenencia a la clase permite utilizarla directamente desde cualquier lugar donde tengamos acceso a ella.
+
+Recordemos que, como convención de nomenclatura, es habitual escribir los identificadores de las constantes completamente en mayúsculas y separar las distintas palabras mediante el carácter de subrayado (*UPPER_SNAKE_CASE*). De esta forma, podemos distinguirlas visualmente de los atributos y variables ordinarios, cuyos nombres siguen otras convenciones:
+
+<pre class="codigo-java">
+static final double VELOCIDAD_MAXIMA = 180.0;
+static final int NUMERO_MAXIMO_RUEDAS = 4;
+static final String NOMBRE_FABRICANTE = "Fabricante";
+</pre>
+
+Esta convención facilita la lectura del código y permite reconocer rápidamente aquellos valores que no deben modificarse.
+
+#### Inicialización de las constantes
+
+Una variable declarada con el modificador <span class="palabra">final</span> debe recibir un valor antes de que se utilice y solo puede ser inicializada una vez. Podemos proporcionar ese valor directamente en su declaración, como hemos hecho en los ejemplos anteriores, o asignarlo posteriormente en un punto permitido de la inicialización.
+
+En el caso de los atributos de instancia, una constante puede inicializarse durante la declaración o mediante el constructor de la clase. Esto permite que cada objeto reciba un valor inicial que no podrá modificarse posteriormente:
+
+<pre class="codigo-java">
+class Vehiculo {
+
+    final String matricula;
+
+    Vehiculo ( String matricula ) {
+        this.matricula = matricula;
+    }
+
+}
+</pre>
+
+En este ejemplo, cada vehículo recibe su propia matrícula al ser creado. El atributo <span class="variable">matricula</span> no es estático, puesto que cada instancia debe almacenar un valor diferente, pero sí es final porque no permitimos cambiarlo una vez inicializado.
+
+Por tanto, debemos distinguir entre los dos modificadores: <span class="palabra">static</span> determina si un atributo pertenece a la clase o a cada instancia, mientras que <span class="palabra">final</span> establece que su valor no puede reasignarse después de su inicialización. Son propiedades independientes que podemos combinar cuando necesitamos definir constantes compartidas por todos los objetos.
+
+<aside class="definicion">
+
+**Constante:** Variable declarada mediante el modificador <span class="palabra">final</span>, cuyo valor solo puede asignarse una vez y no puede modificarse posteriormente.
+
+**Constante de clase:** Atributo declarado con los modificadores <span class="palabra">static</span> y <span class="palabra">final</span>. Pertenece a la clase, es compartido por todas sus instancias y no puede recibir nuevas asignaciones después de su inicialización.
+
+</aside>
+
 <footer class="pie">
 <div class="navegacion-principal">
 <a href="tema_03.html" class="anterior">Anterior</a> | 
@@ -2076,6 +2325,8 @@ En definitiva, el encadenamiento de constructores permite organizar las distinta
 
 [^1]: J. Sklenar, *Introduction to Simula*, Universidad de Malta. Disponible en: https://staff.um.edu.mt/jskl1/talk.html. Véase también el capítulo sobre Simula 67 en *General Concepts of the Simula 67 Programming Language*, de J. D. Ichbiah y S. P. Morse.
 [^2]: Alan C. Kay, *The Early History of Smalltalk*, ACM SIGPLAN Notices, vol. 28, n.º 3, 1993. DOI: https://doi.org/10.1145/155360.155364. Véase también *Kids and Us: The Story of Smalltalk*, IEEE Spectrum: https://spectrum.ieee.org/xerox-parc/smalltalk-history.
-[^3]: Cuando el atributo es booleano, la convención estándar sustituye el prefijo *get* por *is* o *has* (por ejemplo, <span class="metodo">isActiva</span> para el atributo <span class="variable">activa</span>, o <span class="metodo">hasAcceso</span> para <span class="variable">acceso</span>).
-[^4]: Durante la fase de resolución de firmas, si no existe una coincidencia exacta de tipos, el compilador de Java aplica reglas de **promoción implícita de tipos** (*widening primitive conversion*). Por ejemplo, si se pasa un entero a una sobrecarga que espera un real, el compilador promocionará automáticamente el valor para satisfacer la firma.
-[^5]: La recursividad es una técnica en la que un método puede invocarse a sí mismo; se explica en el anexo ii.
+[^3]: *Text* almacena el código, *Data* los datos y *Free* es memoria sin usar, que permite a *Heap* y *Stack* expandirse si lo necesitan. La JVM, dado que es un programa de por sí, usa para las aplicaciones un modelo especial, diferente, pero pila y montículo tienen un uso equivalente.
+[^4]: Cuando el atributo es booleano, la convención estándar sustituye el prefijo *get* por *is* o *has* (por ejemplo, <span class="metodo">isActiva</span> para el atributo <span class="variable">activa</span>, o <span class="metodo">hasAcceso</span> para <span class="variable">acceso</span>).
+[^5]: Durante la fase de resolución de firmas, si no existe una coincidencia exacta de tipos, el compilador de Java aplica reglas de **promoción implícita de tipos** (*widening primitive conversion*). Por ejemplo, si se pasa un entero a una sobrecarga que espera un real, el compilador promocionará automáticamente el valor para satisfacer la firma.
+[^6]: La recursividad es una técnica en la que un método puede invocarse a sí mismo; se explica en el anexo ii.
+[^7]: Los elementos estáticos no se almacenan ni en la pila ni en el montículo, sino en un área especial de la memoria de la JVM, *Metaspace*, asignada a la carga de clases (denominada *Method Area* en la documentación de Oracle); parte de la misma reside en *Text* y parte en *Data*, si lo comparamos con el modelo de segmentación tradicional.
