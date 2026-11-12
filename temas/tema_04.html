@@ -819,6 +819,9 @@
   entidad concreta y pedir que se efectúe dicha operación; no necesita
   reproducir en cada lugar todos los mecanismos internos ni conocer cómo
   es la abstracción.</p>
+  <figure class="img-lateral-izq">
+  <img src="../imagenes/04_08_sinergia.png" alt="Un entidad se usa desde fuera de forma sencilla (abstracción), mientras en su interior está formada por muchos componentes (encapsulación)">
+  </figure>
   <aside class="definicion">
   <p><strong>Abstracción:</strong> Proceso de identificar y seleccionar
   las características y los comportamientos relevantes de una entidad
@@ -3601,6 +3604,9 @@
   pertenece</strong>. De esta manera, Java puede identificar qué
   constructor debe ejecutar cuando se solicita la creación de una nueva
   instancia mediante el operador <span class="palabra">new</span>.</p>
+  <figure class="img-lateral-izq">
+  <img src="../imagenes/04_07_creacion.png" alt="Proceso de creación de un objeto en Java: el constructor no crea la instancia, sino que es invocado por new para establecer su estado inicial.">
+  </figure>
   <p>A diferencia de los métodos, los constructores <strong>no tienen
   tipo de retorno</strong>: <strong>los constructores no devuelven
   nada</strong>. No debemos indicar ningún tipo de dato delante de su
@@ -4382,7 +4388,6 @@
   denominados miembros estáticos.</p>
   <div class="plantilla-sintactica">
   <div class="produccion">
-  <div class="produccion">
   <div class="produccion-encabezado">
   FieldModifier:
   </div>
@@ -4602,10 +4607,11 @@
   vez de buscar todas las apariciones de un mismo literal a lo largo del
   código. Finalmente, evita modificaciones accidentales de datos que,
   por su significado, deben permanecer invariables.</p>
-  <p>A diferencia de lo que veíamos en el tema 2, donde introdujimos las
-  constantes de forma explícita usando <span
-  class="palabra">final</span>, esta palabra reservada es un
-  modificador:</p>
+  <p>Si bien en el tema 2 introdujimos las constantes de forma explícita
+  usando <span class="palabra">final</span>, en realidad, como ya hemos
+  visto con los modificadores de las variables locales (<span
+  class="produccion-palabra">VariableModifier</span>), Java define esta
+  palabra reservada como un modificador:</p>
   <div class="plantilla-sintactica">
   <div class="produccion">
   <div class="produccion-encabezado">
@@ -4616,9 +4622,9 @@
   </div>
   </div>
   </div>
-  <p>Java, como podemos ver en <span
-  class="produccion-palabra">FieldDeclaration</span> permite el uso de
-  más de un modificador (<span
+  <p>Como podemos ver en <span
+  class="produccion-palabra">FieldDeclaration</span> se permite el uso
+  de más de un modificador (<span
   class="produccion-palabra">FieldModifier</span>); estos pueden
   aparecer en cualquier orden aunque se recomienda que, si hay más de
   uno, se escriban en el orden en que aparecen en la plantilla
@@ -4732,7 +4738,6 @@
   <a href="../problemas/tema_04.html">Problemas</a-->
   </div>
   </footer>
-  </div>
   <hr />
   <h2 id="sec-notas-pie">Notas al pie</h2>
   <ol class="seccion-notas-impresion">
@@ -4784,9 +4789,10 @@
   <p>Los elementos estáticos no se almacenan ni en la pila ni en el
   montículo, sino en un área especial de la memoria de la JVM,
   <em>Metaspace</em>, asignada a la carga de clases (denominada
-  <em>Method Area</em> en la documentación de Oracle); parte de la misma
-  reside en <em>Text</em> y parte en <em>Data</em>, si lo comparamos con
-  el modelo de segmentación
+  <em>Method Area</em> en la <a
+  href="https://docs.oracle.com/javase/specs/jvms/se26/html/jvms-2.html#jvms-2.5">documentación
+  de Oracle</a>); parte de la misma reside en <em>Text</em> y parte en
+  <em>Data</em>, si lo comparamos con el modelo de segmentación
   tradicional. <a href="#fnref7" class="footnote-back">↩</a></p>
   </li>
   </ol>
