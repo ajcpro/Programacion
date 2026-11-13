@@ -21,6 +21,134 @@
   <li>
   <a href="#introducción">Introducción</a>
   </li>
+  <li>
+  <a href="#el-paradigma-orientado-a-objetos">El paradigma orientado a
+  objetos</a>
+  <ul>
+  <li>
+  <a href="#evolución-histórica-y-filosofía-de-la-poo">Evolución
+  histórica y filosofía de la POO</a>
+  </li>
+  <li>
+  <a href="#modelo-de-objeto">Modelo de objeto</a>
+  </li>
+  <li>
+  <a href="#abstracción-y-encapsulación">Abstracción y encapsulación</a>
+  </li>
+  </ul>
+  </li>
+  <li>
+  <a href="#clases-y-objetos">Clases y objetos</a>
+  <ul>
+  <li>
+  <a href="#la-clase-como-plantilla">La clase como plantilla</a>
+  </li>
+  <li>
+  <a href="#el-objeto-como-instancia-en-tiempo-de-ejecución">El objeto
+  como instancia en tiempo de ejecución</a>
+  </li>
+  <li>
+  <a href="#interfaz-pública">Interfaz pública</a>
+  </li>
+  <li>
+  <a href="#convenciones-de-nomenclatura">Convenciones de
+  nomenclatura</a>
+  </li>
+  </ul>
+  </li>
+  <li>
+  <a href="#gestión-de-memoria-y-ciclo-de-vida">Gestión de memoria y
+  ciclo de vida</a>
+  <ul>
+  <li>
+  <a href="#variables-de-referencia">Variables de referencia</a>
+  </li>
+  <li>
+  <a href="#la-referencia-null">La referencia null</a>
+  </li>
+  <li>
+  <a href="#el-operador-new">El operador new</a>
+  </li>
+  <li>
+  <a href="#stack-y-heap">Stack y Heap</a>
+  </li>
+  <li>
+  <a href="#alias-de-referencia">Alias de referencia</a>
+  </li>
+  <li>
+  <a href="#recolector-de-basura">Recolector de basura</a>
+  </li>
+  </ul>
+  </li>
+  <li>
+  <a href="#anatomía-de-una-clase">Anatomía de una clase</a>
+  <ul>
+  <li>
+  <a href="#atributos">Atributos</a>
+  </li>
+  <li>
+  <a href="#métodos">Métodos</a>
+  </li>
+  <li>
+  <a href="#paso-de-parámetros">Paso de parámetros</a>
+  </li>
+  <li>
+  <a href="#variables-locales">Variables locales</a>
+  </li>
+  <li>
+  <a href="#métodos-observadores-y-transformadores">Métodos observadores
+  y transformadores</a>
+  </li>
+  </ul>
+  </li>
+  <li>
+  <a href="#inicialización-constructores">Inicialización:
+  constructores</a>
+  <ul>
+  <li>
+  <a href="#sintaxis-de-los-constructores">Sintaxis de los
+  constructores</a>
+  </li>
+  <li>
+  <a href="#constructor-por-defecto">Constructor por defecto</a>
+  </li>
+  <li>
+  <a href="#sobrecarga-de-constructores">Sobrecarga de constructores</a>
+  </li>
+  <li>
+  <a href="#la-palabra-reservada-this">La palabra reservada this</a>
+  </li>
+  <li>
+  <a href="#encadenamiento-de-constructores">Encadenamiento de
+  constructores</a>
+  </li>
+  </ul>
+  </li>
+  <li>
+  <a href="#miembros-de-clase">Miembros de clase</a>
+  <ul>
+  <li>
+  <a href="#miembros-estáticos">Miembros estáticos</a>
+  </li>
+  <li>
+  <a href="#constantes-de-clase">Constantes de clase</a>
+  </li>
+  </ul>
+  </li>
+  <li>
+  <a href="#el-método-main">El método main</a>
+  <ul>
+  <li>
+  <a href="#conductor-y-resguardos">Conductor y resguardos</a>
+  </li>
+  <li>
+  <a href="#clases-conductoras">Clases conductoras</a>
+  </li>
+  <li>
+  <a href="#ejemplo">Ejemplo</a>
+  </li>
+  </ul>
+  </li>
   </ul>
   </div>
   </nav>
@@ -29,7 +157,31 @@
   Objetivos
   </h2>
   <ul>
-  <li>Comprender algo</li>
+  <li>Comprender los fundamentos del paradigma de programación orientada
+  a objetos (POO).</li>
+  <li>Identificar el estado, el comportamiento y la identidad de un
+  objeto.</li>
+  <li>Abstracción y encapsulación en el diseño orientado a objetos.</li>
+  <li>Distinguir entre clases y objetos.</li>
+  <li>Entender la relación entre clases y objetos.</li>
+  <li>Reconocer la importancia de separar la interfaz pública de los
+  detalles de implementación.</li>
+  <li>Distinguir entre variables de referencia y objetos.</li>
+  <li>Comprender el almacenamiento en memoria y el recolector de
+  basura.</li>
+  <li>Definir clases en Java.</li>
+  <li>Comprender el mecaninmo de paso de parámetros.</li>
+  <li>Distinguir entre observadores y transformadores.</li>
+  <li>Comprender la finalidad de los constructores e inicializar
+  objetos.</li>
+  <li>Reconocer y utilizar la sobrecarga y el encadenamiento de
+  constructores.</li>
+  <li>Comprender el uso de la palabra reservada this.</li>
+  <li>Distinguir entre los miembros de objeto y los miembros de
+  clase.</li>
+  <li>Comprender la finalidad de las constantes de clase.</li>
+  <li>Diferenciar entre conductor y resguardo</li>
+  <li>Comprender el método main.</li>
   </ul>
   </section>
   <section class="toc">
@@ -38,6 +190,70 @@
   </h2>
   <ul>
   <li><a href="#introducción">Introducción</a></li>
+  <li><a href="#el-paradigma-orientado-a-objetos">El paradigma orientado
+  a objetos</a>
+  <ul>
+  <li><a href="#evolución-histórica-y-filosofía-de-la-poo">Evolución
+  histórica y filosofía de la POO</a></li>
+  <li><a href="#modelo-de-objeto">Modelo de objeto</a></li>
+  <li><a href="#abstracción-y-encapsulación">Abstracción y
+  encapsulación</a></li>
+  </ul></li>
+  <li><a href="#clases-y-objetos">Clases y objetos</a>
+  <ul>
+  <li><a href="#la-clase-como-plantilla">La clase como
+  plantilla</a></li>
+  <li><a href="#el-objeto-como-instancia-en-tiempo-de-ejecución">El
+  objeto como instancia en tiempo de ejecución</a></li>
+  <li><a href="#interfaz-pública">Interfaz pública</a></li>
+  <li><a href="#convenciones-de-nomenclatura">Convenciones de
+  nomenclatura</a></li>
+  </ul></li>
+  <li><a href="#gestión-de-memoria-y-ciclo-de-vida">Gestión de memoria y
+  ciclo de vida</a>
+  <ul>
+  <li><a href="#variables-de-referencia">Variables de
+  referencia</a></li>
+  <li><a href="#la-referencia-null">La referencia null</a></li>
+  <li><a href="#el-operador-new">El operador new</a></li>
+  <li><a href="#stack-y-heap">Stack y Heap</a></li>
+  <li><a href="#alias-de-referencia">Alias de referencia</a></li>
+  <li><a href="#recolector-de-basura">Recolector de basura</a></li>
+  </ul></li>
+  <li><a href="#anatomía-de-una-clase">Anatomía de una clase</a>
+  <ul>
+  <li><a href="#atributos">Atributos</a></li>
+  <li><a href="#métodos">Métodos</a></li>
+  <li><a href="#paso-de-parámetros">Paso de parámetros</a></li>
+  <li><a href="#variables-locales">Variables locales</a></li>
+  <li><a href="#métodos-observadores-y-transformadores">Métodos
+  observadores y transformadores</a></li>
+  </ul></li>
+  <li><a href="#inicialización-constructores">Inicialización:
+  constructores</a>
+  <ul>
+  <li><a href="#sintaxis-de-los-constructores">Sintaxis de los
+  constructores</a></li>
+  <li><a href="#constructor-por-defecto">Constructor por
+  defecto</a></li>
+  <li><a href="#sobrecarga-de-constructores">Sobrecarga de
+  constructores</a></li>
+  <li><a href="#la-palabra-reservada-this">La palabra reservada
+  this</a></li>
+  <li><a href="#encadenamiento-de-constructores">Encadenamiento de
+  constructores</a></li>
+  </ul></li>
+  <li><a href="#miembros-de-clase">Miembros de clase</a>
+  <ul>
+  <li><a href="#miembros-estáticos">Miembros estáticos</a></li>
+  <li><a href="#constantes-de-clase">Constantes de clase</a></li>
+  </ul></li>
+  <li><a href="#el-método-main">El método main</a>
+  <ul>
+  <li><a href="#conductor-y-resguardos">Conductor y resguardos</a></li>
+  <li><a href="#clases-conductoras">Clases conductoras</a></li>
+  <li><a href="#ejemplo">Ejemplo</a></li>
+  </ul></li>
   </ul>
   </section>
   <h2 id="introducción">Introducción</h2>
@@ -1066,8 +1282,8 @@
   cumplirse para utilizarlas correctamente. Es, por tanto, la parte de
   su funcionamiento que necesitan conocer los componentes que
   interactúan con él.</p>
-  <p>La interfaz pública define el <strong>“qué hace”</strong> el
-  objeto, omitiendo por completo el <strong>“cómo lo hace”</strong>.
+  <p>La interfaz pública define el <strong>«qué hace»</strong> el
+  objeto, omitiendo por completo el <strong>«cómo lo hace»</strong>.
   Cualquier componente que necesite trabajar con el objeto deberá
   conocer qué operación debe solicitar y qué parámetros necesita
   proporcionar. Si una operación devuelve un resultado, también deberá
@@ -1649,7 +1865,7 @@
   class="variable">origen</span> existe y puede utilizarse, pero su
   valor indica que no hay ninguna instancia de <span
   class="clase">Punto</span> asociada a ella. <strong><span
-  class="literal">null</span>` no es un objeto ni representa una
+  class="literal">null</span> no es un objeto ni representa una
   instancia vacía de la clase</strong>: es un valor especial que expresa
   que no existe una referencia hacia un objeto.</p>
   <p>Debemos tener presente que <span class="literal">null</span> puede
@@ -1844,7 +2060,7 @@
   estructura destinada a gestionar la ejecución de los métodos del
   programa, almacenando la información necesaria. Cada vez que se invoca
   a un método (incluido el método <span class="metodo">main</span>), la
-  JVM crea de forma automática un espacio de trabajo denominado
+  máquina crea de forma automática un espacio de trabajo denominado
   <strong>marco de pila</strong> (<em>Stack Frame</em>). Dentro de este
   marco se almacenan, entre otros elementos, las variables locales
   declaradas en el método, los parámetros que recibe y los valores
@@ -1866,9 +2082,9 @@
   el programa. Las instancias se crean en esta estructura y contienen la
   información que corresponde a cada objeto concreto. Por tanto, debemos
   distinguir claramente las funciones de ambas estructuras. La primera
-  proporciona proporciona el espacio de trabajo necesario para ejecutar
-  los métodos, mientras que la segunda almacena los objetos que utiliza
-  la aplicación. La variable local que permite acceder a una instancia
+  proporciona el espacio de trabajo necesario para ejecutar los métodos,
+  mientras que la segunda almacena los objetos que utiliza la
+  aplicación. La variable local que permite acceder a una instancia
   puede estar en la pila, mientras que la instancia propiamente dicha se
   encuentra en el montículo.</p>
   <p>Es importante no interpretar estas estructuras como dos
@@ -1907,11 +2123,11 @@
   operador <span class="operador">new</span>, podemos crear nuevas
   instancias de una clase. También hemos estudiado cómo se organizan las
   variables en el <em>Stack</em> y los objetos en el <em>Heap</em>. Una
-  de las consecuencias más importantes de este modelode gestión de la
+  de las consecuencias más importantes de este modelo de gestión de la
   memoria es que <strong>un mismo objeto puede estar referenciado
   simultáneamente por varias variables diferentes</strong>.</p>
   <p>Esta situación recibe el nombre de <strong>alias de
-  referencia</strong> (<em>aliuasing</em> o <em>reference aliasing</em>)
+  referencia</strong> (<em>aliasing</em> o <em>reference aliasing</em>)
   y se produce cuando dos o más variables independientes permiten
   acceder a una misma instancia. Dicho de otra manera, un objeto puede
   tener varios nombres dentro de un programa, aunque todos ellos
@@ -2112,13 +2328,7 @@
   lo que puede provocar que se intente acceder a un objeto que ya no
   existe, mientras que no liberarla cuando corresponde produce
   <strong>fugas de memoria</strong> (<em>memory leaks</em>) lo que puede
-  ocasionar un consumo innecesario de memoria.</p>
-  <p>olvidar liberar un objeto produce <strong>fugas de memoria</strong>
-  (<em>memory leaks</em>), donde la memoria ocupada queda bloqueada e
-  inutilizable hasta agotar el sistema; por otro lado, liberar un objeto
-  demasiado pronto o por duplicado genera <strong>punteros
-  colgados</strong> (<em>dangling pointers</em>), provocando la
-  corrupción de datos o la caída del programa.</p>
+  ocasionar un consumo innecesario de dicha memoria.</p>
   <p>El lenguaje Java eliminó de raíz esta fuente de errores adoptando
   un enfoque diferente. La máquina virtual de Java (JVM) incorpora un
   mecanismo de gestión automática de memoria denominado
@@ -2139,10 +2349,10 @@
   encargado de supervisar continuamente la memoria <em>Heap</em>,
   identificar los objetos que han quedado inaccesibles para el programa
   y recuperar automáticamente el espacio de almacenamiento que ocupaban
-  para ponerlo de nuevo a disposición de futuras instanciaciones.</p>
-  <p>Para comprender cómo determina el recolector de basura qué objetos
-  puede eliminar, debemos recordar la función de las <strong>variables
-  de referencia</strong>. Una variable de este tipo permite acceder a un
+  para ponerlo de nuevo a disposición de futuras instanciaciones. Para
+  comprender cómo determina el recolector de basura qué objetos puede
+  eliminar, debemos recordar la función de las <strong>variables de
+  referencia</strong>. Una variable de este tipo permite acceder a un
   objeto mediante la referencia que mantiene. Por tanto, mientras exista
   alguna referencia accesible que conduzca a una instancia, el programa
   puede seguir utilizando ese objeto, aunque la variable que lo
@@ -2161,14 +2371,14 @@
   inalcanzable, resulta físicamente imposible que el programa vuelva a
   invocar sus métodos o lea sus atributos; por consiguiente, el objeto
   ha completado su ciclo de vida útil. Existen tres situaciones
-  habituales mediante las cuales un objeto pasa a ser inalcanzable: 1.-
-  Puede suceder que se asigne una nueva instancia a una variable de
-  referencia, quedando huérfana aquella a la que apuntaba 2.- Asignamos
-  de forma explícita el literal <span class="literal">null</span> a la
-  única variable de referencia que apuntaba al objeto. 3.- La variable
-  deja de estar disponible al finalizar el ámbito en el que fue
-  declarada, por lo que la referencia que mantenía deja de ser
-  accesible.</p>
+  habituales mediante las cuales un objeto pasa a ser inalcanzable:</p>
+  <p>1.- Puede suceder que se asigne una nueva instancia a una variable
+  de referencia, quedando huérfana aquella a la que apuntaba 2.-
+  Asignamos de forma explícita el literal <span
+  class="literal">null</span> a la única variable de referencia que
+  apuntaba al objeto. 3.- La variable deja de estar disponible al
+  finalizar el ámbito en el que fue declarada, por lo que la referencia
+  que mantenía deja de ser accesible.</p>
   <p>El recolector de basura es un mecanismo interno de la JVM que
   analiza las referencias existentes y determina qué objetos continúan
   siendo alcanzables. Cuando identifica instancias que ya no pueden
@@ -2662,7 +2872,7 @@
   <p>Una vez declarado un método, podemos solicitar su ejecución
   mediante una <strong>invocación</strong>. Para ello utilizamos el
   nombre de la variable de referencia que permite acceder al objeto,
-  seguido del operador Punto (<span class="operador">.</span>), el
+  seguido del operador punto (<span class="operador">.</span>), el
   nombre del método y los paréntesis que contienen los argumentos
   necesarios.</p>
   <p>Por ejemplo, si disponemos de dos instancias de la clase <span
@@ -2771,7 +2981,7 @@
   <p><strong>Objeto receptor:</strong> Instancia concreta sobre la que
   se solicita la ejecución de un método.</p>
   <p><strong>Tipo de retorno:</strong> Tipo de dato del valor que
-  proporciona un método al finalizar su ejecución. <span
+  proporciona un método al finalizar su ejecución; <span
   class="palabra">void</span> indica que no devuelve ningún valor.</p>
   <p><strong>Sentencia de retorno:</strong> Instrucción con <span
   class="palabra">return</span> que devuelve un valor al código cliente
@@ -2826,8 +3036,8 @@
   incrementos, uno para cada coordenada:</p>
   <pre class="codigo-java">
   void desplazar ( double incrementoX, double incrementoY ) {
-      coordenadaX = coordenadaX + incrementoX;
-      coordenadaY = coordenadaY + incrementoY;
+      coordenadaX += incrementoX;
+      coordenadaY += incrementoY;
   }
   </pre>
   <p>En la declaración anterior, <span
@@ -2991,15 +3201,15 @@
   class="clase">Punto</span>, aunque sean variables diferentes.</p>
   <p>Esto tiene una consecuencia fundamental: <strong>el método puede
   modificar el objeto utilizando la referencia que ha recibido como
-  parámetro</strong>, y esos cambios serán observables desde la variable
+  parámetro</strong>; y esos cambios serán observables desde la variable
   original. En nuestro ejemplo, la llamada a <span
   class="metodo">desplazar</span> modifica el estado del objeto al que
   hacen referencia tanto <span class="variable">punto</span> como <span
   class="variable">origen</span>. No estamos trabajando con una copia
   del objeto, sino con una referencia copiada que permite acceder a la
   misma instancia.</p>
-  <p>Este comportamiento no contradice el paso por valor. Java sigue
-  copiando el valor del argumento, pero, en este caso, el valor copiado
+  <p>Este comportamiento no contradice el paso por valor: Java sigue
+  copiando el valor del argumento pero, en este caso, el valor copiado
   es una referencia. El parámetro recibe una referencia que permite
   acceder al mismo objeto que la variable original, por lo que las
   operaciones que modifiquen esa instancia pueden observarse desde ambos
@@ -3604,7 +3814,7 @@
   pertenece</strong>. De esta manera, Java puede identificar qué
   constructor debe ejecutar cuando se solicita la creación de una nueva
   instancia mediante el operador <span class="palabra">new</span>.</p>
-  <figure class="img-lateral-izq">
+  <figure class="img-lateral-dch">
   <img src="../imagenes/04_07_creacion.png" alt="Proceso de creación de un objeto en Java: el constructor no crea la instancia, sino que es invocado por new para establecer su estado inicial.">
   </figure>
   <p>A diferencia de los métodos, los constructores <strong>no tienen
@@ -3983,7 +4193,7 @@
   <ol type="1">
   <li><strong>En el número de parámetros:</strong> En el ejemplo, un
   constructor no recibe argumentos, otro recibe uno y el tercero recibe
-  dos..</li>
+  dos.</li>
   <li><strong>En los tipos de datos de los parámetros:</strong> Un
   constructor podría recibir un entero y un real, mientras que otro
   podría recibir una cadena y un real.</li>
@@ -4011,9 +4221,9 @@
   necesidad de definir clases diferentes ni de realizar posteriormente
   operaciones adicionales para establecer su estado inicial.
   <strong>Cada constructor representa una forma específica de
-  inicializar una instancia, y Java selecciona automáticamente el que
+  inicializar una instancia y Java selecciona automáticamente el que
   corresponde a los argumentos proporcionados durante la
-  instanciación.</strong></p>
+  compilación.</strong></p>
   <h4 id="diseño-debe-existir-constructor-sin-parámetros">Diseño: ¿Debe
   existir constructor sin parámetros?</h4>
   <p>Cuando el dominio exija que un objeto nazca siempre con todos (o
@@ -4755,7 +4965,7 @@
   Si la clase especificada no contiene un método con la firma exacta
   exigida por el lenguaje, la máquina virtual no podrá iniciar la
   aplicación y emitirá un error de ejecución.
-  <aside>
+  </aside>
   <p>¿Recordáis aquella declaración de método que hicimos en el tema 2,
   que dijimos que debía ser la primera línea que usaríamos de forma
   literal en todos nuestros programas?</p>
@@ -4798,10 +5008,10 @@
   denominado <span class="metodo">main</span>. Como hemos estado viendo,
   los métodos de instancia necesitan un objeto sobre el que ejecutarse.
   Sin embargo, cuando la JVM inicia la aplicación, todavía no existe
-  ningún objeto de la clase que <span class="metodo">main</span>. Por
-  este motivo, el punto de entrada debe ser un método estático: así
-  puede invocarse directamente a través de la clase, sin tener que crear
-  previamente una instancia.</p>
+  ningún objeto de la clase que contiene <span
+  class="metodo">main</span>. Por este motivo, el punto de entrada debe
+  ser un método estático: así puede invocarse directamente a través de
+  la clase, sin tener que crear previamente una instancia.</p>
   <p>Esta característica no significa que toda la aplicación deba
   desarrollarse mediante métodos estáticos. De hecho, la forma habitual
   de trabajar cuando desarrollemos programas orientados a objetos será
@@ -4989,7 +5199,7 @@
       }
   }
 
-  // CLASE BAJO PRUEBA: Lógica de la Factura utilizando el Resguardo
+  // Lógica de la Factura utilizando el Resguardo: CLASE QUE PROBAMOS
   class Factura {
       double importeBase;
 
@@ -5011,7 +5221,7 @@
           
           double total = f.calcularTotal();
           
-          System.out.println("Total calculado (esperado 121.0): " + total);
+          System.out.println("Total calculado: " + total);
       }
   }
   </pre>
