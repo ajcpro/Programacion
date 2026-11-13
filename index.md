@@ -60,7 +60,7 @@ blockquote.cita-dijkstra .autor {
 * [Tema 01: Lenguajes y técnicas de programación](temas/tema_01.html)
 * [Tema 02: Metodología de diseño](temas/tema_02.html)
 * [Tema 03: Estructuras de programación](temas/tema_03.html)
-* Tema 04: Fundamentos de la POO
+* [Tema 04: Fundamentos de la POO](temas/tema_04.html)
 * Tema 05: Gestión de errores y excepciones
 * Tema 06: Desarrollo de clases y paquetes
 * Tema 07: Estructuras: Vectores y matrices

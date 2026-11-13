@@ -14,6 +14,62 @@ css: ["../estilos/estilo.css", "../estilos/tema_04.css"]
 <h3>Contenido</h3>
 <ul>
 <li><a href="#introducción">Introducción</a></li>
+<li><a href="#el-paradigma-orientado-a-objetos">El paradigma orientado a objetos</a>
+<ul>
+<li><a href="#evolución-histórica-y-filosofía-de-la-poo">Evolución histórica y filosofía de la POO</a></li>
+<li><a href="#modelo-de-objeto">Modelo de objeto</a></li>
+<li><a href="#abstracción-y-encapsulación">Abstracción y encapsulación</a></li>
+</ul>
+</li>
+<li><a href="#clases-y-objetos">Clases y objetos</a>
+<ul>
+<li><a href="#la-clase-como-plantilla">La clase como plantilla</a></li>
+<li><a href="#el-objeto-como-instancia-en-tiempo-de-ejecución">El objeto como instancia en tiempo de ejecución</a></li>
+<li><a href="#interfaz-pública">Interfaz pública</a></li>
+<li><a href="#convenciones-de-nomenclatura">Convenciones de nomenclatura</a></li>
+</ul>
+</li>
+<li><a href="#gestión-de-memoria-y-ciclo-de-vida">Gestión de memoria y ciclo de vida</a>
+<ul>
+<li><a href="#variables-de-referencia">Variables de referencia</a></li>
+<li><a href="#la-referencia-null">La referencia null</a></li>
+<li><a href="#el-operador-new">El operador new</a></li>
+<li><a href="#stack-y-heap">Stack y Heap</a></li>
+<li><a href="#alias-de-referencia">Alias de referencia</a></li>
+<li><a href="#recolector-de-basura">Recolector de basura</a></li>
+</ul>
+</li>
+<li><a href="#anatomía-de-una-clase">Anatomía de una clase</a>
+<ul>
+<li><a href="#atributos">Atributos</a></li>
+<li><a href="#métodos">Métodos</a></li>
+<li><a href="#paso-de-parámetros">Paso de parámetros</a></li>
+<li><a href="#variables-locales">Variables locales</a></li>
+<li><a href="#métodos-observadores-y-transformadores">Métodos observadores y transformadores</a></li>
+</ul>
+</li>
+<li><a href="#inicialización-constructores">Inicialización: constructores</a>
+<ul>
+<li><a href="#sintaxis-de-los-constructores">Sintaxis de los constructores</a></li>
+<li><a href="#constructor-por-defecto">Constructor por defecto</a></li>
+<li><a href="#sobrecarga-de-constructores">Sobrecarga de constructores</a></li>
+<li><a href="#la-palabra-reservada-this">La palabra reservada this</a></li>
+<li><a href="#encadenamiento-de-constructores">Encadenamiento de constructores</a></li>
+</ul>
+</li>
+<li><a href="#miembros-de-clase">Miembros de clase</a>
+<ul>
+<li><a href="#miembros-estáticos">Miembros estáticos</a></li>
+<li><a href="#constantes-de-clase">Constantes de clase</a></li>
+</ul>
+</li>
+<li><a href="#el-método-main">El método main</a>
+<ul>
+<li><a href="#conductor-y-resguardos">Conductor y resguardos</a></li>
+<li><a href="#clases-conductoras">Clases conductoras</a></li>
+<li><a href="#ejemplo">Ejemplo</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </nav>
@@ -21,7 +77,24 @@ css: ["../estilos/estilo.css", "../estilos/tema_04.css"]
 <section class="objetivos">
 <h2>Objetivos</h2>
 
-* Comprender algo
+* Comprender los fundamentos del paradigma de programación orientada a objetos (POO).
+* Identificar el estado, el comportamiento y la identidad de un objeto.
+* Abstracción y encapsulación en el diseño orientado a objetos.
+* Distinguir entre clases y objetos.
+* Entender la relación entre clases y objetos.
+* Reconocer la importancia de separar la interfaz pública de los detalles de implementación.
+* Distinguir entre variables de referencia y objetos.
+* Comprender el almacenamiento en memoria y el recolector de basura.
+* Definir clases en Java.
+* Comprender el mecaninmo de paso de parámetros.
+* Distinguir entre observadores y transformadores.
+* Comprender la finalidad de los constructores e inicializar objetos.
+* Reconocer y utilizar la sobrecarga y el encadenamiento de constructores.
+* Comprender el uso de la palabra reservada this.
+* Distinguir entre los miembros de objeto y los miembros de clase.
+* Comprender la finalidad de las constantes de clase.
+* Diferenciar entre conductor y resguardo
+* Comprender el método main.
 
 </section>
 
@@ -29,6 +102,41 @@ css: ["../estilos/estilo.css", "../estilos/tema_04.css"]
 <h2>Contenido</h2>
 
 * [Introducción](#introducción)
+* [El paradigma orientado a objetos](#el-paradigma-orientado-a-objetos)
+    * [Evolución histórica y filosofía de la POO](#evolución-histórica-y-filosofía-de-la-poo)
+    * [Modelo de objeto](#modelo-de-objeto)
+    * [Abstracción y encapsulación](#abstracción-y-encapsulación)
+* [Clases y objetos](#clases-y-objetos)
+    * [La clase como plantilla](#la-clase-como-plantilla)
+    * [El objeto como instancia en tiempo de ejecución](#el-objeto-como-instancia-en-tiempo-de-ejecución)
+    * [Interfaz pública](#interfaz-pública)
+    * [Convenciones de nomenclatura](#convenciones-de-nomenclatura)
+* [Gestión de memoria y ciclo de vida](#gestión-de-memoria-y-ciclo-de-vida)
+    * [Variables de referencia](#variables-de-referencia)
+    * [La referencia null](#la-referencia-null)
+    * [El operador new](#el-operador-new)
+    * [Stack y Heap](#stack-y-heap)
+    * [Alias de referencia](#alias-de-referencia)
+    * [Recolector de basura](#recolector-de-basura)
+* [Anatomía de una clase](#anatomía-de-una-clase)
+    * [Atributos](#atributos)
+    * [Métodos](#métodos)
+    * [Paso de parámetros](#paso-de-parámetros)
+    * [Variables locales](#variables-locales)
+    * [Métodos observadores y transformadores](#métodos-observadores-y-transformadores)
+* [Inicialización: constructores](#inicialización-constructores)
+    * [Sintaxis de los constructores](#sintaxis-de-los-constructores)
+    * [Constructor por defecto](#constructor-por-defecto)
+    * [Sobrecarga de constructores](#sobrecarga-de-constructores)
+    * [La palabra reservada this](#la-palabra-reservada-this)
+    * [Encadenamiento de constructores](#encadenamiento-de-constructores)
+* [Miembros de clase](#miembros-de-clase)
+    * [Miembros estáticos](#miembros-estáticos)
+    * [Constantes de clase](#constantes-de-clase)
+* [El método main](#el-método-main)
+    * [Conductor y resguardos](#conductor-y-resguardos)
+    * [Clases conductoras](#clases-conductoras)
+    * [Ejemplo](#ejemplo)
 
 </section>
 
@@ -421,7 +529,7 @@ Hemos visto que la clase establece las características y los comportamientos, m
 
 La **interfaz pública** representa su cara visible hacia el exterior. Está formada por las operaciones que pone a disposición del resto del programa y por las condiciones que deben cumplirse para utilizarlas correctamente. Es, por tanto, la parte de su funcionamiento que necesitan conocer los componentes que interactúan con él.
 
-La interfaz pública define el **"qué hace"** el objeto, omitiendo por completo el **"cómo lo hace"**. Cualquier componente que necesite trabajar con el objeto deberá conocer qué operación debe solicitar y qué parámetros necesita proporcionar. Si una operación devuelve un resultado, también deberá conocer qué representa ese resultado.
+La interfaz pública define el **«qué hace»** el objeto, omitiendo por completo el **«cómo lo hace»**. Cualquier componente que necesite trabajar con el objeto deberá conocer qué operación debe solicitar y qué parámetros necesita proporcionar. Si una operación devuelve un resultado, también deberá conocer qué representa ese resultado.
 
 Por ejemplo, un programa podría utilizar una instancia de la clase estándar <span class="clase">Scanner</span> para leer datos desde el teclado con una llamada como la siguiente:
 
@@ -665,7 +773,7 @@ Por ejemplo, si declaramos una variable de tipo <span class="clase">Punto</span>
 Punto origen = null;
 </pre>
 
-La declaración anterior es perfectamente válida. La variable <span class="variable">origen</span> existe y puede utilizarse, pero su valor indica que no hay ninguna instancia de <span class="clase">Punto</span> asociada a ella. **<span class="literal">null</span>` no es un objeto ni representa una instancia vacía de la clase**: es un valor especial que expresa que no existe una referencia hacia un objeto.
+La declaración anterior es perfectamente válida. La variable <span class="variable">origen</span> existe y puede utilizarse, pero su valor indica que no hay ninguna instancia de <span class="clase">Punto</span> asociada a ella. **<span class="literal">null</span> no es un objeto ni representa una instancia vacía de la clase**: es un valor especial que expresa que no existe una referencia hacia un objeto.
 
 Debemos tener presente que <span class="literal">null</span> puede asignarse a cualquier variable de tipo referencia, independientemente de la clase a la que pertenezca, pero no puede utilizarse como valor de una variable de tipo primitivo. Por tanto, podemos asignarlo a una variable de tipo <span class="clase">Punto</span>, <span class="clase">String</span> o cualquier otra clase, pero no a una variable de tipo <span class="palabra">int</span>, por ejemplo.
 
@@ -776,7 +884,7 @@ Nuestros programas se organizan en la memoria del ordenador utilizando diferente
 
 #### Stack: pila de ejecución
 
-La memoria denominada **Stack** (o pila) es una estructura destinada a gestionar la ejecución de los métodos del programa, almacenando la información necesaria. Cada vez que se invoca a un método (incluido el método <span class="metodo">main</span>), la JVM crea de forma automática un espacio de trabajo denominado **marco de pila** (*Stack Frame*). Dentro de este marco se almacenan, entre otros elementos, las variables locales declaradas en el método, los parámetros que recibe y los valores temporales necesarios para realizar las operaciones. De esta manera, cada método dispone de su propio espacio de trabajo y puede utilizar sus variables sin interferir directamente en las de otros métodos.
+La memoria denominada **Stack** (o pila) es una estructura destinada a gestionar la ejecución de los métodos del programa, almacenando la información necesaria. Cada vez que se invoca a un método (incluido el método <span class="metodo">main</span>), la máquina crea de forma automática un espacio de trabajo denominado **marco de pila** (*Stack Frame*). Dentro de este marco se almacenan, entre otros elementos, las variables locales declaradas en el método, los parámetros que recibe y los valores temporales necesarios para realizar las operaciones. De esta manera, cada método dispone de su propio espacio de trabajo y puede utilizar sus variables sin interferir directamente en las de otros métodos.
 
 Una característica clave del marco de pila es su **gestión automática y efímera**. Cuando la ejecución de un método concluye, su marco de pila correspondiente se destruye liberando el espacio ocupado.
 
@@ -784,7 +892,7 @@ Una característica clave del marco de pila es su **gestión automática y efím
 
 La memoria denominada **Heap** es una gran zona de almacenamiento dinámico, utilizada para almacenar las instancias que se crean durante la ejecución del programa. Es la región de la memoria donde se reserva el espacio cuando se solicita su creación mediante el operador <span class="palabra">new</span>.
 
-A diferencia de *Stack*, *Heap* proporciona el espacio necesario para mantener los objetos durante su existencia en el programa. Las instancias se crean en esta estructura y contienen la información que corresponde a cada objeto concreto. Por tanto, debemos distinguir claramente las funciones de ambas estructuras. La primera proporciona proporciona el espacio de trabajo necesario para ejecutar los métodos, mientras que la segunda almacena los objetos que utiliza la aplicación. La variable local que permite acceder a una instancia puede estar en la pila, mientras que la instancia propiamente dicha se encuentra en el montículo.
+A diferencia de *Stack*, *Heap* proporciona el espacio necesario para mantener los objetos durante su existencia en el programa. Las instancias se crean en esta estructura y contienen la información que corresponde a cada objeto concreto. Por tanto, debemos distinguir claramente las funciones de ambas estructuras. La primera proporciona el espacio de trabajo necesario para ejecutar los métodos, mientras que la segunda almacena los objetos que utiliza la aplicación. La variable local que permite acceder a una instancia puede estar en la pila, mientras que la instancia propiamente dicha se encuentra en el montículo.
 
 Es importante no interpretar estas estructuras como dos dispositivos físicos independientes ni como dos zonas que podamos identificar directamente en los módulos de memoria del ordenador: son áreas lógicas definidas por el modelo de ejecución que permiten organizar la información necesaria para ejecutar los programas y gestionar los objetos. También debemos evitar una confusión habitual: que una variable local desaparezca al finalizar el método en el que se declaró no significa que el objeto al que hacía referencia tenga que desaparecer en ese mismo instante. El marco de ejecución y la instancia son elementos independientes, y su permanencia en memoria responde a criterios diferentes.
 
@@ -802,9 +910,9 @@ En definitiva, **Stack y Heap desempeñan funciones complementarias en la gesti�
 
 ### Alias de referencia
 
-Hemos visto que una variable de referencia almacena la dirección de memoria de un objeto y no el objeto en sí mismo y que, mediante el operador <span class="operador">new</span>, podemos crear nuevas instancias de una clase. También hemos estudiado cómo se organizan las variables en el *Stack* y los objetos en el *Heap*. Una de las consecuencias más importantes de este modelode gestión de la memoria es que **un mismo objeto puede estar referenciado simultáneamente por varias variables diferentes**.
+Hemos visto que una variable de referencia almacena la dirección de memoria de un objeto y no el objeto en sí mismo y que, mediante el operador <span class="operador">new</span>, podemos crear nuevas instancias de una clase. También hemos estudiado cómo se organizan las variables en el *Stack* y los objetos en el *Heap*. Una de las consecuencias más importantes de este modelo de gestión de la memoria es que **un mismo objeto puede estar referenciado simultáneamente por varias variables diferentes**.
 
-Esta situación recibe el nombre de **alias de referencia** (*aliuasing* o *reference aliasing*) y se produce cuando dos o más variables independientes permiten acceder a una misma instancia. Dicho de otra manera, un objeto puede tener varios nombres dentro de un programa, aunque todos ellos permitan acceder a la misma entidad. Esto se consigue porque almacenan la misma dirección de memoria, apuntando simultáneamente a una **única y misma instancia**.
+Esta situación recibe el nombre de **alias de referencia** (*aliasing* o *reference aliasing*) y se produce cuando dos o más variables independientes permiten acceder a una misma instancia. Dicho de otra manera, un objeto puede tener varios nombres dentro de un programa, aunque todos ellos permitan acceder a la misma entidad. Esto se consigue porque almacenan la misma dirección de memoria, apuntando simultáneamente a una **única y misma instancia**.
 
 Supongamos que creamos un objeto y almacenamos su referencia en una variable denominada <span class="variable">origen</span>:
 
@@ -897,21 +1005,18 @@ En definitiva, debemos recordar que **las variables de referencia no contienen l
 
 Durante la ejecución de un programa podemos crear numerosos objetos; cada uno necesita disponer de un espacio de memoria en el que almacenar su estado y la información necesaria para su funcionamiento. Sin embargo, no todos los objetos van a necesitarse durante el tiempo que permanezca activo el programa. Algunos dejarán de utilizarse cuando finalice una determinada operación, cuando cambie el estado de una variable o cuando desaparezcan las referencias que permitían acceder a ellos. Esta circunstancia plantea una cuestión importante: **¿qué sucede con la memoria ocupada por los objetos que ya no necesitamos?** La memoria disponible para almacenar objetos es limitada. Si el programa creara continuamente nuevas instancias y nunca recuperase el espacio de las que han dejado de utilizarse, acabaría consumiendo progresivamente toda la memoria disponible.
 
-En la mayoría de los lenguajes de programación clásicos la responsabilidad de liberar esa memoria es del programador. Esto significa que, además de crear los objetos y utilizarlos, debe determinar cuándo han dejado de ser necesarios y ejecutar las operaciones correspondientes para devolver el espacio ocupado a la memoria disponible. Esta gestión manual exige un control riguroso del ciclo de vida de los objetos: liberar demasiado pronto la memoria genera **punteros colgados** (*dangling pointers*) lo que puede provocar que se intente acceder a un objeto que ya no existe, mientras que no liberarla cuando corresponde produce **fugas de memoria** (*memory leaks*) lo que puede ocasionar un consumo innecesario de memoria.
-
-olvidar liberar un objeto produce **fugas de memoria** (*memory leaks*), donde la memoria ocupada queda bloqueada e inutilizable hasta agotar el sistema; por otro lado, liberar un objeto demasiado pronto o por duplicado genera **punteros colgados** (*dangling pointers*), provocando la corrupción de datos o la caída del programa.
+En la mayoría de los lenguajes de programación clásicos la responsabilidad de liberar esa memoria es del programador. Esto significa que, además de crear los objetos y utilizarlos, debe determinar cuándo han dejado de ser necesarios y ejecutar las operaciones correspondientes para devolver el espacio ocupado a la memoria disponible. Esta gestión manual exige un control riguroso del ciclo de vida de los objetos: liberar demasiado pronto la memoria genera **punteros colgados** (*dangling pointers*) lo que puede provocar que se intente acceder a un objeto que ya no existe, mientras que no liberarla cuando corresponde produce **fugas de memoria** (*memory leaks*) lo que puede ocasionar un consumo innecesario de dicha memoria.
 
 El lenguaje Java eliminó de raíz esta fuente de errores adoptando un enfoque diferente. La máquina virtual de Java (JVM) incorpora un mecanismo de gestión automática de memoria denominado **recolector de basura** (*Garbage Collector* o *GC*). Su responsabilidad consiste en identificar los objetos que ya no pueden utilizarse desde el programa y recuperar el espacio de memoria que ocupan, permitiendo que pueda aprovecharse posteriormente para crear otros objetos.
 
 De esta manera, el programador puede concentrarse en determinar qué objetos necesita la aplicación y cómo deben relacionarse entre sí, sin tener que ejecutar explícitamente una operación de liberación de memoria cada vez que una instancia deja de ser necesaria. La JVM asume esa responsabilidad mediante el recolector de basura, que realiza su trabajo de acuerdo con las necesidades de memoria de la aplicación y con los criterios internos de la máquina virtual.
 
-El **Recolector de Basura** es un proceso que se ejecuta en segundo plano dentro de la Máquina Virtual de Java (JVM), encargado de supervisar continuamente la memoria *Heap*, identificar los objetos que han quedado inaccesibles para el programa y recuperar automáticamente el espacio de almacenamiento que ocupaban para ponerlo de nuevo a disposición de futuras instanciaciones.
-
-Para comprender cómo determina el recolector de basura qué objetos puede eliminar, debemos recordar la función de las **variables de referencia**. Una variable de este tipo permite acceder a un objeto mediante la referencia que mantiene. Por tanto, mientras exista alguna referencia accesible que conduzca a una instancia, el programa puede seguir utilizando ese objeto, aunque la variable que lo utilizaba inicialmente haya cambiado de valor.
+El **Recolector de Basura** es un proceso que se ejecuta en segundo plano dentro de la Máquina Virtual de Java (JVM), encargado de supervisar continuamente la memoria *Heap*, identificar los objetos que han quedado inaccesibles para el programa y recuperar automáticamente el espacio de almacenamiento que ocupaban para ponerlo de nuevo a disposición de futuras instanciaciones. Para comprender cómo determina el recolector de basura qué objetos puede eliminar, debemos recordar la función de las **variables de referencia**. Una variable de este tipo permite acceder a un objeto mediante la referencia que mantiene. Por tanto, mientras exista alguna referencia accesible que conduzca a una instancia, el programa puede seguir utilizando ese objeto, aunque la variable que lo utilizaba inicialmente haya cambiado de valor.
 
 La premisa fundamental que guía el funcionamiento del Recolector de Basura es el principio de **inalcanzabilidad** (*unreachability*). No consiste simplemente en comprobar si una variable ha dejado de utilizarse, sino en determinar si existe algún camino de referencias que permita llegar al objeto desde las referencias que permanecen activas en el programa. Si no existe ninguno, la instancia ya no puede intervenir en el funcionamiento de la aplicación y su memoria puede recuperarse.
 
 Un objeto se considera **inalcanzable** (o huérfano) cuando **no existe ninguna referencia activa** que permita acceder al mismo. Cuando un objeto queda en estado inalcanzable, resulta físicamente imposible que el programa vuelva a invocar sus métodos o lea sus atributos; por consiguiente, el objeto ha completado su ciclo de vida útil. Existen tres situaciones habituales mediante las cuales un objeto pasa a ser inalcanzable:
+
 1.- Puede suceder que se asigne una nueva instancia a una variable de referencia, quedando huérfana aquella a la que apuntaba
 2.- Asignamos de forma explícita el literal <span class="literal">null</span> a la única variable de referencia que apuntaba al objeto.
 3.- La variable deja de estar disponible al finalizar el ámbito en el que fue declarada, por lo que la referencia que mantenía deja de ser accesible.
@@ -1173,7 +1278,7 @@ Debemos tener presente que **el tipo de retorno forma parte de la declaración d
 
 #### Invocación de método
 
-Una vez declarado un método, podemos solicitar su ejecución mediante una **invocación**. Para ello utilizamos el nombre de la variable de referencia que permite acceder al objeto, seguido del operador Punto (<span class="operador">.</span>), el nombre del método y los paréntesis que contienen los argumentos necesarios.
+Una vez declarado un método, podemos solicitar su ejecución mediante una **invocación**. Para ello utilizamos el nombre de la variable de referencia que permite acceder al objeto, seguido del operador punto (<span class="operador">.</span>), el nombre del método y los paréntesis que contienen los argumentos necesarios.
 
 Por ejemplo, si disponemos de dos instancias de la clase <span class="clase">Punto</span>, podemos desplazar cada una de ellas de forma independiente:
 
@@ -1228,7 +1333,7 @@ El comportamiento de los objetos se construye mediante estas operaciones. Cada m
 
 **Objeto receptor:** Instancia concreta sobre la que se solicita la ejecución de un método.
 
-**Tipo de retorno:** Tipo de dato del valor que proporciona un método al finalizar su ejecución. <span class="palabra">void</span> indica que no devuelve ningún valor.
+**Tipo de retorno:** Tipo de dato del valor que proporciona un método al finalizar su ejecución; <span class="palabra">void</span> indica que no devuelve ningún valor.
 
 **Sentencia de retorno:** Instrucción con <span class="palabra">return</span> que devuelve un valor al código cliente y transfiere el flujo de control de vuelta al punto donde se produjo la llamada (al método).
 
@@ -1254,8 +1359,8 @@ Por ejemplo, el método que permite desplazar una instancia de nuestra clase <sp
 
 <pre class="codigo-java">
 void desplazar ( double incrementoX, double incrementoY ) {
-    coordenadaX = coordenadaX + incrementoX;
-    coordenadaY = coordenadaY + incrementoY;
+    coordenadaX += incrementoX;
+    coordenadaY += incrementoY;
 }
 </pre>
 
@@ -1331,9 +1436,9 @@ desplazarPunto(origen);
 
 Cuando se realiza la llamada, el valor de la referencia almacenada en <span class="variable">origen</span> se copia en el parámetro <span class="variable">punto</span>. Como consecuencia, ambas variables permiten acceder a la misma instancia de <span class="clase">Punto</span>, aunque sean variables diferentes.
 
-Esto tiene una consecuencia fundamental: **el método puede modificar el objeto utilizando la referencia que ha recibido como parámetro**, y esos cambios serán observables desde la variable original. En nuestro ejemplo, la llamada a <span class="metodo">desplazar</span> modifica el estado del objeto al que hacen referencia tanto <span class="variable">punto</span> como <span class="variable">origen</span>. No estamos trabajando con una copia del objeto, sino con una referencia copiada que permite acceder a la misma instancia.
+Esto tiene una consecuencia fundamental: **el método puede modificar el objeto utilizando la referencia que ha recibido como parámetro**; y esos cambios serán observables desde la variable original. En nuestro ejemplo, la llamada a <span class="metodo">desplazar</span> modifica el estado del objeto al que hacen referencia tanto <span class="variable">punto</span> como <span class="variable">origen</span>. No estamos trabajando con una copia del objeto, sino con una referencia copiada que permite acceder a la misma instancia.
 
-Este comportamiento no contradice el paso por valor. Java sigue copiando el valor del argumento, pero, en este caso, el valor copiado es una referencia. El parámetro recibe una referencia que permite acceder al mismo objeto que la variable original, por lo que las operaciones que modifiquen esa instancia pueden observarse desde ambos lugares. La variable <span class="variable">origen</span> y el parámetro <span class="variable">punto</span> son alias. Por este motivo, cualquier modificación del estado de la instancia realizada mediante una de ellas será visible al acceder al objeto mediante la otra.
+Este comportamiento no contradice el paso por valor: Java sigue copiando el valor del argumento pero, en este caso, el valor copiado es una referencia. El parámetro recibe una referencia que permite acceder al mismo objeto que la variable original, por lo que las operaciones que modifiquen esa instancia pueden observarse desde ambos lugares. La variable <span class="variable">origen</span> y el parámetro <span class="variable">punto</span> son alias. Por este motivo, cualquier modificación del estado de la instancia realizada mediante una de ellas será visible al acceder al objeto mediante la otra.
 
 ##### Modificar una referencia no equivale a modificar el objeto
 
@@ -1636,7 +1741,7 @@ En los siguientes apartados estudiaremos cómo se declaran los constructores en 
 
 Los constructores se declaran dentro del cuerpo de una clase, al igual que los métodos y los atributos, pero presentan una sintaxis particular que permite distinguirlos del resto de los miembros. Su característica más importante es que **el nombre del constructor debe coincidir exactamente con el nombre de la clase a la que pertenece**. De esta manera, Java puede identificar qué constructor debe ejecutar cuando se solicita la creación de una nueva instancia mediante el operador <span class="palabra">new</span>.
 
-<figure class="img-lateral-izq">
+<figure class="img-lateral-dch">
     <img src="../imagenes/04_07_creacion.png" alt="Proceso de creación de un objeto en Java: el constructor no crea la instancia, sino que es invocado por new para establecer su estado inicial.">
 </figure>
 
@@ -1884,7 +1989,7 @@ Cada expresión de instanciación proporciona un número de argumentos que permi
 
 También es posible sobrecargar constructores utilizando distintos tipos de parámetros. Por ejemplo, podríamos disponer de un constructor que recibiera las coordenadas como valores de tipo <span class="palabra">double</span> y otro que recibiera valores de tipo <span class="palabra">int</span>. Aunque ambos tuvieran el mismo número de parámetros, sus listas serían diferentes y el compilador podría distinguirlos.  Sin embargo, **la sobrecarga no se basa en el nombre de los parámetros ni en el tipo de retorno**, sino en la secuencia de tipos de datos de los parámetros. Dos constructores sobrecargados se consideran válidos si difieren en al menos uno de los siguientes criterios:
 
-1. **En el número de parámetros:** En el ejemplo, un constructor no recibe argumentos, otro recibe uno y el tercero recibe dos..
+1. **En el número de parámetros:** En el ejemplo, un constructor no recibe argumentos, otro recibe uno y el tercero recibe dos.
 2. **En los tipos de datos de los parámetros:** Un constructor podría recibir un entero y un real, mientras que otro podría recibir una cadena y un real.
 3. **En el orden de los tipos de datos:** podría recibir un entero y una cadena, mientras que otro podría recibir una cadena y un entero
 
@@ -1898,7 +2003,7 @@ Además, los argumentos de una invocación deben ser compatibles con los paráme
 
 </aside>
 
-En definitiva, la sobrecarga de constructores permite que una misma clase ofrezca distintas alternativas para crear sus objetos, sin necesidad de definir clases diferentes ni de realizar posteriormente operaciones adicionales para establecer su estado inicial. **Cada constructor representa una forma específica de inicializar una instancia, y Java selecciona automáticamente el que corresponde a los argumentos proporcionados durante la instanciación.**
+En definitiva, la sobrecarga de constructores permite que una misma clase ofrezca distintas alternativas para crear sus objetos, sin necesidad de definir clases diferentes ni de realizar posteriormente operaciones adicionales para establecer su estado inicial. **Cada constructor representa una forma específica de inicializar una instancia y Java selecciona automáticamente el que corresponde a los argumentos proporcionados durante la compilación.**
 
 #### Diseño: ¿Debe existir constructor sin parámetros?
 
@@ -2325,7 +2430,7 @@ En Java, el código debe estar obligatoriamente organizado dentro de clases. Por
 
 <aside>
 Si la clase especificada no contiene un método con la firma exacta exigida por el lenguaje, la máquina virtual no podrá iniciar la aplicación y emitirá un error de ejecución.
-<aside>
+</aside>
 
 ¿Recordáis aquella declaración de método que hicimos en el tema 2, que dijimos que debía ser la primera línea que usaríamos de forma literal en todos nuestros programas?
 
@@ -2341,7 +2446,7 @@ Aunque algunos de los elementos de esta declaración ya nos resultan conocidos, 
 - **<span class="palabra">main</span>:** Es el nombre exacto fijado por la especificación de Java. El compilador y la JVM buscan expresamente esta secuencia de caracteres en minúsculas.
 - **<span class="variable">String[] args</span>:** declara un parámetro que permite recibir una serie de argumentos proporcionados al iniciar la aplicación. Aunque en nuestros programas no necesitemos (de momento) utilizarlo, forma parte de la declaración habitual del método (y lo escribimos).
 
-Para invocar <span class="metodo">main</span>, cuando el usuario ejecuta en la consola de comandos la instrucción <span class="codigo">java NombreClase</span> por ejemplo, el lanzador de la JVM carga en memoria el código de <span class="clase">NombreClase</span>. A continuación, busca un método denominado <span class="metodo">main</span>. Como hemos estado viendo, los métodos de instancia necesitan un objeto sobre el que ejecutarse. Sin embargo, cuando la JVM inicia la aplicación, todavía no existe ningún objeto de la clase que <span class="metodo">main</span>. Por este motivo, el punto de entrada debe ser un método estático: así puede invocarse directamente a través de la clase, sin tener que crear previamente una instancia.
+Para invocar <span class="metodo">main</span>, cuando el usuario ejecuta en la consola de comandos la instrucción <span class="codigo">java NombreClase</span> por ejemplo, el lanzador de la JVM carga en memoria el código de <span class="clase">NombreClase</span>. A continuación, busca un método denominado <span class="metodo">main</span>. Como hemos estado viendo, los métodos de instancia necesitan un objeto sobre el que ejecutarse. Sin embargo, cuando la JVM inicia la aplicación, todavía no existe ningún objeto de la clase que contiene <span class="metodo">main</span>. Por este motivo, el punto de entrada debe ser un método estático: así puede invocarse directamente a través de la clase, sin tener que crear previamente una instancia.
 
 Esta característica no significa que toda la aplicación deba desarrollarse mediante métodos estáticos. De hecho, la forma habitual de trabajar cuando desarrollemos programas orientados a objetos será la de iniciar la ejecución con el método <span class="metodo">main</span> y, a partir suyo, crear y utilizar las instancias que necesita la aplicación.
 
@@ -2455,7 +2560,7 @@ public class CalculadoraImpuestos {
     }
 }
 
-// CLASE BAJO PRUEBA: Lógica de la Factura utilizando el Resguardo
+// Lógica de la Factura utilizando el Resguardo: CLASE QUE PROBAMOS
 class Factura {
     double importeBase;
 
@@ -2477,7 +2582,7 @@ public class PruebaFactura {
         
         double total = f.calcularTotal();
         
-        System.out.println("Total calculado (esperado 121.0): " + total);
+        System.out.println("Total calculado: " + total);
     }
 }
 </pre>
