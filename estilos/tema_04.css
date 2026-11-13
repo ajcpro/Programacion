@@ -38,34 +38,6 @@ table thead th {
     vertical-align: middle;
 }
 
-table th.aspecto {
-    width: 22%;
-    background-color: #edf2f7;
-    color: #2d3748;
-}
-
-table th.abstraccion {
-    width: 39%;
-    background-color: #e3f0ed;
-    color: #24574f;
-}
-
-table th.encapsulacion {
-    width: 39%;
-    background-color: #f9ead8;
-    color: #80521d;
-}
-
-/*
-table tbody tr:nth-child(even) td {
-    background-color: #f8fafc;
-}
-
-table tbody tr:nth-child(even) th.aspecto {
-    background-color: #e7edf4;
-}
-*/
-
 /* Evita dividir filas entre páginas al generar el PDF. */
 table tr {
     break-inside: avoid;

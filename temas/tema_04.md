@@ -2315,6 +2315,182 @@ Por tanto, debemos distinguir entre los dos modificadores: <span class="palabra"
 
 </aside>
 
+## El método main
+
+A lo largo de este tema hemos estudiado las bases para construir nuestras propias clases. Hemos aprendido a abstraer entidades del mundo real, cómo definir clases encapsulando su estado interno mediante atributos, ofrecer comportamientos mediante métodos, crear objetos a partir de ellas controlando su inicialización con constructores y también a distinguir entre los miembros que pertenecen a cada instancia y aquellos que son compartidos por la clase.
+
+Sin embargo, disponer de la definición de una clase no hace que se ejecute por sí misma: cuando desarrollamos una aplicación Java necesitamos establecer un mecanismo para que se ponga en marcha. Es decir, aunque hayamos definido numerosas clases y métodos, la máquina virtual de Java (JVM) necesita un punto de entrada, el lugar del código dónde debe comenzar su ejecución, para que los objetos sean creados, interactúen entre sí y resuelvan un problema
+
+En Java, el código debe estar obligatoriamente organizado dentro de clases. Por tanto, cuando solicitamos a la máquina virtual que ponga en marcha un programa, esta necesita localizar un punto de entrada estándar: este punto de entrada se establece mediante un método especial denominado <span class="metodo">main</span>. Cuando ejecutamos una aplicación, la JVM invoca este método comienza a ejecutar las instrucciones que contiene. A partir de ese momento, el método <span class="metodo">main</span> puede crear objetos, invocar sus métodos y organizar las operaciones necesarias para que la aplicación realice su cometido.
+
+<aside>
+Si la clase especificada no contiene un método con la firma exacta exigida por el lenguaje, la máquina virtual no podrá iniciar la aplicación y emitirá un error de ejecución.
+<aside>
+
+¿Recordáis aquella declaración de método que hicimos en el tema 2, que dijimos que debía ser la primera línea que usaríamos de forma literal en todos nuestros programas?
+
+<pre class="codigo-java">
+public static void main ( String[] args ) {
+</pre>
+
+Aunque algunos de los elementos de esta declaración ya nos resultan conocidos, conviene detenernos en sus características principales:
+
+- **<span class="palabra">public</span>:** indica que el método es accesible desde el exterior de la clase. Aunque todavía no hemos profundizado en la privacidad de los miembros de una clase y la utilidad de los modificadores para indicarla, digamos que la JVM necesita este modificador para poder acceder al método e iniciar la ejecución.
+- **<span class="palabra">static</span>:** establece que el método pertenece a la clase y no a una instancia concreta. Esta característica es especialmente importante porque la JVM necesita invocarlo sin crear una instancia usando <span class="palabra">new</span>, algo imposible si el código no ha empezado a ejecutarse.
+- **<span class="palabra">void</span>:** indica que el método no devuelve ningún valor. Su propósito es ejecutar el programa y cuando alcanza la última instrucción del bloque, el flujo de ejecución concluye de forma natural.
+- **<span class="palabra">main</span>:** Es el nombre exacto fijado por la especificación de Java. El compilador y la JVM buscan expresamente esta secuencia de caracteres en minúsculas.
+- **<span class="variable">String[] args</span>:** declara un parámetro que permite recibir una serie de argumentos proporcionados al iniciar la aplicación. Aunque en nuestros programas no necesitemos (de momento) utilizarlo, forma parte de la declaración habitual del método (y lo escribimos).
+
+Para invocar <span class="metodo">main</span>, cuando el usuario ejecuta en la consola de comandos la instrucción <span class="codigo">java NombreClase</span> por ejemplo, el lanzador de la JVM carga en memoria el código de <span class="clase">NombreClase</span>. A continuación, busca un método denominado <span class="metodo">main</span>. Como hemos estado viendo, los métodos de instancia necesitan un objeto sobre el que ejecutarse. Sin embargo, cuando la JVM inicia la aplicación, todavía no existe ningún objeto de la clase que <span class="metodo">main</span>. Por este motivo, el punto de entrada debe ser un método estático: así puede invocarse directamente a través de la clase, sin tener que crear previamente una instancia.
+
+Esta característica no significa que toda la aplicación deba desarrollarse mediante métodos estáticos. De hecho, la forma habitual de trabajar cuando desarrollemos programas orientados a objetos será la de iniciar la ejecución con el método <span class="metodo">main</span> y, a partir suyo, crear y utilizar las instancias que necesita la aplicación.
+
+### Conductor y resguardos
+
+Una vez que hemos definido los atributos, los métodos y los constructores de una clase, surge de inmediato la necesidad práctica de comprobar que todo funciona tal como lo hemos diseñado. Para verificar una clase necesitamos ejecutar su código, crear algunas instancias, invocar sus métodos y comprobar si los resultados obtenidos coinciden con los esperados.
+
+Para realizar esta verificación y comprobar el funcionamiento de la clase podemos incorporar temporalmente (en las primeras etapas del aprendizaje) un método <span class="metodo">main</span> en la propia clase. Este método actúa como **conductor** (*driver*), ya que contiene las instrucciones necesarias para crear objetos, invocar sus métodos y comprobar los resultados obtenidos.
+
+El conductor es un fragmento de código cuya función es poner a prueba un componente de software. Asume el papel de cliente: crea instancias de la clase que deseamos probar, les suministra datos de entrada, invoca sus métodos y nos permite examinar las respuestas o el estado final de los objetos.
+
+De esta forma, podemos probar una clase de manera sencilla sin necesidad de desarrollar todavía la aplicación completa en la que se utilizará. Por ejemplo, podemos definir una clase <span class="clase">CuentaBancaria</span> con algunos atributos y métodos, e incorporar un método <span class="metodo">main</span> que cree una cuenta y pruebe las operaciones disponibles:
+
+<pre class="codigo-java">
+public class CuentaBancaria {
+    double saldo;
+
+    void ingresar ( double cantidad ) {
+        saldo = saldo + cantidad;
+    }
+
+    void retirar ( double cantidad ) {
+        saldo = saldo - cantidad;
+    }
+
+    public static void main ( String[] args ) {
+        CuentaBancaria cuenta = new CuentaBancaria();
+
+        cuenta.ingresar(500);
+        cuenta.retirar(150);
+
+        System.out.println("Saldo: " + cuenta.saldo);
+    }
+}
+</pre>
+
+En este ejemplo, el método <span class="metodo">main</span> crea un objeto de la clase <span class="clase">CuentaBancaria</span> y utiliza sus métodos para modificar y consultar el saldo. Es de vital importancia comprender una distinción conceptual y sintáctica que suele generar confusión cuando estamos aprendiendo. Observa que, aunque <span class="metodo">main</span> es un método (<span class="palabra">static</span>) de clase , el objeto <span class="variable">cuenta</span> es una instancia de <span class="clase">CuentaBancaria</span> y sus atributos y métodos siguen siendo elementos de objeto.
+
+Dado que <span class="metodo">main</span> es estático, Java no nos permite acceder directamente a los atributos ni llamar a los métodos de instancia sin anteponer una referencia. Ante esta restricción, existe la tentación errónea de solucionar la falta de acceso declarando todos los atributos y métodos de la clase con el modificador <span class="palabra">static</span>. Sin embargo, esto cambiaría el diseño de la clase: el saldo pasaría a ser compartido por toda la clase, en lugar de pertenecer a cada cuenta individual. Si queremos representar varias cuentas bancarias independientes, esta solución no sería adecuada.
+
+<aside>
+**Que el método conductor sea estático no significa que los elementos de la clase que estamos probando deban serlo también**.
+</aside>
+
+Por tanto, incorporar un <span class="metodo">main</span> en la propia clase puede resultar útil mientras aprendemos o para realizar pruebas sencillas. No obstante, conviene mantener la diferencia entre los elementos que pertenecen a cada objeto y los que pertenecen a la clase, sin modificar el diseño de los primeros únicamente para facilitar su prueba.
+
+Durante el desarrollo de aplicaciones, una clase no trabaja de forma aislada, sino que colabora con otros objetos. Si la clase que deseamos probar necesita recibir información de un componente secundario que aún no ha sido programado, que resulta muy complejo o que requiere conexiones a sistemas externos, necesitamos simular su comportamiento.
+
+Para ello se pueden utilizar **resguardos** (*stubs*), que son elementos provisionales que sustituyen a esas dependencias y proporcionan respuestas fijas o datos controlados. De esta manera, podemos comprobar el funcionamiento de la clase que nos interesa sin tener que disponer todavía de todos los componentes reales de la aplicación.
+
+### Clases conductoras
+
+Aunque incorporar un método <span class="metodo">main</span> en la propia clase que queremos probar puede ser una solución sencilla, lo habitual es separar las responsabilidades y utilizar una **clase conductora** (*driver class*) independiente. Esta clase contiene el método <span class="metodo">main</span> y las instrucciones necesarias para crear objetos de las clases que queremos probar, invocar sus métodos y comprobar su comportamiento.
+
+De esta manera, la clase que estamos desarrollando se centra exclusivamente en representar los objetos y definir sus atributos y métodos, mientras que la clase conductora se encarga de realizar las pruebas. Por ejemplo, para probar la clase <span class="clase">CuentaBancaria</span>, creamos otra clase <span class="clase">PruebaCuentaBancaria</span>:
+
+<pre class="codigo-java">
+public class CuentaBancaria {
+    double saldo;
+
+    double getSaldo ( ) {
+        return saldo;
+    }
+
+    void ingresar ( double cantidad ) {
+        saldo = saldo + cantidad;
+    }
+
+    void retirar ( double cantidad ) {
+        saldo = saldo - cantidad;
+    }
+}
+</pre>
+
+La clase conductora podría ser la siguiente:
+
+<pre class="codigo-java">
+public class PruebaCuentaBancaria {
+    public static void main ( String[] args ) {
+        CuentaBancaria cuenta1 = new CuentaBancaria();
+        CuentaBancaria cuenta2 = new CuentaBancaria();
+
+        cuenta1.ingresar(500);
+        cuenta1.retirar(150);
+
+        cuenta2.ingresar(300);
+
+        System.out.println("Saldo cuenta 1: " + cuenta1.getSaldo());
+        System.out.println("Saldo cuenta 2: " + cuenta2.getSsaldo());
+    }
+}
+</pre>
+
+En este caso, la clase <span class="clase">PruebaCuentaBancaria</span> crea dos objetos independientes de tipo <span class="clase">CuentaBancaria</span> y realiza distintas operaciones sobre ellos. Al ejecutar el programa, podemos comprobar que cada cuenta mantiene su propio saldo, puesto que se trata de un atributo de instancia.
+
+La clase conductora no forma parte necesariamente de la aplicación definitiva. Su finalidad es facilitar el desarrollo y la comprobación de las clases, por lo que puede contener diferentes pruebas que iremos modificando a medida que avancemos en su implementación. Además, una misma clase conductora puede utilizar varias clases del proyecto, permitiendo comprobar cómo funcionan conjuntamente.
+
+Por tanto, **separar las clases conductoras de las clases que representan los objetos permite mantener un diseño más organizado**, evitando incorporar en estas últimas instrucciones que solo tienen sentido durante las pruebas. Esta separación también facilita reutilizar las clases desarrolladas en otras aplicaciones sin tener que modificar su código para adaptarlas a las necesidades de comprobación.
+
+Una vez verificado que todas las clases del modelo son sólidas y libres de errores, las clases conductoras de prueba se retiran y la aplicación definitiva se pone en marcha a través de una **clase principal definitiva** cuyo método <span class="metodo">main</span> se encarga de lanzar la interfaz de usuario o el menú principal del sistema.[^8]
+
+### Ejemplo
+
+Imaginemos que estamos desarrollando una clase <span class="clase">Factura</span> que necesita calcular el importe total de una compra aplicando un tipo de IVA determinado. Para obtener ese porcentaje de impuesto, la clase necesita consultar a un componente llamado <span class="clase">CalculadoraImpuestos</span>. Si el módulo aún no está disponible por el motivo que sea, podemos crear un *resguardo*  que devuelva siempre un IVA fijo del `21.0`%:
+
+<pre class="codigo-java">
+// Simula el componente de impuestos devolviendo una respuesta fija: RESGUARDO
+public class CalculadoraImpuestos {
+    static public double getIvaGeneral ( ) {
+        return 21.0; // Respuesta simulada y controlada para la prueba
+    }
+}
+
+// CLASE BAJO PRUEBA: Lógica de la Factura utilizando el Resguardo
+class Factura {
+    double importeBase;
+
+    public Factura ( double importeBase ) {
+        this.importeBase = importeBase;
+    }
+
+    public double calcularTotal ( ) {
+        double porcentajeImpuestos = CalculadoraImpuestos.getIvaGeneral()
+        double incremento = porcentajeImpuestos / 100.0 + 1.0;
+        return this.importeBase * incremento;
+    }
+}
+
+// Pone a prueba la clase Factura: CLASE CONDUCTORA
+public class PruebaFactura {
+    public static void main(String[] args) {
+        Factura f = new Factura(100.0);
+        
+        double total = f.calcularTotal();
+        
+        System.out.println("Total calculado (esperado 121.0): " + total);
+    }
+}
+</pre>
+
+<aside class="definicion">
+
+**Conductor (*Driver*):** Código encargado de instanciar y ejercitar un componente de software para verificar que sus métodos y estado funcionan correctamente.
+
+**Resguardo (*Stub*):** Implementación básica y provisional que sustituye a una dependencia real, devolviendo respuestas precalculadas para permitir la prueba aislada de otra clase. Tiene el mismo nombre e interfaz que el componente que debería ser llamado en realidad pero es más sencillo.
+
+</aside>
+
+
 <footer class="pie">
 <div class="navegacion-principal">
 <a href="tema_03.html" class="anterior">Anterior</a> | 
@@ -2336,3 +2512,4 @@ Por tanto, debemos distinguir entre los dos modificadores: <span class="palabra"
 [^5]: Durante la fase de resolución de firmas, si no existe una coincidencia exacta de tipos, el compilador de Java aplica reglas de **promoción implícita de tipos** (*widening primitive conversion*). Por ejemplo, si se pasa un entero a una sobrecarga que espera un real, el compilador promocionará automáticamente el valor para satisfacer la firma.
 [^6]: La recursividad es una técnica en la que un método puede invocarse a sí mismo; se explica en el anexo ii.
 [^7]: Los elementos estáticos no se almacenan ni en la pila ni en el montículo, sino en un área especial de la memoria de la JVM, *Metaspace*, asignada a la carga de clases (denominada *Method Area* en la [documentación de Oracle](https://docs.oracle.com/javase/specs/jvms/se26/html/jvms-2.html#jvms-2.5)); parte de la misma reside en *Text* y parte en *Data*, si lo comparamos con el modelo de segmentación tradicional.
+[^8]: En entornos de desarrollo profesional, las clases conductoras escritas a mano suelen sustituirse por archivos de pruebas unitarias automatizadas alojados en carpetas de prueba independientes (`src/test`), garantizando que el código de prueba nunca se empaquete con el binario final.
