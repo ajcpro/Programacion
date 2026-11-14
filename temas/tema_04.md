@@ -392,7 +392,7 @@ Aunque ambas tienen finalidades distintas, se complementan en el diseño orienta
 <tr><td><b>Resultado</b></td><td>Definición de la interfaz pública de la clase.</td><td>Aislamiento del estado mediante modificadores como <span class="palabra">private</span>.</td></tr>
 </table>
 
-<figure class="img-lateral-izq">
+<figure class="img-sinergia">
     <img src="../imagenes/04_08_sinergia.png" alt="Un entidad se usa desde fuera de forma sencilla (abstracción), mientras en su interior está formada por muchos componentes (encapsulación)">
 </figure>
 
@@ -876,7 +876,7 @@ Una vez comprendido cómo se crean las instancias, podemos estudiar dónde se al
 
 Nuestros programas se organizan en la memoria del ordenador utilizando diferentes áreas[^3], cada una de ellas con una finalidad específica. Para comprender cómo gestiona la JVM las variables y las instancias durante la ejecución nos centraremos en dos estructuras fundamentales: **Stack (pila de ejecución)** y **Heap (montículo o área de objetos)**. Aunque ambas estructuras residen en la memoria asignada al proceso de la JVM, están diseñadas con propósitos y forma de funcionamiento son diferentes.
 
-<figure class="img-grande">
+<figure class="img-segmentos">
     <img src="../imagenes/04_05_segmentos.png" alt="Representación de los segmentos de un programa">
     <figcaption>
         Modelo de <a href="https://es.wikipedia.org/wiki/Segmentaci%C3%B3n_de_memoria" target="_blank">segmentación</a> clásico.
@@ -1742,7 +1742,7 @@ En los siguientes apartados estudiaremos cómo se declaran los constructores en 
 
 Los constructores se declaran dentro del cuerpo de una clase, al igual que los métodos y los atributos, pero presentan una sintaxis particular que permite distinguirlos del resto de los miembros. Su característica más importante es que **el nombre del constructor debe coincidir exactamente con el nombre de la clase a la que pertenece**. De esta manera, Java puede identificar qué constructor debe ejecutar cuando se solicita la creación de una nueva instancia mediante el operador <span class="palabra">new</span>.
 
-<figure class="img-lateral-dch">
+<figure class="img-creacion">
     <img src="../imagenes/04_07_creacion.png" alt="Proceso de creación de un objeto en Java: el constructor no crea la instancia, sino que es invocado por new para establecer su estado inicial.">
 </figure>
 
