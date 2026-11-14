@@ -1030,15 +1030,15 @@
   </td>
   </tr>
   </table>
+  <figure class="img-lateral-izq">
+  <img src="../imagenes/04_08_sinergia.png" alt="Un entidad se usa desde fuera de forma sencilla (abstracción), mientras en su interior está formada por muchos componentes (encapsulación)">
+  </figure>
   <p>Gracias a ambos principios, el resto de la aplicación puede
   trabajar con la entidad sin necesitar conocer todos sus detalles
   internos. El código que solicita una operación debe identificar la
   entidad concreta y pedir que se efectúe dicha operación; no necesita
   reproducir en cada lugar todos los mecanismos internos ni conocer cómo
   es la abstracción.</p>
-  <figure class="img-lateral-izq">
-  <img src="../imagenes/04_08_sinergia.png" alt="Un entidad se usa desde fuera de forma sencilla (abstracción), mientras en su interior está formada por muchos componentes (encapsulación)">
-  </figure>
   <aside class="definicion">
   <p><strong>Abstracción:</strong> Proceso de identificar y seleccionar
   las características y los comportamientos relevantes de una entidad
@@ -2041,19 +2041,21 @@
   la relación entre las variables de referencia y los objetos.</p>
   <h3 id="stack-y-heap">Stack y Heap</h3>
   <p>Nuestros programas se organizan en la memoria del ordenador
-  utilizando diferentes áreas, cada una de ellas con una finalidad
-  específica. Para comprender cómo gestiona la JVM las variables y las
-  instancias durante la ejecución nos centraremos en dos estructuras
-  fundamentales: <strong>Stack (pila de ejecución)</strong> y
-  <strong>Heap (montículo o área de objetos)</strong>. Aunque ambas
-  estructuras residen en la memoria asignada al proceso de la JVM, están
-  diseñadas con propósitos y forma de funcionamiento son diferentes.</p>
+  utilizando diferentes
+  áreas<span class="tooltip"><a href="#fn3" class="nota-llamada" id="fnref3">[3]</a><span class="tooltiptext">Text almacena el código, Data los datos y Free es memoria sin usar, que permite a Heap y Stack expandirse si lo necesitan. La JVM, dado que es un programa de por sí, usa para las aplicaciones un modelo especial, diferente, pero pila y montículo tienen un uso equivalente.</span></span>,
+  cada una de ellas con una finalidad específica. Para comprender cómo
+  gestiona la JVM las variables y las instancias durante la ejecución
+  nos centraremos en dos estructuras fundamentales: <strong>Stack (pila
+  de ejecución)</strong> y <strong>Heap (montículo o área de
+  objetos)</strong>. Aunque ambas estructuras residen en la memoria
+  asignada al proceso de la JVM, están diseñadas con propósitos y forma
+  de funcionamiento son diferentes.</p>
   <figure class="img-grande">
   <img src="../imagenes/04_05_segmentos.png" alt="Representación de los segmentos de un programa">
   <figcaption>
   Modelo de
   <a href="https://es.wikipedia.org/wiki/Segmentaci%C3%B3n_de_memoria" target="_blank">segmentación</a>
-  clásico<span class="tooltip"><a href="#fn3" class="nota-llamada" id="fnref3">[3]</a><span class="tooltiptext">Text almacena el código, Data los datos y Free es memoria sin usar, que permite a Heap y Stack expandirse si lo necesitan. La JVM, dado que es un programa de por sí, usa para las aplicaciones un modelo especial, diferente, pero pila y montículo tienen un uso equivalente.</span></span>.
+  clásico.
   </figcaption>
   </figure>
   <h4 id="stack-pila-de-ejecución">Stack: pila de ejecución</h4>
@@ -4225,8 +4227,8 @@
   inicializar una instancia y Java selecciona automáticamente el que
   corresponde a los argumentos proporcionados durante la
   compilación.</strong></p>
-  <h4 id="diseño-debe-existir-constructor-sin-parámetros">Diseño: ¿Debe
-  existir constructor sin parámetros?</h4>
+  <aside>
+  <p><em>¿Debe existir constructor sin parámetros?</em></p>
   <p>Cuando el dominio exija que un objeto nazca siempre con todos (o
   parte de) sus datos (por ejemplo, una clase <span
   class="clase">Empleado</span> que no debería existir sin su NIF),
@@ -4234,6 +4236,7 @@
   De este modo, se obliga sintácticamente al código cliente a
   suministrar los datos obligatorios al ejecutar <span
   class="palabra">new</span>.</p>
+  </aside>
   <h3 id="la-palabra-reservada-this">La palabra reservada this</h3>
   <p>Al trabajar con constructores y métodos de objeto, es habitual que
   necesitemos hacer referencia a los atributos de la instancia sobre la
@@ -5109,6 +5112,16 @@
   De esta manera, podemos comprobar el funcionamiento de la clase que
   nos interesa sin tener que disponer todavía de todos los componentes
   reales de la aplicación.</p>
+  <aside class="definicion">
+  <p><strong>Conductor (<em>Driver</em>):</strong> Código encargado de
+  instanciar y ejercitar un componente de software para verificar que
+  sus métodos y estado funcionan correctamente.</p>
+  <p><strong>Resguardo (<em>Stub</em>):</strong> Implementación básica y
+  provisional que sustituye a una dependencia real, devolviendo
+  respuestas precalculadas para permitir la prueba aislada de otra
+  clase. Tiene el mismo nombre e interfaz que el componente que debería
+  ser llamado en realidad pero es más sencillo.</p>
+  </aside>
   <h3 id="clases-conductoras">Clases conductoras</h3>
   <p>Aunque incorporar un método <span class="metodo">main</span> en la
   propia clase que queremos probar puede ser una solución sencilla, lo
@@ -5153,7 +5166,7 @@
           cuenta2.ingresar(300);
 
           System.out.println("Saldo cuenta 1: " + cuenta1.getSaldo());
-          System.out.println("Saldo cuenta 2: " + cuenta2.getSsaldo());
+          System.out.println("Saldo cuenta 2: " + cuenta2.getSaldo());
       }
   }
   </pre>
@@ -5195,12 +5208,12 @@
   <pre class="codigo-java">
   // Simula el componente de impuestos devolviendo una respuesta fija: RESGUARDO
   public class CalculadoraImpuestos {
-      static public double getIvaGeneral ( ) {
+      public double getIvaGeneral ( ) {
           return 21.0; // Respuesta simulada y controlada para la prueba
       }
   }
 
-  // Lógica de la Factura utilizando el Resguardo: CLASE QUE PROBAMOS
+  // Lógica de la Factura: CLASE QUE PROBAMOS
   class Factura {
       double importeBase;
 
@@ -5208,34 +5221,24 @@
           this.importeBase = importeBase;
       }
 
-      public double calcularTotal ( ) {
-          double porcentajeImpuestos = CalculadoraImpuestos.getIvaGeneral()
+      public double calcularTotal ( CalculadoraImpuestos calculadora ) {
+          double porcentajeImpuestos = calculadora.getIvaGeneral()
           double incremento = porcentajeImpuestos / 100.0 + 1.0;
           return this.importeBase * incremento;
       }
   }
 
-  // Pone a prueba la clase Factura: CLASE CONDUCTORA
+  // Pone a prueba la clase Factura utilizando el Resguardo: CLASE CONDUCTORA
   public class PruebaFactura {
       public static void main(String[] args) {
-          Factura f = new Factura(100.0);
+          Factura f = new Factura(100.0); 
           
-          double total = f.calcularTotal();
+          double total = f.calcularTotal(new CalculadoraImpuestos());
           
           System.out.println("Total calculado: " + total);
       }
   }
   </pre>
-  <aside class="definicion">
-  <p><strong>Conductor (<em>Driver</em>):</strong> Código encargado de
-  instanciar y ejercitar un componente de software para verificar que
-  sus métodos y estado funcionan correctamente.</p>
-  <p><strong>Resguardo (<em>Stub</em>):</strong> Implementación básica y
-  provisional que sustituye a una dependencia real, devolviendo
-  respuestas precalculadas para permitir la prueba aislada de otra
-  clase. Tiene el mismo nombre e interfaz que el componente que debería
-  ser llamado en realidad pero es más sencillo.</p>
-  </aside>
   <footer class="pie" id="pie">
   <div class="navegacion-principal">
   <p><a href="tema_03.html" class="anterior">Anterior</a> |
