@@ -392,11 +392,11 @@ Aunque ambas tienen finalidades distintas, se complementan en el diseño orienta
 <tr><td><b>Resultado</b></td><td>Definición de la interfaz pública de la clase.</td><td>Aislamiento del estado mediante modificadores como <span class="palabra">private</span>.</td></tr>
 </table>
 
-Gracias a ambos principios, el resto de la aplicación puede trabajar con la entidad sin necesitar conocer todos sus detalles internos. El código que solicita una operación debe identificar la entidad concreta y pedir que se efectúe dicha operación; no necesita reproducir en cada lugar todos los mecanismos internos ni conocer cómo es la abstracción.
-
 <figure class="img-lateral-izq">
     <img src="../imagenes/04_08_sinergia.png" alt="Un entidad se usa desde fuera de forma sencilla (abstracción), mientras en su interior está formada por muchos componentes (encapsulación)">
 </figure>
+
+Gracias a ambos principios, el resto de la aplicación puede trabajar con la entidad sin necesitar conocer todos sus detalles internos. El código que solicita una operación debe identificar la entidad concreta y pedir que se efectúe dicha operación; no necesita reproducir en cada lugar todos los mecanismos internos ni conocer cómo es la abstracción.
 
 <aside class="definicion">
 
@@ -874,12 +874,12 @@ Una vez comprendido cómo se crean las instancias, podemos estudiar dónde se al
 
 ### Stack y Heap
 
-Nuestros programas se organizan en la memoria del ordenador utilizando diferentes áreas, cada una de ellas con una finalidad específica. Para comprender cómo gestiona la JVM las variables y las instancias durante la ejecución nos centraremos en dos estructuras fundamentales: **Stack (pila de ejecución)** y **Heap (montículo o área de objetos)**. Aunque ambas estructuras residen en la memoria asignada al proceso de la JVM, están diseñadas con propósitos y forma de funcionamiento son diferentes.
+Nuestros programas se organizan en la memoria del ordenador utilizando diferentes áreas[^3], cada una de ellas con una finalidad específica. Para comprender cómo gestiona la JVM las variables y las instancias durante la ejecución nos centraremos en dos estructuras fundamentales: **Stack (pila de ejecución)** y **Heap (montículo o área de objetos)**. Aunque ambas estructuras residen en la memoria asignada al proceso de la JVM, están diseñadas con propósitos y forma de funcionamiento son diferentes.
 
 <figure class="img-grande">
     <img src="../imagenes/04_05_segmentos.png" alt="Representación de los segmentos de un programa">
     <figcaption>
-        Modelo de <a href="https://es.wikipedia.org/wiki/Segmentaci%C3%B3n_de_memoria" target="_blank">segmentación</a> clásico[^3].
+        Modelo de <a href="https://es.wikipedia.org/wiki/Segmentaci%C3%B3n_de_memoria" target="_blank">segmentación</a> clásico.
     </figcaption>
 </figure>
 
@@ -2006,9 +2006,12 @@ Además, los argumentos de una invocación deben ser compatibles con los paráme
 
 En definitiva, la sobrecarga de constructores permite que una misma clase ofrezca distintas alternativas para crear sus objetos, sin necesidad de definir clases diferentes ni de realizar posteriormente operaciones adicionales para establecer su estado inicial. **Cada constructor representa una forma específica de inicializar una instancia y Java selecciona automáticamente el que corresponde a los argumentos proporcionados durante la compilación.**
 
-#### Diseño: ¿Debe existir constructor sin parámetros?
+<aside>
+*¿Debe existir constructor sin parámetros?*
 
 Cuando el dominio exija que un objeto nazca siempre con todos (o parte de)  sus datos (por ejemplo, una clase <span class="clase">Empleado</span> que no debería existir sin su NIF), **no debe proporcionarse un constructor sin parámetros**. De este modo, se obliga sintácticamente al código cliente a suministrar los datos obligatorios al ejecutar <span class="palabra">new</span>.
+
+</aside>
 
 ### La palabra reservada this
 
@@ -2498,6 +2501,14 @@ Durante el desarrollo de aplicaciones, una clase no trabaja de forma aislada, si
 
 Para ello se pueden utilizar **resguardos** (*stubs*), que son elementos provisionales que sustituyen a esas dependencias y proporcionan respuestas fijas o datos controlados. De esta manera, podemos comprobar el funcionamiento de la clase que nos interesa sin tener que disponer todavía de todos los componentes reales de la aplicación.
 
+<aside class="definicion">
+
+**Conductor (*Driver*):** Código encargado de instanciar y ejercitar un componente de software para verificar que sus métodos y estado funcionan correctamente.
+
+**Resguardo (*Stub*):** Implementación básica y provisional que sustituye a una dependencia real, devolviendo respuestas precalculadas para permitir la prueba aislada de otra clase. Tiene el mismo nombre e interfaz que el componente que debería ser llamado en realidad pero es más sencillo.
+
+</aside>
+
 ### Clases conductoras
 
 Aunque incorporar un método <span class="metodo">main</span> en la propia clase que queremos probar puede ser una solución sencilla, lo habitual es separar las responsabilidades y utilizar una **clase conductora** (*driver class*) independiente. Esta clase contiene el método <span class="metodo">main</span> y las instrucciones necesarias para crear objetos de las clases que queremos probar, invocar sus métodos y comprobar su comportamiento.
@@ -2536,7 +2547,7 @@ public class PruebaCuentaBancaria {
         cuenta2.ingresar(300);
 
         System.out.println("Saldo cuenta 1: " + cuenta1.getSaldo());
-        System.out.println("Saldo cuenta 2: " + cuenta2.getSsaldo());
+        System.out.println("Saldo cuenta 2: " + cuenta2.getSaldo());
     }
 }
 </pre>
@@ -2556,12 +2567,12 @@ Imaginemos que estamos desarrollando una clase <span class="clase">Factura</span
 <pre class="codigo-java">
 // Simula el componente de impuestos devolviendo una respuesta fija: RESGUARDO
 public class CalculadoraImpuestos {
-    static public double getIvaGeneral ( ) {
+    public double getIvaGeneral ( ) {
         return 21.0; // Respuesta simulada y controlada para la prueba
     }
 }
 
-// Lógica de la Factura utilizando el Resguardo: CLASE QUE PROBAMOS
+// Lógica de la Factura: CLASE QUE PROBAMOS
 class Factura {
     double importeBase;
 
@@ -2569,32 +2580,24 @@ class Factura {
         this.importeBase = importeBase;
     }
 
-    public double calcularTotal ( ) {
-        double porcentajeImpuestos = CalculadoraImpuestos.getIvaGeneral()
+    public double calcularTotal ( CalculadoraImpuestos calculadora ) {
+        double porcentajeImpuestos = calculadora.getIvaGeneral()
         double incremento = porcentajeImpuestos / 100.0 + 1.0;
         return this.importeBase * incremento;
     }
 }
 
-// Pone a prueba la clase Factura: CLASE CONDUCTORA
+// Pone a prueba la clase Factura utilizando el Resguardo: CLASE CONDUCTORA
 public class PruebaFactura {
     public static void main(String[] args) {
-        Factura f = new Factura(100.0);
+        Factura f = new Factura(100.0); 
         
-        double total = f.calcularTotal();
+        double total = f.calcularTotal(new CalculadoraImpuestos());
         
         System.out.println("Total calculado: " + total);
     }
 }
 </pre>
-
-<aside class="definicion">
-
-**Conductor (*Driver*):** Código encargado de instanciar y ejercitar un componente de software para verificar que sus métodos y estado funcionan correctamente.
-
-**Resguardo (*Stub*):** Implementación básica y provisional que sustituye a una dependencia real, devolviendo respuestas precalculadas para permitir la prueba aislada de otra clase. Tiene el mismo nombre e interfaz que el componente que debería ser llamado en realidad pero es más sencillo.
-
-</aside>
 
 
 <footer class="pie" id="pie">
