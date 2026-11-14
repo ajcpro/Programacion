@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Ejercicios Tema 04: Fundamentos de la POO</title>
+    <link rel="stylesheet" href="../estilos/estilo.css">
+    <link rel="stylesheet" href="../estilos/tema_04.css">
+  </head>
+<body>
+  <h1 id="ejercicios-tema-04">Ejercicios: Tema 04</h1>
+  <ol type="1">
+  <li>
+  Explica qué es un paradigma de programación. ¿Qué diferencia
+  fundamental existe entre la forma de organizar un programa mediante el
+  paradigma imperativo y mediante el paradigma orientado a objetos?
+  </li>
+  <li>
+  Explica qué limitaciones puede presentar la programación estructurada
+  cuando un programa debe gestionar un número elevado de entidades que
+  contienen información y operaciones propias. Utiliza como ejemplo una
+  aplicación que gestione los datos de varios alumnos.
+  </li>
+  <li>
+  Indica qué se entiende por objeto en el paradigma orientado a objetos.
+  Explica los conceptos de estado, comportamiento e identidad y pon un
+  ejemplo de cada uno de ellos.
+  </li>
+  <li>
+  Considera una aplicación que gestiona los datos de varios vehículos.
+  Indica qué características formarían parte del estado de un vehículo y
+  qué operaciones podrían formar parte de su comportamiento. ¿Qué
+  permitiría distinguir a un vehículo de los demás?
+  </li>
+  <li>
+  Explica qué es la abstracción y por qué resulta necesaria al diseñar
+  una aplicación. Utiliza como ejemplo una clase que represente una
+  cuenta bancaria: ¿qué características de una cuenta real considerarías
+  relevantes para la aplicación?
+  </li>
+  <li>
+  Explica qué significa encapsular la información de un objeto. ¿Por qué
+  es conveniente que los demás elementos del programa no tengan que
+  conocer cómo se almacenan internamente sus datos?
+  </li>
+  <li>
+  Indica qué diferencia existe entre una clase y un objeto. Utiliza la
+  analogía de una plantilla y los elementos construidos a partir de ella
+  para explicar la relación entre ambos conceptos.
+  </li>
+  <li>
+  Considera una clase <code>Coche</code> que representa vehículos.
+  Indica qué elementos podrían formar parte de su definición y cuáles
+  serían características particulares de cada objeto creado a partir de
+  ella.
+  </li>
+  <li>
+  Explica qué significa que un objeto sea una instancia de una clase.
+  ¿Puede una misma clase dar lugar a varios objetos? ¿Pueden tener esos
+  objetos valores diferentes para sus atributos?
+  </li>
+  <li>
+  Explica qué se entiende por interfaz pública de una clase y qué
+  relación tiene con la encapsulación. ¿Por qué es conveniente que una
+  clase ofrezca operaciones para utilizar sus objetos en lugar de
+  permitir que otros elementos del programa manipulen directamente su
+  representación interna?
+  </li>
+  <li>
+  Indica qué diferencia existe entre una variable de tipo primitivo y
+  una variable de tipo referencia. Utiliza los siguientes ejemplos para
+  explicar qué almacena cada variable:
+  <pre class="codigo-java">
+  int edad = 20;
+  String nombre = "Ana";
+  </pre>
+  </li>
+  <li>
+  Explica qué significa que una variable de referencia almacene la
+  referencia a un objeto. ¿La variable contiene todos los datos del
+  objeto? Razona la respuesta.
+  </li>
+  <li>
+  Considera las siguientes declaraciones:
+  <pre class="codigo-java">
+  String nombre1 = new String("Java");
+  String nombre2 = nombre1;
+  </pre>
+  </li>
+  <li>
+  Representa gráficamente la situación de las variables y los objetos en
+  memoria. ¿Cuántos objetos se han creado? ¿Qué relación existe entre
+  <code>nombre1</code> y <code>nombre2</code>?
+  </li>
+  <li>
+  Explica qué es un alias de referencia. ¿Qué consecuencias puede tener
+  que dos variables hagan referencia al mismo objeto?
+  </li>
+  <li>
+  Considera el siguiente fragmento:
+  <pre class="codigo-java">
+  String texto1 = new String("Programación");
+  String texto2 = texto1;
+  texto2 = new String("Java");
+  </pre>
+  </li>
+  <li>
+  Representa la situación de la memoria después de ejecutar cada
+  sentencia. Indica qué ocurre con las referencias y qué sucede con el
+  primer objeto cuando deja de estar referenciado.
+  </li>
+  <li>
+  Explica qué significa que una variable de referencia tenga el valor
+  <code>null</code>. ¿Se ha creado algún objeto al declarar una variable
+  e inicializarla con dicho valor?
+  </li>
+  <li>
+  Indica qué problema presenta el siguiente fragmento y en qué momento
+  se produce:
+  <pre class="codigo-java">
+  String nombre = null;
+  System.out.println(nombre.length());
+  </pre>
+  </li>
+  <li>
+  Explica qué función desempeña el operador <code>new</code> cuando se
+  crea un objeto. ¿Qué relación existe entre este operador, la reserva
+  de memoria y la ejecución del constructor?
+  </li>
+  <li>
+  Explica las diferencias entre Stack y Heap. Indica qué tipo de
+  información se almacena habitualmente en cada una de estas zonas de
+  memoria durante la ejecución de un programa Java.
+  </li>
+  <li>
+  Considera el siguiente método:
+  <pre class="codigo-java">
+  public static void mostrar() {
+      int numero = 10;
+      String texto = new String("Hola");
+  }
+  </pre>
+  </li>
+  <li>
+  Indica qué elementos se almacenan en Stack y cuáles en Heap durante la
+  ejecución del método. ¿Qué sucede con ellos cuando finaliza la
+  ejecución?
+  </li>
+  <li>
+  Explica qué función desempeña el recolector de basura de Java. ¿En qué
+  situación puede considerarse que un objeto está disponible para ser
+  eliminado?
+  </li>
+  <li>
+  Considera las siguientes declaraciones:
+  <pre class="codigo-java">
+  int numero = 10;
+  String nombre = "Ana";
+  </pre>
+  </li>
+  <li>
+  Explica qué diferencia existe entre los atributos de una clase y las
+  variables locales de sus métodos. ¿Qué ámbito y duración tiene cada
+  uno de ellos?
+  </li>
+  <li>
+  Diseña una clase <code>Punto</code> que permita representar un punto
+  del plano mediante dos coordenadas enteras, <code>x</code> e
+  <code>y</code>. Incluye los atributos necesarios y los métodos que
+  permitan consultar sus coordenadas y modificar su posición.
+  </li>
+  <li>
+  Diseña una clase <code>Rectangulo</code> que permita representar
+  rectángulos mediante su anchura y altura. Incluye los atributos
+  necesarios y métodos para calcular su superficie y perímetro, así como
+  para consultar sus dimensiones.
+  </li>
+  <li>
+  Implementa en Java la clase <code>CuentaBancaria</code>. Cada cuenta
+  tendrá un titular y un saldo. Define los atributos y los métodos
+  necesarios para consultar el saldo, ingresar dinero y retirar dinero.
+  El saldo no podrá ser negativo y no se permitirá retirar una cantidad
+  superior al saldo disponible.
+  </li>
+  <li>
+  Explica qué diferencia existe entre un método observador y un método
+  transformador. Clasifica los métodos que has definido en los
+  ejercicios anteriores según esta distinción.
+  </li>
+  <li>
+  Considera el siguiente método:
+  <pre class="codigo-java">
+  public void ingresar(double cantidad) {
+      double nuevoSaldo = saldo + cantidad;
+      saldo = nuevoSaldo;
+  }
+  </pre>
+  </li>
+  <li>
+  Identifica los atributos, parámetros y variables locales que aparecen
+  en el método. Explica qué ámbito tiene cada uno y en qué momento deja
+  de existir la variable <code>nuevoSaldo</code>.
+  </li>
+  <li>
+  Explica cómo se transmiten los argumentos a los parámetros de un
+  método en Java. ¿Qué significa que Java utiliza el paso de parámetros
+  por valor?
+  </li>
+  <li>
+  Considera el siguiente fragmento:
+  <pre class="codigo-java">
+  public void modificar(int numero) {
+      numero = 50;
+  }
+
+  public static void main(String[] args) {
+      int valor = 10;
+      modificar(valor);
+      System.out.println(valor);
+  }
+  </pre>
+  </li>
+  <li>
+  Indica qué valor se muestra por pantalla y explica por qué la
+  modificación del parámetro no altera la variable utilizada como
+  argumento.
+  </li>
+  <li>
+  Considera las siguientes clases y el método que modifica una
+  referencia:
+  <pre class="codigo-java">
+  class Persona {
+      String nombre;
+  }
+
+  public static void cambiar(Persona persona) {
+      persona.nombre = "Luis";
+  }
+  </pre>
+  </li>
+  <li>
+  Explica qué sucede si se llama al método <code>cambiar</code> pasando
+  como argumento una referencia a un objeto <code>Persona</code>. ¿Se
+  modifica el objeto original? Razona la respuesta teniendo en cuenta el
+  paso por valor de las referencias.
+  </li>
+  <li>
+  Define una clase <code>Alumno</code> con los atributos necesarios para
+  almacenar el nombre y la nota de un alumno. Incluye métodos para
+  consultar ambos datos, modificar la nota y determinar si el alumno ha
+  aprobado.
+  </li>
+  <li>
+  Explica qué es un constructor y cuál es su finalidad. ¿Qué diferencias
+  presenta respecto a un método ordinario de una clase?
+  </li>
+  <li>
+  Escribe una clase <code>Producto</code> que almacene un código, una
+  descripción y un precio. Define un constructor que permita inicializar
+  los tres atributos cuando se crea un objeto.
+  </li>
+  <li>
+  Diseña una clase <code>Libro</code> con título, autor y número de
+  páginas. Incluye un constructor que inicialice todos los atributos y
+  métodos observadores que permitan consultar sus valores.
+  </li>
+  <li>
+  Explica qué se entiende por constructor por defecto en Java. ¿En qué
+  circunstancias proporciona el compilador uno automáticamente? ¿Qué
+  sucede cuando se declara un constructor en la clase?
+  </li>
+  <li>
+  Modifica la clase <code>Libro</code> para que permita crear objetos de
+  dos formas: indicando todos sus datos o indicando únicamente el título
+  y el autor. En este último caso, el número de páginas tendrá
+  inicialmente el valor cero.
+  </li>
+  <li>
+  Explica qué es la sobrecarga de constructores. ¿Qué debe cambiar entre
+  las declaraciones de dos constructores para que Java pueda
+  distinguirlos?
+  </li>
+  <li>
+  Considera la siguiente clase:
+  <pre class="codigo-java">
+  public class Rectangulo {
+      private double anchura;
+      private double altura;
+
+      public Rectangulo(double anchura, double altura) {
+          anchura = anchura;
+          altura = altura;
+      }
+  }
+  </pre>
+  </li>
+  <li>
+  Identifica el problema que presenta el constructor y corrígelo
+  utilizando la palabra reservada <code>this</code>. Explica qué
+  representa <code>this</code> dentro de un constructor.
+  </li>
+  <li>
+  Diseña una clase <code>Persona</code> con nombre y edad. Incluye dos
+  constructores sobrecargados: uno que reciba ambos datos y otro que
+  reciba únicamente el nombre, asignando en este caso una edad inicial
+  de cero.
+  </li>
+  <li>
+  Explica qué es el encadenamiento de constructores y para qué puede
+  utilizarse. ¿Qué ventaja tiene cuando varios constructores necesitan
+  realizar parte de la misma inicialización?
+  </li>
+  <li>
+  Diseña una clase <code>Contador</code> que almacene un valor entero.
+  Incluye métodos para incrementar, decrementar y consultar su valor.
+  Define constructores que permitan crear un contador con valor inicial
+  cero o con un valor inicial indicado.
+  </li>
+  <li>
+  Explica qué diferencia existe entre un miembro de instancia y un
+  miembro estático de una clase. ¿Qué relación tiene cada uno con los
+  objetos creados a partir de dicha clase?
+  </li>
+  <li>
+  Considera la siguiente clase:
+  <pre class="codigo-java">
+  public class Alumno {
+      String nombre;
+      static int numeroAlumnos;
+  }
+  </pre>
+  </li>
+  <li>
+  Indica qué atributos pertenecen a cada objeto y cuál es compartido por
+  todos los objetos de la clase. Explica qué sucede al crear varios
+  objetos <code>Alumno</code>.
+  </li>
+  <li>
+  Modifica la clase <code>Alumno</code> para que cada vez que se cree un
+  objeto se incremente automáticamente el atributo estático
+  <code>numeroAlumnos</code>. Incluye un método estático que permita
+  consultar cuántos alumnos se han creado.
+  </li>
+  <li>
+  Explica qué es una constante de clase y qué finalidad tienen las
+  palabras reservadas <code>static</code> y <code>final</code> cuando se
+  utilizan conjuntamente en la declaración de un atributo.
+  </li>
+  <li>
+  Define una clase <code>Matematicas</code> que contenga una constante
+  de clase denominada <code>PI</code> y un método estático que calcule
+  la longitud de una circunferencia a partir de su radio.
+  </li>
+  <li>
+  Explica por qué el método <code>main</code> de Java es estático.
+  ¿Significa esto que todos los métodos y atributos de la clase que
+  contiene <code>main</code> deben ser estáticos?
+  </li>
+  <li>
+  Escribe una clase <code>PruebaCuentaBancaria</code> que contenga el
+  método <code>main</code>. Desde él, crea dos objetos de la clase
+  <code>CuentaBancaria</code>, realiza diferentes ingresos y retiradas y
+  muestra los saldos finales. Comprueba que cada cuenta mantiene su
+  propio saldo.
+  </li>
+  <li>
+  Explica qué es una clase conductora y qué finalidad tiene cuando se
+  desarrolla y prueba una aplicación. ¿Por qué resulta conveniente
+  separar la clase que representa una entidad de la clase que contiene
+  las instrucciones para probarla?
+  </li>
+  <li>
+  Explica qué se entiende por conductor y por resguardo en el contexto
+  de las pruebas de software. ¿Qué función desempeña cada uno y en qué
+  se diferencian?
+  </li>
+  <li>
+  Diseña una clase <code>Termometro</code> que almacene una temperatura
+  en grados Celsius. Incluye métodos para consultar la temperatura,
+  modificarla y obtener su equivalente en grados Fahrenheit. Escribe
+  además una clase conductora que cree varios termómetros y pruebe sus
+  operaciones.
+  </li>
+  <li>
+  Diseña una clase <code>Fecha</code> que almacene día, mes y año.
+  Incluye constructores para inicializar sus datos, métodos observadores
+  y un método que permita determinar si el año es bisiesto. Escribe una
+  clase conductora que cree varias fechas y compruebe el funcionamiento
+  de sus métodos.
+  </li>
+  </ol>
+  <p><a href="../temas/tema_04.html">Tema 4</a> | <a
+  href="../problemas/tema_04.html">Problemas</a></p>
+
+    <script src="../scripts/script.js"></script>
+  </body>
+</html>
