@@ -755,4 +755,4 @@ versión correcta y realiza una traza que compruebe que se muestran los números
 el 1 al 5 y que la suma final es 15.</li>
 </ol>
 
-[Tema3](../temas/tema_03.html) | [Problemas](../problemas/tema_03.html)
+[Tema 3](../temas/tema_03.html) | [Problemas](../problemas/tema_03.html)

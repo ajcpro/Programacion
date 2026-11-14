@@ -44,4 +44,4 @@ css: ["../estilos/estilo.css"]
 18. Escribe un algoritmo para viajar de tu residencia al instituto y viceversa, durante la semana, según tu horario. Sólo puedes utilizar 20 palabras, además de números y nombres propios. Tienes que elegir las palabras adecuadas para que ello sea posible.
 19. Escribe unas instrucciones para hacer un bocadillo de jamón y queso con un vocabulario de 20 palabras. Puedes asumir que todos los ingredientes están en la nevera y las herramientas que necesites están en la cocina. Las instrucciones deben ser lo suficientemente simples y exactas para que alguien que no sepa nada sobre bocadillos ni cómo preparar comida, siguiendo tus instrucciones literalmente, pueda hacerse un bocata.
 
-[Tema1](../temas/tema_01.html)
+[Tema 1](../temas/tema_01.html)
