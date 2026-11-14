@@ -73,4 +73,4 @@ Escribe un programa que genere un entero aleatorio entre 1 y 100, ambos incluido
 
 Utiliza `Math.random()` para generar el número secreto.
 
-[Tema3](../temas/tema_03.html)
+[Tema 3](../temas/tema_03.html)

@@ -45,6 +45,7 @@ css: ["../estilos/estilo.css", "../estilos/tema_02.css"]
 <li><a href="#entrada-y-salida-interactivas">Entrada y salida interactivas</a></li>
 </ul></li>
 </ul>
+<a href="#pie">Navegación</a>
 </div>
 </nav>
 
@@ -1415,10 +1416,10 @@ System.out.println("Usted introdujo el nombre: "
 
 Aunque la impresión del eco puede parecer redundante en una pantalla, es crucial para la verificación de los datos de entrada.
 
-<footer class="pie">
+<footer class="pie" id="pie">
 <div class="navegacion-principal">
 <a href="tema_01.html" class="previo">Anterior</a> | 
-<a href="index.html" class="#">Inicio</a> | 
+<a href="../index.html" class="#">Inicio</a> | 
 <a href="tema_03.html" class="siguiente">Siguiente</a>
 </div>
   

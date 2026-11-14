@@ -49,6 +49,7 @@ css: ["../estilos/estilo.css", "../estilos/tema_01.css"]
 </ul>
 </li>
 </ul>
+<a href="#pie">Navegación</a>
 </div>
 </nav>
 
@@ -501,7 +502,7 @@ En general siempre va a ser apropiado:
 4. Identificar los objetos requeridos y sus capacidades.
 5. Tener en cuenta qué acciones puede realizar el ordenador al desarrollar soluciones.
 
-<footer class="pie">
+<footer class="pie" id="pie">
 <div class="navegacion-principal">
 <span class="enlace-inactivo">Anterior</span> | 
 <a href="../index.html" class="inicio">Inicio</a> | 

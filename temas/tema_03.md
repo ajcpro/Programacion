@@ -120,6 +120,7 @@ css: ["../estilos/estilo.css", "../estilos/tema_03.css"]
 </ul>
 </li>
 </ul>
+<a href="#pie">Navegación</a>
 </div>
 </nav>
 
@@ -3278,7 +3279,7 @@ La programación no consiste únicamente en conseguir que un programa compile o 
 Aprender a localizar errores forma parte, por tanto, del propio proceso de programación. La escritura del código, su ejecución, la realización de pruebas, las trazas y la corrección de los errores no son actividades independientes, sino partes de un mismo proceso de construcción y verificación de programas.
 
 
-<footer class="pie">
+<footer class="pie" id="pie">
 <div class="navegacion-principal">
 <a href="tema_02.html" class="anterior">Anterior</a> | 
 <a href="../index.html" class="inicio">Inicio</a> | 

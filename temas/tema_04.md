@@ -71,6 +71,7 @@ css: ["../estilos/estilo.css", "../estilos/tema_04.css"]
 </ul>
 </li>
 </ul>
+<a href="#pie">Navegación</a>
 </div>
 </nav>
 
@@ -2596,7 +2597,7 @@ public class PruebaFactura {
 </aside>
 
 
-<footer class="pie">
+<footer class="pie" id="pie">
 <div class="navegacion-principal">
 <a href="tema_03.html" class="anterior">Anterior</a> | 
 <a href="../index.html" class="inicio">Inicio</a> | 
@@ -2605,8 +2606,8 @@ public class PruebaFactura {
   
 <div class="navegacion-secundaria">
 <!-- Renderizar solo si existen en el tema -->
-<!--a href="../ejercicios/tema_04.html">Ejercicios</a> | 
-<a href="../problemas/tema_04.html">Problemas</a-->
+<a href="../ejercicios/tema_04.html">Ejercicios</a> | 
+<a href="../problemas/tema_04.html">Problemas</a>
 </div>
 </footer>
 

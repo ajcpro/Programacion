@@ -96,4 +96,4 @@ Una vez introducidos los datos, el programa debe mostrar un documento resumen de
 
 El programa debe utilizar indicativos de entrada adecuados y realizar una impresión del eco de los datos introducidos antes de mostrar el resumen definitivo.
 
-[Tema2](../temas/tema_02.html)
+[Tema 2](../temas/tema_02.html)
