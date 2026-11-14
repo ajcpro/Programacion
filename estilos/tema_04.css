@@ -56,15 +56,15 @@ table tr {
     }
 }
 
-figure.img-referencia img {
-  max-width: 40%;
-}
-
 figure.img-referencia, figure.img-objeto, figure.img-alias {
   float: right;
   max-width: 20%;
   margin: 0 0 0 1.5em;
   text-align: left;
+}
+
+figure.img-referencia img {
+  max-width: 40%;
 }
 
 figure.img-objetos {
@@ -85,4 +85,22 @@ figure.img-null {
   max-width: 20%;
   margin: 0 0 0 1.5em;
   text-align: left;
+}
+
+figure.img-segmentos {
+  float: right;
+  max-width: 40%;
+  margin: 0 0 0 1.5em;
+}
+
+figure.img-creacion {
+  float: right;
+  max-width: 50%;
+  margin: 0 0 0 1.5em;
+}
+
+figure.img-sinergia {
+  float: left;
+  max-width: 50%;
+  margin: 0 1.5em 1.5em 0;
 }
