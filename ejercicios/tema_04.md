@@ -27,8 +27,7 @@ String nombre = "Ana";
 String nombre1 = new String("Java");
 String nombre2 = nombre1;
 </pre>
-</li>
-<li>Representa gráficamente la situación de las variables y los objetos en memoria. ¿Cuántos objetos se han creado? ¿Qué relación existe entre `nombre1` y `nombre2`?</li>
+Representa gráficamente la situación de las variables y los objetos en memoria. ¿Cuántos objetos se han creado? ¿Qué relación existe entre `nombre1` y `nombre2`?</li>
 <li>Explica qué es un alias de referencia. ¿Qué consecuencias puede tener que dos variables hagan referencia al mismo objeto?</li>
 <li>Considera el siguiente fragmento:
 <pre class="codigo-java">
@@ -36,8 +35,7 @@ String texto1 = new String("Programación");
 String texto2 = texto1;
 texto2 = new String("Java");
 </pre>
-</li>
-<li>Representa la situación de la memoria después de ejecutar cada sentencia. Indica qué ocurre con las referencias y qué sucede con el primer objeto cuando deja de estar referenciado.</li>
+Representa la situación de la memoria después de ejecutar cada sentencia. Indica qué ocurre con las referencias y qué sucede con el primer objeto cuando deja de estar referenciado.</li>
 <li>Explica qué significa que una variable de referencia tenga el valor `null`. ¿Se ha creado algún objeto al declarar una variable e inicializarla con dicho valor?</li>
 <li>Indica qué problema presenta el siguiente fragmento y en qué momento se produce:
 <pre class="codigo-java">
@@ -62,8 +60,7 @@ public static void mostrar() {
 int numero = 10;
 String nombre = "Ana";
 </pre>
-</li>
-<li>Explica qué diferencia existe entre los atributos de una clase y las variables locales de sus métodos. ¿Qué ámbito y duración tiene cada uno de ellos?</li>
+Explica qué diferencia existe entre los atributos de una clase y las variables locales de sus métodos. ¿Qué ámbito y duración tiene cada uno de ellos?</li>
 <li>Diseña una clase `Punto` que permita representar un punto del plano mediante dos coordenadas enteras, `x` e `y`. Incluye los atributos necesarios y los métodos que permitan consultar sus coordenadas y modificar su posición.</li>
 <li>Diseña una clase `Rectangulo` que permita representar rectángulos mediante su anchura y altura. Incluye los atributos necesarios y métodos para calcular su superficie y perímetro, así como para consultar sus dimensiones.</li>
 <li>Implementa en Java la clase `CuentaBancaria`. Cada cuenta tendrá un titular y un saldo. Define los atributos y los métodos necesarios para consultar el saldo, ingresar dinero y retirar dinero. El saldo no podrá ser negativo y no se permitirá retirar una cantidad superior al saldo disponible.</li>
@@ -90,8 +87,7 @@ public static void main(String[] args) {
     System.out.println(valor);
 }
 </pre>
-</li>
-<li>Indica qué valor se muestra por pantalla y explica por qué la modificación del parámetro no altera la variable utilizada como argumento.</li>
+Indica qué valor se muestra por pantalla y explica por qué la modificación del parámetro no altera la variable utilizada como argumento.</li>
 <li>Considera las siguientes clases y el método que modifica una referencia:
 <pre class="codigo-java">
 class Persona {
@@ -102,8 +98,7 @@ public static void cambiar(Persona persona) {
     persona.nombre = "Luis";
 }
 </pre>
-</li>
-<li>Explica qué sucede si se llama al método `cambiar` pasando como argumento una referencia a un objeto `Persona`. ¿Se modifica el objeto original? Razona la respuesta teniendo en cuenta el paso por valor de las referencias.</li>
+Explica qué sucede si se llama al método `cambiar` pasando como argumento una referencia a un objeto `Persona`. ¿Se modifica el objeto original? Razona la respuesta teniendo en cuenta el paso por valor de las referencias.</li>
 <li>Define una clase `Alumno` con los atributos necesarios para almacenar el nombre y la nota de un alumno. Incluye métodos para consultar ambos datos, modificar la nota y determinar si el alumno ha aprobado.</li>
 <li>Explica qué es un constructor y cuál es su finalidad. ¿Qué diferencias presenta respecto a un método ordinario de una clase?</li>
 <li>Escribe una clase `Producto` que almacene un código, una descripción y un precio. Define un constructor que permita inicializar los tres atributos cuando se crea un objeto.</li>
@@ -114,8 +109,8 @@ public static void cambiar(Persona persona) {
 <li>Considera la siguiente clase:
 <pre class="codigo-java">
 public class Rectangulo {
-    private double anchura;
-    private double altura;
+    double anchura;
+    double altura;
 
     public Rectangulo(double anchura, double altura) {
         anchura = anchura;
@@ -123,8 +118,7 @@ public class Rectangulo {
     }
 }
 </pre>
-</li>
-<li>Identifica el problema que presenta el constructor y corrígelo utilizando la palabra reservada `this`. Explica qué representa `this` dentro de un constructor.</li>
+Identifica el problema que presenta el constructor y corrígelo utilizando la palabra reservada `this`. Explica qué representa `this` dentro de un constructor.</li>
 <li>Diseña una clase `Persona` con nombre y edad. Incluye dos constructores sobrecargados: uno que reciba ambos datos y otro que reciba únicamente el nombre, asignando en este caso una edad inicial de cero.</li>
 <li>Explica qué es el encadenamiento de constructores y para qué puede utilizarse. ¿Qué ventaja tiene cuando varios constructores necesitan realizar parte de la misma inicialización?</li>
 <li>Diseña una clase `Contador` que almacene un valor entero. Incluye métodos para incrementar, decrementar y consultar su valor. Define constructores que permitan crear un contador con valor inicial cero o con un valor inicial indicado.</li>
@@ -136,8 +130,7 @@ public class Alumno {
     static int numeroAlumnos;
 }
 </pre>
-</li>
-<li>Indica qué atributos pertenecen a cada objeto y cuál es compartido por todos los objetos de la clase. Explica qué sucede al crear varios objetos `Alumno`.</li>
+Indica qué atributos pertenecen a cada objeto y cuál es compartido por todos los objetos de la clase. Explica qué sucede al crear varios objetos `Alumno`.</li>
 <li>Modifica la clase `Alumno` para que cada vez que se cree un objeto se incremente automáticamente el atributo estático `numeroAlumnos`. Incluye un método estático que permita consultar cuántos alumnos se han creado.</li>
 <li>Explica qué es una constante de clase y qué finalidad tienen las palabras reservadas `static` y `final` cuando se utilizan conjuntamente en la declaración de un atributo.</li>
 <li>Define una clase `Matematicas` que contenga una constante de clase denominada `PI` y un método estático que calcule la longitud de una circunferencia a partir de su radio.</li>
