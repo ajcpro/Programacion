@@ -85,8 +85,6 @@
   String nombre1 = new String("Java");
   String nombre2 = nombre1;
   </pre>
-  </li>
-  <li>
   Representa gráficamente la situación de las variables y los objetos en
   memoria. ¿Cuántos objetos se han creado? ¿Qué relación existe entre
   <code>nombre1</code> y <code>nombre2</code>?
@@ -102,8 +100,6 @@
   String texto2 = texto1;
   texto2 = new String("Java");
   </pre>
-  </li>
-  <li>
   Representa la situación de la memoria después de ejecutar cada
   sentencia. Indica qué ocurre con las referencias y qué sucede con el
   primer objeto cuando deja de estar referenciado.
@@ -156,8 +152,6 @@
   int numero = 10;
   String nombre = "Ana";
   </pre>
-  </li>
-  <li>
   Explica qué diferencia existe entre los atributos de una clase y las
   variables locales de sus métodos. ¿Qué ámbito y duración tiene cada
   uno de ellos?
@@ -218,8 +212,6 @@
       System.out.println(valor);
   }
   </pre>
-  </li>
-  <li>
   Indica qué valor se muestra por pantalla y explica por qué la
   modificación del parámetro no altera la variable utilizada como
   argumento.
@@ -236,8 +228,6 @@
       persona.nombre = "Luis";
   }
   </pre>
-  </li>
-  <li>
   Explica qué sucede si se llama al método <code>cambiar</code> pasando
   como argumento una referencia a un objeto <code>Persona</code>. ¿Se
   modifica el objeto original? Razona la respuesta teniendo en cuenta el
@@ -283,8 +273,8 @@
   Considera la siguiente clase:
   <pre class="codigo-java">
   public class Rectangulo {
-      private double anchura;
-      private double altura;
+      double anchura;
+      double altura;
 
       public Rectangulo(double anchura, double altura) {
           anchura = anchura;
@@ -292,8 +282,6 @@
       }
   }
   </pre>
-  </li>
-  <li>
   Identifica el problema que presenta el constructor y corrígelo
   utilizando la palabra reservada <code>this</code>. Explica qué
   representa <code>this</code> dentro de un constructor.
@@ -328,8 +316,6 @@
       static int numeroAlumnos;
   }
   </pre>
-  </li>
-  <li>
   Indica qué atributos pertenecen a cada objeto y cuál es compartido por
   todos los objetos de la clase. Explica qué sucede al crear varios
   objetos <code>Alumno</code>.
